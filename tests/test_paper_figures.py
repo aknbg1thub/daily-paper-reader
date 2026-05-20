@@ -232,6 +232,29 @@ class PaperFiguresTest(unittest.TestCase):
             self.assertEqual(merged[0]["item_type"], "figure")
             self.assertTrue(Path(merged[0]["_source_path"]).exists())
 
+    def test_pymupdf_fallback_adds_caption_crops(self):
+        with tempfile.TemporaryDirectory() as d:
+            tmp_dir = Path(d)
+            pdf_path = tmp_dir / "sample.pdf"
+            output_dir = tmp_dir / "out"
+
+            doc = fitz.open()
+            page = doc.new_page(width=612, height=792)
+            page.draw_rect(fitz.Rect(80, 120, 520, 420), color=(0, 0, 1), fill=(0.88, 0.95, 1))
+            page.insert_textbox(fitz.Rect(72, 440, 540, 500), "Fig. 2. Missing vector-only schematic.", fontsize=12)
+            doc.save(pdf_path)
+            doc.close()
+
+            figures = self.mod.extract_figures_from_pdf(
+                str(pdf_path),
+                str(output_dir),
+                "assets/figures/arxiv/sample",
+            )
+
+            labels = [item.get("figure_number") for item in figures]
+            self.assertIn("2", labels)
+            self.assertTrue((output_dir / "meta.json").exists())
+
     def test_duplicate_figure_label_is_disambiguated(self):
         with tempfile.TemporaryDirectory() as d:
             tmp_dir = Path(d)

@@ -659,6 +659,43 @@ def extract_figures_from_pdf(
                 )
                 fig_index += 1
 
+    caption_candidates = _merge_missing_caption_crops(pdf_path, [], output_dir)
+    if caption_candidates:
+        existing_labels = {
+            (str(item.get("item_type") or "figure").lower(), str(item.get("figure_number") or "").lower())
+            for item in figures
+            if str(item.get("figure_number") or "").strip()
+        }
+        for item in caption_candidates:
+            label_key = (
+                str(item.get("item_type") or "figure").lower(),
+                str(item.get("figure_number") or "").lower(),
+            )
+            if label_key in existing_labels:
+                continue
+            file_name = f"fig-{fig_index:03d}.webp"
+            abs_path = os.path.join(output_dir, file_name)
+            src_path = str(item.get("_source_path") or "")
+            try:
+                width, height = _save_webp_from_path(src_path, abs_path)
+            except Exception:
+                continue
+            figures.append(
+                {
+                    "url": "/".join([relative_prefix.strip("/"), file_name]),
+                    "caption": str(item.get("caption") or "").strip(),
+                    "page": int(item.get("page") or 0),
+                    "index": fig_index,
+                    "item_type": str(item.get("item_type") or "figure").strip().lower() or "figure",
+                    "width": width,
+                    "height": height,
+                    "figure_number": str(item.get("figure_number") or "").strip(),
+                }
+            )
+            fig_index += 1
+            existing_labels.add(label_key)
+
+    figures = _finalize_figure_order(figures)
     _save_figures_meta(os.path.join(output_dir, "meta.json"), figures, extractor="pymupdf-images")
     return figures
 

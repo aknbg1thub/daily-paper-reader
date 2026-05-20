@@ -9,7 +9,7 @@
     "deep_selected": 1,
     "quick_candidates": 8,
     "quick_skim_target": 13,
-    "quick_selected": 8
+    "quick_selected": 7
   },
   "deep_dive": [
     {
@@ -90,55 +90,6 @@
       "matched_requirement_id": "req-2",
       "selection_source": "fresh_fetch",
       "quick_tier": "7"
-    },
-    {
-      "id": "2605.10191v1",
-      "source": "arxiv",
-      "title": "Computing eigenpairs of quantum many-body systems with Polfed.jl",
-      "abstract": "We present Polfed.jl, an open-source Julia package implementing the Polynomially Filtered Exact Diagonalization (POLFED) algorithm for computing mid-spectrum eigenvalues and eigenvectors (shortly, eigenpairs) of quantum many-body Hamiltonians. Access to such eigenpairs is essential for studying non-equilibrium many-body physics, but is hindered by the exponential growth of Hilbert-space dimension. POLFED addresses this challenge through a polynomial spectral transformation evaluated on the fly within a Lanczos iteration, preserving Hamiltonian sparsity and substantially reducing memory costs compared to other diagonalization methods. The package supports flexible energy targeting, automatic optimization of the spectral mapping for structured Hamiltonians, and GPU acceleration, which is particularly effective since the dominant computational cost reduces to repeated sparse matrix-vector multiplications. Benchmarks on disordered spin-chain and fermionic models demonstrate access to larger system sizes than alternative approaches, and CPU--GPU comparisons confirm significant speedups. In particular, we also provide code for constructing the quantum sun model Hamiltonian, a toy model of a many-body ergodicity-breaking transition. While our focus is on many-body Hamiltonians, Polfed.jl may be applied to any large sparse matrix.",
-      "authors": [
-        "Rok Pintar",
-        "Konrad Pawlik",
-        "Rafał Świętek",
-        "Miroslav Hopjan",
-        "Jan Šuntajs",
-        "Jakub Zakrzewski",
-        "Piotr Sierant",
-        "Lev Vidmar"
-      ],
-      "primary_category": "cond-mat.stat-mech",
-      "categories": [
-        "cond-mat.stat-mech",
-        "cond-mat.dis-nn",
-        "cond-mat.str-el",
-        "quant-ph"
-      ],
-      "published": "2026-05-11T08:41:51+00:00",
-      "link": "https://arxiv.org/pdf/2605.10191v1",
-      "tags": [
-        "keyword:EQ-CIRCUIT",
-        "keyword:HAMILTONIAN",
-        "keyword:SC-QUBIT-CHIP",
-        "query:EQ-CIRCUIT",
-        "query:HAMILTONIAN",
-        "query:SC-QUBIT-CHIP"
-      ],
-      "llm_score": 6.0,
-      "llm_evidence_en": "POLFED algorithm for exact diagonalization of quantum many-body Hamiltonians",
-      "llm_evidence_cn": "POLFED算法用于量子多体哈密顿量的精确对角化",
-      "llm_evidence": "POLFED算法用于量子多体哈密顿量的精确对角化",
-      "canonical_evidence": "POLFED算法用于量子多体哈密顿量的精确对角化",
-      "llm_tldr_en": "Julia package for efficient mid-spectrum Hamiltonian diagonalization.",
-      "llm_tldr_cn": "高效量子多体哈密顿量中谱对角化的Julia包。",
-      "llm_tldr": "高效量子多体哈密顿量中谱对角化的Julia包。",
-      "llm_tags": [
-        "query:hamiltonian:composite"
-      ],
-      "matched_query_tag": "query:hamiltonian:composite",
-      "matched_query_text": "Papers central to 超导量子电路哈密顿量建立、对角化、有效哈密顿量、Kerr/cross-Kerr 和 normal modes, especially work that connects or combines: circuit QED Hamiltonian modeling for superconducting qubits and resonators; Hamiltonian diagonalization methods for superconducting quantum circuits; effective Hamiltonian derivation for superconducting qubits couplers and resonators; Kerr nonlinearity and anharmonicity in superconducting quantum circuits; cross-Kerr coupling and dispersive interaction in superconducting qubit systems; normal mode analysis and quantization of superconducting circuits; recent methods for deriving, solving, and validating Hamiltonians of superconducting quantum circuits from circuit parameters; effective Hamiltonian models for transmon qubits, tunable couplers, resonators, Kerr terms, and dispersive interactions.",
-      "matched_requirement_id": "req-composite-hamiltonian",
-      "selection_source": "fresh_fetch",
-      "quick_tier": "6"
     },
     {
       "id": "2605.15554v1",

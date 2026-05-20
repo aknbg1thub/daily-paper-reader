@@ -401,6 +401,57 @@ def parse_score(value: Any) -> float:
         return 0.0
 
 
+ARXIV_VERSION_RE = re.compile(r"^(\d{4}\.\d{4,5})(?:v(\d+))?$", re.I)
+
+
+def arxiv_latest_key(value: Any) -> str:
+    text = str(value or "").strip()
+    match = ARXIV_VERSION_RE.match(text)
+    if not match:
+        return text
+    return match.group(1)
+
+
+def arxiv_version(value: Any) -> int:
+    text = str(value or "").strip()
+    match = ARXIV_VERSION_RE.match(text)
+    if not match or not match.group(2):
+        return 0
+    try:
+        return int(match.group(2))
+    except Exception:
+        return 0
+
+
+def is_better_arxiv_version(candidate: Dict[str, Any], current: Dict[str, Any] | None) -> bool:
+    if current is None:
+        return True
+    candidate_id = str(candidate.get("id") or candidate.get("paper_id") or "").strip()
+    current_id = str(current.get("id") or current.get("paper_id") or "").strip()
+    candidate_version = arxiv_version(candidate_id)
+    current_version = arxiv_version(current_id)
+    if candidate_version != current_version:
+        return candidate_version > current_version
+    return float(candidate.get("llm_score", 0)) > float(current.get("llm_score", 0))
+
+
+def keep_latest_arxiv_versions(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    selected: Dict[str, Dict[str, Any]] = {}
+    order: List[str] = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        pid = str(item.get("id") or item.get("paper_id") or "").strip()
+        if not pid:
+            continue
+        key = arxiv_latest_key(pid)
+        if key not in selected:
+            order.append(key)
+        if is_better_arxiv_version(item, selected.get(key)):
+            selected[key] = item
+    return [selected[key] for key in order if key in selected]
+
+
 def build_scored_papers(papers: List[Dict[str, Any]], llm_ranked: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
     paper_map = {}
     for p in papers:
@@ -444,7 +495,7 @@ def build_scored_papers(papers: List[Dict[str, Any]], llm_ranked: List[Dict[str,
         paper["matched_requirement_id"] = str(item.get("matched_requirement_id") or "").strip()
         merged[pid] = paper
 
-    return list(merged.values())
+    return keep_latest_arxiv_versions(list(merged.values()))
 
 
 def build_candidates(
@@ -454,26 +505,34 @@ def build_candidates(
 ) -> List[Dict[str, Any]]:
     merged: Dict[str, Dict[str, Any]] = {}
 
+    seen_keys = {arxiv_latest_key(pid) for pid in seen_ids}
+
     for item in carryover_items:
         pid = str(item.get("id") or item.get("paper_id") or "").strip()
         if float(item.get("llm_score", 0)) < CARRYOVER_MIN_SCORE:
             continue
-        if not pid or pid in seen_ids:
+        dedupe_key = arxiv_latest_key(pid)
+        if not pid or pid in seen_ids or dedupe_key in seen_keys:
             continue
         copied = dict(item)
         copied["id"] = pid
         copied["_source"] = "carryover"
         copied["selection_source"] = SOURCE_CARRYOVER_CACHE
-        merged[pid] = copied
+        current = merged.get(dedupe_key)
+        if is_better_arxiv_version(copied, current):
+            merged[dedupe_key] = copied
 
     for item in scored_papers:
         pid = str(item.get("id") or "").strip()
-        if not pid or pid in seen_ids:
+        dedupe_key = arxiv_latest_key(pid)
+        if not pid or pid in seen_ids or dedupe_key in seen_keys:
             continue
         copied = dict(item)
         copied["_source"] = "new"
         copied["selection_source"] = SOURCE_FRESH_FETCH
-        merged[pid] = copied
+        current = merged.get(dedupe_key)
+        if is_better_arxiv_version(copied, current):
+            merged[dedupe_key] = copied
 
     return list(merged.values())
 

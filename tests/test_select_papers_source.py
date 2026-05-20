@@ -37,6 +37,25 @@ class SelectPapersSourceTagTest(unittest.TestCase):
         self.assertEqual(source_map.get("fresh-2"), "fresh_fetch")
         self.assertEqual(source_map.get("carry-1"), "carryover_cache")
 
+    def test_build_candidates_keeps_latest_arxiv_version(self):
+        scored = [
+            {"id": "2605.10191v1", "title": "Older", "llm_score": 9.5},
+            {"id": "2605.10191v2", "title": "Newer", "llm_score": 6.0},
+            {"id": "2605.11111v1", "title": "Other", "llm_score": 8.2},
+        ]
+        out = self.mod.build_candidates(scored, [], set())
+        ids = {item.get("id") for item in out}
+        self.assertNotIn("2605.10191v1", ids)
+        self.assertIn("2605.10191v2", ids)
+        self.assertIn("2605.11111v1", ids)
+
+    def test_build_candidates_seen_ids_match_arxiv_base_id(self):
+        scored = [
+            {"id": "2605.10191v2", "title": "Newer", "llm_score": 8.0},
+        ]
+        out = self.mod.build_candidates(scored, [], {"2605.10191v1"})
+        self.assertEqual(out, [])
+
     def test_build_carryover_out_marks_source(self):
         out = self.mod.build_carryover_out(
             [

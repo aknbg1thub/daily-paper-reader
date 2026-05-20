@@ -112,6 +112,49 @@ def log_substep(code: str, name: str, phase: str) -> None:
     log(f"[SUBSTEP] {code} - {name} {phase}")
 
 
+ARXIV_VERSION_RE = re.compile(r"^(\d{4}\.\d{4,5})(?:v(\d+))?$", re.I)
+
+
+def arxiv_latest_key(value: Any) -> str:
+    text = str(value or "").strip()
+    match = ARXIV_VERSION_RE.match(text)
+    if not match:
+        return text
+    return match.group(1)
+
+
+def arxiv_version(value: Any) -> int:
+    text = str(value or "").strip()
+    match = ARXIV_VERSION_RE.match(text)
+    if not match or not match.group(2):
+        return 0
+    try:
+        return int(match.group(2))
+    except Exception:
+        return 0
+
+
+def keep_latest_arxiv_versions(items: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    selected: Dict[str, Dict[str, Any]] = {}
+    order: List[str] = []
+    for item in items or []:
+        if not isinstance(item, dict):
+            continue
+        pid = str(item.get("id") or item.get("paper_id") or "").strip()
+        if not pid:
+            continue
+        key = arxiv_latest_key(pid)
+        if key not in selected:
+            order.append(key)
+            selected[key] = item
+            continue
+        current = selected[key]
+        current_id = str(current.get("id") or current.get("paper_id") or "").strip()
+        if arxiv_version(pid) > arxiv_version(current_id):
+            selected[key] = item
+    return [selected[key] for key in order if key in selected]
+
+
 def load_config() -> dict:
     if not os.path.exists(CONFIG_FILE):
         return {}
@@ -2490,6 +2533,17 @@ def main() -> None:
         log_substep("6.1", "读取 recommend 结果", "END")
     deep_list = payload.get("deep_dive") or []
     quick_list = payload.get("quick_skim") or []
+    deep_list = keep_latest_arxiv_versions(deep_list)
+    deep_keys = {
+        arxiv_latest_key(p.get("id") or p.get("paper_id"))
+        for p in deep_list
+        if isinstance(p, dict)
+    }
+    quick_list = [
+        p
+        for p in keep_latest_arxiv_versions(quick_list)
+        if arxiv_latest_key(p.get("id") or p.get("paper_id")) not in deep_keys
+    ]
 
     def _paper_score(p: dict) -> float:
         try:

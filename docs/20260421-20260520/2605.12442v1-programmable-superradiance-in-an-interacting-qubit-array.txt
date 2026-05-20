@@ -1,0 +1,1917 @@
+Title: Programmable Superradiance in an Interacting Qubit Array
+
+URL Source: https://arxiv.org/pdf/2605.12442v1
+
+Published Time: Wed, 13 May 2026 01:56:47 GMT
+
+Number of Pages: 31
+
+Markdown Content:
+## Programmable Superradiance in an Interacting Qubit Array 
+
+Botao Du, 1, ∗ Qihao Guo, 1, ∗ and Ruichao Ma 1, †
+
+> 1
+
+Department of Physics and Astronomy, Purdue University, West Lafayette, IN 47907, USA 
+
+(Dated: May 13, 2026) When multiple quantum emitters couple to a common electromagnetic environment, interference in their collective radiative dynamics gives rise to superradiance and subradiance. In regimes where coherent interactions and collective dissipation compete, the microscopic many-body dynamics and quantum correlations among the emitters that underlie superradiance and subradiance are theo-retically challenging and remain experimentally elusive, even though collective emission has been observed in many physical systems. Here, we realize a superconducting qubit array coupled to a common microwave waveguide that mediates collective dissipation, with simultaneous access to coherent interactions and microscopic measurements of many-body dynamics. Engineered qubit-waveguide couplings with tunable amplitude and phase enable control of collective interference and the resulting super- and subradiant states. Leveraging site-resolved control and readout, we directly observe the microscopic decay dynamics of multi-qubit states across different excitation manifolds and track the evolution of populations and tunable quantum correlations. We reveal collective decay in regimes beyond the ideal Dicke model, where strong qubit-qubit interactions stabilize superra-diance and subradiance against local dephasing and reshape decay pathways through spatially and spectrally structured many-body eigenstates. Our results establish a flexible platform for exploring collective phenomena in many-body quantum optics and driven-dissipative approaches to robust quantum information processing. 
+
+Collective radiative decay arises from quantum inter-ference in light-matter interactions. When multiple emit-ters couple coherently to a common electromagnetic en-vironment, spontaneous emission is no longer an inde-pendent single-emitter process. Instead, interference be-tween emission amplitudes causes them to add construc-tively or cancel destructively, producing enhanced or sup-pressed collective radiative rates known as super- and subradiance. In the Dicke model, an ensemble of identical emitters couples symmetrically to shared electromagnetic modes, giving rise to a collectively enhanced radiative de-cay known as Dicke superradiance [1, 2]. This dynamics can be understood as cascaded decay through symmet-ric collective states, during which the emitters develop phase coherence and synchronized dipole moments. Col-lective coupling thus provides a paradigmatic example of how dissipation through a shared environment can gener-ate correlated many-body dynamics, rather than acting solely as a source of decoherence [3]. Since its original introduction, superradiance has been observed across a wide range of physical systems, includ-ing atomic gases [4], trapped ions [5], molecules [6], and solid-state nanocrystal superlattices [7]. In many exper-imental realizations, however, the idealized conditions of the Dicke model are not satisfied, leading to qualitatively different behavior and necessitating a broader theoretical framework [8]. Real emitter arrays generally lack per-fect permutation symmetry: emitters are separated in space and arranged in structured or disordered geome-tries, which modify their radiative coupling [9, 10]; their transition frequencies may be inhomogeneous; and direct   
+
+> ∗These authors contributed equally to this work
+> †maruichao@purdue.edu
+
+coherent interactions can reshape the collective decay dy-namics [11]. Dephasing further alters collective emission and can either suppress or enhance superradiance [12], while non-radiative processes compete with radiative de-cay. In addition, emitters often possess internal struc-ture beyond the two-level approximation [13]. In this broader regime, collective decay becomes a dynamical many-body problem in which geometry, disorder, inter-actions, and dissipation jointly determine whether coop-erative enhancement persists and how it develops in time. Engineered quantum systems provide a controlled set-ting to investigate collective dynamics in quantum emit-ter arrays beyond the Dicke model, particularly in waveg-uide and cavity quantum electrodynamics (QED) ar-chitectures with precisely tunable emitter-environment couplings [14, 15]. Atomic arrays with tunable spac-ing demonstrate the role of geometry in radiative cou-pling [10, 16], while nanophotonic platforms enable cas-caded superradiance in chiral waveguides [17] and selec-tive collective emission via structured photonic environ-ments [18]. In superconducting artificial atoms [19, 20], Dicke superradiance has been demonstrated for pairs of qubits [21], while multi-qubit experiments have explored the manipulation of subradiant states [13], bandgap en-gineering in waveguides [22], and tunable collective inter-actions [23]. Despite these advances, most experiments probe col-lective decay from measurements of the emitted radia-tion, leaving the microscopic dynamics of the emitters during the decay largely inaccessible. In particular, how correlations and entanglement emerge and evolve during collective decay [24] are fundamental questions that chal-lenge theoretical modeling and remain largely unexplored experimentally. Furthermore, the role of strong coherent interactions and their interplay with collective dissipation 
+
+> arXiv:2605.12442v1 [cond-mat.quant-gas] 12 May 2026
+
+2remains poorly understood, despite their central impor-tance in realistic emitter arrays [25]. Directly resolving the microscopic dynamics of the emitters, including the emergence of correlations and interaction-driven evolu-tion, would provide new insight into collective behavior in interacting open quantum systems. Here, we realize a waveguide-coupled superconducting qubit array with simultaneous access to collective dis-sipation, coherent interactions, and microscopic emitter dynamics. Using parametric modulation, we engineer qubit-waveguide couplings with tunable amplitude, fre-quency, and phase, thereby controlling collective inter-ference and the resulting super- and subradiant states. With site-resolved control and readout, we prepare multi-qubit states across different excitation manifolds and di-rectly probe their decay dynamics by measuring emitter populations and correlations throughout the collective emission process. In our system, strong coherent interac-tions between the qubits fundamentally modify the col-lective decay dynamics: the dissipation proceeds via cas-caded decay of spectrally and spatially structured many-body eigenstates, necessitating a multimode description that goes beyond the ideal Dicke model of fully symmet-ric collective coupling. Furthermore, the strong interac-tions protect superradiant and subradiant dynamics that would otherwise be suppressed by local dephasing. These results establish a tunable platform for investigating col-lective dynamics in the regime of many-body quantum optics [26].  
+
+> I. ENGINEERING TUNABLE QUBIT-WAVEGUIDE COUPLING
+
+The experiments are performed in a superconducting circuit device as described in our previous work [27, 28] and shown in Fig. 1a. The effective waveguide QED setup consists of four transmon qubits, each coupled to an individual microwave cavity, which in turn are coupled to a common one-dimensional waveguide, as il-lustrated in Fig. 1b. Each transmon qubit has a tun-able frequency ωq in the range of 2 π × (3 .9 − 5.7) GHz controlled via local flux bias lines. The cavities are coplanar waveguide resonators that capacitively cou-ple to the qubits, with a qubit-resonator interaction 
+
+g(σ+ 
+
+> i
+
+bi + σ− 
+
+> i
+
+b† 
+
+> i
+
+) where g ≈ 2π × 65 MHz. Here σ+
+
+> i
+
+(σ− 
+
+> i
+
+) is the creation (annihilation) operator for qubit 
+
+i (i = 0, 1, 2, 3), and b† 
+
+> i
+
+(bi) is the creation (annihi-lation) operator for resonator i. The resonators have linewidths κr ≈ 2π × 1.5 MHz from their coupling to the broadband microwave transmission line with impedance-matched ports. The four resonators have distinct fre-quencies, ω0... 3 
+
+> r
+
+≈ 2π × (6 .32 , 6.28 , 6.23 , 6.18) GHz, ar-ranged monotonically along the qubit array. The res-onators couple to the waveguide at locations separated by a nearest-neighbor distance d, with d ≈ 0.03 λ at the resonator frequencies, so position-dependent emis-sion phases between qubits are small; here λ is the wave-a.      
+
+> b. c.
+> 00Frequency
+> FIG. 1. Waveguide-coupled qubit array and engineered dissipation. (a) Device layout of the superconducting cir-cuit, comprising an array of four frequency-tunable transmon qubits (red) with local flux bias (pink), each coupled to a res-onator (blue), which in turn couples to a common waveguide (green). (b) Effective waveguide QED model of the device. (c) Energy-level diagram. The qubits (red) are initially far detuned from the resonators (blue); parametric flux modu-lation generates qubit sidebands (orange) near the resonator frequencies, enabling enhanced Purcell decay through the res-onator linewidth into the broadband waveguide, as illustrated by the spectral density S(ω). Coherent qubit–qubit interac-tions produce energy dispersion of the many-body eigenstates. Energies and linewidths are not to scale.
+
+length of the emission in the waveguide. These same resonators are also used for frequency-multiplexed dis-persive readout of the qubits via the transmission line [20]. In addition, the transmon qubits have direct capac-itive coupling between nearest-neighbor pairs that corre-sponds to an exchange interaction J(σ+ 
+
+> i
+
+σ− 
+
+> i+1
+
++ σ− 
+
+> i
+
+σ+
+
+> i+1
+
+)with J ≈ 2π × 6.0 MHz. In this work, higher levels of the transmon beyond the ground state and first excited state are not populated due to the large qubit anharmonicity 
+
+U ≈ 2π × − 250 MHz. We start with all qubits tuned to ωq ≈ 2π × 4.6 GHz, far-detuned from the resonators by ∆ = ωr − ωq ≈
+
+2π × 1.6 GHz. In this dispersive limit (∆ ≫ g), the de-cay of a single qubit excitation via the resonator into the waveguide is highly suppressed, with a rate given by the Purcell limit κrg2/∆2 ≈ 2π × 2.5 kHz. To engi-neer a tunable qubit-waveguide coupling, we modulate the frequency of each qubit by applying an AC signal through the flux bias lines. When the flux modulation frequency ωmod is tuned near the resonator-qubit de-tuning ∆, a modulation-induced sideband of the qubit spectrum at ( ωq + ωmod ) overlaps with the Lorentzian spectrum of the resonator, resulting in enhanced Pur-cell decay. In this engineered Purcell process, the qubit emits into the waveguide at energy ω′ 
+
+> q
+
+= ( ωq + ωmod )with a rate γwg = ( geff  
+
+> ∆eff
+
+)2κr . Here geff is the effective modulation-induced qubit-resonator coupling rate and ∆eff = ωr − (ωq + ωmod ) is the effective detuning between the resonator and relevant qubit sideband [28]. Hence, the parametric flux modulation enables dynamical con-3trol over the individual qubit’s decay into the waveg-uide: the modulation frequency determines the emitted microwave energy ω′
+
+> q
+
+, while the modulation amplitude determines the emission rate γwg . Furthermore, the rela-tive phase of the microwave fields emitted by two qubits into the waveguide is determined by the relative phase of the applied flux modulations on the two qubits. The relevant energy levels involved in the engineered decay are illustrated in Fig. 1c. In the experiments that follow, we use weak, off-resonant modulation ( geff ≪ g, κr ≪ ∆eff ) to achieve qubit-waveguide coupling of typical strength γwg ∼ 2π ×
+
+15 kHz. This engineered waveguide decay rate exceeds intrinsic qubit relaxation by a factor of γwg /γ int ∼ 3. In the absence of flux modulation, we measure single-qubit relaxation rates of γint = 1 /T 1 ≈ 2π × 5 kHz, which in-cludes contributions from intrinsic Purcell-limited decay and non-radiative relaxation. See Supplementary Infor-mation (SI) for details on device parameters and intrinsic qubit decoherence (SI Sec. A), and characterization of the modulation-induced waveguide coupling (SI Sec. B.2). 
+
+II. COLLECTIVE DECAY OF SINGLE-EXCITATION EIGENSTATES 
+
+We first demonstrate tunable control of waveguide-mediated collective decay in a pair of interacting qubits by measuring the decay dynamics of single-excitation eigenstates under engineered qubit-waveguide coupling. We consider two neighboring qubits Q1 and Q2 in reso-nance, while the remaining qubits are far detuned and effectively inactive. In the single-excitation manifold, the eigenstates are the symmetric and antisymmetric su-perpositions |±⟩ with eigenfrequencies ωq ± J (Fig. 2a). We prepare |+⟩ (|−⟩ ) by initially detuning the qubits, applying a resonant π-pulse to the higher- (lower-) fre-quency qubit, and then adiabatically reducing the qubit detuning to zero. We then turn on the waveguide cou-pling by applying flux modulations to both qubits at a common modulation frequency such that the sideband-shifted qubit frequency ω′ 
+
+> q
+
+= ωq + ωmod lies midway be-tween the resonator frequencies ω1 
+
+> r
+
+and ω2 
+
+> r
+
+. The mod-ulation amplitudes are chosen to give equal waveguide decay rates γwg ≈ 2π × 15 kHz for the two qubits, while the modulation phases ϕ1 and ϕ2 set the relative cou-pling phase. After a variable evolution time, the modu-lation is turned off, and the remaining qubit population is measured. See SI Sec. B for details on experimental sequences, state preparation, and readout. When the waveguide couplings have uniform phases (θ = ϕ1 −ϕ2 = 0), the symmetric state |+⟩ emits into the waveguide with the same phase from both qubits, leading to constructive interference and an enhanced engineered decay rate Γ +wg ≈ 2γwg , exceeding the single-qubit decay rate γwg . In contrast, the antisymmetric state |−⟩ emits with opposite phase, resulting in destructive interference and a strongly suppressed engineered decay rate Γ − 
+
+> wg
+
+≈ 0. a. b. 
+
+c. d .0 0.25 0.5 0.75 1Phase difference θ (2π)010 20 30 40                 
+
+> Γwg  (2π × kHz)
+> +
+> −
+> -0.25 00.25 0.5 0.75 Phase difference θ(2π)
+> −0.5
+> −0.25 0.0 0.25 0.5
+> δω mod  (2π × MHz)
+> −30
+> −15 015 30
+> Γ+−Γ−
+> (2 π×
+> kHz )+
+> −
+> +
+> −
+> 025 50 75 Time ( μs) 0.0 0.4 0.8 Population
+> 025 50 75 Time ( μs)
+> θ=π θ=0
+> +
+> −
+> 2J
+> γwg ,
+> ϕ1
+> γwg ,
+> ϕ2
+> d«λ(i) (ii)
+
+FIG. 2. Programmable collective decay in two interacting qubits. (a) Schematic of two resonant qubits Q1 and Q2 with coherent coupling J, forming symmetric and antisymmetric single-excitation eigenstates |±⟩ . Engineered waveguide cou-pling with equal amplitude γwg and relative phase θ = ϕ1 −ϕ2
+
+enables interference of the emitted fields. (b) Measured popu-lation decay of |±⟩ for (i) θ = 0 and (ii) θ = π, showing rever-sal of superradiant and subradiant behavior. (c) Extracted engineered decay rates Γ ± 
+
+> wg
+
+as a function of θ, after subtract-ing intrinsic qubit decay, demonstrating continuous control of collective emission. (d) Difference in effective decay rates Γ+wg − Γ− 
+
+> wg
+
+as a function of modulation detuning δω mod and phase θ. Finite detuning suppresses collective effects due to spectral distinguishability of the emitted fields. 
+
+Fig. 2b(i) shows the corresponding exponential popula-tion decay of the two states, demonstrating the contrast between superradiant and subradiant dynamics. We de-fine the total excitation number as N = P 
+
+> i
+
+ni, where 
+
+ni = (1 + σzi )/2 is the on-site excitation-number opera-tor, with expectation value ⟨N ⟩ = P 
+
+> i
+
+pi and pi = ⟨ni⟩.When the modulations are changed to have alternating phases θ = π, the interference condition is reversed, such that the symmetric state becomes subradiant while the antisymmetric state exhibits enhanced decay, as shown in Fig. 2b(ii). By continuously tuning θ, we programmably control the relative decay rates of the single-excitation eigenstates and realize tunable superradiant and subradi-ant states. Fig. 2c shows the measured engineered waveg-uide decay rates as a function of θ, after subtracting the intrinsic qubit decay measured independently in the ab-sence of flux modulation. In our experiments, the coherent interaction J is es-sential for observing collective decay by suppressing the effects of local dephasing. The measured single-qubit dephasing rate γϕ = 1 /T ∗ 
+
+> 2
+
+≈ 2π × 75 kHz, limited by flux noise from room-temperature bias electronics, ex-ceeds the engineered waveguide decay rates. In the ab-sence of qubit-qubit coupling, such dephasing would ran-domize the relative phase between qubits and wash out the interference responsible for collective decay. With a large coherent interaction J ≫ γϕ, γ wg , the energy splitting of 2 J between the symmetric and antisymmet-4wavefunction amplitude                          
+
+> m= 1
+> m= 2
+> m= 3
+> m= 4
+> 01234Lattice size Nq
+> 020 40 60 80 Engineered decay  Γwg  (2π × kHz)
+> FIG. 3. Collective decay of single-excitation eigenstates. Measured waveguide decay rates Γ wg for single-excitation eigenstates of qubit arrays with size up to Nq= 4 under uniform engineered dissipation ( θ= 0, with single-qubit rate
+> γwg = 2 π×15 kHz, as plotted for Nq= 1). Intrinsic de-cay rates have been subtracted. Illustrations adjacent to each data point indicate the corresponding eigenstate wavefunc-tion amplitudes. The highest-energy mode ( m= 1) exhibits superradiant decay with a rate that scales approximately lin-early with Nq(dashed line).
+
+ric eigenstates prevents their mixing under local dephas-ing. When the qubits are tuned to degeneracy, the ef-fective flux-noise-induced linewidth of the eigenstates is suppressed to Γ eff  
+
+> ϕ
+
+∼ γ2
+
+> ϕ
+
+/(4 J) ≈ 2π × 0.2 kHz ≪ γwg ,allowing engineered collective decay to dominate the ob-served dynamics. Previously, strong dipolar interactions have been used to spectrally resolve super- and subra-diant states in molecular pairs, but in a regime where dephasing is small compared to decay [6, 29]. Additional data and analysis of the role of dephasing are provided in SI Sec. E.2. The observed finite decay rate of the subradiant state arises from several deviations from the ideal Dicke case. Because the qubit-waveguide coupling is mediated by off-resonant, narrow-bandwidth resonators, the engineered decay rate is frequency dependent and cannot be per-fectly matched for eigenstates with different energies. In addition, the resonators couple to the waveguide with a fi-nite spatial separation d, leading to a position-dependent emission phase 2 πd/λ and a corresponding reduction of the interference contrast by a factor cos(2 πd/λ ) ≈ 0.985. Theoretical modeling of the experiments, including esti-mation of the single-excitation decay rates, is provided in SI Sec. D. Next, we demonstrate that spectral indistinguishabil-ity of the emitted fields is required for collective decay. Keeping the qubits on resonance, we introduce a detun-ing δω mod between their modulation frequencies. This detunes the emission frequencies and causes the rela-tive phase between the two emitted fields to evolve in time, leading to alternating constructive and destruc-tive interference. As a result, the collective decay rate becomes time dependent, oscillating between superradi-ant and subradiant behavior. The time-averaged decay rate therefore depends on the observation window. Here, we measure the population decay over a time window long enough for the population to fully decay, and ex-tract an effective decay rate from a single-exponential fit. Fig. 2d shows the difference between the measured effective decay rates for initial states |±⟩ as a function of δω mod and the initial modulation phase difference θ.We observe a clear suppression of the rate difference for nonzero δω mod , indicating that collective effects average out once the emissions become spectrally distinguishable. The rate difference is expected to vanish when δω mod 
+
+exceeds the relative dephasing rate of two independent qubits, (2 γϕ + γwg + γint ) ≈ 2π × 170 kHz, in good agree-ment with experiment; a detailed analysis is provided in SI Sec. E.1. We now extend to larger qubit arrays and study the decay dynamics of single-excitation eigenstates beyond the two-qubit case. In the presence of nearest-neighbor interactions J, the single-excitation eigenstates of a de-generate Nq -site qubit lattice are standing-wave modes, 
+
+|m⟩ =
+
+> Nq
+
+X
+
+> i=1
+
+s
+
+2
+
+Nq + 1 sin 
+
+ πmi Nq + 1 
+
+
+
+σ+ 
+
+> i
+
+|G⟩ ,
+
+with eigenenergies Em/ℏ = 2 J cos 
+
+ πm Nq +1 
+
+
+
+, where m =1, . . . , N q and |G⟩ denotes the state with all qubits in the ground state. These modes are illustrated in Fig. 3 for Nq up to 4. We consider the case where the en-gineered wavguide coupling has uniform phases on all qubits ( θ = ϕi+1 − ϕi = 0, for i = 0 , 1, 2). The highest-energy mode |m = 1 ⟩ has uniform phases across the lat-tice sites and is therefore superradiant, emitting into the waveguide with an enhanced decay rate that scales ap-proximately linearly with the lattice size, Γ m=1 wg ≈ γwg Nq .In contrast, the remaining eigenstates are subradiant with suppressed decay rates. In the ideal Dicke case, only the fully symmetric mode is bright while all or-thogonal modes are perfectly dark; here, deviations from fully symmetric collective coupling lead to finite sub-radiant decay. We prepare these eigenstates using the same adiabatic protocol described above for the two-qubit case [30]. The measured decay rates of the single-excitation eigenstates are shown in Fig. 3, revealing ap-proximately linear scaling of the superradiant state with lattice size. The finite decay rates of the remaining subra-diant eigenstates arise from incomplete destructive inter-ference due to their nonuniform spatial profiles and other deviations from the ideal Dicke case discussed above, in-cluding frequency-dependent waveguide decay rates and finite spatial separation. For θ = π, the mode |m = Nq ⟩
+
+becomes superradiant with the same scaling, while all other states remain subradiant. The data for θ = π and modeling of these deviations from the ideal Dicke model are provided in SI Sec. D.2. 5 
+
+> III. POPULATION DYNAMICS OF SUPERRADIANCE
+
+The decay from the fully excited state of an ensemble of emitters provides the canonical initial condition for observing superradiance. When multiple excitations are present, interference between many-body decay pathways leads to non-exponential population dynamics and, un-der suitable conditions, a transient enhancement of the radiated intensity at short times [9]. The fully excited state of our four-qubit lattice is prepared using a time-dependent global coherent drive that sequentially adds excitations to the array via many-body Landau–Zener transitions [27]. The same protocol is used later to pre-pare partially excited states. For the fully inverted initial state, we achieve an average filling of 98%, limited by de-coherence during preparation. The engineered waveguide coupling is then turned on by ramping the flux modu-lation amplitude over 244 ns to reach a uniform decay rate γwg = 2 π × 15 kHz with uniform phases ( θ = 0) (Fig. 4a). After a variable evolution time t under col-lective decay, the modulation is ramped down over an-other 244 ns, the qubits are rapidly detuned from each other to suppress population transfer, and the multi-qubit state is measured. In the absence of the ramps, abruptly turning on the qubit-resonator coupling would nonadiabatically project the initial qubit state onto a su-perposition of qubit-resonator dressed states, producing coherent qubit-resonator oscillations that cannot be dis-tinguished from decay in qubit population measurements and would therefore mask the collective decay dynamics (see additional details in SI Sec. D.4). The ramps sup-press this effect; consequently, dynamics on timescales shorter than the ramp duration are not resolved. In all measurements presented below, the evolution time t ex-cludes the ramp-on and ramp-off intervals. The measured total excitation number ⟨N (t)⟩ is shown in Fig. 4c, exhibiting a clear deviation from the expo-nential time dependence expected for uncorrelated, in-dependent decay. The uncorrelated decay is charac-terized by a constant rate per qubit, estimated from the measured engineered and intrinsic decay rates to be 
+
+γ0 = γwg + γint ≈ 2π × 21 kHz. In Fig. 4d, we plot the population decay rate R(t) = −d⟨N (t)⟩/dt , which closely approximates the waveguide emission rate, as waveguide decay dominates over non-radiative processes in our ex-periments. Starting from the fully inverted state, the emission is expected to be initially uncorrelated, cor-responding to a rate γ0⟨N (t)⟩ at very short times, al-though this regime is not resolved experimentally because of the finite ramp duration. As emission proceeds under symmetric coupling to the waveguide ( θ = 0), sponta-neous emission seeds the buildup of correlations, lead-ing to enhanced collective decay through superradiant many-body eigenstates. In the measured dynamics, the extracted emission rate remains approximately constant at R(t) ≈ 2π × 130 kHz during the initial stage of the decay ( t ≲ 200 ns). It then gradually decreases, while remaining above the uncorrelated expectation γ0⟨N (t)⟩
+
+until t ≈ 5 μs. We also define the instantaneous decay rate per excitation Γ( t) = R(t)/⟨N (t)⟩, shown in Fig. 4e. In the remainder of the paper, we identify superradiance (subradiance) in the many-body setting with the condi-tion Γ( t) > γ 0 (Γ( t) < γ 0). The initial rapid population depletion during superradiance is followed by a long-lived tail, in which population accumulates in slow-decaying subradiant states, persisting over t ∼ 10 − 100 μs. The crossover Γ( t) = γ0 marks the transition from superra-diant to subradiant dynamics and occurs at t ≈ 7.5 μs(γ0t ≈ 1.0). The measurements are in good agree-ment with numerical simulations using independently calibrated parameters and assuming a perfectly inverted initial state. The slightly enhanced measured emission and decay rates at early times likely arise from imper-fections in the initial-state preparation that seed the col-lective decay dynamics, as well as residual flux-control crosstalk in the device that distorts the modulation am-plitudes and induces weak time dependence in the engi-neered decay rates. Details of the numerical model are provided in SI Sec. D.1. In the absence of coherent interactions between iden-tical emitters, collective decay is fully determined by the spatial structure of the coupling to the dissipative en-vironment, which directly defines the superradiant and subradiant modes. In our strongly interacting qubit ar-ray, however, the coherent Hamiltonian determines the many-body eigenstates. In the regime J ≫ γwg , transi-tions within the many-body spectrum become spectrally resolved, and collective decay proceeds through distinct decay channels rather than through a single collective mode. The resulting dynamics therefore arise from a cas-cade through the interacting many-body spectrum, with transition rates set jointly by the frequency-dependent waveguide coupling and the transition matrix elements between eigenstates. For example, decay from the fully excited N = 4 state proceeds through four spectrally dis-tinguishable transitions into the N = 3 manifold. The highest-energy N = 3 eigenstate has uniform phases and exhibits the strongest transition rate for θ = 0. The re-maining three states are subradiant with finite transition rates because of finite overlap with the symmetric decay channel and the energy dependence of γwg . The sub-sequent dynamics continue through a cascade down the many-body spectrum. An effective model for calculating the many-body decay rates is described in SI Sec. D.3. In Fig. 4f, we extract fluctuations in N from the mea-sured qubit-resolved populations. The population vari-ance is Var( N ) = ⟨(∆ N )2⟩ = P 
+
+> i
+
+pi(1 − pi) + 2 P 
+
+> i<j
+
+Cij ,where Cij = ⟨ninj ⟩ − ⟨ ni⟩⟨ nj ⟩ is the connected two-point density correlation between qubit i and j. The term P 
+
+> i
+
+pi(1 −pi) sets the shot-noise (binomial) baseline for in-dependent decay, while Cij captures correlations arising from collective dynamics. We quantify departures from the shot-noise baseline using the number-squeezing pa-rameter ξ2 
+
+> N
+
+= Var( N )/ P 
+
+> i
+
+pi(1 − pi). For decay from the fully inverted state, Var( N ) and ξ2 
+
+> N
+
+are shown in Fig. 4f. 6c. d. e. f. Time ( μs) 
+
+> R(t) (2π × kHz)
+
+Emission rate            
+
+> 10 −110 010 110 2050 100 150 N0= 4
+> N0= 3
+> N0= 2
+> N0= 1
+> Population per qubit
+
+Normalized decay rate      
+
+> N0= 4
+> N0= 3
+> N0= 2 N0= 1
+> Γ(t) (2π × kHz)
+> 0.0 0.2 0.4 0.6 0.8 1.0 020 40 60
+
+g. h. 
+
+γwg 
+
+θ=0      
+
+> From Dicke states From fully inverted state 01234N
+> −202
+> Energy/ ħ (J)
+
+a. b. Symmetric Dicke states      
+
+> 0510 15 20 25 Time ( μs) 01234
+> N(t)
+
+Total excitation number data          
+
+> theory uncorrelated
+> 020 40 10 −110 0
+> 10 −110 010 110 2Time ( μs) 010 20 30 40
+> Γ(t) (2π × kHz)
+
+Normalized decay rate data       
+
+> theory uncorrelated
+> 10 −110 010 110 2Time ( μs) 050 100 150
+> R(t) (2π × kHz)
+
+Emission rate data    
+
+> theory uncorrelated 0510 15 Time ( μs) 0.0 0.5 1.0 1.5 Number fluctuation
+
+Number fluctuation Var( N)uncorrelated     
+
+> theory 10 −110 010 10.8 1.0 1.2
+> ξ2
+> N
+> data
+> theory
+
+FIG. 4. Dynamics of superradiance in a four-qubit array. For symmetric coupling into the waveguide (a), the superradiant manifold consists of the highest-energy eigenstates at different excitation numbers, as indicated in the many-body energy spectrum shown in the rotating frame of the qubits. These states approximate the symmetric Dicke states, while all other eigenstates are subradiant. For decay from the fully inverted state, we show (c) total excitation number ⟨N (t)⟩, (d) emission rate R(t) = − ddt ⟨N (t)⟩, (e) instantaneous decay rate per excitation Γ( t) = R(t)/⟨N (t)⟩, and (f) number fluctuations Var( N (t)), and compare to expectations from uncorrelated decay (dashed lines). In (c), the inset shows the same data on a log scale. In (f), the inset shows the number-squeezing parameter ξ2 
+
+> N
+
+. Solid lines in (c–f) are numerical simulations using measured parameters and perfect initial states. For decay from the Dicke-like states with initial excitation number N0 = 1 , 2, 3, 4, we show the measured emission rate R(t) in (g) and the normalized decay rate Γ( t) versus average population per qubit in (h); the N0 = 4 trace is the fully inverted state data from (c–f), replotted for comparison. In (g), dotted lines are guides to the eye. In (h), data and uncertainty are shown as lines and shaded regions for clarity. Error bars represent the standard error of the mean (s.e.m.) across 9 independently acquired datasets, each comprising 16 ,000 single-shot measurements; uncertainties are dominated by dataset-to-dataset variations, with much smaller statistical uncertainty within each dataset. See SI Sec. C for details on rate extraction and error estimation. Error bars in (c,f) are smaller than the markers. 
+
+During the superradiant regime, ξ2 
+
+> N
+
+> 1, indicating en-hanced number fluctuations relative to the uncorrelated limit. At later times, ξ2 
+
+> N
+
+< 1 as population accumulates in subradiant states with low excitation number. The transition at t ≈ 7.5 μs coincides with the onset of sub-radiant dynamics identified from Γ( t), reflecting the re-distribution of population from bright collective states to subradiant states. Compared to numerical simulations, imperfections in the initial state slightly enhance the ini-tial ξ2 
+
+> N
+
+and modify its subsequent dynamics during su-perradiance. Furthermore, we investigate the dynamics of partially excited states, where collective decay is influenced by pre-existing correlations between the qubits. In the ideal Dicke case, symmetric Dicke states constitute the super-radiant manifold and possess the symmetric correlations required for collective emission, leading to an enhanced decay rate at t = 0. This contrasts with the fully inverted state, which, although part of the symmetric manifold, exhibits an uncorrelated decay rate at t = 0. For the ideal Dicke model, the total emission rate of a Dicke state with 
+
+N0 excitations is γ0N0(Nq − N0 + 1); the corresponding 70 5 10 15 20 25 Time ( μs)                              
+
+> −0.05 0.00 0.05 0.10 0.15
+> 10 −110 010 110 20.0 0.1 0.2
+> Average  C ij
+> -0.05 0.00 0.05 0.10 0.15
+> d=1
+> d=2
+> d=3
+> d=1
+> d=2
+> d=3
+> Q0 Q1 Q2 Q3 Q0 Q1 Q2 Q3 Q0 Q1 Q2 Q3 Q0 Q1 Q2 Q3
+> -0.12 -0.06 0.00 0.06 0.12 0510 15 20 25 Time ( μs)
+> −0.2
+> −0.1 0.0 0.1
+> 10 −110 010 110 2
+> −0.1 0.0 0.1
+> Average  C ij
+
+b. 
+
+d.   
+
+> (i) (ii)
+> (i) (ii) (i) (ii) (i) (ii)
+
+a. 
+
+c. 
+
+C ij 
+
+C ij              
+
+> alternating phase ( θ=π)uniform phase ( θ= 0 )01234Total excitation number N
+> −2
+> −1012
+> Energy/ ħ (J)01234Total excitation number N
+> −2
+> −1012
+> Energy/ ħ (J)
+
+FIG. 5. Programmable correlations from collective decay. (a, c) Energy spectra showing the dominant decay pathways under engineered decay with uniform and alternating phases. Superradiant (subradiant) states are shown in red (grey). Solid blue curves show the many-body energy E(t) versus N (t) during decay, extracted from correlation measurements; the arrows indicate the time direction. (b) Connected symmetric transverse correlations C⊥ 
+
+> ij
+
+= ( Cxx ij + Cyy ij )/2 measured during decay from the fully inverted state for uniform collective decay ( θ = 0), averaged over qubit pairs with the same separation d. Positive correlations develop during the superradiant dynamics, followed by sign reversal during the subradiant dynamics. The inset shows the same data on a log time scale. Pair-resolved correlation matrices at representative times during the superradiant (i) and subradiant (ii) stages of the dynamics. (d) Correlations for decay with alternating phases ( θ = π), exhibiting a spatially alternating pattern with negative nearest-neighbor and positive next-nearest-neighbor correlations, consistent with the engineered phase structure of the collective decay. Solid lines in (b,d) are guides to the eye. Uncertainties in C⊥ 
+
+> ij
+
+are dominated by systematic errors estimated to be ≈ 0.005, smaller than the data markers. 
+
+normalized decay rate therefore scales as γ0(Nq −N0 +1), increasing linearly with decreasing N0. Using the same coherent drive protocol, we prepare multi-qubit states with a fixed number of excitations N0 = 1 , 2, 3, 4 by pop-ulating the highest-energy eigenstates in each excitation-number sector of the coupled qubit lattice, as illustrated in the many-body spectrum in Fig. 4b. For θ = 0, these states form the symmetric superradiant manifold that dominates the early-time decay. In a finite lattice, they closely resemble the symmetric Dicke states, with over-lap ≥ 93% for Nq = 4 (see SI Sec. B.1). In Fig. 4g, we show the measured emission rate R(t) for these Dicke-like states. In Fig. 4h, we show the measured normalized de-cay rate as a function of the average population per qubit. Although residual short-time oscillations and the finite ramp complicate a quantitative comparison, the overall behavior of Γ( t) remains consistent with the Dicke-model prediction: the average initial decay rate increases with decreasing N0.
+
+IV. PROGRAMMABLE QUANTUM CORRELATIONS 
+
+Capitalizing on the site-resolved measurement capabil-ities of superconducting circuits, we next probe qubit– qubit correlations underlying collective radiation and demonstrate programmable control over their spatial structure. The number fluctuations measured in Fig. 4f are directly related to pair correlations of excitation num-ber ⟨ninj ⟩, or equivalently to longitudinal spin correla-tions ⟨σzi σzj ⟩ through ni = (1 + σzi )/2. In contrast, the transverse correlations ⟨σxi σxj ⟩ and ⟨σyi σyj ⟩ probe coherent phase correlations between qubits. Their buildup reflects the formation of collective dipole correlations during su-perradiant decay and the emergence of spatially struc-tured subradiant states. Here, we focus on decay from the fully inverted initial state and measure the connected symmetric transverse correlation C⊥ 
+
+> ij
+
+= ( Cxx ij + Cyy ij )/2, where Cxx ij = ⟨σxi σxj ⟩ − ⟨ σxi ⟩⟨ σxj ⟩ and similarly for Cyy ij .For the fully inverted initial state, the dynamics are rota-tionally symmetric in the xy -plane. We therefore expect 
+
+⟨σxi σxj ⟩ = ⟨σyi σyj ⟩, and ⟨σxi ⟩ = ⟨σyi ⟩ = 0 throughout the observed dynamics. 8We begin by studying collective decay with uniform phases, θ = 0. We measure all pair correlations by per-forming suitable single-qubit Pauli rotations prior to pro-jective measurement in the number basis. Fig. 5b shows the measured C⊥ 
+
+> ij
+
+(t), averaged over qubit pairs with the same separation d = |i−j|, for d = 1 , 2, 3. During the su-perradiant dynamics, positive transverse correlations de-velop across all distances, with the nearest-neighbor cor-relation reaching a maximum value of C⊥ 
+
+> ij
+
+≈ 0.15 at t =1.3 μs. The positive sign is consistent with the buildup of an in-phase collective dipole for θ = 0, where superra-diant decay occurs through symmetric eigenstates. This is followed by longer-lived subradiant dynamics in which the correlations reverse sign for both nearest-neighbor (d = 1) and next-nearest-neighbor ( d = 2) pairs, reflect-ing the spatial phase structure of the subradiant states. The correlations at d = 3 show reduced contrast and are more sensitive to finite-size effects and residual disor-der in the low-population subradiant dynamics. At late times, all correlations decay to zero as the system ap-proaches the ground state. Pair-resolved correlations at representative times during the superradiant ( t = 1 .3 μs) and subradiant ( t = 11 μs) stages of the dynamics are shown in Fig. 5b. The full time-dependent correlation data are presented in SI Sec. E.6. The measured pair correlations also enable reconstruc-tion of the instantaneous energy of the many-body state. Using the measured transverse correlations, we evaluate the expectation value of the qubit-lattice Hamiltonian including nearest-neighbor and next-nearest-neighbor in-teractions, while neglecting the much smaller distance-three interaction. We additionally include a small density-dependent energy correction arising from finite transmon anharmonicity U , which is also incorporated into the eigenenergies shown in the spectra (see SI Sec.E.6). We show the resulting energy E(t) versus ex-citation number N (t) in Fig. 5a, revealing a trajectory that clearly deviates from the highest-energy superradi-ant states and demonstrating the dynamical evolution into subradiant manifolds during the decay process. When the engineered decay has alternating phases (θ = π), neighboring qubits emit out of phase into the waveguide, which qualitatively alters the correlation pat-tern. The lowest-energy eigenstates at each excitation number now form the superradiant manifold, while the remaining eigenstates become subradiant. This differ-ence is illustrated in the energy spectra in Fig. 5c. Due to the approximate inversion symmetry of the spectra in our system, the resulting population dynamics remain similar to those for θ = 0; see additional data in SI Sec. E.5. As shown in Fig. 5d, the engineered decay with θ = π
+
+produces a spatially alternating correlation pattern: dur-ing superradiance, nearest-neighbor transverse correla-tions ( d = 1) become negative with a peak magnitude similar to the θ = 0 case, while next-nearest-neighbor correlations ( d = 2) remain positive. This follows directly from the imposed phase structure: nearest neighbors ac-quire a relative phase of π, while next-nearest neighbors acquire a relative phase of 2 π. Similarly, correlations at 
+
+d = 3 correspond to a relative phase of 3 π and therefore reverse sign again. As in the uniform case, the d = 3 cor-relations are more strongly affected by finite-size effects. We again observe a reversal of the correlations as the sys-tem evolves from superradiant to subradiant dynamics. Representative pair-resolved correlations during the su-perradiant ( t = 1 .3 μs) and subradiant ( t = 11 μs) stages of the dynamics are shown in Fig. 5d. We similarly re-construct the many-body energy from the measured pair correlations and plot the resulting average trajectory in Fig. 5c. Overall, these measurements reveal how engineered collective dissipation dynamically generates and re-shapes many-body correlations in interacting qubit ar-rays. These results establish programmable dissipation as a powerful resource for controlling correlated quan-tum dynamics in many-body quantum systems.  
+
+> V. OUTLOOK
+
+Our experiments provide microscopic access to the populations and correlations of individual emitters throughout the collective decay process. Extending these measurements to the emitted microwave fields and their coherent properties [31] would offer further insight into the role of entanglement in collective emission from in-teracting many-body systems. Joint measurements of the qubits and emitted photons could further elucidate the buildup of emitter-photon correlations and the emer-gence of collective phases, including recently explored su-perradiant phase transitions [32, 33]. The high tunability of superconducting circuits also enables systematic stud-ies of collective emission in the presence of controlled dis-order, tunable interactions, and engineered decoherence. Beyond simple waveguide environments, supercon-ducting circuits support a wide range of engineered pho-tonic reservoirs, including photonic bandgap metamateri-als [34] and topological photonic lattices [35]. Such envi-ronments modify both the photonic density of states and the spatial structure of emitter-environment coupling, al-lowing exploration of non-Markovian collective dynam-ics and long-range photon-mediated interactions. Engi-neered non-reciprocal couplings [36] and artificial giant atoms [37] further enable directional emission that can give rise to exotic multi-photon bound states [38]. Programmable collective dissipation also creates new opportunities for dissipative quantum state engineer-ing. Subradiant states in emitter arrays could serve as long-lived quantum memories [39], while the inter-play of coherent driving, incoherent pumping, and col-lective dissipation could be utilized to stabilize corre-lated many-body states [40, 41]. Dynamically tunable waveguide emission further enables controlled generation of propagating photonic states, including entangled pho-tonic states for quantum communication and networking [42, 43]. More broadly, superconducting qubit lattices 9with programmable collective coupling provide a versatile platform for analog quantum simulation of open many-body quantum systems [44, 45], and could enable appli-cations in quantum-enhanced sensing [46]. 
+
+ACKNOWLEDGMENTS 
+
+The authors thank Francis Robicheaux and Jonathan Simon for helpful feedback on the manuscript. This work was supported by grants from the Air Force Office of Scientific Research (award number FA9550-23-1-0491) and the National Science Foundation (award num-ber DMR-2145323). Part of this material is based upon work supported by the U.S. Department of Energy, Of-fice of Science, National Quantum Information Science Research Centers, Quantum Science Center. 
+
+[1] R. H. Dicke, Coherence in spontaneous radiation pro-cesses, Phys. Rev. 93 , 99 (1954). [2] M. Gross and S. Haroche, Superradiance: An essay on the theory of collective spontaneous emission, Phys. Rep. 
+
+93 , 301 (1982). [3] A. S. Sheremet, M. I. Petrov, I. V. Iorsh, A. V. Poshakin-skiy, and A. N. Poddubny, Waveguide quantum electro-dynamics: Collective radiance and photon-photon corre-lations, Rev. Mod. Phys. 95 , 015002 (2023). [4] N. Skribanowitz, I. P. Herman, J. C. MacGillivray, and M. S. Feld, Observation of dicke superradiance in opti-cally pumped hf gas, Phys. Rev. Lett. 30 , 309 (1973). [5] R. G. DeVoe and R. G. Brewer, Observation of superradi-ant and subradiant spontaneous emission of two trapped ions, Phys. Rev. Lett. 76 , 2049 (1996). [6] C. M. Lange, E. Daggett, V. Walther, L. Huang, and J. D. Hood, Superradiant and subradiant states in lifetime-limited organic molecules through laser-induced tuning, Nature Physics 20 , 836 (2024). [7] G. Rain` o, M. A. Becker, M. I. Bodnarchuk, R. F. Mahrt, M. V. Kovalenko, and T. St¨ oferle, Superfluorescence from lead halide perovskite quantum dot superlattices, Nature 
+
+563 , 671 (2018). [8] P. Kirton, M. M. Roses, J. Keeling, and E. G. Dalla Torre, Introduction to the dicke model: From equi-librium to nonequilibrium, and vice Versa , Adv. Quan-tum Technol. 2, 1800043 (2019). [9] S. J. Masson and A. Asenjo-Garcia, Universality of dicke superradiance in arrays of quantum emitters, Nat. Com-mun. 13 , 2285 (2022). [10] A. Douglas, L. Su, M. Szurek, R. Groth, S. Brandstetter, O. Markovi´ c, O. Rubies-Bigorda, S. Ostermann, S. F. Yelin, and M. Greiner, Many-body super- and subradi-ance in ordered atomic arrays, arXiv [quant-ph] (2026). [11] J. a. P. Mendon¸ ca, K. Jachymski, and Y. Wang, Role of matter interactions in superradiant phenomena, Phys. Rev. Lett. 135 , 133601 (2025). [12] P. Kirton and J. Keeling, Suppressing and restoring the dicke superradiance transition by dephasing and decay, Phys. Rev. Lett. 118 , 123602 (2017). [13] M. Zanner, T. Orell, C. M. F. Schneider, R. Albert, S. Oleschko, M. L. Juan, M. Silveri, and G. Kirchmair, Coherent control of a multi-qubit dark state in waveguide quantum electrodynamics, Nat. Phys. 18 , 538 (2022). [14] D. E. Chang, J. S. Douglas, A. Gonz´ alez-Tudela, C.-L. Hung, and H. J. Kimble, Colloquium : Quantum matter built from nanoscopic lattices of atoms and photons, Rev. Mod. Phys. 90 , 031002 (2018). [15] X. Gu, A. F. Kockum, A. Miranowicz, Y.-X. Liu, and F. Nori, Microwave photonics with superconducting quantum circuits, Phys. Rep. 718-719 , 1 (2017). [16] Z. Yan, J. Ho, Y.-H. Lu, S. J. Masson, A. Asenjo-Garcia, and D. M. Stamper-Kurn, Superradiant and subradiant cavity scattering by atom arrays, Phys. Rev. Lett. 131 ,253603 (2023). [17] C. Liedl, F. Tebbenjohanns, C. Bach, S. Pucher, A. Rauschenbeutel, and P. Schneeweiss, Observation of superradiant bursts in a cascaded quantum system, Phys. Rev. X. 14 , 011020 (2024). [18] X. Zhou, D. A. Suresh, F. Robicheaux, and C.-L. Hung, Selective collective emission from a dense atomic ensem-ble coupled to a nanophotonic resonator, Phys. Rev. Lett. 
+
+135 , 113601 (2025). [19] I. Carusotto, A. A. Houck, A. J. Koll´ ar, P. Roushan, D. I. Schuster, and J. Simon, Photonic materials in circuit quantum electrodynamics, Nat. Phys. 16 , 268 (2020). [20] A. Blais, A. L. Grimsmo, S. M. Girvin, and A. Wallraff, Circuit quantum electrodynamics, Rev. Mod. Phys. 93 
+
+(2021). [21] J. A. Mlynek, A. A. Abdumalikov, C. Eichler, and A. Wallraff, Observation of dicke superradiance for two artificial atoms in a cavity with high decay rate, Nat. Commun. 5, 5186 (2014). [22] J. D. Brehm, A. N. Poddubny, A. Stehli, T. Wolz, H. Rotzinger, and A. V. Ustinov, Waveguide bandgap en-gineering with an array of superconducting qubits, Npj Quantum Mater. 6, 1 (2021). [23] Z. Wang, H. Li, W. Feng, X. Song, C. Song, W. Liu, Q. Guo, X. Zhang, H. Dong, D. Zheng, H. Wang, and D.-W. Wang, Controllable switching between superradi-ant and subradiant states in a 10-qubit superconducting circuit, Phys. Rev. Lett. 124 , 013601 (2020). [24] X. H. H. Zhang, D. Malz, and P. Rabl, Unraveling su-perradiance: Entanglement and mutual information in collective decay, Phys. Rev. Lett. 135 , 033602 (2025). [25] W. Kersten, N. de Zordo, O. Diekmann, E. S. Redchenko, A. N. Kanagin, A. Angerer, W. J. Munro, K. Nemoto, I. E. Mazets, S. Rotter, T. Pohl, and J. Schmiedmayer, Self-induced superradiant masing, Nat. Phys. 22 , 158 (2026). [26] D. E. Chang, V. Vuleti´ c, and M. D. Lukin, Quantum nonlinear optics – photon by photon, Nature Photonics 2014 8:9 8, 685 (2014). [27] B. Du, R. Suresh, S. L´ opez, J. Cadiente, and R. Ma, 10 
+
+Probing site-resolved current in strongly interacting su-perconducting circuit lattices, Phys. Rev. Lett. 133 ,060601 (2024). [28] B. Du, Q. Guo, S. L´ opez, and R. Ma, Tunneling spec-troscopy in superconducting circuit lattices, Phys. Rev. Res. 7, L022038 (2025). [29] J.-B. Trebbia, Q. Deplano, P. Tamarat, and B. Lounis, Tailoring the superradiant and subradiant nature of two coherently coupled quantum emitters, Nat. Commun. 13 ,2962 (2022). [30] B. Saxberg, A. Vrajitoarea, G. Roberts, M. G. Panetta, J. Simon, and D. I. Schuster, Disorder-assisted assembly of strongly correlated fluids of light, Nature 612 , 435 (2022). [31] D. Bozyigit, C. Lang, L. Steffen, J. M. Fink, C. Eich-ler, M. Baur, R. Bianchetti, P. J. Leek, S. Filipp, M. P. da Silva, A. Blais, and A. Wallraff, Antibunching of microwave-frequency photons observed in correlation measurements using linear detectors, Nat. Phys. 7, 154 (2011). [32] G. Ferioli, A. Glicenstein, I. Ferrier-Barbut, and A. Browaeys, A non-equilibrium superradiant phase tran-sition in free space, Nat. Phys. 19 , 1345 (2023). [33] E. Y. Song, D. Barberena, D. J. Young, E. Chaparro, A. Chu, S. Agarwal, Z. Niu, J. T. Young, A. M. Rey, and J. K. Thompson, A dissipation-induced superradiant transition in a strontium cavity-QED system, Sci. Adv. 
+
+11 , eadu5799 (2025). [34] Y. Liu and A. A. Houck, Quantum electrodynamics near a photonic bandgap, Nat. Phys. 13 , 48 (2017). [35] E. Kim, X. Zhang, V. S. Ferreira, J. Banker, J. K. Iverson, A. Sipahigil, M. Bello, A. Gonz´ alez-Tudela, M. Mirhosseini, and O. Painter, Quantum electrodynam-ics in a topological waveguide, Phys. Rev. X. 11 , 011015 (2021). [36] C. Joshi, F. Yang, and M. Mirhosseini, Resonance flu-orescence of a chiral artificial atom, Phys. Rev. X 13 ,021039 (2023). [37] B. Kannan, M. J. Ruckriegel, D. L. Campbell, A. Frisk Kockum, J. Braum¨ uller, D. K. Kim, M. Kjaer-gaard, P. Krantz, A. Melville, B. M. Niedzielski, A. Veps¨ al¨ ainen, R. Winik, J. L. Yoder, F. Nori, T. P. Orlando, S. Gustavsson, and W. D. Oliver, Waveguide quantum electrodynamics with superconducting artificial giant atoms, Nature 583 , 775 (2020). [38] S. Mahmoodian, G. Calaj´ o, D. E. Chang, K. Hammerer, and A. S. Sørensen, Dynamics of many-body photon bound states in chiral waveguide QED, Phys. Rev. X. 
+
+10 , 031011 (2020). [39] A. Asenjo-Garcia, M. Moreno-Cardoner, A. Albrecht, H. J. Kimble, and D. E. Chang, Exponential improve-ment in photon storage fidelities using subradiance and “selective radiance” in atomic arrays, Phys. Rev. X. 7,031024 (2017). [40] O. Scarlatella and N. R. Cooper, Subwavelength arrays of quantum emitters: nonlinearities enter the weak-drive regime, and lead to correlated subradiant states, arXiv [cond-mat.quant-gas] (2025). [41] C.-R. Mann, M. A. Oehlgrien, B. Jaworowski, G. Calaj´ o, J. Marino, K. S. Choi, and D. E. Chang, Squeezing classi-cal antiferromagnets into quantum spin liquids via global cavity fluctuations, arXiv [quant-ph] (2025). [42] A. Gonz´ alez-Tudela, V. Paulisch, D. E. Chang, H. J. Kimble, and J. I. Cirac, Deterministic generation of arbi-trary photonic states assisted by dissipation, Phys. Rev. Lett. 115 , 163603 (2015). [43] O. Rubies-Bigorda, S. J. Masson, S. F. Yelin, and A. Asenjo-Garcia, Deterministic generation of photonic entangled states using decoherence-free subspaces, Phys. Rev. Lett. 134 , 213603 (2025). [44] X. Zhang, E. Kim, D. K. Mark, S. Choi, and O. Painter, A superconducting quantum simulator based on a photonic-bandgap metamaterial, Science 379 , 278 (2023). [45] N. Fayard, L. Henriet, A. Asenjo-Garcia, and D. E. Chang, Many-body localization in waveguide quantum electrodynamics, Phys. Rev. Res. 3, 033233 (2021). [46] V. Paulisch, M. Perarnau-Llobet, A. Gonz´ alez-Tudela, and J. I. Cirac, Quantum metrology with one-dimensional superradiant photonic states, Phys. Rev. A 
+
+99 , 043807 (2019). S1 
+
+SUPPLEMENTARY INFORMATION 
+
+## Programmable Superradiance in an Interacting Qubit Array 
+
+> CONTENTS
+
+A. Device parameters . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S1 A.1. Intrinsic qubit relaxation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S2 A.2. Dephasing . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S3 A.3. Thermal population . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S3 B. Experimental sequence . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S3 B.1. State preparation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S3 B.1.i. Multi-qubit reset via heralding measurement . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S3 B.1.ii. Single excitation eigenstates . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S4 B.1.iii. Dicke-like states at different lattice filling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S4 B.2. Evolution under engineered collective decay . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S5 B.2.i. Calibration of waveguide coupling rate and relative phase . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S5 B.2.ii. Smooth ramping of flux modulation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S5 B.3. Readout and state characterization . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S6 B.3.i. Multiplexed readout . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S6 B.3.ii. Phase calibration of single qubit rotations for correlation measurements . . . . . . . . . . . . . . . . . . . . . . . S6 B.4. Experimental dataset sizes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S6 C. Rate extraction and uncertainty estimation . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S6 D. Theoretical modeling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S7 D.1. Full system model . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S7 D.2. Decay rates of single-excitation eigenstates . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S9 D.3. Many-body decay rate via projection-operator formalism . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S11 D.4. Early time dynamics . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S14 D.5. Effect of thermal population . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S14 E. Additional data and analysis . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S15 E.1. Collective decay with mismatched emission frequency . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S15 E.2. Role of dephasing: Example with two qubits . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S17 E.3. Decay from fully inverted state - Modeling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S18 E.4. Decay from Dicke states - Modeling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S18 E.5. Decay with alternating-phase waveguide coupling - Data and modeling . . . . . . . . . . . . . . . . . . . . . . . . . . . . S18 E.6. All pair-wise correlations - Data and modeling . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S18 . References . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . S21  
+
+> A. DEVICE PARAMETERS
+
+The superconducting qubit device used in this work is identical to that in previous studies [27, 28]. Detailed in-formation on device fabrication, cryogenic wiring, room-temperature measurement setup, and procedures for device characterization and tuning can be found in the Supplemental Material of Ref. [27]. Table S1 lists the relevant experi-mental parameters used in this work, which are also used in the numerical simulations presented in this supplementary material. The nearest-neighbor qubit–qubit coupling Ji,i +1 is measured by observing the exchange dynamics of a single excitation initialized in one of two resonantly coupled qubits. The next-nearest-neighbor tunneling Ji,i +2 is estimated from finite-element microwave simulations of the device and is consistent with the measured spectra of the coupled qubit array. While all experiments in this work use only the lowest two levels of the transmon qubits, the unoccupied higher levels still contribute to frequency shifts of the coupled lattice modes, especially for states with higher total excitation number. This is visible qualitatively in the qubit spectra in Figs. 4 and 5, and is included in the numerical simulations. S2 
+
+Qubits Q0 Q1 Q2 Q3 Frequency ωq/2π (MHz) 4600 4600 4600 4600 Anharmonicity U2/2π(MHz) −245 .3 −245 .6 −245 .5 −245 .7
+
+T1 (μs) 33.1 30.6 31.0 43.1 
+
+T ∗ 
+
+> 2
+
+(μs) 1.9 1.8 1.1 1.8 Thermal population 0.05 0.05 0.05 0.05 Nearest-neighbor Ji,i +1 /2π (MHz) 5.86 5.89 5.86 
+
+Ji,i +2 /2π (MHz) 0.6 0.6 
+
+Resonators R0 R1 R2 R3 Frequency ωr/2π (MHz) 6323.2 6277.8 6231.2 6180.2 Qubit-res. coupling g/ 2π (MHz) 68.5 65.7 63.7 69.2 Linewidth κr/2π (MHz) 1.54 1.23 1.61 1.40 Dispersive shift 2 χ/ 2π (MHz) 0.678 0.656 0.651 0.820 Thermal population 0.025 0.025 0.025 0.025 TABLE S1. Qubit and resonator parameters. 0 100 200 300                              
+
+> Time t, ( μs)
+> 0.0
+> 0.2
+> 0.4
+> 0.6
+> 0.8
+> 1.0
+> Qubit Residual Population  Pe
+> T1= 16.3 μs
+> nth = 8.1%
+> m= 1
+> data
+> Exponential fitting
+> 0100 200 300
+> Time t, ( μs)
+> 0.0
+> 0.2
+> 0.4
+> 0.6
+> 0.8
+> 1.0
+> T1= 29.2 μs
+> nth = 4.6%
+> m= 2
+> data
+> Exponential fitting
+> 0100 200 300
+> Time t, ( μs)
+> 0.0
+> 0.2
+> 0.4
+> 0.6
+> 0.8
+> 1.0
+> T1= 35.7 μs
+> nth = 5.4%
+> m= 3
+> data
+> Exponential fitting
+> 0100 200 300
+> Time t, ( μs)
+> 0.0
+> 0.2
+> 0.4
+> 0.6
+> 0.8
+> 1.0
+> T1= 29.4 μs
+> nth = 3.4%
+> m= 4
+> data
+> Exponential fitting
+
+FIG. S1. Intrinsic Purcell decay of single-excitation eigenstate in the 4 qubit array. See also Fig. S5(f). 
+
+Individual resonator parameters are extracted from “Chi-Kappa-Power” measurements [47]. The finite separation between the resonator couplers along the waveguide can be estimated by driving the qubits through the transmission line and extracting the relative phase between the drive fields seen by the qubits. This was previously measured at 4.5 GHz to correspond to a relative phase of 7 ◦ (see [27] for details). At the emission frequency of approximately 6.25 GHz used in this work, this corresponds to a relative phase of 10 ◦, or equivalently d ≈ 0.03 λ.
+
+A.1. Intrinsic qubit relaxation 
+
+We consider three contributions to qubit relaxation: intrinsic non-radiative relaxation γnr , intrinsic Purcell decay into the waveguide γpurc (through the resonators or other potential package modes), and the engineered Purcell decay through the resonator into the waveguide γwg . Both the intrinsic and engineered Purcell decay can result in interference in the waveguide and, therefore, collectively enhanced or suppressed effective rates. However, these two decay channels are independent from each other since they correspond to different emission energies ( ωq for the intrinsic Purcell decay and ω′ 
+
+> q
+
+= ωq + ωmod for the engineered waveguide decay). The listed T1 in Table S1 is the measured relaxation rate of individual qubits at the idle lattice frequency (4.6 GHz) while the other qubits are far detuned. Hence, it includes contributions from both non-radiative relaxation γnr and the intrinsic Purcell decay γpurc .From the measured individual qubit T1 ≈ (30 − 40) μs, we get γnr + γpurc ≈ 1/T 1 ≈ 2π × (4 − 5) kHz. The intrinsic Purcell decay can be calculated, assuming dominant contribution from the fundamental mode of the resonator, to be 
+
+γpurc = κg 2/∆2 ≈ 2π × (2 − 2.5) kHz, which in turn provides an estimate for γnr ≈ 2π × (2 − 2.5) kHz. In Fig. S1, we show the intrinsic decay rate of the single excitation eigenstates with 4 qubits. This follows the same experimental sequence as the ones presented in Fig. 3, but in the absence of the engineered waveguide coupling (no flux modulation). The observed decay rates are due to both non-radiative decay and the Purcell-induced collective decay. We measure the decay rates of eigenstates m to be 2 π × { 9.8, 5.4, 4.5, 5.4} kHz, where m indexes the eigenstates in descending order of eigenenergy. The first entry corresponds to the highest-energy, uniform-phase eigenstate, which exhibits an enhanced collective decay rate arising from intrinsic Purcell decay. We expect the uniform phase state to decay at ≈ 4γpurc + γnr , which is close to the measured value. The other three subradiant eigenstates should decay at roughly γnr . The observed linewidths are a few kHz larger than this simple expectation, likely due to inhomogeneity in the intrinsic Purcell decay rates and other imperfections that break ideal symmetric collective coupling, including S3 finite J and finite d. 
+
+> A.2. Dephasing
+
+We measure single-qubit dephasing Γ ϕ = 1 /T ∗ 
+
+> 2
+
+≈ 2π × 75 kHz from Ramsey experiments. This dephasing is limited by flux noise from the room-temperature electronics used to bias the qubit frequencies, with a typical 1 /f -type noise spectrum. This dephasing rate exceeds the engineered collective decay rate γwg = 2 π × 15 kHz. In our experiments, the strong coherent interaction J between the qubits suppresses the effect of local dephasing. Consider the example of two resonantly coupled qubits. In the presence of a small detuning δ, for example due to local dephasing, the energy eigenvalues are ±pJ2 + ( δ/ 2) 2 ≈ ± J + δ2/(8 J). Therefore, the effective linewidth of the single-particle eigenstates due to dephasing is suppressed to Γ eff  
+
+> ϕ
+
+≈ Γ2
+
+> ϕ
+
+/(4 J) ≈ 2π × 0.2 kHz. This effect has previously been used in dual-rail qubits implemented with two coupled transmons [48]. Hence, the engineered collective decay in our experiment dominates the effective dephasing and intrinsic relaxation, leading to the observed super- and subradiant emission. Below, in Sec. E.2, we measure collective decay from two detuned qubits, where the effect of local dephasing is restored.  
+
+> A.3. Thermal population
+
+Qubit thermal populations are measured by idling all qubits in the degenerate coupled lattice until equilibrium is reached, then rapidly detuning each qubit and measuring its excited-state population using an ef -Rabi experiment. We use a measurement-based reset protocol to suppress thermal population in the initial state (see Sec. B.1). To measure the resonator thermal population, we apply a resonant red-sideband flux modulation for a controlled duration to swap the resonator thermal population into the qubit, and then measure the qubit state. The sideband dynamics, including resonator decay, are numerically modeled to extract the resonator thermal population ( nRth ≈
+
+2.5 %). This provides an estimate of the effective waveguide temperature near the resonator frequencies. The effective temperature of the intrinsic collective decay channels can be extracted directly from the decay dy-namics. From the long-time qubit populations in Fig. S1, we extract an effective thermal population of approximately 8.1% for the environment at around 4 .6 GHz that couples to the symmetric mode via the intrinsic Purcell decay and 3.4–5 .4% for the other modes. The effects of these thermal populations on the collective decay dynamics and correlations are modeled and discussed in Sec. D.    
+
+> B. EXPERIMENTAL SEQUENCE B.1. State preparation
+> B.1.i. Multi-qubit reset via heralding measurement
+
+To mitigate the impact of qubit thermal population on state preparation and readout calibration, we employ a heralding measurement to prepare the true ground state. We perform frequency-multiplexed readout at the lattice location, where the qubits are resonantly coupled, using a typical readout duration of 1 .5 μs. Although resolving individual Fock states in this configuration is challenging, the ground state can be clearly distinguished from all other states in the multi-tone quadrature signal. Using the control hardware’s real-time conditional logic (Quantum Machines OPX+), we determine whether the qubits are in the ground state based on calibrated thresholds. If the heralding condition is not satisfied, indicating a high probability that at least one qubit is excited, we wait 300 μs for the system to re-equilibrate and repeat the heralding sequence until successful. After successful heralding, we wait an additional 1 .6 μs to deplete photons in the readout resonators before applying the main experimental sequence. To minimize residual thermal population, we use aggressive state-discrimination thresholds, resulting in a heralding success probability of approximately 8%. Using ef -Rabi experiments, we verify that the residual thermal population in the heralded state is below 1% per qubit. In future experiments, the heralding efficiency and repetition rate could be significantly improved using active reset and real-time feedback. S4  
+
+> B.1.ii. Single excitation eigenstates
+
+Experiments in Fig. 3 use initial states corresponding to single-excitation eigenstates of the coupled qubit array. These are prepared using a disorder-assisted adiabatic scheme [30]. In the 4-qubit case, starting from the heralded ground state, the qubits are rapidly detuned within 2 ns to {233 , 121 , 174 , 64 .5} × 2π MHz, and the qubit with the mth highest frequency is excited with a resonant π pulse applied through the readout transmission line. The detunings are then adiabatically ramped to zero over 420 ns to prepare the mth quasi-momentum eigenstate. The ramp is chosen to be sufficiently slow to suppress nonadiabatic transitions, such that the remaining infidelity is primarily incoherent. Due to decoherence during the ramp, the prepared single-excitation eigenstates have a typical fidelity of approximately 90%.  
+
+> B.1.iii. Dicke-like states at different lattice filling
+
+The experiments in Fig. 4(g-h) start from the highest-energy eigenstate in each excitation-number manifold. These states have fixed excitation number and uniform wavefunction phases across the qubits. We denote the highest-energy eigenstate of a lattice with Nq qubits and excitation number N by ψ(N )
+
+> Nq
+
+E
+
+.We prepare these states using a time-dependent global drive that sequentially adds excitations through adiabatic many-body Landau-Zener transitions [27, 28]. Starting from the ground state of the degenerate qubit array, a global drive is applied through the readout transmission line and ramped up over 300 ns (100 ns for N = 4) to Rabi rates of {2.1, 3.1, 2.1, 4.5} × 2π MHz for filling numbers N = 1 through 4, respectively, with an initial detuning of +2 π × 30 MHz. The drive frequency is then swept at rates of {− 74 .6, −102 .7, −142 .0, −416 .7} × 2π MHz to final detunings of {7.6, 0.8, −5.8, −30 } × 2π MHz, after which the drive amplitude is ramped down over 300 ns (100 ns for 
+
+N = 4). The sweep parameters are optimized experimentally for each filling. Numerical simulations estimate target-state populations between 85% and 92% for N = 1 through 4. This is consistent with the measured fidelity of 92% for the fully inverted state ( N = 4), corresponding to an average filling of 98%. Simulations indicate that decoherence contributes approximately 4 .0% to the total infidelity, with the remainder arising from diabatic excitations during preparation. 0 2 4 6 8 10 Excitation Number  
+
+> 0.5
+> 0.6
+> 0.7
+> 0.8
+> 0.9
+> 1.0 Fidelity 23456789
+> NNLattice size q
+> FIG. S2. Fidelity between the highest-energy lattice eigenstates and the symmetric Dicke states.
+
+In finite lattices, these states closely resemble the symmetric Dicke states 
+
+D(N )
+
+> Nq
+
+E
+
+=
+
+Nq
+
+N
+
+−1/2 X 
+
+> n∈{ 0,1}Nq
+> P
+> ini=N
+
+n1n2 · · · nNq .
+
+Figure S2 shows the fidelity, defined here as the population overlap between the highest energy lattice eigenstates and the corresponding symmetric Dicke states F (N ) 
+
+> Nq
+
+=
+
+D
+
+D(N ) 
+
+> Nq
+
+ψ(N )
+
+> Nq
+
+E 2
+
+, for different lattice sizes. For our experimental case of Nq = 4, the overlap exceeds 93%, ignoring preparation errors. S5   
+
+> B.2. Evolution under engineered collective decay
+> B.2.i. Calibration of waveguide coupling rate and relative phase
+
+The flux modulation setup, parameters, and achievable ranges for the sideband coupling geff are detailed in Ref. [28]. We induce engineered collective decay using a flux-modulation frequency of roughly 2 π × 1.657 GHz, placing the modulated qubit sideband near the average resonator frequency. We choose modulation powers to yield a uniform engineered decay rate of Γ wg ≈ 2π × 15 kHz. We calibrate the sideband amplitudes by parking each qubit at the lattice frequency while detuning the remaining qubits, and measure the red-sideband-induced relaxation time of the target qubit as a function of the flux-modulation amplitude. Figure S3 illustrates the typical calibration process for the qubit-waveguide coupling rates. 
+
+Calibration of relative phase: The sideband modulation pulses applied to different qubits acquire different phases due to variations in the lengths of the microwave control and on-chip flux lines. For each neighboring qubit pair, we prepare symmetric and antisymmetric single-excitation states, apply engineered decay with matched amplitudes, and sweep the relative phase between the two modulation tones. The phase that maximizes (Γ + − Γ−) is defined as the uniform-phase condition ( θ = 0). a. b. c.              
+
+> FIG. S3. Calibration of qubit-waveguide coupling rates. (a) Engineered single-qubit decay. We couple a single qubit to the waveguide via flux modulation and extract the engineered decay rate Γ wg from T1decay measurements. (b) Dependence of Γ wg
+> on the sideband modulation detuning ∆ r, fitted to a Lorentzian profile. (c) Dependence of Γ wg on the sideband modulation amplitude A, also showing a Lorentzian fit. For the main experiments, we select a sideband modulation amplitude that yields Γwg ≈15 ×2πkHz.
+> B.2.ii. Smooth ramping of flux modulation
+
+In the experiments, the flux modulation is ramped smoothly to the target amplitude in 244 ns. This soft turn-on is to minimize coherent oscillations in the qubit population at short times: A sudden quench from the bare qubit states into the dressed states of the qubit-resonator system induced coherent oscillations. In addition, imperfect compensation of the modulation-induced qubit frequency shift can result in quench dynamics leading to population oscillation between qubits, which can also manifest in the total excitation number when there is a slight inhomogeneity in the waveguide decay rates for different qubits. In our experiments, the first effect is dominant. In the numerical modeling presented in Sec. D.4, we compare the dynamics of the qubit excitation number with the total excitation across both the qubits and resonators to demonstrate that the observed oscillations in the measured decay rates at early times are dominated by coherent exchange between the qubits and the resonators. The flux modulation also induces an effective qubit frequency shift, typically ≲ 2 MHz, due to the non-linear frequency response of the qubit to flux and the off-resonance charge drive. We characterize these shifts using Ramsey experiments while the modulation is active. We then compensate for them by applying DC offsets to the flux pulses, ensuring the qubits remain on resonance during the collective decay. S6   
+
+> B.3. Readout and state characterization
+> B.3.i. Multiplexed readout
+
+Multi-qubit Fock states (the computational basis of the qubits) are used to calibrate the readout signal. Starting from the heralded ground state, we rapidly detune all nearest-neighbor qubits by more than 400 MHz within 2 ns. We wait for 80 ns for the flux pulses to settle before sequentially applying the resonant π pulses, implemented as a DRAG-Gaussian pulse with a length of 80 ns. A frequency-multiplexed readout pulse is then applied for a typical duration of 1.5 μs. The obtained multi-qubit I/Q signals are used to train a support vector machine (SVM) for the multi-qubit discriminator. We measure any residual thermal population in the prepared Fock states using an ef Rabi experiment and apply a linear transformation to map the state vector from the prepared basis back to the bare Fock states. For experiments measuring the two-point correlation function, two single-qubit rotation pulses are applied sequentially at the readout location before the multiplexed readout. Following the readout, flux balancing pulses are applied to cancel the net current flowing into each flux line during the sequence, thereby preventing unwanted qubit frequency drifts. The experiments are performed with a typical cycle period of 300 μs, providing sufficient idle time between shots for the qubits and resonators to relax to their equilibrium ground states.  
+
+> B.3.ii. Phase calibration of single qubit rotations for correlation measurements
+
+To measure two-qubit correlations after the target evolution, the qubits are rapidly detuned from the lattice con-figuration, and sequential single-qubit rotations are applied before measurement in the computational basis. During this process, qubit-dependent dynamical phases arise from idling during other rotations and from the finite frequency shift between the lattice and readout configurations. These phases must be calibrated to ensure accurate measure-ments of XX and Y Y . We calibrate these relative dynamical phases by preparing the symmetric highest-energy single-excitation eigenstate of the four-qubit system, which has a known uniform phase profile. For each qubit pair, we sweep the phase of the second rotation pulse and identify the phase that recovers the expected relative phase of the prepared state. The extracted phase offsets are incorporated into subsequent single-qubit rotations used for correlation measurements, ensuring that the measured observables correspond to the intended Pauli operators.  
+
+> B.4. Experimental dataset sizes
+
+For the population measurements underlying Fig. 2 and the extracted decay rates in Fig. 3, each experiment is typically repeated for 16 ,000 shots, giving binomial statistical uncertainties below 0 .4% for single-qubit populations. For the decay dynamics data in Fig. 4, the extracted decay rates are highly sensitive to fluctuations, particularly at short times and when the population change is small. Each sequence is therefore repeated for 144 ,000 experimental runs at each time point, obtained from 9 independently acquired datasets, each containing 16 ,000 single-shot measurements. Readout calibration is performed independently for each dataset to mitigate slow drifts in the measurement chain. Consequently, statistical uncertainties within each dataset are negligible compared to the dataset-to-dataset variations, which dominate the reported uncertainties described below in Sec. C. For the correlation measurements in Fig. 5x, each Pauli observable is measured with 64 ,000 experimental shots acquired from 4 independent datasets. Both the statistical uncertainties and the standard error of the mean across datasets are small compared to systematic errors arising from single-qubit rotation imperfections. Details of these systematic errors and their mitigation are provided in Sec. E.6.  
+
+> C. RATE EXTRACTION AND UNCERTAINTY ESTIMATION
+
+The population N (t) is measured on a nonuniform time grid spanning both short-time superradiant and long-time subradiant dynamics. To balance temporal resolution and noise sensitivity across this range, we extract the decay rates using two complementary procedures: S7 1. Local linear regression (short-time, t ≲ 150 ns). The slope at time ti is obtained from a least-squares linear fit over all data points {(tj , y j )} within a symmetric window W (t) of width 80 ns: 
+
+dy dt ti
+
+=
+
+P 
+
+> j∈W(t)
+
+(tj − ¯t)( yj − ¯y)
+
+P 
+
+> j∈W(t)
+
+(tj − ¯t)2 , (S1) where ¯ t and ¯ y are the averages over the window. 2. Three-point finite difference (long-time, t ≳ 150 ns). At longer times, the spacing between adjacent points exceeds the 80 ns regression window, so the rate at ti is estimated using ti and its two nearest neighbors ti±1.For nonuniform time steps, we use the second-order accurate central-difference formula 
+
+dy dt ti
+
+= (ti − ti−1)2 yi+1 + (ti+1 − ti)2 − (ti − ti−1)2 yi − (ti+1 − ti)2 yi−1
+
+(ti − ti−1)( ti+1 − ti)( ti+1 − ti−1) . (S2) This is implemented numerically using the numpy.gradient function. Using the procedures above, two related decay rates are extracted from the measured population N (t): 
+
+• The emission rate R(t) = − dN/dt , obtained from y = N (t). 
+
+• The normalized decay rate Γ( t) = − 1 
+
+> NdN dt
+
+= ddt log N (t), obtained from y = log N (t). 
+
+Uncertainty estimation. Uncertainties of decay rates are determined from the variation across the six independent datasets. For each time point, we report the standard error of the mean (SEM), SEM( t) = std  {xs(t)}Nset 
+
+> s=1
+
+
+
+√Nset 
+
+, (S3) where xs(t) is the extracted rate from dataset s, and the number of independent datasets Nset . This captures slow drifts and systematic fluctuations not reflected in intra-dataset statistical noise.  
+
+> D. THEORETICAL MODELING
+
+We begin by describing the detailed model used for fully time-dependent simulations of the experiments, corre-sponding to the theory results shown in Fig. 4 and the additional numerical results presented in Sec. E.4. We then discuss two effective models: one for estimating the decay rates of single-excitation states, used to model the data in Fig. 2(c) and Fig. 3, and another for calculating the many-body decay rates underlying the multi-excitation collective decay dynamics.  
+
+> D.1. Full system model
+
+Coherent Hamiltonian: The total Hamiltonian of the system comprises the transmon qubits coupled to the resonators. The transmon array forms as an interacting Bose-Hubbard lattice, written in the rotating frame of the unmodulated qubits as: 
+
+Hqubit /ℏ = X
+
+> i
+
+Ji,i +1 (a† 
+
+> i
+
+ai+1 + aia†
+
+> i+1
+
+) + X
+
+> i
+
+Ji,i +2 (a† 
+
+> i
+
+ai+2 + aia†
+
+> i+2
+
+) + X
+
+> i
+
+Ui
+
+2 ni(ni − 1) (S4) where a† 
+
+> i
+
+(ai) is the creation (annihilation) operator for transmon i, with nearest neighbor tunneling Ji,i +1 and next nearest neighbor tunneling Ji,i +2 , and effective on-site interaction Ui from the anharmonicity of the transmon. All experiments in this work use only the lowest two levels of each transmon qubit. Hence, the essential physics can be captured as an XY spin chain by replacing ai(a† 
+
+> i
+
+) with σ− 
+
+> i
+
+(σ+ 
+
+> i
+
+) and having ni ∈ { 0, 1}. In our full numerical modeling, we retain three levels per transmon and next-nearest-neighbor tunneling to provide a more accurate comparison with experimental data. The engineered waveguide coupling of the qubits is enabled via frequency modulation that places the qubit sideband near the readout resonators, thereby enhancing Purcell decay. The modulated qubit sideband frequency ω′ 
+
+> q
+
+= ωq +S8 
+
+ωmod is experimentally set close to the average frequency of all four resonators at roughly 6 .25 GHz. We model the resonators in the rotating frame of ω′
+
+> q
+
+:
+
+Hres /ℏ =
+
+> 4
+
+X
+
+> i=1
+
+∆i
+
+> eff
+
+b† 
+
+> i
+
+bi , (S5) where bi (b† 
+
+> i
+
+) is the annihilation (creation) operator for readout resonator i. For this work, the resonator population remains small during the relatively slow collective decay. By applying an appropriate qubit-frequency modulation, we generate sideband interactions between the lattice and the resonators of the form: 
+
+Hint /ℏ = −
+
+> 4
+
+X
+
+> i=1
+
+gi
+
+> eff
+
+(b† 
+
+> i
+
+aieiϕi + bia† 
+
+> i
+
+e−iϕi ) (S6) where the effective sideband coupling rates with typical values of 2 π × (2 − 8) MHz are chosen to yield the desired engineered single-qubit waveguide decay rate of 15 × 2π kHz at the average resonator frequency. We can also control the interaction phases ϕi between each qubit-resonator pair. Since the flux modulation is relatively weak, the tunneling 
+
+J is not significantly modified by the modulation. 
+
+Lindbladian and master equation: 
+
+The engineered collective decay happens via both right- and left-moving modes of the continuous waveguide (denoted by s = +1 and s = −1 respectively), as described by the Lindblad collapse operators: 
+
+cs 
+
+> wg
+
+=
+
+> 4
+
+X
+
+> i=1
+
+r κi
+
+2 e is(k0d)i bi, s = ±1, (S7) In addition to the programmable modulation phase ϕi, k0d describes the propagation phase between neighboring qubits, set by the coupler position on the waveguide and taken to be frequency-independent given that the emission frequency window is small compared to the emission frequency. Here κj is the linewidth of the readout resonators. The estimated k0d ≈ 10 ◦ in our device, as discussed above, results in a slight reduction in the interference contrast of the waveguide emission. The contrast is cos( k0d) ≈ 0.985, a much smaller effect than other effects that also cause imperfect interference, most notably from the frequency dependence of the collective decay due to different resonator detunings and linewidths. Therefore, we take the approximation that k0d ≈ 0, such that the total waveguide decay, summing over left and right propagating modes, is 
+
+cwg =
+
+> 4
+
+X
+
+> i=1
+
+√κi bi (S8) The waveguide also mediates coherent interaction between qubits [49]. Since d ≪ λ and geff ≪ J, the waveguide-mediated qubit-qubit coupling is negligible in our experiments compared to the existing tunneling J.Since we measure approximately the same thermal population in all four resonators nRth ≈ 2.5%, and the waveguide is broadband around the resonator frequency, it is reasonable to assume that the waveguide will have the same effective thermal population at the frequencies of the collective emission. With this finite temperature, the collective decay is represented as a Lindblad superoperator: 
+
+Lwg ρ = (1 + nRth )D[cwg ]ρ + nRth D[c†
+
+> wg
+
+]ρ . (S9) where the standard Lindblad dissipator is D[c]ρ = cρc † − 12 {c†c, ρ }, and ρ is the density matrix of the system of qubits and resonators. 
+
+Other intrinsic decoherence: In addition to the desired collective decay above, we also include other sources of dissipation in the full numerical model: 
+
+• Intrinsic Purcell-induced collective decay. This is the Purcell decay γpurc of the qubit at the unmodulated frequency via the resonator. Since the detuning ∆ is much larger than J here, the rate is largely frequency-independent across the different eigenstates of the coupled qubit array. We model this as a separate decay channel that effectively acts directly on the qubits, where the measured γpurc ≈ 2π × 2 kHz: 
+
+cpurc =
+
+> 4
+
+X
+
+> i=1
+
+√γpurc ai (S10) S9 From the data in Fig. S1, this intrinsic collective decay channel has an equilibrium thermal population of 
+
+npurc th ≈ 5.4% in average. This is included as: 
+
+Lpurc ρ = (1 + npurc th )D[cpurc ]ρ + npurc th D[c†
+
+> purc
+
+]ρ (S11) 
+
+• Independent non-radiative qubit relaxation: 
+
+Lnr ρ =
+
+> 4
+
+X
+
+> i=1
+
+(1 + nQi 
+
+> th
+
+)γi
+
+> nr
+
+D[ai]ρ +
+
+> 4
+
+X
+
+> i=1
+
+nQi 
+
+> th
+
+γi
+
+> nr
+
+D[a† 
+
+> i
+
+]ρ (S12) 
+
+• Single qubit dephasing: As discussed above, the eigenstates of the coupled qubit array are, to lowest order, insensitive to local qubit dephasing. Hence, local dephasing is not included in our modeling. Finally, the full Lindblad master equation reads: ˙ρ = −i [( Hqubit + Hres + Hint ), ρ ] + ( Lwg + Lpurc + Lnr )ρ (S13) which we implement and solve numerically in QuTiP .
+
+D.2. Decay rates of single-excitation eigenstates 
+
+The collective decay rates of the single-excitation eigenstates can be obtained analytically within an effective waveguide-coupled model. In the ideal Dicke case, where all emitters couple identically to a common radiation mode and coherent interactions are negligible, the fully symmetric state 
+
+|ψsym ⟩ = 1
+
+pNqNq
+
+X
+
+> i=1
+
+σ+ 
+
+> i
+
+|G⟩ (S14) radiates at the enhanced rate Γ = Nq Γ0, where |G⟩ denotes the state with all qubits in the ground state. The remaining ( Nq − 1) orthogonal single-excitation states are dark in this limit. In our system, with strong nearest-neighbor exchange interactions J, the local excitations are hybridized. The single-excitation eigenstates can be written generally as 
+
+|m⟩ =
+
+> Nq
+
+X
+
+> i=1
+
+ψm(i) σ+ 
+
+> i
+
+|G⟩ , m = 1 , . . . , N q (S15) with eigenenergies Em in the rotating frame of the qubits. For a degenerate Nq -site lattice with open boundary conditions, the normalized modes are standing waves with wavefunctions and the corresponding eigenenergies 
+
+ψm(i) = 
+
+s
+
+2
+
+Nq + 1 sin 
+
+ πmi Nq + 1 
+
+
+
+, Em = 2 J cos 
+
+ πm Nq + 1 
+
+
+
+. (S16) 
+
+Frequency-independent emission model: We first consider an effective description in which the qubit–waveguide coupling is assumed to be frequency independent. For a normalized single-excitation eigenstate 
+
+|m⟩ =
+
+> Nq
+
+X
+
+> i=1
+
+ψm(i) σ+ 
+
+> i
+
+|G⟩ , (S17) The total emission rate into the waveguide (including both left- and right-propagating modes) is Γm = |Al(m)|2 + |Ar (m)|2, (S18) with emission amplitudes 
+
+Ar,l (m) = 
+
+> Nq
+
+X
+
+> i=1
+
+√γi e±ik0xi+i ϕi ψm(i). (S19) S10 Here γi is the effective single-qubit decay rate into the waveguide, xi is the qubit position, and ϕi is the programmable phase set by the flux modulation. 
+
+Frequency-dependent resonator response: The previous model assumes frequency-independent coupling to the waveguide. In reality, the qubit–waveguide interaction is mediated by finite-bandwidth resonators. Because the eigenstates are split in energy by J, each mode |m⟩ emits at a distinct frequency set by Em, and the decay rate must therefore include the resonator spectral response. For a resonator coupled to qubit i with linewidth κi and effective detuning ∆ eff ,i , the effective emission rate takes the Lorentzian form 
+
+γi(Em) = g2eff ,i κj
+
+(Em − ∆eff ,i )2 + ( κi/2) 2 , (S20) where gi is the modulation-induced coupling strength. In the experiment, the flux modulation amplitudes are chosen such that the single-qubit decay rates at the center of the band are uniform across all qubits, 
+
+γwg = γi(0) = g2eff ,i κi
+
+∆2eff ,i + ( κi/2) 2 . (S21) Since this calibration frequency ( E = 0) satisfies |∆eff ,i | ≫ κi, the decay is in the dispersive limit with 
+
+γwg ≈ g2eff ,i 
+
+∆2eff ,i 
+
+κi. (S22) The full frequency-dependent collective decay rate is therefore Γm =
+
+> Nq
+
+X
+
+> i=1
+
+pγi(Em) e+i k0xi+i ϕi ψm(i)
+
+> 2
+
++
+
+> Nq
+
+X
+
+> i=1
+
+pγiEm) e−ik0xj +i ϕi ψm(i)
+
+> 2
+
+. (S23) In the non-interacting limit ( J = 0), all single-excitation states are degenerate and emit at the same frequency, so 
+
+γi(Em) is identical for all m and spectral filtering plays no role. For J̸ = 0, the interaction-induced energy splitting produces mode-dependent decay rates. When the level spacing satisfies J/N q ≫ γi(Em), emission from different eigenstates becomes spectrally distinguish-able. In that regime, photons emitted from different eigenmodes do not interfere. While this does not affect the decay of individual eigenstates, it becomes relevant when analyzing the decay of multi-excitation initial states. 0.0 0.5 1.0    
+
+> θ(2π)010 20 30 40
+> Γwg  (2π × kHz)  Nq= 2 1(+) 2( −)
+
+m     
+
+> 0.0 0.5 1.0
+> θ(2π)020 40 60 80
+> Γwg  (2π × kHz)  Nq= 3 123
+
+m     
+
+> 0.0 0.5 1.0
+> θ(2π)020 40 60 80 100
+> Γwg  (2π × kHz)  Nq= 4 1234
+
+m
+
+FIG. S4. Simulated collective decay rates Γ m of single-excitation eigenstates versus θ for lattices of different sizes, modeled using the frequency-dependent resonator response. Experimental measurements are shown in Fig. S5. 
+
+For the decay of single-excitation eigenstates (all experiments in Fig. 2 and Fig. 3), we choose the sideband frequency to match the average frequency of the two middle resonators R1 and R2, yielding effective resonator detunings of ∆i 
+
+> eff
+
+= ωr − ωq − ωmod ≈ { 68 .5, 23 .3, −23 .5, −74 .3} × 2π MHz. We then calibrate the engineered single-qubit collective decay rate to γwg = 15 × 2π kHz. In Fig. S4, we calculate the decay rates of the single-excitation eigenstates Γ m using Eqn. S23. The results are shown for lattice sizes Nq = 2 , 3, 4 as a function of the waveguide coupling phase difference between neighboring qubits, θ = ϕi+1 − ϕi.The corresponding experimental results are shown in the top row of Fig. S5 for Nq = 2 (using Q1-Q2, corresponding to the data in Fig. 2c), Nq = 3 (using Q0-Q1-Q2), and Nq = 4 (using all four qubits). We observe good agreement S11 0.0 0.5 1.0                             
+
+> θ(2π)010 20 30 40
+> Γwg  (2π × kHz)  Nq= 2 k1(+)
+> k2(−)0.0 0.5 1.0
+> θ(2π)020 40 60
+> Γwg  (2π × kHz)  Nq= 3 k1
+> k2
+> k3
+> 0.0 0.5 1.0
+> θ(2π)020 40 60 80 100
+> Γwg  (2π × kHz)  Nq= 4 k1
+> k2
+> k3
+> k4
+> 1234Lattice size ( Nq)
+> 0510 15 Intrinsic decay ( 2π × kHz)  Intrinsic decay
+> k1
+> k2
+> k3
+> k4
+> k1
+> k2
+> k3
+> k4
+> k1
+> k2
+> k3
+> k4
+> 1234Lattice size ( Nq)
+> 020 40 60 80 Engineered decay ( 2π × kHz)  (θ= 0 )1234Lattice size ( Nq)
+> 020 40 60 80 Engineered decay ( 2π × kHz)  (θ=π)Uniform phase Alternating phase
+
+(a) (b) (c) (d) (e) (f) 
+
+FIG. S5. Measured decay rates of single-excitation eigenstates. Top row: Decay rates versus θ for different lattice sizes. Bottom row: Lattice-size scaling of the eigenstate decay rates for θ = 0 (Fig. 2c), θ = π, and the intrinsic decay without engineered waveguide coupling. 
+
+with the effective model. The dominant discrepancies are attributed to residual flux crosstalk, which produces inhomogeneous decay rates and distorts the modulation amplitudes, leading to weakly time-dependent engineered decay rates. By extracting the decay rates at fixed θ for different Nq , we obtain the lattice-size scaling of the engineered decay rates shown in Fig. 3 for uniform-phase coupling ( θ = 0), reproduced in Fig. S5(d). In (e), we show the scaling for alternating-phase coupling ( θ = π), where the superradiant states correspond to m = Nq , the lowest-energy eigenstate with alternating phases on neighboring sites. Clear linear scaling with lattice size is again observed. In (f), we show the lattice-size dependence of the measured intrinsic qubit decay without flux modulation. The similar scaling behavior, albeit at a much lower rate, indicates that the intrinsic decay also contains a collective contribution arising from Purcell decay through the resonators into the common waveguide. 
+
+D.3. Many-body decay rate via projection-operator formalism 
+
+Projection-operator formalism: To compute decay rates in the presence of non-uniform resonator detunings {∆i}
+
+and linewidths {κi} beyond the single-excitation manifold, we employ a projection-operator formalism to calculate the effective decay rates of the lattice. By adiabatically eliminating the fast resonator degrees of freedom, we derive an effective non-Hermitian Hamiltonian acting within the lattice (qubit) manifold, allowing us to extract transition-resolved decay rates. We divide the Hilbert space into two orthogonal sectors. The P subspace consists of lattice eigenstates with all resonators in their ground state, while the Q subspace contains states with one photon in any of the four resonators. Because the resonators decay into a common waveguide with rates κi, dynamics within Q occur on a rapid timescale of ∼ 1/κ i and can be adiabatically eliminated. Treating the sideband interaction as a perturbation, we first write the non-Hermitian Hamiltonian of the free qubit lattice and resonators as 
+
+H = Hqubit + Hres − i2 ℏc†c, with c =
+
+> 4
+
+X
+
+> i=1
+
+√κi bi.S12 Expanding the dissipative term gives 
+
+c†c = X
+
+> i,j
+
+√κiκj b† 
+
+> i
+
+bj .
+
+The cross terms ( i̸ = j) arise because all resonators couple to the same waveguide continuum, generating correlated emission and thus dissipative coupling between resonators. In the single-resonator-excitation basis {| 11⟩, . . . , |14⟩} , the Hamiltonian involving the excited subspace Q is: (QHQ )ij /ℏ = ∆ i 
+
+> eff
+
+δij − i2
+
+√κiκj .
+
+Following the projection-operator formalism, the effective Hamiltonian acting within P takes the form: 
+
+Heff (z) = P HP + P HQ 1
+
+z − QHQ QHP, 
+
+where z is evaluated at the transition frequency. The lattice-resonator interaction 
+
+Hint /ℏ = −
+
+> 4
+
+X
+
+> i=1
+
+gi 
+
+> eff
+
+b† 
+
+> i
+
+σ− 
+
+> i
+
+eiϕi + h .c.
+
+gives transition matrix elements from the initial state |Ψi⟩ to the final state |Ψf ⟩ through the sideband interaction on the site i:
+
+Vi→f,i = −gi 
+
+> eff
+
+eiϕi ⟨Ψf |σ− 
+
+> j
+
+|Ψi⟩.
+
+Defining the vector Vi→f , we express the complex self-energy Σ i→f corresponding to the transition frequency ωif 
+
+as: Σi→f (ωif ) = V† 
+
+> i→f
+
+[ωif I − QHQ ]−1 Vi→f .
+
+The decay rate is obtained from the imaginary part, which corresponds to irreversible emission into the waveguide: Γi→f = −2 Im Σ i→f (ωif ),
+
+while the real part produces a Lamb shift that arises from virtual emission into detuned resonator modes followed by reabsorption: 
+
+δω i→f = Re Σ i→f (ωif ).
+
+Emission spectra and engineered emission rates: 
+
+We now apply the projection-operator formalism to calculate the emission spectra and many-body emission rates for the four-qubit experiments in Fig. 4 and Fig. 5, shown in Fig. S6. These plots help show how the engineered dissipation couples to different many-body transitions under either uniform-phase or alternating-phase collective decay ( θ = 0 and θ = π). Figure S6(a,c) shows the energy of all transitions connecting neighboring excitation number manifolds ( N → N −1). These transitions can be grouped into three categories: The thick solid lines with round markers correspond to transitions within the superradiant manifold and form the dominant collective decay channel. The thin solid lines represent transitions from the superradiant manifold into subradiant states. Finally, the dotted lines denote transitions entirely within the subradiant manifold, which are only weakly coupled to the collective dissipation and contribute little to the observed superradiant emission. The horizontal black dotted lines indicate the effective resonator detunings ∆ i 
+
+> eff
+
+relative to the collective emission frequencies. If a resonator detuning is near-resonant to one of the transitions within the resonator linewidth κr , the corresponding resonator can induce unwanted local dissipation that competes with the engineered collective decay. In the present device, the relatively small spacing between resonator frequencies (for example, ∼ 2π×45 MHz between R1
+
+and R2), together with the fact that most transitions lie within an energy band of approximately ±4J ∼ 2π × 50 MHz, requires careful choice of the effective detunings in order to suppress unwanted uncorrelated decay processes that would otherwise mask the collective decay dynamics. S13 60 80 Uniform Phase −20 020            
+
+> δE /ħ (2π × MHz)
+> 0 ← 1 1 ← 2 2 ← 3 3 ← 4
+> Single Excitation Transition
+> −90 −70 60 80
+> Δ0r
+> −20 020
+> Δ r /ħ (2π × MHz)
+> Δ1r
+> Δ2r
+> −90 −70 Δ3r
+> 01234Total Photon Number −20 −10 010 20 Energy  E/ħ (2π × MHz)
+
+Uniform Phase 
+
+> 60 80
+
+Alternating Phase            
+
+> −20 020
+> δE /ħ (2π × MHz)
+> 0 ← 1 1 ← 2 2 ← 3 3 ← 4
+> Single Excitation Transition
+> −90
+> −70 60 80
+> Δ0r
+> −20 020
+> Δ r /ħ (2π × MHz)
+> Δ1r
+> Δ2r
+> −90
+> −70 Δ3r
+> 01234Total Photon Number
+> −20
+> −10 010 20 Energy  E/ħ (2π × MHz)
+
+Alternating Phase 
+
+a. b. c. d. 
+
+FIG. S6. Simulated emission Spectra and engineered emission rates. (a-b) uniform-phase θ = 0; (c-d) alternating-phase θ = π.
+
+For the uniform-phase configuration, offsetting the sideband frequency by approximately 2 π × 3 MHz from the midpoint between R1 and R2 yields the effective detunings ∆i 
+
+> eff
+
+≈ 2π × { 66 .3, 20 .6, −26 .2, −76 .7} MHz .
+
+For the alternating-phase configuration, an additional 2 π × (−0.5) MHz detuning is applied, resulting in ∆ i 
+
+> eff
+
+≈
+
+2π × { 65 .8, 20 .1, −26 .7, −77 .2} MHz . These effective detunings are shown in Fig. S6(a,c) and are used in both the experiment and numerical simulations. We note that for decay of the single-excitation eigenstates ( N = 1 → 0), all transition frequencies lie within approximately ±2J ≈ ± 2π × 12 MHz of ( ωq + ωmod ). As a result, when the sideband frequency is chosen near the midpoint between R1 and R2, these transitions remain at least ∼ 2π × 10 MHz detuned from the resonators. Consequently, for the experiments in Fig. 2 and Fig. 3 (Sec. D.2), we choose the sideband frequency near the midpoint between R1 and R2, corresponding to effective detunings ∆ i 
+
+> eff
+
+≈ 2π × { 68 .5, 23 .3, −23 .5, −74 .3} MHz, without having to consider significant contributions from the unwanted transitions considered here. Figures S6(b,d) show the corresponding engineered decay rates Γ i→j between many-body eigenstates, where the thickness of each transition is proportional to the calculated collective emission rate. Under uniform-phase coupling, a dominant high-rate decay pathway emerges along the highest-energy states of each excitation manifold, corresponding to the primary Dicke-like superradiant ladder. In contrast, transitions into and within the subradiant manifold remain suppressed. The large contrast in transition rates demonstrates that the collective superradiant decay dominates the dynamics despite the presence of residual leakage channels. Figure S6(d) shows the corresponding many-body transition rates for alternating-phase coupling, where the engineered phase pattern qualitatively restructures the collective emission pathways such that the dominant superradiant decay now proceeds through the lowest-energy eigenstates. S14 
+
+D.4. Early time dynamics 
+
+When the sideband modulation is turned on instantaneously, we observe strong oscillations in both the emission rate R(t) and the normalized decay rate Γ( t). This occurs because the initial coherent preparation generates Dicke-like states that are eigenstates of the bare lattice Hamiltonian. Quenching this system into the interacting lattice-resonator regime abruptly projects these states into superpositions of the combined system’s dressed states, driving a rapid back-and-forth exchange of photons between the qubits and resonators. To mitigate this, we turn on the sideband interaction adiabatically by applying a linear ramp to the modulation. The interaction Hamiltonian HInt thus becomes time-dependent: 
+
+HInt (t)/ℏ = −λ(t)
+
+> 4
+
+X
+
+> i=1
+
+gi
+
+
+
+b† 
+
+> i
+
+σ− 
+
+> i
+
+eiϕi + biσ+ 
+
+> i
+
+e−iϕi
+
+
+
+, (S24) where the envelope function λ(t) takes the form 
+
+λ(t) = 
+
+(
+
+t/t ramp , t < t ramp ,
+
+1, t ≥ tramp . (S25) At the end of the collective decay, the sideband interaction is ramped down with the same duration. The simulated decay dynamics from a fully inverted state, shown in Fig. S7, highlight the effect of varying tramp . For short ramps, abrupt photon transfer into the resonators leads to oscillations in the emission rate. We use tramp = 244 ns in the experiments to suppress these early time oscillations. 10 −2 10 −1 10 0 10 1Time ( μs) 025 50 75 100 125 150 175 200 R(t), ( 2π × KHz) Emission rates with different sideband ramp time                                         
+
+> tramp = 0 ns
+> tramp = 48 ns
+> tramp = 144 ns
+> tramp = 244 ns
+> tramp
+> 0.0 0.1 0.2 Time ( μs) 3.7 3.8 3.9 4.0
+> N4Q(t)
+> Lattice population
+> tramp = 0 ns
+> tramp = 48 ns
+> tramp = 144 ns
+> tramp = 244 ns
+> 0.0 0.1 0.2 Time ( μs) 0.0 0.1 0.2 0.3 0.4
+> N4R(t)
+> Resonator population
+> tramp = 0 ns
+> tramp = 48 ns
+> tramp = 144 ns
+> tramp = 244 ns
+
+a. 
+
+b. c. 
+
+FIG. S7. Early time decay dynamics from fully inverted initial state in Nq = 4, with different sideband ramp durations. 
+
+D.5. Effect of thermal population 
+
+Qubit thermal population. In most experiments, we use a heralding measurement to remove thermal population in the multi-qubit initial state. During the collective decay experiments, the qubit relaxation is dominated by the S15 engineered decay rate γwg into the waveguide and the intrinsic Purcell decay through the resonators. Other decay channels that act locally on each qubit are small in comparison. As a result, any effective “re-thermalization” of the qubits primarily occurs through the resonators and the waveguide environment. At long times, the qubits relax to an effective thermal population determined by the temperature of the waveguide mode to which the qubits couple via the resonators. Because the coupling to the waveguide occurs through the collective decay channel, this thermal population preferentially occupies the symmetric eigenmode of the qubit array. This behavior is evident in Fig. S1, where the long-time population approaches a higher value only for the symmetric eigenstate. 
+
+Resonator thermal population. A pre-existing thermal photon population in the resonator modifies the qubit relaxation rates via stimulated processes. At early times, immediately after the engineered qubit-waveguide coupling is enabled, the dominant effect on the decay of an initially excited qubit is a small enhancement of the relaxation rate by a factor (1 + nr
+
+> th
+
+). In practice, this leads to three observable effects in the decay curve N (t): a slightly larger initial value of |dN/dt |, a slight increase in the overall relaxation rate, and a long-time population that approaches a nonzero thermal steady state. 
+
+Effect on two-qubit correlations. If the thermal fluctuations acting on each qubit are independent, the steady state of the system is a product state and the thermal fluctuations have no contributions to any of the connected two-qubit correlators. In contrast, when the thermal population is introduced through a collective decay channel (as in our system, where all qubits couple to the same waveguide mode through the resonators), the bath couples through the collective operators. As an example, if the steady qubit array state reaches thermal equilibrium with the waveguide, which has Pth ∼ 2.5% probability to be in the symmetric single-excitation state, and negligible probability in all other non-vacuum states. Because this symmetric state contains coherent superpositions of excitations across different qubits, correlated thermal populations produce small but finite transverse correlations between qubits even in the absence of coherent interactions. In this example, we can estimate: Cxx/yy i,j ≈ 2Pth /N q ≈ 0.01, and Czz i,j =
+
+−(2 Pth /N q )2 ≈ − 1.5 × 10 −4. These estimates are in good agreement with results from the full model.   
+
+> E. ADDITIONAL DATA AND ANALYSIS E.1. Collective decay with mismatched emission frequency
+
+Here we present additional analysis and modeling of the experiment shown in Fig. 2d, which measures the decay of single-excitation states in two qubits as a function of the detuning δ and relative phase θ between the two sideband modulations. The reduction in contrast between Γ + and Γ − as |δ| increases can be interpreted as arising from the reduced interference between spectrally distinguishable emissions from the two qubits. Collective emission is governed by interference between two emission amplitudes, described by a collective jump operator L = σ− 
+
+> 1
+
++ σ− 
+
+> 2
+
+. We focus on the case where the waveguide coupling has the same initial phase ( θ = 0) and a frequency-independent decay rate γwg . The rate of population change equals the emitted intensity and follows directly from the Lindblad master equation as: 
+
+ddt N (t) = −γwg ⟨L†L⟩
+
+= −γwg ⟨ˆn1 + ˆ n2 + σ+1 σ− 
+
+> 2
+
++ σ+2 σ− 
+
+> 1
+
+⟩
+
+= −γwg [N (t) + 2 Re C12 (t)] , (S26) where the two-qubit coherence C12 (t) = ⟨σ+1 (t)σ− 
+
+> 2
+
+(t)⟩ fully determines the interference contribution to the emitted field. It is useful to define an instantaneous decay rate Γinst (t) = − ddt ln N (t) = γwg 
+
+
+
+1 + 2 Re C12 (t)
+
+N (t)
+
+
+
+. (S27) 
+
+Evolution of C12 (t) with detuning: For an initial single-excitation state 
+
+|ψ(θ0)⟩ = |eg ⟩ + eiθ0 |ge ⟩√2 , (S28) a detuning δ generates an additional dynamical phase difference, 
+
+θ(t) = θ0 + δt. (S29) S16 Note that, for simplicity, we provide an effective description in which the relative phase and detuning are written directly in the two-qubit state, whereas in the experiments in Fig. 2 they are implemented via flux modulation. As a result of the detuning, the two-qubit coherence oscillates in time with a decaying envelope determined by the total single-qubit dephasing rate: 
+
+C12 (t) ∝ ei( θ0+δt )e−γdeph t. (S30) For two qubits with identical radiative decay γwg and pure dephasing γϕ, a useful estimate of the relative dephasing rate is 
+
+γdeph ≃ γwg + 2 γϕ, (S31) assuming uncorrelated noise on the two qubits. Two important consequences follow. First, when the emissions are detuned, the decay rate becomes time-dependent: a prepared bright state evolves into a darker state and back as the relative phase evolves. Second, this motivates the analysis of decay over a finite observation window. As we show below, “spectral distinguishability” in this experiment is not a static property of the emitters but an operational quantity that depends on the measurement bandwidth through the energy–time uncertainty relation. 
+
+Qualitative behavior in limiting cases: To gain an analytical understanding of the detuning dependence of the contrast, we consider the two-qubit coherence averaged over a time window of length T :
+
+Z(δ, T ) = 
+
+Z T
+
+> 0
+
+dt C 12 (t). (S32) The magnitude |Z(δ, T )| measures the time-averaged interference contrast, while the phase arg Z(δ, T ) represents the dynamical phase accumulated over the observation window and determines which initial state exhibits maximal or minimal window-averaged decay. The rectangular window used here differs from the exact weighting implied by the exponential fit, but captures the relevant behavior up to an overall constant factor of order unity. Substituting the form of C12 (t) yields 
+
+Z(δ, T ) ∝ eiθ 0 1 − e−(γdeph −iδ)T
+
+γdeph − iδ . (S33) which captures the detuning dependence of the observed contrast and phase. (1) In the short-window limit T ≪ 1/γ deph ,
+
+|Z(δ, T )| ≈ 
+
+Z T
+
+> 0
+
+dt e iδt = T sinc 
+
+ δT 
+
+2
+
+
+
+. (S34) The characteristic detuning scale is therefore set by the width of the sinc function. If we take the locations of the first zeros of the sinc at δ T / 2 = ±π, that gives the full width of the detuning tolerance window ∆ δ ≈ 4π/T . Meanwhile, the phase arg( Z) advances as δt , hence averaged over the window T has a linear slope ddδ arg( Z) ≈ T / 2. Together, the overall phase shift observed over the detuning window with finite contrast is (4 π/T ) × (T / 2) ∼ 2π. This qualitative estimate is consistent with the measurement and simulation results shown below. (2) In the opposite limit T ≫ 1/γ deph ,
+
+|Z(δ, T )| ≈ 1
+
+γdeph − iδ = 1
+
+q
+
+γ2deph + δ2
+
+, (S35) so the detuning tolerance no longer decreases with T but instead saturates at ∆δ ∼ γdeph . (S36) Thus, spectral distinguishability in this experiment is determined by the smaller of the measurement bandwidth (set by the analysis window T , which reflects the time-energy uncertainty principle) and the intrinsic decoherence rate (specifically, the relative dephasing rate between the two qubits). 
+
+Data and numerical modeling: In Fig. S8, we plot the measured decay rate of the symmetric superposition ψ+ as a function of the modulation detuning and initial phase difference of the modulation, when analyzing a finite window S17 starting from t = 0 for durations of T = 1 , 2, 5, 10 μs. For each value of T , the decay rate is determined by fitting a single exponential to the population dynamics within the finite window. In Fig. S9, we simulate the measured data using the instantaneous decay rate Γ inst (t) and then apply the same fitting procedure. In the simulation we use 
+
+γwg = 15 kHz and γϕ = 0 .5 kHz. The latter value is chosen to reflect the suppression of local dephasing expected in the presence of large coherent coupling J. The simulation shows excellent quantitative agreement with the experimental data. For larger dephasing, the overall contrast rapidly decreases once the observation window exceeds the dephasing time. 0.0 0.5                        
+
+> θ(2π)
+> −0.5
+> 0.0
+> 0.5
+> δω mod  (2π × MHz)
+> Fitting window: 0-10.0 μs
+> 0.0 0.5
+> θ(2π)
+> Fitting window: 0-5.0 μs
+> 0.0 0.5
+> θ(2π)
+> Fitting window: 0-2.0 μs
+> 0.0 0.5
+> θ(2π)
+> Fitting window: 0-1.0 μs
+> 20
+> 40
+> Γ + (2π × kHz)
+
+FIG. S8. Effective decay rate of the two qubit |+⟩ state under mismatched flux modulation frequencies, analyzed using different decay time windows. The higher decay rates compared to the simulation in Fig. S9 come from intrinsic decay and frequency dependence of the waveguide decay which are not included in the theoretical model. 0.0 0.5                        
+
+> θ(2π)
+> −0.50
+> −0.25
+> 0.00
+> 0.25
+> 0.50
+> δω mod  (2π × MHz)
+> Fitting window: 0-10.0 μs
+> 0.0 0.5
+> θ(2π)
+> Fitting window: 0-5.0 μs
+> 0.0 0.5
+> θ(2π)
+> Fitting window: 0-2.0 μs
+> 0.0 0.5
+> θ(2π)
+> Fitting window: 0-1.0 μs
+> 0
+> 20
+> Γ + (2π × kHz)
+
+FIG. S9. Modeling of the experimental results in Fig. S8. 
+
+E.2. Role of dephasing: Example with two qubits 
+
+For resonantly coupled qubit arrays, we have shown that local dephasing is effectively suppressed by the strong coherent interaction J to stabilize collective decay. Here we show an experiment that effectively eliminates J in the two-qubit case, thereby restoring the effect of dephasing. We start with a large detuning ∆ ≫ J between the two qubits. In this large detuning limit, the single excitation eigenstates are approximately the same as the bare qubit states and effectively uncoupled. The intrinsic dissipation and Purcell decay from the two qubits, in the absence of the flux modulation, are at different frequencies and remain independent. We then turn on the flux modulation at frequencies that differ by ∆, so that the sideband decay frequencies coincide for the two qubits, enabling interference in the waveguide emission. We tune the modulation amplitudes so that the engineered Purcell decay rate Γ eff is the same for the two qubits. We prepare the symmetric and antisymmetric superpositions |±⟩ = ( |g1e2⟩ ± | e1g2⟩)/√2 and measure their relaxation, here with effective alternating-phase couplings θ = π.With dephasing Γ ϕ = 1 /T ∗ 
+
+> 2
+
+≈ 75 kHz exceeding the engineered decay rate, different initial superposition states will dephase toward the same incoherent mixed state during the decay dynamics. This is seen in Fig. S10 both in population dynamics, and by comparing the instantaneous decay rates for the |±⟩ states. The decay rates Γ ± converge to the same value at a time scale of T ∗ 
+
+> 2
+
+/2 ≈ 1 μs, where the factor of 2 comes from considering the relative dephasing rate between the two qubits. S18 0 2 4      
+
+> Time ( μs)
+> 1.00
+> 0.90
+> 0.80
+> 0.70
+> 0.60
+> 0.50
+> N
+> −
+> +
+> 024
+> Time ( μs)
+> −30
+> −20
+> −10
+> 0
+> Γwg  (2π × kHz)
+> Γ+− Γ −
+> FIG. S10. Collective decay in the presence of large local dephasing.
+> E.3. Decay from fully inverted state - Modeling
+
+The numerical results in Fig. 4 are obtained from time-dependent simulations of the full model described in Sec. D.1, including the 244 ns ramp-up and ramp-down of the engineered decay. The simulations use the ideal fully inverted initial state ( N0 = 4), and the qubit populations are sampled at the same time points as in the experiment. From these populations, we calculate the emission rate R(t), normalized decay rate Γ( t), and number fluctuations using the same analysis procedure as for the experimental data. The parameters used in the simulations are as follows: The coherent qubit Hamiltonian Hqubit uses parameters Ji,i +1 
+
+and Ji,i +2 detailed in Table S1. The effective resonator detunings, ∆ i 
+
+> eff
+
+= ωr −ωq −ωmod ≈ { 66 .3, 20 .6, −26 .2, −76 .7}× 
+
+2π MHz, and the sideband coupling rates, {gi 
+
+> eff
+
+} ≈ { 6.53 , 2.28 , −2.53 , −7.93 } × 2π MHz. Furthermore, the Lindblad model includes resonator decay with linewidths κi (see Table S1) with a thermal population of nRth ≈ 2.5%. Qubit relaxation is also included, comprising independent non-radiative relaxation (Γ nr ≈ 4 × 2π kHz) with a thermal population of nQth ≈ 0.05, as well as experimentally measured intrinsic Purcell-induced collective decay ( γpurc ≈
+
+10 × 2π kHz) with a thermal population of npurc th ≈ 5.4%.  
+
+> E.4. Decay from Dicke states - Modeling
+
+In Fig. S11, we present numerical simulations corresponding to the data in Fig. 4(g,h) for decay from Dicke-like states. The simulations use ideal highest-energy eigenstates with initial excitation numbers N0 = 1 to 4, using the same parameters as in Sec. E.3. Qualitatively, the experimental data show a smaller separation in the early-time decay rate among different N0 states than the numerical simulations. We attribute this discrepancy primarily to imperfect state preparation. Although our coherent preparation scheme efficiently prepares the fully inverted state, it introduces larger coherent errors for the partially filled states with N0 = 1 , 2, 3. The resulting admixture of other excitation-number manifolds in the initial state reduces the contrast between their decay rates. In addition to state-preparation errors, we observe higher decay rates for nominally subradiant states, likely due to residual flux crosstalk and waveform distortion, as discussed in Fig. S5. These effects also contribute to the discrepancy between experiment and simulation.  
+
+> E.5. Decay with alternating-phase waveguide coupling - Data and modeling
+
+In Fig. S12, we present the experimental data and numerical simulations of the population dynamics for collective decay from the fully inverted state under alternating-phase coupling ( θ = π), corresponding to the experiment shown in Fig. 5(c-d). Compared to the θ = 0 case in Fig. 4 and Fig. 5(a-b), the flux modulation frequency is detuned by −0.5 × 2π MHz (∆ i 
+
+> eff
+
+≈ 2π × { 65 .8, 20 .1, −26 .7, −77 .2} MHz) to further suppress unwanted local decay while maintaining the same engineered collective decay rates. The same detuning is used in both the experiment and simulation. We observe good agreement between the experimental data and numerical simulations.  
+
+> E.6. All pair-wise correlations - Data and modeling
+
+In Figs. S13 and S14, we present the experimental data and numerical simulations of the pairwise two-qubit correlations (experiments in Fig. 5. In the experiment, we measure the expectation values of the single-site Pauli observables X, Y , and Z for each qubit, as well as the two-body operators XX , Y Y , and ZZ for each pair. We S19 10 −1 10 0 10 1 10 2Time ( μs) 050 100 150 
+
+> R(t) (2π × kHz)
+
+Emission rate           
+
+> N0= 4
+> N0= 3
+> N0= 2
+> N0= 1
+> 10 −110 010 110 2Time ( μs) 050 100 150
+> R(t) (2π × kHz)
+
+Emission rate     
+
+> N0= 4
+> N0= 3
+> N0= 2
+> N0= 1
+> 0.0 0.2 0.4 0.6 0.8 1.0 Population per qubit 020 40 60 80 100
+> Γ(t) (2π × kHz)
+
+Normalized decay rate     
+
+> N0= 4
+> N0= 3
+> N0= 2
+> N0= 1
+
+Experiment Simulation a. d. f.        
+
+> 10 −1 10 010 110 2Time ( μs) 020 40 60 80 100
+> Γ( t) (2π × kHz)
+
+Normalized decay rate     
+
+> N0= 4
+> N0= 3
+> N0= 2
+> N0= 1
+> 0.0 0.2 0.4 0.6 0.8 1.0 Population per qubit 020 40 60 80 100
+> Γ( t) (2π × kHz)
+
+Normalized decay rate            
+
+> N0= 4
+> N0= 3
+> N0= 2
+> N0= 1
+> 10 −1 10 010 110 2Time ( μs) 020 40 60 80 100
+> Γ( t) (2π × kHz)
+
+Normalized decay rate     
+
+> N0= 4
+> N0= 3
+> N0= 2
+> N0= 1
+
+e. b. c. 
+
+FIG. S11. Uniform-phase collective decay from different Dicke states: (a)-(c) Experimental data, (a,c) are replotted from Fig. 4(g,h). (d)-(f) Simulations resuts. 
+
+then calculate the connected symmetric transverse correlations C⊥ 
+
+> ij
+
+= ( Cxx ij + Cyy ij )/2 and the connected longitudinal correlations C∥ 
+
+> ij
+
+= Czz ij , where Cαβ ij = ⟨σαi σβj ⟩ − ⟨ σαi ⟩⟨ σβj ⟩.We investigate possible systematic errors in the transverse correlation measurements arising from phase errors in the single-qubit π/ 2 rotations by comparing correlations measured in the XX , Y Y , X(−X), and Y (−Y ) settings, where the minus sign is implemented using a virtual-Z gate. Ideally, flipping the sign of one measurement axis reverses the sign of the corresponding correlator, such that CX(−X) 
+
+> ij
+
+= −CXX ij and similarly for the Y basis. We therefore estimate the systematic phase error from the residual quantity CXX ij + CX(−X) 
+
+> ij
+
+, whose nonzero offset is directly sensitive to relative phase errors between the sequentially applied single-qubit rotations. We additionally compare the measured 
+
+XX and Y Y correlations and find their difference remains close to zero, consistent with theoretical expectations for decay from the fully inverted state. Experimentally, the resulting systematic error in the transverse correlations is below 0 .005, small compared to the typical correlation amplitudes observed during the superradiant and subradiant dynamics, while the statistical uncertainties are smaller than these systematic errors. 
+
+Calculating many-body energy from pair-wise correlations: In Fig. 5(a,c), we show the energy spectra and the measured E(t) versus N (t) trajectories. To reconstruct the energy from measured correlations, we derive an effective Hamiltonian in the two-level qubit subspace that retains the effects of the finite transmon anharmonicity U .S20 10 −1 10 0 10 1 10 2Time ( μs) 050 100 150 
+
+> R(t) (2π × kHz)
+
+Emission rate data uncorrelated 
+
+10 −1 10 0 10 1 10 2Time ( μs) 050 100 150 
+
+> R(t) (2π × kHz)
+
+Emission rate sim uncorrelated 
+
+10 −1 10 0 10 1 10 2Time ( μs) 010 20 30 40 
+
+> Γ( t) (2π × kHz)
+
+Normalized decay rate data uncorrelated 
+
+10 −1 10 0 10 1 10 2Time ( μs) 010 20 30 40 
+
+> Γ( t) (2π × kHz)
+
+Normalized decay rate sim uncorrelated 
+
+Experiment Simulation a. b. c. d. 
+
+FIG. S12. Emission and decay rates of the fully inverted state under collective decay with alternating-phase coupling ( θ = π). 0 20 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 Connected Correlation  Q0 − Q1
+
+C ⟂
+
+C ∥
+
+0 20 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 
+
+Q1 − Q2
+
+C ⟂
+
+C ∥
+
+0 20 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 
+
+Q2 − Q3
+
+C ⟂
+
+C ∥
+
+0 20 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 Connected Correlation  Q0 − Q2
+
+C ⟂
+
+C ∥
+
+0 20 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 
+
+Q0 − Q3
+
+C ⟂
+
+C ∥
+
+0 20 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 
+
+Q1 − Q3
+
+C ⟂
+
+C ∥
+
+0 20 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 Connected Correlation  Q0 − Q1
+
+C ⟂
+
+C ∥
+
+0 20 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 
+
+Q1 − Q2
+
+C ⟂
+
+C ∥
+
+0 20 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 
+
+Q2 − Q3
+
+C ⟂
+
+C ∥
+
+0 20 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 Connected Correlation  Q0 − Q2
+
+C ⟂
+
+C ∥
+
+0 20 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 
+
+Q0 − Q3
+
+C ⟂
+
+C ∥
+
+0 20 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 
+
+Q1 − Q3
+
+C ⟂
+
+C ∥
+
+Experiment Simulation 
+
+FIG. S13. Pair-wise correlations during uniform-phase collective decay ( θ = 0). S21 Experiment Simulation   
+
+> 020 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 Connected Correlation
+
+Q0 − Q1    
+
+> C⟂
+> C∥
+> 020 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2
+
+Q1 − Q2    
+
+> C⟂
+> C∥
+> 020 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2
+
+Q2 − Q3    
+
+> C⟂
+> C∥
+> 020 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 Connected Correlation
+
+Q0 − Q2    
+
+> C⟂
+> C∥
+> 020 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2
+
+Q0 − Q3    
+
+> C⟂
+> C∥
+> 020 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2
+
+Q1 − Q3    
+
+> C⟂
+> C∥
+> 020 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 Connected Correlation
+
+Q0 − Q1    
+
+> C⟂
+> C∥
+> 020 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2
+
+Q1 − Q2    
+
+> C⟂
+> C∥
+> 020 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2
+
+Q2 − Q3    
+
+> C⟂
+> C∥
+> 020 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2 Connected Correlation
+
+Q0 − Q2    
+
+> C⟂
+> C∥
+> 020 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2
+
+Q0 − Q3    
+
+> C⟂
+> C∥
+> 020 Time T, ( μs) −0.2 −0.1 0.0 0.1 0.2
+
+Q1 − Q3  
+
+> C⟂
+> C∥
+
+FIG. S14. Pair-wise correlations during alternating-phase collective decay ( θ = π). 
+
+In particular, states with multiple excitations acquire energy shifts from virtual transitions to higher transmon levels. The resulting effective Hamiltonian is 
+
+H/ ℏ = X
+
+> i
+
+Ji,i +1 
+
+ σ+ 
+
+> i
+
+σ− 
+
+> i+1
+
++ σ− 
+
+> i
+
+σ+
+
+> i+1
+
+ + X
+
+> i
+
+Ji,i +2 
+
+ σ+ 
+
+> i
+
+σ− 
+
+> i+2
+
++ σ− 
+
+> i
+
+σ+
+
+> i+2
+
+ + X
+
+> i,j
+
+χi,j σ+ 
+
+> i
+
+σ− 
+
+> i
+
+σ+ 
+
+> j
+
+σ− 
+
+> j
+
+, (S37) or equivalently, 
+
+H/ ℏ = X
+
+> i,j
+
+Ji,j 
+
+2
+
+ σxi σxj + σyi σyj
+
+ + X
+
+> i,j
+
+χi,j 
+
+4 (1 − σzi )  1 − σzj
+
+ , (S38) with 
+
+χ = 2 π ×
+
+
+
+0.000 0 .289 0 .003 0 .000 0.289 0 .000 0 .289 0 .003 0.003 0 .289 0 .000 0 .288 0.000 0 .003 0 .288 0 .000 
+
+ MHz , (S39) calculated perturbatively. We verify that the energy spectrum of this effective Hamiltonian agrees well with that of the original multi-level transmon Hamiltonian. This effective description allows reconstruction of the instantaneous many-body energy from the measured two-body correlations ⟨XiXj ⟩, ⟨YiYj ⟩, ⟨ZiZj ⟩, and single-qubit expectation values ⟨Zi⟩.
+
+[47] D. Sank, A. Opremcak, A. Bengtsson, M. Khezri, J. Chen, O. Naaman, and A. Korotkov, System characterization of dispersive readout in superconducting qubits, Phys. Rev. Appl. 23 , 024055 (2025). [48] H. Levine, A. Haim, J. S. C. Hung, N. Alidoust, M. Kalaee, L. DeLorenzo, E. A. Wollack, P. Arrangoiz-Arriola, A. Kha-lajhedayati, R. Sanil, et al. , Demonstrating a long-coherence dual-rail erasure qubit using tunable transmons, Phys. Rev. X 14 , 011051 (2024). [49] K. Lalumi` ere, B. C. Sanders, A. F. van Loo, A. Fedorov, A. Wallraff, and A. Blais, Input-output theory for waveguide QED with an ensemble of inhomogeneous atoms, Phys. Rev. A 88 , 043806 (2013).

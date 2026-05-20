@@ -1,0 +1,51 @@
+{
+  "version": 3,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.10578v2/fig-001.webp",
+      "caption": "Figure 1. Numerical simulation of the non-adiabatic qubit readout protocol. (Top) Simulated raw IQ-data showing the complex response (In-phase and Quadrature channels) of the readout resonator during a pulse. (Middle) Dynamics of the dimensionless non-adiabaticity parameter η(t). The sharp peaks pinpoint the instability regions at the rising (20 ns) and falling (80 ns) edges of the pulse, where the adiabatic WKB condition is violated. (Bottom) Evolution of Bogoliubov mode populations. The excitation mode v (red area) is generated at the pulse onset due to the non-adiabatic parametric excitation and remains as a residual population after the pulse ends, representing the deterministic state leakage and accumulated readout error.",
+      "page": 7,
+      "index": 1,
+      "width": 577,
+      "height": 694,
+      "figure_number": "1"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10578v2/fig-002.webp",
+      "caption": "Figure 2. Global optimization of gate duration for the IBM Eagle architecture (device: ibm_fez). The intersection of the non-adiabatic Bogoliubov error limit (red dash line) and the environmental decoherence limit (blue dash line) reveals a definitive optimal fidelity point. For a system capacity of Nmax = 127, the optimal pulse duration is identified at 251.0 ns, yielding a minimum total error probability of 3.3 × 10−3. This point represents the fundamental speedfidelity limit for the current generation of superconducting hardware.",
+      "page": 10,
+      "index": 2,
+      "width": 722,
+      "height": 507,
+      "figure_number": "2"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10578v2/fig-003.webp",
+      "caption": "Figure 3. Global scalability analysis on the 127-qubit IBM Eagle processor.",
+      "page": 12,
+      "index": 3,
+      "width": 977,
+      "height": 390,
+      "figure_number": "3"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10578v2/fig-004.webp",
+      "caption": "Figure 4. Scaled phase transition analysis. The non-adiabatic drive η is plotted on a logarithmic scale; the region η > 0.5 corresponds to the high-resolution temporal scan below 4 ns discussed in Section 3.",
+      "page": 13,
+      "index": 4,
+      "width": 977,
+      "height": 544,
+      "figure_number": "4"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.10578v2/fig-005.webp",
+      "caption": "Figure 5. Identification of the high-magnitude resonance window.",
+      "page": 14,
+      "index": 5,
+      "width": 977,
+      "height": 559,
+      "figure_number": "5"
+    }
+  ]
+}

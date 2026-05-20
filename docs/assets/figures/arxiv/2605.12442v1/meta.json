@@ -1,0 +1,42 @@
+{
+  "version": 3,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.12442v1/fig-001.webp",
+      "caption": "FIG. 1. Waveguide-coupled qubit array and engineered dissipation. (a) Device layout of the superconducting circuit, comprising an array of four frequency-tunable transmon qubits (red) with local flux bias (pink), each coupled to a resonator (blue), which in turn couples to a common waveguide (green). (b) Effective waveguide QED model of the device. (c) Energy-level diagram. The qubits (red) are initially far detuned from the resonators (blue); parametric flux modulation generates qubit sidebands (orange) near the resonator frequencies, enabling enhanced Purcell decay through the resonator linewidth into the broadband waveguide, as illustrated by the spectral density S(ω). Coherent qubit–qubit interactions produce energy dispersion of the many-body eigenstates. Energies and linewidths are not to scale.",
+      "page": 2,
+      "index": 1,
+      "width": 513,
+      "height": 720,
+      "figure_number": "1"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.12442v1/fig-002.webp",
+      "caption": "FIG. 2. Programmable collective decay in two interacting qubits. (a) Schematic of two resonant qubits Q1 and Q2 with coherent coupling J , forming symmetric and antisymmetric single-excitation eigenstates |±⟩. Engineered waveguide coupling with equal amplitude γwg and relative phase θ = ϕ1−ϕ2 enables interference of the emitted fields. (b) Measured population decay of |±⟩ for (i) θ = 0 and (ii) θ = π, showing reversal of superradiant and subradiant behavior. (c) Extracted engineered decay rates Γ± wg as a function of θ, after subtracting intrinsic qubit decay, demonstrating continuous control of collective emission. (d) Difference in effective decay rates Γ+ wg − Γ− wg as a function of modulation detuning δωmod and phase θ. Finite detuning suppresses collective effects due to spectral distinguishability of the emitted fields.",
+      "page": 3,
+      "index": 2,
+      "width": 513,
+      "height": 670,
+      "figure_number": "2"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.12442v1/fig-003.webp",
+      "caption": "FIG. 4. Dynamics of superradiance in a four-qubit array. For symmetric coupling into the waveguide (a), the superradiant manifold consists of the highest-energy eigenstates at different excitation numbers, as indicated in the many-body energy spectrum shown in the rotating frame of the qubits. These states approximate the symmetric Dicke states, while all other eigenstates are subradiant. For decay from the fully inverted state, we show (c) total excitation number ⟨N(t)⟩, (d) emission rate R(t) = − d dt ⟨N(t)⟩, (e) instantaneous decay rate per excitation Γ(t) = R(t)/⟨N(t)⟩, and (f) number fluctuations Var(N(t)), and compare to expectations from uncorrelated decay (dashed lines). In (c), the inset shows the same data on a log scale. In (f), the inset shows the number-squeezing parameter ξ2N . Solid lines in (c–f) are numerical simulations using measured parameters and perfect initial states. For decay from the Dicke-like states with initial excitation number N0 = 1, 2, 3, 4, we show the measured emission rate R(t) in (g) and the normalized decay rate Γ(t) versus average population per qubit in (h); the N0 = 4 trace is the fully inverted state data from (c–f), replotted for comparison. In (g), dotted lines are guides to the eye. In (h), data and uncertainty are shown as lines and shaded regions for clarity. Error bars represent the standard error of the mean (s.e.m.) across 9 independently acquired datasets, each comprising 16,000 single-shot measurements; uncertainties are dominated by dataset-to-dataset variations, with much smaller statistical uncertainty within each dataset. See SI Sec. C for details on rate extraction and error estimation. Error bars in (c,f) are smaller than the markers.",
+      "page": 6,
+      "index": 3,
+      "width": 1011,
+      "height": 783,
+      "figure_number": "4"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.12442v1/fig-004.webp",
+      "caption": "FIG. 5. Programmable correlations from collective decay. (a, c) Energy spectra showing the dominant decay pathways under engineered decay with uniform and alternating phases. Superradiant (subradiant) states are shown in red (grey). Solid blue curves show the many-body energy E(t) versus N(t) during decay, extracted from correlation measurements; the arrows indicate the time direction. (b) Connected symmetric transverse correlations C⊥ ij = (Cxx ij +Cyy ij )/2 measured during decay from the fully inverted state for uniform collective decay (θ = 0), averaged over qubit pairs with the same separation d. Positive correlations develop during the superradiant dynamics, followed by sign reversal during the subradiant dynamics. The inset shows the same data on a log time scale. Pair-resolved correlation matrices at representative times during the superradiant (i) and subradiant (ii) stages of the dynamics. (d) Correlations for decay with alternating phases (θ = π), exhibiting a spatially alternating pattern with negative nearest-neighbor and positive next-nearest-neighbor correlations, consistent with the engineered phase structure of the collective decay. Solid lines in (b,d) are guides to the eye. Uncertainties in C⊥ ij are dominated by systematic errors estimated to be ≈ 0.005, smaller than the data markers.",
+      "page": 7,
+      "index": 4,
+      "width": 911,
+      "height": 568,
+      "figure_number": "5"
+    }
+  ]
+}

@@ -19,7 +19,7 @@ MIN_FIGURE_WIDTH = 240
 MIN_FIGURE_HEIGHT = 180
 MIN_FIGURE_AREA = 120_000
 WEBP_QUALITY = 82
-FIGURE_META_VERSION = 2
+FIGURE_META_VERSION = 3
 PDFFIGURES2_JAR_ENV = "PDFFIGURES2_JAR"
 PDFFIGURES2_DEFAULT_CACHE = os.path.expanduser("~/.cache/dpr-tools/pdffigures2/pdffigures2.jar")
 PDFFIGURES2_REPO_CACHE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "tools", "pdffigures2.jar"))
@@ -62,16 +62,18 @@ def _load_cached_figures(meta_path: str) -> List[Dict[str, Any]]:
         url = str(item.get("url") or "").strip()
         if not url:
             continue
-        out.append(
-            {
-                "url": url,
-                "caption": str(item.get("caption") or "").strip(),
-                "page": int(item.get("page") or 0),
-                "index": int(item.get("index") or 0),
-                "width": int(item.get("width") or 0),
-                "height": int(item.get("height") or 0),
-            }
-        )
+        figure = {
+            "url": url,
+            "caption": str(item.get("caption") or "").strip(),
+            "page": int(item.get("page") or 0),
+            "index": int(item.get("index") or 0),
+            "width": int(item.get("width") or 0),
+            "height": int(item.get("height") or 0),
+        }
+        figure_number = str(item.get("figure_number") or "").strip()
+        if figure_number:
+            figure["figure_number"] = figure_number
+        out.append(figure)
     return out
 
 
@@ -132,6 +134,98 @@ def _save_webp_from_path(src_path: str, dst_path: str) -> tuple[int, int]:
             export_img = img.copy()
         export_img.save(dst_path, format="WEBP", quality=WEBP_QUALITY, method=6)
         return width, height
+
+
+_FIGURE_NUMBER_RE = re.compile(r"\b(?:fig(?:ure)?\.?)\s*([0-9]+[A-Za-z]?)\b", re.IGNORECASE)
+
+
+def _extract_figure_number(caption: str) -> str:
+    match = _FIGURE_NUMBER_RE.search(str(caption or ""))
+    return match.group(1).strip() if match else ""
+
+
+def _figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, int]:
+    figure_number = str(item.get("figure_number") or "").strip()
+    match = re.match(r"^([0-9]+)([A-Za-z]?)$", figure_number)
+    if match:
+        suffix = match.group(2).lower()
+        suffix_rank = ord(suffix) - 96 if suffix else 0
+        return (0, int(match.group(1)), suffix_rank, int(item.get("_source_index") or item.get("index") or 0))
+    return (1, int(item.get("page") or 0), int(item.get("_source_index") or item.get("index") or 0), 0)
+
+
+def _looks_like_text_block(path: str) -> bool:
+    try:
+        with Image.open(path) as img:
+            rgb = img.convert("RGB")
+            gray = rgb.convert("L")
+            width, height = gray.size
+            if width <= 0 or height <= 0:
+                return True
+            if width * height < MIN_FIGURE_AREA:
+                return True
+            pixels = gray.load()
+            rgb_pixels = rgb.load()
+            row_dark_ratios: List[float] = []
+            dark_pixels = 0
+            saturation_sum = 0.0
+            color_pixels = 0
+            for y in range(height):
+                row_dark = 0
+                for x in range(width):
+                    r, g, b = rgb_pixels[x, y]
+                    max_channel = max(r, g, b)
+                    min_channel = min(r, g, b)
+                    saturation = 0.0 if max_channel <= 0 else (max_channel - min_channel) / max_channel
+                    saturation_sum += saturation
+                    if saturation > 0.18 and max_channel < 250:
+                        color_pixels += 1
+                    if pixels[x, y] < 170:
+                        row_dark += 1
+                dark_pixels += row_dark
+                row_dark_ratios.append(row_dark / width)
+    except Exception:
+        return True
+
+    total_pixels = float(width * height)
+    dark_ratio = dark_pixels / total_pixels
+    avg_saturation = saturation_sum / total_pixels
+    color_ratio = color_pixels / total_pixels
+    ink_rows = sum(1 for ratio in row_dark_ratios if ratio >= 0.015)
+    line_like_rows = sum(1 for ratio in row_dark_ratios if 0.06 <= ratio <= 0.30)
+
+    text_line_groups = 0
+    in_group = False
+    group_start = 0
+    for idx, ratio in enumerate(row_dark_ratios):
+        is_text_line = 0.015 <= ratio <= 0.45
+        if is_text_line and not in_group:
+            group_start = idx
+            in_group = True
+        elif not is_text_line and in_group:
+            if idx - group_start >= 2:
+                text_line_groups += 1
+            in_group = False
+    if in_group and height - group_start >= 2:
+        text_line_groups += 1
+
+    ink_row_ratio = ink_rows / height
+    line_like_ratio = line_like_rows / height
+    aspect = width / height
+
+    if avg_saturation > 0.01 or color_ratio > 0.01:
+        return False
+    if 0.8 <= aspect <= 2.0 and text_line_groups >= 14 and 0.09 <= dark_ratio <= 0.20 and ink_row_ratio >= 0.62 and line_like_ratio >= 0.12:
+        return True
+    return False
+
+
+def _finalize_figure_order(figures: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    ordered = sorted(figures, key=_figure_sort_key)
+    for index, figure in enumerate(ordered, start=1):
+        figure.pop("_source_index", None)
+        figure["index"] = index
+    return ordered
 
 
 def _extract_figures_with_pdffigures2(
@@ -195,10 +289,9 @@ def _extract_figures_with_pdffigures2(
             return []
 
         os.makedirs(output_dir, exist_ok=True)
-        figures: List[Dict[str, Any]] = []
+        candidates: List[Dict[str, Any]] = []
         seen_hash: set[str] = set()
-        fig_index = 1
-        for item in raw_figures:
+        for source_index, item in enumerate(raw_figures, start=1):
             if not isinstance(item, dict):
                 continue
             render_url = str(item.get("renderURL") or item.get("renderUrl") or "").strip()
@@ -210,6 +303,8 @@ def _extract_figures_with_pdffigures2(
                 continue
             if width < MIN_FIGURE_WIDTH or height < MIN_FIGURE_HEIGHT or width * height < MIN_FIGURE_AREA:
                 continue
+            if _looks_like_text_block(render_url):
+                continue
             try:
                 with open(render_url, "rb") as f:
                     sha = hashlib.sha256(f.read()).hexdigest()
@@ -219,23 +314,38 @@ def _extract_figures_with_pdffigures2(
                 continue
             seen_hash.add(sha)
 
-            file_name = f"fig-{fig_index:03d}.webp"
-            abs_path = os.path.join(output_dir, file_name)
-            width, height = _save_webp_from_path(render_url, abs_path)
             page = int(item.get("page") or 0) + 1
             caption = str(item.get("caption") or "").strip()
-            figures.append(
+            figure_number = _extract_figure_number(caption)
+            candidates.append(
                 {
-                    "url": "/".join([relative_prefix.strip("/"), file_name]),
+                    "_source_path": render_url,
+                    "_source_index": source_index,
                     "caption": caption,
                     "page": page,
-                    "index": fig_index,
+                    "figure_number": figure_number,
                     "width": width,
                     "height": height,
                 }
             )
-            fig_index += 1
 
+        figures: List[Dict[str, Any]] = []
+        for fig_index, item in enumerate(_finalize_figure_order(candidates), start=1):
+            file_name = f"fig-{fig_index:03d}.webp"
+            abs_path = os.path.join(output_dir, file_name)
+            width, height = _save_webp_from_path(str(item.pop("_source_path")), abs_path)
+            figure = {
+                "url": "/".join([relative_prefix.strip("/"), file_name]),
+                "caption": str(item.get("caption") or "").strip(),
+                "page": int(item.get("page") or 0),
+                "index": fig_index,
+                "width": width,
+                "height": height,
+            }
+            figure_number = str(item.get("figure_number") or "").strip()
+            if figure_number:
+                figure["figure_number"] = figure_number
+            figures.append(figure)
         if figures:
             _save_figures_meta(os.path.join(output_dir, "meta.json"), figures, extractor="pdffigures2")
         return figures

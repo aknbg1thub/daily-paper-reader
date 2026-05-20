@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "extractor": "pdffigures2",
   "figures": [
     {
@@ -8,7 +8,8 @@
       "page": 2,
       "index": 1,
       "width": 713,
-      "height": 314
+      "height": 314,
+      "figure_number": "1"
     },
     {
       "url": "assets/figures/arxiv/2605.12588v1/fig-002.webp",
@@ -16,7 +17,8 @@
       "page": 4,
       "index": 2,
       "width": 856,
-      "height": 414
+      "height": 414,
+      "figure_number": "2"
     },
     {
       "url": "assets/figures/arxiv/2605.12588v1/fig-003.webp",
@@ -24,7 +26,8 @@
       "page": 6,
       "index": 3,
       "width": 857,
-      "height": 251
+      "height": 251,
+      "figure_number": "3"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "extractor": "pdffigures2",
   "figures": [
     {
@@ -8,71 +8,80 @@
       "page": 11,
       "index": 1,
       "width": 869,
-      "height": 446
+      "height": 446,
+      "figure_number": "1"
     },
     {
       "url": "assets/figures/arxiv/2605.10191v2/fig-002.webp",
-      "caption": "Figure 9: CPU time of POLFED for different number of eigenpairs. CPU time of POLFED as a function of the number of requested eigenpairs Nev for the XXZ model, Eq. (54), at half filling. Colors indicate the system size L. Panel (a) shows the total CPU time tCPU, while panel (b) shows the CPU time per requested eigenpair, tCPU/Nev. Matrix multiplication was performed with Julia’s standard LinearAlgebra function mul!(). Employing the optimized mapping for models with constant offdiagonal values would yield an additional speedup of approximately a factor of 3.",
-      "page": 30,
+      "caption": "Figure 2: Sparsity of the untransformed and transformed Hamiltonian. Sparsity pattern of PK λ̃ (H̃) for different polynomial orders K , where sparsity is measured as the fraction of zero matrix elements. Panels (a), (b), (c), and (d) correspond to polynomial orders K = 1, 2,5, and 10, respectively. For K = 1 the filter is linear in H̃, so the sparsity pattern coincides with that of the original Hamiltonian. Sparsity is rapidly lost with each additional order of polynomial expansion. Results are shown for the XXZ model at half filling with L = 10 sites and target energy λ̃= 0.",
+      "page": 12,
       "index": 2,
-      "width": 882,
-      "height": 266
+      "width": 877,
+      "height": 242,
+      "figure_number": "2"
     },
     {
       "url": "assets/figures/arxiv/2605.10191v2/fig-003.webp",
-      "caption": "Figure 8: Decomposition of the POLFED CPU time into its main computational parts: spectral transformation, QR decomposition, reorthogonalization, and convergence checking. Calculations were performed for the XXZ model, see Eq. (54), at half filling. Panel (a) shows the scaling with system size L for Nev = 1500 targeted eigenvalues. Panel (b) shows the scaling with the number of targeted eigenvalues Nev at fixed system size L = 22. Matrix multiplication was performed with Julia’s standard LinearAlgebra function mul!(). Employing the optimized mapping for models with constant off-diagonal values would yield an additional speedup of approximately a factor of 3.",
-      "page": 29,
+      "caption": "Figure 3: Density of states. We consider the J1–J2 model, see Eq. (55), for L = 20 at quarter filling (particle number Np = 5). The blue histogram shows results obtained from exact diagonalization (ED); black dots at the bin centers are shown to facilitate comparison with the KPM and Gaussian approximations. The KPM and Gaussian curves are computed from Eqs. (34) and (36), and are shown with orange and green lines, respectively. The KPM estimate uses R= 100 random vectors and 75 Chebyshev moments. The inset shows the absolute error of both approximations at the bin centers, evaluated against ED. Note that the quantitative values of the errors slightly depend on the binning of the histogram.",
+      "page": 14,
       "index": 3,
-      "width": 873,
-      "height": 312
+      "width": 638,
+      "height": 366,
+      "figure_number": "3"
     },
     {
       "url": "assets/figures/arxiv/2605.10191v2/fig-004.webp",
-      "caption": "Figure 6: Supported target specifications in Polfed.jl. Illustrated on the density of states of the quantum sun model in rescaled spectral coordinates Ẽ ∈ [−1, 1]. The options :middle and :maxdos target the center of the spectrum and the point of maximal density of states, respectively. The form (:rescaled, ε) specifies the target directly in rescaled coordinates, whereas (:unrescaled, E) uses the physical energy before rescaling. (:offset, η) selects a point displaced from Ẽmaxdos toward one of the spectral edges. Data is shown for J1–J2 model, see Eq. (55), for L = 20 at quarter filling (particle number Np = 5).",
-      "page": 22,
+      "caption": "Figure 4: Schematic overview of the block Lanczos. The inputs are the initial Krylov block V1 and the polynomial spectral filter PK λ̃ (H̃).",
+      "page": 16,
       "index": 4,
-      "width": 765,
-      "height": 428
+      "width": 756,
+      "height": 729,
+      "figure_number": "4"
     },
     {
       "url": "assets/figures/arxiv/2605.10191v2/fig-005.webp",
-      "caption": "Figure 3: Density of states. We consider the J1–J2 model, see Eq. (55), for L = 20 at quarter filling (particle number Np = 5). The blue histogram shows results obtained from exact diagonalization (ED); black dots at the bin centers are shown to facilitate comparison with the KPM and Gaussian approximations. The KPM and Gaussian curves are computed from Eqs. (34) and (36), and are shown with orange and green lines, respectively. The KPM estimate uses R= 100 random vectors and 75 Chebyshev moments. The inset shows the absolute error of both approximations at the bin centers, evaluated against ED. Note that the quantitative values of the errors slightly depend on the binning of the histogram.",
-      "page": 14,
+      "caption": "Figure 5: Schematic of the Clenshaw recurrence algorithm. This algorithm is used in POLFED to evaluate the polynomial filter on the fly. The inputs are the current Krylov block Vk and the rescaled Hamiltonian H̃; the output is the transformed block Wk = PK λ̃ (H̃)Vk.",
+      "page": 18,
       "index": 5,
-      "width": 638,
-      "height": 366
+      "width": 756,
+      "height": 489,
+      "figure_number": "5"
     },
     {
       "url": "assets/figures/arxiv/2605.10191v2/fig-006.webp",
-      "caption": "Figure 11: Number of off-diagonal matrix elements per row as a function of system size L for the XXZ model Eq. (54), J1–J2 Eq. (55), J1–J2–J3 Eq. (56) and constrained SYKd 4 Eq. (57)",
-      "page": 35,
+      "caption": "Figure 6: Supported target specifications in Polfed.jl. Illustrated on the density of states of the quantum sun model in rescaled spectral coordinates Ẽ ∈ [−1, 1]. The options :middle and :maxdos target the center of the spectrum and the point of maximal density of states, respectively. The form (:rescaled, ε) specifies the target directly in rescaled coordinates, whereas (:unrescaled, E) uses the physical energy before rescaling. (:offset, η) selects a point displaced from Ẽmaxdos toward one of the spectral edges. Data is shown for J1–J2 model, see Eq. (55), for L = 20 at quarter filling (particle number Np = 5).",
+      "page": 22,
       "index": 6,
-      "width": 563,
-      "height": 371
+      "width": 765,
+      "height": 428,
+      "figure_number": "6"
     },
     {
       "url": "assets/figures/arxiv/2605.10191v2/fig-007.webp",
-      "caption": "Figure 5: Schematic of the Clenshaw recurrence algorithm. This algorithm is used in POLFED to evaluate the polynomial filter on the fly. The inputs are the current Krylov block Vk and the rescaled Hamiltonian H̃; the output is the transformed block Wk = PK λ̃ (H̃)Vk.",
-      "page": 18,
+      "caption": "Figure 7: POLFED vs shift-and-invert, CPU time. CPU-time comparison between POLFED and shift-and-invert benchmarks. Panel (a) shows the total CPU time as a function of nnz, the number of nonzero off-diagonal matrix elements per row. Panel (b) shows the corresponding CPU time per targeted eigenvalue. Colors indicate the system size L, while marker shapes distinguish the different model classes (XXZ Eq. (54), J1–J2 Eq. (55), J1–J2–J3 Eq. (56) and SYKd 4 Eq. (57)). In these benchmarks, POLFED targeted 1500 eigenvalues, whereas shift-and-invert targeted only 100 eigenvalues due to memory constraints. The shift-and-invert dataset is incomplete because, for the largest systems, the available cluster memory was insufficient to store the LU factors. For POLFED, matrix multiplication was performed using Julia’s standard LinearAlgebra routine mul!(). Using the optimized mapping for models with constant off-diagonal values would provide an additional speedup of approximately a factor of 3.",
+      "page": 27,
       "index": 7,
-      "width": 756,
-      "height": 489
+      "width": 862,
+      "height": 286,
+      "figure_number": "7"
     },
     {
       "url": "assets/figures/arxiv/2605.10191v2/fig-008.webp",
-      "caption": "Figure 2: Sparsity of the untransformed and transformed Hamiltonian. Sparsity pattern of PK λ̃ (H̃) for different polynomial orders K , where sparsity is measured as the fraction of zero matrix elements. Panels (a), (b), (c), and (d) correspond to polynomial orders K = 1, 2,5, and 10, respectively. For K = 1 the filter is linear in H̃, so the sparsity pattern coincides with that of the original Hamiltonian. Sparsity is rapidly lost with each additional order of polynomial expansion. Results are shown for the XXZ model at half filling with L = 10 sites and target energy λ̃= 0.",
-      "page": 12,
+      "caption": "Figure 8: Decomposition of the POLFED CPU time into its main computational parts: spectral transformation, QR decomposition, reorthogonalization, and convergence checking. Calculations were performed for the XXZ model, see Eq. (54), at half filling. Panel (a) shows the scaling with system size L for Nev = 1500 targeted eigenvalues. Panel (b) shows the scaling with the number of targeted eigenvalues Nev at fixed system size L = 22. Matrix multiplication was performed with Julia’s standard LinearAlgebra function mul!(). Employing the optimized mapping for models with constant off-diagonal values would yield an additional speedup of approximately a factor of 3.",
+      "page": 29,
       "index": 8,
-      "width": 877,
-      "height": 242
+      "width": 873,
+      "height": 312,
+      "figure_number": "8"
     },
     {
       "url": "assets/figures/arxiv/2605.10191v2/fig-009.webp",
-      "caption": "Figure 7: POLFED vs shift-and-invert, CPU time. CPU-time comparison between POLFED and shift-and-invert benchmarks. Panel (a) shows the total CPU time as a function of nnz, the number of nonzero off-diagonal matrix elements per row. Panel (b) shows the corresponding CPU time per targeted eigenvalue. Colors indicate the system size L, while marker shapes distinguish the different model classes (XXZ Eq. (54), J1–J2 Eq. (55), J1–J2–J3 Eq. (56) and SYKd 4 Eq. (57)). In these benchmarks, POLFED targeted 1500 eigenvalues, whereas shift-and-invert targeted only 100 eigenvalues due to memory constraints. The shift-and-invert dataset is incomplete because, for the largest systems, the available cluster memory was insufficient to store the LU factors. For POLFED, matrix multiplication was performed using Julia’s standard LinearAlgebra routine mul!(). Using the optimized mapping for models with constant off-diagonal values would provide an additional speedup of approximately a factor of 3.",
-      "page": 27,
+      "caption": "Figure 9: CPU time of POLFED for different number of eigenpairs. CPU time of POLFED as a function of the number of requested eigenpairs Nev for the XXZ model, Eq. (54), at half filling. Colors indicate the system size L. Panel (a) shows the total CPU time tCPU, while panel (b) shows the CPU time per requested eigenpair, tCPU/Nev. Matrix multiplication was performed with Julia’s standard LinearAlgebra function mul!(). Employing the optimized mapping for models with constant offdiagonal values would yield an additional speedup of approximately a factor of 3.",
+      "page": 30,
       "index": 9,
-      "width": 862,
-      "height": 286
+      "width": 882,
+      "height": 266,
+      "figure_number": "9"
     },
     {
       "url": "assets/figures/arxiv/2605.10191v2/fig-010.webp",
@@ -80,15 +89,17 @@
       "page": 31,
       "index": 10,
       "width": 777,
-      "height": 453
+      "height": 453,
+      "figure_number": "10"
     },
     {
       "url": "assets/figures/arxiv/2605.10191v2/fig-011.webp",
-      "caption": "Figure 4: Schematic overview of the block Lanczos. The inputs are the initial Krylov block V1 and the polynomial spectral filter PK λ̃ (H̃).",
-      "page": 16,
+      "caption": "Figure 11: Number of off-diagonal matrix elements per row as a function of system size L for the XXZ model Eq. (54), J1–J2 Eq. (55), J1–J2–J3 Eq. (56) and constrained SYKd 4 Eq. (57)",
+      "page": 35,
       "index": 11,
-      "width": 756,
-      "height": 729
+      "width": 563,
+      "height": 371,
+      "figure_number": "11"
     }
   ]
 }

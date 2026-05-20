@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "extractor": "pdffigures2",
   "figures": [
     {
@@ -8,7 +8,8 @@
       "page": 7,
       "index": 1,
       "width": 577,
-      "height": 694
+      "height": 694,
+      "figure_number": "1"
     },
     {
       "url": "assets/figures/arxiv/2605.10578v2/fig-002.webp",
@@ -16,15 +17,17 @@
       "page": 10,
       "index": 2,
       "width": 722,
-      "height": 507
+      "height": 507,
+      "figure_number": "2"
     },
     {
       "url": "assets/figures/arxiv/2605.10578v2/fig-003.webp",
-      "caption": "Figure 5. Identification of the high-magnitude resonance window.",
-      "page": 14,
+      "caption": "Figure 3. Global scalability analysis on the 127-qubit IBM Eagle processor.",
+      "page": 12,
       "index": 3,
       "width": 977,
-      "height": 559
+      "height": 390,
+      "figure_number": "3"
     },
     {
       "url": "assets/figures/arxiv/2605.10578v2/fig-004.webp",
@@ -32,15 +35,17 @@
       "page": 13,
       "index": 4,
       "width": 977,
-      "height": 544
+      "height": 544,
+      "figure_number": "4"
     },
     {
       "url": "assets/figures/arxiv/2605.10578v2/fig-005.webp",
-      "caption": "Figure 3. Global scalability analysis on the 127-qubit IBM Eagle processor.",
-      "page": 12,
+      "caption": "Figure 5. Identification of the high-magnitude resonance window.",
+      "page": 14,
       "index": 5,
       "width": 977,
-      "height": 390
+      "height": 559,
+      "figure_number": "5"
     }
   ]
 }

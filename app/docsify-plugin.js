@@ -3825,6 +3825,7 @@ window.$docsify = {
               url: String(item.url || '').trim(),
               caption: String(item.caption || '').trim(),
               page: Number(item.page || 0),
+              figureNumber: String(item.figure_number || '').trim(),
               index: Number(item.index || index + 1),
               width: Number(item.width || 0),
               height: Number(item.height || 0),
@@ -3847,14 +3848,19 @@ window.$docsify = {
 
       const renderFigureCarousel = (figures) => {
         if (!figures || !figures.length) return '';
+        const getFigureLabel = (figure, fallbackIndex) => {
+          const number = String(figure.figureNumber || '').trim();
+          return number ? `Figure ${number}` : `Figure ${fallbackIndex}`;
+        };
         const slides = figures.map((figure, index) => {
           const pageText = figure.page ? `PDF 第 ${figure.page} 页` : '';
           const caption = figure.caption ? `<div class="paper-figure-caption">${escapePaperHtml(figure.caption)}</div>` : '';
+          const figureLabel = getFigureLabel(figure, index + 1);
           return [
             `<div class="paper-figure-slide${index === 0 ? ' is-active' : ''}" data-figure-slide="${index}">`,
-            `<img class="paper-figure-image" src="${escapePaperHtml(resolveDocsAssetUrl(figure.url))}" alt="Paper Figure ${index + 1}" loading="lazy">`,
+            `<img class="paper-figure-image" src="${escapePaperHtml(resolveDocsAssetUrl(figure.url))}" alt="Paper ${figureLabel}" loading="lazy">`,
             '<div class="paper-figure-meta">',
-            `<div class="paper-figure-badge">Figure ${index + 1}${pageText ? ` · ${escapePaperHtml(pageText)}` : ''}</div>`,
+            `<div class="paper-figure-badge">${escapePaperHtml(figureLabel)}${pageText ? ` · ${escapePaperHtml(pageText)}` : ''}</div>`,
             caption,
             '</div>',
             '</div>',
@@ -3863,10 +3869,11 @@ window.$docsify = {
 
         const thumbs = figures.map((figure, index) => {
           const thumbPageText = figure.page ? ` · PDF 第 ${figure.page} 页` : '';
+          const figureLabel = getFigureLabel(figure, index + 1);
           return [
             `<button class="paper-figure-thumb${index === 0 ? ' is-active' : ''}" type="button" data-figure-thumb="${index}" aria-label="切换到第 ${index + 1} 张插图">`,
-            `<img class="paper-figure-thumb-image" src="${escapePaperHtml(resolveDocsAssetUrl(figure.url))}" alt="Thumbnail ${index + 1}" loading="lazy">`,
-            `<span class="paper-figure-thumb-label">Figure ${index + 1}${thumbPageText ? escapePaperHtml(thumbPageText) : ''}</span>`,
+            `<img class="paper-figure-thumb-image" src="${escapePaperHtml(resolveDocsAssetUrl(figure.url))}" alt="Thumbnail ${figureLabel}" loading="lazy">`,
+            `<span class="paper-figure-thumb-label">${escapePaperHtml(figureLabel)}${thumbPageText ? escapePaperHtml(thumbPageText) : ''}</span>`,
             '</button>',
           ].join('');
         }).join('');

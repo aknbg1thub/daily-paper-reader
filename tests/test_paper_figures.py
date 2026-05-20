@@ -8,7 +8,7 @@ import unittest
 from pathlib import Path
 
 import fitz
-from PIL import Image
+from PIL import Image, ImageDraw
 
 
 def _load_module(module_name: str, path: Path):
@@ -63,7 +63,7 @@ class PaperFiguresTest(unittest.TestCase):
             self.assertTrue(meta_path.exists())
             meta = json.loads(meta_path.read_text(encoding="utf-8"))
             self.assertEqual(len(meta["figures"]), 1)
-            self.assertEqual(meta["version"], 2)
+            self.assertEqual(meta["version"], 3)
 
     def test_extract_figures_with_pdffigures2_payload(self):
         with tempfile.TemporaryDirectory() as d:
@@ -72,7 +72,8 @@ class PaperFiguresTest(unittest.TestCase):
             pdf_path.write_bytes(b"%PDF-1.4\n")
             output_dir = tmp_dir / "out"
 
-            render_img = self._make_png_bytes((640, 480), (20, 180, 120))
+            render_img_2 = self._make_png_bytes((640, 480), (20, 180, 120))
+            render_img_1 = self._make_png_bytes((640, 480), (180, 120, 20))
 
             original_resolve = self.mod._resolve_pdffigures2_jar
             original_which = self.mod.shutil.which
@@ -91,14 +92,21 @@ class PaperFiguresTest(unittest.TestCase):
                 base_name = next(input_dir.glob("*.pdf")).stem
                 image_dir.mkdir(parents=True, exist_ok=True)
                 data_dir.mkdir(parents=True, exist_ok=True)
-                image_path = image_dir / f"{base_name}-Figure1-1.png"
-                image_path.write_bytes(render_img)
+                image_path_2 = image_dir / f"{base_name}-Figure2-1.png"
+                image_path_1 = image_dir / f"{base_name}-Figure1-1.png"
+                image_path_2.write_bytes(render_img_2)
+                image_path_1.write_bytes(render_img_1)
                 payload = {
                     "figures": [
                         {
-                            "renderURL": str(image_path),
-                            "caption": "Figure 1. Demo caption",
+                            "renderURL": str(image_path_2),
+                            "caption": "Figure 2. Second caption",
                             "page": 0,
+                        },
+                        {
+                            "renderURL": str(image_path_1),
+                            "caption": "Figure 1. First caption",
+                            "page": 1,
                         }
                     ]
                 }
@@ -122,12 +130,49 @@ class PaperFiguresTest(unittest.TestCase):
                 self.mod.shutil.which = original_which
                 self.mod.subprocess.run = original_run
 
-            self.assertEqual(len(figures), 1)
-            self.assertEqual(figures[0]["caption"], "Figure 1. Demo caption")
-            self.assertEqual(figures[0]["page"], 1)
+            self.assertEqual(len(figures), 2)
+            self.assertEqual(figures[0]["caption"], "Figure 1. First caption")
+            self.assertEqual(figures[0]["figure_number"], "1")
+            self.assertEqual(figures[0]["page"], 2)
+            self.assertEqual(figures[1]["caption"], "Figure 2. Second caption")
+            self.assertEqual(figures[1]["figure_number"], "2")
+            self.assertEqual(figures[1]["page"], 1)
             self.assertTrue((output_dir / "fig-001.webp").exists())
             meta = json.loads((output_dir / "meta.json").read_text(encoding="utf-8"))
             self.assertEqual(meta["extractor"], "pdffigures2")
+            self.assertEqual(meta["figures"][0]["figure_number"], "1")
+
+    def test_text_block_crop_is_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            image_path = Path(d) / "text-block.png"
+            img = Image.new("RGB", (520, 420), "white")
+            draw = ImageDraw.Draw(img)
+            for y in range(8, 390, 10):
+                draw.rectangle((4, y, 64, y + 6), fill="black")
+                draw.rectangle((86, y, 136, y + 6), fill="black")
+                draw.rectangle((160, y, 194, y + 6), fill="black")
+            img.save(image_path)
+
+            self.assertTrue(self.mod._looks_like_text_block(str(image_path)))
+
+    def test_colored_plot_is_not_rejected_as_text_block(self):
+        with tempfile.TemporaryDirectory() as d:
+            image_path = Path(d) / "plot.png"
+            img = Image.new("RGB", (560, 420), "white")
+            draw = ImageDraw.Draw(img)
+            draw.line((40, 340, 520, 340), fill="black", width=2)
+            draw.line((40, 40, 40, 340), fill="black", width=2)
+            for offset, color in [(0, "red"), (18, "steelblue"), (36, "goldenrod")]:
+                points = [(40 + x * 8, 260 - ((x + offset) % 37) * 4) for x in range(60)]
+                draw.line(points, fill=color, width=3)
+            img.save(image_path)
+
+            self.assertFalse(self.mod._looks_like_text_block(str(image_path)))
+
+    def test_extract_figure_number(self):
+        self.assertEqual(self.mod._extract_figure_number("Fig. 12b. Demo"), "12b")
+        self.assertEqual(self.mod._extract_figure_number("Figure 3: Demo"), "3")
+        self.assertEqual(self.mod._extract_figure_number("No numbered caption"), "")
 
 
 if __name__ == "__main__":

@@ -35,14 +35,32 @@ class GenerateDocsMetaParseTest(unittest.TestCase):
         spec.loader.exec_module(cls.mod)
 
     def test_parse_meta_from_front_matter(self):
-        md_path = Path("docs/201706/12/1706.03762v1-attention-is-all-you-need.md")
-        item = self.mod._parse_generated_md_to_meta(str(md_path), "pid", "quick")
-        self.assertEqual(item["title_en"], "Attention Is All You Need")
-        self.assertTrue(item["authors"].startswith("Ashish Vaswani"))
-        self.assertIn("query:transformer", item["tags"])
-        self.assertEqual(item["date"], "20170612")
-        self.assertIn("https://arxiv.org/pdf", item["pdf"])
-        self.assertEqual(item["selection_source"], "fresh_fetch")
+        with tempfile.TemporaryDirectory() as d:
+            md_path = Path(d) / "paper.md"
+            md_path.write_text(
+                "\n".join(
+                    [
+                        "---",
+                        "title: Attention Is All You Need",
+                        "authors: \"Ashish Vaswani, Noam Shazeer\"",
+                        "date: 20170612",
+                        "pdf: \"https://arxiv.org/pdf/1706.03762v1\"",
+                        "tags: [\"query:transformer\", \"query:attention\"]",
+                        "selection_source: fresh_fetch",
+                        "---",
+                        "## Abstract",
+                        "abstract body",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            item = self.mod._parse_generated_md_to_meta(str(md_path), "pid", "quick")
+            self.assertEqual(item["title_en"], "Attention Is All You Need")
+            self.assertTrue(item["authors"].startswith("Ashish Vaswani"))
+            self.assertIn("query:transformer", item["tags"])
+            self.assertEqual(item["date"], "20170612")
+            self.assertIn("https://arxiv.org/pdf", item["pdf"])
+            self.assertEqual(item["selection_source"], "fresh_fetch")
 
     def test_parse_fallback_to_legacy_meta_lines(self):
         with tempfile.TemporaryDirectory() as d:

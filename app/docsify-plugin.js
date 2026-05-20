@@ -900,6 +900,60 @@ window.$docsify = {
         });
       };
 
+      const restoreEscapedLatexDelimiters = (content) => {
+        if (!content) return '';
+        return String(content)
+          .replace(/\\\\\(/g, '\\(')
+          .replace(/\\\\\)/g, '\\)')
+          .replace(/\\\\\[/g, '\\[')
+          .replace(/\\\\\]/g, '\\]');
+      };
+
+      const protectLatexForMarkdown = (content) => {
+        const text = restoreEscapedLatexDelimiters(content || '');
+        return text
+          .replace(/\\\[([\s\S]*?)\\\]/g, (_, body) => `\n\n$$${body}$$\n\n`)
+          .replace(/\\\(([\s\S]*?)\\\)/g, (_, body) => `$${body}$`);
+      };
+
+      const repairLatexTextNodes = (root) => {
+        if (!root) return;
+        const repairValue = (value) => {
+          let text = String(value || '');
+          text = text.replace(/\[\s*([^\[\]\n]*\\[A-Za-z][^\[\]\n]*?)\s*\]/g, '\\[$1\\]');
+          text = text.replace(/\(([^()\n]*\\[A-Za-z][^()\n]*?)\)/g, '\\($1\\)');
+          text = text.replace(
+            /(?<![\\$])((?:\\[A-Za-z]+(?:\{[^{}\n]*\})*|[A-Za-z]+_\{[^{}\n]+\}|[A-Za-z]+_[A-Za-z0-9]+|[A-Za-z]+\^[A-Za-z0-9{}]+)(?:\s*[=,+;]\s*(?:\\?[A-Za-z0-9_{}^]+|\d+))*\s*)/g,
+            (match) => {
+              const raw = String(match || '');
+              if (!/\\[A-Za-z]|[_^]/.test(raw)) return raw;
+              if (/^\\[\[(]/.test(raw) || /\\[\])]\s*$/.test(raw)) return raw;
+              return `\\(${raw.trim()}\\)`;
+            },
+          );
+          return text;
+        };
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+          acceptNode(node) {
+            const parent = node && node.parentElement;
+            if (!parent) return NodeFilter.FILTER_REJECT;
+            if (parent.closest('code, pre, script, style, .katex')) return NodeFilter.FILTER_REJECT;
+            const value = node.nodeValue || '';
+            if (!/(\\[A-Za-z]+|_\{| \^|\\sum|\\phi|\\eta|\\theta|\\rho|\\tilde)/.test(value)) {
+              return NodeFilter.FILTER_REJECT;
+            }
+            return NodeFilter.FILTER_ACCEPT;
+          },
+        });
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach((node) => {
+          const value = node.nodeValue || '';
+          const repaired = repairValue(value);
+          if (repaired !== value) node.nodeValue = repaired;
+        });
+      };
+
       // 公共工具：简单表格 + 标记修正：
       // 1）移除协议标记 [ANS]/[THINK]
       // 2）移除表格行之间多余空行，避免把同一张表拆成两块
@@ -4202,6 +4256,7 @@ window.$docsify = {
               caption: String(item.caption || '').trim(),
               page: Number(item.page || 0),
               figureNumber: String(item.figure_number || '').trim(),
+              itemType: String(item.item_type || item.type || 'figure').trim().toLowerCase() === 'table' ? 'table' : 'figure',
               index: Number(item.index || index + 1),
               width: Number(item.width || 0),
               height: Number(item.height || 0),
@@ -4226,7 +4281,8 @@ window.$docsify = {
         if (!figures || !figures.length) return '';
         const getFigureLabel = (figure, fallbackIndex) => {
           const number = String(figure.figureNumber || '').trim();
-          return number ? `Figure ${number}` : `Figure ${fallbackIndex}`;
+          const itemType = figure.itemType === 'table' ? 'Table' : 'Figure';
+          return number ? `${itemType} ${number}` : `${itemType} ${fallbackIndex}`;
         };
         const slides = figures.map((figure, index) => {
           const pageText = figure.page ? `PDF 第 ${figure.page} 页` : '';
@@ -4429,6 +4485,7 @@ window.$docsify = {
 
       // --- Docsify beforeEach 钩子：解析 front matter ---
       hook.beforeEach(function (content) {
+        content = protectLatexForMarkdown(content || '');
         const file = vm && vm.route ? vm.route.file : '';
         // 只对论文页面处理
         if (!isPaperRouteFile(file)) {
@@ -4482,7 +4539,9 @@ window.$docsify = {
         if (mainContent) {
           // 先创建正文包装层，避免后续切页动画影响聊天浮层
           const root = isPaperPage ? ensurePageContentRoot() : null;
-          renderMathInEl(root || mainContent);
+          const mathRoot = root || mainContent;
+          repairLatexTextNodes(mathRoot);
+          renderMathInEl(mathRoot);
         }
 
         // 论文页标题条排版（只对 docs/YYYYMM/DD/*.md 生效）

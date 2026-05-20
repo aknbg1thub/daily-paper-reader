@@ -1251,6 +1251,8 @@ def normalize_figure_assets(figures: List[Dict[str, Any]]) -> List[Dict[str, Any
             continue
         figure = dict(item)
         figure.setdefault("index", index)
+        item_type = str(figure.get("item_type") or figure.get("type") or "figure").strip().lower()
+        figure["item_type"] = "table" if item_type == "table" else "figure"
         if not str(figure.get("figure_number") or "").strip():
             figure_number = extract_figure_number(str(figure.get("caption") or ""))
             if figure_number:

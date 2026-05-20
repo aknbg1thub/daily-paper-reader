@@ -63,7 +63,7 @@ class PaperFiguresTest(unittest.TestCase):
             self.assertTrue(meta_path.exists())
             meta = json.loads(meta_path.read_text(encoding="utf-8"))
             self.assertEqual(len(meta["figures"]), 1)
-            self.assertEqual(meta["version"], 3)
+            self.assertEqual(meta["version"], 4)
 
     def test_extract_figures_with_pdffigures2_payload(self):
         with tempfile.TemporaryDirectory() as d:
@@ -108,7 +108,14 @@ class PaperFiguresTest(unittest.TestCase):
                             "caption": "Figure 1. First caption",
                             "page": 1,
                         }
-                    ]
+                    ],
+                    "tables": [
+                        {
+                            "renderURL": str(image_path_1),
+                            "caption": "Table I. Parameters",
+                            "page": 2,
+                        }
+                    ],
                 }
                 (data_dir / f"{base_name}.json").write_text(
                     json.dumps(payload),
@@ -141,6 +148,143 @@ class PaperFiguresTest(unittest.TestCase):
             meta = json.loads((output_dir / "meta.json").read_text(encoding="utf-8"))
             self.assertEqual(meta["extractor"], "pdffigures2")
             self.assertEqual(meta["figures"][0]["figure_number"], "1")
+            self.assertEqual(meta["figures"][0]["item_type"], "figure")
+
+    def test_extract_tables_with_pdffigures2_payload(self):
+        with tempfile.TemporaryDirectory() as d:
+            tmp_dir = Path(d)
+            pdf_path = tmp_dir / "sample.pdf"
+            pdf_path.write_bytes(b"%PDF-1.4\n")
+            output_dir = tmp_dir / "out"
+            table_img = self._make_png_bytes((700, 360), (245, 245, 245))
+
+            original_resolve = self.mod._resolve_pdffigures2_jar
+            original_which = self.mod.shutil.which
+            original_run = self.mod.subprocess.run
+
+            class DummyResult:
+                returncode = 0
+                stdout = ""
+                stderr = ""
+
+            def fake_run(cmd, stdout=None, stderr=None, text=None, check=None):
+                input_dir = Path(cmd[4])
+                data_dir = Path(cmd[6])
+                image_dir = Path(cmd[8])
+                base_name = next(input_dir.glob("*.pdf")).stem
+                image_dir.mkdir(parents=True, exist_ok=True)
+                data_dir.mkdir(parents=True, exist_ok=True)
+                image_path = image_dir / f"{base_name}-Table1-1.png"
+                image_path.write_bytes(table_img)
+                payload = {
+                    "figures": [],
+                    "tables": [
+                        {
+                            "renderURL": str(image_path),
+                            "caption": "Table I. Hardware parameters.",
+                            "page": 9,
+                        }
+                    ],
+                }
+                (data_dir / f"{base_name}.json").write_text(json.dumps(payload), encoding="utf-8")
+                return DummyResult()
+
+            self.mod._resolve_pdffigures2_jar = lambda: "/tmp/pdffigures2.jar"
+            self.mod.shutil.which = lambda name: "/usr/bin/java" if name == "java" else original_which(name)
+            self.mod.subprocess.run = fake_run
+            try:
+                figures = self.mod._extract_figures_with_pdffigures2(
+                    str(pdf_path),
+                    str(output_dir),
+                    "assets/figures/arxiv/sample",
+                )
+            finally:
+                self.mod._resolve_pdffigures2_jar = original_resolve
+                self.mod.shutil.which = original_which
+                self.mod.subprocess.run = original_run
+
+            self.assertEqual(len(figures), 1)
+            self.assertEqual(figures[0]["item_type"], "table")
+            self.assertEqual(figures[0]["figure_number"], "I")
+
+    def test_missing_caption_crop_is_added(self):
+        with tempfile.TemporaryDirectory() as d:
+            tmp_dir = Path(d)
+            pdf_path = tmp_dir / "sample.pdf"
+            output_dir = tmp_dir / "out"
+            output_dir.mkdir()
+
+            doc = fitz.open()
+            page = doc.new_page(width=612, height=792)
+            page.draw_rect(fitz.Rect(80, 120, 520, 420), color=(0, 0, 1), fill=(0.88, 0.95, 1))
+            page.insert_textbox(fitz.Rect(72, 440, 540, 500), "Fig. 2. Missing vector-only schematic.", fontsize=12)
+            doc.save(pdf_path)
+            doc.close()
+
+            merged = self.mod._merge_missing_caption_crops(
+                str(pdf_path),
+                [],
+                str(output_dir),
+            )
+
+            self.assertEqual(len(merged), 1)
+            self.assertEqual(merged[0]["figure_number"], "2")
+            self.assertEqual(merged[0]["item_type"], "figure")
+            self.assertTrue(Path(merged[0]["_source_path"]).exists())
+
+    def test_duplicate_figure_label_is_disambiguated(self):
+        with tempfile.TemporaryDirectory() as d:
+            tmp_dir = Path(d)
+            pdf_path = tmp_dir / "sample.pdf"
+            pdf_path.write_bytes(b"%PDF-1.4\n")
+            output_dir = tmp_dir / "out"
+            render_img = self._make_png_bytes((640, 480), (20, 180, 120))
+
+            original_resolve = self.mod._resolve_pdffigures2_jar
+            original_which = self.mod.shutil.which
+            original_run = self.mod.subprocess.run
+
+            class DummyResult:
+                returncode = 0
+                stdout = ""
+                stderr = ""
+
+            def fake_run(cmd, stdout=None, stderr=None, text=None, check=None):
+                input_dir = Path(cmd[4])
+                data_dir = Path(cmd[6])
+                image_dir = Path(cmd[8])
+                base_name = next(input_dir.glob("*.pdf")).stem
+                image_dir.mkdir(parents=True, exist_ok=True)
+                data_dir.mkdir(parents=True, exist_ok=True)
+                img1 = image_dir / f"{base_name}-Figure7-1.png"
+                img2 = image_dir / f"{base_name}-Figure7-2.png"
+                img1.write_bytes(render_img)
+                img2.write_bytes(self._make_png_bytes((640, 480), (120, 20, 180)))
+                payload = {
+                    "figures": [
+                        {"renderURL": str(img1), "caption": "Fig. 7. Main result.", "page": 8},
+                        {"renderURL": str(img2), "caption": "Fig. 7. Appendix result.", "page": 9},
+                    ]
+                }
+                (data_dir / f"{base_name}.json").write_text(json.dumps(payload), encoding="utf-8")
+                return DummyResult()
+
+            self.mod._resolve_pdffigures2_jar = lambda: "/tmp/pdffigures2.jar"
+            self.mod.shutil.which = lambda name: "/usr/bin/java" if name == "java" else original_which(name)
+            self.mod.subprocess.run = fake_run
+            try:
+                figures = self.mod._extract_figures_with_pdffigures2(
+                    str(pdf_path),
+                    str(output_dir),
+                    "assets/figures/arxiv/sample",
+                )
+            finally:
+                self.mod._resolve_pdffigures2_jar = original_resolve
+                self.mod.shutil.which = original_which
+                self.mod.subprocess.run = original_run
+
+            self.assertEqual(figures[0]["figure_number"], "7")
+            self.assertEqual(figures[1]["figure_number"], "Appendix 7")
 
     def test_text_block_crop_is_rejected(self):
         with tempfile.TemporaryDirectory() as d:

@@ -19,7 +19,7 @@ MIN_FIGURE_WIDTH = 240
 MIN_FIGURE_HEIGHT = 180
 MIN_FIGURE_AREA = 120_000
 WEBP_QUALITY = 82
-FIGURE_META_VERSION = 3
+FIGURE_META_VERSION = 4
 PDFFIGURES2_JAR_ENV = "PDFFIGURES2_JAR"
 PDFFIGURES2_DEFAULT_CACHE = os.path.expanduser("~/.cache/dpr-tools/pdffigures2/pdffigures2.jar")
 PDFFIGURES2_REPO_CACHE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "tools", "pdffigures2.jar"))
@@ -69,6 +69,7 @@ def _load_cached_figures(meta_path: str) -> List[Dict[str, Any]]:
             "index": int(item.get("index") or 0),
             "width": int(item.get("width") or 0),
             "height": int(item.get("height") or 0),
+            "item_type": str(item.get("item_type") or item.get("type") or "figure").strip().lower() or "figure",
         }
         figure_number = str(item.get("figure_number") or "").strip()
         if figure_number:
@@ -136,22 +137,75 @@ def _save_webp_from_path(src_path: str, dst_path: str) -> tuple[int, int]:
         return width, height
 
 
-_FIGURE_NUMBER_RE = re.compile(r"\b(?:fig(?:ure)?\.?)\s*([0-9]+[A-Za-z]?)\b", re.IGNORECASE)
+_ITEM_LABEL_RE = re.compile(
+    r"\b(?P<kind>fig(?:ure)?|table|tab)\.?\s*"
+    r"(?P<label>(?:[A-Z]\s*[.\-]?\s*)?\d+[A-Za-z]?|[IVXLCDM]+|S\s*\d+[A-Za-z]?)\b",
+    re.IGNORECASE,
+)
 
 
 def _extract_figure_number(caption: str) -> str:
-    match = _FIGURE_NUMBER_RE.search(str(caption or ""))
-    return match.group(1).strip() if match else ""
+    item = _extract_item_label(caption)
+    return item["label"] if item.get("type") == "figure" else ""
+
+
+def _normalize_item_label(label: str) -> str:
+    text = re.sub(r"\s+", "", str(label or "").strip())
+    text = text.replace("-", ".")
+    return text
+
+
+def _extract_item_label(caption: str) -> Dict[str, str]:
+    match = _ITEM_LABEL_RE.search(str(caption or ""))
+    if not match:
+        return {"type": "figure", "label": ""}
+    kind = match.group("kind").lower()
+    item_type = "table" if kind.startswith(("tab", "table")) else "figure"
+    return {"type": item_type, "label": _normalize_item_label(match.group("label"))}
+
+
+def _caption_sort_value(label: str) -> tuple[int, int, str]:
+    text = _normalize_item_label(label)
+    if not text:
+        return (9, 0, "")
+    roman = re.fullmatch(r"[IVXLCDM]+", text.upper())
+    if roman:
+        values = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+        total = 0
+        prev = 0
+        for ch in reversed(text.upper()):
+            value = values.get(ch, 0)
+            total = total - value if value < prev else total + value
+            prev = max(prev, value)
+        return (1, total, text)
+    match = re.fullmatch(r"([A-Za-z]*)(?:[.]?)(\d+)([A-Za-z]?)", text)
+    if match:
+        prefix = match.group(1).upper()
+        number = int(match.group(2))
+        suffix = match.group(3).lower()
+        prefix_rank = 0 if not prefix else 100 + sum(ord(ch) - 64 for ch in prefix)
+        suffix_rank = ord(suffix) - 96 if suffix else 0
+        return (prefix_rank, number, f"{suffix_rank:03d}")
+    return (8, 0, text.lower())
 
 
 def _figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, int]:
-    figure_number = str(item.get("figure_number") or "").strip()
-    match = re.match(r"^([0-9]+)([A-Za-z]?)$", figure_number)
-    if match:
-        suffix = match.group(2).lower()
-        suffix_rank = ord(suffix) - 96 if suffix else 0
-        return (0, int(match.group(1)), suffix_rank, int(item.get("_source_index") or item.get("index") or 0))
-    return (1, int(item.get("page") or 0), int(item.get("_source_index") or item.get("index") or 0), 0)
+    label = str(item.get("figure_number") or item.get("label") or "").strip()
+    label_sort = _caption_sort_value(label)
+    type_rank = 1 if str(item.get("item_type") or "figure").lower() == "table" else 0
+    if label:
+        return (
+            type_rank,
+            label_sort[0],
+            label_sort[1],
+            int(item.get("_source_index") or item.get("index") or 0),
+        )
+    return (
+        type_rank,
+        9,
+        int(item.get("_source_index") or item.get("index") or 0),
+        int(item.get("page") or 0),
+    )
 
 
 def _looks_like_text_block(path: str) -> bool:
@@ -213,11 +267,20 @@ def _looks_like_text_block(path: str) -> bool:
     line_like_ratio = line_like_rows / height
     aspect = width / height
 
+    # Tables are often monochrome and text-heavy. Keep them when pdffigures2
+    # labels the crop as a table; only apply this rejection to unlabeled images
+    # and figures.
     if avg_saturation > 0.01 or color_ratio > 0.01:
         return False
     if 0.8 <= aspect <= 2.0 and text_line_groups >= 14 and 0.09 <= dark_ratio <= 0.20 and ink_row_ratio >= 0.62 and line_like_ratio >= 0.12:
         return True
     return False
+
+
+def _is_probable_text_crop(path: str, item_type: str) -> bool:
+    if str(item_type or "").lower() == "table":
+        return False
+    return _looks_like_text_block(path)
 
 
 def _finalize_figure_order(figures: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -226,6 +289,160 @@ def _finalize_figure_order(figures: List[Dict[str, Any]]) -> List[Dict[str, Any]
         figure.pop("_source_index", None)
         figure["index"] = index
     return ordered
+
+
+def _rect_from_region(page: fitz.Page, region: Any) -> fitz.Rect | None:
+    if not isinstance(region, dict):
+        return None
+    page_rect = page.rect
+    page_w = float(page_rect.width or 0)
+    page_h = float(page_rect.height or 0)
+    keys = ("x1", "y1", "x2", "y2")
+    if not all(k in region for k in keys):
+        return None
+    try:
+        x1, y1, x2, y2 = [float(region[k]) for k in keys]
+    except Exception:
+        return None
+    # pdffigures2 regions are usually normalized. Accept absolute coordinates
+    # as well so tests and future extractors can pass page units directly.
+    if max(abs(x1), abs(y1), abs(x2), abs(y2)) <= 1.5:
+        x1, x2 = x1 * page_w, x2 * page_w
+        y1, y2 = y1 * page_h, y2 * page_h
+    rect = fitz.Rect(min(x1, x2), min(y1, y2), max(x1, x2), max(y1, y2))
+    return rect & page_rect
+
+
+def _collect_caption_regions(pdf_path: str) -> List[Dict[str, Any]]:
+    items: List[Dict[str, Any]] = []
+    try:
+        doc = fitz.open(pdf_path)
+    except Exception:
+        return items
+    try:
+        for page_index in range(len(doc)):
+            page = doc[page_index]
+            blocks = page.get_text("blocks") or []
+            for block_index, block in enumerate(blocks):
+                if len(block) < 5:
+                    continue
+                text = str(block[4] or "").strip()
+                label = _extract_item_label(text)
+                if not label.get("label"):
+                    continue
+                rect = fitz.Rect(float(block[0]), float(block[1]), float(block[2]), float(block[3]))
+                items.append(
+                    {
+                        "item_type": label.get("type") or "figure",
+                        "figure_number": label.get("label") or "",
+                        "caption": re.sub(r"\s+", " ", text).strip(),
+                        "page": page_index + 1,
+                        "caption_rect": rect,
+                        "_source_index": block_index + 1,
+                    }
+                )
+    finally:
+        doc.close()
+    return items
+
+
+def _caption_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.Rect:
+    page_rect = page.rect
+    left_margin = max(18.0, page_rect.width * 0.04)
+    right_margin = max(18.0, page_rect.width * 0.04)
+    if caption_rect.y0 > page_rect.height * 0.35:
+        y0 = max(page_rect.y0 + 12.0, caption_rect.y0 - page_rect.height * 0.48)
+        y1 = max(y0 + 80.0, caption_rect.y0 - 6.0)
+    else:
+        y0 = min(caption_rect.y1 + 6.0, page_rect.y1 - 80.0)
+        y1 = min(page_rect.y1 - 12.0, caption_rect.y1 + page_rect.height * 0.48)
+    return fitz.Rect(left_margin, y0, page_rect.width - right_margin, y1) & page_rect
+
+
+def _save_page_crop(page: fitz.Page, rect: fitz.Rect, dst_path: str) -> tuple[int, int]:
+    matrix = fitz.Matrix(2.0, 2.0)
+    pix = page.get_pixmap(matrix=matrix, clip=rect, alpha=False)
+    img = Image.open(io.BytesIO(pix.tobytes("png")))
+    img.load()
+    width, height = img.size
+    img.save(dst_path, format="WEBP", quality=WEBP_QUALITY, method=6)
+    return width, height
+
+
+def _merge_missing_caption_crops(
+    pdf_path: str,
+    candidates: List[Dict[str, Any]],
+    output_dir: str,
+) -> List[Dict[str, Any]]:
+    caption_items = _collect_caption_regions(pdf_path)
+    if not caption_items:
+        return candidates
+    seen_labels = {
+        (
+            str(item.get("item_type") or "figure").lower(),
+            str(item.get("figure_number") or "").strip().lower(),
+        )
+        for item in candidates
+        if str(item.get("figure_number") or "").strip()
+    }
+    missing = [
+        item
+        for item in caption_items
+        if (
+            str(item.get("item_type") or "figure").lower(),
+            str(item.get("figure_number") or "").strip().lower(),
+        )
+        not in seen_labels
+    ]
+    if not missing:
+        return candidates
+
+    try:
+        doc = fitz.open(pdf_path)
+    except Exception:
+        return candidates
+    try:
+        for item in missing:
+            page_no = int(item.get("page") or 0)
+            if page_no <= 0 or page_no > len(doc):
+                continue
+            page = doc[page_no - 1]
+            crop_rect = _caption_crop_rect(page, item["caption_rect"])
+            if crop_rect.width < MIN_FIGURE_WIDTH / 2 or crop_rect.height < MIN_FIGURE_HEIGHT / 2:
+                continue
+            tmp_path = os.path.join(output_dir, f"caption-crop-{len(candidates) + 1:03d}.webp")
+            try:
+                width, height = _save_page_crop(page, crop_rect, tmp_path)
+            except Exception:
+                continue
+            if width * height < MIN_FIGURE_AREA:
+                try:
+                    os.remove(tmp_path)
+                except OSError:
+                    pass
+                continue
+            if _is_probable_text_crop(tmp_path, str(item.get("item_type") or "figure")):
+                try:
+                    os.remove(tmp_path)
+                except OSError:
+                    pass
+                continue
+            item = dict(item)
+            item["_source_path"] = tmp_path
+            item["width"] = width
+            item["height"] = height
+            item["_source_index"] = 10_000 + int(item.get("_source_index") or 0)
+            item.pop("caption_rect", None)
+            candidates.append(item)
+            seen_labels.add(
+                (
+                    str(item.get("item_type") or "figure").lower(),
+                    str(item.get("figure_number") or "").strip().lower(),
+                )
+            )
+    finally:
+        doc.close()
+    return candidates
 
 
 def _extract_figures_with_pdffigures2(
@@ -285,15 +502,20 @@ def _extract_figures_with_pdffigures2(
             return []
 
         raw_figures = payload.get("figures") if isinstance(payload, dict) else None
-        if not isinstance(raw_figures, list):
+        raw_tables = payload.get("tables") if isinstance(payload, dict) else None
+        raw_items: List[tuple[str, Dict[str, Any]]] = []
+        if isinstance(raw_figures, list):
+            raw_items.extend(("figure", item) for item in raw_figures if isinstance(item, dict))
+        if isinstance(raw_tables, list):
+            raw_items.extend(("table", item) for item in raw_tables if isinstance(item, dict))
+        if not raw_items:
             return []
 
         os.makedirs(output_dir, exist_ok=True)
         candidates: List[Dict[str, Any]] = []
+        caption_counts: Dict[tuple[str, str], int] = {}
         seen_hash: set[str] = set()
-        for source_index, item in enumerate(raw_figures, start=1):
-            if not isinstance(item, dict):
-                continue
+        for source_index, (fallback_type, item) in enumerate(raw_items, start=1):
             render_url = str(item.get("renderURL") or item.get("renderUrl") or "").strip()
             if not render_url or not os.path.exists(render_url):
                 continue
@@ -301,9 +523,14 @@ def _extract_figures_with_pdffigures2(
                 width, height = _load_image_size(render_url)
             except Exception:
                 continue
+            page = int(item.get("page") or 0) + 1
+            caption = str(item.get("caption") or "").strip()
+            label_info = _extract_item_label(caption)
+            item_type = label_info.get("type") or fallback_type or "figure"
+            figure_number = label_info.get("label") or ""
             if width < MIN_FIGURE_WIDTH or height < MIN_FIGURE_HEIGHT or width * height < MIN_FIGURE_AREA:
                 continue
-            if _looks_like_text_block(render_url):
+            if _is_probable_text_crop(render_url, item_type):
                 continue
             try:
                 with open(render_url, "rb") as f:
@@ -314,20 +541,31 @@ def _extract_figures_with_pdffigures2(
                 continue
             seen_hash.add(sha)
 
-            page = int(item.get("page") or 0) + 1
-            caption = str(item.get("caption") or "").strip()
-            figure_number = _extract_figure_number(caption)
+            label_key = (item_type, figure_number.lower())
+            if figure_number:
+                caption_counts[label_key] = caption_counts.get(label_key, 0) + 1
+                if caption_counts[label_key] > 1:
+                    page_label = f"p{page}"
+                    if re.match(r"^[A-Za-z][.\d]", figure_number):
+                        figure_number = f"{figure_number}-{page_label}"
+                    elif page >= 8:
+                        figure_number = f"Appendix {figure_number}"
+                    else:
+                        figure_number = f"{figure_number}-{page_label}"
             candidates.append(
                 {
                     "_source_path": render_url,
                     "_source_index": source_index,
                     "caption": caption,
                     "page": page,
+                    "item_type": item_type,
                     "figure_number": figure_number,
                     "width": width,
                     "height": height,
                 }
             )
+
+        candidates = _merge_missing_caption_crops(pdf_path, candidates, output_dir)
 
         figures: List[Dict[str, Any]] = []
         for fig_index, item in enumerate(_finalize_figure_order(candidates), start=1):
@@ -339,6 +577,7 @@ def _extract_figures_with_pdffigures2(
                 "caption": str(item.get("caption") or "").strip(),
                 "page": int(item.get("page") or 0),
                 "index": fig_index,
+                "item_type": str(item.get("item_type") or "figure").strip().lower() or "figure",
                 "width": width,
                 "height": height,
             }
@@ -413,6 +652,7 @@ def extract_figures_from_pdf(
                         "caption": "",
                         "page": page_idx + 1,
                         "index": fig_index,
+                        "item_type": "figure",
                         "width": width,
                         "height": height,
                     }

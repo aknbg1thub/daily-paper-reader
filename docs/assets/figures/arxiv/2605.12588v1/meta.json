@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.12588v1/fig-001.webp",
+      "caption": "Figure 1: (a) Spinmon with flux and gate voltage control. The purpose of Vg2 is to tune the critical current of the corresponding semiconductor-based Josephson junction, and thus modify EJ . The voltage Vg is used to induce spin rotations via electron dipole spin resonance, effectively by changing the direction of n⃗SO. The B⃗-field splits the computational states. The AC drive line to the left in the figure is used to induce a magnetic flux Φ, which lifts the degeneracy of the potential energy wells in the spinmon. (b) Potential landscape of the spinmon in the spin-↑ (blue) and spin-↓ (red) idle state, where the spin quantization axis is n⃗SO at Φ = 0 and E0 = EJ (Vg2). The dashed line shows the harmonic approximations UH σ to the potentials, with corresponding ground state wave functions |0σ〉 projected onto the phase space.",
+      "page": 2,
+      "index": 1,
+      "width": 713,
+      "height": 314
+    },
+    {
+      "url": "assets/figures/arxiv/2605.12588v1/fig-002.webp",
+      "caption": "Figure 2: Coherent control of the spinmon. (a) The spin-dependent potentials as a function of ϕ for varying δE. The shade of blue(red) shows how the spin-up(down) potential evolves as a function of δE = E0 − EJ (Vg2), see the color bar. (b) The qubit frequency as a function of δE/ESO. The solid curve is calculated numerically by diagonalizing the full Hamiltonian in Eq. (2), and the dashed curve is calculated analytically in the harmonic oscillator approximation. (c) The combination of Zeeman splitting and a gate voltage permits an EDSR driving with strength Ωx x , and also renormalizes the qubit splitting via diagonal elements Ωzz in the qubit basis. All finite matrix elements are shown. (d) The spin-dependent potentials as a function of ϕ for varying external flux Φ. (e) A small flux gives a qubit-flipping term in the effective qubit Hamiltonian with strength ∆. The dashed line is linearized in flux. We have set E0 = ESO = h×500MHz and B = Ec = h×40 MHz. In (a)-(c) the flux is fixed at Φ= 0 and in (c)-(e) we use δE = 0.",
+      "page": 4,
+      "index": 2,
+      "width": 856,
+      "height": 414
+    },
+    {
+      "url": "assets/figures/arxiv/2605.12588v1/fig-003.webp",
+      "caption": "Figure 3: Decoherence of the spinmon. The solid lines are calculated numerically by diagonalizing the full Hamiltonian in Eq. (2), and the dashed lines are calculated analytically in the harmonic oscillator approximation. (a) Flux and charge relaxation rates. (b) Excitation rate out of the computational subspace due to charge and flux noise. (c) Qubit frequency ωq and plasma frequency ωp in units of temperature. Numerically, ωp is the frequency difference between the first and second excited states. We have set E0 = ESO = h× 500MHz and B = Ec = h× 40MHz.",
+      "page": 6,
+      "index": 3,
+      "width": 857,
+      "height": 251
+    }
+  ]
+}

@@ -3102,6 +3102,31 @@ window.$docsify = {
       };
 
       // 侧边栏/正文的论文页标题条：英文右侧，中文左侧，中间竖线
+
+      const removeLegacySidebarRootLinks = () => {
+        const nav = document.querySelector('.sidebar-nav');
+        if (!nav) return;
+        nav.querySelectorAll('a').forEach((a) => {
+          const text = String(a.textContent || '').trim();
+          const href = String(a.getAttribute('href') || '').trim();
+          const virtualHash = String(a.getAttribute('data-dpr-hash') || '').trim();
+          const isLegacyRoot =
+            text === '\u9996\u9875' ||
+            text === '\u4f7f\u7528\u6559\u7a0b' ||
+            a.classList.contains('dpr-sidebar-root-link') ||
+            a.classList.contains('dpr-sidebar-noactive-link') ||
+            virtualHash === '#/tutorial/README' ||
+            href === '#/tutorial/README';
+          if (!isLegacyRoot) return;
+          const li = a.closest('li');
+          if (li && nav.contains(li)) {
+            li.remove();
+          } else {
+            a.remove();
+          }
+        });
+      };
+
       const isPaperRouteFile = (file) => {
         const f = String(file || '');
         return /^(?:\d{6}\/\d{2}|\d{8}-\d{8})\/(?!README\.md$).+\.md$/i.test(f);
@@ -4514,6 +4539,7 @@ window.$docsify = {
         setupCollapsibleSidebarByDay();
         hydrateStructuredSidebarItems();
         bindSidebarVirtualHashLinks();
+        removeLegacySidebarRootLinks();
 
         // ----------------------------------------------------
         // G. 侧边栏已阅读论文状态高亮

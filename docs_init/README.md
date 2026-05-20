@@ -1,10 +1,3 @@
-﻿<div class="dpr-home-notice-card">
-  <h3 class="dpr-home-notice-title">🚀 Start Here</h3>
-  <ul class="dpr-home-notice-list">
-    <li><a href="#/tutorial/README">使用教程</a></li>
-  </ul>
-</div>
-
 <div class="dpr-home-promo-card">
   <h3 class="dpr-home-promo-title">💬 社区与支持</h3>
   <ul class="dpr-home-promo-list">

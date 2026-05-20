@@ -1506,6 +1506,304 @@ window.$docsify = {
           }
         };
 
+        const encodeBase64Utf8 = (text) => {
+          const bytes = new TextEncoder().encode(String(text || ''));
+          let binary = '';
+          bytes.forEach((byte) => {
+            binary += String.fromCharCode(byte);
+          });
+          return btoa(binary);
+        };
+
+        const decodeBase64Utf8 = (value) => {
+          const binary = atob(String(value || '').replace(/\n/g, ''));
+          const bytes = new Uint8Array(binary.length);
+          for (let i = 0; i < binary.length; i += 1) {
+            bytes[i] = binary.charCodeAt(i);
+          }
+          return new TextDecoder('utf-8').decode(bytes);
+        };
+
+        const getGithubWriteToken = () => {
+          const secret = window.decoded_secret_private || {};
+          const secretToken = secret.github && secret.github.token;
+          if (secretToken) return String(secretToken || '').trim();
+          const helper = window.SubscriptionsGithubToken;
+          if (helper && typeof helper.loadGithubToken === 'function') {
+            const tokenData = helper.loadGithubToken();
+            if (tokenData && tokenData.token) return String(tokenData.token || '').trim();
+          }
+          return '';
+        };
+
+        const resolveGithubWriteContext = async () => {
+          const token = getGithubWriteToken();
+          if (!token) throw new Error('未配置 GitHub Token，无法删除仓库数据。');
+          let owner = '';
+          let repo = '';
+          const yaml = window.jsyaml || window.jsYaml || window.jsYAML;
+          if (yaml && typeof yaml.load === 'function') {
+            for (const url of ['docs/config.yaml', 'config.yaml', '../config.yaml']) {
+              try {
+                const res = await fetch(url, { cache: 'no-store' });
+                if (!res.ok) continue;
+                const cfg = yaml.load((await res.text()) || '') || {};
+                const github = cfg.github || {};
+                owner = String(github.owner || owner || '').trim();
+                repo = String(github.repo || repo || '').trim();
+                if (owner && repo) break;
+              } catch {
+                // ignore
+              }
+            }
+          }
+          if (!owner || !repo) {
+            const match = window.location.href.match(/https?:\/\/([^.]+)\.github\.io\/([^/]+)/);
+            if (match) {
+              owner = owner || match[1];
+              repo = repo || match[2];
+            }
+          }
+          if (!owner || !repo) throw new Error('无法确定 GitHub 仓库 owner/repo。');
+          return { token, owner, repo };
+        };
+
+        const githubApi = async (ctx, path, options = {}) => {
+          const safePath = String(path || '').replace(/^\/+/, '');
+          const res = await fetch(
+            `https://api.github.com/repos/${ctx.owner}/${ctx.repo}/contents/${encodeURIComponent(safePath).replace(/%2F/g, '/')}`,
+            {
+              ...options,
+              headers: {
+                Authorization: `token ${ctx.token}`,
+                Accept: 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json',
+                ...(options.headers || {}),
+              },
+            },
+          );
+          if (res.status === 404) return null;
+          if (!res.ok) {
+            const text = await res.text().catch(() => '');
+            throw new Error(`GitHub API 失败：${safePath} (${res.status}) ${text.slice(0, 180)}`);
+          }
+          return res.json();
+        };
+
+        const githubReadText = async (ctx, path) => {
+          const data = await githubApi(ctx, path);
+          if (!data || data.type !== 'file') return null;
+          return { sha: data.sha, text: decodeBase64Utf8(data.content || '') };
+        };
+
+        const githubWriteText = async (ctx, path, text, sha, message) => {
+          return githubApi(ctx, path, {
+            method: 'PUT',
+            body: JSON.stringify({
+              message,
+              content: encodeBase64Utf8(text),
+              sha,
+            }),
+          });
+        };
+
+        const githubUpdateText = async (ctx, path, updater, message) => {
+          const current = await githubReadText(ctx, path);
+          if (!current) return false;
+          const next = updater(current.text || '');
+          if (typeof next !== 'string' || next === current.text) return false;
+          await githubWriteText(ctx, path, next, current.sha, message);
+          return true;
+        };
+
+        const githubDeletePath = async (ctx, path, message) => {
+          const safePath = String(path || '').replace(/^\/+/, '');
+          const data = await githubApi(ctx, safePath);
+          if (!data) return false;
+          if (Array.isArray(data)) {
+            for (const item of data) {
+              await githubDeletePath(ctx, item.path, message);
+            }
+            return true;
+          }
+          if (data.type !== 'file') return false;
+          await githubApi(ctx, safePath, {
+            method: 'DELETE',
+            body: JSON.stringify({ message, sha: data.sha }),
+          });
+          return true;
+        };
+
+        const githubListFiles = async (ctx, path) => {
+          const safePath = String(path || '').replace(/^\/+/, '');
+          const data = await githubApi(ctx, safePath);
+          if (!data) return [];
+          if (!Array.isArray(data)) return data.type === 'file' ? [data.path || safePath] : [];
+          const out = [];
+          for (const item of data) {
+            if (!item || !item.path) continue;
+            if (item.type === 'file') {
+              out.push(item.path);
+            } else if (item.type === 'dir') {
+              const nested = await githubListFiles(ctx, item.path);
+              nested.forEach((nestedPath) => out.push(nestedPath));
+            }
+          }
+          return out;
+        };
+
+        const removePaperLineBlocks = (text, paperId) => {
+          const id = String(paperId || '').trim();
+          if (!id) return text;
+          const lines = String(text || '').replace(/\r\n/g, '\n').split('\n');
+          const out = [];
+          let skipping = false;
+          lines.forEach((line) => {
+            const isHit = line.includes(id);
+            const startsListItem = /^\s*(?:\d+\.|[-*])\s+/.test(line);
+            if (isHit) {
+              skipping = startsListItem;
+              return;
+            }
+            if (skipping) {
+              if (/^\s{2,}\S/.test(line) && !/^\s*\d+\.\s+/.test(line)) return;
+              skipping = false;
+            }
+            out.push(line);
+          });
+          return out.join('\n').replace(/\n{4,}/g, '\n\n\n').replace(/\s+$/, '') + '\n';
+        };
+
+        const updateReportCounts = (text, countDelta = -1) => {
+          const replaceCount = (match, prefix, countText) => {
+            const next = Math.max(0, (parseInt(countText, 10) || 0) + countDelta);
+            return `${prefix}${next}`;
+          };
+          return String(text || '')
+            .replace(/(-\s*本次总论文数：\s*)(\d+)/g, replaceCount)
+            .replace(/(-\s*速读区：\s*)(\d+)/g, replaceCount)
+            .replace(/(本周速读了\s*)(\d+)(\s*篇)/g, (match, prefix, countText, suffix) => (
+              `${prefix}${Math.max(0, (parseInt(countText, 10) || 0) + countDelta)}${suffix}`
+            ))
+            .replace(/(今日速读)(\d+)(篇)/g, (match, prefix, countText, suffix) => (
+              `${prefix}${Math.max(0, (parseInt(countText, 10) || 0) + countDelta)}${suffix}`
+            ));
+        };
+
+        const removePaperFromMetaJson = (text, paperId) => {
+          try {
+            const payload = JSON.parse(text || '{}') || {};
+            const papers = Array.isArray(payload.papers) ? payload.papers : [];
+            const nextPapers = papers.filter((item) => item && item.paper_id !== paperId);
+            if (nextPapers.length === papers.length) return text;
+            payload.papers = nextPapers;
+            payload.count = nextPapers.length;
+            return `${JSON.stringify(payload, null, 2)}\n`;
+          } catch {
+            return text;
+          }
+        };
+
+        const extractArxivVersionIdFromPaperId = (paperId) => {
+          const basename = String(paperId || '').split('/').pop() || '';
+          const match = basename.match(/^(\d{4}\.\d{4,5}v\d+)/i);
+          return match ? match[1] : '';
+        };
+
+        const removePaperFromRecommendJson = (text, paperId) => {
+          const arxivId = extractArxivVersionIdFromPaperId(paperId);
+          if (!arxivId && !paperId) return text;
+          try {
+            const payload = JSON.parse(text || '{}') || {};
+            let changed = false;
+            ['deep_dive', 'quick_skim'].forEach((key) => {
+              const papers = Array.isArray(payload[key]) ? payload[key] : [];
+              const next = papers.filter((item) => {
+                if (!item || typeof item !== 'object') return true;
+                const itemId = String(item.id || item.paper_id || '').trim();
+                return itemId !== arxivId && itemId !== paperId;
+              });
+              if (next.length !== papers.length) {
+                payload[key] = next;
+                changed = true;
+              }
+            });
+            if (!changed) return text;
+            const stats = payload.stats && typeof payload.stats === 'object' ? payload.stats : null;
+            if (stats) {
+              if (Array.isArray(payload.deep_dive)) stats.deep_selected = payload.deep_dive.length;
+              if (Array.isArray(payload.quick_skim)) stats.quick_selected = payload.quick_skim.length;
+            }
+            return `${JSON.stringify(payload, null, 2)}\n`;
+          } catch {
+            return text;
+          }
+        };
+
+        const extractFigureDirsFromMarkdown = (markdown, paperId) => {
+          const dirs = new Set();
+          const sourceMatch = markdown.match(/^source:\s*"?([^"\n]+)"?/m);
+          const source = sourceMatch ? sourceMatch[1].trim().toLowerCase() : 'arxiv';
+          const basename = String(paperId || '').split('/').pop() || '';
+          const arxivMatch = basename.match(/^(\d{4}\.\d{4,5}v\d+)/);
+          if (arxivMatch) dirs.add(`docs/assets/figures/${source || 'arxiv'}/${arxivMatch[1]}`);
+          const figuresMatch = markdown.match(/^figures_json:\s*("?)(.*)\1\s*$/m);
+          if (figuresMatch) {
+            try {
+              const raw = figuresMatch[2]
+                .replace(/\\"/g, '"')
+                .replace(/\\\\/g, '\\');
+              const figures = JSON.parse(raw);
+              if (Array.isArray(figures)) {
+                figures.forEach((figure) => {
+                  const url = String((figure && figure.url) || '').trim();
+                  const match = url.match(/^(assets\/figures\/[^/]+\/[^/]+)\//);
+                  if (match) dirs.add(`docs/${match[1]}`);
+                });
+              }
+            } catch {
+              // ignore
+            }
+          }
+          return Array.from(dirs);
+        };
+
+        const deletePaperFromGithub = async ({ paperId, title }) => {
+          const ctx = await resolveGithubWriteContext();
+          const message = `chore: delete paper ${paperId}`;
+          const paperPath = `docs/${paperId}.md`;
+          const txtPath = `docs/${paperId}.txt`;
+          const dayDir = String(paperId || '').split('/').slice(0, -1).join('/');
+          const md = await githubReadText(ctx, paperPath);
+          const figureDirs = md ? extractFigureDirsFromMarkdown(md.text || '', paperId) : [];
+
+          await githubUpdateText(ctx, 'docs/_sidebar.md', (text) => (
+            text
+              .replace(/\r\n/g, '\n')
+              .split('\n')
+              .filter((line) => !line.includes(paperId))
+              .join('\n')
+              .replace(/\s+$/, '') + '\n'
+          ), message);
+          if (dayDir) {
+            await githubUpdateText(ctx, `docs/${dayDir}/README.md`, (text) => updateReportCounts(removePaperLineBlocks(text, paperId)), message);
+            await githubUpdateText(ctx, `docs/${dayDir}/papers.meta.json`, (text) => removePaperFromMetaJson(text, paperId), message);
+          }
+          await githubUpdateText(ctx, 'docs/README.md', (text) => updateReportCounts(removePaperLineBlocks(text, paperId)), message);
+          const archivePaths = await githubListFiles(ctx, 'archive');
+          const recommendPaths = archivePaths.filter((path) => /\/recommend\/[^/]+\.json$/i.test(path));
+          for (const path of recommendPaths) {
+            await githubUpdateText(ctx, path, (text) => removePaperFromRecommendJson(text, paperId), message);
+          }
+          await githubDeletePath(ctx, paperPath, message);
+          await githubDeletePath(ctx, txtPath, message);
+          for (const dir of figureDirs) {
+            await githubDeletePath(ctx, dir, message);
+          }
+
+          return { title };
+        };
+
         const getSectionKeyFromLi = (sectionLi) => {
           const text = getDirectText(sectionLi);
           return normalizeSection(text) === 'deep' ? 'deep' : 'quick';
@@ -1625,6 +1923,83 @@ window.$docsify = {
           ul.style.opacity = '1';
         };
 
+        let paperContextMenu = null;
+        const closePaperContextMenu = () => {
+          if (paperContextMenu) {
+            paperContextMenu.remove();
+            paperContextMenu = null;
+          }
+        };
+
+        const showPaperContextMenu = ({ x, y, paperLi, paperId, dayLi, dayKey, title }) => {
+          closePaperContextMenu();
+          const menu = document.createElement('div');
+          menu.className = 'sidebar-paper-context-menu';
+          menu.style.left = `${Math.max(8, x)}px`;
+          menu.style.top = `${Math.max(8, y)}px`;
+
+          const deleteBtn = document.createElement('button');
+          deleteBtn.type = 'button';
+          deleteBtn.className = 'sidebar-paper-context-delete';
+          deleteBtn.textContent = '删除';
+          deleteBtn.title = title || paperId;
+          menu.appendChild(deleteBtn);
+          document.body.appendChild(menu);
+          paperContextMenu = menu;
+
+          const rect = menu.getBoundingClientRect();
+          if (rect.right > window.innerWidth - 8) {
+            menu.style.left = `${Math.max(8, window.innerWidth - rect.width - 8)}px`;
+          }
+          if (rect.bottom > window.innerHeight - 8) {
+            menu.style.top = `${Math.max(8, window.innerHeight - rect.height - 8)}px`;
+          }
+
+          deleteBtn.addEventListener('click', async (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            deleteBtn.disabled = true;
+            deleteBtn.textContent = '删除中...';
+            try {
+              await deletePaperFromGithub({ paperId, title });
+              const layout = readPaperLayoutState();
+              const entry = normalizeLayoutEntry(layout[dayKey]);
+              if (!entry.hidden.includes(paperId)) entry.hidden.push(paperId);
+              ['deep', 'quick'].forEach((key) => {
+                entry.sections[key] = (entry.sections[key] || []).filter((id) => id !== paperId);
+              });
+              layout[dayKey] = entry;
+              writePaperLayoutState(layout);
+              paperLi.remove();
+              refreshDayContentHeight(dayLi);
+              requestAnimationFrame(() => syncSidebarActiveIndicator({ animate: false }));
+              closePaperContextMenu();
+              window.setTimeout(() => window.location.reload(), 500);
+            } catch (err) {
+              console.error(err);
+              deleteBtn.disabled = false;
+              deleteBtn.textContent = '删除失败';
+              menu.classList.add('is-error');
+              window.setTimeout(() => {
+                deleteBtn.textContent = '删除';
+                menu.classList.remove('is-error');
+              }, 1600);
+            }
+          });
+        };
+
+        if (!document.body.dataset.dprPaperContextDismissBound) {
+          document.body.dataset.dprPaperContextDismissBound = '1';
+          document.addEventListener('click', (event) => {
+            if (paperContextMenu && !paperContextMenu.contains(event.target)) {
+              closePaperContextMenu();
+            }
+          });
+          document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') closePaperContextMenu();
+          });
+        }
+
         const bindPaperDragAndContextMenu = (dayLi, dayKey) => {
           if (!dayLi || !dayKey) return;
           const sectionLists = collectSectionLists(dayLi);
@@ -1690,18 +2065,15 @@ window.$docsify = {
                 e.stopPropagation();
                 const titleNode = paperLi.querySelector('.dpr-sidebar-title');
                 const title = String((titleNode && titleNode.textContent) || paperId).trim();
-                if (!window.confirm(`从左侧列表删除这篇文献？\n\n${title}`)) return;
-                const layout = readPaperLayoutState();
-                const entry = normalizeLayoutEntry(layout[dayKey]);
-                if (!entry.hidden.includes(paperId)) entry.hidden.push(paperId);
-                ['deep', 'quick'].forEach((key) => {
-                  entry.sections[key] = (entry.sections[key] || []).filter((id) => id !== paperId);
+                showPaperContextMenu({
+                  x: e.clientX,
+                  y: e.clientY,
+                  paperLi,
+                  paperId,
+                  dayLi,
+                  dayKey,
+                  title,
                 });
-                layout[dayKey] = entry;
-                writePaperLayoutState(layout);
-                paperLi.remove();
-                refreshDayContentHeight(dayLi);
-                requestAnimationFrame(() => syncSidebarActiveIndicator({ animate: false }));
               });
             }
           });
@@ -2709,27 +3081,6 @@ window.$docsify = {
             `<span class="dpr-sidebar-meta-tags">${tagsHtml || '<span class="dpr-sidebar-tag dpr-sidebar-tag-other">-</span>'}</span>` +
             `</div>`;
           a.dataset.sidebarStructuredHydrated = '1';
-        });
-      };
-
-      const neutralizeSidebarNoactiveLinks = () => {
-        const nav = document.querySelector('.sidebar-nav');
-        if (!nav) return;
-        const links = nav.querySelectorAll('a.dpr-sidebar-noactive-link');
-        links.forEach((a) => {
-          try {
-            a.classList.remove('active', 'router-link-active');
-          } catch {
-            // ignore
-          }
-          try {
-            const li = a.closest('li');
-            if (li) {
-              li.classList.remove('active');
-            }
-          } catch {
-            // ignore
-          }
         });
       };
 
@@ -4163,7 +4514,6 @@ window.$docsify = {
         setupCollapsibleSidebarByDay();
         hydrateStructuredSidebarItems();
         bindSidebarVirtualHashLinks();
-        neutralizeSidebarNoactiveLinks();
 
         // ----------------------------------------------------
         // G. 侧边栏已阅读论文状态高亮

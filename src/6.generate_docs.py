@@ -872,27 +872,20 @@ def prepare_day_report_paths(docs_dir: str, date_str: str) -> Tuple[str, str]:
     return day_dir, day_readme
 
 
-def prepare_home_module_paths(docs_dir: str) -> Tuple[str, str]:
-    notice_path = os.path.join(docs_dir, "_home_notice.md")
+def prepare_home_module_paths(docs_dir: str) -> str:
     promo_path = os.path.join(docs_dir, "_home_promo.md")
-    return notice_path, promo_path
+    return promo_path
 
 
-def ensure_home_module_files(docs_dir: str) -> Tuple[str, str]:
-    notice_path, promo_path = prepare_home_module_paths(docs_dir)
-    if not os.path.exists(notice_path):
-        with open(notice_path, "w", encoding="utf-8") as f:
-            f.write("────────────────────────────────────────\n")
-            f.write("（公告占位）欢迎使用 Daily Paper Reader。\n")
-            f.write("（公告占位）可在此放置本周更新、维护通知等。\n")
-            f.write("────────────────────────────────────────\n")
+def ensure_home_module_files(docs_dir: str) -> str:
+    promo_path = prepare_home_module_paths(docs_dir)
     if not os.path.exists(promo_path):
         with open(promo_path, "w", encoding="utf-8") as f:
             f.write("════════════════════════════════════════\n")
             f.write("（宣传占位）欢迎 Star / Fork 本项目。\n")
             f.write("（宣传占位）欢迎提交 Issue 与 PR。\n")
             f.write("════════════════════════════════════════\n")
-    return notice_path, promo_path
+    return promo_path
 
 
 def _read_module_markdown(path: str) -> str:
@@ -1249,6 +1242,55 @@ def yaml_escape_value(s: str) -> str:
     return s
 
 
+FIGURE_NUMBER_RE = re.compile(r"\b(?:fig(?:ure)?\.?)\s*([0-9]+[A-Za-z]?)\b", re.IGNORECASE)
+
+
+def extract_figure_number(caption: str) -> str:
+    match = FIGURE_NUMBER_RE.search(str(caption or ""))
+    return match.group(1).strip() if match else ""
+
+
+def figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, int]:
+    figure_number = str(item.get("figure_number") or "").strip()
+    match = re.match(r"^([0-9]+)([A-Za-z]?)$", figure_number)
+    if match:
+        suffix = match.group(2).lower()
+        suffix_rank = ord(suffix) - 96 if suffix else 0
+        return (0, int(match.group(1)), suffix_rank, int(item.get("index") or 0))
+    return (1, int(item.get("page") or 0), int(item.get("index") or 0), 0)
+
+
+def normalize_figure_assets(figures: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    normalized: List[Dict[str, Any]] = []
+    for index, item in enumerate(figures or [], start=1):
+        if not isinstance(item, dict):
+            continue
+        figure = dict(item)
+        figure.setdefault("index", index)
+        if not str(figure.get("figure_number") or "").strip():
+            figure_number = extract_figure_number(str(figure.get("caption") or ""))
+            if figure_number:
+                figure["figure_number"] = figure_number
+        normalized.append(figure)
+    ordered = sorted(normalized, key=figure_sort_key)
+    for index, figure in enumerate(ordered, start=1):
+        figure["index"] = index
+    return ordered
+
+
+def parse_figures_json_value(value: Any) -> List[Dict[str, Any]]:
+    if isinstance(value, list):
+        return [item for item in value if isinstance(item, dict)]
+    raw = str(value or "").strip()
+    if not raw:
+        return []
+    try:
+        parsed = json.loads(raw)
+    except Exception:
+        return []
+    return [item for item in parsed if isinstance(item, dict)] if isinstance(parsed, list) else []
+
+
 def maybe_generate_paper_figures(
     paper: Dict[str, Any],
     *,
@@ -1264,12 +1306,12 @@ def maybe_generate_paper_figures(
 
     asset_key = str(paper.get("id") or paper_id.replace("/", "-")).strip()
     try:
-        return ensure_paper_figures(
+        return normalize_figure_assets(ensure_paper_figures(
             pdf_url=pdf_url,
             docs_dir=docs_dir,
             source_key=source_key,
             asset_key=asset_key,
-        )
+        ))
     except Exception as e:
         log(f"[WARN] 论文插图提取失败：{asset_key}: {e}")
         return []
@@ -1465,7 +1507,19 @@ def process_paper(
 
         existing_meta = _parse_front_matter(existing)
         has_figures_json = bool(str(existing_meta.get("figures_json") or "").strip()) if existing_meta else False
-        if not has_figures_json:
+        if has_figures_json:
+            figures = normalize_figure_assets(parse_figures_json_value(existing_meta.get("figures_json")))
+            if figures:
+                updated, changed = upsert_front_matter_field(
+                    existing,
+                    "figures_json",
+                    yaml_escape_value(json.dumps(figures, ensure_ascii=False)),
+                )
+                if changed:
+                    with open(md_path, "w", encoding="utf-8") as f:
+                        f.write(updated + ("\n" if not updated.endswith("\n") else ""))
+                    existing = updated
+        else:
             figures = maybe_generate_paper_figures(
                 paper,
                 docs_dir=docs_dir,
@@ -1736,8 +1790,6 @@ def update_sidebar(
             daily_idx = i
             break
     if daily_idx == -1:
-        if not any("[首页]" in line for line in lines):
-            lines.append("* [首页](/)\n")
         lines.append("* Daily Papers\n")
         daily_idx = len(lines) - 1
 
@@ -1937,8 +1989,7 @@ def build_home_readme_content(
     quick_entries: List[Tuple[str, str, List[Tuple[str, str]]]],
     paper_evidence_by_id: Dict[str, str],
 ) -> str:
-    notice_path, promo_path = ensure_home_module_files(docs_dir)
-    notice_md = _read_module_markdown(notice_path)
+    promo_path = ensure_home_module_files(docs_dir)
     promo_md = _read_module_markdown(promo_path)
     latest_report_md = build_latest_report_section(
         date_str=date_str,
@@ -1951,8 +2002,6 @@ def build_home_readme_content(
     )
 
     lines: List[str] = []
-    lines.append(notice_md or "（公告模块为空）")
-    lines.append("")
     lines.append("## 每次日报")
     lines.append(latest_report_md)
     lines.append("")
@@ -1972,7 +2021,7 @@ def sync_home_readme_from_day_report(
     paper_evidence_by_id: Dict[str, str],
 ) -> str:
     home_readme = os.path.join(docs_dir, "README.md")
-    # 首页由三段模块拼接：公告栏（独立 md）+ 本次日报 + 宣传栏（独立 md）
+    # Home README is built from the latest report and promo module.
     content = build_home_readme_content(
         docs_dir=docs_dir,
         date_str=date_str,

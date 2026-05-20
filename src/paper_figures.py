@@ -661,17 +661,18 @@ def extract_figures_from_pdf(
 
     caption_candidates = _merge_missing_caption_crops(pdf_path, [], output_dir)
     if caption_candidates:
-        existing_labels = {
-            (str(item.get("item_type") or "figure").lower(), str(item.get("figure_number") or "").lower())
-            for item in figures
-            if str(item.get("figure_number") or "").strip()
-        }
+        # Caption-guided crops are closer to the paper's own Figure/Table list.
+        # Prefer them over raw embedded-image extraction, which cannot know
+        # labels and often duplicates or misses vector-only figures.
+        figures = []
+        fig_index = 1
+        seen_labels: set[tuple[str, str]] = set()
         for item in caption_candidates:
             label_key = (
                 str(item.get("item_type") or "figure").lower(),
                 str(item.get("figure_number") or "").lower(),
             )
-            if label_key in existing_labels:
+            if label_key in seen_labels:
                 continue
             file_name = f"fig-{fig_index:03d}.webp"
             abs_path = os.path.join(output_dir, file_name)
@@ -693,7 +694,7 @@ def extract_figures_from_pdf(
                 }
             )
             fig_index += 1
-            existing_labels.add(label_key)
+            seen_labels.add(label_key)
 
     figures = _finalize_figure_order(figures)
     _save_figures_meta(os.path.join(output_dir, "meta.json"), figures, extractor="pymupdf-images")

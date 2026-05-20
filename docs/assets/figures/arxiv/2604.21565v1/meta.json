@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.21565v1/fig-001.webp",
+      "caption": "Figure 3: (a) The square pulse (green line) and the Gaussian pulse (red line). The square pulse is analytically easier to study however, (b) it’s baseband frequency spectrum has wider sidelobes than the Gaussian pulse.",
+      "page": 6,
+      "index": 1,
+      "width": 534,
+      "height": 400
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21565v1/fig-002.webp",
+      "caption": "Figure 8: Overlap of the discrete Fourier transform Xd(f) images due to improper sampling (fs ≤ 2f).",
+      "page": 11,
+      "index": 2,
+      "width": 484,
+      "height": 365
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21565v1/fig-003.webp",
+      "caption": "Figure 9: Even though aliasing can be used to generate RF signals, the amplitude shows a sinc(πx) roll-off. The alternating shades of grey denote the different higher Nyquist zones.",
+      "page": 11,
+      "index": 3,
+      "width": 500,
+      "height": 377
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21565v1/fig-004.webp",
+      "caption": "Figure 1: The potential energy profile and eigenenergies for the harmonic oscillator (solid red) and the anharmonic oscillator (solid green) in ℏ = 1 units. The energy separation (equivalently, the transition frequency ωh) between the eigenstates of the harmonic oscillator is equal. For the aim of building a transmon qubit, an anharmonic oscillator is considered. Each energy separation (equivalently, the transition frequencies ω01, ω12 and so on) is different. Differing energy separation allows to form a computational subspace from |0⟩ and |1⟩. While the rest of the states, like the |2⟩ state, form the leakage subspace.",
+      "page": 2,
+      "index": 4,
+      "width": 580,
+      "height": 435
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21565v1/fig-005.webp",
+      "caption": "Figure 4: (a) The solid-green, dashed-red, and dash-dotted blue lines are all Gaussian pulses with decreasing pulse duration. (b) Shorter pulses have a wider frequency spread. Broader frequency support increases the chances of overlap with the unwanted transition frequency.",
+      "page": 7,
+      "index": 5,
+      "width": 580,
+      "height": 435
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21565v1/fig-006.webp",
+      "caption": "Table 1: The various errors encountered in the discussion can be broadly labeled into two categories of drive-induced errors, and hardware and architecture errors. The cause and effect and the operators with which they appear in the Hamiltonian are summarized here. There also exist environmental errors, but they are beyond the scope of this discussion.",
+      "page": 18,
+      "index": 6,
+      "width": 902,
+      "height": 206
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21565v1/fig-007.webp",
+      "caption": "Figure 11: Schematic of the digital up-conversion process. The complete mixing process is done digitally. The final digital waveform is then sent to the DAC for analog pulse signal generation.",
+      "page": 13,
+      "index": 7,
+      "width": 592,
+      "height": 267
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21565v1/fig-008.webp",
+      "caption": "Figure 5: A schematic of the three-level model. The first two levels form the computational subspace with a transition frequency of ω1. The σx 01 and σy 01 promote transition inside the computational subspace. However, the σy 01 contribution is the unwanted term arising in the first-order Magnus expansion. The DRAG protocol helps eliminate this and the coupling to the leakage state (arrows shown in red). AC Stark effect contributions emerge at the second order in the expansion (σz 01 and σz 12 terms).",
+      "page": 8,
+      "index": 8,
+      "width": 658,
+      "height": 313
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21565v1/fig-009.webp",
+      "caption": "Figure 6: (a)A schematic illustrating the in-phase I(t) and the quadrature Q(t) component for a standard gaussion DRAG pulse. (b) Numerical simulation of exact dynamics shown by RWA Hamiltonian of Eq.21 for Gaussian and Gaussian DRAG pulse for anharmonicity ∆ = −450 MHz, peak pulse amplitude A0 = 200 MHz/2π, pulse width (standard deviation) σ = 6.5 and coupling between |0⟩ − |1⟩ states as λ = √ 2. The simulation is carried out using QuTiP in Python.",
+      "page": 9,
+      "index": 9,
+      "width": 916,
+      "height": 350
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21565v1/fig-010.webp",
+      "caption": "Figure 2: (a)The transition probability of the square and the triangular pulse from Magnus expansion truncated at second order for δ = 0.5, A0 = π. (b) Numerical simulation of exact dynamics shown by RWA Hamiltonian of Eq.5 for square and triangular pulse at δ = 0.5, A0 = π. The simulation is carried out using QuTiP in Python.",
+      "page": 5,
+      "index": 10,
+      "width": 916,
+      "height": 350
+    },
+    {
+      "url": "assets/figures/arxiv/2604.21565v1/fig-011.webp",
+      "caption": "Figure 13: Schematic of a cross-resonance gate echo sequence. The CR drive (green) pulse is a flat top Gaussian with frequency of the target qubit ωt. Echo sequence also consists of π-pulses (red) on the control with its own characteristic transition frequency ωc.",
+      "page": 16,
+      "index": 11,
+      "width": 580,
+      "height": 435
+    }
+  ]
+}

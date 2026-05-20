@@ -1,0 +1,512 @@
+Title: Readout failures in superconducting qubits due to TLS-defects in tunnel junctions
+
+URL Source: https://arxiv.org/pdf/2605.02755v1
+
+Published Time: Tue, 05 May 2026 02:15:49 GMT
+
+Number of Pages: 9
+
+Markdown Content:
+# Readout failures in superconducting qubits due to TLS-defects in tunnel junctions 
+
+Jürgen Lisenfeld, *) Alexander K. Händel, Alexander Bilmes, and Alexey V. Ustinov 
+
+> Physikalisches Institut, Karlsruhe Institute of Technology, 76131 Karlsruhe, Germany
+> (Dated: 5 May 2026)
+
+Material defects give rise to parasitic two-level systems (TLS) which present a major source of decoherence in super-conducting qubits. Here, we study a strongly coupled TLS that resides in the tunnel barrier of transmon qubit. We use multi-photon spectroscopy and TLS strain tuning to explore the rich spectrum of the interacting three-partite system consisting of TLS, qubit, and its readout resonator. This reveals a strong effective resonant coupling between the TLS and the qubit’s readout resonator which dresses the resonator states and results in a resonance frequency shift that spoils the readout signal. Our finding presents yet another way how material defects can interfere with qubit operation and hinder the realization of solid-state quantum processors.  
+
+> I. INTRODUCTION
+
+Superconducting microcircuits are the most promising platform to realize solid-state quantum computers. However, their progress towards large and universally useful processors is severely hampered by decoherence 1, of which the main part originates in elusive material defects that form parasitic two-level tunneling systems (TLS) 2. Such defects occur e.g. in amorphous oxides and at disordered interfaces, and possess an electric dipole moment by which they couple to oscillating fields in qubits and resonators 3. TLS that are resonant with the qubit enhance energy relaxation, and their fluctuating resonance frequencies cause qubit instability and dephasing 4,5 . Loss also occurs when driven qubits are brought into resonance with a TLS by the AC-stark shift 6,and via Landau-Zener transitions when the qubit is is tuned through TLS resonances. The detrimental impact of a TLS increases with its cou-pling strength to the qubit. TLS which are residing in the tunnel barrier of a qubit’s Josephson junctions are most strongly coupled and give rise to avoided level crossings which can render the qubit unusable. Such qubit dropouts present a significant challenge to realize error correction in large-scale quantum processors 7. In driven qubits or resonators, energy can leak even to far off-resonance TLS via unwanted multi-photon transitions 8,9 .Here, we identify another source of readout error which occurs when a strongly coupled TLS in a qubit junction is in resonance with the readout resonator. This gives rise to a qubit-mediated effective TLS-resonator interaction which dresses the resonator states and results in resonance frequency shifts that spoil the readout signal. The effective coupling between the TLS and the resonator occurs via virtual qubit excitations. This is similar to the direct coupling of TLS to drive signals 10,11 , and to the recent observation of a TLS in a coupler element of a quantum processor which interacted with two spatially distant qubits 12 . In quantum processors, this so-called "cross-resonance" interaction is utilized to realize two-qubit gates 13,14 .
+
+> *) Contact author:juergen.lisenfeld@kit.edu
+
+In our experiment, we use spectroscopy to directly ob-serve the avoided-level crossing in the resonator spectrum that emerges from its cross-resonant interaction with a TLS in the qubit. This is possible by tuning the TLS resonance frequency via mechanical strain that is applied to the qubit chip 15,16 . Moreover, spectroscopy at higher drive powers re-veals a rich landscape of multi-photon transitions in the spec-trum of the qubit-resonator-TLS system. These data agree well with quantum simulations, which however did not allow us to reproduce all observed features due to the large size of the Hilbert space and accordingly long simulation time. Our results demonstrate that the qubit-mediated coupling between TLS and resonators can lead to failure or degradation of qubit readout. For driven qubits, we show that this mech-anism gives rise to a multitude of unwanted transitions by which quantum information can leak to environmental states.  
+
+> II. METHOD
+
+We studied a tunable transmon qubit fabricated from aluminium on a silicon substrate, following the design of Barends et al. 17 . The qubit is capacitively coupled to a readout resonator as sketched in the circuit schematic Fig. 1a to realize conventional dispersive readout 18 . The sample was fabricated as described in Refs. 4 and 19 by D. P. Lozano in the group of J. Bylander at Chalmers University, using a process that avoids unwanted stray junctions 20 . Table I summarizes the qubit parameters, and more details on the setup are given in APPENDIX A. While TLS defects have long been known to limit qubit coherence, their microscopic origins are still unresolved. However, they can be described by a charge that can tunnel between the two minima of a generic double-well potential. The charge displacement creates an electric dipole moment by which TLS couple to the oscillating electric fields of the qubit mode. The TLS’ potential is described by its tunneling energy ∆0 and its asymmetry energy ε as illustrated in Fig. 1c. Our setup allows us to tune TLS resonance frequencies via an applied mechanical strain that is generated by a piezo stack that exerts force on the backside of the qubit chip. The resulting mechanical strain E is of order 10 −6 per applied Volt on the piezo 15 , and linearly modifies the asymmetry en-ergy ε = γ · E of the TLS’ double-well potential at typical 
+
+> arXiv:2605.02755v1 [quant-ph] 4 May 2026
+
+25.8 05.9 66.1 6.2 drive frequency  fd (GHz) drive frequency  fd (GHz)  
+
+> 7.2 7.3 7.4 7.5
+> applied strain applied strain / TLS asymmetry
+
+ε applied strain |S 21 |        
+
+> |0 1-photon 2-photon |1 |0|2
+> abcd
+> resonator qubit |S 21 |JJ drive readout |0g |1e |
+
++|   
+
+> readout drive
+> 20 μs2μs
+> S21
+
+∆
+
+> 1-photon 2-photon
+> S21 readout failure
+
+resonator TLS qubit  
+
+> geff
+
+δ δ ε| e| g|0|1| 2 
+
+> grgx
+
+FIG. 1. a Schematic of the transmon qubit circuit. A measurement of the transmitted signal |S21 | at the resonator frequency is used for qubit readout. b Potentials of the resonator, qubit, and TLS, indicating their discrete eigenstates, mutual interactions gr and gx, the qubit’s detuning to resonator and TLS δ , and the qubit-mediated effective resonator-TLS interaction geff . c Pump-and-probe qubit spectroscopy observing both 1-photon |0⟩ → | 1⟩ and 2-photon |0⟩ → | 2⟩ transitions (horizontal traces). The color scale encodes the transmitted signal amplitude |S21 | at the readout resonator frequency. A sweep of the mechanical strain reveals avoided-level crossings in both transitions due to a strongly coupled TLS. The fit (dashed lines) provides the TLS’ gap energy ∆, strain coupling strength, and its coupling electric dipole moment. The insets illustrate how the strain affects the asymmetry of the TLS’ double-well potential. d Zoom into one anti-crossing (left panel), and the cross section along the white dashed line (middle panel). The red arrow indicates the parasitic readout signal which occurs when the TLS is tuned into resonance with the readout resonator. The right panel shows the peak positions (circles) and a fit to numerically calculated single-photon (black) and two-photon (red) transitions. The inset illustrates the energy level diagram and transitions of the qubit-TLS system at resonance. 
+
+strengths 3 of order γ ≈ 1eV. This tunes the TLS resonance fre-quency along the hyperbola fTLS = ( ∆20 +ε2)1/2/h, and allows one to fully characterize TLS properties by tracking their re-sponse with qubit energy relaxation spectroscopy. In the past, we used this method i.a. to study TLS densities in Josephson junctions 16 and near qubit electrodes 21 , to reveal mutual TLS interactions 22 , and to characterize the decoherence of TLS due to interactions with phonons and thermally fluctuating TLS 23 .
+
+III. RESULTS 
+
+Here, we study a strongly coupled TLS with qubit spec-troscopy by applying a microwave pulse of varying drive frequency fd and fixed duration 20 μs that is much longer than the qubit T1-time to reach a steady state. Any population of excited qubit states is then detected from the dispersive shift 18 
+
+of the readout resonator that is proportional to the transmitted amplitude |S21 | of a successive readout pulse at the resonator frequency fres . In our measurements, the qubit is kept at a fixed frequency while the TLS is strain-tuned through the qubit resonance to observe avoided level crossings in their spectrum. To also observe multi-photon transitions to higher excited qubit states, the power of the qubit spectroscopy pulse is increased 24 . More details on experimental procedures are given in Appendix C. Figure 1c shows avoided level crossings in both the qubit’s single-photon |0⟩ → | 1⟩-transition (here at 6.2 GHz), and two-photon |0⟩ → | 2⟩ transition (here at 6.08 GHz). Such data are fitted with the help of the QuTiP software package 25,26 to obtain the TLS’ parameters (see Table I) and to identify the number of involved photons in the transition. Figure 1d shows a zoom onto the left qubit-TLS anti-crossing when the qubit was tuned to 7.32 GHz. Notably, in such measurements we observed a strong readout signal ap-pearing at a certain strain value independent of applied drive frequency (red arrow in Fig. 1d). As detailed in the following, this is the signature of the readout failure that occurs when the TLS is tuned into resonance with the resonator where an effective strong resonant coupling between TLS and readout resonator is mediated via virtually excited qubit states. To obtain further insights into the interacting qubit-resonator-TLS system, we increase the spectroscopy drive power and extend the investigated frequency range. This reveals a rich spectrum of multi-photon transitions involving various higher-excited states as shown in Fig. 2a. The origin of these transitions is clarified with a QuTiP calculation of the system’s eigenenergies shown in Fig. 2b. The line color indicates the number of photons involved in a transition. For example, from energy conservation we find that the red and horizontal two-photon trace at 6.955 GHz corresponds to the simultaneous excitation of the qubit (at 7.3 GHz) and the resonator (at 6.61 GHz). Transitions which involve the TLS appear tilted due to the TLS’ strain tunability, while the tilt angle decreases with the photon number. For example, at the transition marked by a star in Fig. 2b, three photons of energy h · 6 .7 GHz are absorbed of which two photons end up in the resonator and one photon excites the TLS which has a resonance frequency of 6.88 GHz at the corresponding strain value. When the tilted TLS transitions are extrapolated, they intersect at the resonator frequency where they cause an avoided-level crossing (see inset in Fig. 2b). The resulting shift of the resonator frequency is the origin of the parasitic readout signal (red arrows in Figs. 1d and 2a) and the cause of qubit readout failure. We directly confirm the emergence 3-40 -30 -20 -10 0strain / piezo voltage (V)                 
+
+> 6.6 6.8 77.2 7.4
+> resonator
+> 6.6 6.8 77.2 7.4 drive frequency (GHz)
+> -40 -30 -20 -10 0strain / piezo voltage (V)
+> abc
+> S21 S21
+> 1234photons |0 |1 |0 |2 |0 |3 |0 |4 -40 -30 -20 -10 0strain / piezo voltage (V)
+> |0
+> 011-P( )
+
+FIG. 2. a Spectroscopy of the qubit-resonator-TLS system at enhanced drive power to observe multi-photon transitions involving higher excited states. The right inset shows the cross-section at the white dashed line. Due to the high drive power, the qubit’s |0⟩ → | 1⟩ resonant peak at 7.3 GHz is significantly power-broadened. The tilted transitions involve TLS states whose extrapolations intersect at the resonator frequency, illustrating that the readout failure (red arrow) occurs when the TLS is resonant with the resonator at 6.63 GHz. The left inset shows a direct measurement of the resonator anti-crossing without an applied drive tone. b Transitions between eigenstates of the non-driven system as calculated with QuTiP. The line color indicates the number of involved photons. c Simulation of the full time evolution of the system, including the driving pulse, energy relaxation, and six energy levels in both qubit and resonator. The color encodes the qubit excitation probability (1 − P(|0⟩)) after reaching a steady state. Blue arrows indicate a closer fit to higher-order transitions compared to b (blue arrows). 
+
+of this avoided-level crossing by strain-dependent resonator spectroscopy without driving the qubit (see inset of Fig. 2a). A closer comparison between the data in Fig. 2a and the QuTiP calculation of eigenvalues shown in Fig. 2b reveals discrepancies in higher-order transitions. For example, the 3-photon transition at ≈ 7.03 GHz (marked by a blue arrow in Fig. 2a) is measured at higher frequency than the eigenvalue solution predicts (light blue arrow in Fig. 2b). To take into account possible AC-stark shifts due to the strong driving, we simulated the full time-evolution of the system including energy relaxation and the driving pulse by iteratively solving the Lindblad master equation with QuTiP. The resulting qubit expectation value is plotted in Fig. 2 c and achieves a close fit to the data (details on the simulation and measurements are given in APPENDIX B). Due to the large size of the Hilbert space spanned by 6 qubit states, 6 resonator states, and 2 TLS states, this simulation approach required a computation 
+
+name value description 
+
+fq,max 7.32 GHz maximum qubit frequency 
+
+Ec/h 228 MHz qubit charging energy 
+
+AJJ 200 nm x 220 nm JJ area 
+
+fres ≈ 6.625 GHz resonator frequency 
+
+gqr 34 MHz resonator-qubit coupling strength 
+
+γ 212 MHz / Vpiezo TLS strain-coupling strength 
+
+∆0 h · 5 .838 GHz TLS gap energy ¯p 0.36 eÅ TLS dipole moment component 
+
+gx 21.7 MHz transversal coupling TLS-qubit 
+
+gz <1 MHz (not measurable) longitudinal coupling TLS-qubit TABLE I. Parameters of the studied qubit circuit and the TLS. 
+
+time of about 60 days on a 60-CPU cluster. However, various higher-order transitions are still only resolved in the experiment. Since such measurements can be obtained within less than an hour, this might be seen as an example of the advantage of physical quantum simulations already for small multi-level systems. A characteristic of the cross-resonance is 14 that the ef-fective interaction strength between resonator and TLS is given by geff = gr · gx/δ , where gr is the coupling strength of the resonator to the qubit, gx is the transversal qubit-TLS coupling strength, and δ = fq − fres = fq − fTLS is the detuning between qubit and resonator while δ ≫ gr, gx. This is confirmed by spectroscopic measurements of the resonator-TLS anti-crossing when the (undriven) qubit is tuned to different resonance frequencies as shown in Fig. 3 a. Up to the largest investigated detuning δ = 500 MHz, the observed geff 
+
+exceeded 1.5 MHz. Figure 3b shows an excellent agreement between the observed and expected geff , where the latter is calculated using independently determined qubit-resonator and qubit-TLS coupling strengths (see Appendix C for details). When the qubit-TLS coupling gx is comparable to the qubit-resonator coupling gr (typically, gr ≈ 50 - 100 MHz), the interaction with the TLS detunes the resonator by a similar amount as the dispersive shift χ = g2 
+
+> r
+
+/δ that serves as the qubit readout signal 18 . Coupling strengths of gx ≈ 10 − 40 MHz are frequently observed for TLS in tunnel barriers of qubit junctions, where they occur at densities between 100 to 8000 TLS/(GHz · μm 3)2,21,27–30 . In the studied sample, we have also detected a second TLS which caused similar 46.62 6.63 frequency (GHz)       
+
+> -20 -16 -12
+> a
+> -20 -16 -12 strain (Vp) strain (Vp) -20 -16 -12 strain (Vp)
+
+fq = 6.9 GHz 
+
+fq = 7.0 GHz fq                          
+
+> fq
+> = 7.13 GHz
+> b
+> 300 500 7.13 6.9 (MHz)
+> 123
+> g eff  (MHz)
+> 2eff
+> g
+> |S 21 |
+> |S 21 |
+> δ
+> (GHz)
+> FIG. 3. aAnti-crossings between the readout resonator and the strain-tuned TLS, measured when the qubit was tuned to the indicated resonance frequencies. The effective resonator-TLS coupling strength geff is estimated from a fit (green line) and corresponds to half the distance between the two peaks at resonance as shown in the inset. bTLS-resonator coupling strength geff vs. the detuning δ=fq−fres between qubit and resonator. The solid line shows the expectation from the cross-resonance interaction, geff =gxgr/δ, for independently measured grand gx.
+
+readout failure (see Appendix C). The qubit-TLS coupling is usually modeled as a transverse (exchange) interaction where the TLS’ dipole moment cou-ples to the qubit charge. Alternatively, TLS might also modify the critical current of the junction 31 and thus the qubit energy, corresponding to a longitudinal coupling. Since Cooper-pair tunneling is presumably dominated by a few channels which connect the thinnest parts of the tunnel barrier, the state of a charged TLS can affect the transparency of a channel and thus the critical current. The effect of such coupling is a small shift of the two-photon transition frequency in the resonantly cou-pled qubit-TLS system. We have fitted our spectroscopy data including gz as a free parameter, which did not result in any detectable longitudinal coupling for the studied TLS at an es-timated detection threshold of about gz ⪆ 3 MHz (see App. B and C for details). This is similar to previous results obtained on flux-32 and phase-qubits 33,34 . 
+
+> IV. CONCLUSION
+
+We have revealed a mechanism by which a TLS defect in the tunnel barrier of Josephson junctions can give rise to qubit readout failure. Spectroscopy of strain-dependent transitions in the qubit-resonator-TLS system confirms that this problem emerges from an effective strong resonant TLS-resonator interaction that is mediated via virtual qubit states. Using multi-photon spectroscopy, we map out the plethora of higher-order transitions that emerge from this interaction, and analyze them with the help of quantum simulations. The parasitic TLS-resonator interaction results in a detun-ing of the resonator frequency which, for strongly-coupled TLS in qubit junctions, is of similar size as the dispersive shift that is used for qubit readout and thus spoils the measurement. In addition, the resonator inherits excess energy relaxation from its interaction with TLS that have typical quality factors below 5000 16,23 . Also, TLS resonance frequencies are unstable 28,35 due to their interaction with neighboring thermal TLS and trapped charges 36–38 , and due to local strain changes caused e.g. by ionizing radiation impacts 39 . This can give rise to excess resonator phase noise and temporal fluctuations of readout fidelity. These issues occur whenever a strongly-coupled junction-TLS is in resonance with the readout resonator. This has the same probability as the case that a qubit is inoperable due to strongly coupled junction-TLS, which occur at spectral densities of ≈ 0.1 − 2 TLS per GHz for typically used small-area junctions 28,30 . For quantum processors, this may explain excessive readout errors observed in some qubits 40 .This problem is relevant to quantum processors and the large variety of qubit implementations which utilize disper-sive readout. It can also play a detrimental role in bosonic or cat-qubits 41 where quantum information is encoded in superpositions of resonator states. Our results thus show yet another mechanism by which TLS hamper the functionality of superconducting qubits, and further motivate systematic studies to understand how defects can be avoided in qubit fabrication. 
+
+Acknowledgements. We thank J. Bylander and Daniel P. Lozano for providing the qubit sample. We acknowledge the computing time provided on the high-performance computer HoreKa by the National High-Performance Computing Center at Karlsruhe Institute of Technology. This center is jointly supported by the Federal Ministry of Education and Research and the Ministry of Science, Research and the Arts of Baden-Württemberg, as part of the National High-Performance Computing (NHR) joint funding program. HoreKa is partly funded by the German Research Foundation (DFG). This work was funded by Google, which we gratefully acknowledge. 
+
+Author contribution. JL conceived this work and performed the measurements. Data analysis and QuTiP simulations were done by KH and JL. AB took part in the development of the experimental setup and sample preparation. The experimental infrastructure was provided by A.V.U. The manuscript was written by JL with contributions from all authors. 
+
+Data availability. The data acquired during this work are available from the corresponding author upon reasonable request. A5 
+
+# Readout failures in superconducting qubits due to TLS-defects in tunnel junctions - Appendix 
+
+Jürgen Lisenfeld, Alexander K. Händel, Alexander Bilmes, and Alexey V. Ustinov 
+
+APPENDIX A. EXPERIMENTAL SETUP 
+
+Figure 4 illustrates the experimental setup with standard components for dispersive qubit readout and qubit flux biasing. Mechanical strain is applied via a piezo stack actuator, which pushes on the chip backside. The resulting mechanical strain is of order 10 −6 per applied Volt on the piezo 15 .The qubit sample was fabricated from Aluminium on Silicon in the group of J. Bylander at Chalmers University. As shown in Fig. 5, the qubit consists of a cross-shaped island 17 that is connected by two Josephson junctions to the surrounding ground plane. The Manhattan-style junctions have areas of about 200nm x 220nm. The qubit frequency is tuned via an on-chip flux line. All measurements were done at asample temperature of 25 - 30 mK. ADC ADC readout IQDAC DAC IIIQLP IR 10dB 20dB 3 dB BP IR IR BP 10dB 30dB 4 K DC voltage source +/-250 V still 30 mK readout qubit z-control NbTi cable HEMT 30dB microwave source mixer IR infrared filter 30dB microwave attenuator BP bandpass 4.5-10 GHz LP low-pass DC- 800 MHz isolator 2 x 33dB 20dB DAC qubit x-drive qubit flux bias DAC Vptwisted pair 
+
+piezo qubit chip + -low pass 
+
+Fig. 4. Schematic of the experimental setup. 
+
+The energy relaxation time T1 of the here investigated sample was very short ( T1 ≈ 1 - 2μs), while other qubits on the same chip showed T1-times of up to 28 μs. This is explained by the strongly coupled junction-TLS, whose detuning to the qubit is δ = |( fTLS − fq| ≲ 1 GHz in a wide part of the investigated strain-tuning range. An estimation for the qubit T1-time due to the coupling to this TLS is 17 
+
+T −11 = 4πgxΓΓ2 + δ 2 + Γ1,q
+
+where Γ−11,q ≈ 25 μs is the assumed qubit T1 time if it would not be coupled to the TLS (as observed in the other qubits on the chip), and Γ = Γ1,TLS /2 + Γ2,TLS + Γ1,q/2 + Γ2,q is the sum of qubit and TLS relaxation and dephasing rates. Using typical TLS values 16,17,22,42–44 of Γ1,TLS ≈ Γ2,TLS ≈ 1/100 ns, the measured qubit-TLS coupling strength gx ≈ 22 MHz, and detunings of δ = 1 − 2 GHz, results in qubit T1-times between 1.0 and 3.7 μs which agrees to the observed values. 100 μm 2 μm
+
+200 nm 220 nm 
+
+resonator 
+
+qubit 
+
+Fig. 5. Scanning-electron microscopy of the qubit sample. The cross-shaped qubit capacitor is connected to the surrounding ground plane by a DC-SQUID made with two Manhattan-style tunnel junctions (insets). A6  
+
+> APPENDIX B. MODELS
+
+Qubit. We follow Koch et al. 18 and start from the transmon qubit Hamiltonian 
+
+HTr = 4EC ˆn − EJ cos ( ˆφ )
+
+with the qubit charge and phase operators ˆ n and ˆ φ . The cosine is approximated for the transmon regime φ ≪ 1, and the qubit is modeled as an anharmonic (Duffing) oscillator by dropping higher order and fast rotating terms: 
+
+HQ = ( ωQ + αq/2) q†q + αq/2 · (q†q)2,
+
+where ωQ = 2π · fq is the qubit resonance frequency and αq is its anharmonicity. The qubit transition frequency fq depends on the flux Φq threading its DC-SQUID and can be approxi-mated by 18 
+
+h f q(Φq) = 
+
+q
+
+8ECEJ (Φq) − EC,
+
+where EC = e2/2Ctot = −αq is the qubit’s charging energy, 
+
+Ctot is the combined junction and qubit island capacitance, e
+
+is the electron charge, and 
+
+EJ = ¯hI c
+
+2e
+
+q
+
+cos (πΦqΦ0)2 + d2 sin (πΦq/Φ0)2
+
+is the flux-dependent Josephson energy assuming two slightly different junctions with a total critical current Ic, Φ0 = h/2e is the flux quantum, h is Planck’s constant, and the asymmetry of the junction’s Josephson energies is described by d = EJ1−EJ2 
+
+> EJ1+EJ2
+
+.The readout resonator is represented by a harmonic oscil-lator and its interaction with the qubit is described by a the exchange coupling 
+
+HR = ωR · r†rHint ,r = hg qr · (q + q†) · (r + r†)
+
+where ωR = 2π · fres is the resonator frequency and gqr is the qubit-resonator coupling strength. The TLS is implemented as a pure two-level system, using harmonic ladder operators and restricting the Hamiltonian to two dimensions: 
+
+HTLS = ωTLS ·t†t.
+
+The qubit-TLS coupling is usually described as a transversal (exchange) interaction where the TLS’ dipole moment cou-ples to the qubit charge: 
+
+Hint ,x = hg x · (q + q†) · (t + t†),
+
+Alternatively, TLS might also modify the critical current of the junction 31 and thus the qubit energy. Cooper-pair tunneling is presumably dominated by a few channels which connect the thinnest parts of the tunnel barrier, so that the state of charged TLS can affect the transparency of a channel as illustrated in the right part of Fig. 6. In this case the TLS might also be formed by charge traps, e.g. creating an Andreev-level fluctuator 3,45,46 . However, experimental insights on the occurrence and role of critical-current fluctua-tors in qubits have so far remained elusive. Via the coupling to the qubit’s critical current, the TLS may modify the qubit energy which would result in a longitudinal coupling 
+
+Hint ,z = gZ · (q†q) · (t†t).2 nm AlOx 
+
+> rms
+
+# E jc
+
+Al Al    
+
+> Fig. 6. Model of a Josephson junction with superconducting electrodes (blue) separated by a thin tunnel barrier (grey). The left part illustrates an atomic TLS which couples to the qubit charge via its electric dipole moment. The right part describes TLS coupling to the junction’s critical current, where due to the electrode’s roughness most of the supercurrent is carried by a few tunnel channels (dashed lines). A charged TLS may open or block a current channel and modify the junction’s critical current.
+
+TLS-Qubit coupling. The exchange coupling strength gx be-tween qubit and TLS is given by the projection of the TLS’ electric dipole moment onto the AC electric field from the qubit mode: 
+
+hg x = pF = ¯p|F |,
+
+where F is the electric field inside the capacitor that is in-duced by the qubit plasma oscillation, and ¯ p = p∥ ∆0/(¯hωTLS )
+
+is the projection of the TLS’ dipole moment p onto F , mul-tiplied by the TLS’ matrix element (∆0/¯hωTLS ), i.e. the effective coupling. For TLS in the tunnel barriers, ¯p can be measured by determining gx from qubit-TLS swap oscillations or from anti-crossings in qubit spectroscopy, where the electric field strength |F| = Vrms /t in the junction is Vrms = p¯hωq/2Ctot at an estimated barrier thickness of t ≈ 2 nm. 
+
+QuTiP simulations. We fit the acquired spectroscopy data with the help of the QuTiP package 25,26 . For this, we first extract the positions of resonant peaks (see e.g. circles in Fig. 1d)). In a least-square fitting routine, the system’s eigenvalues are calculated using the qutip.eigenvalue() 
+
+function, and the energies of high-frequency transitions are divided by integer factors to enable fitting to the exper-imentally observed multi-photon transitions. The model parameters are then optimized until the deviation between measured and simulated peak positions reached a minimum. A7 This results in the solid lines shown in Fig. 1c,d, Fig. 2b, and Fig. 7. In the simulations, the Hilbert space is restricted to 6 qubit states, 6 resonator states, and the 2 TLS states. 
+
+Time-resolved simulation. The comparison between the data in Fig. 2a and the eigenvalue fit shown in Fig. 2b reveals discrepancies in higher-order transitions. To take into account AC-stark shifts, we also simulate the full time evolution of the system. For this, the microwave spectroscopy is modeled by adding a drive term to the qubit, and QuTiP’s 
+
+mesolve() -function is used to iteratively solve the Lindblad master equation at consecutive time steps until Rabi oscil-lations subside and the system reached a stationary state. This also accounts for decoherence, for which corresponding collapse operators are applied whose amplitude is adjusted to the observed qubit and resonator quality factors. The time-resolved simulation indeed shows shifts in higher-order transitions that are similar to the observed data. However, due to the intense CPU-time requirements simulat-ing interacting multi-level quantum systems, this approach failed to systematically fit the effects of the AC-stark shift to the data.  
+
+> APPENDIX C. SAMPLE CHARACTERIZATION
+
+The parameters of the system are listed in Table 1 of the main manuscript and are obtained as follows. 
+
+Qubit readout. To detect the qubit level population, we measure the transmission S21 at the resonance frequency of the readout resonator. For small qubit-resonator coupling strength 
+
+gqr and sufficiently large detuning |δ | = | fq − fres | ≫ gqr , an excitation in the qubit will change the resonator frequency by the dispersive shift 18 
+
+χ ≈ − g2qr 
+
+δ ,
+
+and this results in a detectable change of the transmission signal S21 .
+
+Qubit capacitance. The total qubit capacitance is calculated from the anharmonicity observed by higher-power spec-troscopy such as shown in Fig. 1d. We estimate it by fitting multi-photon qubit spectroscopy data to QuTiP simulations as shown in Fig. 1d, which results in Ctot = e2/2Ec = 85 fF for Ec = 228 MHz. 
+
+Qubit-resonator coupling strength We sweep the applied qubit flux and readout frequency to observe anti-crossings in the resonator spectrum (see Fig. 7). The data is then fitted with QuTiP to the model excluding the TLS with the free parameters fq, fres , gq,r, junction asymmetry d, and a flux-scaling factor. This results in a qubit-resonator coupling strength gq,r ≈ 34 MHz and a large junction asymmetry of 
+
+d ≈ 0.67. 
+
+Qubit-TLS coupling strength The exchange coupling strength gx between qubit and TLS is measured by sweeping the TLS through the qubit resonance via the applied mechan-ical strain, and fitting the anti-crossing to a QuTiP simulation as shown e.g. in Fig. 1d. The free parameters of the fit were 
+
+fq, αq, fTLS , fres , gx, γ and V0, where V0 is the piezo voltage corresponding to the TLS’ symmetry point ε = 0. Fits to different data sets acquired at several drive powers (e.g. data shown in Fig. 1c,d, Fig. 2a) and qubit resonance frequencies (see Fig. 3) provide consistent values of gx ≈ 22 MHz. This corresponds to a parallel TLS dipole moment component of ¯p = h g x/|F | ≈ 0.36 eÅ with the electric field strength in the tunnel barrier |F | = p¯hωq/2Ctot /t and t ≈ 2 nm. 6.63 6.62 frequency (GHz) applied flux |S 21 |     
+
+> Fig. 7. Resonator spectroscopy, showing its anti-crossing with the flux-tuned qubit. The fit (cyan line) provides a qubit-resonator coupling strength of gr=34 MHz and the resonator frequency fres =
+> 6.6255 GHz.
+
+Critical-current coupling. To check whether the TLS couples to the juntion’s critical current, we repeated above fits and included the longitudinal TLS-qubit coupling strength 
+
+gy as a free fit parameter. The effect of such coupling is a small shift of the two-photon transition frequency in the resonantly coupled qubit-TLS system. In similar previous analyses using flux- and phase-qubits 32–34 , no evidence for nonzero gy was found. In the here-studied transmon qubit, this effect is presumably amplified due to its smaller junction size. However, the fits resulted in values gy ≲ 1 MHz that are smaller than the fit uncertainty, so that we found no evidence for a longitudinal coupling in the investigated TLS. Fig. 8 shows a QuTiP calculation of the qubit-TLS anti-crossing for various values of their longitudinal coupling strength gz. The two-photon line in the center of the anti-crossing scales as δ f = gz/2 (see inset of Fig. 8). The minimum detectable gz in this experiment can be estimated from the full width at half maximum of the two-photon transition as shown in Fig. 1d, which is about ≈ 3 MHz. A8 7.1 7.2 7.3 7.4 
+
+010 25 50 
+
+gz (MHz) applied strain    
+
+> frequency (GHz)
+> 0010 10 20 20 30 40 50
+
+gz (MHz) 
+
+> δf (MHz)
+
+Fig. 8. Shift of the two-photon transition (colored lines) through the main qubit-TLS anti-crossing (black lines) for various longitudinal TLS-qubit coupling strengths gz. Inset: simulated frequency shift 
+
+δ f at qubit-TLS resonance vs. gz (points), and a plot of δ f = 0.5 · gz
+
+(dashed line). 
+
+Observation of a second junction-TLS. We observed a further example of qubit readout failures due to junction-TLS in the investigated sample and strain range. In Fig. 9a, we plot the raw data as shown in Fig. 1c in a wider range and at higher contrast. Besides the readout failure at a piezo voltage of Vp = 55 V, another one can be seen at Vp = 69 V. Closer inspection of the data in Fig. 9a and the extracted fit positions shown in Fig. 9b reveals a faint TLS trace, whose linear extrapolation (blue line) matches the resonator frequency when the readout failure is observed. This second TLS caused spoiled qubit readout in a broader strain range but did not display a pronounced anti-crossing with the qubit, which may be explained by a higher decoherence rates of TLS 2. 50 60 70 80 
+
+66.2 
+
+5. 9 66. 1 6. 2 6. 3 6. 4 6. 5 frequency (GHz) frequency (GHz) 50 55 60 65 70 75 80 85 strain / piezo voltage (V) strain / piezo voltage (V) 
+
+ba readout failure TLS 1 TLS 1 
+
+TLS 2 TLS 2 
+
+> |0 1-photon qubit resonator |1 |0 2-photon |2
+> S21
+
+TLS 2 
+
+Fig. 9 a) Raw data of Fig. 1c, plotted at higher contrast. Black and red lines are the fits to 1- and 2-photon transitions of TLS 1 as discussed in the main text. The blue line is a linear fit to the faintly visible trace of TLS 2. Both TLS cause readout failure (red arrows). b) Detected resonance frequencies (points) and QuTiP simulation for TLS 1 with best-fitting parameters (solid lines). 
+
+BIBLIOGRAPHY 
+
+> 1
+
+S. G. Rao, “The coherence challenge: Foundations and advancements in superconducting quantum circuits,” Arabian Journal for Science and Engi-neering , 1–25 (2026). 
+
+> 2
+
+J. M. Martinis, K. B. Cooper, R. McDermott, M. Steffen, M. Ansmann, K. D. Osborn, K. Cicak, S. Oh, D. P. Pappas, R. W. Simmonds, and C. C. Yu, “Decoherence in josephson qubits from dielectric loss,” Phys. Rev. Lett. 
+
+95 , 210503 (2005). 
+
+> 3
+
+C. Müller, J. H. Cole, and J. Lisenfeld, “Towards understanding two-level-systems in amorphous solids: insights from quantum circuits,” Reports on Progress in Physics 82 , 124501 (2019). 
+
+> 4
+
+J. J. Burnett, A. Bengtsson, M. Scigliuzzo, D. Niepce, M. Kudra, P. Delsing, and J. Bylander, “Decoherence benchmarking of superconducting qubits,” npj Quantum Information 5, 54 (2019). 
+
+> 5
+
+L. V. Abdurakhimov, I. Mahboob, H. Toida, K. Kakuyanagi, Y. Matsuzaki, and S. Saito, “Identification of different types of high-frequency defects in superconducting qubits,” PRX Quantum 3, 040332 (2022). 
+
+> 6
+
+M. Carroll, S. Rosenblatt, P. Jurcevic, I. Lauer, and A. Kandala, “Dynamics of superconducting qubit relaxation times,” npj Quantum Information 8,132 (2022). 
+
+> 7
+
+M. Mohseni, A. Scherer, K. G. Johnson, O. Wertheim, M. Otten, N. A. Aa-dit, Y. Alexeev, K. M. Bresniker, K. Y. Camsari, B. Chapman, et al. , “How to build a quantum supercomputer: Scaling from hundreds to millions of qubits,” arXiv preprint arXiv:2411.10406 (2024). 
+
+> 8
+
+D. Sank, Z. Chen, M. Khezri, J. Kelly, R. Barends, B. Campbell, Y. Chen, B. Chiaro, A. Dunsworth, A. Fowler, et al. , “Measurement-induced state transitions in a superconducting qubit: Beyond the rotating wave approxi-mation,” Physical review letters 117 , 190503 (2016). 
+
+> 9
+
+W. Dai, S. Hazra, D. Weiss, P. Kurilovich, T. Connolly, H. Babla, S. Singh, V. Joshi, A. Ding, P. Parakh, et al. , “Characterization of drive-induced un-wanted state transitions in superconducting circuits,” Physical Review X 
+
+16 , 011011 (2026). 
+
+> 10
+
+J. Lisenfeld, C. Müller, J. H. Cole, P. Bushev, A. Lukashenko, A. Shnir-man, and A. V. Ustinov, “Rabi spectroscopy of a qubit-fluctuator system,” Physical Review B—Condensed Matter and Materials Physics 81 , 100511 (2010). 
+
+> 11
+
+J. Lisenfeld, C. Müller, J. H. Cole, P. Bushev, A. Lukashenko, A. Shnirman, and A. V. Ustinov, “Measuring the temperature dependence of individual A9 
+
+two-level systems by direct coherent control,” Physical review letters 105 ,230504 (2010). 
+
+> 12
+
+F. Yan, Personal communication (2025). 
+
+> 13
+
+C. Rigetti and M. Devoret, “Fully microwave-tunable universal gates in superconducting qubits with linear couplings and fixed transition frequen-cies,” Physical Review B—Condensed Matter and Materials Physics 81 ,134507 (2010). 
+
+> 14
+
+F. Yan, P. Krantz, Y. Sung, M. Kjaergaard, D. L. Campbell, T. P. Orlando, S. Gustavsson, and W. D. Oliver, “Tunable coupling scheme for implement-ing high-fidelity two-qubit gates,” Physical Review Applied 10 , 054062 (2018). 
+
+> 15
+
+G. J. Grabovskij, T. Peichl, J. Lisenfeld, G. Weiss, and A. V. Ustinov, “Strain tuning of individual atomic tunneling systems detected by a super-conducting qubit,” Science 338 , 232–234 (2012). 
+
+> 16
+
+J. Lisenfeld, A. Bilmes, A. Megrant, R. Barends, J. Kelly, P. Klimov, G. Weiss, J. M. Martinis, and A. V. Ustinov, “Electric field spectroscopy of material defects in transmon qubits,” npj Quantum Information 5 (2019), 10.1038/s41534-019-0224-1. 
+
+> 17
+
+R. Barends, J. Kelly, A. Megrant, D. Sank, E. Jeffrey, Y. Chen, Y. Yin, B. Chiaro, J. Mutus, C. Neill, P. O’Malley, P. Roushan, J. Wenner, T. C. White, A. N. Cleland, and J. M. Martinis, “Coherent josephson qubit suit-able for scalable quantum integrated circuits,” Physical Review Letters 111 
+
+(2013), 10.1103/physrevlett.111.080502. 
+
+> 18
+
+J. Koch, T. M. Yu, J. Gambetta, A. A. Houck, D. I. Schuster, J. Majer, A. Blais, M. H. Devoret, S. M. Girvin, and R. J. Schoelkopf, “Charge-insensitive qubit design derived from the cooper pair box,” Physical Review A 76 (2007), 10.1103/physreva.76.042319. 
+
+> 19
+
+J. Burnett, A. Bengtsson, D. Niepce, and J. Bylander, “Noise and loss of su-perconducting aluminium resonators at single photon energies,” in Journal of Physics: Conference Series , Vol. 969 (IOP Publishing, 2018) p. 012131. 
+
+> 20
+
+A. Osman, J. Simon, A. Bengtsson, S. Kosen, P. Krantz, D. P Lozano, M. Scigliuzzo, P. Delsing, J. Bylander, and A. Fadavi Roudsari, “Simplified josephson-junction fabrication process for reproducibly high-performance superconducting qubits,” Applied Physics Letters 118 (2021). 
+
+> 21
+
+A. Bilmes, S. Volosheniuk, A. V. Ustinov, and J. Lisenfeld, “Probing defect densities at the edges and inside josephson junctions of superconducting qubits,” npj Quantum Information 8, 24 (2022). 
+
+> 22
+
+J. Lisenfeld, G. J. Grabovskij, C. Müller, J. H. Cole, G. Weiss, and A. V. Ustinov, “Observation of directly interacting coherent two-level systems in an amorphous material,” Nature Comm. 6, 6182 (2015). 
+
+> 23
+
+J. Lisenfeld, A. Bilmes, S. Matityahu, S. Zanker, M. Marthaler, M. Schechter, G. Schön, A. Shnirman, G. Weiss, and A. V. Ustinov, “Deco-herence spectroscopy with individual two-level tunneling defects,” Scien-tific reports 6, 23786 (2016). 
+
+> 24
+
+A. Wallraff, T. Duty, A. Lukashenko, and A. Ustinov, “Multiphoton transi-tions between energy levels in a current-biased josephson tunnel junction,” Physical review letters 90 , 037003 (2003). 
+
+> 25
+
+J. Johansson, P. Nation, and F. Nori, “QuTiP: An open-source Python framework for the dynamics of open quantum systems,” Computer Physics Communications 183 , 1760–1772 (2012). 
+
+> 26
+
+J. Johansson, P. Nation, and F. Nori, “QuTiP 2: A Python framework for the dynamics of open quantum systems,” Computer Physics Communications 
+
+184 , 1234–1240 (2013). 
+
+> 27
+
+A. Osman, J. Fernández-Pendás, C. Warren, S. Kosen, M. Scigliuzzo, A. Frisk Kockum, G. Tancredi, A. Fadavi Roudsari, and J. Bylander, “Mit-igation of frequency collisions in superconducting quantum processors,” Physical Review Research 5, 043001 (2023). 
+
+> 28
+
+D. Colao Zanuz, Q. Ficheux, L. Michaud, A. Orekhov, K. Hanke, A. Flasby, M. Bahrami Panah, G. J. Norris, M. Kerschbaum, A. Remm, et al. , “Miti-gating losses of superconducting qubits strongly coupled to defect modes,” Physical Review Applied 23 , 044054 (2025). 
+
+> 29
+
+E. Daum, B. Berlitz, S. Deck, A. V. Ustinov, and J. Lisenfeld, “Investigation of parasitic two-level systems in merged-element transmon qubits,” arXiv preprint arXiv:2509.22593 (2025). 
+
+> 30
+
+O. F. Wolff, H. Mantry, R. Raja, W.-H. Peng, K. Singirikonda, S. Lee, S. Sudhaman, R. Goncalves, P. Y. Huang, A. Kou, et al. , “Structural con-trol of two-level defect density revealed by high-throughput correlative measurements of josephson junctions,” arXiv preprint arXiv:2602.11469 (2026). 
+
+> 31
+
+R. W. Simmonds, K. Lang, D. A. Hite, S. Nam, D. P. Pappas, and J. M. Mar-tinis, “Decoherence in josephson phase qubits from junction resonators,” Physical Review Letters 93 , 077003 (2004). 
+
+> 32
+
+A. Lupa¸ scu, P. Bertet, E. Driessen, C. Harmans, and J. Mooij, “One-and two-photon spectroscopy of a flux qubit coupled to a microscopic defect,” Physical Review B—Condensed Matter and Materials Physics 80 , 172506 (2009). 
+
+> 33
+
+J. H. Cole, C. Müller, P. Bushev, G. J. Grabovskij, J. Lisenfeld, A. Lukashenko, A. V. Ustinov, and A. Shnirman, “Quantitative evaluation of defect-models in superconducting phase qubits,” Applied Physics Letters 
+
+97 (2010). 
+
+> 34
+
+P. Bushev, C. Müller, J. Lisenfeld, J. H. Cole, A. Lukashenko, A. Shnirman, and A. V. Ustinov, “Multiphoton spectroscopy of a hybrid quantum system,” Physical Review B—Condensed Matter and Materials Physics 82 , 134530 (2010). 
+
+> 35
+
+P. V. Klimov, J. Kelly, Z. Chen, M. Neeley, A. Megrant, B. Burkett, R. Barends, K. Arya, B. Chiaro, Y. Chen, et al. , “Fluctuations of energy-relaxation times in superconducting qubits,” Physical review letters 121 ,090502 (2018). 
+
+> 36
+
+L. Faoro and L. B. Ioffe, “Generalized tunneling model for tls in amorphous materials and its predictions for their dephasing and the noise in supercon-ducting microresonators,” arXiv preprint arXiv:1404.2410 (2014). 
+
+> 37
+
+C. Müller, J. Lisenfeld, A. Shnirman, and S. Poletto, “Interacting two-level defects as sources of fluctuating high-frequency noise in superconducting circuits,” Physical Review B 92 , 035442 (2015). 
+
+> 38
+
+A. Bilmes, S. Zanker, A. Heimes, M. Marthaler, G. Schön, G. Weiss, A. V. Ustinov, and J. Lisenfeld, “Electronic decoherence of two-level systems in a josephson junction,” Physical review B 96 , 064504 (2017). 
+
+> 39
+
+T. Thorbeck, A. Eddins, I. Lauer, D. T. McClure, and M. Carroll, “Two-level-system dynamics in a superconducting qubit due to background ion-izing radiation,” PRX Quantum 4, 020356 (2023). 
+
+> 40
+
+A. Morvan, B. Villalonga, X. Mi, S. Mandrà, A. Bengtsson, P. Klimov, Z. Chen, S. Hong, C. Erickson, I. Drozdov, et al. , “Phase transitions in random circuit sampling,” Nature 634 , 328–333 (2024). 
+
+> 41
+
+A. Grimm, N. E. Frattini, S. Puri, S. O. Mundhada, S. Touzard, M. Mir-rahimi, S. M. Girvin, S. Shankar, and M. H. Devoret, “Stabilization and operation of a kerr-cat qubit,” Nature 584 , 205–209 (2020). 
+
+> 42
+
+Y. Shalibo, Y. Rofe, D. Shwa, F. Zeides, M. Neeley, J. M. Martinis, and N. Katz, “Lifetime and coherence of two-level defects in a josephson junc-tion,” Phys. Rev. Lett. 105 , 177001 (2010). 
+
+> 43
+
+A. Bilmes, A. K. Händel, S. Volosheniuk, A. V. Ustinov, and J. Lisenfeld, “In-situ bandaged josephson junctions for superconducting quantum pro-cessors,” Superconductor Science and Technology 34 , 125011 (2021). 
+
+> 44
+
+M. Chen, J. C. Owens, H. Putterman, M. Schäfer, and O. Painter, “Phonon engineering of atomic-scale defects in superconducting quantum circuits,” Science Advances 10 , eado6240 (2024). 
+
+> 45
+
+L. Faoro, J. Bergli, B. L. Altshuler, and Y. M. Galperin, “Models of en-vironment and t 1 relaxation in josephson charge qubits,” Physical review letters 95 , 046805 (2005). 
+
+> 46
+
+K. Rogério de Sousa, B. Whaley, T. Hecht, J. von Delft, and F. K. Wilhelm, “Microscopic model of critical current noise in josephson-junction qubits: Subgap resonances and andreev bound states,” Phys. Rev. B 80 , 094515 (2009).

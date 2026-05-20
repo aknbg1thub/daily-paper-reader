@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.24716v1/fig-001.webp",
+      "caption": "FIG. 3. Charge dispersion δ01(ϵg) in units of EC in (a,b), and probability amplitude w(ϵg) in (c), with Γ/EC = 10 and ∆/EC = 90. (a) For symmetric tunneling rates ΓL,R = 5EC , δ01 is calculated from the WKB theory(orange, dashed), Eq. (27), and from exact numerical solutions of the Schrödinger equation with Ĥeven (blue, solid). (b) For asymmetric tunneling rates, δΓ/EC = 0, 4, 8, δ01 is calculated from the exact numerical solutions with Ĥeven. Decreasing of transparency T (ϵg) either due to finite δΓ, or due to increasing of ϵg leads to growth of w and so is the charge dispersion. (c) Probability amplitude w of the lower Andreev branch for δΓ = 0 and for finite δΓ = 4, 8EC . In the latter case w only slightly deviates from unity in the range of moderate ϵg/EC ≳ 15 − 20 meaning the system is “living” primarily on the lower Andreev branch in that range. When ϵg, δΓ ≪ Γ are both small w go to zero and charge dispersion is strongly suppressed.",
+      "page": 7,
+      "index": 1,
+      "width": 1058,
+      "height": 233
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24716v1/fig-002.webp",
+      "caption": "FIG. 6. Anharmonicity α(ϵg)/EC for small ϵg, |ϵg| ≲ EC , in a non-transmon regime, EC ≲ EJ,eff ≈ 0.5Γ (with Γ/EC = 16, ∆/EC = 360, δΓ ≪ EC). Exact numerics (solid blue) is compared to the WKB theory, Eq. (40), (solid green), and to an extended WKB theory (dashed orange line), see Appendix A. The choices for ng = 0.1, 0.6, are to avoid trivial zeros of the WKB result. (a) α(ϵg)/EC for ng = 0.1, and symmetric tunnelings ΓL,R = 8EC (i.e., T ≈ 1). The overall decrease of |α(ϵg)| as ϵg → 0 as well as the slope of α(ϵg) are captured by the WKB result, as w(λ̄(ϵg)) → 0, see Fig. 3(c) and Eq. (40). The non-zero intercept α(ϵg = 0) is reproduced in an extended WKB approach. (b) α(ϵg)/EC for ng = 0.6, and symmetric tunneling rates ΓL,R = 8EC (i.e., T ≈ 1). The WKB result captures the overall decrease as ϵg → 0, as well as the slope of α(ϵg), as w(λ̄(ϵg)) → 0. The change of the slope while changing from ng = 0.1 to ng = 0.6 follows from the cos-factor in Eq. (40). The non-zero intercept α(ϵg = 0) is reproduced in an extended WKB approach. (c) α(ϵg)/EC for ng = 0.6, and asymmetric tunnelings: δΓ = 0.1EC (δΓ ≪ Γ), corresponding to T ≈ 1. The WKB result is similar to Fig. 6(b), however, with w(ϵg = 0) ̸= 0, see Fig. 3(c). The non-zero intercept α(ϵg = 0) is approximately reproduced in the extended WKB approach.",
+      "page": 10,
+      "index": 2,
+      "width": 1058,
+      "height": 249
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24716v1/fig-003.webp",
+      "caption": "FIG. 5. (a),(b) Relative anharmonicity changes δαfluc(ϵg) and δαstat(ϵg) for symmetric tunnelings Γi/h = 3GHz at ng = 0 and ng = 0.5. The effect of δCΣ on anharmonicity can be comparable to that of Econt. (c),(d) Plots for δαfluc(δCΣ = 0) and δαfluc(δng = nz = 0) for asymmetric tunnelings ΓL/h = 3GHz, ΓR/h = 1GHz. The effects of charge offsets are found to be up to two orders of magnitude stronger.",
+      "page": 9,
+      "index": 3,
+      "width": 512,
+      "height": 354
+    }
+  ]
+}

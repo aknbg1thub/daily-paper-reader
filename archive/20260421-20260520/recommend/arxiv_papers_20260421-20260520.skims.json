@@ -1,0 +1,361 @@
+{
+  "mode": "skims",
+  "generated_at": "2026-05-20T07:52:08.641207+00:00",
+  "stats": {
+    "mode": "skims",
+    "forced_all_quick": true,
+    "min_score": 8.0,
+    "deep_divecandidates": 8,
+    "deep_cap": null,
+    "deep_selected": 0,
+    "quick_candidates": 8,
+    "quick_skim_target": null,
+    "quick_selected": 8
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2604.21565v1",
+      "source": "arxiv",
+      "title": "Pulse Shaping for Superconducting Qubits",
+      "abstract": "High-fidelity control of superconducting qubits requires carefully shaped microwave pulses that account for multiple error channels. In this work, we present a pedagogical introduction to pulse-shaping techniques for transmon qubits, aiming to provide a unified, accessible framework that integrates physical intuition for pulse design, analytical understanding of gate-level descriptions, and practical considerations of hardware. This article further aims to serve as a guide for students and early researchers entering superconducting quantum computing. We begin by examining simple pulse envelopes and their spectral properties, highlighting how finite bandwidth leads to leakage outside the computational subspace. These observations motivate the introduction of the derivative removal by adiabatic gate (DRAG) technique, which uses a quadrature component proportional to the pulse's time derivative to suppress off-resonant excitations. We analyze the single-qubit case using the Magnus expansion, which provides a clear understanding of the order-by-order introduction of error channels. We discuss the practical hardware realities of control pulse generation, focusing on arbitrary waveform generators (AWG), local oscillators (LO), and IQ mixing. Common imperfections are discussed in terms of their impact on the effective pulse shape and qubit Hamiltonian. Finally, we extend the discussion to two-qubit operations, focusing on the cross-resonance gate and the emergence of effective interactions.",
+      "authors": [
+        "Animesh Patra",
+        "Ankur Raina"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "eess.SP"
+      ],
+      "published": "2026-04-23T11:37:08+00:00",
+      "link": "https://arxiv.org/pdf/2604.21565v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "pedagogical pulse-shaping for transmon qubits",
+      "llm_evidence_cn": "transmon量子比特脉冲整形教学",
+      "llm_evidence": "transmon量子比特脉冲整形教学",
+      "canonical_evidence": "transmon量子比特脉冲整形教学",
+      "llm_tldr_en": "A pedagogical guide to pulse shaping for high-fidelity transmon qubit control.",
+      "llm_tldr_cn": "transmon量子比特高保真控制的脉冲整形教学指南。",
+      "llm_tldr": "transmon量子比特高保真控制的脉冲整形教学指南。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.22112v1",
+      "source": "arxiv",
+      "title": "Enhanced Tantalum Superconducting Resonator Performance via All-Surface Organic Monolayer Passivation",
+      "abstract": "Tantalum is a promising platform for superconducting quantum circuits, yet coherence times remain limited by dielectric losses from interfacial two-level systems (TLS), exacerbated by native oxide regrowth. Here, we implement molecular surface passivation using self-assembled organic monolayers on freshly etched tantalum and silicon in coplanar waveguide resonators. Surface characterization by contact angle, XPS, FTIR and TEM confirm the formation of ordered, nanometer-thick films that suppress oxide formation. Microwave measurements in the ~5-9 GHz range reveal internal quality factors up to 1.8x10^6 in the single-photon regime at 100 mK, representing a ~140% improvement over untreated devices with native oxide. Power and temperature dependent measurements attribute this enhancement to reduced TLS-induced losses. These results demonstrate that molecular passivation effectively engineers low-loss interfaces and provides a scalable route toward high-coherence superconducting quantum devices.",
+      "authors": [
+        "Harsh Gupta",
+        "Moritz Singer",
+        "Benedikt Schoof",
+        "Anna Cattani-Scholz",
+        "Shreya Sharma",
+        "Luca Rommeis",
+        "Marc Tornow"
+      ],
+      "primary_category": "cond-mat.mtrl-sci",
+      "categories": [
+        "cond-mat.mtrl-sci",
+        "physics.app-ph",
+        "quant-ph"
+      ],
+      "published": "2026-04-23T23:11:23+00:00",
+      "link": "https://arxiv.org/pdf/2604.22112v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "tantalum-based superconducting resonator coherence improvement",
+      "llm_evidence_cn": "钽基超导谐振器相干性提升",
+      "llm_evidence": "钽基超导谐振器相干性提升",
+      "canonical_evidence": "钽基超导谐振器相干性提升",
+      "llm_tldr_en": "Passivates tantalum resonators with organic monolayers, boosting Qi up to 1.8M",
+      "llm_tldr_cn": "用有机单层钝化钽谐振器，本征品质因子提至1.8M",
+      "llm_tldr": "用有机单层钝化钽谐振器，本征品质因子提至1.8M",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.24716v1",
+      "source": "arxiv",
+      "title": "Gate-dependent offset charge shifts and anharmonicity in gatemon qubits in the weak tunneling regime",
+      "abstract": "Gatemon qubits are based on a superconductor-quantum dot-superconductor (S-QD-S) junction which enables in situ electrostatic tuning via a gate electrode. For a single-channel QD this structure gives rise to two subgap Andreev bound states (ABSs), and generally leads to a richer quantum phase dynamics as compared to conventional transmons. In a recent work [Phys. Rev. B 111, 214503 (2025)] we derived the quantum phase dynamics from a many-body treatment which leads to an effective gate voltage-dependent Hamiltonian that self-consistently incorporates the phase quantization. It predicts (i) a renormalization of the junction's effective capacitance and (ii) the presence of gate voltage and occupation-dependent charge offsets in junctions with tunneling asymmetry. Here, we quantify the observable impact of these effects on the qubit's energy spectrum and anharmonicity, by studying the interplay of the two Andreev branches as a function of dot-gate voltages and junction transparencies. We show the relation of these predictions to simplified gatemon models and propose a protocol to experimentally detect the predicted charge offsets.",
+      "authors": [
+        "Utkan Güngördü",
+        "Rusko Ruskov",
+        "Silas Hoffman",
+        "Kyle Serniak",
+        "Andrew J. Kerman",
+        "Charles Tahan"
+      ],
+      "primary_category": "cond-mat.mes-hall",
+      "categories": [
+        "cond-mat.mes-hall",
+        "quant-ph"
+      ],
+      "published": "2026-04-27T17:24:20+00:00",
+      "link": "https://arxiv.org/pdf/2604.24716v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "derives effective gate-dependent Hamiltonian with phase quantization and anharmonicity for superconducting qubits",
+      "llm_evidence_cn": "推导与栅压相关的有效哈密顿量，包含相位量子化和非谐性",
+      "llm_evidence": "推导与栅压相关的有效哈密顿量，包含相位量子化和非谐性",
+      "canonical_evidence": "推导与栅压相关的有效哈密顿量，包含相位量子化和非谐性",
+      "llm_tldr_en": "Derives effective Hamiltonian for gatemon qubits showing gate-tunable anharmonicity and charge shifts.",
+      "llm_tldr_cn": "推导gate-mon量子比特有效哈密顿量，展示栅压可调非谐性与电荷偏移。",
+      "llm_tldr": "推导gate-mon量子比特有效哈密顿量，展示栅压可调非谐性与电荷偏移。",
+      "llm_tags": [
+        "query:hamiltonian"
+      ],
+      "matched_query_tag": "query:hamiltonian",
+      "matched_query_text": "effective Hamiltonian derivation for superconducting qubits couplers and resonators",
+      "matched_requirement_id": "req-19",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.24716v2",
+      "source": "arxiv",
+      "title": "Gate-dependent offset charge shifts and anharmonicity in gatemon qubits in the weak tunneling regime",
+      "abstract": "Gatemon qubits are based on a superconductor-quantum dot-superconductor (S-QD-S) junction which enables in situ electrostatic tuning via a gate electrode. For a single-channel QD this structure gives rise to two subgap Andreev bound states (ABSs), and generally leads to a richer quantum phase dynamics as compared to conventional transmons. In a recent work [Phys. Rev. B 111, 214503 (2025)] we derived the quantum phase dynamics from a many-body treatment which leads to an effective gate voltage-dependent Hamiltonian that self-consistently incorporates the phase quantization. It predicts (i) a renormalization of the junction's effective capacitance and (ii) the presence of gate voltage and occupation-dependent charge offsets in junctions with tunneling asymmetry. Here, we quantify the observable impact of these effects on the qubit's energy spectrum and anharmonicity, by studying the interplay of the two Andreev branches as a function of dot-gate voltages and junction transparencies. We show the relation of these predictions to simplified gatemon models and propose a protocol to experimentally detect the predicted charge offsets.",
+      "authors": [
+        "Utkan Güngördü",
+        "Rusko Ruskov",
+        "Silas Hoffman",
+        "Kyle Serniak",
+        "Andrew J. Kerman",
+        "Charles Tahan"
+      ],
+      "primary_category": "cond-mat.mes-hall",
+      "categories": [
+        "cond-mat.mes-hall",
+        "quant-ph"
+      ],
+      "published": "2026-04-27T17:24:20+00:00",
+      "link": "https://arxiv.org/pdf/2604.24716v2",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "derives effective gate voltage-dependent Hamiltonian for gatemon qubit, includes anharmonicity and capacitance renormalization",
+      "llm_evidence_cn": "推导了门电压依赖的gatemon量子比特有效哈密顿量，包含非谐性和电容重整化",
+      "llm_evidence": "推导了门电压依赖的gatemon量子比特有效哈密顿量，包含非谐性和电容重整化",
+      "canonical_evidence": "推导了门电压依赖的gatemon量子比特有效哈密顿量，包含非谐性和电容重整化",
+      "llm_tldr_en": "Derives effective Hamiltonian for gatemon qubits, showing gate-dependent anharmonicity and capacitance effects",
+      "llm_tldr_cn": "推导gatemon量子比特的有效哈密顿量，展示了门电压依赖的非谐性和电容效应",
+      "llm_tldr": "推导gatemon量子比特的有效哈密顿量，展示了门电压依赖的非谐性和电容效应",
+      "llm_tags": [
+        "query:hamiltonian"
+      ],
+      "matched_query_tag": "query:hamiltonian",
+      "matched_query_text": "effective Hamiltonian models for transmon qubits, tunable couplers, resonators, Kerr terms, and dispersive interactions",
+      "matched_requirement_id": "req-24",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.24912v1",
+      "source": "arxiv",
+      "title": "Data-Driven Hamiltonian Reduction for Superconducting Qubits via Meta-Learning",
+      "abstract": "We introduce HAML (Hamiltonian Adaptation via Meta-Learning), a framework for fast online adaptation of effective Hamiltonian models of superconducting quantum processors. HAML proceeds in two phases. A supervised training phase uses an ensemble of simulated devices to learn an offline map from control inputs and device parameters to effective Hamiltonian coefficients. An online adaptation phase then uses a small number of hardware-accessible measurements to identify the unknown parameters of a new device. By training directly against effective two-qubit coefficients extracted from full multi-mode simulations, HAML implicitly learns the reduction from full multi-mode Hamiltonians to effective qubit descriptions without invoking perturbation theory. We further show that a variance-maximizing greedy selection of measurement configurations boosts online adaptation efficiency. We demonstrate HAML on a transmon-coupler-transmon system, recovering effective two-qubit coefficients across a wide range of operating regimes, including parameter regions where Schrieffer-Wolff perturbation theory (SWPT) breaks down. This establishes a scalable, sample-efficient approach to Hamiltonian reduction and characterization for near-term quantum processors, with direct implications for calibration, control, and error mitigation.",
+      "authors": [
+        "Arielle Sanford",
+        "Andrew T. Kamen",
+        "Frederic T. Chong",
+        "Andy J. Goldschmidt"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cs.LG"
+      ],
+      "published": "2026-04-27T18:48:13+00:00",
+      "link": "https://arxiv.org/pdf/2604.24912v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "meta-learning framework for fast adaptation of effective Hamiltonians of superconducting quantum processors",
+      "llm_evidence_cn": "用于超导量子处理器有效哈密顿量快速适应的元学习框架",
+      "llm_evidence": "用于超导量子处理器有效哈密顿量快速适应的元学习框架",
+      "canonical_evidence": "用于超导量子处理器有效哈密顿量快速适应的元学习框架",
+      "llm_tldr_en": "HAML uses meta-learning to quickly derive effective Hamiltonians of superconducting qubits from few measurements.",
+      "llm_tldr_cn": "HAML 利用元学习从少量测量中快速导出超导量子比特的有效哈密顿量。",
+      "llm_tldr": "HAML 利用元学习从少量测量中快速导出超导量子比特的有效哈密顿量。",
+      "llm_tags": [
+        "query:hamiltonian"
+      ],
+      "matched_query_tag": "query:hamiltonian",
+      "matched_query_text": "recent methods for deriving, solving, and validating Hamiltonians of superconducting quantum circuits from circuit parameters",
+      "matched_requirement_id": "req-23",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.02755v1",
+      "source": "arxiv",
+      "title": "Readout failures in superconducting qubits due to TLS-defects in tunnel junctions",
+      "abstract": "Material defects give rise to parasitic two-level systems (TLS) which present a major source of decoherence in superconducting qubits. Here, we study a strongly coupled TLS that resides in the tunnel barrier of transmon qubit. We use multi-photon spectroscopy and TLS strain tuning to explore the rich spectrum of the interacting three-partite system consisting of TLS, qubit, and its readout resonator. This reveals a strong effective resonant coupling between the TLS and the qubit's readout resonator which dresses the resonator states and results in a resonance frequency shift that spoils the readout signal. Our finding presents yet another way how material defects can interfere with qubit operation and hinder the realization of solid-state quantum processors.",
+      "authors": [
+        "J. Lisenfeld",
+        "A. K. Händel",
+        "A. Bilmes",
+        "A. V. Ustinov"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cond-mat.mes-hall",
+        "cond-mat.supr-con"
+      ],
+      "published": "2026-05-04T15:56:40+00:00",
+      "link": "https://arxiv.org/pdf/2605.02755v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "TLS defects in transmon qubit tunnel junctions cause readout failures; studies qubit coherence and control implications",
+      "llm_evidence_cn": "Transmon量子比特隧道结中的TLS缺陷导致读出失败，研究相干性与控制影响",
+      "llm_evidence": "Transmon量子比特隧道结中的TLS缺陷导致读出失败，研究相干性与控制影响",
+      "canonical_evidence": "Transmon量子比特隧道结中的TLS缺陷导致读出失败，研究相干性与控制影响",
+      "llm_tldr_en": "Investigates how a strongly coupled TLS in a transmon junction disrupts readout, highlighting a coherence control challenge.",
+      "llm_tldr_cn": "研究强耦合TLS如何破坏transmon读出，揭示相干控制挑战。",
+      "llm_tldr": "研究强耦合TLS如何破坏transmon读出，揭示相干控制挑战。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.10578v1",
+      "source": "arxiv",
+      "title": "Ultra-Fast Quantum Control via Non-Adiabatic Resonance Windows: A 9x Speed-up on 127-Qubit IBM Processors",
+      "abstract": "Standard adiabatic protocols for superconducting qubits often face a trade-off between gate speed and decoherence. In this work, using IBM Quantum 127-qubit processors (ibm_fez and ibm_kingston), we report the discovery of a fundamental non-adiabatic resonance window at about 4.9. This window demonstrates the potential for a 9.2-fold reduction in gate duration relative to the conventional adiabatic limit, while maintaining state high fidelities within the identified resonance windows. Through synchronous cross-backend execution, we demonstrate a near-perfect correlation (R = 0.9998) in the resonance profile, confirming the universality of the non-adiabatic parameter across independent hardware architectures. However, our longitudinal analysis reveals that these high-Q windows are sensitive to sub-percent calibration drifts, which dynamically shift the system into a stochastic regime. These findings suggest that achieving next-tier quantum performance requires a transition from static gate protocols to dynamic resonance-tracking control tools. This study provides both the theoretical foundation and the experimental evidence for such ultra-fast, high-performance quantum architectures.",
+      "authors": [
+        "A. M. Tishin"
+      ],
+      "primary_category": "cond-mat.mes-hall",
+      "categories": [
+        "cond-mat.mes-hall"
+      ],
+      "published": "2026-05-11T13:50:36+00:00",
+      "link": "https://arxiv.org/pdf/2605.10578v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "demonstrates non-adiabatic fast control of superconducting qubits on IBM processors, improving gate speed vs coherence",
+      "llm_evidence_cn": "在IBM处理器上演示超导量子比特的非绝热快速控制，提升门速度与相干权衡",
+      "llm_evidence": "在IBM处理器上演示超导量子比特的非绝热快速控制，提升门速度与相干权衡",
+      "canonical_evidence": "在IBM处理器上演示超导量子比特的非绝热快速控制，提升门速度与相干权衡",
+      "llm_tldr_en": "Achieves 9x faster gates on 127-qubit IBM processors via non-adiabatic resonance.",
+      "llm_tldr_cn": "通过非绝热共振在127量子比特IBM处理器上实现9倍加速门操作。",
+      "llm_tldr": "通过非绝热共振在127量子比特IBM处理器上实现9倍加速门操作。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.15554v1",
+      "source": "arxiv",
+      "title": "Interface Piezoelectric Loss in Superconducting Qubits",
+      "abstract": "Dissipation remains a central obstacle to improving superconducting quantum circuits, yet the microscopic origins of loss in widely used materials platforms are not fully understood. Here, we report the observation of interface piezoelectricity-induced dissipation in superconducting qubits fabricated on high-resistivity silicon. Our devices use a transmon qubit with a shunt capacitor that simultaneously serves as an interdigital transducer embedded in a surface acoustic wave resonator. By tuning the qubit transition into resonance with discrete mechanical modes, we observe up to a factor-of-two reduction in qubit lifetime, consistent with energy exchange between the qubit and mechanical modes mediated by piezoelectric coupling at the aluminum-silicon interface. Our findings provide direct evidence for interface piezoelectricity as a distinct loss channel in superconducting qubits. Combined with multiphysics simulations, these findings suggest that interface piezoelectric loss can dominate over loss from two-level systems at sufficiently high frequencies.",
+      "authors": [
+        "Haoxin Zhou",
+        "Kangdi Yu",
+        "Yashwanth Balaji",
+        "Sanjit Shirol",
+        "Leo Sementilli",
+        "Zi-Huai Zhang",
+        "Adam Schwartzberg",
+        "Alp Sipahigil"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cond-mat.mes-hall"
+      ],
+      "published": "2026-05-15T02:46:29+00:00",
+      "link": "https://arxiv.org/pdf/2605.15554v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "transmon qubit dissipation mechanism study",
+      "llm_evidence_cn": "transmon 量子比特损耗机制研究",
+      "llm_evidence": "transmon 量子比特损耗机制研究",
+      "canonical_evidence": "transmon 量子比特损耗机制研究",
+      "llm_tldr_en": "Discovers interface piezoelectricity-induced dissipation in transmon qubits on silicon.",
+      "llm_tldr_cn": "发现硅上 transmon 量子比特的界面压电致耗散。",
+      "llm_tldr": "发现硅上 transmon 量子比特的界面压电致耗散。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ]
+}

@@ -1,0 +1,1595 @@
+Title: Interface Piezoelectric Loss in Superconducting Qubits
+
+URL Source: https://arxiv.org/pdf/2605.15554v1
+
+Published Time: Mon, 18 May 2026 00:26:29 GMT
+
+Number of Pages: 21
+
+Markdown Content:
+## Interface Piezoelectric Loss in Superconducting Qubits 
+
+Haoxin Zhou, 1, 2, 3, ∗ Kangdi Yu, 1, 2, ∗ Yashwanth Balaji, 4 Sanjit Shirol, 3 Leo Sementilli, 1, 2, 3 Zi-Huai Zhang, 1, 2, 3 Adam Schwartzberg, 4 and Alp Sipahigil 1, 2, 3, †
+
+> 1
+
+Department of Electrical Engineering and Computer Sciences, University of California, Berkeley, Berkeley, California 94720, USA 
+
+> 2
+
+Materials Sciences Division, Lawrence Berkeley National Laboratory, Berkeley, California 94720, USA 
+
+> 3
+
+Department of Physics, University of California, Berkeley, Berkeley, California 94720, USA 
+
+> 4
+
+Molecular Foundry, Lawrence Berkeley National Laboratory, Berkeley, California 94720, USA 
+
+Dissipation remains a central obstacle to improving superconducting quantum circuits, yet the microscopic origins of loss in widely used materials platforms are not fully understood. Here, we report the observation of interface piezoelectricity-induced dissipation in superconducting qubits fabricated on high-resistivity silicon. Our devices use a transmon qubit with a shunt capacitor that simultaneously serves as an interdigital transducer embedded in a surface acoustic wave resonator. By tuning the qubit transition into resonance with discrete mechanical modes, we observe up to a factor-of-two reduction in qubit lifetime, consistent with energy exchange between the qubit and mechanical modes mediated by piezoelectric coupling at the aluminum-silicon interface. Our findings provide direct evidence for interface piezoelectricity as a distinct loss channel in superconducting qubits. Combined with multiphysics simulations, these findings suggest that interface piezoelectric loss can dominate over loss from two-level systems at sufficiently high frequencies. 
+
+Identifying the mechanisms that limit macroscopic quan-tum coherence in superconducting qubits has become central to scalable, fault-tolerant quantum information processing and to the broader study of dissipation in solids [1, 2]. Qubit losses are commonly attributed to material disorder, often modeled as two-level systems (TLSs) in dielectrics that couple to mi-crowave fields and absorb energy [3, 4]. Continued advances in materials and fabrication have substantially reduced such disorder-induced losses [5]. Yet, additional dissipation chan-nels may arise from intrinsic or structural properties of the systems themselves. Electromechanical coupling is one possible intrinsic dissi-pation pathway for superconducting qubits. In strongly piezo-electric substrates, microwave electric fields can couple effi-ciently to acoustic phonons, allowing superconducting qubits to radiate energy into propagating acoustic modes [6]. Such phonon-mediated relaxation has been observed in supercon-ducting qubits fabricated on or in proximity to piezoelec-tric materials [7, 8]. Piezoelectric loss can be nominally avoided by using non-piezoelectric substrates such as silicon or sapphire, where the centrosymmetry of their crystal struc-tures suppresses electromechanical dissipation [9]. Recent classical electromechanical measurements have shown that superconductor-substrate interfaces exhibit an effective piezo-electric response even when the bulk material is centrosym-metric [10]. Whether this coupling limits the coherence of superconducting qubits, and how it scales with device geom-etry and frequency, has remained an open question: phonon emission from a qubit on a centrosymmetric substrate has not been directly measured. Here, we present direct evidence that interface piezoelec-tricity causes superconducting qubits on silicon to radiate en-ergy into propagating phonons. This is achieved by cou-pling a frequency-tunable transmon qubit to a surface acous-tic wave (SAW) resonator. When the qubit is tuned into res-onance with the acoustic modes, its lifetime is significantly reduced, consistent with energy loss through phonon radia-tion [8]. These findings establish interface piezoelectricity as a previously overlooked source of dissipation [11] that can intrinsically limit qubit lifetime, even when the qubits are fab-ricated on nominally non-piezoelectric materials. Moreover, our findings reveal how symmetry breaking at material inter-faces enables unexpected couplings between quantum devices and propagating phonons, opening new opportunities to engi-neer coherent qubit-phonon interactions. 
+
+Interface piezoelectric qubit-phonon coupling 
+
+To probe qubit-phonon coupling mediated by interface piezoelectricity, we integrate a superconducting transmon qubit directly into a SAW resonator [12, 13] (Fig. 1a). The de-vice is fabricated by patterning a 50-nm-thick aluminum film on an intrinsic silicon substrate. The qubit consists of a super-conducting interference device (SQUID) shunted by an inter-digital capacitor Cidt , which is positioned between two Bragg reflectors that define the SAW resonator. In this geometry, Cidt 
+
+simultaneously functions as the transmon qubit shunt capac-itor and as the electromechanical transducer (an interdigital transducer, IDT) [6] of the SAW resonator, ensuring maximal spatial overlap between the qubit electric field and the me-chanical strain field (Fig. 1b). Electromechanical transduction arises from the piezoelectric response at the aluminum-silicon interface beneath Cidt (inset of Fig. 1a). The qubit is capaci-tively coupled to a microwave resonator for dispersive readout (RO) and is independently controlled via dedicated XY and flux bias lines. A circuit representation of the entire system is shown in Fig. 1c, and qubit parameters for the samples studied are listed in Table S1. These parameters are extracted from the experimental results shown in Fig. S3. The device therefore realizes a qubit coupled to a multi-mode mechanical resonator (Fig. 1d), described by the effec-
+
+> arXiv:2605.15554v1 [quant-ph] 15 May 2026
+
+2C g1 C g2 C idt SQUID SAW Reflector SAW Reflector SAW Reflector SAW Reflector 
+
+Cidt 
+
+> Cxy
+> Cg1
+> Cg2
+> Cr
+> Lr
+> Cro
+> gm, Ngm,1
+
+# qbNb1   
+
+> κm,1 κm, N
+> Γ(0) 1,q
+> Vbias
+> Vxy
+> Vro
+> +-+-+-
+
+C idt XY Line RO Resonator Flux Line    
+
+> iii
+> Cidt
+> Iflux
+> 040 Displacement (pm)
+
+a
+
+bc d 
+
+> Cxy Aluminum Silicon
+
+FIG. 1. A transmon qubit inside a SAW resonator on silicon. a, False-colored optical micrograph of a device studied (Sample C). A floating transmon qubit (blue), formed by a SQUID shunted by an IDT capacitor Cidt , couples capacitively to a quarter-wavelength readout resonator (purple) via Cg1 and Cg2 . The qubit is driven through the XY line (green) and flux-tuned via the flux line (yel-low). A SAW resonator, defined by two reflectors, spatially overlaps with the qubit electric field, enabling piezoelectric electromechanical coupling. Left inset: Enlarged view of the IDT fingers. Scale bars: 
+
+50 μm (main), 5 μm (inset). Right inset: Schematic illustration of the interface-mediated piezoelectric response. b, Side view of the simulated mechanical displacement field for a representative SAW resonator mode, showing evanescent decay into the reflector regions. 
+
+c, Lumped-element circuit model. The mirrors (pink) represent the SAW resonator. The XY line is connected to a bias tee combining a DC bias Vbias and an AC drive Vxy . The readout tone Vro couples to the resonator, and the flux bias Iflux tunes the SQUID. d, Simplified quantum-optical model of the piezoelectric interaction. The qubit couples to each SAW resonator mode with strength gm,k . Here, Γ(0) 1,q
+
+is the intrinsic qubit loss of non-piezoelectric origin, and κm,k are the SAW resonator mode decay rates. 
+
+tive Hamiltonian 
+
+ˆHqm 
+
+ℏ = ωq
+
+2 ˆσz +
+
+> N
+
+X
+
+> k=1
+
+h
+
+ωm,k ˆb†
+
+> k
+
+ˆbk − gm,k ˆσx
+
+ˆbk + ˆb†
+
+> k
+
+i 
+
+, (1) where ωq = 2 πf q is the qubit transition frequency, ωm,k de-notes the frequency of the kth longitudinal SAW resonator mode, ˆσx,y,z are the Pauli operators acting in the qubit Hilbert space, and ˆbk (ˆb†
+
+> k
+
+) are the annihilation (creation) operators of the mechanical modes. The coupling strengths gm,k arise from the interface-mediated electromechanical interaction beneath def
+
+> τ0XY RO Flux
+
+a c
+
+> ε(Vbias )
+> Δ0
+> ħωTLS
+
+b 10 0 10 3 10 63.050 3.075 3.100 3.125 3.150 3.175 3.200   
+
+> fq(GHz)
+> pe,avg  (a.u.)
+> −4 −2
+> 02
+> 4
+> Vbias  (V)
+> pe(a.u.)
+> |S21  | (dB)
+> -140
+> -120 -100
+> Mechanics TLS
+> |E| (V/m)
+
+FIG. 2. Detecting interface piezoelectric qubit-phonon coupling. a, Pulse sequence used to probe the effect of electromechanical cou-pling at a fixed delay time tdelay = τ0 = 3 μs following qubit exci-tation. b, Simulated electric-field distribution generated by applying 
+
+Vbias = 1 V to the XY line. Scale bar represents 30 μm. c, The stan-dard tunneling model of a TLS. An applied voltage bias Vbias shifts the TLS transition energy ℏωTLS . d, Qubit excited state population 
+
+pe measured at delay time τ0 as a function of qubit frequency fq and TLS-tuning bias voltage Vbias . e, Bias-averaged pe at fixed delay time 
+
+τ0, revealing the spectral signatures of the SAW resonator modes. f,Reference transmission through a pair of IDTs with identical dimen-sions on a separate device shows the operational bandwidth of the transducers (Sample D). 
+
+Cidt , whereby strain in the SAW mode induces an electric po-larization that couples to the qubit charge degree of freedom. 
+
+Detecting interface piezoelectric loss in a transmon qubit 
+
+Resonant transverse coupling between the qubit and the SAW resonator modifies the dynamics of the excited qubit, leading either to enhanced relaxation in the Purcell regime or to coherent oscillatory exchange in the strong-coupling regime [7, 12, 14]. The resulting change in qubit dynamics can be monitored by measuring the excited-state population 
+
+pe at a fixed delay time tdelay = τ0 following excitation [15], using the pulse sequence shown in Fig. 2a. Electromechan-ical coupling, however, is not the only mechanism capable of modifying pe(τ0). First, weakly coupled dielectric TLS defects can enhance energy relaxation and obscure the con-tribution from piezoelectric coupling. We therefore choose an optimized IDT periodicity, λIDT = 1.6 μm, guided by 3an estimate of the qubit dielectric loss (see Fig. S6), such that the predicted piezoelectric signature remains resolvable above the TLS-induced loss background. Second, individ-ual dielectric TLS defects that strongly couple to the qubit can produce qualitatively similar signatures in relaxation mea-surements [15]. It is therefore essential to distinguish col-lective electromechanical resonances from TLS-induced fea-tures. To this end, we exploit their different responses to ex-ternally applied electric fields. A DC bias voltage Vbias is ap-plied via the qubit XY line (Fig. 1c), generating an electro-static field concentrated beneath Cidt , as shown in the sim-ulated field distribution in Fig. 2b for Vbias = 1 V. Micro-scopic TLS defects that interact with the qubit possess electric dipole moments and therefore undergo Stark shifts in an elec-trostatic field [16, 17], provided that they do not reside in the junctions [18] and that their dipole moments have sufficient overlap with the applied field. Within the standard tunneling model [19] description, the TLS transition frequency is given by ωTLS = p∆20 + ϵ2(Vbias )/ℏ, where ∆0 is the tunneling amplitude and ϵ(Vbias ) is the asymmetry energy that depends on the applied bias voltage (Fig. 2c) though the dipole inter-action. In contrast, the SAW resonator resonances are set by lithographic geometry and the elastic properties of the host materials, and are therefore largely insensitive to Vbias .Experimentally, we map pe(τ0) as a function of qubit fre-quency and Vbias . The result (Fig. 2d) reveals two distinct classes of features. A set of resonances remains fixed in fre-quency across the entire bias range, forming vertical bands in the spectrum. These field-independent features are mechani-cal resonances that coincide with the independently measured IDT passband (Fig. 2f) and are attributed to qubit-phonon cou-pling described by the Hamiltonian in Eq. (1). In addition, we observe resonances that shift strongly with Vbias , consistent with Stark-tunable TLS defects. The phonon-induced contri-bution to pe can be isolated by averaging the data over Vbias ,which averages out the effects from TLS resonances while preserving bias-independent mechanical resonances (Fig. 2e). After averaging over the bias field, a series of dips emerges within the IDT passband (Fig. 2f), exhibiting nearly uniform spacing corresponding to the free spectral range (FSR), con-sistent with the discrete longitudinal modes of the reflector-defined SAW resonator. 
+
+Interface piezoelectricity-dominated qubit relaxation 
+
+To study the qubit-phonon resonant dynamics in more de-tail and to extract the electromechanical coupling strengths 
+
+gm,k , we measure the qubit excited-state population as a func-tion of delay time tdelay for different qubit frequencies ωq.The resulting traces are well fit by single-exponential decays (Fig. 3b), indicating that the qubit-phonon system is in the weak-coupling regime. We characterize the frequency depen-dence of the qubit relaxation rate Γ1,q = 1 /T 1, where T1 is the qubit relaxation time. From the Lindblad master equation a bc                            
+
+> 234
+> T1 (μs) 3.050 3.075 3.100 3.200 3.175 3.125 3.150 2343.08 3.10 3.12 3.14 3.16 fitted T1T1(0) average T1
+> ef
+> fq(GHz)
+> g
+> 3.11 3.12 3.13 3.14 3.15 1.2 1.3 1.4 1.1 fitted T1T1(0) average T10.0 0.5 1.0 0.0 0.5 1.0 010 20 0.5 0.0 1.0
+> pe (a.u.)  pe (a.u.)
+> Vbias
+> XY RO Flux Bias
+> tdelay
+> Iflux
+> ×n
+> 1.5
+> Lshort
+> Llong
+> d
+> T1 (μs) T1 (μs)
+> tdelay (μs) data fit data fit 3.05 3.10 3.15 3.20 0.2 0.6 0.5 0.4 0.3
+> T2* ( μs) fitted T2*average T2*
+> fq(GHz)
+
+FIG. 3. Qubit lifetime reduction due to piezoelectric coupling to SAW resonator modes. a, Pulse sequence used for coherence mea-surements. b, Example of an energy-relaxation ( T1) characterization measured at fq =3.14 GHz. c, Example of a Ramsey ( T ∗ 
+
+> 2
+
+) character-ization measured at fq =3.14 GHz. d, Bias-averaged T ∗ 
+
+> 2
+
+as a func-tion of qubit frequency. The decreasing trend of T ∗ 
+
+> 2
+
+away from the sweet spot is captured by the flux sensitivity T ∗ 
+
+> 2
+
+∝ (∂f q/∂I flux )−1
+
+[20]. e, Bias-averaged T1 as a function of qubit frequency fq. The white-background region indicates the bandwidth of the SAW mir-ror. f, Zoomed-in view of panel e, fitted using Eq. (2). The fit yields the background relaxation time T (0) 1 , indicated by the gray dashed line, as well as the electromechanical coupling strength gm,k and the SAW resonator mode linewidth κm,k . (See Table. S2.) Inset: optical micrograph of Sample A. Lshort = 380 μm is the distance between the two sets of reflectors. g, Same as panel f, but for Sample B, which has a larger resonator length Llong than Sample A. Inset: optical mi-crograph of Sample B. Llong = 1120 μm is the distance between the two sets of reflectors. 
+
+[21] (also see Supplementary), 
+
+Γ1,q(ωq) = Γ (0) 1,q +
+
+> N
+
+X
+
+> k=1
+
+2|gm,k |2Γ2,k 
+
+Γ22,k + ( ωq − ωm,k )2 , (2) where the effective qubit-SAW resonator decoherence rates are Γ2,k = Γ 2,q + κm,k /2, and T ∗ 
+
+> 2
+
+= 1 /Γ2,q denotes the qubit coherence time. The nominal qubit decay rate Γ(0) 1,q = 1 /T (0) 1
+
+is added to account for any non-piezoelectric qubit loss. Equa-tion (2) enables the extraction of both gm,k and κm,k once Γ1,q
+
+and Γ2,q are obtained from standard qubit measurements. Figure 3a shows the pulse sequences used to measure T1
+
+(top XY sequence) and T ∗ 
+
+> 2
+
+(bottom XY sequence). To miti-410 -8 10 -7 10 -6 10 -4 10 -5                                      
+
+> fq(GHz) 1/ Q
+> a
+> dbce
+> Aluminum Silicon Silicon, piezoelectric
+> 00.5 1.5 1201.0 0.5 1.5 2.0 3.0 2.5 3.5 1×10 82×10 71×10 74×10 66×10 6
+> pAl-Si (×10 -3 )1/ Qpiezo  (×10  -7  )
+> Qpiezo 3×10 6
+> 15 fF 50 fF 125 fF 10 010 110 2
+> LJY11 (ω)1.7×10 -3 1.1×10 -3 7.6×10 -4 3.6×10 -4
+> 1212pAl-Si =TLS-dominated Cross over Piezo-dominated
+> Qpiezo
+> QTLS
+
+FIG. 4. Predicted frequency dependence of interface piezoelec-tric loss for superconducting qubits. All quantities are obtained from finite-element simulations of an aluminum-on-silicon coplanar capacitor. Schematic a-b , Top (a) and side (b) views of the simu-lated capacitor. Axial symmetry is applied to reduce computational complexity. Features are not drawn to scale. c, Circuit model of the superconducting qubit studied. Y11 (ω) is the effective admittance of the capacitor, as seen by the Josephson junction LJ, including piezo-electric coupling in a multiphysics simulation. d, Simulated EPR-dependent quality factor of the qubit at fq = ωq/2π = 4 .5 GHz. Diamonds with different colors correspond to capacitors with dif-ferent dimensions and geometric capacitance. e, Simulated fre-quency dependence of Qpiezo for a 15 fF coplanar capacitor (dia-monds). The dashed line is a linear fit on a log-log scale, giving 
+
+1/Q piezo ∝ f 2.4 
+
+> q
+
+, or equivalently Γpiezo = 2 πf q/Q piezo ∝ f 3.4 
+
+> q
+
+. The dotted line shows the expected TLS-limited quality factor QTLS as-suming tan δTLS = 10 −3. Colors denote different pAl-Si , marked in panel d by vertical dashed lines. 
+
+gate excess lifetime fluctuations arising from qubit-TLS cou-pling, we again employ a bias-averaging protocol: For each combination of TLS bias Vbias , SQUID bias Iflux , and delay time tdelay , the sequence in Fig. 3a is repeated n times. At a fixed qubit frequency, determined by Iflux , the qubit popula-tion as a function of tdelay is extracted by averaging the read-out signal over the n repetitions and over nbias distinct Vbias .Representative bias-averaged energy relaxation and Ramsey decay traces are shown in Fig. 3b and 3c, respectively. Fig. 3d and 3e show the extracted T ∗ 
+
+> 2
+
+and T1 as functions of the qubit frequency. Pronounced reductions in T1 are ob-served when the qubit is in resonance with the modes of the SAW resonator, matching the features shown in Fig. 2d and 2e. The absence of impact on T ∗ 
+
+> 2
+
+indicates the coupling is dominated by the transverse component, consistent with the model in Eq. 1. Fitting the T1 spectrum using Eq. (2) yields coupling strengths gm,k /2π ∼ 100 kHz and mechan-ical linewidths κm,k /2π ∼ 1 MHz (see Table S2 for more details). To further validate this interpretation, we performed the same measurements on two additional qubits, Sample B and Sample C (Fig. S1c–f). Sample C has a geometry similar to Sample A, while Sample B is embedded in a SAW res-onator with a larger reflector separation, corresponding to a smaller FSR. In both cases, we observe similar dips in the T1
+
+spectrum (Fig. 3g; see also Fig. S4), with spacings consistent with the designed FSRs across all three samples (Fig. S4). In addition, we repeated the measurements on Sample C over two cooldown cycles, which reshuffled the TLS distribution, and consistently observed the same mechanical resonances (Fig. S5). Together, these results rule out the possibility that the biased-averaged resonances originate from electric-field-insensitive TLSs. The qubit and SAW resonator damping rates exceed the coupling rates, and coherent energy exchange between the qubit and mechanical modes is not resolved in these devices. Nevertheless, the T1 reduction by up to 50% unambiguously demonstrates that interface piezoelectricity is a significant dissipation channel for the transmon qubits studied in this work. The observed resonances persist across thermal cycles (Fig. S5) and across three independently fabricated samples (Fig. S4). 
+
+Energy participation ratio and frequency dependence 
+
+The qubit-phonon coupling mediated by interface piezo-electricity is expected to depend sensitively on device geom-etry. In our devices, the IDT integrated into a SAW resonator enables phase-coherent generation of surface acoustic waves, enhancing electromechanical transduction and, consequently, qubit relaxation. By contrast, in conventional planar super-conducting qubit geometries, this mechanism is expected to facilitate the incoherent phonon radiation process without the enhancement from the phased-array response of an IDT [22]. Similar to spontaneous emission from an atomic dipole, the piezoelectric decay rate of a qubit follows Fermi’s golden rule [8] and is proportional to the product of the interface piezoelectric coupling rate squared (determined by the electric field energy at the interface) and the phonon density of states of the substrate. In the following, we perform finite-element simulations to construct a model that predicts interface piezo-electric qubit dissipation based on a commonly used energy participation ratio analysis [23]. To quantify this mechanism in generic device geometries, we perform coupled electrical and mechanical simulations of an aluminum-on-silicon copla-nar capacitor (Fig. 4a,b). Interface piezoelectricity is modeled by assigning a thin piezoelectric layer beneath the electrodes (Fig. 4b) [10], and axial symmetry is used to reduce compu-tational complexity. When embedded in a resonant circuit (Fig. 4c), the capacitor defines a qubit (or resonator) whose quality factor Qpiezo = Im Y11 (ωq)/Re Y11 (ωq) is extracted from the admittance [10, 24]. We first study the geometric dependence of the simulated interface piezoelectric loss at a fixed qubit frequency fq =4.5 GHz. Across the simulated range of coplanar capacitor ge-5ometries, the quality factors collapse onto a single linear curve when plotted against the interface energy participation ratio (EPR), pAl-Si , defined as the fraction of electric field energy stored within a 3 nm-thick layer beneath the electrodes [23], independent of the total capacitance (Fig. 4d). The linear de-pendence identifies the EPR as a useful parameter for predict-ing interface piezoelectric loss. The corresponding loss tan-gent, tan δpiezo = 1 /p Al-Si Qpiezo ≈ 1.7×10 −4 at 4.5 GHz, lies below the typical TLS loss tangent of state-of-the-art trans-mons, suggesting that interface piezoelectricity is subdomi-nant in conventional qubit designs at these frequencies. The picture changes at higher frequencies. For fixed pAl-Si ,the simulated piezoelectric decay rate follows a steep power-law Γpiezo ∝ f 3.4 
+
+> q
+
+across the frequency range studied (Fig. 4e), consistent with a Fermi’s golden rule estimate based on the phonon density of states [25] and zero-point fluctuations. The exponent is approximately independent of EPR, suggesting that geometry (through EPR) sets the coupling strength at a given frequency, whereas the frequency dependence is gov-erned by the phononic environment. In contrast, dielectric loss is only weakly frequency dependent and can be captured by a phenomenological model [24, 26]. Combining these trends, our simulations predict that interface piezoelectric loss be-comes comparable to TLS loss near 10 GHz and dominates at higher frequencies. The precise crossover frequency depends on the substrate and heterostructure, but the steep frequency scaling is set by the bulk phonon density of states. For clarity, we summarize the properties of the inter-face piezoelectric loss and other well-recognized loss chan-nels [27] in Table S3. 
+
+> Discussion
+
+Interface piezoelectricity presents a distinct challenge for superconducting qubits. Unlike conventional loss mecha-nisms attributed to material disorder, it originates from broken symmetry at the metal-substrate interface and is therefore a structurally rooted decoherence channel that is not expected to be eliminated by improving material quality alone. Our sim-ulations indicate that interface piezoelectricity does not limit state-of-the-art qubits operating in the sub-10 GHz regime; however, continued reductions in the TLS loss tangent may soon bring it into focus even below 10 GHz. The interface piezoelectric loss poses a challenge to super-conducting qubits operating at high frequencies, such as those in the millimeter-wave regime. Millimeter-wave qubits are at-tracting growing interest because of their unique advantages, such as relaxed requirements on environmental temperature, compact component size, and faster gate times [28]. The steep frequency scaling predicted by our simulations suggests that interface piezoelectric loss may become a key obstacle in this regime. Mitigating this structurally rooted dissipation mechanism will require device-level engineering, rather than materials optimization alone. One route is to reshape the phonon density of states using quasi-two-dimensional membrane ge-ometries, and thereby modify the frequency scaling of the loss (Fig. S8). Building on such membrane-based platforms, phononic metamaterials offer a more targeted and designable approach: their engineered band structures can be tailored to remove available phonon modes within the frequency range of interest [29, 30]. Alternatively, engineering the spatial pro-files of the microwave and acoustic modes to minimize field overlap at the interface can suppress the coupling hotspot (see undercut engineering in Fig. S7). On the other hand, the same mechanism can potentially serve as a flexible and efficient coupling mechanism for quan-tum manipulation of phonons. Efficient coupling between electromagnetic and mechanical degrees of freedom remains a central challenge in hybrid quantum acoustic systems [31]. In our platform, appropriate co-design of the qubit and acoustic resonator could enable coherent energy exchange mediated by interface piezoelectricity, with applications to quantum acous-tic devices. 
+
+> Methods
+> Sample fabrication
+
+Samples A-D were fabricated by patterning superconduct-ing aluminum on an undoped silicon substrate, combining etch and lift-off processes. First, a 50 nm aluminum thin film was deposited onto a 100 mm undoped silicon wafer (re-sistivity ≥ 20,000 Ω · cm) using an electron-beam evapora-tor. The wafer was first cleaned with RCA-1, followed by a buffered oxide etch. The sample was then immediately trans-ferred to the load lock of the electron-beam evaporator. The wafer was subsequently diced into 10 mm-by-10 mm pieces for further processing. For Sample A and Sample B, the IDT and Bragg reflectors were patterned using electron beam lithography, followed by plasma etch of aluminum. Then, the coplanar waveguides and ground plane were formed by pho-tolithography, followed by a wet etch. After the wet etch, the Manhattan-style Josephson junctions were defined using electron-beam lithography. Prior to aluminum deposition by shadow-mask evaporation in an electron-beam evaporator, the samples were cleaned by an oxygen plasma treatment, fol-lowed by a dip in 6% buffered oxide etch solution. Finally, a bandage layer was defined by electron-beam lithography. To form galvanic contact, the exposed surfaces were cleaned by in-situ argon ion milling, followed by aluminum deposition in the same electron-beam evaporator. Sample C was fabricated using a process similar to those used for Samples A and C. The only difference is that the IDTs, Bragg reflectors, copla-nar waveguides, and ground plane were patterned together in a single electron-beam lithography step, followed by a plasma etch. Sample D was fabricated by first defining the IDTs using electron-beam lithography and plasma etch, and then defining the rest of the features using photolithography and a wet etch. 6
+
+> Measurement
+
+All measurements were carried out in a dilution refriger-ator at the base temperature of about 7 mK. The chip was wire-bonded to a printed circuit board, mounted in a copper sample box, and thermalized to the mixing-chamber flange of the dilution refrigerator. For qubit measurement, the samples were enclosed in μ-metal shields to suppress magnetic noise. Control and readout pulses were generated using a Quantum Machine OPX+ system and upconverted at room temperature using IQ mixers and local oscillators. A low-noise DC source provided the bias voltage, which was combined with the mi-crowave drive using a bias tee at the mixing-chamber flange. The input lines were attenuated and filtered at multiple tem-perature stages to suppress thermal noise. The reflected read-out signal was routed through circulators for isolation, ampli-fied by a high-electron-mobility transistor amplifier at 4 K and by additional low-noise amplifiers at room temperature, then downconverted to an intermediate frequency and digitized by the OPX+ for quadrature demodulation. The detailed mea-surement setup for the qubit-SAW resonator system is shown in Fig. S2. The reference transmission coefficient of the delay-line IDT (Sample D) was obtained in the same system using a vector network analyzer. 
+
+> Numerical Simulation
+
+Data shown in Fig. S6 were obtained using Ansys Elec-tronics 2024 R1 running on Microsoft Windows 11 Pro for Workstations. All other finite-element simulation results were obtained using COMSOL Multiphysics 6.0 running on Mi-crosoft Windows 11 Pro for Workstations. 
+
+> Data availability
+
+All experimental data and COMSOL simulation model files that support this study are available at https://doi.org/10.5281/zenodo.20150434. 
+
+> Acknowledgments
+
+This work was primarily funded by the U.S. Department of Energy, Office of Science, Office of Basic Energy Sci-ences, Materials Sciences and Engineering Division under Contract No. DE-AC02-05CH11231 within the Quantum Co-herent Systems Program (KCAS26). Additional support was provided by the Air Force Office of Scientific Research and the Office of Naval Research under Grant No. FA9550-23-1- 0333 (lithography development), by the U.S. Department of Energy, Office of Science, Basic Energy Sciences, Mate-rials Sciences and Engineering Division under Contract No. DE-AC02-05CH11231 within the Phonon Control for Next-Generation Superconducting Systems and Sensors program KCAS23 (material optimization). A.S. acknowledges support from the Society of Hellman Fellows. The devices used in this work were fabricated at Berkeley Lab’s Molecular Foundry and UC Berkeley’s Marvell Nanofabrication Laboratory. 
+
+> Author Contributions
+
+A. Sipahigil conceived and supervised the work. H.Z. and K.Y. designed the devices. H.Z., K.Y., and Y.B. fabri-cated the devices with assistance from L.S., Z.-H.Z., and A. Schwartzberg. K.Y., H.Z., and Z.-H.Z. built the measurement setup. H.Z. and K.Y. performed the measurements and ana-lyzed the data. K.Y., S.S., H.Z., and A. Sipahigil performed the theoretical modeling and simulations. H.Z., K.Y., and A. Sipahigil wrote the manuscript with input from all authors. 
+
+> Competing interests
+
+The authors declare no competing interests.                                                          
+
+> ∗H.Z. and K.Y. contributed equally.
+> †Corresponding author: alp@berkeley.edu [1] Oliver, W. D. & Welander, P. B. Materials in superconducting quantum bits. MRS Bulletin 38 , 816–825 (2013). [2] de Leon, N. P. et al. Materials challenges and opportunities for quantum computing hardware. Science 372 , eabb2823 (2021). [3] Simmonds, R. W. et al. Decoherence in josephson phase qubits from junction resonators. Phys. Rev. Lett. 93 , 077003 (2004). [4] M¨ uller, C., Cole, J. H. & Lisenfeld, J. Towards understanding two-level-systems in amorphous solids: insights from quantum circuits. Rep. Prog. Phys. 82 , 124501 (2019). [5] Bland, M. P. et al. 2D transmons with lifetimes and coherence times exceeding 1 millisecond (2025). ArXiv:2503.14798. [6] Gustafsson, M. V. et al. Propagating phonons coupled to an artificial atom. Science 346 , 207–211 (2014). [7] Satzinger, K. J. et al. Quantum control of surface acoustic-wave phonons. Nature 563 , 661–665 (2018). [8] Jain, V. et al. Acoustic radiation from a superconducting qubit: From spontaneous emission to rabi oscillations. Phys. Rev. Appl. 20 , 014018 (2023). [9] Ashcroft, N. W. & Mermin, N. D. Solid State Physics (Saunders College Publishing, Philadelphia, PA & New York, NY, 1976). First edition. [10] Zhou, H. et al. Observation of interface piezoelectricity in superconducting devices on silicon. Nat. Commun. 17 , 377 (2025). [11] Siddiqi, I. Engineering high-coherence superconducting qubits.
+> Nat. Rev. Mater. (2021). [12] Manenti, R. et al. Circuit quantum acoustodynamics with sur-face acoustic waves. Nat. Commun. 8, 975 (2017). [13] Moores, B. A., Sletten, L. R., Viennot, J. J. & Lehnert, K. W. Cavity quantum acoustic device in the multimode strong cou-pling regime. Phys. Rev. Lett. 120 , 227701 (2018). [14] Blais, A., Huang, R.-S., Wallraff, A., Girvin, S. M. &Schoelkopf, R. J. Cavity quantum electrodynamics for su-perconducting electrical circuits: An architecture for quantum computation. Phys. Rev. A 69 , 062320 (2004). [15] Lisenfeld, J. et al. Measuring the temperature dependence of individual two-level systems by direct coherent control. Phys. Rev. Lett. 105 , 230504 (2010).
+
+7
+
+[16] Grabovskij, G. J., Peichl, T., Lisenfeld, J., Weiss, G. & Usti-nov, A. V. Strain tuning of individual atomic tunneling systems detected by a superconducting qubit. Science 338 , 232–234 (2012). [17] Chen, L. et al. Scalable and Site-Specific Frequency Tuning of Two-Level System Defects in Superconducting Qubit Arrays. arXiv:2503.04702 (2025). [18] Lisenfeld, J. et al. Electric field spectroscopy of material defects in transmon qubits. npj Quantum Inf. 5, 105 (2019). [19] Anderson, P. W., Halperin, B. I. & Varma, c. M. Anomalous low-temperature thermal properties of glasses and spin glasses. 
+
+Phil. Mag.: A Journal of Theoretical Experimental and Applied Physics 25 , 1–9 (1972). [20] Koch, J. et al. Charge-insensitive qubit design derived from the cooper pair box. Phys. Rev. A 76 , 042319 (2007). [21] Barends, R. et al. Coherent josephson qubit suitable for scal-able quantum integrated circuits. Phys. Rev. Lett. 111 , 080502 (2013). [22] Morgan, D. & Paige, E. G. S. 3 - Electrical excitation at a plane surface , 68–86 (Academic Press, Oxford, 2007). [23] Wang, C. et al. Surface participation and dielectric loss in su-perconducting qubits. Appl. Phys. Lett. 107 , 162601 (2015). [24] See Supplemental Materials. [25] Geller, M. R. Local phonon density of states in an elastic sub-strate. Phys. Rev. B 70 , 205421 (2004). [26] Nguyen, L. B. et al. High-coherence fluxonium qubit. Phys. Rev. X 9, 041041 (2019). [27] McRae, C. R. H. et al. Materials loss measurements using superconducting microwave resonators. Rev. Sci. Instrum. 91 ,091101 (2020). [28] Anferov, A., Wan, F., Harvey, S. P., Simon, J. & Schuster, D. I. Millimeter-wave superconducting qubit. PRX Quantum 
+
+6, 020336 (2025). [29] Odeh, M. et al. Non-markovian dynamics of a superconducting qubit in a phononic bandgap. Nat. Phys. 21 , 406–411 (2025). [30] Chen, M., Owens, J. C., Putterman, H., Sch¨ afer, M. & Painter, O. Phonon engineering of atomic-scale defects in supercon-ducting quantum circuits. Sci. Adv. 10 , eado6240 (2024). [31] Chu, Y. et al. Quantum acoustics with superconducting qubits. 
+
+Science 358 , 199–202 (2017). [32] Datta, S. Surface Acoustic Wave Devices (Prentice-Hall, 1986). [33] Vool, U. & Devoret, M. Introduction to quantum electromag-netic circuits. Int. J. Circuit Theory Appl. 45 , 897–934 (2017). [34] Pozar, D. M. Microwave Engineering . Addison-Wesley se-ries in electrical and computer engineering (Addison-Wesley, 1990). [35] Gambetta, J. et al. Qubit-photon interactions in a cavity: Measurement-induced dephasing and number splitting. Phys. Rev. A 74 , 042318 (2006). [36] Hashimoto, K.-Y. RF Bulk Acoustic Wave Filters for Commu-nications (Artech, 2009). [37] Nigg, S. E. et al. Black-box superconducting circuit quantiza-tion. Phys. Rev. Lett. 108 , 240502 (2012). [38] Duru, K., Kalyanaraman, B. & Wang, S. On the stability analy-sis of the perfectly matched layer for the elastic wave equation in layered media. J. Comput. Phys. 540 , 114268 (2025). [39] Wenner, J. et al. Surface loss simulations of superconducting coplanar waveguide resonators. Appl. Phys. Lett. 99 , 113513 (2011). [40] Guo, X.-Y. Modeling Energy Relaxation via Quantum Ther-malization: A Superconducting Qubit Coupled to a Many-Body TLS System. arXiv:2603.13322 (2026). [41] Chen, C. et al. Broadband high-precision measurement of two-level-system loss using multiwavelength superconducting res-onators. Phys. Rev. Appl. 25 , 014045 (2026). S1 
+
+## Supplementary Information for “Interface Piezoelectric Loss in Superconducting Qubits” 
+
+TABLE S1. Qubit parameters for the samples studied. A large qubit shunt capacitor is used for two reasons. First, the piezoelectric coupling increases with the number of IDT periods. Second, longer IDT fingers reduce acoustic diffraction, thereby increasing the quality factor of the SAW cavity. # IDT periods IDT periodicity ( μm) IDT finger length ( μm) EC /h (MHz) EJ,max /h (GHz) fq,max (MHz) Sample A 50 1.6 48 68 20.0 3233 Sample B 50 1.6 48 73 20.5 3388 Sample C 50 1.6 48 67 21.7 3344 TABLE S2. Extracted electromechanical coupling strength gk and mechanical linewidth κm,k for Samples A, B, and C from the fitting of Eq. (2). Resonance k
+
+Coupling gk /2π
+
+(kHz) SAW resonator linewidth κm,k /2π
+
+(MHz) Sample A Sample B Sample C Sample A Sample B Sample C 
+
+1 100 78 50 2.25 0.66 1.52 
+
+2 101 52 120 1.61 1.03 4.22 
+
+3 83 63 139 2.00 0.70 2.16 
+
+4 159 87 166 4.03 1.27 2.21 
+
+5 149 99 259 2.78 1.34 6.86 
+
+6 174 128 113 1.67 1.80 6.13 
+
+7 272 109 90 5.53 1.76 3.81 
+
+8 45 72 - 0.10 0.66 -
+
+9 154 168 - 4.80 3.52 -
+
+10 66 - - 2.37 - -
+
+11 115 - - 4.00 - -TABLE S3. Comparison of interface piezoelectric loss with other superconducting qubit loss channels. Here, “L” and “C” indicate whether the loss is associated with inductive or capacitive components, respectively. Columns 3–6 indicate positive (+), negative (–), absent (No), or unknown (blank) correlations between each loss channel and the corresponding experimental parameter. “Yes” indicates that a correlation exists. qp-IR denotes quasiparticle loss due to stray infrared light, and qp-μw denotes quasiparticle loss due to microwave-induced pair breaking. “Dimension” refers to the conductor/gap widths of coplanar waveguides and IDT capacitors for TLS and radiation loss, and to the inductor conductor width for vortex loss. Except for the last row, the results, including loss-channel definitions and correlation notation, are adapted from Ref. [27]. Loss Type L or C Power Temperature Frequency Dimension TLS C – – + –qp-Thermal L No + +qp-IR L No No qp-μw L + + +vortex L No + + +radiation L, C No No + +parasitic modes L, C No No Yes 
+
+interface piezo C No No + –S2 h id f  
+
+> abceg
+
+FIG. S1. Optical micrographs of the devices studied. a, Optical micrograph of Sample A. The scale bar represents 1 mm. b, Optical micrograph of Sample A, zoomed in on the transmon-cavity system. The scale bar represents 200 μm. c-d , Same as panel a-b, for Sample B. 
+
+e-f , Same as panel a-d, for Sample C. g, Optical micrograph of Sample C, zoomed in on the transmon region. The scale bar represents 25 μm. 
+
+h, Optical micrograph of Sample D. Scale bar represents 500 μm. i, Optical micrograph of Sample D, zoomed in on the left transducer. Scale bar represents 20 μm. S3 -20 dB -20 dB -20 dB 4-8 GHz 10 GHz 20-40 dB 
+
+4 K 900 mK 100 mK 7 mK 50 K 300 K   
+
+> 1.9 MHz -20 dB 2.5 GHz  0.7 GHz -20 dB -20 dB -20 dB 10 GHz
+
+10 GHz 1.9 MHz 
+
+> ADC  ( I )
+> ADC  (Q)
+> DAC  (Q)
+> DAC  (Q)
+> DAC  ( I )
+> DAC  ( I )
+
+# OPX+ 
+
+> 25 dB  580 MHz 20-35 dB 20 dB 20 dB
+> DAC
+> 1.3 GHz  400 MHz
+> LO LO
+> μ-metal shields
+> 3-3.5 GHz
+
+HEMT (4-8 GHz) RF LNA (0.5-8 GHz) IF LNA (0.1-500 MHz) Digital attenuator Cryogenic attenuator Power splitter DC block Low-pass filter Band-pass filter Eccosorb filter Circulator/Isolator IQLO RF LO RF IQIQLO RF IQ mixer 
+
+> LO
+
+DC voltage source Local oscillator Bias tee 40 dB 
+
+FIG. S2. Measurement setup. Schematic of the cryogenic microwave circuit used for qubit control and readout. Microwave signals are generated and upconverted at room temperature, attenuated and filtered before reaching the device at base temperature, and the output is isolated, amplified, downconverted, and digitized for measurement. HEMT: high-electron-mobility-transistor amplifier. RF/IF LNA: radio-frequency/intermediate-frequency low-noise amplifier. S4 fxy (GHz) fxy (GHz) fxy (GHz) Flux (a.u.) Flux (a.u.) Flux (a.u.)            
+
+> Axy  (a.u.) fxy  (GHz)
+> Iro  (a.u)  ro  (a.u) 0102010203010203
+> 12&
+
+a c eb d f
+
+3.16 3.18 3.20 3.22 3.24 3.28 3.30 3.32 3.34 3.36 3.34 3.36 3.38 3.40 3.05 3.10 3.15 3.20 3.25 3.0 3.1 3.2 3.3 3.4 3.0 3.1 3.2 3.3 0.05 0.10 0.15 0.20 0.00 0.05 0.10 0.15 0.20 0.00 0.05 0.10 0.15 0.20 0.06 0.08 0.10 0.12 0.14 0.06 0.04 0.08 0.10 0.12 0.14 -0.18 -0.20 -0.16 -0.14 -0.12 0.10 Sample A Sample B Sample C 
+
+FIG. S3. Rabi oscillations and qubit spectra. a Rabi oscillation of Sample A as a function of the XY drive frequency fxy and drive amplitude 
+
+Axy measured at the maximal qubit frequency. Iro is the readout amplitude. b Two-tone spectrum of Sample A as a function of flux and XY drive frequency fxy . θro is the readout phase. c-d Same as a-b, for Sample B. e-f Same as a-d, for Sample C. ijklabcdefgh
+
+0V 3V 
+
+pe (a.u.) 
+
+> pe (a.u.)
+
+3.05 3.1 3.15 3.2 
+
+fq (GHz) 
+
+> pe,avg  (a.u.)
+
+−4 
+
+0-2 2
+
+4
+
+> Vbias  (V) |S 21  | (dB)
+
+-140 
+
+-120 -100 
+
+> pe (a.u.)
+
+3.05 3.1 3.15 3.2 
+
+fq (GHz) 
+
+> pe,avg  (a.u.)
+
+−2 
+
+0-1 12
+
+> Vbias  (V)
+
+0V 1.8V 
+
+pe (a.u.) 
+
+> |S21  | (dB)
+
+-140 
+
+-120 -100 
+
+0V 3V 
+
+pe (a.u.) 
+
+> pe (a.u.)
+
+3.05 3.1 3.15 3.2 
+
+fq (GHz) 
+
+> pe,avg  (a.u.) |S21  | (dB)
+
+-140 
+
+-120 -100 
+
+−4 
+
+0-2 2
+
+4
+
+> Vbias  (V)
+
+Sample A Sample B Sample C 
+
+FIG. S4. Electric field dependent population measurement on different samples a , Qubit excited state population pe measured at delay time τ0 = 3 μs as a function of qubit frequency fq and bias voltage Vbias . The same plot is also shown in Fig. 2d. b, Line-cuts of panel a at fixed bias voltage. c, Bias-averaged pe at fixed delay time τ0 = 3 μs, revealing the spectral signatures of the SAW resonator modes. The same plot is also shown in Fig. 2e. d, Transmission coefficient as a function of frequency measured in Sample D, the reference transducer. The same plot is also shown in Fig. 2f. e-h , Same as panel a-d, for Sample C. i-l , Same as panel a-h, for Sample B. The larger size of the SAW cavity results in a smaller FSR, and therefore, more modes are resolved within the passband of the IDT. Yet the qubit-SAW resonator coupling rate 
+
+gm,k is also weaker, since, approximately, gm,k ∝ √FSR. S5 pe (a.u.)      
+
+> pe (a.u.) 0V 3V
+> 3.05 3.1 3.15 3.2
+> fq(GHz)
+> pe,avg  (a.u.)
+> −4
+> 0-2 2
+> 4
+> Vbias  (V)
+
+abcdefgh      
+
+> |S21  | (dB)
+> -140
+> -120 -100
+> 3.05 3.1 3.15 3.2
+> fq(GHz)
+> 0V 3V
+> pe(a.u.)
+
+FIG. S5. Measurements of Sample C in different cooldowns. a-d , Same as Fig. S4e-h, plotted in a smaller range of fq. Data were taken at a delay time τ0 = 3 μs. e-h , Same as panel a-d. Data are collected in a different thermal cycle. Note that the spectrum of the SAW resonator is consistent, while the TLS spectrum changed significantly. The small shift of the SAW modes is due to the slow drift of the qubit frequency during the experiment. Data were taken at a delay time τ0 = 3 μs. Aluminum Silicon MS MA SA 
+
+> fIDT  (GHz)  T1 at  fIDT  (μs)  EPR
+
+λIDT (μm) 
+
+bcd
+
+10 010 110 210 310 –4 10 –3 10 –2 
+
+a
+
+## λIDT 
+
+10 –1 MA MS SA 
+
+FIG. S6. Surface participation ratio and dielectric loss of the IDT qubits. a, Schematic of the electrostatic model used to extract the interface energy participation ratio (EPR) of an aluminum-on-silicon IDT structure. The top and bottom drawings show the top and side views, respectively. Since the finger length, 48 μm, exceeds the acoustic wavelengths λIDT of interest, the electric field is assumed invariant along the fingers, reducing the problem to two dimensions. The actual IDT qubits have 50 periods, allowing the electric field to be further approximated as periodic; therefore, only a single period, highlighted by the orange boxes, is simulated with periodic boundary conditions along the propagation direction of SAW. Interface energy is calculated by introducing a 3-nm dielectric layer with a dielectric constant of 
+
+10 at the metal–air (MA), metal–substrate (MS), and substrate–air (SA) interfaces. b, Surface participation ratio versus IDT periodicity (i.e., acoustic wavelength), with separate contributions from MA, MS, and SA interfaces. c, Estimated TLS-limited qubit lifetime as a function of IDT periodicity, evaluated with the qubit flux-biased to the center of the IDT passband. A loss tangent of tan δTLS = 10 −3 is assumed. 
+
+d, Center frequency of the IDT passband versus IDT periodicity. The red dashed line in each panel marks the parameters of our devices (λIDT = 1 .6 μm). S6 2 4        
+
+> fq(GHz) 6810 10 710 810 9
+> Q
+> 5μm undercut No undercut 5μm5μm
+
+a b c
+
+> 10  -17
+> U (J/m 3 ) 10  -20  10  -18 10  -19
+> 10  -17
+> U (J/m 3 ) 10  -20  10  -18 10  -19
+
+FIG. S7. Reducing interface piezoelectric loss with hotspot engineering. Simulations using finite-element methods indicate that the interface piezoelectricity-induced acoustic radiation is most significant below the edges of the superconductor electrodes, since there the strong electric fields overlay with the piezoelectric interfaces. Removing the silicon beneath the aluminum edges will both alter the electric field distribution and eliminate the interface piezoelectricity in these regions. a, Mechanical energy density of a qubit with a coplanar shunt capacitor. The high-energy regions are shown as “jet”-shaped features that originate from the edges of the aluminum electrodes. Scale bar represents 50 μm. b, Same as a, for capacitors with an undercut profile beneath the boundaries of the aluminum electrodes. The overall energy density is lower, and the phonon injection from the electrode edges is significantly suppressed. The profile of the undercut is schematically shown as an inset. Scale bar represents 50 μm. c, Interface piezoelectric loss-limited qubit quality factor Q as a function of qubit frequency fq
+
+for qubits with and without the edge undercuts. Undercut leads to an improved Q as shown from fq = 1 GHz to 10 GHz. 10 4 6 82 20         
+
+> fq(GHz) 10 -8 10 -7 10 -6 10 -5 1/ Q
+> 4.1 4.2 4.3 10 -8 10 -10
+> Aluminum Silicon Silicon, piezoelectric Vacuum
+> membrane
+
+a dc
+
+> 50 nm 220 nm 500 nm Bulk
+> bulk
+
+b
+
+FIG. S8. Reducing high-frequency interface piezoelectric loss with superconducting qubits on silicon membranes. In the main text, we show that interface piezoelectric loss in superconducting qubits becomes more pronounced at high frequencies. One possible mechanism is the acoustic phonon density of states, which scales as ρ ∼ f 2 
+
+> q
+
+in three-dimensional substrates, but only as ρ ∼ fq in two-dimensional systems. This suggests that fabricating high-frequency qubits on quasi-two-dimensional substrates may help suppress interface piezoelectric loss. To explore this possibility, we simulated the interface piezoelectric loss of superconducting qubits with coplanar capacitors on silicon membranes of different thicknesses using the same finite-element framework developed for bulk-substrate simulations. a, Schematic top view of the coplanar capacitor on both bulk and membrane substrates. b, Schematic side view of the coplanar capacitor on a bulk silicon substrate, corresponding to the structure studied in Fig. 4 of the main text. c, Schematic cross-sectional side view of the coplanar capacitor on a silicon membrane. 
+
+d, Inverse quality factor 1/Q as a function of qubit frequency fq for the simulated structures. Colors indicate different substrates, including bulk silicon and silicon membranes of varying thicknesses. The aluminum thickness is 50 nm for the bulk substrate and for membranes with thicknesses of 220 nm and 500 nm, and 10 nm for the 50 nm-thick membrane. Inset: finer frequency sweep near fq = 4 .2 GHz for the 220 nm-thick membrane. In these simulations, the lateral capacitor geometry is kept fixed across all substrates, resulting in different capacitance values due to the modified dielectric environment. The noisy features are likely associated with mechanical resonances of the membrane structure, as illustrated more clearly in the inset. Compared to bulk substrates, the interface piezoelectric loss on membrane substrates exhibits a weaker frequency dependence. However, the detailed relationship between 1/Q and fq depends on membrane thickness and does not follow the simple scaling expected from the Fermi’s golden rule model. Further investigation is needed to understand these results and to evaluate the potential of membrane-based structures for suppressing interface piezoelectric loss in high-frequency superconducting qubits. S7 
+
+The Circuit QED Model of Electromechanical Coupling CIDT R0
+
+> Lm
+> Cm
+> Rm
+> a
+> LJ1
+> CJ1
+> LJ2
+> CJ2
+> Cq
+> Rm
+> b
+> Lq
+> R0
+> Lm
+> Cm
+> c
+> VmTL
+> IqTL
+> Vm
+> Φq
+> Qm
+> Aq
+> →
+> Aq
+> ←
+> Am
+> ←
+> Am
+> →
+> Qq
+> Φm
+> Iq
+
+FIG. S9. a, Classical equivalent circuit for a qubit coupled to a SAW cavity mode. The mechanical mode is modeled by a single-mode BVD circuit. b, Linearized circuit with each dissipative element replaced by a transmission line. Cq = Cidt +CJ1 +CJ2 ≈ Cidt is the total capacitance of the qubit and Lq is the effective Josephson inductance of the SQUID at a given flux bias. c, Annotated circuit for deriving the equations of motion. The four system observables, Φq, Q q, Q m, and Φm, are coupled to the environment through traveling waves A⇆ 
+
+> q
+
+and A⇆ 
+
+> m
+
+.
+
+In this section, we develop a quantum model for a qubit coupled to a discrete set of mechanical modes. This framework enables the calculation of the electromechanical coupling strengths gm,k once the mechanical modes are represented by an effective electrical circuit. To illustrate the essential ideas with minimal notation, we begin with the simplest case of a qubit coupled to a single mechanical mode; the generalization to multiple modes is straightforward. We begin from the classical Butterworth-Van Dyke (BVD) description of a SAW resonator, in which the IDT capacitance 
+
+Cidt is connected in parallel with a motional LC branch [32]. The qubit circuit is then obtained by identifying Cidt as the qubit shunt capacitance and introducing an additional inductive element to represent the SQUID. The total capacitance of the qubit is denoted by Cq = Cidt + CJ1 + CJ2 ≈ Cidt , and the effective junction inductance at a given flux bias is Lq. Dissipation in the qubit and mechanical subsystems is incorporated phenomenologically through resistors R0 and Rm, respectively. Within this description, the mechanical mode is represented by a series RLC circuit, whereas the qubit mode is represented by a parallel RLC circuit (Fig. S9a). Because explicit resistive elements are incompatible with unitary quantum evolution, we follow the standard procedure of replacing each resistor by a lossless transmission line whose characteristic impedance is equal to the corresponding resistance [33]. We denote the transmission line associated with mechanical dissipation by “M” and that associated with the nominal qubit dissipation by “Q”. The resulting lossless circuit is shown in Fig. S9b. For the parallel resonator, we take (Φ q, Q q) as the conjugate variables, whereas for the series resonator we use (Qm, Φm).Consequently, the canonical commutation relations (or classically the Poisson brackets) of the two modes differ by a minus sign. In addition, the system is driven by two input fields, A← 
+
+> q
+
+and A→ 
+
+> m
+
+, which also generate the corresponding reflected output fields. The annotated circuit is shown in Fig. S9c. 
+
+Classical equations of motion 
+
+Let ITL  
+
+> μ
+
+be the total current going from the transmission line μ ∈ { Q, M} into the system and let V TL  
+
+> μ
+
+be the total voltage at the terminal of the transmission line μ. The total current and voltage on each transmission line can be decomposed into the left and right traveling currents ( I⇆ 
+
+> q
+
+, I⇆ 
+
+> m
+
+) and voltages ( V ⇆ 
+
+> q
+
+, V ⇆ 
+
+> m
+
+): 
+
+V TL q = V ← 
+
+> q
+
++ V → 
+
+> q
+
+, ITL q = I← 
+
+> q
+
+− I→ 
+
+> q
+
+, (S1) 
+
+V TL m = V ← 
+
+> m
+
++ V → 
+
+> m
+
+, ITL m = I→ 
+
+> m
+
+− I← 
+
+> m
+
+. (S2) In addition, classical microwave theory [34] allows us to relate the traveling currents to the traveling voltages using the line impedances: 
+
+A⇆ 
+
+> μ
+
+≜ pRμI⇆ 
+
+> μ
+
+= V ⇆
+
+> μ
+
+pRμ
+
+, μ ∈ { q, m}, (S3) where A⇆ 
+
+> μ
+
+are normalized such that |A⇆ 
+
+> μ
+
+|2 has the unit of power. Applying Kirchhoff’s current and voltage laws (i.e., Hamilton’s equations for the generalized momenta) yields 
+
+ITL q = Iq + Φq
+
+Lq
+
+− ˙Qm, (S4) 
+
+V TL m = ˙Φq + Qm
+
+Cm
+
++ Vm, (S5) S8 where we have defined Iq = ˙Qq and Vm = ˙Φm. There are two other trivial equations (corresponding to Hamilton’s equations for the generalized coordinates): 
+
+˙Φq = Qq
+
+Cq
+
+, ˙Qm = Φm
+
+Lm
+
+. (S6) We do not want to have both the incoming and outgoing waves in the equations, as they are related by the boundary reflection. To remove I→ 
+
+> q
+
+for the transmission line Q, we use the boundary condition 
+
+ITL q = A←
+
+> q
+
+pRq
+
+| {z } 
+
+> I←
+> q
+
+− 1
+
+Rq
+
+ V TL q − V ←
+
+> q
+
+| {z }
+
+> I→
+> q
+
+= A←
+
+> q
+
+pRq
+
+− 1
+
+Rq
+
+ ˙Φq − pRqA←
+
+> q
+
+
+
+= 2 A←
+
+> q
+
+pRq
+
+− ˙Φq
+
+Rq
+
+. (S7) Similarly, to remove V ← 
+
+> m
+
+for the transmission line M, we use 
+
+V TL m = pRmA→
+
+> m
+
+| {z } 
+
+> V→
+> m
+
++ Rm
+
+ −ITL m + I→
+
+> m
+
+| {z } 
+
+> V←
+> m
+
+= pRmA→ 
+
+> m
+
++ Rm
+
+
+
+− ˙Qm + A→
+
+> m
+
+√Rm
+
+
+
+= 2 pRmA→ 
+
+> m
+
+− Rm ˙Qm. (S8) Substituting these boundary conditions into Eq. (S4) and (S5) yields the full set of equations of motion: 
+
+˙Φq = Qq
+
+Cq
+
+, (S9) 
+
+˙Qq = Iq = Φm
+
+Lm
+
+− Φq
+
+Lq
+
+− ˙Φq
+
+Rq
+
++ 2 A←
+
+> q
+
+pRq
+
+, (S10) 
+
+˙Qm = Φm
+
+Lm
+
+, (S11) 
+
+˙Φm = Vm = − Qm
+
+Cm
+
+− ˙Φq − Rm
+
+Φm
+
+Lm
+
++ 2 pRmA→ 
+
+> m
+
+. (S12) 
+
+Quantization and Langevin equations 
+
+To quantize the circuit, we define the complex amplitude 
+
+αq = 1
+
+p2ℏZq
+
+(Φ q + iZ qQq) , α∗ 
+
+> q
+
+= 1
+
+p2ℏZq
+
+(Φ q − iZ qQq) , (S13) 
+
+αm = 1
+
+√2ℏZm
+
+(Φ m − iZ mQm) , α∗ 
+
+> m
+
+= 1
+
+√2ℏZm
+
+(Φ m + iZ mQm) , (S14) where Zq = pLq/C q and Zm = pLm/C m. The input traveling waves for the qubit and the mechanical resonator are normalized by the photon and phonon energy, respectively: 
+
+A← 
+
+> q
+
+=
+
+r ℏωq
+
+2 α← 
+
+> q
+
+, A→ 
+
+> m
+
+=
+
+r ℏωm
+
+2 α→ 
+
+> m
+
+. (S15) Classically, αq and αm are complex functions, while α← 
+
+> q
+
+and α→ 
+
+> m
+
+are real. Using Eq. (S9)-(S15), we find 
+
+˙αq = 1
+
+p2ℏZq
+
+˙Φq + i
+
+r Zq
+
+2ℏ ˙Qq (S16) 
+
+= 1
+
+p2ℏZq
+
+Qq
+
+Cq
+
++ i
+
+r Zq
+
+2ℏ
+
+Φm
+
+Lm
+
+− Φq
+
+Lq
+
+− Qq
+
+RqCq
+
++ 2 A←
+
+> q
+
+pRq
+
+!
+
+(S17) 
+
+= −iω qαq − 12RqCq
+
+ αq − α∗
+
+> q
+
+ + i
+
+√ωqωm
+
+2
+
+r Lq
+
+Lm
+
+(αm + α∗
+
+> m
+
+) + i
+
+pRqCq
+
+α← 
+
+> q
+
+, (S18) S9 
+
+˙αm = 1
+
+√2ℏZm
+
+˙Φm − i
+
+r Zm
+
+2ℏ ˙Qm (S19) 
+
+= 1
+
+√2ℏZm
+
+
+
+− Qm
+
+Cm
+
+− Qq
+
+Cq
+
+− Rm
+
+Lm
+
+Φm + 2 pRmA→
+
+> m
+
+
+
+− i
+
+r Zm
+
+2ℏ
+
+Φm
+
+Lm
+
+(S20) 
+
+= −iω mαm − Rm
+
+2Lm
+
+(αm + α∗
+
+> m
+
+) + i
+
+√ωmωq
+
+2
+
+s
+
+Cm
+
+Cq
+
+ αq − α∗
+
+> q
+
+ +
+
+r Rm
+
+Lm
+
+α→ 
+
+> m
+
+. (S21) Since there is no parametric drive that can bridge the frequency difference between αq (αm) and α∗ 
+
+> q
+
+(α∗
+
+> m
+
+), we can apply the rotating-wave approximation (RWA) to find the classical Langevin equations 
+
+˙αq = −iω qαq − κq
+
+2 αq + i
+
+√ωqωm
+
+2
+
+r Lq
+
+Lm
+
+αm + i
+
+q
+
+Γ(0) 1,q α← 
+
+> q
+
+, (S22) 
+
+˙αm = −iω mαm − κm
+
+2 αm + i
+
+√ωqωm
+
+2
+
+s
+
+Cm
+
+Cq
+
+αq + √κmα→ 
+
+> m
+
+, (S23) where we have defined Γ(0) 1,q = 1 /R qCq and κm = Rm/L m. The RWA also implicitly removes the negative-frequency compo-nents from α← 
+
+> q
+
+and α→ 
+
+> m
+
+, making them non-Hermitian after quantization. Canonical quantization is performed by mapping the classical complex amplitude of the linear modes to the annihilation operators: 
+
+αq → ˆq, αm → ˆb, α← 
+
+> q
+
+→ ˆqin , α→ 
+
+> m
+
+→ ˆbin (S24) subject to the bosonic commutation relations [ˆ q, ˆq†] = [ ˆb, ˆb†] = 1 and [ˆ qin (t), ˆqin †(t′)] = [ ˆbin (t), ˆbin †(t′)] = δ(t − t′). Conse-quently, the classical Langevin equations turn into the Heisenberg-Langevin equations for the annihilation operators: 
+
+˙ˆq = −iω q ˆq − κq
+
+2 ˆq + i
+
+√ωqωm
+
+2
+
+r Lq
+
+Lm
+
+ˆb + i
+
+q
+
+Γ(0) 1,q ˆqin , (S25) 
+
+˙ˆb = −iω mˆb − κm
+
+2 ˆb + i
+
+√ωqωm
+
+2
+
+s
+
+Cm
+
+Cq
+
+ˆq + √κm ˆbin . (S26) Often, it is desirable to work with the Hamiltonian and the quantum state in the Schr¨ odinger picture. To map the equations of motion (i.e., the Heisenberg picture) to a simple coupled-mode Hamiltonian, we must have 
+
+r Lq
+
+Lm
+
+=
+
+s
+
+Cm
+
+Cq
+
+=⇒ ωq = ωm. (S27) In other words, the circuit admits a coupled-mode description only when the qubit and mechanical resonator are sufficiently near resonance. Away from resonance, however, the interaction is weak, and any discrepancy in the coupling coefficient has a negligible effect. We therefore define the coupling coefficient as 
+
+gm ≈√ωqωm
+
+2
+
+r Lq
+
+Lm
+
+≈√ωqωm
+
+2
+
+s
+
+Cm
+
+Cq
+
+(S28) so that the equations of motion correspond to the Hamiltonian 
+
+ˆHeff /ℏ = ωq ˆq† ˆq + ωmˆb†ˆb − gm
+
+
+
+ˆq†ˆb + H.c. 
+
+
+
+. (S29) For a transmon qubit (with anharmonicity α) coupled to multiple mechanical modes, 
+
+ˆHeff /ℏ = ωq ˆq† ˆq + α
+
+2 ˆq† ˆq† ˆq ˆq + X
+
+> k
+
+h
+
+ωm,k ˆb†
+
+> k
+
+ˆbk − gm,k 
+
+
+
+ˆq†ˆbk + H.c. 
+
+i 
+
+. (S30) The dissipation described by the Heisenberg-Langevin equations can be mapped to the master equation: 
+
+dˆ ρ
+
+dt = − i
+
+ℏ
+
+h ˆHeff , ˆρ
+
+i
+
++ Γ (0) 1,q D [ˆ q] ˆ ρ + X
+
+> k
+
+κm,k D
+
+hˆbk
+
+i
+
+ˆρ, (S31) S10 where D[ˆ c]ˆ ρ = ˆ cˆρˆc† − { ˆρ, ˆc† ˆc}/2. If we restrict the operation of the transmon qubit to the lowest two states, we can replace ˆq
+
+by the Pauli operators and write 
+
+dˆ ρ
+
+dt = − i
+
+ℏ
+
+h ˆHqm , ˆρ
+
+i
+
++ Γ (0) 1,q D ˆσ− ˆρ + X
+
+> k
+
+κm,k D
+
+hˆbk
+
+i
+
+ˆρ, (S32) where ˆσ± are the raising and lowering operators for the two-level qubit and ˆHqm is defined by Eq. (1) in the main text. Note that K2 
+
+> t
+
+= Cm/C idt is the electromechanical coupling coefficient for a classical bulk acoustic wave (BAW) resonator [36]. Hence, for each coupling strength gm,k derived from the equivalent circuit, we may introduce an effective electromechanical coupling coefficient K2 
+
+> k
+
+via 
+
+gm,k =
+
+√ωqωm,k 
+
+2
+
+q
+
+K2 
+
+> k
+
+. (S33)   
+
+> IDT Qubit T1in the Weak-Coupling Regime
+
+Having established the circuit-QED description of the qubit-SAW system, we now use it to evaluate the qubit energy relaxation rate. In the weak-coupling regime, the electromechanical couplings gm,k are small enough that coherent qubit-mediated coupling between different mechanical modes can be neglected. The problem, therefore, reduces to a qubit interacting with a single mechanical mode, with annihilation operator ˆb. The extension to N modes is then immediate: once the piezoelectricity-induced damping rate is obtained for one mode, the total damping is given by the sum over all modes. The master equation for a qubit coupled to a single mechanical mode takes the form [35] 
+
+dˆ ρ
+
+dt = − i
+
+ℏ
+
+h ˆHqm , ˆρ
+
+i
+
++ Γ (0) 1,q D ˆσ− ˆρ + 2Γ ϕ, qD ˆσ+ ˆσ− ˆρ + κmD
+
+hˆb
+
+i
+
+ˆρ. (S34) Note that we also include the pure dephasing rate Γϕ, q of the qubit since it will limit the drop of the qubit T1. The type of experiment used in this work ensures that the system has at most one quantum excitation. Under the weak-coupling assumption, we can restrict the Hilbert space to the span of three states: |1⟩ = |g, 0⟩, |2⟩ = |e, 0⟩, |3⟩ = |g, 1⟩, where {g, e } denotes the qubit ground and excited states and {0, 1} indicates the lowest two Fock states of the mechanical modes. By moving to the interaction picture and writing the master equation explicitly in terms of 3 × 3 matrices, we find 
+
+dˆ ρ
+
+dt = −i
+
+
+
+0 gmρ13 gmρ12 − ∆ρ13 
+
+−gmρ∗ 
+
+> 13
+
+−gm(ρ∗ 
+
+> 23
+
+− ρ23 ) −gm(ρ33 − ρ22 ) − ∆ρ23 
+
+−gmρ∗ 
+
+> 12
+
++ ∆ ρ∗ 
+
+> 13
+
+−gm(ρ22 − ρ33 ) + ∆ ρ∗ 
+
+> 23
+
+−gm(ρ23 − ρ∗
+
+> 23
+
+)
+
+
+
+− Γ(0) 1,q
+
+2
+
+
+
+−2ρ22 ρ12 0
+
+ρ21 2ρ22 ρ23 
+
+0 ρ32 0
+
+ − Γϕ, q
+
+
+
+0 ρ12 0
+
+ρ21 0 ρ23 
+
+0 ρ32 0
+
+ − κm
+
+2
+
+
+
+−2ρ33 0 ρ13 
+
+0 0 ρ23 
+
+ρ31 ρ32 2ρ33 
+
+ , (S35) where ∆ = ωm − ωq and ρij = ⟨i| ˆρ |j⟩ (i, j ∈ { 1, 2, 3}). Following a similar simplification presented in [21], we obtain an exponential decay of the qubit population, i.e., ρ22 (t) ∝
+
+exp( −Γ1,qt), where 
+
+Γ1,q ≈ Γ(0) 1,q + 2|gm|2Γ2
+
+Γ22 + ∆ 2 with Γ2 = Γ ϕ, q + Γ(0) 1,q
+
+2 + κm
+
+2 . (S36) Finally, we add up the contributions from each mechanical mode and obtain Eq. (2) in the main text.   
+
+> Simulation and IDT Qubit T1Prediction
+
+We now turn to finite-element simulations that connect the circuit-QED description of the qubit-SAW system to the device geometry. To simulate the interface piezoelectric effect, we introduce a thin piezoelectric layer between the aluminum electrodes (Fig. S10a) and the silicon substrate, and tune its effective piezoelectric coefficient e33 to reproduce the IDT passband (Fig. 2f in the main text), following [10]. The piezoelectric layer is assumed to share the same mechanical and electrostatic properties as silicon, except for a nonzero e33 . As shown in [10], equivalent electromechanical coupling can be reproduced using differ-ent combinations of the piezoelectric-layer thickness hpiezo and effective coefficient e33 . These parameter choices yield similar predictions for the qubit T1, indicating that the results are not sensitive to the particular parametrization of the effective piezo-electric layer. For modeling the IDT qubit, we choose hpiezo = 30 nm ≪ λIDT , corresponding to an effective e33 = 0 .372 C/m 2.S11 b     
+
+> rin lgap lout
+> hEPR Aluminum Silicon Interface region for pAl-Si Silicon, e33 = 0.775 C/m 2
+> a
+
+... ... ...    
+
+> hpiezo = 30 nm
+> hAl = 50 nm ... ...
+> hover-etch = 10 nm
+
+FIG. S10. Schematics of the models used in the finite-element simulations a , Schematic illustration of the model used to simulate an aluminum-on-silicon interdigital capacitor/transducer. We assume that the fields in the electrical and mechanical domains have no components along the fingers, thereby reducing the problem to a two-dimensional simulation. A hpiezo = 30 nm thick silicon layer beneath the aluminum electrodes is assigned a nonzero piezoelectric coefficient e33 = 0 .372 C/m2 [10]. During sample fabrication, silicon is overetched by 
+
+hover-etch ≈ 10 nm during the formation of IDTs. This fact is included in the model. b, Same as panel a, but for modeling the axially symmetric coplanar capacitor. The total energy stored in the hatched regions is used to estimate the interface energy participation ratio pAl-Si . To ensure that the piezoelectric layer remains much thinner than the acoustic wavelength at high frequency, we use hpiezo = 10 nm and e33 = 0 .775 C/m2,which reproduces the experimentally obtained electromechanical coupling factor K2 at 4.5 GHz [10]. 
+
+In what follows, we validate the model by comparing the experimentally observed reduction in T1 with the simulated lifetime suppression. Once validated experimentally, this workflow can be used to make quantitative estimates of the impact of interface piezoelectricity on superconducting qubits with more conventional geometries. Establishing a connection between the classical multiphysics simulation and the prediction of T1 requires a faithful mapping from the finite-element description of the device to a circuit QED model. To this end, we employ black-box quantization [37] and extract the effective admittance Y11 = G11 + iB 11 seen by the Josephson junction in the presence of piezoelectric coupling. The two-dimensional COMSOL multiphysics simulation (schematically shown in Fig. S11a) self-consistently incorporates (i) the electrostatics of the IDT capacitor, (ii) the elastic response of the silicon substrate and aluminum electrodes, and (iii) the piezoelectric coupling at the metal-silicon interface, thereby yielding the black-box admittance at the IDT port. A perfect-matching layer (PML) [38] in the mechanical domain was used at the boundary of the silicon substrate to absorb any outgoing mechanical energy flux, which corresponds to the mechanical loss of the circuit. The effective admittance can then be used to construct a lumped-element circuit representation that captures both the resonant structure and the associated dissipation (Fig. S11b,c). In the regime ωqCidt ≈ Im Y11 = B11 , the qubit lifetime is given by 
+
+T1(ωq) = Cidt 
+
+Re Y11 (ωq) . (S37) In the absence of SAW reflectors, Y11 is well described by a parallel combination of the static capacitance Cidt and a motional admittance Gm + iB m [32] (Fig. S11b). The real part, Gm, corresponds to irreversible phonon radiation into the substrate and thus gives rise to broadband acoustic loss. Experimentally, this radiative decay may be difficult to distinguish from the intrinsic background loss, which we attribute to weakly coupled two-level systems and model as a resistor R0 in Fig. S11c. By contrast, the introduction of SAW reflectors suppresses propagating phonon loss and places the device in a Purcell-enhanced regime that is well captured by a multimode BVD model (Fig. S11c). Figure S11d,e shows the real ( G11 ) and imaginary ( B11 ) components of the effective admittance Y11 obtained from the COM-SOL simulation. Because B11 is dominated by the IDT capacitance Cidt , we first extract Cidt using a linear fit and subsequently plot only B11 − ωC idt in order to more clearly resolve the mechanical resonances. The thick gray curves in Fig. S11d,e denote the admittance seen by the junction in the absence of SAW reflectors. In particular, the magnitude of G11 provides a baseline for the broadband IDT emission. Upon introducing the SAW reflectors into the simulation, resonant features emerge in the extracted 
+
+Y11 , shown as the solid light-pink curves in Fig. S11d,e. Because the number of periods in each reflector well exceeds that in the qubit IDT, the reflector bandwidth is narrower than the IDT passband. Consequently, away from the reflector bandwidth, G11 
+
+follows the gray background curve. We next fit the simulated Y11 using the lumped-element model shown in Fig. S11c. The purple dashed lines in Fig. S11d,e reproduce the resonances (12 in total) near the center of the reflector passband and are in good agreement with the simulated Y11 .However, the COMSOL simulation does not incorporate material surface loss and therefore yields unrealistically high quality S12 factors for the extracted mechanical modes. Since an RLC representation ( Rm,k , Lm,k , Cm,k ) has already been obtained for each mechanical mode, we can adjust Rm,k to match the range of decay rates κm,k observed experimentally. This procedure yields the dark-pink dashed curves in Fig. S11d,e. Finally, using Eq. (S37) together with the simulated Y11 shown in Fig. S11d,e, we estimate the reduction in qubit T1. The resulting predictions under different assumptions are shown in Fig. S11f. The nominal qubit lifetime T (0) 1 (gray dotted line in the background) is taken from experiment (see Fig. 3f in the main text). The thick gray curve represents the broadband lifetime reduction due to freely propagating phonons in the absence of SAW reflectors, whereas the light-pink curve gives the ideal reduction in T1 when SAW reflectors are introduced. Analogous to the construction of the dark-pink dashed curves in Fig. S11d,e, the dark-pink curve in Fig. S11f is obtained by incorporating the experimentally extracted κm,k into the calculation, thereby reducing the predicted suppression of T1.Mechanical loss is not the only mechanism that limits the coherent electromechanical interaction. To predict the reduction in 
+
+T1 more accurately, one must also account for the finite qubit coherence time T ∗ 
+
+> 2
+
+, as captured by Eq. (2) in the main text (see also Eq. (S36)). The electromechanical coupling coefficients gm,k can be computed from Eq. (S28), since the RLC parameters Y11 = G11 + iB11 
+
+Leff 
+
+Cidt R0
+
+Lm,1 
+
+Cm,1 
+
+Rm,1 
+
+Lm, NCm, NRm, NY11 
+
+Cidt 
+
+GmiBm
+
+Y11 ab cd     
+
+> 23410
+> T1 (μs) 3.04 3.06 3.08 3.10 3.12 3.14 Si Al piezo
+
+fq (GHz) 3.16 3.02 
+
+> IDT: simulation IDT + mirror: simulation IDT + mirror: circuit model IDT + mirror + material loss: circuit model
+> G11  (S) 10 –6 10 –8 10 –10
+> B11  – ωqCIDT  (S) 10 –7 10 –9 10 –11
+
+ef
+
+> nominal qubit loss IDT loss mirror (reflectivity) loss mirror (reflectivity + material) loss mirror loss + qubit dephasing
+
+FIG. S11. Multiphysics simulation and prediction of qubit lifetime. a , Schematic of the simulation used to extract the effective admittance 
+
+Y11 seen by the Josephson junctions. The blue and pink rectangles represent aluminum films. A thin piezoelectric layer ( 30 nm) is inserted between the metal film and the silicon substrate to model interface-induced piezoelectricity. b, Equivalent circuit looking into the IDT port before adding the SAW reflectors (pink rectangles in a). c, Equivalent circuit when the SAW reflectors are included. Each SAW resonator mode is modeled as a series RLC circuit. The full qubit-SAW resonator circuit is formed by shunting the equivalent circuit with a SQUID and a resistor (for qubit nominal loss). d and e, Simulated Y11 and the lumped-element fitting. f, Predicted reductions in qubit lifetime based on black-box quantization. The nominal qubit T1 (gray dotted line) is taken from the experiment (see Fig. 3f). The IDT loss (gray solid line) represents the broadband lifetime reduction due to freely propagating phonons in the absence of SAW reflectors. The mirror material loss is estimated by matching the experimentally measured mechanical quality factors of the SAW resonator modes. The blue curve additionally incorporates the experimentally characterized T ∗ 
+
+> 2
+
+.S13 of the mechanical modes have already been extracted. The resulting coupling strengths are of order 100 kHz, in good agreement with the experimentally extracted values (Table S2). Substituting these values into Eq. (2), instead of Eq. (S37), yields the blue curve in Fig. S11f, in quantitative agreement with the measured reduction in T1.
+
+> Theoretical analysis of superconducting qubit with regular geometry
+> Modeling of piezoelectric loss
+
+The method described in the previous section is also applied to qubits with regular geometry to produce the results in Fig. 4. The geometric details of the shunt capacitor of the qubit are shown in Fig. S10b, whose single-port admittance Y11 (ω) is obtained from numerical simulations using the finite-element method. A PML at the boundary of the silicon substrate is used, again, to model the irreversible phonon radiation. A geometry with axial symmetry is used to reduce the three-dimensional problem to a two-dimensional one. This is crucial because the electromechanical multiphysics simulation requires a mesh size significantly smaller than the acoustic wavelength to produce meaningful results. The system’s capacitance and interface energy participation ratio can be controlled by adjusting the dimensions of the aluminum electrodes ( rin , lgap , and lout ). We used the circuit model discussed in Ref [10], as shown in Fig. S12. The admittance of the capacitor with the piezoelectric coupling taken into consideration (we name the system a “lossy capacitor” thereafter) can be expressed as 
+
+Y11 (ω) = iωC s + Gm(ω) + iB m(ω), (S38) where Cs is the geometric shunt capacitance, Gm(ω) and Bm(ω) are the real- and imaginary-parts of the effective admittance characterizing the piezoelectric coupling and phonon radiation. When the lossy capacitor is connected in parallel with a Joseph-son junction with inductance LJ, it forms an effective resonant circuit of a superconducting qubit (Fig. S12a), with the resonant frequency 
+
+fq = ωq
+
+2π ≈ 12π√LJCs
+
+, (S39) and quality factor [10] 
+
+Qpiezo (ωq) = Im Y11 (ωq)Re Y11 (ωq) ≈ ωqCs
+
+Gm(ωq) . (S40) Fig. S12c shows an example of the simulated mechanical energy density distribution inside the silicon substrate at fq =4.5 GHz. The total energy is normalized to that of a single microwave photon at 4.5 GHz. The phonon radiation-induced energy dissipation determines the real part of the effective admittance, and therefore the quality factor of the qubit. ba 10 -15               
+
+> U(J/m 3)10 -19 10 -17
+> CsiBm(ω)Gm(ω)
+> Y11 (ω)
+> LJ
+> 1221
+> FIG. S12. Simulation of interface piezoelectric loss in qubits with regular geometries. a, A more detailed circuit model of a super-conducting qubit with piezoelectric loss, compared to Fig. 4a. b, A typical mechanical energy distribution under the coplanar capacitor at
+> fq= 4 .5GHz. Scale bar represents 50 μm.
+
+S14 
+
+> Interface energy-participation ratio and estimation of TLS-induced dielectric loss
+
+In general, for each qubit loss channel L, one may define a loss tangent tan δL such that the inverse of the total qubit quality factor is 
+
+1
+
+Q = X
+
+> L∈loss
+
+1
+
+QL
+
+= X
+
+> L∈loss
+
+pL tan δL, (S41) where pL denotes the energy participation ratio (EPR) of the region in which the loss mechanism resides [23, 39]. For example, the conventional interface dielectric-loss participation ratio pTLS includes contributions from the metal-air (MA), substrate-air (SA) and metal-substrate (MS) interfaces. Then, the TLS-limited quality factor can be calculated as 
+
+QTLS = 1
+
+pMA tan δMA + pSA tan δSA + pMS tan δMS 
+
+≈ 1
+
+pTLS tan δTLS 
+
+, (S42) where we have made the common approximation that each interface has a similar loss tangent. Because the interface piezoelectricity originates at the MS interface, we analyze it in the main text using the aluminum-silicon interface EPR 
+
+pAl-Si = Eint 
+
+Etot 
+
+, (S43) where Etot is the electrostatic energy of the entire system, while Eint is the electrostatic energy distributed within a hEPR = 3 nm-thick silicon layer beneath the aluminum electrodes (Fig. S10). hEPR = 3 nm is generally adopted in literature for estimation of the TLS dielectric loss [23]. Consequently, we compute an effective interface piezoelectric loss tangent in the main text via the expression 
+
+tan δpiezo = 1
+
+Qpiezo pAl-Si 
+
+. (S44) On the other hand, for standard transmon geometries, the MS and SA interface contributions typically dominate the dielectric loss and are of comparable magnitude [39]. We can therefore approximately relate the participation ratio for interface piezoelectricity to that of TLS as pAl-Si ≈ pTLS /2.To compare the frequency scaling of the interface piezoelectric and TLS losses, we use an empirical model of the interface TLS loss tangent [26] to capture its weak frequency dependence 
+
+tan δTLS (fq) = tan δTLS ,0 ×
+
+ fq
+
+fq0
+
+0.15 
+
+, (S45) where fq0 = 6 GHz, and tan δTLS ,0 = 10 −3. We estimate the interface loss tangent to be 10 −3 at 6 GHz, which is the value typically used in literature for state-of-the-art aluminum-on-silicon superconducting qubits. We clarify that the frequency dependence of TLS loss is a complex many-body problem [40], and the f 0.15 scaling is not expected to be accurate. However, this weak frequency dependence is consistent with the experimental observations made in aluminum-on-silicon fluxonium qubits [26] and multiple-mode coplanar waveguide resonators [41]. In any case, a small variation in fq0 or in the exponent does not affect the conclusion we reached in the main text.

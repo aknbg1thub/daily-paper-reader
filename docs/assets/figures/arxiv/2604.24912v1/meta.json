@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-001.webp",
+      "caption": "Fig. 4. Greedy selection trajectory. Each row corresponds to one (initial state, observable) candidate, ordered by selection (top = first picked); rows below the selected set show the highest-informativeness candidates that were not selected. Gray bars: raw informativeness. Colored bars: marginal informativeness after orthogonalization against previously-selected pairs.",
+      "page": 6,
+      "index": 1,
+      "width": 529,
+      "height": 294
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-002.webp",
+      "caption": "Fig. 3. Raw informativeness of every candidate (initial state, observable) pair, computed as the variance of the predicted expectation value across N = 500 random draws of (η, ϕ) from the training distribution. Rows: candidate initial states, restricted to tensor products of single-qubit states. Columns: singleand two-qubit Pauli observables (excluding the identity). Darker cells are uninformative; brighter cells are sensitive to the learned parameters.",
+      "page": 6,
+      "index": 2,
+      "width": 529,
+      "height": 385
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-003.webp",
+      "caption": "Fig. 1. (a) Circuit diagram of the transmon-coupler-transmon architecture: two frequency-tunable transmon qubits (red) capacitively coupled to a tunable coupler (blue). Each mode is characterized by its charging and Josephson energies Ei C , Ei J , with capacitive coupling energies Ejk C setting the inter-mode couplings. The qubit and coupler frequencies are tunable via the SQUID fluxes Φq1, Φq2, Φc1. (b) Effective two-qubit description after coupler elimination: the qubits acquire an effective exchange coupling geff and a residual ZZ interaction ζ.",
+      "page": 2,
+      "index": 3,
+      "width": 512,
+      "height": 356
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-004.webp",
+      "caption": "Fig. 5. Predicted vs ground-truth projected Pauli coefficients on 10 held-out, adapted devices. Shown are 300 random control points per device. Color encodes device; dashed line is y = x.",
+      "page": 7,
+      "index": 4,
+      "width": 529,
+      "height": 625
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-005.webp",
+      "caption": "Fig. D.1. Projected-Pauli coefficients vs. coupler flux Φc1 for three held-out devices. Dashed: HAML prediction; solid: fidelity-refined ground truth; dotted: SWPT. Qubit fluxes held at ϕq1 = ϕq2 = 0.25.",
+      "page": 10,
+      "index": 5,
+      "width": 529,
+      "height": 549
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-006.webp",
+      "caption": "TABLE B.1 SYSTEM PARAMETERS.",
+      "page": 10,
+      "index": 6,
+      "width": 366,
+      "height": 337
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-007.webp",
+      "caption": "TABLE C.1 NETWORK, TRAINING, AND ADAPTATION HYPERPARAMETERS.",
+      "page": 10,
+      "index": 7,
+      "width": 500,
+      "height": 517
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-008.webp",
+      "caption": "Fig. 6. Perturbative expansion ratio |gqic1/∆qic1| for i = 1 (left) and i = 2 (right), across the 10 held-out devices, at the fast-gate operating flux Φc1 = 1.35. Bars are sorted ascending; bar color identifies the device.",
+      "page": 8,
+      "index": 8,
+      "width": 529,
+      "height": 295
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-009.webp",
+      "caption": "Fig. 7. Infidelity gain of HAML over SWPT, (ISWPT−IFloor)/(ILearned−Ifloor), with fidelity floor Ifloor, as a function of effective coupling geff, per held-out device.",
+      "page": 8,
+      "index": 9,
+      "width": 516,
+      "height": 275
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-010.webp",
+      "caption": "Fig. A.1. Training loss vs. epoch (left) and L-BFGS adaptation loss vs. iteration for each held-out device (right), both on a log scale.",
+      "page": 9,
+      "index": 10,
+      "width": 529,
+      "height": 654
+    }
+  ]
+}

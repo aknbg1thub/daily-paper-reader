@@ -1,0 +1,1285 @@
+Title: Gate-dependent offset charge shifts and anharmonicity in gatemon qubits in the weak tunneling regime
+
+URL Source: https://arxiv.org/pdf/2604.24716v1
+
+Published Time: Wed, 29 Apr 2026 10:23:41 GMT
+
+Number of Pages: 15
+
+Markdown Content:
+## Gate-dependent offset charge shifts and anharmonicity in gatemon qubits in the weak tunneling regime 
+
+Utkan G¨ ung¨ ord¨ u, 1, 2, ∗ Rusko Ruskov, 1, 2 Silas Hoffman, 1 Kyle Serniak, 3, 4 Andrew J. Kerman, 3 and Charles Tahan 2
+
+> 1
+
+Laboratory for Physical Sciences, 8050 Greenmead Drive, College Park, Maryland 20895 
+
+> 2
+
+Department of Physics, University of Maryland, College Park, Maryland 20742, USA 
+
+> 3
+
+Lincoln Laboratory, Massachusetts Institute of Technology, Lexington, MA 02421, USA 
+
+> 4
+
+Research Laboratory of Electronics, Massachusetts Institute of Technology, Cambridge, MA 02139, USA 
+
+Gatemon qubits are based on a superconductor-quantum dot-superconductor (S-QD-S) junction which enables in situ electrostatic tuning via a gate electrode. For a single-channel QD this structure gives rise to two subgap Andreev bound states (ABSs), and generally leads to a richer quantum phase dynamics as compared to conventional transmons. In a recent work [Phys. Rev. B 111, 214503 (2025)] we derived the quantum phase dynamics from a many-body treatment which leads to an effective gate voltage-dependent Hamiltonian that self-consistently incorporates the phase quantization. It predicts (i) a renormalization of the junction’s effective capacitance and (ii) the presence of gate voltage and occupation-dependent charge offsets in junctions with tunneling asym-metry. Here, we quantify the observable impact of these effects on the qubit’s energy spectrum and anharmonicity, by studying the interplay of the two Andreev branches as a function of dot-gate volt-ages and junction transparencies. We show the relation of these predictions to simplified gatemon models and propose a protocol to experimentally detect the predicted charge offsets. 
+
+I. INTRODUCTION 
+
+Superconducting circuits incorporating hybrid superconductor-semiconductor Josephson junctions (JJs) have emerged as a promising platform for the realization of compact and electrically tunable qubits and couplers. A notable example is the gatemon, which shares the transmon circuit, a Josephson junction shunted by a large capacitance, but replaces the conven-tional superconductor-insulator-superconductor (S-I-S) junction with a junction featuring a semiconducting region typically modeled as a quantum dot (QD) that is tunnel-coupled to the superconductor leads (S-QD-S). The presence of a gate electrode atop the semiconducting region enables electrostatic control of the quantum dot’s chemical potential, thereby allowing for in situ tuning of the qubit’s energy levels. In previous simplified models the Josephson energy matrix associated with the two Andreev bound states (ABSs) was introduced phenomenologically [1–3], by modifying the theory of a superconducting quantum point contact [4, 5] (SC QPC). For a system incorporat-ing a S-QD-S super-semi junction where quantum fluctu-ations on the SC phase can be ignored (e.g., for a junction shunted by a large inductance) a closed expression for the Josephson energy was derived [6], which reduces to the SC QPC expression in the appropriate limit. A contribu-tion to the Josephson energy due to hybridization of the dot level and the continuum states of the leads, Econt , was also derived, where both these energies can be considered in the weak tunneling regime (Γ L, ΓR ≪ ∆) as well as in the strong tunneling regime (Γ L, ΓR ≳ ∆) where Γ L
+
+(Γ R) are the hopping energies coupling the dot to the  
+
+> ∗utkan@lps.umd.edu
+
+left (right) lead, and ∆ is the superconducting gap in the leads. Later on, in several studies a gatemon Hamil-tonian was phenomenologically modeled based solely on these contributions, see e.g. Refs. [7, 8], in particular to explain anomalous behaviour of the gatemon anhar-monicity as a function of the QD gate voltage [8, 9]. In a recent paper, Ref. [14], we presented a new model for the gatemon based on a first-principles many-body treatment of both the super-semi junction and its circuit environment. In this approach, an effective Hamiltonian was established using the path-integral formalism [5, 15], with a quantization of the superconducting phase derived self-consistently, and where the Josephson energy matrix and continuum energy shift are in agreement with the previously developed [6]. Moreover, this model predicts new effects in the charg-ing energy part of the Hamiltonian that are associated with the quantum fluctuations of the SC phase. Namely, (i) a renormalization of the effective capacitance across the junction, δC Σ, and (ii) the emergence of two distinct charge offsets in junctions with tunneling asymmetry: one, δn g , that modifies the conventional offset charge ng ,and a second one, nz , which depends on the number of particles within the junction. Both effects are functions of the junction gate voltage ϵg . We note that these new effects have been missing from earlier phenomenological models, see, e.g., Refs. [1–3, 8]. In this paper, we identify the experimental signatures of these theoretical predictions, focusing in particular on their influence on the gatemon energy ng -charge oscil-lations, E01 (ng , ϵ g ) (with its amplitude defined as the charge dispersion), and on the gatemon anharmonicity, 
+
+α(ng , ϵ g ). We find that, within the weak tunneling regime (to which this theory is restricted), the renormalization of the capacitance has an impact on the anharmonicity comparable to that of the energy shift Econt (ϕ) induced by the continuum states. Since within the weak tunneling 
+
+> arXiv:2604.24716v1 [cond-mat.mes-hall] 27 Apr 2026
+
+2regime the (single-channel) effective Josephson energy is of the order of the charging energy, the effects can have a significant impact on the observed oscillations of the gatemon transition spectrum as a function of ng .An interesting new effect is an effective shift, δn eff (ϵg )of the ng oscillation curves as a function of ϵg in which we can recognize, in particular, the interplay of the upper and lower ABS energy branches as ϵg becomes small while the junction transparency T (ϵg ) reaches a maximum. We propose an experimental protocol to detect the signatures of the predicted charge offsets by measuring the depen-dence of the qubit transition energy oscillations E01 on 
+
+ng and repeating these measurements at different values of ϵg .The paper is organized as follows. In Sects. II A and II D, we review the theoretical model of the gatemon in-troduced in Ref. [14]. In Sects. II B, II C the junction transparency, T (ϵg ), the gaps between Andreev branches and the continuum, and the effective Josephson energy, 
+
+EJ, eff (T ) for arbitrary transparency are considered, as important figures for the junction. The derivation of the boundary conditions in Sect. II E, necessary for calcu-lating the energy spectrum, generalizes those previously obtained in Ref. [16], to arbitrary tunneling rates and for the different fermion parity sectors. In Section III we explore the experimental implications of the model. In Sect. III A, the charge dispersion δ01 [the amplitude of charge oscillations, E01 (ng )] is analyzed across a range of QD gate voltages ϵg and junction tunneling asym-metries. In particular, for small junction voltages and asymmetries, ϵg , |ΓL − ΓR| ≪ ΓL + Γ R, we present a WKB approach (similar to Refs. [4, 16]) that provides insight into the interplay of the upper and lower ABS branches. In Sect. III B, we calculate the effective shift 
+
+δn eff (ϵg ) of charge oscillations that follows from the pre-dicted new charge offsets, δn g and nz . A suitable in-terpretation δn eff (ϵg ) for small and large ϵg is provided. The prediction of this experimental signature is our main result and can be used to verify the new physics of this model. In Sect. III C, we examine the effect of capac-itance renormalization on the qubit anharmonicity for moderate ϵg ∼ (0 .1 ∆ , 0.7 ∆) and assess its relative sig-nificance compared to the energy shifts induced by the continuum states. Based on the insights of Sect. III A, we also give a qualitative explanation of the behavior of the anharmonicity α(ng , ϵ g ) for small ϵg . Section IV concludes the paper.   
+
+> II. MODEL A. Overview of predictions from path integral formalism
+
+In this subsection, we summarize the results of Ref. [14]. Within the slow phase approximation [15] ( e2 
+
+> 2CΣ
+
+≪ ∆, CΣ being the total capacitance of the dot), and in the weak tunneling regime, Γ L,R ≪
+
+q
+
+∆2 − ϵ2 
+
+> g
+
+,the many-body description of the gatemon circuit can be reduced to an effective Schr¨ odinger equation with Hamil-tonian ˆHeff ( ˆϕ, ˆn, ˆD, ˆD†), with ˆϕ and ˆ n ≡ − i∂ ϕ being the conjugate operators representing gauge-invariant phase difference across the junction and the number of Cooper pairs transferred through the junction, obeying [ ˆϕ, ˆn] = i
+
+[14]. Here, Γ L,R are the tunneling (hopping) rates between the dot and the left/right lead, ϵg is the gate-voltage defined energy of the dot with respect to the Fermi level of the leads, and ∆ is the superconducting gap in the leads. The ˆD-operator is the dot field operator in Nambu space, ˆD = ( ˆd↑, ˆd†↓)T [14], with ˆd†↓ being the creation operator of a spin-down excitation in the dot. It was shown in [14] that ˆHeff does not mix the even- and odd-parity sectors of the dot. Therefore, projecting onto the even parity occupation states, |0⟩ and | ↑↓⟩ = d†↑d†↓|0⟩ we obtain [14]: ˆHeven = 4 ˜EC (−i∂ ϕ − ˜ng − nz ηz )2 + ˆUJ (ϕ), (1) ˆUJ (ϕ) = 
+
+ ∆
+
+ζ + Γ 
+
+
+
+Γ cos ϕ
+
+2 ηx − δΓ sin ϕ
+
+2 ηy
+
+
+
++ ϵg ηz
+
+ζζ + Γ 
+
+
+
++ Econt (ϕ),
+
+which governs the even-parity sector relevant for the gatemon. In this expression ζ ≡ p∆2 − EA(ϕ)2, Γ ≡
+
+ΓL + Γ R, δΓ ≡ ΓL − ΓR, and ˆUJ (ϕ) is the Josephson energy matrix with eigenvalues defining the lower/upper ABS energy profiles: 
+
+U∓(ϕ) = ∓EA(ϕ) + Econt (ϕ), (2) with 
+
+EA(ϕ) = ∆
+
+ζ + Γ 
+
+r
+
+Γ2 + ϵ2 
+
+> g
+
+ζ2
+
+∆2
+
+r
+
+1 − T (ϵg ) sin 2 ϕ
+
+2 , (3) and 
+
+T (ϵg ) ≡ 4Γ LΓR
+
+Γ2 + ϵ2
+
+> g ζ2
+> ∆2
+
+. (4) Note that Eq. (3) defines a quartic equation for EA(ϕ), obtained previously in Ref. [17]. In the derivation of [14] the matrix ˆUJ (ϕ) − Econt (ϕ) is non-perturbative in Γ L,R 
+
+so that this model is not restricted to the weak tunneling regime. In this paper we focus on the weak tunneling regime, ΓL,R ≪
+
+q
+
+∆2 − ϵ2 
+
+> g
+
+, in which ζ weakly depends on ϕ:
+
+ζ =
+
+q
+
+∆2 − ϵ2 
+
+> g
+
++ Γ ϵ2
+
+> g
+
+∆2 − ϵ2
+
+> g
+
++ O
+
+ Γ2
+
+> i
+
+∆2 − ϵ2
+
+> g
+
+sin 2 ϕ
+
+2
+
+
+
+(5) Neglecting this ϕ-dependence, Eq. (3) can be used as an approximate solution for EA(ϕ) and Eq. (4) can be interpreted as the transparency of the junction. 3The hybridization of the dot level and the continuum energies of the leads results in an energy shift, Econt (ϕ). In the perturbative (weak tunneling) regime it is given by [14]: 
+
+Econt (ϕ) ≈ − Γ 2
+
+π ϵg
+
+arcsin ϵg
+
+> ∆
+
+q
+
+∆2 − ϵ2
+
+> g
+
+(6) +
+
+−2Γ LΓR∆2 sin 2 ϕ 
+
+> 2
+
++ Γ 2ϵ2
+
+> g
+
+
+
+1 + ∆2
+
+> ∆2−ϵ2
+> g
+
+
+
+∆(∆ 2 − ϵ2 
+
+> g
+
+)where second order terms in Γ L,R are kept in order to capture the leading order contributions to the supercur-rent. Equation (6) is in agreement with the general non-perturbative result for Econt of Ref. [6]; It is a good ap-proximation for the regime of small or moderate ϵg we are interested in this paper [18]. 
+
+B. Junction transparency and gapped Andreev branches 
+
+For the transparency defined in Eq. (4) we note that for ϵg ≪ ∆, T (ϵg ) has approximately the Breit-Wigner form associated with a resonance at ϵg = 0 (this can be compared with the phenomenology of Ref. [2]). Fig. 1, inset, shows the transparency T (ϵg ) in the available range of ϵg for a symmetric junction, δΓ = 0. It reaches unity for ϵg = 0 and decreases rapidly for large ϵg , according to the resonance model. In particular, a slower decrease of 
+
+T (ϵg ) for larger Γ implies a wider resonance, as expected. For an asymmetric junction, δΓ̸ = 0, the transparency is scaled by a factor 1 − δΓ2 
+
+> Γ2
+
+, thus reaching a maximum value less than one. Generally, the two Andreev branches are well gapped both from each other and from the continuum states be-low and above the SC gap. The gap to the lower/upper continuum (at ∓∆) is minimal at ϕ = 0 and 2 π, and is given by Γ A ∓ Econt (0), where Γ A(ϵg ) is the prefactor to the last square root in Eq. (3): ΓA(ϵg ) ≡ ∆
+
+ζ + Γ 
+
+r
+
+Γ2 + ϵ2 
+
+> g
+
+ζ2
+
+∆2 ≡
+
+q˜Γ2 + ˜ ϵ2 
+
+> g
+
+, (7) where ˜ΓL,R = Γ L,R ∆ 
+
+> ζ+Γ
+
+, ˜ ϵg = ϵg ζζ+Γ are the re-scaled Hamiltonian parameters (see below). For ϵg = 0 both gaps to the continuum reach ≃ Γ. The gap between the Andreev branches reaches a minimum at ϕ = π given by 2Γ A(ϵg ) p1 − T (ϵg ). For ϵg = 0 it reaches a mini-mum value of 2Γ A(0) δΓΓ ≃ 2δΓ, which goes to zero for a symmetric junction. 
+
+C. Effective Josephson energy at arbitrary transparency 
+
+When the two ABS branches are well-gapped, which occurs in the intermediate- to low-transparency regime, 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.2 0.4 0.6 0.8 1.0 
+
+FIG. 1. Effective Josephson energy EJ, eff (T ), due to EA(ϕ)and Econt (ϕ), and the transparency T (ϵg ) as given by Eq. (4) (inset), as a function of ϵg , for Γ L = Γ R with T |ϵg =0 = 1. For asymmetric tunneling rates , δΓ̸ = 0, T (ϵg ) is reduced by the factor 1 − δΓ2 
+
+> Γ2
+
+. For parameters ∆ /h = 45 GHz, EC /h ≈
+
+0.5 GHz [2, 3], and Γ L,R = 1 , 3, 5 GHz, the system is not in a transmon-like regime, as EJ, eff ≲ EC .
+
+it is a good approximation to consider the system “liv-ing” predominantly on the lower branch with the phase-dependent effective potential energy: 
+
+U−(ϕ) = −EA(ϕ) + Econt (ϕ). (8) This can be associated with an effective Josephson en-ergy, −EJ, eff cos ϕ, containing contributions from the ABS, EAJ, eff , and the continuum states. At low trans-parencies, the in-gap contribution can be obtained from Eq. (3) as 
+
+EAJ, eff ≈ ΓA(ϵg ) T (ϵg )4 = ∆
+
+ζ + Γ ΓLΓR
+
+q
+
+Γ2 + ϵ2 
+
+> gζ2
+> ∆2
+
+. (9) However, to elaborate on the experimental conse-quences of Eq. (1), one needs to extend the analysis to large transparencies, T ≲ 1, which corresponds to smaller junction gate voltages, ϵg . A more general expression for 
+
+EAJ, eff for arbitrary T can be obtained from the first har-monic in the Fourier expansion of Eq. (3) ( for the lower Andreev branch; see however, Sect. III A for a discussion involving both Andreev branches ): 
+
+EAJ, eff (T ) ≈ ∆
+
+ζ + Γ 
+
+r
+
+Γ2 + ϵ2 
+
+> g
+
+ζ2
+
+∆2 g1(T ), (10) 
+
+g1(T ) = 83πT 
+
+ 
+
+1 − T
+
+2
+
+
+
+E(T ) − (1 − T ) K(T )
+
+
+
+,
+
+where K(T ) and E(T ) are complete elliptic integrals of the first and second kind, respectively. Eq. (10) reduces to Eq. (9) for small transparencies as g1(T )|T ≪1 ≈ T 
+
+> 4
+
+.Higher harmonics, EAJ, eff ,m (T ) cos( mϕ ) with m > 1, of Eq. (3) can be readily obtained. These have non-negligible contributions only for large T ≈ 1, and rapidly 4decrease for smaller T . The maximal strengths (at 
+
+T = 1) of the second and third harmonics are EAJ, eff ,2 ≈
+
+0.2EAJ, eff and EAJ, eff ,3 ≈ 0.08 EAJ, eff . In Fig. 1, the effec-tive Josephson energy (strength of the first harmonic of 
+
+EA(ϕ) − Econt (ϕ), of the lower ABS branch), 
+
+EJ, eff (ϵg ) ≈ EAJ, eff (T (ϵg )) − ΓLΓR∆∆2 − ϵ2
+
+> g
+
+, (11) and T (ϵg ) (inset) are shown as a function of ϵg ≲ 0.7∆ for Γ L,R /h = 1 , 3, 5 GHz. For a given Γ L,R , both EAJ, eff 
+
+and T attain their maxima at ϵg = 0 and rapidly decrease as ϵg increases. The maximum value of EAJ, eff (ϵg ) is 43π Γ. For the typical experimental parameters, ∆ /h = 45 GHz, 
+
+EC /h ≈ 0.5 GHz [2, 3], EJ, eff (0) barely exceeds or is com-parable to EC when in the single-channel weak tunneling regime, i.e. the gatemon system is far from being in a transmon limit [19]. 
+
+D. Effects of quantum fluctuations of the superconducting phase 
+
+The charging energy part of ˆHeven in Eq. (1) is ˆHC ≡ 4 ˜EC [ˆ n − ˜ng (ϵg ) − nz (ϵg )ηz ]2 , (12) and contains several new effects [14] which are the main focus of this paper. In the charging Hamiltonian, ˜EC = 
+
+> e2
+> 2( CΣ+δC Σ)
+
+is the renormalized charging energy, with 
+
+δC Σ(ϵg ) = 2 e2 ΓLΓR
+
+Γ2∆ 2 + ϵ2 
+
+> g
+
++ 3∆ 2ϵg 
+
+> arcsin ϵg
+> ∆
+
+√∆2−ϵ2
+
+> g
+
+π(∆ 2 − ϵ2 
+
+> g
+
+)2 (13) being a voltage-tunable shift in capacitance due to the continuum states. This capacitance shift is analogous to that for an S-I-S based Cooper pair box [15], but can be 1-2 orders of magnitude larger for the same effective Josephson energy [14]. In addition, there are two new charge offsets[14] in ˆHC :First, ˜ ng (ϵg ) ≈ ng + δn g (ϵg ) is a renormalization of the conventional charge offset ng = 12eCI 
+
+> 2
+
+(V aL − V aR ) (due to an applied voltage to the leads), with 
+
+δn g (ϵg ) ≃ − δΓ2
+
+ϵg + ∆ 2 arcsin ϵg 
+
+> ∆
+
+√∆2−ϵ2
+
+> g
+
+π(∆ 2 − ϵ2 
+
+> g
+
+) (14) due to the continuum states. Second, there is an in-gap contribution to the charge offset, 
+
+nz (ϵg ) ηz ≃ δΓ4( ζ + Γ) ηz (15) which depends on the occupation of the dot, ⟨ηz ⟩. Above, the continuum contributions in δC Σ and δn g are pertur-bative results in the leading order in Γ L,R within the weak tunneling regime, whereas nz is an in-gap contribution, non-perturbative in the hopping rates [14]. 
+
+E. Boundary conditions 
+
+We next derive the boundary conditions required to solve the Schr¨ odinger equation ˆHeven |ψn(ϕ)⟩ = En|ψn(ϕ)⟩, (16) for gatemon in ϕ-space. First, we observe that the ∝ ηx,y 
+
+terms that cause transitions within the even sector ( |0⟩ ↔ | ↑↓⟩ ) do so only by transferring a Cooper pair between the leads and the dot due to conservation of charge. This constrains the eigenfunctions to the following form in the ˆn-basis of transferred Cooper pairs ( hereafter we refer to these states as |m⟩): 
+
+|Ψeven ⟩ = X   
+
+> m∈Zor Z+12
+
+Ψm, 0|m⟩| 0⟩ + Ψ m+ 12 ,↑↓ |m + 12 ⟩| ↑↓⟩ ,
+
+(17) which ensures |0⟩ → | ↑↓⟩ is accompanied by the change 
+
+|m⟩ → | m + k + 12 ⟩ (k ∈ Z) by construction. This repre-sents the transfer of a single Cooper pair from one of the leads onto the dot which results in a shift of the eigen-value of ˆ n by 12 since ˆ n = 12e  
+
+> ˆQL−ˆQR
+> 2
+
+where ˆQL,R are the charges on each lead [16]. Indeed, in ˆHeven , Eq. (1), ηx,y 
+
+terms are always accompanied by the operators cos ˆϕ
+
+2 = 12
+
+X 
+
+> l∈Z∪Z+12
+
+|l⟩⟨ l + 12 | + |l + 12 ⟩⟨ l|,
+
+sin ˆϕ
+
+2 = 12i
+
+X 
+
+> l∈Z∪Z+12
+
+|l⟩⟨ l + 12 | − | l + 12 ⟩⟨ l| (18) which exactly perform the half-integer shift in the eigen-value of ˆ n. The presence of cos ˆϕ-dependent terms, such as in ζ( ˆϕ) and in Econt ( ˆϕ) (which can lead to transitions with k̸ = 0), is compatible with Eq. (17) since such terms can only shift m by an integer [20]. The choice between 
+
+m ∈ Z or m ∈ Z + 12 corresponds to the parity of the leads, defined as whether the difference in the number of quasiparticles in the leads is even or odd. To obtain the boundary condition in the ϕ-basis, we project Eq. (17) onto |ϕ⟩ and use ⟨ϕ|l⟩ = eilϕ (which follows from the commutation relation [ ˆϕ, ˆn] = i [21]) and obtain 
+
+|Ψeven (ϕ)⟩ = |ϕ⟩⟨ ϕ|Ψeven ⟩ = (19) 
+
+X   
+
+> m∈Zor Z+12
+
+Ψm, 0eimϕ |ϕ⟩| 0⟩ + Ψ m+ 12 ,↑↓ ei(m+ 12 )ϕ|ϕ⟩| ↑↓⟩ .
+
+Returning to the basis of {| ϕ⟩| ↑↓⟩ , |ϕ⟩| 0⟩} , the wavefunc-tion is 
+
+|Ψeven (ϕ)⟩ = X   
+
+> m∈Zor Z+12
+
+Ψm+ 12 ,↑↓ ei(m+ 12 )ϕ
+
+Ψm, 0eimϕ 
+
+
+
+(20) 5which satisfies 
+
+|Ψeven (ϕ + 2 π)⟩ = −ηz |Ψeven (ϕ)⟩ (for m ∈ Z) (21a) 
+
+|Ψeven (ϕ + 2 π)⟩ = +ηz |Ψeven (ϕ)⟩ (for m ∈ Z + 12 )(21b) This result is in agreement with Ref. [16] where Eq. (21a) was derived perturbatively in Γ L,R in the weak Γ L,R , ϵ g
+
+regime. To obtain the boundary conditions for the eigenfunc-tions of ˆHodd [22], similar steps to those above can be retraced, by starting from the wavefunction 
+
+|Ψodd ⟩ = X   
+
+> m∈Zor Z+12
+
+Ψm, ↑|m⟩| ↑⟩ + Ψ m, ↓|m⟩| ↓⟩ , (22) which conforms to the structure of ˆHodd in which no terms are present that can switch between integer and half-integer m (see, Ref. [14]). Projecting onto the |ϕ⟩ as above, we arrive at 
+
+|Ψodd (ϕ)⟩ = |ϕ⟩⟨ ϕ|Ψ⟩ = (23) 
+
+X   
+
+> m∈Zor Z+12
+
+Ψm, ↑eimϕ |ϕ⟩| ↑⟩ + Ψ m, ↓eimϕ |ϕ⟩| ↓⟩ .
+
+Once again returning to the basis of {| ϕ⟩| ↑↓⟩ , |ϕ⟩| 0⟩} , the wavefunction is 
+
+|Ψodd (ϕ)⟩ = X   
+
+> m∈Zor Z+12
+
+Ψm, ↑eimϕ 
+
+Ψm, ↓eimϕ 
+
+
+
+(24) 
+
+|Ψodd (ϕ + 2 π)⟩ = + |Ψodd (ϕ)⟩ (for m ∈ Z) , (25a) 
+
+|Ψodd (ϕ + 2 π)⟩ = −| Ψodd (ϕ)⟩ (for m ∈ Z + 12 ) . (25b) A switching between even and odd parities of the leads, (m ∈ Z or m ∈ Z + 12 , respectively) will occur upon a quasiparticle transfer between the leads. Boundary con-ditions for the odd parity sector of the dot junction given in Eq. (25a,b) are analogous to the 2 π-periodic and 2 π-antiperiodic boundary conditions for the transmon wave-functions (see, for example, Eq. (B2) in Ref. [23]) corre-sponding to the even- and odd-parity sectors of the leads.  
+
+> III. EXPERIMENTAL CONSEQUENCES
+
+In the weak tunneling regime, the effective Josephson energy is comparable to the charging energy EJ, eff ≲ EC
+
+(for a single-channel device), thus the charge dispersion of the gatemon can be significant. This is a favorable regime for observing the influence of δn g and nz on charge dis-persion [2] as ϵg or Γ L,R are varied electrically. Voltage-dependent effects of δC Σ, on the other hand, can be ob-served via the gatemon anharmonicity. To shed light on these experimental observables, in this section we calculate the gatemon energy levels,                           
+
+> FIG. 2. Qubit energy oscillations, E01 (ng), obtained by solv-ing the Schr¨ odinger equation with the Hamiltonian Eq. (1) us-ing parameters ϵg= 0 .6∆, ∆ /h = 45 GHz, EC/h = 0 .25 GHz. For symmetric tunneling reates (solid blue line), Γi/h =3 GHz, i=L, R , the minima (maxima) of E01 (ng) occurs at integer (half-integer) ng.For the asymmetric tunneling rates (solid orange line), Γ L/h = 3 GHz, Γ R/h = 1 GHz, the minima and maxima are shifted due to the presence of the additional charge offsets δn gand nzfrom Eqs. (14) and (15), which is approximated by an effective charge offset, δn eff .
+
+En, and eigenfunctions, |ψn(ϕ)⟩, by numerically solving the Schr¨ odinger equation with the Hamiltonian ˆHeven ,Eq. (1), subject to the boundary condition, Eq. (21b): 
+
+|ψn(2 π)⟩ = ηz |ψn(0) ⟩. (26) where n enumerates the gatemon energy levels. As to the charge dispersion curves, we calculate numer-ically the qubit energy splitting E01 (ng ), Fig. 2, which oscillate as a function of the applied voltage across the super-semi junction ( ∝ ng , scf. Ref. [2]). In Sect. III A we calculate the charge dispersion δ01 (ϵg ) (the amplitude of oscillations of E01 (ng ) ≡ E1(ng )−E0(ng ) as a function of ng ), for a range of available QD gate voltages, ϵg . In particular, for high transparencies, T (ϵg , δ Γ) ≈ 1, i.e. for 
+
+ϵg , δ Γ ≪ Γ we show that charge dispersion is suppressed due to depopulation of the lower Andreev branch, similar to Refs. [4, 16]. We predict in Sect. III B that these charge oscillation curves will exhibit a junction gate voltage dependent shift, δn eff (ϵg ), which is therefore detectable experimen-tally. For junction parameters such that the gap between Andreev branches is open (transparency T < 1) the shift of the gatemon energy oscillation curve has a simple in-terpretation as an additional charge offset in an effective Cooper pair box Hamiltonian. As for the anharmonicity, defined from the low-lying gatemon levels, α ≡ (E2−E1)−(E1−E0), it will be shown in Sect. III C that for moderate junction voltages, ϵg ∈
+
+(0 .1 ∆ , 0.7 ∆), the effects of quantum phase fluctuations (encoded in δC Σ, δn g and nz ) will be as important as the contribution of the continuum energy shift Econt (in contract to a simpler model, where phase fluctuation effects are ignored [8]). The behavior of anharmonicity 
+
+α(ϵg ) for small junction voltage and asymmetry is also studied and explained from an extended WKB approach. 6 
+
+> A. Gatemon charge dispersion in the weak tunneling regime in a range of dot gate voltages
+
+Figs. 3(a) and 3(b) show the calculated charge disper-sion, δ01 (ϵg , δ Γ, Γ, ∆) for a range of available QD gate voltages, ϵg , and junction asymmetry, δΓ. Since the gap between Andreev branches closes as the transparency ap-proaches unity, it is interesting to study the effect of the upper Andreev branch in the region of ϵg , δ Γ ≪ Γ. For this purpose we have adapted a WKB theory, similar to that of Refs. [4, 16]. We obtain the corrections to the gatemon energy levels, E0 
+
+> n
+
+= p8EC EJ, eff (n + 1 /2) ≡
+
+ωp, eff (n + 1 /2) (in a transmon-like regime), in the form: 
+
+δE n(ng ) ≈ (−1) n+1 w(¯¯λ)e−τ (E0
+
+> n)
+
+σ′(E0
+
+> n
+
+) cos(2 πn g + ˜δ) (27) where ˜δ = arctan 
+
+ ∆δΓ
+
+> ζϵ g
+
+
+
+, and 
+
+w(¯¯λ) = 
+
+r 2π
+
+¯¯λe−¯¯λ ¯¯λ
+
+> ¯¯λ
+
+Γ( ¯¯λ) , (28) is the probability amplitude for the system to remain on the lower Andreev branch when crossing the region of ϕ ≈
+
+π (under the barrier) [4, 16]. Here, σ(E0
+
+> n
+
+) and τ (E0
+
+> n
+
+) are the WKB integrals for the particle to be in the allowed region of the lower ABS potential around ϕ ≈ 0, and to be in the forbidden region under the barrier, around 
+
+ϕ ≈ π, respectively (see Appendix A and Ref. [16]). The necessary modifications are established in the pa-rameter ¯¯λ = 14 |r|2 ΓA
+
+˜ΓΓA
+
+¯¯ΓA
+
+s ¯¯ΓA
+
+EC
+
+, (29) where r = ˜ϵg +iδ ˜ΓΓA , Γ A is the ABS-to-continuum gap with the re-scaled parameters, ˜Γ and ˜ ϵg , scf. Eq. (7), and the rate ¯¯ΓA = Γ A + Econt (π) − Econt (0) , (30) is modified by the continuum energy (see Appendix A). We note that the WKB result, Eq. (27) requires not only transparency T ≈ 1, but also the system to be in a transmon-like regime, EJ, eff ≫ EC . which is not ful-filled even for small ϵg and δΓ for a single channel device with realistic parameters. For a single-channel device with SC gap ∆ /h ≈ 45 GHz and in the weak tunnel-ing regime, this can be achieved by engineering smaller 
+
+EC , see Sect.II C. Like in a transmon, charge disper-sion is suppressed exponentially with the increasing ratio 
+
+EJ, eff /E C . However, we obtain additional suppression at 
+
+T ≈ 1 since w → 0 for ϵg , δ Γ ≪ Γ. In Fig. 3(a) we calculate the amplitude of the the charge dispersion, defined as δ01 =max ng E01 (ng ) − min ng E01 (ng ) /2, for δΓ = 0 and ϵg
+
+from small to moderately large: ϵg ∈ (0 .01 EC , 10 EC ), and compare the exact numerics from Eqs. (1) and (17) to the WKB result Eq. (27). As expected, the WKB result practically coincides with the exact one for 
+
+ϵg ≪ Γ, while the agreement worsens as the transparency is reduced with increasing ϵg . [24] In Fig. 3(b), we plot δ01 for several values of δΓ/E C =0, 4, 8 and for ϵg reaching moderate values ≲ 0.7 ∆. For finite δΓ, the transparency is decreasing and charge dis-persion is finite even at ϵg ≈ 0. This opens a charge dephasing channel for a realistic gatemon. For fixed δΓwhile increasing ϵg , transparency decreases as of Eq. (4) (see the inset of Fig. 1), and becomes less sensitive to the factor 1 − δΓ2 
+
+> Γ2
+
+. Thus, for large ϵg the charge dispersions for different δΓ converge, Fig. 3(b). In Fig. 3(c) we plot the probability amplitude w of the lower Andreev branch, illustrating that w never reaches zero for finite δΓ, even for small ϵg , and so is the charge dispersion in Fig. 3(b). On the other hand, for moder-ately large ϵg (low transparency) the probability ampli-tude w saturates to unity, Fig. 3(c), corresponding to the notion of “living on the lower Andreev branch”. Cor-respondingly, the charge dispersion increases and then saturates at some value, depending solely on the (expo-nent of the) ratio of EJ, eff /E C . which corresponds to a low-transparency gatemon, see inset of Fig. 1. In what follows, we will use the insight from subsec-tion III A, especially the behavior of the probability am-plitude w as a function of ϵg and δΓ to analyze the shifts of the charge oscillation curve as a function of these pa-rameters, which will be our main experimental prediction that follows from the physics of Eq. (1).     
+
+> B. Spectroscopic signatures of δn gand nz
+
+A direct observation of the new charge offsets δn g and 
+
+nz can be made by measuring the qubit energy E01 (ng )(which is a 2 e-periodic function) as ng is varied. For junctions with symmetric tunneling rates Γ L = Γ R, both 
+
+δn g and nz vanish and E01 (ng ) attains its minima (max-ima) at integer (half-integer) values of ng , whereas for ΓL̸ = Γ R the minima and maxima shift by an effective charge offset δn eff , as shown in Fig. 2. In the medium-and low-transparency regimes for which ABSs are still well gapped, an analytical description of δn eff can be de-rived as follows. We first observe that in the limiting case of ϵg ≫ ΓL,R ,the Josephson potential can be approximated as ˆUJ ≈
+
+ϵg ηz + Econt (ϕ), which commutes with the charge offset operator, see Eq. (12). The lowest (qubit) energy states originate from the lower branch of the ABSs since at low transparency the ABSs are well gapped. Thus, setting 
+
+ηz → − 1 for the low-lying energy eigenstates, the charg-ing Hamiltonian, Eq. (12), becomes a scalar: ˆHC, eff = 4 ˜EC (ˆ n − ng − δn eff )2 (31) 7           
+
+> (a) 0.05 0.10 0.50 1510 0.0 0.5 1.0 1.5 2.0 2.5 (b) (c) 10 20 30 40 50 60 0.2 0.4 0.6 0.8 1.0
+
+FIG. 3. Charge dispersion δ01 (ϵg ) in units of EC in (a,b), and probability amplitude w(ϵg ) in (c), with Γ /E C = 10 and ∆/E C = 90. (a) For symmetric tunneling rates Γ L,R = 5 EC , δ01 is calculated from the WKB theory(orange, dashed), Eq. (27), and from exact numerical solutions of the Schr¨ odinger equation with ˆHeven (blue, solid). (b) For asymmetric tunneling rates, 
+
+δΓ/E C = 0 , 4, 8, δ01 is calculated from the exact numerical solutions with ˆHeven . Decreasing of transparency T (ϵg ) either due to finite δΓ, or due to increasing of ϵg leads to growth of w and so is the charge dispersion. (c) Probability amplitude w of the lower Andreev branch for δΓ = 0 and for finite δΓ = 4 , 8 EC . In the latter case w only slightly deviates from unity in the range of moderate ϵg /E C ≳ 15 − 20 meaning the system is “living” primarily on the lower Andreev branch in that range. When 
+
+ϵg , δ Γ ≪ Γ are both small w go to zero and charge dispersion is strongly suppressed. 
+
+with 
+
+δn eff (ϵg ) |(ϵg ≫Γ) ≃ δn g (ϵg ) − nz (ϵg ), (32) which is confirmed numerically (see Figs. 4(a), 4(b), 4(c)). To extend this result to ϵg ≲ ΓL,R , we perform a uni-tary transformation ˆU that diagonalizes ˆUJ as ˆU ˆUJ ˆU † =
+
+EA(ϕ)σz + Econt (ϕ) [25], where σi are Pauli matrices in the ABSs basis. In this basis, the Schr¨ odinger equa-tion becomes ˆ˜Heven | ˜ψn(ϕ)⟩ = En| ˜ψn(ϕ)⟩, and the rotated wavefunctions | ˜ψn(ϕ)⟩ = ˆU |ψn(ϕ)⟩ satisfy the modified boundary condition 
+
+| ˜ψn(2 π)⟩ = −| ˜ψn(0) ⟩. (33) When ABSs are well gapped, the off-diagonal terms are suppressed for low-lying qubit eigenstates, and the wave-functions will have a negligible component in the up-per Andreev branch (confirmed numerically; see also Fig. 3(c)): 
+
+| ˜ψn(ϕ)⟩ ≈ | ˜ψn, lower (ϕ)⟩ ≡ 
+
+ 0˜ψlower  
+
+> n
+
+(ϕ)
+
+
+
+. (34) This approximation is equivalent to replacing σz →−1, σ x,y → 0 in the rotated Hamiltonian, which reduces the full Hamiltonian, Eq. (1) into a scalar Hamiltonian (equivalent to a Cooper pair box) with a charging energy ˆHC, eff , Eq. (31), and a potential term ≈ − EJ, eff cos ϕ,Eq. (10). The additional effective charge offset can be obtained from the average of the charge offset operator in the transformed charging Hamiltonian, ˆ˜HC = 4 ˜EC
+
+
+
+−i∂ ϕ − i ˆU ∂ ϕ ˆU † − ˜ng − nz ˆU η z ˆU †2
+
+, (35) over the states | ˜ψn, lower (ϕ)⟩ (n = 0 , 1) as 
+
+δn eff ,n ≡ δn g + ⟨ ˜ψn, lower |i ˆU ∂ ϕ ˆU † + nz ˆU η z ˆU †| ˜ψn, lower ⟩.
+
+(36) We numerically find that δn eff ,0 ≈ δn eff ,1, such that the effective charging Hamiltonian becomes a scalar, as in Eq. (31) with the effective charge offset δn eff ,0 of Eq. (36). Further we note that the integrand of δn eff ,0 weakly de-pends on ϕ and is concentrated around ϕ = 0, with neg-ligible upper component. These observations allow us to further simplify the expression for the charge offset 
+
+δn eff ,0, Eq. (36) as 
+
+δn approx eff ,0 ≡ δn g +
+
+ δΓ4Γ − ϵg ζ
+
+ΓA(ϵg )( ζ + Γ) 
+
+ δΓ4Γ + nz
+
+ 
+
+(37) which does not require the calculation of the low-lying wavefunctions. The accuracy of δn approx eff ,0 decreases with decreasing ϵg , although it remains a fair approximation in the range of moderate gate voltages, ϵg ∈ [0 .1∆ , 0.7∆]. as shown, e.g., in Fig. 4(a). In Figs. 4(a), 4(b), and 4(c), we compare the exact shift, δn eff , of the qubit energy oscillation curves, ob-tained as the deviation of the first minimum of E01 (ng )from 0 (Fig. 2), to its approximations δn eff ,0 and δn approx eff ,0 ,respectively given in Eqs. (36) and (37). The numeri-cally calculated shift, δn eff (blue), coincides with δn eff ,0
+
+(orange), δn approx eff ,0 (green) except a narrow region of small 
+
+ϵg ≪ Γ where the upper Andreev branch comes into play and the ansatz wavefunction, Eq. (34), is no longer valid, scf. Fig. (3(c)). As expected, the approximation, Eq. (37), fails for small ϵg , approaching the limiting value δn approx eff ,0 (0) =  
+
+> δΓ4Γ
+
+, which is negligible for any fixed δΓ ≪ Γ. On the other hand, the exact shift approaches values of |δn eff (ϵg =0) | ≃ 0.25 for any fixed δΓ. The deviation of the exact 8      
+
+> (a) 0.1 0.2 0.3 0.4 0.5 0.6 0.7
+
+## - 0.25 
+
+## - 0.20 
+
+## - 0.15 
+
+## - 0.10 
+
+## - 0.05 (b) 0.1 0.2 0.3 0.4 0.5 0.6 0.7 
+
+## - 0.25 
+
+## - 0.20 
+
+## - 0.15 
+
+## - 0.10 
+
+## - 0.05 0.00 (c) 0.1 0.2 0.3 0.4 0.5 0.6 0.7 
+
+## - 0.25 
+
+## - 0.20 
+
+## - 0.15 
+
+## - 0.10 
+
+## - 0.05 
+
+FIG. 4. The effective charge offset shift, δn eff (ϵg ), observed in the qubit energy oscillations, Fig. 2, and its interpretation. The exact numerics δn eff (ϵg ) (blue) is compared to the approximations δn eff ,0, Eq. (36) (orange) and a simplified expression δn approx eff ,0 ,Eq. (37) (green) that assumes the system is “living on the lower Andreev branch”, expressed by the ansatz wavefunction, Eq. (34). In all three plots the WKB result δn WKB eff , Eq. (38), is given as the red curve: (a) For δΓ/h = 4 GHz, Γ /h = 6 GHz (moderate δΓ ≲ Γ), the approximations practically coincide with the exact numerics for moderate ϵg ∈ (0 .1 ∆ , 0.7 ∆). These approximations worsen for small ϵg ≪ Γ, as the upper Andreev branch starts to play role, see Fig. 3(c). For ϵg → 0, δn eff → − 1/4(or −e/ 2 in 2 e units) similar to the WKB curve (red), however the slope of the WKB curve is different, as δΓ is not small. (b) For δΓ/h = 1 GHz, Γ /h = 11 GHz (small δΓ ≪ Γ) the exact numerics δn eff (ϵg ) is well described by the approximations for moderate ϵg . For small ϵg the gap between the Andreev branches closes as ϵg , δ Γ ≪ Γ ( T ≈ 1). Since the upper branch takes significant weight, 1 − w(ϵg → 0) → 1, the δn eff (0) strongly deviates from the simplified theory. Since WKB is applicable in this case, the exact numerics δn eff (ϵg ) is very close to the WKB result δn WKB eff (ϵg ) for small ϵg ≲ 0.2 ∆, including both the limiting value δn eff (0) = −1/4 and the slope. For higher values of ϵg the WKB result deviates from the exact numerics, as expected. (c) For δΓ/h = 5 .9 GHz, Γ /h = 6 .1 GHz (large δΓ ≈ Γ), the gap between the Andreev branches is always large, and one is living on the lower branch always. Thus, the approximate theory for δn eff ,0 and δn approx eff ,0 , practically coincides with the exact numerics for the whole range of ϵg ∈ (0 , 0.7 ∆). In all three cases, δn eff (ϵg → 0) → − 1/4 is a consequence of a low-energy theorem (for which the WKB result is only an illustration). For a heuristic argument see the text. 
+
+shift from the approximations, δn eff ,0 (yellow), δn approx eff ,0
+
+(green) is stronger the smaller is the gap between the Andreev branches, ∝ p1 − T (ϵg = 0) = δΓΓ ; Scf. Eq. (7) and compare, Figs. 4(a), 4(b), with δΓ/h = {4, 1} GHz and Γ /h = {6, 11 } GHz, respectively. In the other ex-treme, where δΓ ≃ Γ, see Fig. 4(c), with δΓ/h = 5 .9 GHz, Γ/h = 6.1 GHz, the two Andreev branches are well gapped for any ϵg , and the state is living on the lower branch, Eq. (8), leading to a good accuracy of the approx-imations δn eff ,0 (yellow), δn approx eff ,0 (green), which practi-cally coincide with the exact numerics. For small ϵg , δ Γ ≪ Γ (or transparency T ≈ 1) the gap between the branches decreases and the participation of the upper Andreev branch increases, see Fig. 3(c). Thus, the new charge offset nz (ϵg ) ⟨ηz ⟩, Eq. (15), which is re-lated to the occupation of the dot, will sense this occu-pation. Therefore, it will deviate from the (scaled) WKB result (27) for the charge offset in this regime 
+
+δn WKB eff (ϵg , δ Γ) = 12π arctan 
+
+ ∆ δΓ
+
+ζ ϵ g
+
+
+
+, (38) where the latter did not take into account the charge offsets δn g (ϵg ), nz (ϵg ). The δn WKB eff (ϵg , δ Γ) is shown as the red curve in Figs. 4(a), 4(b), and 4(c). While it approaches −0.25 for ϵg = 0, it deviates from the ex-act charge offset, δn eff , even for the case of Fig. 4(b), where the condition ϵg , δ Γ ≪ Γ is fulfilled and the WKB approach is applicable. Note also the different slope of 
+
+δn WKB eff (ϵg , δ Γ) vs. δn eff for small ϵg .A heuristic interpretation of the numerically observed charge offset shift, see Figs. 4(a), 4(b), 4(c), 
+
+δn eff (ϵg = 0) = −1/4 (39) is as follows. Consider the gatemon wavefunction in the form of superposition of the states of empty dot, |m⟩| 0⟩,and occupied dot, |m+ 12 ⟩| ↑↓⟩ with various charge m, see Eq. (17). Here m is the number of Cooper pairs trans-ferred through the junction. For the state with empty dot no charge is transferred, interpreted as δn eff = 0, and for the doubly-occupied dot (even-parity) the net transfer of charge is 1/2, interpreted as δn eff = −1/2, i.e. a charge of −2e/ 2 = −e. For ϵg = 0 the dot’s level is in resonance with the Fermi level of the leads, which implies equal probability amplitudes for these states. Thus, the aver-age charge shift is −1/4, which we observed numerically. From Figs. 4(a), 4(b), 4(c), the additional charge off-set, δn eff (ϵg ), can change from a few percent to ≲ 0.5 of the electron charge in the chosen range of junction volt-ages, ϵg . To conclude, the qubit energy oscillations of 
+
+E01 (ng ) can exhibit an additional junction gate voltage-dependent shift, which is therefore experimentally acces-sible. This shift has a simple interpretation as an addi-tional charge offset δn eff (ϵg ) in an effective Cooper pair box Hamiltonian (when the latter approximation is rele-vant). It would be detectable as an ϵg -dependent shift in the ng periodicity of the gatemon transition spectrum. 9
+
+C. Detecting δC Σ in anharmonicity measurements. Anharmonicity at small ϵg , δ Γ
+
+The capacitance renormalization, δC Σ has a direct im-pact on the qubit anharmonicity α. It has also been observed that Econt (ϕ) affects α as well [8]. To quantify the significance of Econt (ϕ) and δC Σ for α, we calculate the anharmonicity α(δC Σ, δn g , n z , E cont ) by numerically solving the Schr¨ odinger equation in the presence of only the relevant terms with the others set to zero. Thus, we define the baseline anharmonicity as α0 ≡ α(0 , 0, 0, 0) for which all the contributions (static or due to quan-tum fluctuations of the phase) are neglected. In addition, we define αstat ≡ α(0 , 0, 0, E cont ), where only static con-tributions are added, and αfluc ≡ α(δC Σ, δn g , n z , 0) for which only terms δC Σ, δn g , n z are added (i.e., terms due to quantum phase fluctuations that originate from the time-dependence of the phase, i.e. ∂τ ϕ(τ )). Here, sub-scripts “stat” and “fluc” stand for static and fluctuation contributions. 
+
+FIG. 5. (a),(b) Relative anharmonicity changes δα fluc (ϵg ) and 
+
+δα stat (ϵg ) for symmetric tunnelings Γ i/h = 3 GHz at ng = 0 and ng = 0 .5. The effect of δC Σ on anharmonicity can be comparable to that of Econt . (c),(d) Plots for δα fluc (δC Σ = 0) and δα fluc (δn g = nz = 0) for asymmetric tunnelings Γ L/h =3 GHz, Γ R/h = 1 GHz. The effects of charge offsets are found to be up to two orders of magnitude stronger. 
+
+In Fig. 5(a),(b), we compare the relative changes in anharmonicity, δα stat ≡ αstat −α0 
+
+> α0
+
+and δα fluc ≡ αfluc −α0 
+
+> α0
+
+,as a function of ϵg ∈ [0 .1∆ , 0.7∆], at ng = 0 and 
+
+ng = 0.5, for symmetric tunnelings (which implies 
+
+nz = δn g = 0) Γi/h = 3 GHz, allowing us to compare the influence of δC Σ and Econt (ϕ) on anhar-monicity. Despite the fact that the absolute values of 
+
+δα stat , δα fluc differ substantially for different ng (ex-pected from the large charge dispersion), the influence of δC Σ and Econt (ϕ) can be traced from the quanti-ties ∆ δα stat ≡ | max ϵg δα stat (ϵg ) − min ϵg δα stat (ϵg )| and ∆δα fluc ≡ | max ϵg δα fluc (ϵg ) − min ϵg δα fluc (ϵg )|, which discard any ϵg -independent shifts in α. We observe from Fig. 5(a),(b) that for both ng = 0 and ng = 0 .5, ∆δα fluc ∼ ∆δα stat , showing that they are equally impor-tant in the interpretation of anharmonicity. The experi-mentally measured behavior of α(δC Σ, δn g , n z , E cont ) on 
+
+ϵg can be used to extract the hopping rates Γ L,R and the capacitance renormalization δC Σ.It is also worth distinguishing the quantum phase fluctuation contributions coming from δC Σ and δn g , n z .In order to isolate the charging and capacitive effects that comprise δα fluc , we calculate it with either δC Σ or 
+
+δn g , n z terms manually set to zero in ˆHeven , for asym-metric tunnelings Γ L/h = 3 GHz, Γ R/h = 1 GHz. In Fig. 5(c),(d), these two quantities, δα fluc (δC Σ = 0) and 
+
+δα fluc (δn g = nz = 0), are shown as a function of ϵg , at 
+
+ng = 0 and ng = 0 .5 respectively. The effects of charge offsets are found to be up to two orders of magnitude stronger than the δC Σ effects, which is expected due to the slow phase expansion [14], and the strong charge dis-persion in this regime. We have so far limited our analysis on anharmonicity to medium- and low-transparency regimes, where relative anharmonicity changes are well defined, Fig. 5. For high-transparencies (and for a non-transmon-like regime of this paper), the anharmonicity may vanish and changes sign at small ϵg (for the relative anharmonicity becoming ill-defined). In the following, we study the anharmonic-ity α(ϵg ) plotted for ng = 0 .1 and 0 .6 on Figs. 6(a) and 6(b), for small values of junction voltage ( |ϵg | ≲ EC )with δΓ = 0, which corresponds to T ≈ 1. The exact values of α(ϵg ) (blue curves) are obtained by numerically solving the Schr¨ odinger equation. Since for this choice of parameters the WKB theory is applicable, calculation of the anharmonicity (in a transmon-like regime) from Eq. (27), yields the green curves, according to, 
+
+αtransmon −like WKB = ( −1) w(¯¯λ)
+
+"
+
+e−τ (E02 )
+
+σ′(E02 ) + 2e−τ (E01 )
+
+σ′(E01 )+ e−τ (E00 )
+
+σ′(E00 )
+
+#
+
+cos(2 πn g + ˜δ). (40) It shows that |α(ϵg ≪ EC )| ∝ w(¯¯λ) decreases to zero together with the probability amplitude w(¯¯λ) of the lower Andreev branch, Fig. 3(c). The change in slope while changing from ng = 0 .1 to ng = 0 .6 is captured by the cos-factor in Eq. (40). The latter is significant, since in a non-transmon regime the WKB exponent e−τn is not suppressed by the ratio EJ, eff /E C , see Appendix A. The WKB result of Eq. (40) is not capable of repro-ducing the non-zero intercept of α(ϵg = 0). An extended WKB approach, which is applicable only when T ≈ 1, is developed in Appendix A, where the anharmonicity is given by α(2) (see Eq. (A28)). It coincides with the exact α(ϵg = 0) at T = 1 (dashed yellow curves in Figs. 6(a) and 6(b)), shows qualitative agreement when 
+
+T ≈ 1, and approximately predicts the voltage ϵg at which α vanishes. In Fig. 6(c) similar plots are shown for δΓ̸ = 0, where w(ϵg = 0) ̸ = 0. However, the accuracy of Eq. (A28) is slightly worsen and the intercept at ϵg = 0 10   
+
+> (a) (b) (c)
+
+FIG. 6. Anharmonicity α(ϵg )/E C for small ϵg , |ϵg | ≲ EC , in a non-transmon regime, EC ≲ EJ,eff ≈ 0.5Γ (with Γ /E C = 16, ∆/E C = 360, δΓ ≪ EC ). Exact numerics (solid blue) is compared to the WKB theory, Eq. (40), (solid green), and to an extended WKB theory (dashed orange line), see Appendix A. The choices for ng = 0 .1, 0.6, are to avoid trivial zeros of the WKB result. (a) α(ϵg )/E C for ng = 0 .1, and symmetric tunnelings Γ L,R = 8 EC (i.e., T ≈ 1). The overall decrease of 
+
+|α(ϵg )| as ϵg → 0 as well as the slope of α(ϵg ) are captured by the WKB result, as w(¯¯λ(ϵg )) → 0, see Fig. 3(c) and Eq. (40). The non-zero intercept α(ϵg = 0) is reproduced in an extended WKB approach. (b) α(ϵg )/E C for ng = 0 .6, and symmetric tunneling rates Γ L,R = 8 EC (i.e., T ≈ 1). The WKB result captures the overall decrease as ϵg → 0, as well as the slope of 
+
+α(ϵg ), as w(¯¯λ(ϵg )) → 0. The change of the slope while changing from ng = 0 .1 to ng = 0 .6 follows from the cos-factor in Eq. (40). The non-zero intercept α(ϵg = 0) is reproduced in an extended WKB approach. (c) α(ϵg )/E C for ng = 0 .6, and asymmetric tunnelings: δΓ = 0 .1 EC (δΓ ≪ Γ), corresponding to T ≈ 1. The WKB result is similar to Fig. 6(b), however, with 
+
+w(ϵg = 0) ̸ = 0, see Fig. 3(c). The non-zero intercept α(ϵg = 0) is approximately reproduced in the extended WKB approach. 
+
+FIG. 7. Exact numeric anharmonicity α(ϵg )/E C for ng =0.6, |ϵg | ≲ EC , and ten times smaller EC as compared to Fig. 6(c), such that ∆ /E C = 3600, Γ /E C = 160, and 
+
+δΓ = EC , corresponding to T ≈ 1 and a true transmon regime (solid blue line). In this case the WKB result of Eq. (40) is ex-ponentially suppressed (horizontal green line), Eq. (A15), and the result is independent of ng . An extended WKB approach (dashed orange line), Appendix A, practically coincides with the exact numerics, in which α(ϵg ) < 0 and it never crosses zero line (scf. Eq. (10) of Ref. [8]). In particular, the in-tercept α(ϵg = 0) /E C approaches − 14 , as expected in the short-junction limit [1, 8]. See the text for further details. 
+
+is overshoot. Finally, we verified the gatemon model of Eq. (1) in the deep transmon regime (by choosing a much smaller EC ), Fig. 7. In this limit, the result of Eq. (40) is exponentially suppressed (green solid line). On the contrary, the exact numerics and the extended WKB result, α(2) < 0, practi-cally coincide, while not crossing zero ( in agreement with Eq. (10) of Ref. [8]), and reproduce the limiting intercept of 
+
+αT =1 transmon (ϵg = 0) /E C = −1/4 (41) expected in a short-junction limit [1, 8]. Indeed, in the deep transmon regime ( EJ, eff ≫ EC )quantum phase fluctuations are small and the system is staying on the lower branch around ϕ ≈ 0. Even though at T → 1 the gap between the Andreev branches is closed, transition between the branches at ϕ = π is suppressed, since tunneling under the barrier is exponentially sup-pressed as the barrier is much higher than the system’s kinetic energy. We also checked (not shown) that exact numerics at low transparency reproduce αlow T
+
+> transmon
+
+/E C =
+
+−1 as for the usual tunneling Hamiltonian, scf. Ref. [8]. 
+
+IV. DISCUSSION AND CONCLUSION 
+
+In this work, we have investigated the experimen-tal implications of a gatemon model of Ref. [14], de-rived from the underlying microscopic (many body) the-ory in the weak tunneling regime for a single-channel super-semi junction. The hybridization of the dot’s level and the continuum energies of the superconducting leads due to tunneling, reveals itself as two sub-gap Andreev bound states, continuum contribution to the gatemon en-ergy, and 2 × 2 matrix structure of the Josephson en-ergy and the charging energy, derived self-consistently [14]. The effects of quantum fluctuations of the super-conducting phase result in capacitance renormalization, 
+
+δC Σ(ϵg , ΓL,R ), of the gatemon circuit, and to new charge offset renormalizations, δn g (ϵg , ΓL,R ) and nz (ϵg , ΓL,R ), all depending on the QD voltage ϵg and the hopping rates 11 to the dot, Γ L,R . Experimental control of ϵg as in the ex-periments of Refs. [2, 3], and on Γ L,R as in the experiment of Ref. [26] could be the key to the experimental obser-vation of these new quantum fluctuation effects arising from quantum fluctuations of the phase. In this paper, we focus on the gatemon energy os-cillations (charge oscillations), E01 (ng ), as a function of the applied voltage across the super-semi junction, 
+
+ng ∝ V aL −V aR . We solve the Schr¨ odinger equation for the Hamiltonian, ˆHeven , with boundary conditions derived for the even parity sector, not assuming small hopping rates, see Sect. II E. Our main observation is that for an asymmetric junction with δΓ̸ = 0 the new charge offsets, 
+
+δn g and nz , induce an observable charge shift in the os-cillation curve, δn eff . An experiment similar to that of Ref. [2] can be performed in the asymmetric weak tunnel-ing regime to observe the shift of the peaks of the qubit energy oscillations E01 (ng ) as a function of the junction voltage ϵg .In a range of parameters where the two Andreev branches are well gapped δn eff can be interpreted as the charge offset in an effective scalar Cooper pair box Hamiltonian, see Sect. III B. This corresponds to a simple model of primarily “living on the lower Andreev branch”. In the range of small ϵg , δ Γ ≪ Γ, where the junction transparency T ≈ 1 and the gap between the branches closes, the effects of the upper Andreev branch are com-ing into play. This is elucidated in a WKB theory for the charge dispersion, δ01 (the amplitude of the charge oscillation curve) adapted from Refs. [4, 16] via suitable rescaling. The intuition behind the simple model above is sup-ported by the key quantity of the WKB theory [4, 16] – the probability amplitude w(ϵg ) of remaining on the lower branch. The latter was associated with a Landau-Zener transition between the branches due to a movement un-der the potential barrier near the anti-crossing at ϕ = π
+
+[4]. The exact numerical calculations of δ01 for asymmet-ric junction reveal non-vanishing charge dispersion on a par with the behavior of w(ϵg ), see Sect. III A. Thus, an asymmetric junction is generally more prone to charge dephasing noise, especially when the gatemon is not in a true transmon limit. Our analysis shows that the contribution of capac-itance renormalization, δC Σ(ϵg ), to the qubit anhar-monicity α can be comparable to that of the continuum energy term, Econt (ϕ), which was proposed as an expla-nation for recently observed anomalies in gatemon an-harmonicities [2, 7, 8]. This result underscores the need to include δC (ϵg ) when interpreting anharmonicity mea-surements and designing high-fidelity gate operations. Additionally, we studied the behavior of the gatemon an-harmonicity in the transition from a non-transmon-like regime to a true transmon regime in the region of large transparencies, T ≈ 1. An extended WKB analysis al-lows us to predict and understand the non-zero intercept, 
+
+α(ϵg = 0) in these regimes; see Sect. III C. Due to the perturbative nature of the underlying model in Ref. [14], our predictions are limited to the weak tun-neling regime. Extending these results to the regime of intermediate and strong tunnel couplings will be impor-tant to understand a wider range of devices.  
+
+> V. ACKNOWLEDGEMENTS
+
+We thank T. Hazard, K. Sardashti, and C. J. K. Richardson for valuable discussions. This research was funded by the LPS Qubit Collaboratory and in part un-der Air Force Contract No. FA8702-15-D-0001. Any opinions, findings, conclusions, or recommendations ex-pressed in this material are those of the authors and do not necessarily reflect the views of the US Air Force or the US Government.  
+
+> Appendix A: WKB Theory 1. WKB integrals
+
+In this section, we consider the WKB theory of ˆHeven ,Eq. (1), in which the Josephson matrix potential, UJ (ϕ), establishes two Andreev branches, U∓ = ∓EA(ϕ) + 
+
+Econt (ϕ). One is interested in a regime of near perfect transparency ( T ≈ 1) where matching conditions be-tween the different WKB solutions around the region of minimal gap (at ϕ = π) between the branches U∓ can be applied, similar to Refs. [4, 16]. One notes that the gate-mon system analyzed in Ref. [16] formally corresponds to the ∆ → ∞ limit of ˆHeven . For finite ∆ the matrix po-tential UJ (ϕ)−Econt (ϕ) can be related to that of Ref. [16] through the following rescalings: 
+
+˜Γ, δ ˜Γ
+
+
+
+= ∆
+
+ζ + Γ (Γ , δ Γ) ˜ϵg = ζζ + Γ ϵg . (A1) It will be convenient to modify the lower ABS branch, 
+
+U−(ϕ), by its minimal gap to continuum, scf. Eq. (7): ¯ΓA = Γ A − Econt (0) , (A2) which ensures the bottom of the lower Andreev branch corresponds to E = 0. With these modifications, the WKB integrals (which are central to energy eigenvalue calculations) become 
+
+σ(E) = 
+
+Z ϕc
+
+> −ϕc
+
+dϕ 
+
+s
+
+E − Econt (ϕ) − ¯ΓA + EA(ϕ)4EC
+
+, (A3) 
+
+τ (E) = 
+
+Z 2π−ϕc
+
+> ϕc
+
+dϕ 
+
+s
+
+− E − Econt (ϕ) − ¯ΓA + EA(ϕ)4EC
+
+,
+
+(A4) 
+
+ρ(E) = 
+
+Z π
+
+> −π
+
+dϕ 
+
+s
+
+− E − Econt (ϕ) − ¯ΓA − EA(ϕ)4EC
+
+, (A5) 12 where the roots ∓ϕc of the equation 
+
+E − U−(ϕc) − ¯ΓA = 0 , (A6) set the classically available region in the lower branch potential. Here, the integral τ (E) corresponds to the forbidden region (under the barrier) of U−(ϕ), while ρ(E)corresponds to moving under the upper branch, U+(ϕ), which is always forbidden. Contributions of the latter are very small [16] and will be neglected below. 
+
+a. σ(E) WKB integral 
+
+In what follows, we will estimate the WKB integrals for T ≲ 1 in a transmon-like regime. Keeping only the leading harmonic in U−(ϕ) σ(E) simplifies to: 
+
+σ(E) ≃
+
+r EJ, eff 
+
+4EC
+
+Z ϕc
+
+> −ϕc
+
+dϕ 
+
+q
+
+˜E + cos ϕ − 1, (A7) where ˜E ≡ EEJ, eff and EJ, eff is given by Eq. (11). Ex-panding cos ϕ to fourth order and integrating over ϕ we obtain: 
+
+σ(E) ≃
+
+r EJ, eff 
+
+96 EC
+
+I(u−, u +), u∓ = 6 
+
+"
+
+1 ∓
+
+r
+
+1 − 23 ˜E
+
+#
+
+I(u−, u +) ≡ 23
+
+√u+
+
+
+
+(u+ + u−)E
+
+ u−
+
+u+
+
+
+
+− (u+ − u−)K
+
+ u−
+
+u+
+
+ 
+
+, (A8) where K(x), E(x) are the complete elliptic integrals. Ex-panding for small ˜E we obtain 
+
+σ(E) ≃ πE ωp,eff 
+
+15 + (1 − u−/u +)2
+
+16 
+
+q
+
+1 − ˜E/ 6
+
+, (A9) which constitutes a non-linear dependence on E. Here, 
+
+ωp, eff = p8EC EJ, eff (A10) is the transmon frequency. It should be noted, that by expanding σ(E), Eq. (A9), to second order and solving the equation σ(En) = π(n + 12 ) for En one obtains: 
+
+En = ωp, eff 
+
+
+
+n + 12
+
+
+
+− EC
+
+12 (6 n2 + 6 n + 32 ), (A11) which amounts to the transmon anharmonicity: 
+
+αtransmon = −EC . If not in a transmon limit, the full non-linearity of Eq. (A8) will leave σ(En)̸ = π(n + 12 ). 
+
+b. τ (E) WKB integral 
+
+The derivation of the τ (E) WKB integral [4, 16] is relevant in the same regime of T ≈ 1. With the definition 
+
+u(ϕ, T ) ≡
+
+r
+
+1 − T sin 2 ϕ
+
+2 , (A12) Eq. (A4) reads 
+
+τ (E) ≈
+
+r ΓA
+
+EC
+
+Z πϕc
+
+dϕ 
+
+r
+
+1 − E
+
+ΓA
+
+− u(ϕ, ¯T ), (A13) where transparency is renormalized as ¯T ≃ T
+
+
+
+1 − ΓA
+
+∆
+
+
+
+(A14) with the perturbative Econt (ϕ) of Eq. (6); here we ne-glected Econt (0) ≪ Econt (π), for ϵg ≪ Γ. The τn-integral (below σn ≡ σ(E(0)  
+
+> n
+
+), τn ≡ τ (E(0)  
+
+> n
+
+)) reads [4, 16]: 
+
+e−τn ≈√2πn!
+
+¯b2
+
+4
+
+s
+
+2 ¯T ΓA
+
+EC
+
+ 
+
+> n+12
+
+e−¯a   
+
+> r2 ¯TΓAEC
+
+, (A15) where ¯a =
+
+√8¯ r
+
+(1 + ¯ r)√1 − ¯r
+
+2Π(¯ μ(0) , 1, ¯k) − F (¯ μ(0) , ¯k)
+
+¯b = lim  
+
+> ψ→0
+
+ψe  
+
+> √2¯ r
+> (1+¯ r)√1−¯r
+
+[2Π(¯ μ(ψ), 1¯k ,¯k)−(1 −¯r)F (¯ μ(0) ,¯k)]are the coefficients previously derived in Ref. [4], with Π( φ, n 2, k ) and F (φ, k ) denoting elliptic integrals of the third and first kind with arguments as given in the no-tation of Ref. [27], along with the re-scaled ( T → ¯T )definitions ¯μ(ϕ) = arcsin 
+
+s
+
+u(ϕ, ¯T ) − ¯ru(ϕ, ¯T ) + ¯ r ,
+
+¯k =
+
+r 1 − ¯r
+
+1 + ¯ r ,
+
+¯r =
+
+p
+
+1 − ¯T . (A16) 
+
+2. Modification of matching conditions 
+
+For the purposes of charge dispersion (oscillation am-plitude of the energy levels with ng ) we will neglect the new charge offsets, δn g , nz , introduced in ˆHeven , and in Eqs. (14), (15) (these are, however, important for the shifts of energy oscillations, see Sect. III B). In the region of the minimal gap (at ϕ ≈ π) the WKB is not applicable. Proceeding similarly to Ref. [16], we consider the exact solutions of the Schr¨ odinger equation (linearized in this region). This amounts to the following equation: 
+
+−4EC Ψ′′ + ˜Vπ Ψ + ¯¯ΓAΨ = 0 , (A17) where EC absorbs the capacitance change, Eq. (13), ¯¯ΓA, Eq. (30), absorbs the continuum contribution at 
+
+Econt (π), and ˜Vπ = −˜ϵg τx − 12 ˜Γ ( ϕ − π)τz − δ˜Γ τy . (A18) 13 In writing Eq. (A17) we have also performed a π/ 2-rotation of the basis around ηy in ˆHeven , such that 
+
+ηx → − τz , ηy → τy , and ηz → τx.Proceeding similarly to Ref. [16], we solve Eq. (A17) with the ansatz Ψ = Ψ π eσ¯¯k(ϕ−π) with σ = ±1 and ¯¯k =
+
+q¯¯ΓA/4EC , and arrive at the (Weber-like) system of equations for the components of Ψ π ≡ (u, d )T :
+
+σu ′ +
+
+p¯¯λd + 12 xu = 0 (A19) 
+
+σd ′ +
+
+p¯¯λu − 12 xd = 0 . (A20) Here, x =
+
+q
+
+˜Γ/8EC ¯¯k (ϕ − π) is the rescaled position, and ¯¯λ = |˜r|2 ˜Γ/8EC ¯¯k, ˜r = −˜ϵg + iδ ˜Γ˜Γ . (A21) This constitutes the derivation of Eq. (29) of the main text. Equations (A19), (A20) amount to the Weber equations for u(x) and d(x) and coincide in their form with that of Ref. [16]. Asymptotics of their exact solu-tions are matched with the corresponding WKB solutions (at T ≈ 1, i.e. for ϵg , δ Γ ≪ Γ) with analogous rescaling of the parameters. This leads to the following equation con-necting the WKB integrals [16] (assuming e2ρ, e 2τ ≫ 1): cos σ ≈ e−ρe−τ cos(4 πn g ) + w(¯¯λ)e−τ cos(2 πn g + ˜δ).
+
+(A22) Here, ˜δ, w(¯¯λ), are functions of ϵg , Γ, δΓ, ∆, and are given by Eqs. (27) and (28) of the main text, respectively. Be-low it is shown that ˜δ is the shift of energy oscillations as a function of ng in the limit of small ϵg , δΓ. The quantity 
+
+w(¯¯λ) has the interpretation of the probability amplitude of remaining on the lower Andreev branch [4, 16] while the system is tunneling under the barrier around ϕ = π;
+
+w(¯¯λ) will be useful in the interpretation of the shift of energy oscillations for large ϵg , δΓ, where approximate solutions of the eigenvalue equation with ˆHeven are given in Sect. III B.  
+
+> 3. Solving Eq. (A22)
+
+In the following we obtain an approximate solution of the transcendental equation Eq. (A22), valid for T ≈ 1, where the term ∝ e−ρ ≪ 1 will be neglected. In the transmon limit where e−τn is exponentially suppressed, Eq. (A15), we obtain cos σn ≃ 0, and 
+
+σn = π
+
+
+
+n + 12
+
+
+
+(A23) from which one can infer the standard transmon anhar-moniciy via Eq. (A11). In a non-transmon regime, based on Eq. (A8), we will assume σn̸ = π(n + 12 ). We use the Newton-Raphson method to solve Eq. (A22) for En, starting with the initial guess E(0) 
+
+> n
+
+given by the harmonic approximation 
+
+E(0)  
+
+> n
+
+= ωp, eff 
+
+
+
+n + 12
+
+
+
+(A24) At j-th iteration, the approximate energy eigenvalue E(j)
+
+> n
+
+is given by 
+
+E(j+1)  
+
+> n
+
+= E(j) 
+
+> n
+
+−
+
+f
+
+
+
+E(j)
+
+> n
+
+
+
+f ′
+
+
+
+E(j)
+
+> n
+
+ , (A25) where 
+
+f (E) = cos σ(E) − w(¯¯λ)e−τ (E) cos(2 πn g + ˜δ). (A26) By neglecting the WKB exponent in the denominator, we obtain: 
+
+E(j+1)  
+
+> n
+
+≈ E(j) 
+
+> n
+
+(A27) + cos[ σ(E(j) 
+
+> n
+
+)] − w(¯¯λ)e−τ (E(j)  
+
+> n)
+
+cos(2 πn g + ˜δ)sin[ σ(E(j) 
+
+> n
+
+)] σ′(E(j) 
+
+> n
+
+) .
+
+We define the anharmonicity at j-th iteration as 
+
+α(j) = ( E(j)2 − E(j)1 ) − (E(j)1 − E(j)0 ). (A28) In a deep transmon-like regime (EC ≪ ¯T ΓA) for which the ng -dependent oscillations are exponentially suppressed, and for low transparency the above numer-ical iteration procedure with j = 2 leads to a good ap-proximation for the anharmonicity, ≈ − EC , where the initial guess for cos[ σ(E(0)  
+
+> n
+
+)] is via Eq. (A8). We use Eq. (A27) with two iterations to calculate numerically the anharmonicity in the non-transmon regime of Fig. 6(a) and Fig. 6(b) of the main text, which reproduces the overall behavior for small ϵg ≪ Γ, for α(ng = 0 , ϵ g ) vs. 
+
+α(ng = 0 .5, ϵ g ), as well as the intercept at α(ϵg = 0). Note, that in a transmon-like regime, where cos σn ≃ 0, Eq. (A27) reproduces the energy eigenvalue corrections, 
+
+δE n, as of Refs. [4, 16] 
+
+δE n ≈ δE (1)  
+
+> n
+
++ δE (2) 
+
+> n
+
+δE (1)  
+
+> n
+
+= ( −1) n+1 e−τ (E0 
+
+> n)
+
+w(¯¯λ) cos(2 πn g + ˜δ)
+
+σ′(E0
+
+> n
+
+) (A29) 
+
+δE (2)  
+
+> n
+
+≈
+
+"
+
+w(¯¯λ)e−τ (E0
+
+> n)
+
+σ′(E0
+
+> n
+
+) cos(2 πn g + ˜δ)
+
+#2
+
+τ ′(E0
+
+> n
+
+), , (A30) where δE (1)  
+
+> n
+
+corresponds to Eq. (27) of the main text. 14 
+
+[1] A. Kringhøj, L. Casparis, M. Hell, T. W. Larsen, F. Kuemmeth, M. Leijnse, K. Flensberg, P. Krogstrup, J. Nyg˚ ard, K. D. Petersson, and C. M. Marcus, Anhar-monicity of a Gatemon Qubit with a Few-Mode Joseph-son Junction, Phys. Rev. B 97 , 060508 (2018). [2] A. Kringhøj, B. van Heck, T. Larsen, O. Erlandsson, D. Sabonis, P. Krogstrup, L. Casparis, K. Petersson, and C. Marcus, Suppressed Charge Dispersion via Res-onant Tunneling in a Single-Channel Transmon, Phys. Rev. Lett. 124 , 246803 (2020). [3] A. Bargerbos, W. Uilhoorn, C.-K. Yang, P. Krogstrup, L. P. Kouwenhoven, G. de Lange, B. van Heck, and A. Kou, Observation of Vanishing Charge Dispersion of a Nearly Open Superconducting Island, Phys. Rev. Lett. 
+
+124 , 246802 (2020). [4] D. V. Averin, Coulomb Blockade in Superconducting Quantum Point Contacts, Phys. Rev. Lett. 82 , 4 (1999). [5] A. Zazunov, V. S. Shumeiko, E. N. Bratus’, J. Lantz, and G. Wendin, Andreev Level Qubit, Phys. Rev. Lett. 90 ,087003 (2003). [6] P. D. Kurilovich, V. D. Kurilovich, V. Fatemi, M. H. Devoret, and L. I. Glazman, Microwave response of an Andreev bound state, Phys. Rev. B 104 , 174517 (2021). [7] V. Fatemi, P. Kurilovich, M. Hays, D. Bouman, T. Connolly, S. Diamond, N. Frattini, V. Kurilovich, P. Krogstrup, J. Nyg˚ ard, A. Geresdi, L. Glazman, and M. Devoret, Microwave Susceptibility Observation of In-teracting Many-Body Andreev States, Phys. Rev. Lett. 
+
+129 , 227701 (2022). [8] V. Fatemi, P. D. Kurilovich, A. R. Akhmerov, and B. van Heck, Nonlinearity of transparent SNS weak links de-creases sharply with length, SciPost Phys. 18 , 091 (2025). [9] A. Purkayastha, A. Sharma, P. J. Patel, A.-H. Chen, C. P. Dempsey, S. Asodekar, S. Sinha, M. Tomasian, M. Pendharkar, C. J. Palmstrøm, M. Hocevar, K. Zuo, M. Hatridge, and S. M. Frolov, Tunable anharmonicity in Sn-InAs nanowire transmons beyond the short junction limit, arXiv:2603.26895 (2026). [10] O. Sagi, A. Crippa, M. Valentini, M. Janik, L. Baghumyan, G. Fabris, L. Kapoor, F. Hassani, J. Fink, S. Calcaterra, D. Chrastina, G. Isella, and G. Katsaros, A gate tunable transmon qubit in planar Ge, Nature Com-munications 15 , 6400 (2024). [11] H. Zheng, L. Y. Cheung, N. Sangwan, A. Kononov, R. Haller, J. Ridderbos, C. Ciaccia, J. H. Ungerer, A. Li, E. P. Bakkers, A. Baumgartner, and C. Sch¨ onenberger, Coherent control of a few-channel hole type gatemon qubit, Nano Letters 24 , 7173 (2024). [12] A. Hertel, M. Eichinger, L. O. Andersen, D. M. van Zan-ten, S. Kallatt, P. Scarlino, A. Kringhøj, J. M. Chavez-Garcia, G. C. Gardner, S. Gronin, M. J. Manfra, A. Gye-nis, M. Kjaergaard, C. M. Marcus, and K. D. Peters-son, Gate-tunable transmon using selective-area-grown superconductor-semiconductor hybrid structures on sili-con, Phys. Rev. Applied 18 , 034042 (2022). [13] S. Liu, A. Bordoloi, J. Issokson, I. Levy, M. G. Vav-ilov, J. Shabani, and V. E. Manucharyan, Strongly an-harmonic flux-tunable transmon based on InAs-Al 2D heterostructure, Nature Communications 17 , 740 (2025). [14] U. G¨ ung¨ ord¨ u, R. Ruskov, S. Hoffman, K. Serniak, A. J. Kerman, and C. Tahan, Quantum dynamics of semicon-ductor quantum dot Josephson junctions, Phys. Rev. B 
+
+111 , 214503 (2025). [15] V. Ambegaokar, U. Eckern, and G. Sch¨ on, Quantum Dynamics of Tunneling between Superconductors, Phys. Rev. Lett. 48 , 1745 (1982). [16] T. Vakhtel and B. Van Heck, Quantum phase slips in a resonant Josephson junction, Phys. Rev. B 107 , 195405 (2023). [17] C. Beenakker and H. van Houten, The Superconducting Quantum Point Contact, in Nanostructures and Meso-scopic Systems (Elsevier, 1992) pp. 481–497. [18] For large ϵg ≳ 0.5 ∆ we use the non-perturbative ver-sion of continuum energy [6] in the form: Econt (ϕ) ≡E(ϕ, ϵ g ) − E (0 , 0), with E(ϕ, ϵ g ) = R −∆ 
+
+> −∞
+> dϵ π
+
+arctan([ ϵ2 −
+
+∆2][ ϵ2 −Γ2 −ϵ2 
+
+> g
+
+]−4∆ 2ΓLΓR sin 2 ϕ 
+
+> 2
+
+, 2ϵ2Γ√ϵ2 − ∆2), where arctan( x, y ) is the two-parameter arctangent function. Note that the slow phase approximation leads to a restric-tion in the range of large QD gate voltages: ϵg ≲ 0.7 ∆. [19] One can still maintain a transmon limit by choosing much larger shunting capacitance CΣ. However, transmons with such small energy are less favorable as qubits. Alter-natively, one could consider an experimentally-relevant multi-channel super-semi junction, however this is be-yond the scope of the present work. [20] Note, that not all of the terms discussed are perturba-tive in Γ L,R . For the in-gap contributions to the Joseph-son energy and for Econt ( ˆϕ) we discussed this above, in Sect. II A. We remark that although ˆHC in Ref. [14] was derived in the slow phase approximation and in the weak tunneling limit which does not depend on phase in the leading order, the boundary conditions are applicable to 
+
+ϕ-dependent ˆHC provided that ˆHC does not contain ηx,y .[21] J. J. Sakurai and J. Napolitano, Modern Quantum Me-chanics (Cambridge University Press, 2020). [22] This derivation of the boundary conditions assumes that the even- and odd-parity sectors are well separated, which takes place within the perturbative in Γ L,R deriva-tion of ˆHodd obtained in Ref. [14]. This separation is fur-ther supported within the mean field treatment of the Coulomb interaction in the same derivation in [14], which is valid in the deep even- or deep odd-parity regimes [28, 29]. In general, however, the Coulomb term can mix the even- and odd-parity sectors, thus necessitating an extension of the derived boundary conditions. [23] G. Catelani, R. J. Schoelkopf, M. H. Devoret, and L. I. Glazman, Relaxation and frequency shifts induced by quasiparticles in superconducting qubits, Phys. Rev. B 
+
+84 , 064517 (2011). [24] In general, E01 (ng ) exhibits 1 e- and 2 e-periodic oscilla-tions [16]. However, the strength of the 1 e-periodic com-ponent becomes comparable to that of the 2 e-periodic component only when ϵg ≪ EC [16] for which the charge dispersion itself becomes negligible. For the parameters used in Fig. 3(a), the 1 e-periodic component is neglected. [25] Explicitly, ˆU =
+
+eiΦ cos Θ2 sin Θ2
+
+eiΦ sin Θ2 − cos Θ2
+
+
+
+, Θ = arccos   
+
+> ζζ+Γ ϵg
+> EA
+
+,and Φ = arctan(Γ cos ϕ 
+
+> 2
+
+, −δΓ sin ϕ 
+
+> 2
+
+). [26] L. Lakic, W. I. L. Lawrie, D. van Driel, L. E. A. Ste-houwer, Y. Su1, M. Veldhorst, G. Scappucci, F. Kuem-meth, and A. Chatterjee, A quantum dot in germanium 15 
+
+proximitized by a superconductor, Nature Materials 24 ,552 (2025). [27] I. S. Gradshteyn and I. M. Ryzhik, Table of Integrals, Series, and Products (Academic Press, New York, 2014). [28] A. V. Rozhkov and D. P. Arovas, Josephson Coupling through a Magnetic Impurity, Phys. Rev. Lett. 82 , 2788 (1999). [29] E. Vecino, A. Mart` ın-Rodero, and A. L. Yeyati, Joseph-son current through a correlated quantum level: Andreev states and π junction behavior, Phys. Rev. B 68 , 035105 (2003).

@@ -4949,3 +4949,21 @@ article.markdown-section {
     transition: none !important;
   }
 }
+.sidebar-nav li.sidebar-paper-item[draggable='true'] {
+  cursor: grab;
+}
+
+.sidebar-nav li.sidebar-paper-item.is-dragging {
+  cursor: grabbing;
+  opacity: 0.45;
+}
+
+.sidebar-nav ul.dpr-sidebar-drop-target {
+  outline: 1px dashed rgba(64, 169, 255, 0.65);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.sidebar-nav ul[data-dpr-drop-section] {
+  min-height: 14px;
+}

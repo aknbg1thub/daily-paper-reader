@@ -1383,6 +1383,7 @@ window.$docsify = {
 
         const STORAGE_KEY = 'dpr_sidebar_day_state_v1';
         const HIDDEN_DAYS_KEY = '__hiddenDays';
+        const LAYOUT_STORAGE_KEY = 'dpr_sidebar_paper_layout_v1';
         let state = {};
         let hiddenDays = new Set();
         try {
@@ -1479,6 +1480,231 @@ window.$docsify = {
           } catch {
             // ignore
           }
+        };
+
+        const readPaperLayoutState = () => {
+          try {
+            if (!window.localStorage) return {};
+            const raw = window.localStorage.getItem(LAYOUT_STORAGE_KEY);
+            const parsed = raw ? JSON.parse(raw) : {};
+            return parsed && typeof parsed === 'object' ? parsed : {};
+          } catch {
+            return {};
+          }
+        };
+
+        const writePaperLayoutState = (layout) => {
+          try {
+            if (window.localStorage) {
+              window.localStorage.setItem(
+                LAYOUT_STORAGE_KEY,
+                JSON.stringify(layout && typeof layout === 'object' ? layout : {}),
+              );
+            }
+          } catch {
+            // ignore
+          }
+        };
+
+        const getSectionKeyFromLi = (sectionLi) => {
+          const text = getDirectText(sectionLi);
+          return normalizeSection(text) === 'deep' ? 'deep' : 'quick';
+        };
+
+        const getPaperIdFromLi = (paperLi) => {
+          const a = paperLi ? paperLi.querySelector(':scope > a[href*="#/"]') : null;
+          const href = a ? normalizeHashHref(a.getAttribute('href')) : '';
+          return href ? href.replace(/^#\//, '').replace(/\/$/, '') : '';
+        };
+
+        const markPaperItemsInDay = (dayLi) => {
+          if (!dayLi) return;
+          dayLi.querySelectorAll(':scope > ul > li > ul > li').forEach((paperLi) => {
+            const a = paperLi.querySelector(':scope > a[href*="#/"]');
+            if (!a) return;
+            const href = normalizeHashHref(a.getAttribute('href'));
+            if (!href || !isPaperRouteHash(href)) return;
+            paperLi.classList.add('sidebar-paper-item');
+          });
+        };
+
+        const collectSectionLists = (dayLi) => {
+          const out = {};
+          if (!dayLi) return out;
+          dayLi.querySelectorAll(':scope > ul > li').forEach((sectionLi) => {
+            const sectionKey = getSectionKeyFromLi(sectionLi);
+            const ul = sectionLi.querySelector(':scope > ul');
+            if (ul) out[sectionKey] = { li: sectionLi, ul };
+          });
+          return out;
+        };
+
+        const ensureSectionList = (dayLi, sectionKey) => {
+          const existing = collectSectionLists(dayLi)[sectionKey];
+          if (existing) return existing;
+          const dayUl = dayLi ? dayLi.querySelector(':scope > ul') : null;
+          if (!dayUl) return null;
+          const sectionLi = document.createElement('li');
+          sectionLi.appendChild(
+            document.createTextNode(sectionKey === 'deep' ? '精读区' : '速读区'),
+          );
+          const ul = document.createElement('ul');
+          sectionLi.appendChild(ul);
+          if (sectionKey === 'deep') {
+            dayUl.insertBefore(sectionLi, dayUl.firstChild);
+          } else {
+            dayUl.appendChild(sectionLi);
+          }
+          return { li: sectionLi, ul };
+        };
+
+        const normalizeLayoutEntry = (entry) => {
+          const out = { hidden: [], sections: {} };
+          if (!entry || typeof entry !== 'object') return out;
+          out.hidden = Array.isArray(entry.hidden)
+            ? entry.hidden.filter((id) => typeof id === 'string' && id)
+            : [];
+          const sections = entry.sections && typeof entry.sections === 'object'
+            ? entry.sections
+            : {};
+          ['deep', 'quick'].forEach((key) => {
+            out.sections[key] = Array.isArray(sections[key])
+              ? sections[key].filter((id) => typeof id === 'string' && id)
+              : [];
+          });
+          return out;
+        };
+
+        const syncDayPaperLayoutState = (dayLi, dayKey) => {
+          if (!dayLi || !dayKey) return;
+          const layout = readPaperLayoutState();
+          const entry = normalizeLayoutEntry(layout[dayKey]);
+          const sections = collectSectionLists(dayLi);
+          ['deep', 'quick'].forEach((sectionKey) => {
+            const section = sections[sectionKey];
+            if (!section) return;
+            const ids = Array.from(
+              section.ul.querySelectorAll(':scope > li.sidebar-paper-item'),
+            )
+              .map(getPaperIdFromLi)
+              .filter(Boolean);
+            entry.sections[sectionKey] = ids;
+          });
+          layout[dayKey] = entry;
+          writePaperLayoutState(layout);
+        };
+
+        const applySavedPaperLayout = (dayLi, dayKey) => {
+          if (!dayLi || !dayKey) return;
+          const layout = readPaperLayoutState();
+          const entry = normalizeLayoutEntry(layout[dayKey]);
+          const hidden = new Set(entry.hidden);
+          const itemMap = new Map();
+          dayLi.querySelectorAll('li.sidebar-paper-item').forEach((paperLi) => {
+            const paperId = getPaperIdFromLi(paperLi);
+            if (!paperId) return;
+            itemMap.set(paperId, paperLi);
+            if (hidden.has(paperId)) paperLi.remove();
+          });
+          ['deep', 'quick'].forEach((sectionKey) => {
+            const section = ensureSectionList(dayLi, sectionKey);
+            const order = entry.sections[sectionKey] || [];
+            if (!section || !order.length) return;
+            order.forEach((paperId) => {
+              if (hidden.has(paperId)) return;
+              const paperLi = itemMap.get(paperId);
+              if (paperLi) section.ul.appendChild(paperLi);
+            });
+          });
+        };
+
+        const refreshDayContentHeight = (dayLi) => {
+          const ul = dayLi ? dayLi.querySelector(':scope > ul.sidebar-day-content') : null;
+          if (!ul || dayLi.classList.contains('sidebar-day-collapsed')) return;
+          ul.style.maxHeight = `${ul.scrollHeight}px`;
+          ul.style.opacity = '1';
+        };
+
+        const bindPaperDragAndContextMenu = (dayLi, dayKey) => {
+          if (!dayLi || !dayKey) return;
+          const sectionLists = collectSectionLists(dayLi);
+          Object.keys(sectionLists).forEach((sectionKey) => {
+            const section = sectionLists[sectionKey];
+            if (!section || !section.ul) return;
+            section.ul.dataset.dprDropSection = sectionKey;
+            if (!section.ul.dataset.dprPaperDropBound) {
+              section.ul.dataset.dprPaperDropBound = '1';
+              section.ul.addEventListener('dragover', (e) => {
+                const dragged = document.querySelector('.sidebar-paper-item.is-dragging');
+                if (!dragged) return;
+                e.preventDefault();
+                section.ul.classList.add('dpr-sidebar-drop-target');
+                const siblings = Array.from(
+                  section.ul.querySelectorAll(':scope > li.sidebar-paper-item:not(.is-dragging)'),
+                );
+                const before = siblings.find((item) => {
+                  const rect = item.getBoundingClientRect();
+                  return e.clientY < rect.top + rect.height / 2;
+                });
+                if (before) section.ul.insertBefore(dragged, before);
+                else section.ul.appendChild(dragged);
+              });
+              section.ul.addEventListener('dragleave', () => {
+                section.ul.classList.remove('dpr-sidebar-drop-target');
+              });
+              section.ul.addEventListener('drop', (e) => {
+                e.preventDefault();
+                section.ul.classList.remove('dpr-sidebar-drop-target');
+                syncDayPaperLayoutState(dayLi, dayKey);
+                refreshDayContentHeight(dayLi);
+                requestAnimationFrame(() => syncSidebarActiveIndicator({ animate: false }));
+              });
+            }
+          });
+
+          dayLi.querySelectorAll('li.sidebar-paper-item').forEach((paperLi) => {
+            const paperId = getPaperIdFromLi(paperLi);
+            if (!paperId) return;
+            paperLi.draggable = true;
+            paperLi.dataset.dprPaperId = paperId;
+            if (!paperLi.dataset.dprPaperManageBound) {
+              paperLi.dataset.dprPaperManageBound = '1';
+              paperLi.addEventListener('dragstart', (e) => {
+                paperLi.classList.add('is-dragging');
+                if (e.dataTransfer) {
+                  e.dataTransfer.effectAllowed = 'move';
+                  e.dataTransfer.setData('text/plain', paperId);
+                }
+              });
+              paperLi.addEventListener('dragend', () => {
+                paperLi.classList.remove('is-dragging');
+                dayLi
+                  .querySelectorAll('.dpr-sidebar-drop-target')
+                  .forEach((el) => el.classList.remove('dpr-sidebar-drop-target'));
+                syncDayPaperLayoutState(dayLi, dayKey);
+                refreshDayContentHeight(dayLi);
+                requestAnimationFrame(() => syncSidebarActiveIndicator({ animate: false }));
+              });
+              paperLi.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const titleNode = paperLi.querySelector('.dpr-sidebar-title');
+                const title = String((titleNode && titleNode.textContent) || paperId).trim();
+                if (!window.confirm(`从左侧列表删除这篇文献？\n\n${title}`)) return;
+                const layout = readPaperLayoutState();
+                const entry = normalizeLayoutEntry(layout[dayKey]);
+                if (!entry.hidden.includes(paperId)) entry.hidden.push(paperId);
+                ['deep', 'quick'].forEach((key) => {
+                  entry.sections[key] = (entry.sections[key] || []).filter((id) => id !== paperId);
+                });
+                layout[dayKey] = entry;
+                writePaperLayoutState(layout);
+                paperLi.remove();
+                refreshDayContentHeight(dayLi);
+                requestAnimationFrame(() => syncSidebarActiveIndicator({ animate: false }));
+              });
+            }
+          });
         };
 
         const downloadDayMeta = async (opts) => {
@@ -1766,6 +1992,9 @@ window.$docsify = {
 
           // 初始化一次高度（不做动画，避免首次渲染闪动）
           setDayCollapsed(li, collapsed, { animate: false });
+          markPaperItemsInDay(li);
+          applySavedPaperLayout(li, key);
+          bindPaperDragAndContextMenu(li, key);
 
           // 绑定点击：使用 capture 阶段，确保即使旧版本已有 handler 也能覆盖
           if (!wrapper.dataset.dprDayToggleBound) {

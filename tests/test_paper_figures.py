@@ -341,6 +341,12 @@ class PaperFiguresTest(unittest.TestCase):
         self.assertEqual(self.mod._extract_figure_number("Figure 3: Demo"), "3")
         self.assertEqual(self.mod._extract_figure_number("No numbered caption"), "")
 
+    def test_caption_start_label_rejects_body_references(self):
+        self.assertEqual(self.mod._extract_caption_start_label("Fig. 2. Caption")["label"], "2")
+        self.assertEqual(self.mod._extract_caption_start_label("TABLE C.1 NETWORK")["label"], "C.1")
+        self.assertEqual(self.mod._extract_caption_start_label("Figure 5 shows a result")["label"], "")
+        self.assertEqual(self.mod._extract_caption_start_label("Table C.1 reports settings")["label"], "")
+
 
 if __name__ == "__main__":
     unittest.main()

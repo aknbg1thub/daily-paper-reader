@@ -164,6 +164,24 @@ def _extract_item_label(caption: str) -> Dict[str, str]:
     return {"type": item_type, "label": _normalize_item_label(match.group("label"))}
 
 
+def _extract_caption_start_label(text: str) -> Dict[str, str]:
+    raw = str(text or "").strip()
+    match = _ITEM_LABEL_RE.match(raw)
+    if not match:
+        return {"type": "figure", "label": ""}
+    kind = match.group("kind")
+    label = _normalize_item_label(match.group("label"))
+    item_type = "table" if kind.lower().startswith(("tab", "table")) else "figure"
+    after = raw[match.end() :].lstrip()
+    if item_type == "figure":
+        if kind.lower() == "figure" and after[:1] not in {".", ":"}:
+            return {"type": "figure", "label": ""}
+    else:
+        if kind != kind.upper() and after[:1] not in {".", ":"}:
+            return {"type": "figure", "label": ""}
+    return {"type": item_type, "label": label}
+
+
 def _caption_sort_value(label: str) -> tuple[int, int, str]:
     text = _normalize_item_label(label)
     if not text:
@@ -327,7 +345,7 @@ def _collect_caption_regions(pdf_path: str) -> List[Dict[str, Any]]:
                 if len(block) < 5:
                     continue
                 text = str(block[4] or "").strip()
-                label = _extract_item_label(text)
+                label = _extract_caption_start_label(text)
                 if not label.get("label"):
                     continue
                 rect = fitz.Rect(float(block[0]), float(block[1]), float(block[2]), float(block[3]))
@@ -416,12 +434,6 @@ def _merge_missing_caption_crops(
             except Exception:
                 continue
             if width * height < MIN_FIGURE_AREA:
-                try:
-                    os.remove(tmp_path)
-                except OSError:
-                    pass
-                continue
-            if _is_probable_text_crop(tmp_path, str(item.get("item_type") or "figure")):
                 try:
                     os.remove(tmp_path)
                 except OSError:

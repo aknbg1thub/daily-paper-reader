@@ -194,17 +194,16 @@
   };
   const getDefaultPlatoBaseUrl = () => {
     const utils = getLLMUtils();
-    return normalizeBaseUrlForStorage(utils.DEFAULT_PLATO_BASE_URL || 'https://api.bltcy.ai/v1');
+    return normalizeBaseUrlForStorage(
+      utils.DEFAULT_BAILIAN_BASE_URL || 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+    );
   };
   const getDefaultPlatoChatModels = () => {
     const utils = getLLMUtils();
       const defaults = Array.isArray(utils.DEFAULT_PLATO_CHAT_MODELS)
         ? utils.DEFAULT_PLATO_CHAT_MODELS
         : [
-            'gemini-3-flash-preview-thinking-1000',
-            'deepseek-v3.2',
-            'gpt-5-chat',
-            'gemini-3-pro-preview',
+            'deepseek-v4-pro',
           ];
     return sanitizeModelList(defaults, 99);
   };
@@ -900,20 +899,8 @@
       const defaultPlatoModels = getDefaultPlatoChatModels();
       const platoSummaryModels = [
         {
-          value: 'gpt-5-chat',
-          label: 'GPT-5 Chat · 通用高质量对话',
-        },
-        {
-          value: 'gemini-3-flash-preview-thinking-1000',
-          label: 'Gemini 3 Flash（思考版，推荐）',
-        },
-        {
-          value: 'deepseek-v3.2',
-          label: 'DeepSeek V3.2 · 深度思考',
-        },
-        {
-          value: 'gemini-3-pro-preview',
-          label: 'Gemini 3 Pro（更强思考能力）',
+          value: 'deepseek-v4-pro',
+          label: 'DeepSeek V4 Pro / Alibaba Bailian',
         },
       ];
 
@@ -926,7 +913,7 @@
         currentChatEntry.baseUrl || '',
       );
       const initialPlatoModel =
-        normalizeText(currentSummaryLLM.model || '') || 'gpt-5-chat';
+        normalizeText(currentSummaryLLM.model || '') || 'deepseek-v4-pro';
       const initialCustomModels = sanitizeModelList(
         currentProviderType === 'openai-compatible'
           ? (currentChatEntry.models || [])
@@ -1029,6 +1016,9 @@
                 预设会自动填写 <code>Base URL</code> 与推荐模型；API Key 仍需你自行输入。这里的模型仅供聊天区使用。
               </p>
               <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:6px;">
+                <button id="secret-setup-preset-bailian" type="button" class="secret-gate-btn secondary">
+                  Fill Alibaba Bailian preset
+                </button>
                 <button id="secret-setup-preset-deepseek" type="button" class="secret-gate-btn secondary">
                   填入 DeepSeek 预设
                 </button>
@@ -1125,6 +1115,7 @@
       const customModel2Input = document.getElementById('secret-setup-custom-model-2');
       const customModel3Input = document.getElementById('secret-setup-custom-model-3');
       const platoModelSelect = document.getElementById('secret-setup-plato-model-select');
+      const bailianPresetBtn = document.getElementById('secret-setup-preset-bailian');
       const deepseekPresetBtn = document.getElementById('secret-setup-preset-deepseek');
       const glmPresetBtn = document.getElementById('secret-setup-preset-glm');
       const minimaxPresetBtn = document.getElementById('secret-setup-preset-minimax');
@@ -1155,6 +1146,7 @@
         !customModel1Input ||
         !customModel2Input ||
         !customModel3Input ||
+        !bailianPresetBtn ||
         !deepseekPresetBtn ||
         !glmPresetBtn ||
         !minimaxPresetBtn ||
@@ -1189,9 +1181,9 @@
       providerInputs.forEach((input) => {
         input.checked = input.value === currentProviderType;
       });
-      platoModelSelect.value = initialPlatoModel || 'gpt-5-chat';
+      platoModelSelect.value = initialPlatoModel || 'deepseek-v4-pro';
       if (!platoModelSelect.value) {
-        platoModelSelect.value = 'gpt-5-chat';
+        platoModelSelect.value = 'deepseek-v4-pro';
       }
 
       let githubOk = !!initialGithubToken;
@@ -1312,14 +1304,10 @@
             summaryBaseUrl: getDefaultPlatoBaseUrl(),
             summaryModel: model,
             chatModels: defaultPlatoModels,
-            rewriteModel: 'gemini-3-flash-preview',
-            filterModel: 'gemini-3-flash-preview-nothinking',
-            skipRerank: false,
-            reranker: {
-              apiKey,
-              baseUrl: getDefaultPlatoBaseUrl(),
-              model: 'qwen3-reranker-4b',
-            },
+            rewriteModel: model,
+            filterModel: model,
+            skipRerank: true,
+            reranker: null,
           };
         }
 
@@ -1332,14 +1320,10 @@
           chatModels: customDraft.models,
           chatApiKey: customDraft.apiKey,
           chatBaseUrl: customDraft.baseUrl,
-          rewriteModel: 'gemini-3-flash-preview',
-          filterModel: 'gemini-3-flash-preview-nothinking',
-          skipRerank: false,
-          reranker: {
-            apiKey,
-            baseUrl: getDefaultPlatoBaseUrl(),
-            model: 'qwen3-reranker-4b',
-          },
+          rewriteModel: model,
+          filterModel: model,
+          skipRerank: true,
+          reranker: null,
         };
       };
 
@@ -1405,6 +1389,9 @@
             '#999',
           );
         });
+      });
+      bailianPresetBtn.addEventListener('click', () => {
+        applyOpenAICompatiblePreset('bailian');
       });
       deepseekPresetBtn.addEventListener('click', () => {
         applyOpenAICompatiblePreset('deepseek');

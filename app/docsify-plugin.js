@@ -892,6 +892,8 @@ window.$docsify = {
         window.renderMathInElement(el, {
           delimiters: [
             { left: '$$', right: '$$', display: true },
+            { left: '\\[', right: '\\]', display: true },
+            { left: '\\(', right: '\\)', display: false },
             { left: '$', right: '$', display: false },
           ],
           throwOnError: false,
@@ -955,6 +957,17 @@ window.$docsify = {
         });
 
         // 保护行内公式 $...$（不跨行）
+        protectedText = protectedText.replace(/\\\[([\s\S]*?)\\\]/g, (match) => {
+          const idx = latexBlocks.length;
+          latexBlocks.push(match);
+          return `%%LATEX_BLOCK_${idx}%%`;
+        });
+
+        protectedText = protectedText.replace(/\\\(([\s\S]*?)\\\)/g, (match) => {
+          const idx = latexBlocks.length;
+          latexBlocks.push(match);
+          return `%%LATEX_INLINE_${idx}%%`;
+        });
         protectedText = protectedText.replace(/\$([^\$\n]+?)\$/g, (match) => {
           const idx = latexBlocks.length;
           latexBlocks.push(match);

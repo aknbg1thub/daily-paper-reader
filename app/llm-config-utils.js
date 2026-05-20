@@ -7,14 +7,18 @@
     root.DPRLLMConfigUtils = api;
   }
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
-  const DEFAULT_PLATO_BASE_URL = 'https://api.bltcy.ai/v1';
+  const DEFAULT_BAILIAN_BASE_URL = 'https://dashscope.aliyuncs.com/compatible-mode/v1';
+  const DEFAULT_PLATO_BASE_URL = DEFAULT_BAILIAN_BASE_URL;
   const DEFAULT_PLATO_CHAT_MODELS = [
-    'gemini-3-flash-preview-thinking-1000',
-    'deepseek-v3.2',
-    'gpt-5-chat',
-    'gemini-3-pro-preview',
+    'deepseek-v4-pro',
   ];
   const OPENAI_COMPATIBLE_PRESETS = Object.freeze({
+    bailian: Object.freeze({
+      key: 'bailian',
+      label: 'Alibaba Bailian',
+      baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+      models: Object.freeze(['deepseek-v4-pro']),
+    }),
     deepseek: Object.freeze({
       key: 'deepseek',
       label: 'DeepSeek 官方',
@@ -240,6 +244,7 @@
   };
 
   return {
+    DEFAULT_BAILIAN_BASE_URL,
     DEFAULT_PLATO_BASE_URL,
     DEFAULT_PLATO_CHAT_MODELS,
     OPENAI_COMPATIBLE_PRESETS,

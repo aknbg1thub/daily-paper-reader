@@ -1,5 +1,5 @@
 github:
-  owner: ''
+  owner: aknbg1thub
   repo: daily-paper-reader
 arxiv_paper_setting:
   mode: standard
@@ -25,3 +25,115 @@ subscriptions:
     stage: A
     diff_threshold_pct: 15
   keyword_recall_mode: or
+  intent_profiles:
+    - tag: SC-QUBIT-CHIP
+      description: 超导量子芯片设计、transmon、耦合器、串扰、封装和多比特处理器架构
+      enabled: true
+      paper_sources:
+        - arxiv
+      keywords:
+        - keyword: superconducting quantum chip
+          keyword_cn: 超导量子芯片
+          query: superconducting quantum chip design and scalable processor architecture
+          enabled: true
+        - keyword: transmon qubit
+          keyword_cn: transmon 量子比特
+          query: transmon qubit design fabrication coherence and control
+          enabled: true
+        - keyword: tunable coupler
+          keyword_cn: 可调耦合器
+          query: tunable coupler design for superconducting quantum processors
+          enabled: true
+        - keyword: crosstalk
+          keyword_cn: 串扰
+          query: crosstalk mitigation and characterization in superconducting qubit chips
+          enabled: true
+        - keyword: microwave packaging
+          keyword_cn: 微波封装
+          query: microwave packaging interconnects and signal integrity for superconducting quantum chips
+          enabled: true
+        - keyword: flip-chip quantum processor
+          keyword_cn: 倒装焊量子处理器
+          query: flip-chip superconducting quantum processor architecture and integration
+          enabled: true
+      intent_queries:
+        - query: recent superconducting quantum chip design papers about scalable transmon processors, tunable couplers, packaging, layout, and crosstalk
+          query_cn: 近期关于可扩展 transmon 处理器、可调耦合器、封装、版图和串扰的超导量子芯片设计论文
+          enabled: true
+        - query: hardware architecture and layout techniques for high-coherence multi-qubit superconducting quantum processors
+          query_cn: 高相干多比特超导量子处理器的硬件架构与版图技术
+          enabled: true
+    - tag: EQ-CIRCUIT
+      description: 超导量子电路的等效电路提取、黑盒量化、电容/电感矩阵和能量参与率方法
+      enabled: true
+      paper_sources:
+        - arxiv
+      keywords:
+        - keyword: equivalent circuit
+          keyword_cn: 等效电路
+          query: equivalent circuit extraction for superconducting quantum circuits
+          enabled: true
+        - keyword: black-box quantization
+          keyword_cn: 黑盒量化
+          query: black-box quantization of superconducting circuits and microwave structures
+          enabled: true
+        - keyword: capacitance matrix
+          keyword_cn: 电容矩阵
+          query: capacitance matrix extraction and modeling for Josephson circuits
+          enabled: true
+        - keyword: inductance matrix
+          keyword_cn: 电感矩阵
+          query: inductance matrix modeling and electromagnetic simulation of superconducting circuits
+          enabled: true
+        - keyword: energy participation ratio
+          keyword_cn: 能量参与率
+          query: energy participation ratio method for superconducting quantum circuit modes
+          enabled: true
+        - keyword: Josephson circuit quantization
+          keyword_cn: Josephson 电路量化
+          query: Josephson circuit quantization from equivalent circuit models
+          enabled: true
+      intent_queries:
+        - query: papers on extracting equivalent circuit models, capacitance matrices, inductance matrices, and EPR parameters for superconducting quantum chips
+          query_cn: 关于超导量子芯片等效电路、电容矩阵、电感矩阵和能量参与率参数提取的论文
+          enabled: true
+        - query: black-box quantization and electromagnetic simulation workflows for Josephson circuits and superconducting qubit devices
+          query_cn: Josephson 电路和超导量子比特器件的黑盒量化与电磁仿真流程
+          enabled: true
+    - tag: HAMILTONIAN
+      description: 超导量子电路哈密顿量建立、对角化、有效哈密顿量、Kerr/cross-Kerr 和 normal modes
+      enabled: true
+      paper_sources:
+        - arxiv
+      keywords:
+        - keyword: circuit QED Hamiltonian
+          keyword_cn: circuit QED 哈密顿量
+          query: circuit QED Hamiltonian modeling for superconducting qubits and resonators
+          enabled: true
+        - keyword: Hamiltonian diagonalization
+          keyword_cn: 哈密顿量对角化
+          query: Hamiltonian diagonalization methods for superconducting quantum circuits
+          enabled: true
+        - keyword: effective Hamiltonian
+          keyword_cn: 有效哈密顿量
+          query: effective Hamiltonian derivation for superconducting qubits couplers and resonators
+          enabled: true
+        - keyword: Kerr nonlinearity
+          keyword_cn: Kerr 非线性
+          query: Kerr nonlinearity and anharmonicity in superconducting quantum circuits
+          enabled: true
+        - keyword: cross-Kerr coupling
+          keyword_cn: cross-Kerr 耦合
+          query: cross-Kerr coupling and dispersive interaction in superconducting qubit systems
+          enabled: true
+        - keyword: normal modes
+          keyword_cn: 正则模
+          query: normal mode analysis and quantization of superconducting circuits
+          enabled: true
+      intent_queries:
+        - query: recent methods for deriving, solving, and validating Hamiltonians of superconducting quantum circuits from circuit parameters
+          query_cn: 从电路参数推导、求解和验证超导量子电路哈密顿量的近期方法
+          enabled: true
+        - query: effective Hamiltonian models for transmon qubits, tunable couplers, resonators, Kerr terms, and dispersive interactions
+          query_cn: transmon、可调耦合器、谐振腔、Kerr 项和色散相互作用的有效哈密顿量模型
+          enabled: true

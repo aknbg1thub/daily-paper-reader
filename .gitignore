@@ -20,6 +20,7 @@ app.log
 
 # 本地环境配置
 .env
+secret.private
 
 # 临时/测试文件
 test.pdf

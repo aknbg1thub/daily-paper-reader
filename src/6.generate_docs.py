@@ -1235,13 +1235,12 @@ def extract_figure_number(caption: str) -> str:
 
 
 def figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, int]:
-    figure_number = str(item.get("figure_number") or "").strip()
-    match = re.match(r"^([0-9]+)([A-Za-z]?)$", figure_number)
-    if match:
-        suffix = match.group(2).lower()
-        suffix_rank = ord(suffix) - 96 if suffix else 0
-        return (0, int(match.group(1)), suffix_rank, int(item.get("index") or 0))
-    return (1, int(item.get("page") or 0), int(item.get("index") or 0), 0)
+    return (
+        int(item.get("page") or 0),
+        int(item.get("index") or 0),
+        0 if str(item.get("item_type") or "figure").lower() == "figure" else 1,
+        0,
+    )
 
 
 def normalize_figure_assets(figures: List[Dict[str, Any]]) -> List[Dict[str, Any]]:

@@ -101,12 +101,12 @@ class PaperFiguresTest(unittest.TestCase):
                         {
                             "renderURL": str(image_path_2),
                             "caption": "Figure 2. Second caption",
-                            "page": 0,
+                            "page": 1,
                         },
                         {
                             "renderURL": str(image_path_1),
                             "caption": "Figure 1. First caption",
-                            "page": 1,
+                            "page": 0,
                         }
                     ],
                     "tables": [
@@ -140,10 +140,10 @@ class PaperFiguresTest(unittest.TestCase):
             self.assertEqual(len(figures), 2)
             self.assertEqual(figures[0]["caption"], "Figure 1. First caption")
             self.assertEqual(figures[0]["figure_number"], "1")
-            self.assertEqual(figures[0]["page"], 2)
+            self.assertEqual(figures[0]["page"], 1)
             self.assertEqual(figures[1]["caption"], "Figure 2. Second caption")
             self.assertEqual(figures[1]["figure_number"], "2")
-            self.assertEqual(figures[1]["page"], 1)
+            self.assertEqual(figures[1]["page"], 2)
             self.assertTrue((output_dir / "fig-001.webp").exists())
             meta = json.loads((output_dir / "meta.json").read_text(encoding="utf-8"))
             self.assertEqual(meta["extractor"], "pdffigures2")

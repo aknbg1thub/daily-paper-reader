@@ -208,21 +208,11 @@ def _caption_sort_value(label: str) -> tuple[int, int, str]:
 
 
 def _figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, int]:
-    label = str(item.get("figure_number") or item.get("label") or "").strip()
-    label_sort = _caption_sort_value(label)
-    type_rank = 1 if str(item.get("item_type") or "figure").lower() == "table" else 0
-    if label:
-        return (
-            type_rank,
-            label_sort[0],
-            label_sort[1],
-            int(item.get("_source_index") or item.get("index") or 0),
-        )
     return (
-        type_rank,
-        9,
-        int(item.get("_source_index") or item.get("index") or 0),
         int(item.get("page") or 0),
+        int(item.get("_source_index") or item.get("index") or 0),
+        0 if str(item.get("item_type") or "figure").lower() == "figure" else 1,
+        0,
     )
 
 

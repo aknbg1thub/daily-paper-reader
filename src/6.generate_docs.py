@@ -872,22 +872,6 @@ def prepare_day_report_paths(docs_dir: str, date_str: str) -> Tuple[str, str]:
     return day_dir, day_readme
 
 
-def prepare_home_module_paths(docs_dir: str) -> str:
-    promo_path = os.path.join(docs_dir, "_home_promo.md")
-    return promo_path
-
-
-def ensure_home_module_files(docs_dir: str) -> str:
-    promo_path = prepare_home_module_paths(docs_dir)
-    if not os.path.exists(promo_path):
-        with open(promo_path, "w", encoding="utf-8") as f:
-            f.write("════════════════════════════════════════\n")
-            f.write("（宣传占位）欢迎 Star / Fork 本项目。\n")
-            f.write("（宣传占位）欢迎提交 Issue 与 PR。\n")
-            f.write("════════════════════════════════════════\n")
-    return promo_path
-
-
 def _read_module_markdown(path: str) -> str:
     if not os.path.exists(path):
         return ""
@@ -1989,8 +1973,6 @@ def build_home_readme_content(
     quick_entries: List[Tuple[str, str, List[Tuple[str, str]]]],
     paper_evidence_by_id: Dict[str, str],
 ) -> str:
-    promo_path = ensure_home_module_files(docs_dir)
-    promo_md = _read_module_markdown(promo_path)
     latest_report_md = build_latest_report_section(
         date_str=date_str,
         date_label=date_label,
@@ -2005,7 +1987,6 @@ def build_home_readme_content(
     lines.append("## 每次日报")
     lines.append(latest_report_md)
     lines.append("")
-    lines.append(promo_md or "（宣传模块为空）")
     lines.append("")
     return "\n".join(lines)
 
@@ -2021,7 +2002,7 @@ def sync_home_readme_from_day_report(
     paper_evidence_by_id: Dict[str, str],
 ) -> str:
     home_readme = os.path.join(docs_dir, "README.md")
-    # Home README is built from the latest report and promo module.
+    # Home README is built from the latest report only.
     content = build_home_readme_content(
         docs_dir=docs_dir,
         date_str=date_str,

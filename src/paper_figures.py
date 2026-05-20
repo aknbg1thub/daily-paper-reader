@@ -735,10 +735,19 @@ def ensure_paper_figures(
             return []
 
     pdf_bytes = _download_pdf_bytes(pdf_url)
-    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=True) as tmp_pdf:
-        tmp_pdf.write(pdf_bytes)
-        tmp_pdf.flush()
-        figures = _extract_figures_with_pdffigures2(tmp_pdf.name, asset_dir, relative_prefix)
+    tmp_path = ""
+    try:
+        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp_pdf:
+            tmp_pdf.write(pdf_bytes)
+            tmp_pdf.flush()
+            tmp_path = tmp_pdf.name
+        figures = _extract_figures_with_pdffigures2(tmp_path, asset_dir, relative_prefix)
         if figures:
             return figures
-        return extract_figures_from_pdf(tmp_pdf.name, asset_dir, relative_prefix)
+        return extract_figures_from_pdf(tmp_path, asset_dir, relative_prefix)
+    finally:
+        if tmp_path:
+            try:
+                os.remove(tmp_path)
+            except OSError:
+                pass

@@ -510,6 +510,33 @@ def ensure_single_sentence_end(text: str) -> str:
     return s + "。"
 
 
+LATEX_COMMAND_RE = re.compile(r"\\\\(?=(?:[A-Za-z]+|[,;:!%#$&_{}()[\]|\\/]))")
+
+
+def normalize_latex_escapes(text: str) -> str:
+    """
+    Repair LLM output that writes LaTeX commands as ``\\theta`` inside math.
+    Markdown files should contain one backslash in math spans, e.g. ``\theta``.
+    """
+    raw = str(text or "")
+    if not raw:
+        return raw
+
+    def fix_dollar_math(match: re.Match[str]) -> str:
+        delimiter = match.group(1)
+        fixed = LATEX_COMMAND_RE.sub(r"\\", match.group(2))
+        return f"{delimiter}{fixed}{delimiter}"
+
+    def fix_wrapped_math(match: re.Match[str]) -> str:
+        fixed = LATEX_COMMAND_RE.sub(r"\\", match.group(2))
+        return f"{match.group(1)}{fixed}{match.group(3)}"
+
+    raw = re.sub(r"(\${1,2})([\s\S]*?)\1", fix_dollar_math, raw)
+    raw = re.sub(r"(\\\[)([\s\S]*?)(\\\])", fix_wrapped_math, raw)
+    raw = re.sub(r"(\\\()([\s\S]*?)(\\\))", fix_wrapped_math, raw)
+    return raw
+
+
 def upsert_auto_block(md_path: str, heading: str, content: str) -> None:
     """
     将自动生成内容写入 md：
@@ -517,6 +544,7 @@ def upsert_auto_block(md_path: str, heading: str, content: str) -> None:
     - 否则追加到文件末尾
     """
     key = f"## {heading}"
+    content = normalize_latex_escapes(content)
     block = f"\n\n---\n\n{key}\n\n{content}".rstrip() + "\n"
 
     with open(md_path, "r", encoding="utf-8") as f:
@@ -1463,6 +1491,9 @@ def build_markdown_content(
         lines.append(f"result: {yaml_escape_value(glance_result)}")
     if glance_conclusion:
         lines.append(f"conclusion: {yaml_escape_value(glance_conclusion)}")
+
+    zh_abstract = normalize_latex_escapes(zh_abstract)
+    abstract_en = normalize_latex_escapes(abstract_en)
 
     lines.append("---")
     lines.append("")

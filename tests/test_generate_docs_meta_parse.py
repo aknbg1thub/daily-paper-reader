@@ -173,6 +173,40 @@ class GenerateDocsMetaParseTest(unittest.TestCase):
             [("figure", "3"), ("figure", "4"), ("figure", "5"), ("table", "I")],
         )
 
+    def test_normalize_latex_escapes_repairs_double_backslashes_in_math(self):
+        text = (
+            r"fixed $\\theta=60^\\circ$ and "
+            r"$w_{\\text{narrow}}=w_{\\text{open}}-\\frac{h\\sin\\phi}{\\tan\\theta}$"
+        )
+
+        fixed = self.mod.normalize_latex_escapes(text)
+
+        self.assertIn(r"$\theta=60^\circ$", fixed)
+        self.assertIn(r"\text{narrow}", fixed)
+        self.assertIn(r"\frac{h\sin\phi}{\tan\theta}", fixed)
+        self.assertNotIn(r"\\theta", fixed)
+
+    def test_build_markdown_content_repairs_latex_escapes(self):
+        paper = {
+            "title": "Latex Test",
+            "authors": ["Ada Lovelace"],
+            "published": "2026-03-26T00:00:00+00:00",
+            "abstract": r"uses $\\theta=60^\\circ$ in text",
+            "source": "arxiv",
+        }
+
+        md = self.mod.build_markdown_content(
+            paper,
+            "quick",
+            "",
+            r"中文摘要 $w_{\\text{narrow}}$",
+            [],
+        )
+
+        self.assertIn(r"$\theta=60^\circ$", md)
+        self.assertIn(r"$w_{\text{narrow}}$", md)
+        self.assertNotIn(r"\\theta", md)
+
     def test_maybe_generate_paper_figures_accepts_biorxiv(self):
         calls = []
 

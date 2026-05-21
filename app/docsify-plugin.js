@@ -889,6 +889,7 @@ window.$docsify = {
       // 公共工具：在指定元素上渲染公式
       const renderMathInEl = (el) => {
         if (!window.renderMathInElement || !el) return;
+        unwrapDocsifyEscapedMath(el);
         window.renderMathInElement(el, {
           delimiters: [
             { left: '$$', right: '$$', display: true },
@@ -897,6 +898,32 @@ window.$docsify = {
             { left: '$', right: '$', display: false },
           ],
           throwOnError: false,
+        });
+      };
+
+      const unwrapDocsifyEscapedMath = (root) => {
+        if (!root) return;
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+          acceptNode(node) {
+            const parent = node && node.parentElement;
+            if (!parent) return NodeFilter.FILTER_REJECT;
+            if (parent.closest('code, pre, script, style, .katex')) return NodeFilter.FILTER_REJECT;
+            return /\$|\\[()[\]]/.test(node.nodeValue || '')
+              ? NodeFilter.FILTER_ACCEPT
+              : NodeFilter.FILTER_REJECT;
+          },
+        });
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach((node) => {
+          const before = node.nodeValue || '';
+          const after = before
+            .replace(/\\\$/g, '$')
+            .replace(/\\_/g, '_')
+            .replace(/\\\{/g, '{')
+            .replace(/\\\}/g, '}')
+            .replace(/\\\^/g, '^');
+          if (after !== before) node.nodeValue = after;
         });
       };
 
@@ -909,8 +936,37 @@ window.$docsify = {
           .replace(/\\\\\]/g, '\\]');
       };
 
+      const normalizeLatexBackslashes = (content) => {
+        if (!content) return '';
+        let text = String(content).replace(
+          /(\${1,2})([\s\S]*?)\1/g,
+          (match, delimiter, body) => {
+            const normalized = String(body || '').replace(
+              /\\\\(?=(?:[A-Za-z]+|[,;:!%#$&_{}()[\]|\\/]))/g,
+              '\\',
+            );
+            return `${delimiter}${normalized}${delimiter}`;
+          },
+        );
+        text = text.replace(/(\\\[)([\s\S]*?)(\\\])/g, (match, left, body, right) => {
+          const normalized = String(body || '').replace(
+            /\\\\(?=(?:[A-Za-z]+|[,;:!%#$&_{}()[\]|\\/]))/g,
+            '\\',
+          );
+          return `${left}${normalized}${right}`;
+        });
+        text = text.replace(/(\\\()([\s\S]*?)(\\\))/g, (match, left, body, right) => {
+          const normalized = String(body || '').replace(
+            /\\\\(?=(?:[A-Za-z]+|[,;:!%#$&_{}()[\]|\\/]))/g,
+            '\\',
+          );
+          return `${left}${normalized}${right}`;
+        });
+        return text;
+      };
+
       const protectLatexForMarkdown = (content) => {
-        const text = restoreEscapedLatexDelimiters(content || '');
+        const text = normalizeLatexBackslashes(restoreEscapedLatexDelimiters(content || ''));
         return text
           .replace(/\\\[([\s\S]*?)\\\]/g, (_, body) => `\n\n$$${body}$$\n\n`)
           .replace(/\\\(([\s\S]*?)\\\)/g, (_, body) => `$${body}$`);
@@ -919,7 +975,7 @@ window.$docsify = {
       const repairLatexTextNodes = (root) => {
         if (!root) return;
         const repairValue = (value) => {
-          let text = String(value || '');
+          let text = normalizeLatexBackslashes(String(value || ''));
           text = text.replace(/\[\s*([^\[\]\n]*\\[A-Za-z][^\[\]\n]*?)\s*\]/g, '\\[$1\\]');
           text = text.replace(/\(([^()\n]*\\[A-Za-z][^()\n]*?)\)/g, '\\($1\\)');
           text = text.replace(
@@ -939,6 +995,7 @@ window.$docsify = {
             if (!parent) return NodeFilter.FILTER_REJECT;
             if (parent.closest('code, pre, script, style, .katex')) return NodeFilter.FILTER_REJECT;
             const value = node.nodeValue || '';
+            if (value.includes('$')) return NodeFilter.FILTER_REJECT;
             if (!/(\\[A-Za-z]+|_\{| \^|\\sum|\\phi|\\eta|\\theta|\\rho|\\tilde)/.test(value)) {
               return NodeFilter.FILTER_REJECT;
             }
@@ -4540,6 +4597,7 @@ window.$docsify = {
           // 先创建正文包装层，避免后续切页动画影响聊天浮层
           const root = isPaperPage ? ensurePageContentRoot() : null;
           const mathRoot = root || mainContent;
+          unwrapDocsifyEscapedMath(mathRoot);
           repairLatexTextNodes(mathRoot);
           renderMathInEl(mathRoot);
         }

@@ -19,7 +19,7 @@ MIN_FIGURE_WIDTH = 240
 MIN_FIGURE_HEIGHT = 180
 MIN_FIGURE_AREA = 120_000
 WEBP_QUALITY = 82
-FIGURE_META_VERSION = 4
+FIGURE_META_VERSION = 5
 PDFFIGURES2_JAR_ENV = "PDFFIGURES2_JAR"
 PDFFIGURES2_DEFAULT_CACHE = os.path.expanduser("~/.cache/dpr-tools/pdffigures2/pdffigures2.jar")
 PDFFIGURES2_REPO_CACHE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "tools", "pdffigures2.jar"))
@@ -207,11 +207,25 @@ def _caption_sort_value(label: str) -> tuple[int, int, str]:
     return (8, 0, text.lower())
 
 
-def _figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, int]:
+def _figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, str, int, int]:
+    item_type = str(item.get("item_type") or "figure").lower()
+    label = str(item.get("figure_number") or "").strip()
+    if label:
+        label_group, label_number, label_suffix = _caption_sort_value(label)
+        return (
+            0 if item_type == "figure" else 1,
+            label_group,
+            label_number,
+            label_suffix,
+            int(item.get("page") or 0),
+            int(item.get("_source_index") or item.get("index") or 0),
+        )
     return (
+        2,
         int(item.get("page") or 0),
         int(item.get("_source_index") or item.get("index") or 0),
-        0 if str(item.get("item_type") or "figure").lower() == "figure" else 1,
+        "",
+        0,
         0,
     )
 
@@ -354,17 +368,118 @@ def _collect_caption_regions(pdf_path: str) -> List[Dict[str, Any]]:
     return items
 
 
-def _caption_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.Rect:
+def _union_rects(rects: List[fitz.Rect]) -> fitz.Rect | None:
+    out: fitz.Rect | None = None
+    for rect in rects:
+        if rect.is_empty:
+            continue
+        out = fitz.Rect(rect) if out is None else out | rect
+    return out
+
+
+def _collect_visual_rects(page: fitz.Page) -> List[fitz.Rect]:
     page_rect = page.rect
-    left_margin = max(18.0, page_rect.width * 0.04)
-    right_margin = max(18.0, page_rect.width * 0.04)
+    rects: List[fitz.Rect] = []
+    seen: set[tuple[int, int, int, int]] = set()
+
+    def add_rect(rect: fitz.Rect | None, *, min_area: float) -> None:
+        if rect is None or rect.is_empty:
+            return
+        clipped = fitz.Rect(rect) & page_rect
+        if clipped.is_empty or clipped.width < 4 or clipped.height < 4:
+            return
+        if clipped.get_area() < min_area:
+            return
+        if clipped.width > page_rect.width * 0.98 and clipped.height > page_rect.height * 0.98:
+            return
+        key = tuple(int(round(value)) for value in (clipped.x0, clipped.y0, clipped.x1, clipped.y1))
+        if key in seen:
+            return
+        seen.add(key)
+        rects.append(clipped)
+
+    try:
+        for image_info in page.get_images(full=True):
+            xref = int(image_info[0] or 0)
+            if xref <= 0:
+                continue
+            try:
+                image_rects = page.get_image_rects(xref) or []
+            except Exception:
+                continue
+            for rect in image_rects:
+                add_rect(fitz.Rect(rect), min_area=350.0)
+    except Exception:
+        pass
+
+    try:
+        for drawing in page.get_drawings() or []:
+            rect = drawing.get("rect") if isinstance(drawing, dict) else None
+            if rect is not None:
+                add_rect(fitz.Rect(rect), min_area=18.0)
+    except Exception:
+        pass
+
+    return rects
+
+
+def _caption_visual_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.Rect | None:
+    page_rect = page.rect
+    visual_rects = _collect_visual_rects(page)
+    if not visual_rects:
+        return None
+
+    horizontal_padding = max(10.0, page_rect.width * 0.018)
+    vertical_padding = 8.0
+    max_distance = page_rect.height * 0.58
     if caption_rect.y0 > page_rect.height * 0.35:
-        y0 = max(page_rect.y0 + 12.0, caption_rect.y0 - page_rect.height * 0.48)
-        y1 = max(y0 + 80.0, caption_rect.y0 - 6.0)
+        selected = [
+            rect
+            for rect in visual_rects
+            if rect.y1 <= caption_rect.y0 + 4.0
+            and caption_rect.y0 - rect.y0 <= max_distance
+            and rect.y1 >= caption_rect.y0 - max_distance
+        ]
     else:
-        y0 = min(caption_rect.y1 + 6.0, page_rect.y1 - 80.0)
-        y1 = min(page_rect.y1 - 12.0, caption_rect.y1 + page_rect.height * 0.48)
-    return fitz.Rect(left_margin, y0, page_rect.width - right_margin, y1) & page_rect
+        selected = [
+            rect
+            for rect in visual_rects
+            if rect.y0 >= caption_rect.y1 - 4.0
+            and rect.y1 - caption_rect.y1 <= max_distance
+            and rect.y0 <= caption_rect.y1 + max_distance
+        ]
+    if not selected:
+        return None
+
+    # Keep only the nearest vertical cluster to the caption. This avoids
+    # joining unrelated figures from elsewhere on a dense two-column page.
+    if caption_rect.y0 > page_rect.height * 0.35:
+        selected.sort(key=lambda rect: max(0.0, caption_rect.y0 - rect.y1))
+    else:
+        selected.sort(key=lambda rect: max(0.0, rect.y0 - caption_rect.y1))
+    seed = selected[0]
+    cluster = [seed]
+    for rect in selected[1:]:
+        same_band = not (rect.y0 > seed.y1 + 90.0 or rect.y1 < seed.y0 - 90.0)
+        nearby = abs(rect.y0 - seed.y0) <= page_rect.height * 0.36 or abs(rect.y1 - seed.y1) <= page_rect.height * 0.36
+        if same_band or nearby:
+            cluster.append(rect)
+
+    union = _union_rects(cluster)
+    if union is None:
+        return None
+    visual_area = sum(rect.get_area() for rect in cluster)
+    if visual_area < 900.0:
+        return None
+    crop = fitz.Rect(
+        union.x0 - horizontal_padding,
+        union.y0 - vertical_padding,
+        union.x1 + horizontal_padding,
+        union.y1 + vertical_padding,
+    ) & page_rect
+    if crop.width < MIN_FIGURE_WIDTH / 2 or crop.height < MIN_FIGURE_HEIGHT / 2:
+        return None
+    return crop
 
 
 def _save_page_crop(page: fitz.Page, rect: fitz.Rect, dst_path: str) -> tuple[int, int]:
@@ -415,7 +530,9 @@ def _merge_missing_caption_crops(
             if page_no <= 0 or page_no > len(doc):
                 continue
             page = doc[page_no - 1]
-            crop_rect = _caption_crop_rect(page, item["caption_rect"])
+            crop_rect = _caption_visual_crop_rect(page, item["caption_rect"])
+            if crop_rect is None:
+                continue
             if crop_rect.width < MIN_FIGURE_WIDTH / 2 or crop_rect.height < MIN_FIGURE_HEIGHT / 2:
                 continue
             tmp_path = os.path.join(output_dir, f"caption-crop-{len(candidates) + 1:03d}.webp")

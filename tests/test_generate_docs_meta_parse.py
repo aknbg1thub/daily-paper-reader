@@ -158,6 +158,21 @@ class GenerateDocsMetaParseTest(unittest.TestCase):
         self.assertEqual(len(figures), 1)
         self.assertEqual(figures[0]["url"], "assets/figures/arxiv/1234.5678/fig-001.webp")
 
+    def test_normalize_figure_assets_orders_by_label_before_page(self):
+        figures = self.mod.normalize_figure_assets(
+            [
+                {"figure_number": "4", "item_type": "figure", "page": 6, "index": 1},
+                {"figure_number": "3", "item_type": "figure", "page": 7, "index": 2},
+                {"figure_number": "5", "item_type": "figure", "page": 7, "index": 3},
+                {"figure_number": "I", "item_type": "table", "page": 7, "index": 4},
+            ]
+        )
+
+        self.assertEqual(
+            [(item["item_type"], item["figure_number"]) for item in figures],
+            [("figure", "3"), ("figure", "4"), ("figure", "5"), ("table", "I")],
+        )
+
     def test_maybe_generate_paper_figures_accepts_biorxiv(self):
         calls = []
 

@@ -63,7 +63,7 @@ class PaperFiguresTest(unittest.TestCase):
             self.assertTrue(meta_path.exists())
             meta = json.loads(meta_path.read_text(encoding="utf-8"))
             self.assertEqual(len(meta["figures"]), 1)
-            self.assertEqual(meta["version"], 4)
+            self.assertEqual(meta["version"], self.mod.FIGURE_META_VERSION)
 
     def test_extract_figures_with_pdffigures2_payload(self):
         with tempfile.TemporaryDirectory() as d:
@@ -254,6 +254,47 @@ class PaperFiguresTest(unittest.TestCase):
             labels = [item.get("figure_number") for item in figures]
             self.assertIn("2", labels)
             self.assertTrue((output_dir / "meta.json").exists())
+
+    def test_caption_without_visual_region_is_not_cropped(self):
+        with tempfile.TemporaryDirectory() as d:
+            tmp_dir = Path(d)
+            pdf_path = tmp_dir / "sample.pdf"
+            output_dir = tmp_dir / "out"
+            output_dir.mkdir()
+
+            doc = fitz.open()
+            page = doc.new_page(width=612, height=792)
+            body = "\n".join(
+                "This paragraph contains only article text and inline formulas."
+                for _ in range(18)
+            )
+            page.insert_textbox(fitz.Rect(120, 80, 500, 620), body, fontsize=12)
+            page.insert_textbox(
+                fitz.Rect(72, 650, 540, 720),
+                "Fig. 1. Waveguide-coupled qubit array and engineered dissipation.",
+                fontsize=12,
+            )
+            doc.save(pdf_path)
+            doc.close()
+
+            merged = self.mod._merge_missing_caption_crops(
+                str(pdf_path),
+                [],
+                str(output_dir),
+            )
+
+            self.assertEqual(merged, [])
+
+    def test_label_order_precedes_same_page_source_order(self):
+        figures = self.mod._finalize_figure_order(
+            [
+                {"figure_number": "4", "item_type": "figure", "page": 6, "_source_index": 1},
+                {"figure_number": "3", "item_type": "figure", "page": 7, "_source_index": 2},
+                {"figure_number": "5", "item_type": "figure", "page": 7, "_source_index": 3},
+            ]
+        )
+
+        self.assertEqual([item["figure_number"] for item in figures], ["3", "4", "5"])
 
     def test_duplicate_figure_label_is_disambiguated(self):
         with tempfile.TemporaryDirectory() as d:

@@ -1229,16 +1229,60 @@ def yaml_escape_value(s: str) -> str:
 FIGURE_NUMBER_RE = re.compile(r"\b(?:fig(?:ure)?\.?)\s*([0-9]+[A-Za-z]?)\b", re.IGNORECASE)
 
 
+def normalize_item_label(label: str) -> str:
+    text = re.sub(r"\s+", "", str(label or "").strip())
+    return text.replace("-", ".")
+
+
+def caption_sort_value(label: str) -> tuple[int, int, str]:
+    text = normalize_item_label(label)
+    if not text:
+        return (9, 0, "")
+    roman = re.fullmatch(r"[IVXLCDM]+", text.upper())
+    if roman:
+        values = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+        total = 0
+        prev = 0
+        for ch in reversed(text.upper()):
+            value = values.get(ch, 0)
+            total = total - value if value < prev else total + value
+            prev = max(prev, value)
+        return (1, total, text)
+    match = re.fullmatch(r"([A-Za-z]*)(?:[.]?)(\d+)([A-Za-z]?)", text)
+    if match:
+        prefix = match.group(1).upper()
+        number = int(match.group(2))
+        suffix = match.group(3).lower()
+        prefix_rank = 0 if not prefix else 100 + sum(ord(ch) - 64 for ch in prefix)
+        suffix_rank = ord(suffix) - 96 if suffix else 0
+        return (prefix_rank, number, f"{suffix_rank:03d}")
+    return (8, 0, text.lower())
+
+
 def extract_figure_number(caption: str) -> str:
     match = FIGURE_NUMBER_RE.search(str(caption or ""))
     return match.group(1).strip() if match else ""
 
 
-def figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, int]:
+def figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, str, int, int]:
+    item_type = str(item.get("item_type") or "figure").lower()
+    label = str(item.get("figure_number") or "").strip()
+    if label:
+        label_group, label_number, label_suffix = caption_sort_value(label)
+        return (
+            0 if item_type == "figure" else 1,
+            label_group,
+            label_number,
+            label_suffix,
+            int(item.get("page") or 0),
+            int(item.get("index") or 0),
+        )
     return (
+        2,
         int(item.get("page") or 0),
         int(item.get("index") or 0),
-        0 if str(item.get("item_type") or "figure").lower() == "figure" else 1,
+        "",
+        0,
         0,
     )
 

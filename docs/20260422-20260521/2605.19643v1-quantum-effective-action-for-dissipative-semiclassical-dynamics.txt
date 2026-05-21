@@ -1,0 +1,1958 @@
+Title: Quantum effective action for dissipative semiclassical dynamics
+
+URL Source: https://arxiv.org/pdf/2605.19643v1
+
+Published Time: Wed, 20 May 2026 01:02:04 GMT
+
+Number of Pages: 12
+
+Markdown Content:
+## Quantum effective action for dissipative semiclassical dynamics 
+
+Cesare Vianello, 1, 2 Andrea Bardin, 1, 2 and Luca Salasnich 1, 2, 3 
+
+> 1
+
+Dipartimento di Fisica e Astronomia “Galileo Galilei”, Universit` a di Padova, via Marzolo 8, I-35131 Padova, Italy 
+
+> 2
+
+Istituto Nazionale di Fisica Nucleare, Sezione di Padova, via Marzolo 8, I-35131 Padova, Italy 
+
+> 3
+
+Padua QTech Center, Universit` a di Padova, via Gradenigo 6/A, I-35131 Padova, Italy 
+
+Using the quantum effective action in the Schwinger-Keldysh formalism, we derive quantum cor-rections to the semiclassical Langevin dynamics of a dissipative system governed by a macroscopic degree of freedom. We discuss the connection with the Ehrenfest theorem and show that, in the low-temperature and weak-damping regime, quantum corrections are determined by the zero-point energy of fluctuations evaluated at the classical underdamped frequency, closely paralleling the conservative case. We apply these general results to the resistively and capacitively shunted super-conducting Josephson junction and to an elongated bosonic junction, where quantum corrections can reach the percent level under realistic conditions. 
+
+I. INTRODUCTION 
+
+Superfluids states of matter are characterized by macroscopic quantum coherence. Some of their low-energy properties may thus be described at the mean-field level in terms of a complex-valued order parame-ter, a classical field that encodes the collective behavior of the underlying microscopic degrees of freedom and is governed by nonlinear field equations, such as the Gross-Pitaevskii and Ginzburg-Landau equations [1, 2]. In par-ticular, the Josephson effect in tunneling junctions [3–7] can be understood as the dynamics of the relative phase between the order parameters of two coupled superfluids, which constitutes a single macroscopic degree of freedom. The classical conservative dynamics for the phase, al-though adequate in many scenarios, falls short of cap-turing two key aspects. First, in several experimental realizations the actual dynamics is dissipative. In super-conducting junction circuits, dissipation arises from the presence of external resistors [5, 8, 9], while in bosonic junctions it originates from the intrinsic coupling between the Josephson mode and the phonon bath of the con-densate [10–12]. Second, the phase has a quantum na-ture that manifests in beyond-mean-field effects. In su-perconducting junctions, this was established in pioneer-ing experiments by Clarke et al. [13–18], which observed zero-point fluctuations, macroscopic quantum tunneling, and energy-level quantization of the phase. In bosonic junctions, where the phase is directly related to the con-densate fraction, its quantum nature is reflected in the interaction-induced quantum depletion [19, 20]. In recent works [20–22], we suggested that the quan-tum effective action, originally introduced to study quan-tum effects in relation to spontaneous symmetry break-ing [23–26], provides a transparent framework to incor-porate quantum corrections to the mean-field dynamics of the order parameter. Moreover, it offers a systematic interpretation of effective approaches such as the modi-fied Gross-Pitaevskii equation, which is often introduced heuristically in the spirit of density functional theory and has found numerous applications in recent years (see, e.g., Refs. [27–32]). At first order in ℏ, the quantum-corrected semiclassical dynamics may be derived analytically; ap-plied to Josephson junctions in the absence of dissipation, it was shown to systematically improve upon the mean field when compared with exact quantum results [19, 20]. In this work, we incorporate dissipation into the quan-tum effective action, thereby characterizing its interplay with quantum fluctuations of the system and addressing jointly both of the key aspects outlined above. To this end, we adopt the Schwinger-Keldysh formalism [33, 34], which provides a consistent action principle for describ-ing dissipative dynamics. In this framework, dissipation and stochastic noise are intrinsically linked through the fluctuation-dissipation theorem [35, 36], reflecting the physical fact that dissipation originates from the cou-pling to environmental degrees of freedom (assumed to be in equilibrium) which are themselves subject to quan-tum and thermal fluctuations; these fluctuations, in turn, induce a stochastic force for the system. Our aim is then to derive quantum corrections to the deterministic component of the dissipative dynamics, which arise from quantum fluctuations of the system’s collective degree of freedom. We will show that such corrections generally depend on ℏ, the damping coefficient γ, and the temper-ature T . In certain limiting regimes, they admit a simple physical interpretation in terms of the energy of quantum fluctuations evaluated at a characteristic frequency. The paper is organized as follows. In Sec. II, we de-rive the one-loop Keldysh quantum effective action for a macroscopic degree of freedom, emphasizing the con-nection of this approach to the Ehrenfest theorem. We discuss the local potential approximation and, in the low-temperature and weak-damping regime, the second-order derivative expansion. Moreover, we extend the results to the case in which the conservative part of the action is formulated in phase space. In Sec. III, we apply the general results to the resistively and capacitively shunted junction (RCSJ) model for a superconducting circuit and to an elongated bosonic junction, which provide concrete realizations of the two types of action considered in the previous section. Finally, in Sec. IV we present the con-clusions. Appendices A, B, and C provide a detailed derivation of the Keldysh action for the elongated bosonic 
+
+> arXiv:2605.19643v1 [cond-mat.quant-gas] 19 May 2026
+
+2junction, an alternative derivation of the quantum cor-rections in the low-temperature, weak-damping regime, and a method for analyzing the effects of stochastic noise.   
+
+> II. DISSIPATIVE QUANTUM ACTION A. Keldysh action
+
+We consider our macroscopic degree of freedom as the coordinate x(t) of a particle of mass m moving in a poten-tial U (x). Its conservative dynamics follows from Hamil-ton’s least action principle for 
+
+S0[x] = 
+
+Z
+
+dt 
+
+h m
+
+2 ˙x2 − U (x)
+
+i
+
+. (1) How to describe dissipation? A generic dissipative dy-namics does not admit an ordinary variational formula-tion in terms of a single dynamical variable and a stan-dard action S[x] [37]. Variational realizations typically require auxiliary variables [38], explicit time dependence [39, 40], or other nonstandard constructions, such as frac-tional derivatives [41, 42]. A consistent causal variational framework is provided by the Schwinger-Keldysh closed-time-path formalism [33, 34, 43, 44], in which the dynam-ics is formulated on doubled fields, namely forward and backward trajectories x+(t) and x−(t), or classical and response fields x = ( x+ + x−)/2 and xq = x+ − x−. The Keldysh action is written as 
+
+S[x, x q ] = Scons [x, x q ] + Sdiss [x, x q ], (2) where 
+
+Scons = S0[x+] − S0[x−]=
+
+Z
+
+dt [−m¨x − U ′(x)] xq + O(x3 
+
+> q
+
+) (3) encodes the conservative part of the dynamics, while 
+
+Sdiss =
+
+Z
+
+dt dt ′
+
+
+
+xq (t)αR(t − t′)x(t′)+ i
+
+2 xq (t)αK (t − t′)xq (t′)
+
+
+
+(4) accounts for dissipation. Here, αR(t − t′) denotes the re-tarded response kernel, while αK (t − t′) is the Keldysh correlation kernel. Both emerge from the microscopic action describing the particle coupled to a quantum-thermal bath after integrating out the bath degrees of freedom, see, e.g., Appendix A. If the bath is in ther-mal equilibrium, the two kernels are related by the fluctuation-dissipation theorem [36, 45] 
+
+αK (ω) = ℏ coth 
+
+ βℏω
+
+2
+
+
+
+Im αR(ω), (5) where β = ( kB T )−1 is the inverse temperature. The quadratic term in xq can be decoupled via the Hubbard-Stratonovich (HS) transformation 
+
+eiS =
+
+Z
+
+Dξ e − 12  
+
+> Rdt dt ′ξ(t)α−1
+> K(t−t′)ξ(t′)
+
+eiS , (6) where 
+
+S =
+
+Z
+
+dt 
+
+
+
+−m¨x−U ′(x)+ 
+
+Z
+
+dt ′αR(t − t′)x(t′)+ ξ(t)
+
+
+
+xq
+
+(7) is the Martin-Siggia-Rose (MSR) action [46–49]. The classical equation of motion (EoM) then follows from the saddle-point condition 
+
+δS
+
+δx q xq =0 
+
+= 0 , (8) which yields the generalized Langevin equation 
+
+m¨x + U ′(x) −
+
+Z
+
+dt ′αR(t − t′)x(t′) = ξ(t). (9) From Eq. (6), ξ(t) is a Gaussian-distributed fluctuating force with P [ξ] ∝ exp[ − 12
+
+R dt R dt ′ξ(t)α−1 
+
+> K
+
+(t − t′)ξ(t′)], implying ⟨ξ(t)⟩ = 0 and ⟨ξ(t)ξ(t′)⟩ = αK (t − t′). We thus identify the Keldysh correlator as the noise correlator. From now on, we will take 
+
+αR(t − t′) = −Θ( t − t′)γ∂ tδ(t − t′) (10) where Θ( t − t′) is the Heaviside step function. This ex-pression should be interpreted as a distributional short-hand for a retarded kernel satisfying Im αR(ω) = γω ,which reproduces linear Markovian damping originat-ing from an Ohmic bath. In fact, since ∂tδ(t − t′) = 
+
+−∂t′ δ(t − t′), substituting this kernel into Eq. (9) and integrating by parts, we obtain 
+
+m¨x + U ′(x) + γ ˙x = ξ(t), (11) with noise spectrum [Eq. (5)] 
+
+αK (ω) = γℏω coth 
+
+ βℏω
+
+2
+
+
+
+. (12) This has two relevant limits: αK (ω) ≃ γℏ|ω| in the low-temperature limit β−1 ≪ ℏ|ω|, describing purely quan-tum noise, and αK (ω) ≃ 2γk B T in the high-temperature limit β−1 ≫ ℏ|ω|, describing purely thermal noise.  
+
+> B. Quantum effective action
+
+The main purpose of the paper is to compute quantum corrections to Eq. (11). To this end, we start from the corresponding Keldysh action [Eq. (2)] 
+
+S =
+
+Z
+
+dt [−m¨x − γ ˙x − U ′(x)] xq
+
++ i
+
+2
+
+Z
+
+dt dt ′xq (t)αK (t − t′)xq (t′) + O(x3 
+
+> q
+
+), (13) 3with αK (t−t′) the inverse Fourier transform of (12), and expand the fields x, xq around their quantum averages (background fields), x = ¯ x + η and xq = ¯ xq + ηq . To second order in the fluctuations η = ( η, η q ), the action reads 
+
+S ≃ S[¯ x, ¯xq ] + 12
+
+Z
+
+dt dt ′ηT (t)F(t − t′) η(t′), (14) where 
+
+F =
+
+−U ′′′ (¯ x)¯ xq M†
+
+M −iα K
+
+
+
+, (15) 
+
+M = δ(t − t′)[ −m∂ 2 
+
+> t
+
+− γ∂ t − U ′′ (¯ x)] . (16) The one-loop quantum effective action Γ[¯ x, ¯xq ] [20–22, 50–54] is then obtained by performing the Gaussian path integral over η, which yields Γ[¯ x, ¯xq ] = S[¯ x, ¯xq ] + i
+
+2 Tr ln F. (17) Defining Fq = diag( −U ′′′ (¯ x)¯ xq , 0) and F0 = F − F q ,we expand the trace-log in series of ¯xq as Tr ln F =Tr ln F0 + Tr( F−10 Fq ) + O(¯ x2 
+
+> q
+
+). The first term is in-dependent of ¯ xq and thus does not contribute to the EoM. The second term, which is linear in ¯ xq , will af-fect the deterministic part of the EoM. The quadratic term in ¯ xq would renormalize the Keldysh kernel αK ;however, since we are already relating αK to γ via the exact quantum fluctuation-dissipation theorem, we shall neglect this and the higher-order terms. The relevant contribution to the quantum effective action (17) is there-fore Γ 1 = i 
+
+> 2
+
+Tr( F−10 δF). Computing the trace, we obtain Γ1 = − 12
+
+Z
+
+dt U ′′′ (¯ x)σ(¯ x)¯xq , (18) where 
+
+σ(¯ x) = 
+
+Z dω 
+
+2παK (ω)
+
+|M (ω)|2 . (19) Performing the HS transformation to the corresponding MSR action and varying with respect to ¯ xq , we thus ob-tain the quantum-corrected EoM 
+
+m¨¯x + γ ˙¯x + U ′(¯ x) + 12 U ′′′ (¯ x)σ(¯ x) = ξ(t). (20) It should be noted that, as an approach to the semi-classical limit, the quantum effective action is closely re-lated to the Ehrenfest theorem. Let us consider first the conservative case, for which the Heisenberg equation is 
+
+m¨ˆx + U ′(ˆ x) = 0. The Ehrenfest theorem then gives m¨¯x +
+
+⟨U ′(ˆ x)⟩ = 0, where the expectation value is understood in the vacuum associated with fluctuations around the background ¯ x. Writing ˆ x = ¯ x + ˆ η, with ⟨ˆη⟩ = 0 by defini-tion, and expanding the potential around ¯ x, one obtains 
+
+⟨U ′(ˆ x)⟩ = U ′(¯ x) + 12 U ′′′ (¯ x)⟨ˆη2⟩ + O(ˆ η3). Comparing this with the conservative version of Eq. (20) ( γ → 0, which also implies ξ → 0), for which σ(¯ x) = ℏ 
+
+> 2
+
+[mU ′′ (¯ x)] −1/2
+
+[20, 21], we realize that the two dynamics coincide pro-vided that ⟨ˆη2⟩ = σ(¯ x), meaning that the fluctuations ˆ η
+
+are identified with those of the ground state of an har-monic oscillator with frequency ω0(¯ x) = pU ′′ (¯ x)/m . At the one-loop level this is exactly the case: the fluctuations over which one integrates to obtain the quantum effective action are Gaussian, with frequency ω0(¯ x) [20, 21]. In the dissipative case, we start from the quantum Langevin equation m¨ˆx + γ ˙ˆx + U ′(ˆ x) = ˆξ(t) [35, 55, 56]. The Ehrenfest theorem then yields m¨¯x+γ ˙¯x+⟨U ′(ˆ x)⟩ = 0, where ⟨. . . ⟩ now denotes the expectation value with re-spect to the reduced state of the system, obtained after tracing out the bath degrees of freedom (equivalently, the average over realizations of the quantum noise in the corresponding Langevin description). Substituting ˆx = ¯ x + ˆ η and expanding to leading order in ˆ η, we ob-tain m¨ˆη + γ ˙ˆη + U ′′ (¯ x)ˆ η = ˆξ(t), that is the equation for a driven-dissipative harmonic oscillator. The variance of ˆ η is then ⟨ˆη2⟩ = R dω  
+
+> 2π
+
+|χ(ω)|2αK (ω), where χ(ω) = [mω 2 + iγω − U ′′ (¯ x)] −1 is the response function and 
+
+αK (ω) is given by Eq. (12). Since |χ(ω)|2 = Im χ(ω)/γω ,this is consistent with the fluctuation-dissipation theo-rem for the system, ⟨ˆη2⟩ = R dω  
+
+> 2π
+
+ℏ coth( ℏω  
+
+> 2kBT
+
+)Im χ(ω). Fi-nally, noting that χ(ω) = M−1(ω), we immediately get 
+
+⟨η2⟩ = σ(¯ x). This establishes the formal correspondence between the one-loop quantum effective action and the leading-order correction derived from the Ehrenfest the-orem. The remaining question is how to compute σ(¯ x).  
+
+> C. Local potential approximation
+
+Since the operator M is a nonlocal functional of ¯ x(t), Eq. (19) cannot be evaluated exactly. However, assuming that ¯ x(t) varies slowly in time, one can build a derivative expansion around a constant ¯ x, which yields asymptot-ically a local expression for σ(¯ x). The first order in the derivative expansion is the local potential (or adiabatic) approximation, in which one treats the background field as constant. Then M(ω) = mω 2 + iγω − U ′′ (¯ x), and 
+
+σ(¯ x) may be computed explicitly. In the low-temperature limit, where αK (ω) ≃ γℏ|ω|, we find 
+
+σ(¯ x) ≃ ℏ
+
+πmω γ (¯ x) tan −1
+
+ 2mω γ (¯ x)
+
+γ
+
+
+
+, (21) while in the weak-damping limit, γ ≪ pmU ′′ (¯ x), 
+
+σ(¯ x) ≃ ℏ
+
+2mω γ (¯ x) coth 
+
+ βℏωγ (¯ x)2
+
+
+
+, (22) where we have defined 
+
+ωγ (¯ x) = 
+
+r U ′′ (¯ x)
+
+m −
+
+ γ
+
+2m
+
+2
+
+. (23) 4Eqs. (21)-(22) match in the common limit of low temper-ature and weak damping, where 
+
+σ(¯ x) ≃ ℏ
+
+2mω γ (¯ x) . (24) Let us focus on the weak damping case. Using Eq. (22), the quantum correction (18) can be written as Γ1 ≃ − 
+
+Z
+
+dt ∂∂ ¯x
+
+ ℏωγ (¯ x)2 + 1
+
+β ln 
+
+
+
+1 − e−βℏωγ (¯ x)
+
+¯xq .
+
+(25) Eq. (20) thus assumes a form analogous to the classical EoM (11), 
+
+m¨¯x + γ ˙¯x + U ′ 
+
+> eff ,β
+
+(¯ x) = ξ(t), (26) with the bare potential U (¯ x) replaced by the effective temperature-dependent potential 
+
+Ueff ,β (¯ x) = U (¯ x)+ ℏωγ (¯ x)2 + 1
+
+β ln 
+
+
+
+1 − e−βℏωγ (¯ x)
+
+. (27) We notice that Eq. (23) is the classical frequency of un-derdamped oscillations. In this regime, we thus obtain a result analogous to the conservative case, which is recov-ered in the limit γ → 0, as ωγ (¯ x) → ω0(¯ x) [20–22]. In that case, quantum corrections are set by the energy of fluctuations with frequency ω0(¯ x) = pU ′′ (¯ x)/m , which is given by the zero-point contribution plus the Bose oc-cupation. Here, quantum corrections are governed by the energy of fluctuations with the damped frequency ωγ (¯ x). The condition γ ≪ pmU ′′ (¯ x), with U ′′ (x) > 0, ensures that the quantum correction is real. In the undamped case, the same requirement reduces to the standard con-dition that the potential be locally convex.  
+
+> D. Derivative expansion
+
+Going beyond the local potential approximation is in general a difficult task. If we restrict to the regime of low temperature and weak damping, which is the relevant one for the applications to Josephson junction we will discuss in Sec. III, we can instead make some rapid progress. In fact, Eq. (25) simplifies to Γ1 ≃ − 
+
+Z
+
+dt ∂∂ ¯x
+
+ℏωγ (¯ x)2 ¯xq , (28) meaning that quantum corrections are governed by the zero-point energy ℏ 
+
+> 2
+
+ωγ (¯ x). Consistency with the conser-vative limit [20, 21] then requires that, in this regime, the quantum correction (18) matches Γ1 = iℏ
+
+2
+
+Z
+
+dt δδ¯x
+
+Z dω 
+
+2π ln ω2 − ω2 
+
+> γ
+
+(¯ x) ¯xq (29) at all orders in the derivative expansion, where the func-tional derivative is 
+
+δδ¯x = ∂∂ ¯x − ddt ∂∂ ˙¯x . (30) Using the derivative expansion of R dω  
+
+> 2π
+
+ln[ ω2 − ω2 
+
+> γ
+
+(¯ x)] known from the conservative case [20–22, 51–54, 57], we obtain Γ1 = ℏ
+
+2
+
+Z
+
+dt δδ¯x
+
+
+
+−ωγ (¯ x) + [∂¯xω2 
+
+> γ
+
+(¯ x)] 2
+
+32 ω5 
+
+> γ
+
+(¯ x) ˙¯x2 + O( ˙ ¯x4, ¨¯x)
+
+
+
+¯xq .
+
+(31) The term proportional to ˙ ¯x2 produces a renormalization of the mass m, which is replaced by the effective mass 
+
+meff (¯ x) = m + ℏ
+
+32 [∂¯xω2 
+
+> γ
+
+(¯ x)] 2
+
+ω5 
+
+> γ
+
+(¯ x) . (32) We thus conclude that the quantum-corrected EoM at low temperature and weak damping (at one loop and second order in the derivative expansion) is 
+
+meff (¯ x)¨ ¯x + m′
+
+> eff
+
+(¯ x)2 ˙¯x2 + γ ˙¯x + U ′
+
+> eff
+
+(¯ x) = ξ(t), (33) with Ueff (¯ x) = Ueff ,β =0 (¯ x) = U (¯ x) + ℏ 
+
+> 2
+
+ωγ (¯ x). An alter-native derivation of this result, based on a generalized Hamilton’s principle, is discussed in Appendix B.  
+
+> E. Phase space formulation
+
+With a view toward subsequent applications to bosonic Josephson junctions, it is useful to extend the preceding results to the case in which the conservative action is formulated in phase space, namely 
+
+S0[x, p ] = 
+
+Z
+
+dt [p ˙x − H(x, p )] , (34) where H(x, p ) is the Hamiltonian. Even in the absence of dissipation, this is an interesting generalization of the method presented in Ref. [20]. We assume that the dis-sipative part of the Keldysh action retains the structure given in Eq. (4), so that the action analogous to Eq. (13) reads 
+
+S =
+
+Z
+
+dt 
+
+ 
+
+˙x − ∂H ∂p 
+
+
+
+pq −
+
+
+
+˙p + ∂H ∂x + γ ˙x
+
+
+
+xq
+
+
+
++ i
+
+2
+
+Z
+
+dt dt ′xq (t)αK (t − t′)xq (t′) + O(x3 
+
+> q
+
+, p 3 
+
+> q
+
+). (35) Expanding the fields x, p, xq , pq around their quantum averages, x = ¯ x + η, p = ¯ p + ρ, xq = ¯ xq + ηq , and pq =¯pq + ρq , we obtain, to second order in the fluctuations 
+
+η = ( η, ρ, η q , ρ q ), 
+
+S ≃ S[¯ x, ¯p, ¯xq , ¯pq ] + 12
+
+Z
+
+dt dt ′ηT (t)F(t − t′)η(t′), (36) where 
+
+F =
+
+−(¯ xq ∂¯x + ¯ pq ∂¯p)H M†
+
+M −iDαK
+
+
+
+, (37) 
+
+M = δ(t − t′)[ J∂t − γD∂t − H(¯ x, ¯p)] , (38) 5with J =   0 −11 0
+
+, D = ( 1 0 0 0 ), and 
+
+H =
+
+H¯x¯x H¯x ¯p
+
+H¯p¯x H¯p ¯p
+
+
+
+(39) the Hessian of the Hamiltonian evaluated on (¯ x, ¯p). The structural similarity with Eqs. (15)-(16) is evident. Following the same procedure as before, one finds that in the local potential approximation, at low temperature and weak damping, the quantum correction is given by Γ1 ≃ − ℏ
+
+2
+
+Z
+
+dt 
+
+
+
+¯xq
+
+∂∂ ¯x + ¯ pq
+
+∂∂ ¯p
+
+
+
+ωγ (¯ x, ¯p), (40) where 
+
+ωγ (¯ x, ¯p) = 
+
+s
+
+det H(¯ x, ¯p) −
+
+ γH ¯p ¯p
+
+2
+
+2
+
+(41) generalizes Eq. (23). Since (∂tω2 
+
+> γ
+
+)2 = (∂¯xω2 
+
+> γ
+
+)2 ˙¯x2 +(∂¯pω2 
+
+> γ
+
+)2 ˙¯p2 + 2 ∂¯pω2 
+
+> γ
+
+∂¯xω2 
+
+> γ
+
+˙¯p ˙¯x, the derivative expansion in Eq. (31) becomes Γ1 = ℏ
+
+2
+
+Z
+
+dt 
+
+
+
+¯xq
+
+δδ¯x + ¯ pq
+
+∂∂ ¯p
+
+ 
+
+−ωγ (¯ x, ¯p)+ Z¯x¯x
+
+2 ˙¯x2 + Z¯p ¯p
+
+2 ˙¯p2 + Z¯p¯x ˙¯p ˙¯x + · · · 
+
+
+
+, (42) where Z¯x¯y = ∂¯xω2 
+
+> γ
+
+(¯ x, ¯p)∂¯y ω2 
+
+> γ
+
+(¯ x, ¯p)/16 ω5 
+
+> γ
+
+(¯ x, ¯p). It is clear that, in general, these derivative corrections deform the canonical structure. Defining the effective Hamiltonian 
+
+Heff (¯ x, ¯p) = H(¯ x, ¯p) + ℏωγ (¯ x, ¯p)2 (43) and the derivative deformation 
+
+Q[¯ x, ¯p] = Z¯x¯x
+
+2 ˙¯x2 + Z¯p ¯p
+
+2 ˙¯p2 + Z¯p¯x ˙¯p ˙¯x, (44) the quantum effective action reads Γ = 
+
+Z
+
+dt 
+
+ 
+
+˙¯x − ∂H eff 
+
+∂ ¯p
+
+
+
+¯pq −
+
+
+
+˙¯p + ∂H eff 
+
+∂ ¯x + γ ˙¯x
+
+
+
+¯xq
+
+
+
++ ℏ
+
+2
+
+Z
+
+dt 
+
+
+
+¯xq
+
+δδ¯x + ¯ pq
+
+∂∂ ¯p
+
+
+
+Q[¯ x, ¯p]+ i
+
+2
+
+Z
+
+dt dt ′ ¯xq (t)αK (t − t′)¯ xq (t′). (45) Performing the HS transformation to the MSR action and varying with respect to ¯ xq and ¯ pq , we finally obtain the quantum-corrected EoMs ˙x − ∂H eff 
+
+∂ ¯p + ℏ
+
+2
+
+∂∂ ¯p Q[¯ x, ¯p] = 0 , (46a) ˙¯p + ∂H eff 
+
+∂ ¯x + γ ˙¯x − ℏ
+
+2
+
+δδ¯x Q[¯ x, ¯p] = ξ(t). (46b) This result simplifies substantially, and matches with Eq. (33), when the Hamiltonian takes the form H(x, p ) = 
+
+p2/2m + U (x). In fact, in this case H¯x¯x = U ′′ (¯ x), 
+
+H¯p ¯p = 1 /m , and H¯x ¯p = 0, therefore Eq. (41) is equiv-alent to Eq. (23) and independent of ¯ p. It follows that 
+
+Heff (¯ x, ¯p) = ¯ p2/2m + Ueff (¯ x), with Ueff given by Eq. (27), and Z¯p ¯p = Z¯p¯x = 0. Eq. (46a) then yields ¯ p = m ˙¯x,which substituted into Eq. (46b) gives exactly Eq. (33) with meff (¯ x) = m + ℏZ¯x¯x/2, in agreement with Eq. (32). This concludes our general discussion of the dissipative quantum effective action. 
+
+III. APPLICATION TO JOSEPHSON JUNCTIONS 
+
+In this section, we consider two applications of the gen-eral results derived in Sec. II to superconducting and su-perfluid Josephson junctions. 
+
+A. Resistively and capacitively shunted superconducting junction 
+
+In the RCSJ model [5, 8, 9, 13–15] for a supercon-ducting circuit with capacitance C, shunt resistance R,critical current Ic, and external current I, the supercon-ducting phase ϕ obeys the equation 
+
+ℏ2C
+
+4e2 ¨ϕ + ℏ2
+
+4e2R ˙ϕ + U ′(ϕ) = ξ(t), (47) with the washboard potential 
+
+U (ϕ) = − ℏ
+
+2e (Iϕ + Ic cos ϕ), (48) where ξ(t) is a current noise originating from the shunt resistor. Eq. (47) is of the form of Eq. (11), once we identify x → ϕ, m → ℏ2C/ 4e2, and γ → ℏ2/4e2R. In the low-temperature and weak-damping regime, applying Eq. (27) we thus get the effective potential 
+
+Ueff ( ¯ϕ) = U ( ¯ϕ) + ℏ
+
+2
+
+q
+
+Ω2 
+
+> J
+
+cos ¯ϕ − Ω2 
+
+> RC
+
+, (49) where we have defined ΩJ =
+
+r 2eI c
+
+ℏC , ΩRC = 12RC , (50) with Ω J being the classical Josephson frequency. The effective mass, which results in an effective capacitance, is instead given by [Eq. (32)] 
+
+Ceff ( ¯ϕ) = C + e2
+
+8ℏ
+
+Ω4 
+
+> J
+
+sin 2 ¯ϕ
+
+(Ω 2 
+
+> J
+
+cos ¯ϕ − Ω2 
+
+> RC
+
+)5/2 . (51) The quantum-corrected RCSJ equation is then [Eq. (33)] 
+
+ℏ2Ceff ( ¯ϕ)4e2
+
+¨¯ϕ+ ℏ2C′
+
+> eff
+
+( ¯ϕ)8e2
+
+˙¯ϕ2 + ℏ2
+
+4e2R
+
+˙¯ϕ+U ′
+
+> eff
+
+( ¯ϕ) = ξ(t). (52) 6An approach for treating this stochastic differential equation is outlined in Appendix C. Here, let us consider a simple instance of the deterministic dynamics. In the absence of external current ( I = 0), the effective poten-tial has a minimum in ¯ϕ = 0, where Ceff (0) = C. The de-terministic EoM linearized around this minimum is there-fore ¨¯ϕ+2Ω RC ˙¯ϕ+ ˜Ω20 ¯ϕ = 0, where ˜Ω20 = 4 e2U ′′ 
+
+> eff
+
+(0) /ℏ2C =Ω2 
+
+> J
+
+[1 − (e2/ℏC)(Ω 2 
+
+> J
+
+− Ω2 
+
+> RC
+
+)−1/2]. Its solution takes the form ¯ϕ(t) = A e −ΩRC t cos( ˜Ωdt + c), (53) where A and c are fixed by the initial conditions, and the oscillation frequency is ˜Ωd =
+
+q ˜Ω20 − Ω2 
+
+> RC
+
+, namely ˜Ωd =
+
+q
+
+Ω2 
+
+> J
+
+− Ω2
+
+> RC
+
+s
+
+1 − e2
+
+ℏCΩJ [1 − (Ω RC /ΩJ )2]3/2 .
+
+(54) In the product on the right-hand side, the first term, Ωd = pΩ2 
+
+> J
+
+− Ω2 
+
+> RC
+
+, corresponds to the classical fre-quency of underdamped oscillations, while the second term encodes the quantum correction. In the absence of damping (Ω RC = 0), Eq. (54) simplifies to ˜Ω0 =ΩJ
+
+p1 − e2/ℏCΩJ , in agreement with the expression re-ported in Ref. [21]. Differently from the oscillation fre-quency, at least within the linear regime around ¯ϕ = 0 the decay rate of the oscillation amplitude, Ω RC , does not acquire quantum corrections. There are different experimental realizations of the RCSJ model. In small Al/AlOx/Al junctions used in su-perconducting qubits, one typically has C ∼ 10 − 100 fF, 
+
+R ∼ 1 − 10 kΩ, and Ic ∼ 10 − 1000 nA. These pa-rameters place the junction deeply in the underdamped regime, Ω RC ≪ ΩJ . Taking for instance C = 70 fF, 
+
+R = 5 kΩ, and Ic = 20 nA, we obtain Ω J ≃ 29 .5 GHz and Ω RC ≃ 1.43 GHz. Eq. (54) then yields ˜Ωd ≃ ˜Ω0 ≃
+
+0.94Ω J , so quantum corrections produce a ∼ 6% reduc-tion of the Josephson frequency. In contrast, shunted Nb/AlOx/Nb junctions used in classical superconduct-ing electronics (such as RSFQ logic or voltage standards) typically have C ∼ 10 −1000 fF, R ∼ 1−100 Ω, and Ic ∼
+
+10 − 1000 μA. Taking for instance C = 10 fF, R = 20 Ω, and Ic = 100 μA, we obtain Ω J ≃ 5.51 THz and Ω RC =2.50 THz, hence Ω RC /ΩJ ≃ 0.45, implying sizable damp-ing. Eq. (54) then yields Ω d = pΩ2 
+
+> J
+
+− Ω2 
+
+> RC
+
+≃ 4.91 THz and ˜Ωd ≃ 0.997Ω d, indicating that quantum corrections reduce the frequency by ∼ 0.3%.  
+
+> B. Elongated bosonic junction
+
+In an elongated bosonic junction realized by two one-dimensional Bose gases coupled through a point-like tun-neling barrier, dissipation originates from the intrinsic in-teraction between the collective Josephson mode and the bath of elementary quasiparticle excitations supported by the condensates [10–12]. As discussed in detail in Ap-pendix A, integrating out the bath degrees of freedom, and using for convenience dimensionless units for time and energy [6], yields an effective action for the Joseph-son mode of the form given in Eq. (35), with the iden-tification x → ϕ, the relative phase, and p → z, the population imbalance between the two condensates. The Hamiltonian is 
+
+H(ϕ, z ) = Λ2 z2 − p1 − z2 cos ϕ, (55) where Λ > 0 encodes the boson-boson interaction. In the usual low-temperature and weak-damping regime, Eq. (41) gives 
+
+ωγ ( ¯ϕ, ¯z) = 
+
+s
+
+ω20 ( ¯ϕ, ¯z) − γ2
+
+4
+
+
+
+Λ + cos ¯ϕ
+
+(1 − ¯z2)3/2
+
+2
+
+, (56) where 
+
+ω20 ( ¯ϕ, ¯z) = Λ p1 − ¯z2 cos ¯ϕ + cos 2 ¯ϕ − ¯z2 sin 2 ¯ϕ
+
+1 − ¯z2 . (57) The resulting effective Hamiltonian is 
+
+Heff ( ¯ϕ, ¯z) = H( ¯ϕ, ¯z) + ℏωγ ( ¯ϕ, ¯z)2 (58) (since we are working with adimensional time and en-ergy, in this section ℏ is also adimensional), and has a stable equilibrium in ( ¯ϕ, ¯z) = 0, where, since ∂ ¯ϕω2 
+
+> γ
+
+(0) = 
+
+∂¯z ω2 
+
+> γ
+
+(0) = 0, the derivative corrections in Eq. (44) and in the corresponding linearized EoMs (46) also vanish. The latter thus take the simple form ˙¯ϕ − ∂2¯z Heff (0)¯ z = 0 , (59a) ˙¯z + ∂2¯ϕHeff (0) ¯ϕ + γ ˙¯ϕ = ξ(t). (59b) Defining ΩJ = ω0(0) = √Λ + 1 , (60a) Ωd = ωγ (0) = Ω J
+
+s
+
+1 −
+
+ γΩJ
+
+2
+
+2
+
+, (60b) as the classical Josephson and underdamped frequencies, respectively, substituting Eq. (59b) into Eq. (59a) we ob-tain a single second-order equation for ¯ϕ(t): ¨¯ϕ + ˜Γ ˙¯ϕ + ˜Ω20 ¯ϕ = Ξ( t), (61) where ˜Ω20 = Ω 2 
+
+> J
+
++ ℏ
+
+4Ω d
+
+
+
+3 − Ω2
+
+> J
+
+
+
+2 + 3γ2
+
+2
+
+
+
+− Ω4
+
+> J
+
+
+
+1 − γ2
+
+2
+
+ 
+
+,
+
+(62a) ˜Γ = γ
+
+
+
+Ω2 
+
+> J
+
++ ℏ
+
+4Ω d
+
+
+
+3 − Ω2
+
+> J
+
+
+
+1 + 3γ2
+
+2
+
+ 
+
+, (62b) and Ξ( t) is related to ˜Γ by the same fluctuation-dissipation relation that links ξ(t) and γ. The stochastic 70 2 4 6                                                       
+
+> t
+> −1.0
+> −0.5
+> 0.0
+> 0.5
+> 1.0
+> ¹Á(t)
+> (a)
+> 0123
+> t
+> −1.0
+> −0.5
+> 0.0
+> 0.5
+> 1.0
+> (b)
+> 00.25 0.5 0.75 1
+> °=° c
+> 0
+> 1
+> 2
+> 3
+> 4
+> 5
+> ¤
+> (c)
+> 00.25 0.5 0.75 1
+> °=° c
+> 0
+> 1
+> 2
+> 3
+> 4
+> 5
+> (d)
+> ¡10 ¡1¡0:100:1110
+> d%¡10 ¡1¡0:100:1110
+> ¿%
+> FIG. 1. Quantum corrections to the dynamics of the bosonic junction. (a) Phase dynamics for N= 100, Λ = 5, and γ=0 (dashed orange), γ= 0 .2γc(solid green), and γ= 0 .4γc
+> (dashed dotted violet), where γc= 2 /ΩJ. (b) Phase dynamics for Λ = 50, γ= 0 .1γcand N= 10 (dashed orange), N= 50 (solid green), N= 200 (dashed dotted violet). (c) Quantum correction Cd= ˜Ωd/Ωd−1 to the Josephson frequency for
+> N= 50, as a function of γ/γ cand Λ. (d) Quantum correction
+> Cτ= ˜Γ/γ Ω2
+> J−1 to the damping coefficient for N= 50, as a function of γ/γ cand Λ.
+
+dynamics of ¯ z is then completely determined by that of ¯ϕ via the inverse of Eq. (59a), ¯ z = [ ∂2¯z Heff (0)] −1 ˙¯ϕ.We notice that in this case, due to the coupling be-tween ϕ and z, also the damping coefficient acquires a quantum correction. If we consider only the determinis-tic dynamics, the solution of Eq. (61) is ¯ϕ(t) = A e −˜Γt/ 2 cos( ˜Ωdt + c), (63) where A and c are fixed by the initial conditions, and the oscillation frequency is ˜Ωd =
+
+q ˜Ω20 − (˜Γ/2) 2, namely ˜Ωd = Ω d
+
+s
+
+1+ ℏ
+
+4Ω 3
+
+> d
+
+
+
+3−Ω2 
+
+> J
+
+(2+3 γ2)−Ω4
+
+> J
+
+
+
+1−γ2 − 3γ4
+
+4
+
+ 
+
+.
+
+(64) In the absence of dissipation ( γ = 0), this reduces to ˜Ω0 = Ω J
+
+s
+
+1 + ℏ
+
+4Ω 3
+
+> J
+
+(3 − 2Ω 2 
+
+> J
+
+− Ω4 
+
+> J
+
+). (65) These quantum corrections can easily reach a few per-cents and, in the presence of dissipation, are generally larger than in the undamped case (Fig. 1). For instance, fixing Λ = 50 and γ = 0 .2γc, where γc = 2 /ΩJ , we find that C = ˜Ω0/ΩJ − 1 amounts to −6.4% for N = 30, 
+
+−1.9% for N = 100, and −0.9% for N = 200, while 
+
+Cd = ˜Ωd/Ωd − 1 reaches −9.0%, −2.6%, and −1.3% for the same value of N , respectively. Under the same condi-tions, the quantum correction to the damping coefficient, 
+
+Cτ = ˜Γ/γ Ω2 
+
+> J
+
+− 1, is −0.25% for N = 30, −0.07% for 
+
+N = 100, and −0.04% for N = 200. It is clear from Eqs. (59a) that the population imbal-ance has a dynamics of the same form, oscillating with frequency ˜Ωd while its amplitude decays as exp( −˜Γt/ 2). In addition, the effects of the noise Ξ( t) may be consid-ered following the procedure outlined in Appendix C. A stochastic dynamics of such form was studied in Ref. [12]. One may thus perform the same analysis, with the im-portant difference that the underlying deterministic dy-namics now incorporates quantum fluctuations of relative phase coupled to the population imbalance.  
+
+> IV. CONCLUSIONS
+
+In summary, we have applied the quantum effective action approach to the Schwinger-Keldysh formalism to derive quantum corrections to the semiclassical Langevin dynamics of a dissipative macroscopic quantum system. Since our framework is based on an effective action, it provides a general description that is largely indepen-dent of the microscopic details of either the system or the environment, making it applicable to a broad class of dissipative quantum systems. We have shown that, at one loop, quantum corrections are encoded in a non-local functional σ(¯ x), representing the variance of quan-tum fluctuations of the system and depending parametri-cally on the temperature T and the damping coefficient γ.This result is consistent with the Ehrenfest equation de-rived from the quantum Langevin equation. Within the local potential approximation and in the weak-damping regime, σ(¯ x) generates a correction to the system poten-tial given by the energy of quantum fluctuations eval-uated at the classical underdamped frequency. In the additional low-temperature limit, where the zero-point energy dominates, the derivative expansion of σ(¯ x) can be extended to higher order analogously to the conserva-tive case, yielding quantum corrections not only to the potential but also to the effective mass. We have consid-ered both situations in which the conservative dynamics is formulated in configuration space and in phase space, as naturally realized in the RCSJ model and in the elon-gated bosonic junction, respectively. For both examples, we have explicitly computed the quantum corrections to the oscillation frequency and to the decay rate of the superfluid-phase amplitude, showing that they can reach the percent level under realistic conditions. Several directions remain open for future investigation, particularly in connection with current experiments. In both examples considered here, we have restricted our 8analysis to the Josephson regime; extending the study to the fully nonlinear dynamics would be especially interest-ing, as corrections to the effective mass will play a cen-tral role. Thermal effects may be systematically incorpo-rated, at least within the local potential approximation, according to Eq. (27). On the technical side, extend-ing the derivative expansion beyond the low-temperature regime represents another important avenue for develop-ment. In addition, it would be natural to investigate the fully stochastic dynamics by including the effects of noise arising from bath fluctuations on top of the quantum-corrected deterministic evolution. For example, the ap-pearance of a term proportional to ˙ ¯x2 in the EoM (33), induced by quantum corrections to the mass, would intro-duce a nonlinear drift term in the corresponding Fokker-Planck equation, which we expect to substantially mod-ify both the dynamics and the stationary-state proper-ties. All these directions constitute promising extensions of the present work, for which the framework developed here provides the technical foundation. 
+
+> ACKNOWLEDGMENTS
+
+This work is partially supported by the Project “Fron-tiere Quantistiche” (Dipartimenti di Eccellenza) of the Italian Ministry of University and Research, by “In-iziativa Specifica Quantum” of INFN, by the European Union-Next Generation EU within the European Quan-tum Flagship Project “PASQuanS 2”, and the National Center for HPC, Big Data and Quantum Computing (Project No. CN00000013, CN1 Spoke 10: “Quantum Computing”). 
+
+> Appendix A: Keldysh action for the elongated bosonic junction
+
+In this appendix, we derive the Keldysh action for an elongated bosonic junction. This also serves as a gen-eral illustration of how the characteristic structure of the Keldysh action (2), the fluctuation-dissipation relation (5), and the Markovian retarded kernel (10) emerge from a microscopic description upon integrating out environ-mental degrees of freedom. We start from the Lagrangian density for two weakly coupled one-dimensional Bose gases of length L,
+
+L = X
+
+> j=1 ,2
+
+
+
+iℏΨ∗ 
+
+> j
+
+˙Ψj − ℏ2
+
+2m |∂xΨj |2 − g
+
+2 |Ψj |4
+
+
+
++ Jw (x) (Ψ ∗
+
+> 1
+
+Ψ2 + Ψ ∗
+
+> 2
+
+Ψ1) , (A1) where g = U L > 0 is the contact interaction strength, while Jw (x), with J the tunneling energy, describes the coupling between the two components. We shall consider a head-to-tail configuration, in which the dimensionless profile w(x) is localized near the edge at x = 0, with nor-malization R L 
+
+> 0
+> dx L
+
+w(x) = 1. Expressing the bosonic fields in density-phase form, Ψ j (x, t ) = pNj (x, t )/L e iΦj (x,t ),we obtain, up to total derivatives, 
+
+L = 1
+
+L
+
+X
+
+> j=1 ,2
+
+
+
+− ℏNj ˙Φj − ℏ2
+
+2m
+
+ (∂xNj )2
+
+4Nj
+
++ Nj (∂xΦj )2
+
+
+
+− U
+
+2 N 2
+
+> j
+
+
+
++ 2Jw (x)
+
+L
+
+pN1N2 cos(Φ 2 − Φ1).
+
+(A2) We now introduce the space-time dependent relative phase Φ( x, t ) = Φ 2(x, t ) − Φ1(x, t ) and fractional popu-lation imbalance Z(x, t ) = [ N1(x, t ) − N2(x, t )] /N , where 
+
+N is the (constant) total number of particles. Assuming negligible gradients of the total phase, ∂x(Φ 1 + Φ 2) ≃ 0, meaning that the junction carries no significant net mass current, we then obtain 
+
+L ≃ N ℏZ
+
+2L ˙Φ − ℏ2N
+
+2mL 
+
+ (∂xZ)2
+
+4(1 − Z2) + ( ∂xΦ) 2
+
+
+
+− U N 2
+
+4L Z2 + JN w (x)
+
+L
+
+p1 − Z2 cos Φ . (A3) We next expand the fields Φ( x, t ) and Z(x, t ) in eigen-modes of the Laplacian, namely functions χn(x) sat-isfying −∂2
+
+> x
+
+χn(x) = λnχn(x). On the interval x ∈
+
+[0 , L ] with vanishing boundary conditions, the normal-ized eigenfunctions are χn(x) = √2 sin( knx), with kn =
+
+πn/L and λn = k2
+
+> n
+
+, for n = 1, . . . , ∞, and satisfy R dx χ n(x)χm(x) = Lδ nm . In addition to these bulk modes, which correspond to longitudinal phonon exci-tations, we have the boundary fields ϕ(t) = Φ(0 , t ) and 
+
+z(t) = Z(0 , t ), which represent the Josephson degree of freedom. We therefore write Φ( x, t ) = ϕ(t) + 
+
+> ∞
+
+X
+
+> n=1
+
+qn(t)χn(x), (A4) 
+
+Z(x, t ) = z(t) + 
+
+> ∞
+
+X
+
+> n=1
+
+2pn(t)
+
+N ℏ χn(x). (A5) Substituting these expressions into Eq. (A3), and further assuming that the system remains nearly homogeneous in space, with imbalance fluctuations small compared with the background imbalance, so that ( ∂xZ)2 ≃ 0 and √1 − Z2 cos Φ ≃ √1 − z2 cos Φ, we arrive at the action 
+
+S ≃
+
+Z
+
+dt 
+
+ N ℏz
+
+2 ˙ϕ − U N 2
+
+4 z2
+
++ JN p1 − z2
+
+Z L
+
+> 0
+
+dx L w(x) cos ϕ +
+
+> ∞
+
+X
+
+> n=1
+
+χn(x)qn
+
+!
+
++
+
+> ∞
+
+X
+
+> n=1
+
+
+
+pn ˙qn − p2
+
+> n
+
+2M − M ω 2
+
+> n
+
+2 q2
+
+> n
+
+ 
+
+, (A6) where we defined M = ℏ2/2U and ωn = p2U N/m k n =
+
+vskn, with vs the relative-phase sound velocity. 9The action (A6) describes the intrinsic coupling be-tween the Josephson mode and the phonon excita-tions supported by the elongated Bose gases. Ex-panding the tunneling term to first order in the phase fluctuations, and further linearizing the coupling with 
+
+qn under the assumption of small ϕ(t) and z(t), we get JN √1 − z2 R L 
+
+> 0
+> dx L
+
+w(x) cos( ϕ + P∞ 
+
+> n=1
+
+χn(x)qn) ≃
+
+JN √1 − z2 cos ϕ − P∞ 
+
+> n=1
+
+cnϕq n, where 
+
+cn = JN 
+
+Z L
+
+> 0
+
+dx L w(x)χn(x). (A7) In this way, we obtain a linear system-bath coupling of the Caldeira-Leggett type [58, 59], where the bath is rep-resented by a collection of uncoupled oscillators: 
+
+S ≃ S0[ϕ, z ] + 
+
+> ∞
+
+X
+
+> n=1
+
+Sn[ϕ, q n], (A8) where 
+
+S0 =
+
+Z
+
+dt 
+
+ N ℏz
+
+2 ˙ϕ − H(ϕ, z )
+
+
+
+, (A9) 
+
+H = U N 2
+
+4 z2 − JN p1 − z2 cos ϕ, (A10) and 
+
+Sn =
+
+Z
+
+dt 
+
+ M
+
+2 ˙q2 
+
+> n
+
+− M ω 2
+
+> n
+
+2 q2 
+
+> n
+
+− cnϕq n
+
+
+
+. (A11) The objective is to now integrate out the bath degrees of freedom to obtain the Keldysh action for the Josephson mode. Introducing forward and backward trajectories, the Keldysh representation of the action (A8) is 
+
+SK = Scons [ϕ±, z ±] + 
+
+> ∞
+
+X
+
+> n=1
+
+Sn[ϕ±, q n, ±], (A12) where Scons = S0[ϕ+, z +] − S0[ϕ−, z −] and Sn =
+
+Sn[ϕ+, q n, +] − Sn[ϕ−, q n, −]. The Keldysh effective action for the Josephson mode is then defined as 
+
+eiS (eff)   
+
+> K[ϕ±,z ±]
+
+= eiS cons [ϕ±,z ±]
+
+> ∞
+
+Y
+
+> n=1
+
+Z
+
+dq in, +dq in, −dq fn
+
+× ρB (qin, +, q in, −)
+
+Z qfn
+
+> qin, +
+
+Dqn, +
+
+Z qfn
+
+> qin, −
+
+Dqn, − eiS n[ϕ±,q n, ±],
+
+(A13) where ρB (qin, +, q in, −) = ⟨qin, +|ˆρB |qin, −⟩ is the density ma-trix element weighting the initial conditions for the bath. Assuming the bath to be in thermal equilibrium, this is given by [60] 
+
+ρB (qin, +, q in, −) ∝ exp 
+
+
+
+− M ω n
+
+2ℏ sinh( βℏωn)
+
+×   (qin, +)2 + ( qin, −)2 cosh( βℏωn) − 2qin, +qin, −
+
+
+
+.
+
+(A14) Performing the Keldysh rotation to classical and response fields, we obtain 
+
+Scons =
+
+Z
+
+dt 
+
+ N ℏ
+
+2 ˙ϕ − U N 2
+
+2 z − JN z 
+
+√1 − z2 cos ϕ
+
+
+
+zq
+
+−
+
+ N ℏ
+
+2 ˙z + JN p1 − z2 sin ϕ
+
+
+
+ϕq
+
+
+
++ O(ϕ3 
+
+> q
+
+, z 3 
+
+> q
+
+),
+
+(A15) 
+
+Sn =
+
+Z
+
+dt −(M ¨qn + M ω 2
+
+> n
+
+qn + cnϕ)qn,q − cnqnϕq
+
+ ,
+
+(A16) and 
+
+ρB (qin, q in,q ) ∝ exp 
+
+
+
+− M ω n
+
+ℏ tanh 
+
+ βℏωn
+
+2
+
+
+
+(qin)2
+
+− M ω n
+
+4ℏ coth 
+
+ βℏωn
+
+2
+
+
+
+(qin,q )2
+
+
+
+. (A17) Eq. (A13) then reads 
+
+eiS (eff)  
+
+> K
+
+= eiS cons 
+
+> ∞
+
+Y
+
+> n=1
+
+Z
+
+dq in dq in,q dq fn
+
+× ρB (qin, q in,q )
+
+Z qfn
+
+> qin
+
+Dqn
+
+Z 0
+
+> qin,q
+
+Dqn,q eiS n . (A18) Since Sn is linear in qn,q , the rightmost integral yields 
+
+R Dqn,q eiS n = e−i R dt c nqnϕq δ(M ¨qn + M ω 2
+
+> n
+
+qn + cnϕ). Then, integrating over qn, the functional delta enforces the EoM of Eq. (A11), whose solution is 
+
+qn(t) = q(h)  
+
+> n
+
+(t) − 1
+
+cn
+
+Z
+
+dt ′αn,R (t − t′)ϕ(t′), (A19) where q(h)  
+
+> n
+
+(t) = qin cos( ωnt) + ˙qin 
+
+> ωn
+
+sin( ωnt) is the homoge-neous solution, and 
+
+αn,R (t − t′) = Θ( t − t′) c2
+
+> n
+
+M ω n
+
+sin[ ωn(t − t′)] . (A20) It follows that 
+
+eiS (eff)  
+
+> K
+
+= eiS cons 
+
+> ∞
+
+Y
+
+> n=1
+
+ei R dt dt ′ϕq (t)αn,R (t−t′)ϕ(t′)
+
+×
+
+Z
+
+dq in ρB (qin, 0) e−ic n   
+
+> Rdt q (h)
+> nϕq
+
+. (A21) In the last line, we have the expectation value 
+
+⟨e−ic n   
+
+> Rdt q (h)
+> nϕq
+
+⟩ρB , evaluated on the equilibrium den-sity matrix of an harmonic oscillator. Since ρB
+
+is a zero-mean Gaussian, this is equivalent to 
+
+e− c2      
+
+> n
+> 2
+> Rdt dt ′ϕq(t)⟨q(h)
+> n(t)q(h)
+> n(t′)⟩ρBϕq(t′)
+
+. Using ⟨(qin)2⟩ρB = 
+
+> ℏ
+> 2M ω n
+
+coth( βℏωn 
+
+> 2
+
+), ⟨( ˙ qin)2⟩ρB = ω2
+
+> n
+
+⟨(qin)2⟩ρB , and 
+
+⟨qin ˙qin⟩ρB = 0, we obtain ⟨q(h)  
+
+> n
+
+(t)q(h)  
+
+> n
+
+(t′)⟩ρB =10  
+
+> ℏ
+> 2M ω n
+
+coth( βℏωn 
+
+> 2
+
+) cos[ ωn(t − t′)]. Substituting this back into Eq. (A21), we finally get 
+
+SK = Scons +
+
+Z
+
+dt dt ′
+
+
+
+ϕq (t)αR(t − t′)ϕ(t′)+ i
+
+2 ϕq (t)αK (t − t′)ϕq (t′)
+
+
+
+, (A22) where 
+
+αR(t − t′) = Θ( t − t′)
+
+> ∞
+
+X
+
+> n=1
+
+c2
+
+> n
+
+M ω n
+
+sin[ ωn(t − t′)] , (A23) 
+
+αK (t − t′) = ℏ
+
+> ∞
+
+X
+
+> n=1
+
+c2
+
+> n
+
+2M ω n
+
+coth 
+
+ βℏωn
+
+2
+
+
+
+cos[ ωn(t − t′)] .
+
+(A24) The structure of the action (A22) is exactly the one given by of Eqs. (2)-(4). Defining the spectral density 
+
+J (ω) = π
+
+> ∞
+
+X
+
+> n=1
+
+c2
+
+> n
+
+M ω n
+
+δ(ω − ωn), (A25) we may write the kernels as 
+
+αR(t − t′) = Θ( t − t′)
+
+Z dω 
+
+2π 2J (ω) sin[ ω(t − t′)] ,
+
+(A26) 
+
+αK (t − t′) = ℏ
+
+Z dω 
+
+2π J (ω) coth 
+
+ βℏω
+
+2
+
+
+
+cos[ ω(t − t′)] .
+
+(A27) From this we find 
+
+αK (ω) = ℏ coth 
+
+ βℏω
+
+2
+
+
+
+Im αR(ω), (A28) that is the fluctuation-dissipation relation (5). It remains only to derive the explicit expression of 
+
+J (ω) for our model. Since the tunneling profile w(x)is localized near x = 0, where χn(x) ≃ √2knx, the couplings (A7) are approximately linear in kn: cn ≃
+
+JN [√2 R L 
+
+> 0
+> dx L
+
+xw (x)] kn = JN ℓk n. Taking the continuum limit, the spectral density (A25) is thus given by 
+
+J (ω) = π
+
+> ∞
+
+X
+
+> n=1
+
+(JN ℓk n)2
+
+M v skn
+
+δ(ω − vskn)
+
+→ (JN ℓ )2LM v s
+
+Z ∞
+
+> 0
+
+dk k δ (ω − vsk)= (JN ℓ )2LM v 3
+
+> s
+
+ω = γω, (A29) that is the characteristic form of an Ohmic bath. Substi-tuting this into Eq. (A26) and taking the Fourier trans-form, we obtain indeed Im αR(ω) = γω. (A30) The corresponding regularized αR(t − t′) is, in the sense of distributions, 
+
+αR(t − t′) = Θ( t − t′)γ
+
+Z dω π ω sin[ ω(t − t′)] = −Θ( t − t′)γ∂ tδ(t − t′), (A31) which coincides with Eq. (10). The rescaling to adimensional units adopted in Sec. III B is obtained by 2 Jt/ ℏ → t [6]. 
+
+> Appendix B: Hamilton principle for weak damping
+
+In this appendix, we present an alternative approach to deriving the deterministic version (i.e., with ξ = 0) of the low-temperature, weak-damping EoM (33). We are dealing with a particle of mass m, moving in a potential 
+
+U (x) and subject to a friction force F = −γ ˙x. The classi-cal EoM can be obtained from the generalized Hamilton principle [61] 
+
+Z
+
+dt 
+
+h
+
+δ
+
+ m
+
+2 ˙x2 − U (x)
+
+
+
+− γ ˙x δx 
+
+i
+
+= 0 . (B1) The first term is the variation of the conservative action (1), namely the exact differential δS 0 = R dt δS 0 
+
+> δx
+
+δx , with functional derivative δS 0 
+
+> δx
+
+= −m¨x − U ′(x). In the second term, δW = −γ ˙x δx is the infinitesimal virtual work done by the nonconservative friction force and, unlike δS 0, is not an exact differential. Introducing the functional E [x]such that Eq. (B1) can be written as R dt E [x]δx = 0, the arbitrariness of δx implies the EoM 
+
+E [x] = −m¨x − U ′(x) − γ ˙x = 0 . (B2) The corresponding one-loop quantum-corrected EoM is 
+
+E [¯ x] + iℏ
+
+2
+
+δδ¯x tr ln 
+
+ δE
+
+δ¯x
+
+
+
+= 0 , (B3) where 
+
+δE
+
+δ¯x = −m∂ 2 
+
+> t
+
+− γ∂ t − U ′′ (¯ x) (B4) is precisely the fluctuation operator M introduced in Eq. (16). In frequency space, this operator takes the form 
+
+M(ω) = mω 2 + iγω − U ′′ (¯ x) = m[( ω + iγ  
+
+> 2m
+
+)2 − ω2 
+
+> γ
+
+(¯ x)], with ωγ (¯ x) given by Eq. (23). In the weak damping limit, the small imaginary shift of the poles can be neglected, which yields 
+
+E [¯ x] + iℏ
+
+2
+
+δδ¯x
+
+Z dω 
+
+2π ln[ ω2 − ω2 
+
+> γ
+
+(¯ x)] = 0 . (B5) This reproduces the deterministic corrected EoM (33). 11 
+
+Appendix C: Noise effects 
+
+Following Refs. [9, 62], the solution of Eq. (33) may be decomposed as ¯ x = ¯ x0 + ¯ xξ , where ¯ x0 denotes the deterministic contribution and ¯ xξ describes fluctuations induced by the environment. Assuming |¯xξ | ≪ | ¯x0|, the two components obey 
+
+meff (¯ x0)¨ ¯x0 + m′
+
+> eff
+
+(¯ x0)2 ˙¯x20 + γ ˙¯x0 + U ′
+
+> eff
+
+(¯ x0) = 0 (C1) and 
+
+meff (¯ x0)¨ ¯xξ + [ γ + m′
+
+> eff
+
+(¯ x0) ˙ ¯x0] ˙ ¯xξ
+
++
+
+
+
+U ′′ 
+
+> eff
+
+(¯ x0) + m′
+
+> eff
+
+(¯ x0)¨ ¯x0 + m′′ 
+
+> eff
+
+(¯ x0)2 ˙¯x20
+
+
+
+¯xξ = ξ(t).
+
+(C2) Applying this result to the RCSJ Eq. (52), writing ¯ϕ =¯ϕ0 + ¯ϕξ , we have 
+
+ℏ2Ceff ( ¯ϕ0)4e2
+
+¨¯ϕ0 + ℏ2C′
+
+> eff
+
+( ¯ϕ)8e2
+
+˙¯ϕ20 + ℏ2
+
+4e2R
+
+˙¯ϕ0 + U ′
+
+> eff
+
+( ¯ϕ0) = 0 (C3) and 
+
+ℏ2Ceff ( ¯ϕ0)4e2
+
+¨¯ϕξ + ℏ
+
+4e2
+
+ 1
+
+R + C′
+
+> eff
+
+( ¯ϕ0) ˙¯ϕ0
+
+
+
+˙¯ϕξ
+
++
+
+
+
+U ′′ 
+
+> eff
+
+( ¯ϕ0) + ℏ
+
+4e2
+
+
+
+C′
+
+> eff
+
+( ¯ϕ0) ¨¯ϕ0 + C′′ 
+
+> eff
+
+( ¯ϕ0)2˙¯ϕ20
+
+ 
+
+¯ϕξ = ξ(t).
+
+(C4) One may then analyze the effects of noise following the same procedure as in Ref. [9], with the important dif-ference that the underlying deterministic dynamics now includes quantum fluctuations of the macroscopic degree of freedom. 
+
+[1] E. M. Lifshitz and L. P. Pitaevskii, Statistical Physics. Part 2: Theory of the Condensed State (Course of Theo-retical Physics, Vol. 9) (Butterworth-Heinemann, 1980). [2] B. V. Svistunov, E. S. Babaev, and N. V. Prokof’ev, Su-perfluid States of Matter (CRC Press, 2015). [3] B. D. Josephson, Possible new effects in superconductive tunneling, Phys. Lett. 1, 251 (1962). [4] P. W. Anderson and J. M. Rowell, Probable observation of the Josephson superconducting tunneling effect, Phys. Rev. Lett. 10 , 230 (1963). [5] A. Barone and G. Patern` o, Physics and Applications of the Josephson Effect (John Wiley & Sons, 1982). [6] A. Smerzi, S. Fantoni, S. Giovanazzi, and S. R. Shenoy, Quantum coherent atomic tunneling between two trapped Bose-Einstein condensates, Phys. Rev. Lett. 
+
+79 , 4950 (1997). [7] M. Albiez, R. Gati, J. F¨ olling, S. Hunsmann, M. Cris-tiani, and M. K. Oberthaler, Direct observation of tunnel-ing and nonlinear self-trapping in a single bosonic Joseph-son junction, Phys. Rev. Lett. 95 , 010402 (2005). [8] A. Larkin and A. Varlamov, Theory of Fluctuations in Superconductors (Oxford University Press, 2005). [9] K. Furutani and L. Salasnich, Quantum and thermal fluc-tuations in the dynamics of a resistively and capacitively shunted Josephson junction, Phys. Rev. B 104 , 014519 (2021). [10] M. Pigneur, T. Berrada, M. Bonneau, T. Schumm, E. Demler, and J. Schmiedmayer, Relaxation to a phase-locked equilibrium state in a one-dimensional bosonic Josephson junction, Phys. Rev. Lett. 120 , 173601 (2018). [11] J. Polo, V. Ahufinger, F. W. J. Hekking, and A. Min-guzzi, Damping of Josephson oscillations in strongly cor-related one-dimensional atomic gases, Phys. Rev. Lett. 
+
+121 , 090404 (2018). [12] F. Binanti, K. Furutani, and L. Salasnich, Dissipation and fluctuations in elongated bosonic Josephson junc-tions, Phys. Rev. A 103 , 063309 (2021). [13] R. H. Koch, D. J. Van Harlingen, and J. Clarke, Quantum-noise theory for the resistively shunted Joseph-son junction, Phys. Rev. Lett. 45 , 2132 (1980). [14] R. H. Koch, D. J. Van Harlingen, and J. Clarke, Obser-vation of zero-point fluctuations in a resistively shunted Josephson tunnel junction, Phys. Rev. Lett. 47 , 1216 (1981). [15] R. H. Koch, D. J. Van Harlingen, and J. Clarke, Measure-ments of quantum noise in resistively shunted Josephson junctions, Phys. Rev. B 26 , 74 (1982). [16] J. M. Martinis, M. H. Devoret, and J. Clarke, Energy-level quantization in the zero-voltage state of a current-biased Josephson junction, Phys. Rev. Lett. 55 , 1543 (1985). [17] M. H. Devoret, J. M. Martinis, and J. Clarke, Mea-surements of macroscopic quantum tunneling out of the zero-voltage state of a current-biased Josephson junction, Phys. Rev. Lett. 55 , 1908 (1985). [18] J. Clarke, A. N. Cleland, M. H. Devoret, D. Esteve, and J. M. Martinis, Quantum mechanics of a macroscopic variable: The phase difference of a Josephson junction, Science 239 , 992 (1988). [19] C. Vianello, M. Ferraretto, and L. Salasnich, Finite-temperature entanglement and coherence in asymmetric bosonic Josephson junctions, Phys. Rev. A 111 , 063310 (2025). [20] C. Vianello, S. Salvatore, and L. Salasnich, Quantum ac-tion of the Josephson dynamics, Int. J. Theor. Phys. 64 ,315 (2025). [21] K. Furutani, J. Tempere, and L. Salasnich, Quantum ef-fective action for the bosonic Josephson junction, Phys. Rev. B 105 , 134510 (2022). [22] L. Salasnich, Effective action approach to quantum and thermal effects: From one particle to Bose-Einstein con-densates, Atoms 13 , 95 (2025). [23] J. Goldstone, A. Salam, and S. Weinberg, Broken sym-metries, Phys. Rev. 127 , 965 (1962). 12 
+
+[24] G. Jona-Lasinio, Relativistic field theories with symmetry-breaking solutions, Nuovo Cim. 34 , 1790 (1964). [25] S. Coleman and E. Weinberg, Radiative corrections as the origin of spontaneous symmetry breaking, Phys. Rev. D 
+
+7, 1888 (1973). [26] S. Coleman, R. Jackiw, and H. D. Politzer, Spontaneous symmetry breaking in the O( N ) model for large N , Phys. Rev. D 10 , 2491 (1974). [27] D. S. Petrov, Quantum mechanical stabilization of a col-lapsing Bose-Bose mixture, Phys. Rev. Lett. 115 , 155302 (2015). [28] R. N. Bisset, R. M. Wilson, D. Baillie, and P. B. Blakie, Ground-state phase diagram of a dipolar condensate with quantum fluctuations, Phys. Rev. A 94 , 033619 (2016). [29] L. Salasnich, Self-consistent derivation of the modified Gross-Pitaevskii equation with Lee-Huang-Yang correc-tion, Appl. Sci. 8, 1998 (2018). [30] E. Aybar and M. O. Oktel, Temperature-dependent den-sity profiles of dipolar droplets, Phys. Rev. A 99 , 013620 (2019). [31] N. Guebli and A. Boudjemˆ aa, Quantum self-bound droplets in Bose-Bose mixtures: Effects of higher-order quantum and thermal fluctuations, Phys. Rev. A 104 ,023310 (2021). [32] A. Bardin, F. Lorenzi, and L. Salasnich, Quantum fluc-tuations in atomic Josephson junctions: the role of di-mensionality, New J. Phys. 26 , 013021 (2024). [33] J. Schwinger, Brownian motion of a quantum oscillator, J. Math. Phys. 2, 407 (1961). [34] L. V. Keldysh, Diagram technique for nonequilibrium processes, Sov. Phys. JEPT 20 , 1018 (1965). [35] H. Metiu and G. Sch¨ on, Description of quantum noise by a Langevin equation, Phys. Rev. Lett. 53 , 13 (1984). [36] R. Kubo, The fluctuation-dissipation theorem, Rep. Prog. Phys. 29 , 255 (1966). [37] P. S. Bauer, Dissipative dynamical systems, Proc. Natl. Acad. Sci. U.S.A. 17 , 311 (1931). [38] H. Bateman, On dissipative systems and related varia-tional principles, Phys. Rev. 38 , 815 (1931). [39] P. Caldirola, Forze non conservative nella meccanica quantistica, Nuovo Cim. 18 , 393 (1941). [40] E. Kanai, On the quantization of the dissipative systems, Prog. Theor. Phys. 3, 440 (1948). [41] F. Riewe, Nonconservative Lagrangian and Hamiltonian mechanics, Phys. Rev. E 53 , 1890 (1996). [42] F. Riewe, Mechanics with fractional derivatives, Phys. Rev. E 55 , 3581 (1997). [43] A. Kamenev, Field Theory of Non-Equilibrium Systems 
+
+(Cambridge University Press, 2011). [44] M. Uguccioni, Quantum Transport in Mesoscopic Sys-tems: a Non-Equilibrium Field Theory Approach , Ph.D. thesis, Universit` a di Padova (2025). [45] H. B. Callen and T. A. Welton, Irreversibility and gen-eralized noise, Phys. Rev. 83 , 34 (1951). [46] P. C. Martin, E. D. Siggia, and H. A. Rose, Statistical dy-namics of classical systems, Phys. Rev. A 8, 423 (1973). [47] H.-K. Janssen, On a Lagrangean for classical field dynam-ics and renormalization group calculations of dynamical critical properties, Z. Phys. B 23 , 377 (1976). [48] C. De Dominicis, Techniques de renormalisation de la th´ eorie des champs et dynamique des ph´ enom` enes cri-tiques, J. Phys. Colloques 37 , 247 (1976). [49] K. Furutani and L. Salasnich, Fokker-Planck equations for a trapped particle in a quantum-thermal Ohmic bath: general theory and applications to Josephson junctions, AAPPS Bull. 33 , 19 (2023). [50] C. P. Burgess, Introduction to Effective Field Theory 
+
+(Cambridge University Press, 2021). [51] H. Kleinert, Path Integrals in Quantum Mechanics, Statistics, Polymer Physics, and Financial Markets 
+
+(World Scientific, 2009). [52] R. Jackiw, Functional evaluation of the effective poten-tial, Phys. Rev. D 9, 1686 (1974). [53] J. Iliopoulos, C. Itzykson, and A. Martin, Functional methods and perturbation theory, Rev. Mod. Phys. 47 ,165 (1975). [54] F. Cametti, G. Jona-Lasinio, C. Presilla, and F. Toninelli, Comparison between quantum and classical dynamics in the effective action formalism, in 
+
+Proc. Int. School of Physics “Enrico Fermi”, Course CXLIII, G. Casati, I. Guarnieri, and U. Smilansky (Eds.), pp. 431-448 (IOS Press, Amsterdam, 2000). [55] G. W. Ford and M. Kac, On the quantum Langevin equa-tion, J. Stat. Phys. 46 , 803 (1987). [56] U. Weiss, Quantum Dissipative Systems , 5th ed. (World Scientific, 2021). [57] C. M. Fraser, Calculation of higher derivative terms in the one-loop effective Lagrangian, Z. Phys. C 28 , 101 (1985). [58] A. O. Caldeira and A. J. Leggett, Influence of dissipa-tion on quantum tunneling in macroscopic systems, Phys. Rev. Lett. 46 , 211 (1981). [59] A. O. Caldeira and A. J. Leggett, Quantum tunnelling in a dissipative system, Ann. Phys. 149 , 374 (1983). [60] R. P. Feynman and A. R. Hibbs, Quantum Mechanics and Path Integrals (Dover Publications, 2010). [61] E. T. Whittaker, A Treatise on the Analytical Dynam-ics of Particles and Rigid Bodies (Cambridge University Press, 2012). [62] F. T. Brandt, J. Frenkel, and J. C. Taylor, Noise in re-sistively shunted Josephson junctions, Phys. Rev. B 82 ,014515 (2010).

@@ -1,0 +1,627 @@
+Title: Operating a bistable qubit
+
+URL Source: https://arxiv.org/pdf/2605.03187v1
+
+Published Time: Wed, 06 May 2026 00:16:43 GMT
+
+Number of Pages: 11
+
+Markdown Content:
+# Operating a bistable qubit 
+
+Fabrizio Berritta, 1, 2 Jan A. Krzywda, 3 Tom Dvir, 4 Paul Buttles, 5 Stanislav Eilhart, 5 Jeroen Danon, 6 and Ferdinand Kuemmeth 2, 4, 7 
+
+> 1)
+
+Research Laboratory of Electronics, Massachusetts Institute of Technology, Cambridge, MA 02139, USA 
+
+> 2)
+
+Institute of Experimental and Applied Physics, University of Regensburg, 93040 Regensburg, Germany 
+
+> 3)
+
+Lorentz Institute for Theoretical Physics & Leiden Institute of Advanced Computer Science, Universiteit Leiden, 2311 EZ Leiden, The Netherlands 
+
+> 4)
+
+Q.M Technologies Ltd. (Quantum Machines) 
+
+> 5)
+
+Qolab, Madison, Wisconsin 53706, USA 
+
+> 6)
+
+Department of Physics, Norwegian University of Science and Technology, NO-7491 Trondheim, Norway 
+
+> 7)
+
+Center for Quantum Devices, Niels Bohr Institute, University of Copenhagen, 2100 Copenhagen, Denmark 
+
+(*Electronic mail: ferdinand.kuemmeth@ur.de) (*Electronic mail: fabrizio.berritta@mit.edu) (Dated: 4 May 2026) 
+
+Parasitic two-level-system (TLS) defects limit the stability and performance of solid-state quantum processors. Their interaction with a qubit can cause discrete, stochastic shifts of the qubit frequency, making the qubit bistable. We experimentally demonstrate an adaptive protocol for operating a bistable qubit with high fidelity using a classical controller powered by a field-programmable gate array (FPGA). Our “1-bit feedback” protocol estimates the qubit’s bistable frequency from only one single-shot measurement, reaching the information limit set by the qubit’s intrinsic entropy. We validate the protocol in a superconducting qubit by suppressing TLS-induced Ramsey beating, and deploy it to stabilize gate fidelities over time with approximately 136 kHz estimation bandwidth and a 77% error reduction. Our approach provides a simple, yet fundamentally efficient strategy for mitigating dephasing errors induced by strongly coupled TLS defects, and may enable the operation of large future qubit arrays suffering from few remaining, discrete instabilities. 
+
+I. INTRODUCTION 
+
+Two-level system (TLS) defects are one of the major con-tributors to decoherence in superconducting qubits and semi-conductor spin qubits, though their detailed microscopic ori-gins remain unknown. 1–7 TLSs can induce energy relaxation from the excited to the ground state of the qubit, and they can also generate slowly varying noise that contributes to qubit de-phasing. An ensemble of TLSs gives rise to a 1 / f -like charge or flux noise power spectrum at sub-Hz to kHz timescales, whereas a single strongly coupled TLS can cause discrete, telegraphic shifts of the qubit frequency. TLSs can thus be non-Markovian noise sources, which exhibit memory effects and introduce significant overhead for error mitigation. 8,9 
+
+Their dynamical decoupling is not universally effective and may not align with specific experimental goals. 10,11 In or-der to realize fault-tolerant quantum computing with error-corrected solid-state qubits, non-Markovian noise likely needs to be reduced. 12 
+
+The detrimental effects of TLSs can be mitigated by im-proving the device design, material and fabrication processes, or by controlling the noise source itself. 2,13–24 Here we fo-cus on low-latency estimation of a telegraphically fluctuating qubit parameter: Several online (during experimental data col-lection) estimation methods have been proposed to enhance calibration efficiency and error mitigation against 1 / f -noise drifts in stochastic qubit parameters, but they do not directly address bistable qubits whose frequency switches between discrete values. 25–30 This work demonstrates an information-limited real-time (on the qubit coherence timescale) estima-tion approach applied to a bistable qubit. In superconducting qubits, TLSs across the GHz spectrum, located in the aluminum oxide or other dielectric material, can couple strongly to the qubit by electric-dipole interaction. They can also indirectly limit the fidelity of quantum opera-tions by shortening qubit relaxation times. 31 Switches in re-laxation time by an order of magnitude caused by TLSs have been observed over timescales of just milliseconds. 32 TLSs can also reduce gate fidelities by inducing qubit-frequency fluctuations, and sometimes by randomly switching between two or three values; 1–3 here we focus on the case of bistability between two known qubit frequencies. Our efficient “1-bit feedback” protocol is executed on a bistable superconducting qubit by programming a commer-cial controller with an integrated field-programmable gate ar-ray (FPGA) to calibrate the qubit control frequency in real time using only a single-shot measurement outcome, in the presence of slow telegraphic fluctuations that are likely due to a strongly coupled TLS. 33,34 Validation of the protocol is achieved by suppressing TLS-induced beating in Ramsey fringes and by eliminating telegraphic fluctuations of quan-tum gate infidelities, resulting in a significant enhancement of the resulting time-averaged gate fidelity. Our scheme demon-strates intermittent and efficient calibration of a bistable qubit, making it ideal for stable quantum circuit execution in the presence of telegraphic drifts in the qubit frequency. We use a superconducting qubit array operated at the mix-ing chamber stage of a dilution refrigerator at the Israeli Quantum Computing Center (IQCC). We implement the es-timation protocol on one of the available transmon qubits, which comprises a DC SQUID with asymmetric junctions. 
+
+> arXiv:2605.03187v1 [quant-ph] 4 May 2026
+
+2A commercial FPGA-powered controller (Quantum Machines OPX1000) applies high-frequency waveforms for qubit con-trol and single-shot readout, using on-chip Z and XY control lines and readout resonators respectively. 33,34 More details on the experimental setup and the device fabrication are provided in Appendix A. In our setup, a transmon with anharmonicity ≈ − 300 MHz and EJ/Ec ≈ 53 is observed to stochastically switch between two configurations (“modes”) that differ in the qubit split-ting. This is likely caused by some effective coupling be-tween the transmon and a slow TLS (slow relative to the time scale of initializing, operating, reading out the trans-mon and updating control pulse parameters on the controller). This TLS-induced switching between two modes makes the qubit bistable : whenever the TLS changes configuration, the qubit frequency switches between two known discrete values. In the high-frequency mode (H mode), the qubit splitting is 
+
+≈ 5.10 GHz, whereas in the low-frequency mode (L mode), the qubit splitting fq decreases by ∆TLS ≈ 374 kHz, similarly to previous works. 35–37 
+
+Conceptually, a bistable (but otherwise perfect) qubit ran-domly switches between two modes as illustrated in Fig. 1(a). Without knowing its mode, such a qubit cannot be used for quantum computations, as coherent superposition states of the qubit would dephase with an average rate proportional to 
+
+∆TLS . Our goal is to suppress this type of dephasing by miti-gating telegraphic qubit-frequency fluctuations induced by the TLS. In addition to dephasing, bistability also precludes high-fidelity gate operations, as the qubit splitting must be known before applying the correct physical control pulses. Dephasing of a bistable qubit can be understood by prepar-ing a specific equal superposition state and letting it evolve in time in the laboratory frame. If the qubit was known to re-main in the L mode, the probability to find the same state after some superposition time would oscillate sinusoidally with a frequency given by the qubit splitting fL as in Fig. 1(b). Sim-ilarly, if the qubit was known to remain in the H mode, the probability to find the same state would oscillate faster, as in Fig. 1(c). However, for the bistable qubit, the naive qubit con-troller is ignorant about whether the qubit is in the L or the H mode, and hence the expected probability is no longer sinu-soidal in time, but some average of the two. As illustrated in Fig. 1(d), averaging over a time period that includes L modes and H modes with approximately equal weight would yield a beating pattern in the probability, with a characteristic half pe-riod of 1 /(2∆TLS ) that will play a central role in the mitigation protocol discussed below. Figure 1(e) visualizes the dephasing process induced by the two modes in the XY plane of the Bloch sphere. In the laboratory frame, a superposition state (black dot) in the H mode evolves faster along the equator (blue curve) than in the L mode (red curve), thereby acquiring an additional phase shift relative to the L mode. Alternatively, in the rotating frame of the H mode—which we will adopt in Figure 2 for convenience—the state remains aligned along Y ′, while in the L mode it acquires an equal but opposite phase shift. Generally, the bistability precludes naive, high-fidelity op-eration of the qubit for several reasons. First, in order to accu-          
+
+> FIG. 1. Dephasing and control infidelity of a bistable qubit. (a) Illus-tration of a qubit switching sporadically between two modes, L and H, with frequencies fLand fH, respectively. (b) Probability to find a specific equal superposition state of |0⟩and |1⟩in the laboratory frame, after such a state has evolved for some time while the qubit remained in the L mode. (c) Same as (b), but for the qubit in the H mode. (d) Same as (b) and (c), but for a bistable qubit that, uncon-trollably, is either in the L- or H-mode with roughly equal likelihood: A characteristic beating emerges with 1 /(2∆TLS )half period, indi-cating a primary dephasing process for the bistable qubit. (e) Time evolution of a superposition state, visualized on the equator of the Bloch sphere. In the laboratory frame (bottom left), state evolution in the H mode (blue curve) accumulates an additional phase in the XY plane relative to the L mode (red curve). In the rotating frame defined by the H mode, the state evolution appears stationary for the H mode (blue dot, aligned with Y′), whereas an opposite phase shift is accumulated in the L mode (red curve). (f) The average control infidelity on a logarithmic scale (solid gray line, see main text), as a function of the qubit control frequency, is expected to be dominating over the intrinsic qubit infidelity (gray dashed line). In contrast, our 1-bit feedback protocol allows the correct choice of the prevailing control frequency [cf. Figures 2(a) and 3(b)], resulting in a suppres-sion of the average control infidelity (purple stars).
+
+rately prepare a superposition state, for example by applying a π 
+
+> 2
+
+pulse to |0⟩, physical control pulses need to be applied to the qubit that typically depend on the qubit splitting. Second, execution of phase gates (Z rotations) typically also rely on knowing the qubit splitting accurately. Specifically, let’s consider a Xπ pulse, which ideally ro-tates |0⟩ onto |1⟩ and vice versa, implemented by a standard Rabi driving process. We define the associated control infi-delity as the state-preparation infidelity, 1 − F = 1 − ⟨ P(1)⟩,where P(1) is the excited-state population after an Xπ pulse starting from |0⟩, computed using the Rabi transition proba-bility [Eq. (B2) of Appendix B 1]. For a bistable qubit that 3is equally likely to be found in the L and H mode, the low-est average control infidelity is achieved by setting the control frequency halfway in between fL and fH, see solid gray line in Fig. 1(f). 38 The same is true for the Z-rotation infidelity (see Appendix B 3). In any case, a fixed choice for the control frequency yields a control infidelity that on average is much larger than the intrinsic qubit infidelity that may be achiev-able if the qubit was known to be in one specific mode (gray dashed line). The 1-bit feedback protocol below allows the qubit con-troller to dynamically estimate the prevailing mode using only one single-shot measurement and to update the control fre-quency accordingly, thereby recovering near-optimal gate fi-delity. The remaining error (purple stars) is ultimately lim-ited by the intrinsic qubit infidelity and the estimation error, detailed in Appendix C, which takes into account all error sources unrelated to the average control-frequency miscalibra-tion.  
+
+> II. PROTOCOL
+
+Our 1-bit feedback protocol is based on constructing a TLS-syndrome circuit that can discriminate the two qubit modes based on one single-shot readout outcome. The TLS-syndrome circuit evolves a state on the Bloch sphere equator for an optimal superposition time τopt , such that the resulting state in the L mode becomes exactly antiparallel to the re-sulting state in the H mode. The two possible measurement outcomes {0, 1} in a suitable measurement basis can then ex-clusively identify the two qubit modes. 39 
+
+Specifically, the TLS syndrome cycle is defined by the cir-cuit in Fig. 2(a) and implemented on the low-latency con-troller of our transmon qubit. In the rotating frame, the qubit Hamiltonian is 
+
+H (t)
+
+h = − ∆ f − ∆TLS ξ (t)
+
+2 σz, (1) where σz is the Pauli-Z matrix, ∆ f = fc − fq is the frequency detuning between the qubit frequency fq = fH and the chosen rotating frame frequency fc, ∆TLS = fH − fL as above, and 
+
+ξ (t) ∈ { 0, 1} represents the telegraphic time-dependent shift of the qubit frequency due to the TLS. As illustrated by the Bloch spheres in Fig. 2(a), the TLS syndrome cycle first prepares a superposition state |ψ⟩ =(|0⟩ + i |1⟩) /√2 using a −π 
+
+> 2
+
+rotation around the ˆ X′-axis. This 
+
+X′−π/2 pulse, which is calibrated for the H mode, brings the state close to the equator also in the L mode, because the mode splitting ∆TLS is assumed to be small compared to the Rabi rate Ω of the X′−π/2 pulse. While evolving as a su-perposition for time τopt , the qubit state acquires a phase 
+
+φ = 2π R τopt  
+
+> 0
+
+δq(t′) dt′, where δq(t) = ∆ f − ∆TLS ξ (t). We as-sume ξ (t) to be constant on the scale of the TLS syndrome cycle, resulting in φ = 2π[∆ f − ∆TLS ξ (t)] τopt . (In the follow-ing, we drop the time dependence of ξ (t) for ease of notation.) A second X′−π/2 pulse then converts the accumulated phase into qubit polarization along ˆ Z , and the state of the qubit in the Z measurement basis is acquired using standard dispersive readout techniques. Ignoring the intrinsic qubit decoherence of each mode, state preparation and readout errors (see Appendix C for further details on how they impact the estimation performance), the probability of measuring an outcome m ∈ { 0, 1} correspond-ing to the states |0⟩ and |1⟩ is given by 
+
+P(m) = 12 {1 + ( −1)m+1cos [2π(∆ f − ∆TLS ξ )τopt ]}, (2) where the binary variable ξ (and thus the qubit mode) is what we want the controller to estimate. The optimal probing time is determined by requiring that the two possible qubit frequencies produce maximally distin-guishable states. Without loss of generality, in the rotating frame of the H mode ( fc = fH), the H mode acquires no phase during the superposition time (blue dot in the center Bloch sphere), while the L mode accumulates a phase at a rate set by the frequency difference ∆TLS (red solid line). After a su-perposition time τ, the relative phase between the two states is therefore 2 π∆TLS τ. Maximum discrimination is achieved when this phase difference equals π, placing the two Bloch vectors at opposite points on the equator just before the sec-ond X′−π/2 pulse. In the limit ∆TLS T2 ≫ 1 (where T2 ≈ 43 μs is the mode-intrinsic dephasing time, see Appendix C), this condition yields the optimal probing time 
+
+τopt ≈ 12∆TLS 
+
+, (3) which maximizes sensitivity to the TLS-induced frequency shift and yields τopt ≈ 1.33 μs for ∆TLS ≈ 374 kHz. In our experiment, the assumption of negligible decoher-ence during the TLS syndrome cycle is justified because the total qubit cycle duration is short compared to the decoher-ence timescales of tens to ≈ 100 μs, detailed in the randomized benchmarking experiment below. Moreover, the TLS switch-ing time of tens of seconds is much longer than one TLS syn-drome experiment. Specifically, gate pulses are of order 48 ns, the superposition time is τopt ≈ 1.33 μs, the qubit readout takes 
+
+≈ 2 μs, and the resonator reset time, used to deplete residual photons after the readout pulse, is ≈ 6 μs. In summary, since the qubit frequency fq only assumes two known discrete values, the mode of the bistable qubit can be inferred from a single measurement outcome m, rather than from several measurements. 26,29,40–42 At the end of the TLS syndrome cycle, the control frequency fc is updated accord-ingly. Each single-shot measurement thus provides one bit of information about the TLS state: By storing this information in the controller and feeding it back in real time, we show ex-perimentally below that the uncertainty of the qubit frequency is suppressed, thereby mitigating telegraphic fluctuations of the bistable qubit.  
+
+> III. RESULTS
+
+Effectiveness of the one-shot feedback is validated by esti-mating the qubit mode and adjusting fc in real-time, thereby 4                                                        
+
+> FIG. 2. Mitigating dephasing of a bistable qubit by a feedback-controlled rotating frame. (a) In the two-level-system (TLS) syn-drome cycle, the Bloch vector is initialized on the equator using an
+> X′−π/2pulse. After precessing for a time τopt , the L-mode state be-comes antiparallel to the H-mode state (red and blue dot, respec-tively). A second X′−π/2pulse is then applied, followed by a mea-surement min the Zbasis, from which the syndrome (i.e., the qubit mode) is inferred and the control frequency fcis updated accord-ingly. (b) In the Ramsey cycle, the superposition time τis a stepped parameter, and the second −π
+> 2pulse is applied about an axis in the equatorial plane rotated by an angle 2 π∆fτrelative to the initial ro-tation axis. (c–d) One repetition of the mitigation protocol traverses the loop (black arrow) exactly M×Ntimes, yielding one row of the two two-dimensional plots below. M=50 sets the number of lin-early spaced times τi.N=10 sets the number of repetitions for each
+> τivalue, from which the fraction of m=1 outcomes, P, is calcu-lated. Interleaving Ramsey cycles without feedback ( fcset to the offline-calibrated value) with Ramsey cycles with feedback ( fcset according to a preceding TLS syndrome measurement) allows direct comparison to validate the effectiveness of the 1-bit feedback. (c) Each row plots P(τi)extracted from one repetition of the mitiga-tion protocol, considering only the 50 ×10 Ramsey cycles without
+> feedback. (d) Each row plots P(τj)extracted from one repetition of the mitigation protocol, considering only the 50 ×10 Ramsey cy-cles with feedback. In (c) and (d), repeating the mitigation proto-col generates two-dimensional plots spanning nearly two minutes in laboratory time. Inspection of the laboratory-time averages of P(τi)
+> (purple and gray dots) clearly shows that the TLS-induced beating in the Ramsey fringes is suppressed by the 1-bit feedback protocol.
+
+suppressing TLS-induced Ramsey beating of the transmon qubit. A standard Ramsey experiment consists of M Ram-sey cycles, in which the superposition time τ is linearly in-cremented. Repeating such an experiment N = 10 times for each choice of τ allows us to calculate the fraction of m = 1outcomes, P. The average readout fidelity is 94% and its im-pact on the estimation scheme is discussed in Appendix C. Within each Ramsey cycle, defined by the circuit in Fig. 2(b), the evolution of superposition states is followed by a virtual Z
+
+gate, which sets the phase ∆ f τ of the return probability func-tion [Eq. (2)]. 43 Here, “virtual” means that the phase offset is applied by shifting the phase of the subsequent X′−π/2 pulse, which projects the Bloch vector back onto the ˆ Z axis. The in-tentional detuning introduced via the virtual Z gate sets the pe-riod of the resulting Ramsey fringes, yielding a high-visibility oscillatory behavior that is easy to fit. To validate the one-shot mode estimation, we interleave TLS syndrome cycles with Ramsey cycles, half of which do not make use of the mode estimation and half of which do, as shown schematically in Figs. 2(c)–(d). 44 Around 75 s and 109 s of laboratory time, the qubit frequency sporadically switches from the H mode to the L mode and vice versa. The suppression of TLS-induced beating in the lower panels of Figs. 2(c)–(d) demonstrates that the estimated qubit mode ob-tained from the TLS syndrome measurement provides accu-rate knowledge of the fluctuating parameter fq.Remarkably, our approach requires only one single-shot measurement outcome, compared to the tens or hundreds of binary measurements in nonadaptive protocols. 25,45 This is considerably less than even the handful of measurements re-quired in the very efficient binary search protocol by Berritta 
+
+et al. 29 , which adaptively mitigated 1 / f noise. Since here, the qubit “drift” is limited to a bistability between two known fre-quencies, only one single-shot measurement is required. As a consequence, the bandwidth of the method is ≈ 136 kHz (set by the readout time, resonator cooldown, and Ramsey super-position time), which is more than one order of magnitude higher than the above-mentioned works. This high bandwidth is enabled by the two-state telegraphic structure of the bistable qubit frequency, for which a single optimally timed measure-ment discriminates the active modes. In other words, in this work the controller does not continuously track a drifting pa-rameter, but it performs hypothesis testing between two dis-crete Hamiltonians. Finally, we quantify the improvement of single-qubit gate fidelities attributable to the 1-bit feedback by randomized benchmarking (RB). 46 RB applies random sequences s of Ls
+
+Clifford gates to an initial state, followed by a (Ls + 1)th “re-covery” gate chosen such that each sequence ideally imple-ments the identity operation in the absence of errors. Averag-ing the single-shot measurement outcomes over many random sequences reduces the resulting error structure to a single-exponential decay as a function of Ls, from which the average gate infidelity is extracted via a least-squares fit. Our modified RB protocol is shown in Figure 3(a). The controller first resets fc = fH to perform an RB sequence of depth Ls. Subsequently, fc is updated based on one TLS syn-drome measurement and the same RB sequence is repeated. 5         
+
+> FIG. 3. Quantifying improvement of gate fidelities by randomized benchmarking (RB). (a) Modified RB protocol, interleaving random gate sequences of length Lswith and without estimating the qubit mode from the TLS syndrome. Repeating this protocol for increas-ing Ls, and fitting the averaged exponential decay with increasing Ls,yields native gate infidelities for the traditional gates (without feed-back) and the stabilized gates (with feedback). (b) Fitted native gate infidelities, obtained by running the RB protocol over a period of 14 minutes, reveal two-level fluctuations of the infidelity for sequences without feedback (gray dots) and consistently low infidelities with feedback (purple dots). Dashed lines are the averaged gate infideli-ties. (c) Theoretical relative improvement of the state-preparation infidelity with and without estimation as a function of the normal-ized TLS splitting ∆TLS and switching rate γ(see main text). The dashed line marks the boundary where no improvement is obtained.
+
+This interleaving of RB sequences with and without 1-bit feedback allows us in postprocessing to isolate the effects of the feedback. Specifically, the circuit depth Ls is stepped log-arithmically in powers of 2 up to 2048, and each depth is av-eraged over 100 random sequences s. The controller contin-uously runs the RB protocol for approximately 14 minutes, allowing us to observe telegraphic fluctuations of the fitted gate infidelity for sequences without feedback (gray dots), while consistently low infidelities are observed for the stabi-lized sequences (purple dots). The average native gate infi-delity (mean ± standard deviation) is (1.4 ± 1.1) × 10 −3 with-out feedback and (0.65 ± 0.18 ) × 10 −3 with feedback [dashed lines in Fig. 3(b)]. The shaded regions, barely visible due to the small uncertainty, show the 68% confidence interval for the fitted gate infidelities. 47 The main result here is that the average gate infidelity with feedback is significantly lower than the average infidelity without feedback, perhaps even de-cisively so with regards to suitability for quantum error cor-rection. Importantly, the 1-bit feedback protocol does not introduce any additional errors in comparison with the baseline of the reference experiment (no feedback). Quantitatively, the mea-sured single-qubit gate infidelities for the 1-bit feedback pro-tocol are slightly higher than the theoretical decoherence limit, approximated by tgate (1/T1 + 1/Tφ )/3 ≈ 5 × 10 −4, using ex-perimental values for gate time tgate ≈ 48 ns, qubit relaxation time T1 ≈ 74 μs, and qubit pure dephasing time Tφ ≈ 61 μs. 31 
+
+The feedback protocol outperforms the no-feedback case, sup-pressing the largest observed errors from 2 .8 × 10 −3 down to approximately 0 .65 × 10 −3, corresponding to an improvement of about 77% due to the control stabilization. Figure 3(c) shows the theoretically computed relative im-provement of state-preparation infidelity with active control 
+
+(1 − Factive ) over blind driving (1 − Fblind ), estimated in Ap-pendix D. The TLS splitting ∆TLS is normalized with respect to the Rabi frequency Ω, while the TLS switching rate γ is expressed in terms of the dimensionless product γtcyc , where 
+
+tcyc is the total estimation cycle time. When the switching rate becomes comparable to the cycle time, the relative improve-ment degrades due to outdated estimates. As ∆TLS decreases, the optimal discrimination time topt increases and approaches the intrinsic coherence time of the qubit, thereby reducing the protocol performance.  
+
+> IV. CONCLUSIONS
+
+This work presents an experimental demonstration of op-erating a bistable qubit with high fidelity using a low-latency FPGA-based controller and just one recent single-shot mea-surement outcome. The 1-bit feedback scheme is essen-tial for enabling control pulses to compensate for discrete qubit-frequency shifts caused by a strongly coupled TLS, sup-pressing TLS-induced Ramsey beating and reducing gate in-fidelities by up to 77%. The protocol assumes that the TLS switching rate is much slower than the estimation bandwidth (≈ 136 kHz) and that the qubit modes separation exceeds the qubit decoherence rate. Current efforts to reduce the detrimental impact of TLSs in solid-state qubits may lead to an era of next-generation quan-tum processors that suffer from just a few imperfect qubits with sporadic instabilities. Efficient active mitigation of dis-crete instabilities may therefore become a key resource for operating such processing units to their fullest capabilities (af-ter all, each additional qubit increases the associated Hilbert space by a factor of two). It has been shown that TLS frequen-cies drift over repeated cooldowns, whereas the overall num-ber of TLSs does not. 48,49 Because individual TLSs can in-duce non-Markovian, telegraphic parameter fluctuations, real-time frequency-tracking protocols may serve as practical tools to suppress these fluctuations and minimize temporal correla-tions of the noise. 29,45 This is particularly relevant for ancilla qubits, as the absence of such correlations is a fundamental as-sumption for the syndrome extraction measurements required in fault-tolerant quantum error correction. While improvements in design, materials and fabrication 6are ongoing and worth pursuing, our feedback protocol pro-vides a complementary, control-based approach for real-time calibration of TLS-affected qubits at the information limit set by the qubit’s intrinsic entropy, thereby increasing the com-putational volume of near-perfect quantum processing units at comparatively low cost. F.B. acknowledges funding from the European Union’s Horizon 2020 research and innovation programme under grant agreement 101204890 (HORIZON-MSCA-2024-PF-01). F.K. acknowledges support by the Army Research Office under Award Number W911NF-24-2-0043 and the EU under ERC grant agreement No. 856526 and through the H2024 QLSI2 initiative under project No. 101174557. Any opinions, findings, conclusions, or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the Army Research Office, the US Government, the European Union, or the European Research Council. Nei-ther the European Union nor the granting authority can be held responsible for them. 
+
+> AUTHOR DECLARATIONS Conflict of interest
+
+The authors have no conflicts to disclose. 
+
+> Author contributions
+
+Fabrizio Berritta : Funding acquisition (lead); Conceptu-alization (equal); Methodology (lead); Investigation (lead); Formal analysis (lead); Visualization (lead); Writing – orig-inal draft (lead); Writing – review and editing (equal). 
+
+Jan A. Krzywda : Methodology (supporting); Formal analy-sis (supporting); Writing – original draft (supporting); Writing – review and editing (equal). Tom Dvir : Investigation (sup-porting); Software (supporting); Writing – review and editing (equal). Paul Buttles : Resources (lead); Writing – review and editing (equal). Stanislav Eilhart : Resources (lead); Writing – review and editing (equal). Jeroen Danon : Methodology (supporting); Formal analysis (supporting); Writing – review and editing (equal). Ferdinand Kuemmeth : Conceptualiza-tion; Investigation; Supervision (lead); Writing – review and editing (equal). 
+
+> DATA AVAILABILITY
+
+The data that supports the findings of this study are avail-able from the corresponding author upon reasonable request.  
+
+> Appendix A: Setup and device 1. Experimental setup
+
+The measurements are performed in a Bluefors XLD1000 dilution refrigerator with a base temperature below 10 mK. A Quantum Machines OPX1000 is used for the readout sig-nal, XY and Z control of the qubit. The OPX1000 includes real-time classical processing with fast analog feedback pro-grammed in QUA software. The readout tone and control lines are attenuated in the cryostat to remove excess thermal photons from higher-temperature stages, and filtered at the mixing chamber. The Z control lines are passively attenuated by 10 dB at room temperature and 20 dB inside the cryostat, then filtered using a Quantum Microwave QMC-CRYOIRF-001 low cut-off IR filter. The XY control lines and read-out tone, approximately 6 .3 GHz, are passively attenuated by 60 dB inside the cryostat and filtered with an RLC Electronics F-30-8000-R low pass filter and Quantum Microwave QMC-CRYOIRF-003 high cut-off IR filter. The transmitted signal from the feedline goes through a high-cutoff IR filter, a Keen-lion 4-8 GHz bandpass filter, and Low Noise Factory 4-8 GHz single and double junction isolators to prevent back reflec-tions from the amplification chain. A high-electron mobility transistor amplifier (LNF-LNA-4-8G) thermally anchored at the 3 K stage amplifies the readout signal. At room tempera-ture, the readout line is again amplified (Narda-Miteq LNA-40-04000800-07-10P). The device sample is aluminum wire-bonded into a custom-made sample mount using a high den-sity of package-to-chip and chip-to-chip wirebonds to ensure proper grounding. The sample mount comprises a printed cir-cuit board and superconducting aluminum enclosure designed to suppress stray microwave and infrared photons. The sam-ple mount is placed inside a light-tight cryoperm can to further reject stray photons and provide magnetic shielding. Both the sample mount and the magnetic shield can are supplied by Qolab. The tunable transition frequency of our transmon is controlled by an external magnetic flux Φext applied via mu-tual coupling to the Z line. We bias the qubit to the maximum frequency where it is first-order insensitive to flux noise.  
+
+> 2. Device fabrication
+
+The transmons were fabricated on a high-resistivity Si wafer ( > 10 k Ω − cm) cleaned with diluted HF to remove na-tive oxide prior to sputter deposition of an aluminum base layer. The base layer was defined on a positive photore-sist layer written using a Heidelberg DWL 66+ laser writer, then developed and etched using a TMAH-based developer. Dolan bridge Josephson junctions were fabricated using elec-tron beam lithography (EBL), including a bilayer stack of EBL resist exposed on an Elionix 100 keV electron beam writer and developed with a dilute solvent mixture. The coun-terelectrode was deposited using an electron beam evapora-tor. Liftoff was performed in an NMP-based solvent, then the sample was sonicated in a solvent bath before being diced and packaged. 7
+
+> Appendix B: Impact of bistability on qubit operations
+
+In this section, we discuss how the bistable nature of the qubit affects state preparation, coherent operations, and read-out fidelity.  
+
+> 1. Driven X-gate fidelity without active estimation
+
+As a measure of qubit operation fidelity, we use the fidelity of an Xπ pulse applied to the qubit in the ground state. First, we consider the fidelity FX = ⟨P(1)⟩ of the final state for the case without active feedback (“blind” drive). We assume that the qubit is initialized in |0⟩ and then driven at a frequency 
+
+fc with a Rabi amplitude Ω for a time tπ = π/Ω, which im-plements an X-gate at resonance, i.e., when fc matches the qubit splitting. However, the qubit frequency stochastically switches between fL and fH due to the TLS. The average fi-delity of an X-gate applied in this way is thus ¯FX ( fc) = P( fL)FX ( fc| fL) + P( fH)FX ( fc| fH), (B1) where FX ( fc| fi) is the fidelity given a drive detuned from fi by 
+
+δi = 2π( fc − fi) and P( fi) is the fraction of the time the qubit spends in state i. Using the standard Rabi formula we find the fidelity 
+
+FX ( fc| fi) = Ω2
+
+Ω2 + δ 2
+
+> i
+
+sin 2
+
+q
+
+Ω2 + δ 2
+
+> i
+
+2Ω π
+
+ . (B2) In the weak-noise limit, where the detunings ∆H,L ≪ Ω, we approximate 
+
+FX ( fc| fi) ≈ 1 − δ 2
+
+> i
+
+Ω2 . (B3) From maximizing the average fidelity ¯ FX we find an optimal drive frequency f opt c = P( fL) fL + P( fH) fH at the weighted average of the two qubit frequencies. Substituting this back gives as maximum average fidelity ¯FX ( f opt c ) = 1 −
+
+ 2π∆TLS 
+
+Ω
+
+2
+
+P( fL)P( fH). (B4) This indicates that the infidelity scales to leading order with the square of the splitting ∆TLS . Importantly, the infidelity is 
+
+maximized (worst-case scenario) when the TLS populations are equal, P( fL) = P( fH) = 1/2. In this worst case, the de-tuning for each state is at the optimal point exactly ∆TLS /2, leading to a bound on the infidelity 1 − ¯FX ≤ π2∆2TLS 
+
+Ω2 . (B5) Note that the above derivation only considers the coherent error induced by the uncompensated detuning. To leading or-der, the total average control infidelity is the sum of this co-herent error and the intrinsic error limit imposed by qubit de-coherence during the pulse and SPAM, i.e., 1 − Fblind ≈ (1 − αe−tπ /T2 ) + π2∆2TLS 
+
+Ω2 . (B6) Here α accounts for the reduction in visibility due to SPAM errors, as defined in Appendix C, and tπ ≪ T2.We finally briefly address the opposite limit of large fre-quency splitting, ∆TLS ≳ Ω. In this regime, the quadratic approximation of Eq. (B3) breaks down. The optimal drive frequency no longer lies at the weighted average, as the fi-delity function becomes bimodal with local maxima at fL
+
+and fH. Driving at the average frequency results in a detun-ing ∆ ≈ ∆TLS /2 that exceeds the power-broadened linewidth, causing the Rabi amplitude to vanish. In this case, the opti-mal blind strategy transitions to targeting the most probable frequency mode (e.g., fc = fL), accepting the resulting loss of fidelity if the qubit is in the other state. For an active strat-egy in this regime, we propose a feedback strategy that uses a modified syndrome cycle: The qubit is assumed to be in the most probable mode, and exposed to π rotations (calibrated for that mode) that flip |0⟩ to |1⟩ and vice versa only in that mode. Measurement outcomes confirming flipping then con-firm the mode, whereas measurement outcomes confirming the absence of flipping would indicate that the qubit is in the other mode.  
+
+> 2. Driven X-gate fidelity with active estimation
+
+We now analyze the fidelity improvement gained by active estimation. For simplicity let’s assume P( fL) = P( fH ) = 0.5, and denote probability of correctly estimating the qubit fre-quency as 1 − perr . The average control fidelity is the weighted sum of the fidelities for the correct and wrong estimation cases: 
+
+Factive = ( 1 − perr )Fcorrect + perr Fwrong . (B7) The fidelity in the correct case, Fcorrect = α exp (−tπ /T2), is limited only by intrinsic decoherence and SPAM. In the wrong case, the pulse suffers from both the intrinsic decoherence and the unitary error due to the detuning ∆TLS . To leading order, these errors multiply: 
+
+Fwrong ≈ Fcorrect 
+
+
+
+1 − 4π2∆2TLS 
+
+Ω2
+
+
+
+. (B8) Substituting this back into the average fidelity equation we find to leading order for the infidelity of the X-gate under ac-tive estimation 1 − Factive ≈ (1 − αe−tπ /T2 ) + perr 
+
+4π2∆2TLS 
+
+Ω2 . (B9) To assess the benefits of the active estimation strategy, we compare Eqs. (B6) and (B9), and see that active estimation yields a higher fidelity when perr < 1/4. This sets a clear requirement: As long as the estimation error probability is below 25%, the active feedforward strategy outperforms the optimal blind pulse. In Appendix C we focus on comput-ing the estimation error in the presence of decoherence. Note that for a symmetric bistable system, a purely stochastic guess (perr = 0.5) results in an active infidelity exactly twice as large as the optimal blind strategy (driving at the weighted average 8of the two qubit frequencies). The active protocol thus pro-vides a net benefit as long as the estimation is at least 50% more accurate than random guessing.  
+
+> 3. Virtual Z-gate fidelity
+
+Single-qubit Z rotations are typically implemented as vir-tual gates by updating the reference phase of the microwave drive in software. While this operation is instantaneous, an error in the frequency estimation leads to an incorrect frame rotation update. Because the software frame and the physi-cal qubit are evolving at different frequencies, separated by a detuning ∆, a phase error δ φ = ∆tg accumulates over the du-ration tg of any subsequent physical operation or idle period. This accumulated phase error is proportional to the X-gate er-ror, since ⟨δ φ 2⟩ = ⟨∆2⟩t2 
+
+> g
+
+= ( 2π∆TLS tg)2/4. In the blind operation regime, the software frame tracks the average frequency, resulting in a constant detuning magnitude 
+
+|∆| = ∆TLS /2 for every qubit cycle. Conversely, with active feedforward, the frame tracks the estimated frequency. This results in zero error with probability 1 − perr , and a large er-ror corresponding to ∆ = ∆TLS with probability perr . Conse-quently, the fidelity threshold perr < 1/4 derived above ap-plies equally to Z-gates: active feedforward improves the av-erage randomized benchmarking fidelity provided perr < 0.25. However, unlike the blind strategy which yields a uniform er-ror rate across all shots, active feedback produces a bimodal error distribution consisting of a majority of high-fidelity shots mixed with rare large-error outliers. This bimodal dis-tribution can lead to non-exponential decays in randomized benchmarking experiments, as the sequence fidelity becomes a weighted sum of two distinct decay rates. 
+
+> Appendix C: Decoherence and SPAM
+
+In this section, we discuss how decoherence and State Preparation and Measurement (SPAM) errors affect the esti-mation performance of the bistable qubit. Decoherence modifies the likelihood function of the Ram-sey probing cycle [Eq. (2)] by reducing the visibility of the oscillations. In the presence of decoherence and SPAM, the likelihood function becomes 
+
+P(m|ξ , τ) = 12 + ( −1)m+1 α
+
+2 e−τ/T2 cos [2π(∆ f − ξ ∆TLS )τ],
+
+(C1) where T2 is the effective qubit coherence time and α ≤ 1 ac-counts for the reduction in visibility due to SPAM errors. The exponential factor suppresses the oscillation contrast, increas-ing the difficulty of discriminating between the two possible qubit frequencies. We first determine the optimal superposition time τopt that maximizes the distinguishability between the two cases, ξ = 0and ξ = 1 defined as the signal contrast: 
+
+S(∆TLS , τ) = |P(1|ξ = 0, τ) − P(1|ξ = 1, τ)|
+
+= α e−τ/T2 sin [2π(∆ f − ∆TLS /2)τ] sin (π∆TLS τ) .
+
+(C2) When the measurement is taken in rotating frame with respect to the case ξ = 0, we set ∆ f = 0 and have 
+
+S(∆TLS , τ) = αe−τ/T2 | sin (π∆TLS τ)|. Maximizing S(∆TLS , τ)
+
+with respect to τ yields 
+
+τopt = 1
+
+π∆TLS 
+
+arccos 
+
+ 1
+
+q
+
+1 + 4π2∆2TLS T 22
+
+ . (C3) In the limit where the frequency splitting is large compared to the linewidth ( ∆TLS T2 ≫ 1), the optimal time is dominated by the oscillation frequency rather than the decay, approaching 
+
+τopt ≈ 1/(2∆TLS ).SPAM errors reduce the visibility by a constant factor α,which introduces a uniform reduction in distinguishability 
+
+S(∆TLS , τ) for all τ. Therefore, while SPAM errors do not shift the optimal superposition time τopt , they degrade the overall estimation performance. The maximum distinguishability at 
+
+τopt is given by 
+
+S(∆TLS , τopt ) = α 4π2∆2TLS T 22
+
+1 + 4π2∆2TLS T 22
+
+e− arctan (2π∆TLS T2)
+
+> π∆TLS T2
+
+= 1 − 2perr , (C4) where perr = 0.5 represents the limit of random guessing (zero contrast). For instance, achieving a correct discrimination probability of at least 95% requires 1 − perr ≥ 0.95, or S ≥ 0.9. In this experiment, perr ≈ 9%, which is significantly below the 25% utility threshold defined in Appendix B 2.  
+
+> 1. Finite pulse duration in the Ramsey sequence
+
+The derivation above assumes instantaneous state prepara-tion and measurement pulses. In a true Ramsey probing cycle, the initial and final Xπ/2 pulses have a finite duration. Even though in the experiment the controller uses fc = fH, here we consider the more symmetric case where the pulses are driven at the average frequency of the two states, fc = ( fL + fH)/2. In this frame, the detunings are symmetric: ∆L = π∆TLS 
+
+and ∆H = −π∆TLS . Because the detuning magnitudes are identical, both states experience the same generalized Rabi frequency, Ω′ = pΩ2 + ( π∆TLS )2, but rotation takes place around differently tilted axes. As a result when nominal dura-tion t = π/(2Ω) is used, reduction in the Ramsey fringe vis-ibility is a compounded effect of the error along the Z axis (amplitude error) and in the XY plane (phase error). One can show that the amplitude error is heavily suppressed, resulting in relatively small renormalization of the SPAM coefficient. This allows us to neglect the correction and concentrate on a state-dependent phase shift δ φ i ≈ ± π∆TLS /Ω, which modi-fies the phase of the state vector in the XY-plane. 9In a standard sequence comprising two +Xπ/2 pulses sep-arated by a superposition τ, this XY phase error accumulates twice. Assuming the readout is mapped to the appropriate orthogonal quadrature to resolve the symmetric drive phases, this uncompensated phase acts as an effective timing offset 
+
+δ τ = 2/Ω added to the free evolution. Incorporating phase offset yields the true distinguishability function: 
+
+Strue (∆TLS , τ) = αe−τ/T2 sin 
+
+
+
+π∆TLS 
+
+
+
+τ + 2
+
+Ω
+
+ 
+
+. (C5) Maximizing this function yields a shifted transcendental equa-tion for the optimal superposition time: tan 
+
+
+
+π∆TLS 
+
+
+
+τopt + 2
+
+Ω
+
+ 
+
+= π∆TLS T2. (C6) This systematic phase error can be entirely avoided by us-ing an inverted projection pulse, X−π/2, for the final mea-surement. During a X−π/2 pulse, the drive amplitude is in-verted ( −Ω), while the state-dependent detuning ∆i remains unchanged. Consequently, the rotation axis tilts in the op-posite direction relative to the drive, imparting a phase shift of −∆i/Ω. This perfectly cancels the initial +∆i/Ω XY er-ror acquired during state preparation. Because the +Xπ/2 −
+
+τ − X−π/2 sequence acts as a phase echo for the finite-pulse-duration errors, the total accumulated phase strictly reduces to the free evolution term. This restores the ideal distinguisha-bility function: 
+
+Strue (∆TLS , τ) = αe−τ/T2 |sin (π∆TLS τ)| , (C7) ensuring that the optimal superposition time strictly follows the unmodified transcendental equation derived in Eq. (C3). Note, this phase echo approach was not employed in this work. Instead, the experimental sequence used identical 
+
+X′−π/2 pulses (tuned to fc = fH ) for both state preparation and final projection. As a result, the XY phase error accumulates twice, acting as the effective timing offset δ τ = 2/Ω discussed above. 
+
+> Appendix D: Relation between estimation bandwidth and estimation error
+
+To model the qubit coherence under a finite telegraph switching rate γ and estimation bandwidth BW, one can use a framework originally used by Anderson and Kubo to de-scribe spectral line shape narrowing (motional narrowing) in nuclear magnetic resonance due to random environmental fluctuations. 50,51 In our case, the total transverse coherence 
+
+C(t) = ⟨σ+(t)⟩ of a qubit subject to a bistable frequency shift 
+
+±π∆TLS satisfies the classical damped oscillator equation ¨C + γ ˙C + π2∆2TLS C = 0, (D1) where C(t) is expressed in the rotating frame of the average of the two frequencies. Imposing C(0) = 1/2, the general solution to Eq. (D1) reads in the underdamped regime ( γ <
+
+2π∆TLS ) as 
+
+C(t) = e−γt/2 h
+
+Ae −iβt + ( 12 − A)eiβt i
+
+, (D2) where β = p(π∆TLS )2 − (γ/2)2 and the constant A follows from the initial condition ˙ C(0) = −γ/4+i(1−4A)β /2, which depends on the initial probabilities for finding the qubit in the high- or low-frequency state. Assuming equal probabilities at 
+
+t = 0, this condition becomes ˙ Ceq (0) = 0 and 
+
+Ceq (t) = 12 e−γt/2
+
+
+
+cos (βt) + γ
+
+2β sin (βt)
+
+
+
+. (D3) If the qubit is initially in the high- or low-frequency state, then the initial condition becomes ˙ C±(0) = ± i 
+
+> 2
+
+π∆TLS , from which one finds A± = 14 [1 ∓ (π∆TLS /β ) + i(γ/2β )] , and the corre-sponding C±(t) follow from inserting this into Eq. (D2). The signal contrast available for state discrimination 
+
+SAK (t) = |∆C(t)| is the absolute magnitude of the difference in coherence between the two TLS configurations ∆C(t) = 
+
+C+(t) −C−(t), which follows from (D2) as 
+
+∆C(t) = 2i(A− − A+)e−γt/2 sin (βt), (D4) and thus 
+
+SAK (t) = π∆TLS 
+
+β e−γt/2| sin (βt)|. (D5) We note that to derive (D5) one can also use the fact that 
+
+∆C(t) = −i2 ˙ Ceq (t)/(π∆TLS ). This relation arises directly from the coupled master equations for the partial coherences 
+
+C±(t), where summing their time derivatives exactly cancels the stochastic jump terms, yielding ˙Ceq = ( ˙C+ + ˙C−)/2 =
+
+iπ∆TLS (C+ −C−)/2 = iπ∆TLS ∆C/2. To maximize the contrast, the system is probed at the opti-mal discrimination time τopt = 1/(2∆TLS ). However, the true operational estimation bandwidth BW is bottlenecked by the hardware overhead time twall (readout and resonator reset), such that BW = 1/(τopt +twall ). Assuming the slow-switching approximation ( γ ≪ 2π∆TLS ) during the Ramsey sequence, we approximate β ≈ π∆TLS , reducing the Anderson-Kubo contrast to SAK (τopt ) ≈ e−γτ opt /2. Furthermore, if the TLS switches state during the idle hardware overhead period twall ,the estimation becomes outdated and subsequent active feed-back fails. Combining the SPAM visibility α, intrinsic deco-herence T2, the Anderson-Kubo phase-corruption during τopt ,and the TLS instability during twall , the total probability of a state assignment error is 
+
+perr ≈ 12
+
+h
+
+1 − αe− ˜Γτopt −γtwall 
+
+i
+
+, (D6) with ˜ Γ = 1/T2 + γ/2 the total effective dephasing rate. Substituting τopt = 1/(2∆TLS ) and performing a first-order Taylor expansion reveals the linear additive error budget im-posed by the hardware: 
+
+perr ≈ 12
+
+
+
+(1 − α) + ˜Γ
+
+2∆TLS 
+
++ γtwall 
+
+
+
+. (D7) 10 This explicitly shows that the hardware overhead introduces a direct γtwall penalty representing the probability of a fatal TLS flip occurring while the controller is tied up with measure-ment and reset tasks. The relative improvement log 10 [( 1 −
+
+Fblind )/(1 − Factive )] shown in Fig. 3(c) has been computed by inserting Eq. (D7) in Eqs. (B6) and (B9), and by setting 
+
+α = 0.94, tπ = 48 ns, T2 = 61 μs and twall = 8 μs. 
+
+REFERENCES 
+
+> 1
+
+C. Müller, J. H. Cole, and J. Lisenfeld, “Towards understanding two-level-systems in amorphous solids: insights from quantum circuits,” Reports on Progress in Physics 82 , 124501 (2019). 
+
+> 2
+
+I. Siddiqi, “Engineering high-coherence superconducting qubits,” Nature Reviews Materials 6, 875–891 (2021). 
+
+> 3
+
+C. E. Murray, “Material matters in superconducting qubits,” Materials Sci-ence and Engineering: R: Reports 146 , 100646 (2021). 
+
+> 4
+
+J. S. Rojas-Arias, A. Noiri, P. Stano, T. Nakajima, J. Yoneda, K. Takeda, T. Kobayashi, A. Sammak, G. Scappucci, D. Loss, et al. , “Spatial noise correlations beyond nearest neighbors in 28 Si/Si-Ge spin qubits,” Physical Review Applied 20 , 054024 (2023). 
+
+> 5
+
+F. Ye, A. Ellaboudy, D. Albrecht, R. Vudatha, N. T. Jacobson, and J. M. Nichol, “Characterization of individual charge fluctuators in Si/SiGe quan-tum dots,” Physical Review B 110 , 235305 (2024). 
+
+> 6
+
+M. Donnelly, J. Rowlands, L. Kranz, Y. Hsueh, Y. Chung, A. Timofeev, H. Geng, P. Singh-Gregory, S. Gorman, J. Keizer, et al. , “Noise correlations in an atom-based quantum dot array,” Physical Review Applied 23 , 064058 (2025). 
+
+> 7
+
+J. S. Rojas-Arias, A. Noiri, J. Yoneda, P. Stano, T. Nakajima, K. Takeda, T. Kobayashi, G. Scappucci, S. Tarucha, and D. Loss, “Inferring charge-noise source locations from correlations in spin qubits,” Physical Review Letters 136 , 027001 (2026). 
+
+> 8
+
+H. Hakoshima, Y. Matsuzaki, and S. Endo, “Relationship between costs for quantum error mitigation and non-Markovian measures,” Physical Review A 103 , 012611 (2021). 
+
+> 9
+
+J. F. Kam, S. Gicev, K. Modi, A. Southwell, and M. Usman, “Detrimental non-Markovian errors for surface code memory,” (2024), 10.48550/arXiv.2410.23779. 
+
+> 10
+
+S. Gustavsson, F. Yan, J. Bylander, F. Yoshihara, Y. Nakamura, T. P. Or-lando, and W. D. Oliver, “Dynamical decoupling and dephasing in inter-acting two-level systems,” Physical Review Letters 109 , 010502 (2012). 
+
+> 11
+
+P. Sza´ nkowski, G. Ramon, J. Krzywda, D. Kwiatkowski, et al. , “Environ-mental noise spectroscopy with qubits subjected to dynamical decoupling,” Journal of Physics: Condensed Matter 29 , 333001 (2017). 
+
+> 12
+
+D. Pataki, Á. Márton, J. K. Asbóth, and A. Pályi, “Coherent errors in stabi-lizer codes caused by quasistatic phase damping,” Physical Review A 110 ,012417 (2024). 
+
+> 13
+
+C. R. H. McRae, G. M. Stiehl, H. Wang, S.-X. Lin, S. A. Caldwell, D. P. Pappas, J. Mutus, and J. Combes, “Reproducible coherence characteriza-tion of superconducting quantum devices,” Applied Physics Letters 119 ,100501 (2021). 
+
+> 14
+
+S. Weeden, D. C. Harrison, S. Patel, M. Snyder, E. J. Blackwell, G. Spahn, S. Abdullah, Y. Takeda, B. L. T. Plourde, J. M. Martinis, and R. McDer-mott, “Statistics of strongly coupled defects in superconducting qubits,” (2025), 10.48550/arXiv.2506.00193. 
+
+> 15
+
+O. F. Wolff, H. Mantry, R. Raja, W.-H. Peng, K. Singirikonda, S. Lee, S. Sudhaman, R. Goncalves, P. Y. Huang, A. Kou, et al. , “Structural control of two-level defect density revealed by high-throughput correlative mea-surements of josephson junctions,” (2026), 10.48550/arXiv.2602.11469. 
+
+> 16
+
+G. J. Grabovskij, T. Peichl, J. Lisenfeld, G. Weiss, and A. V. Ustinov, “Strain tuning of individual atomic tunneling systems detected by a super-conducting qubit,” Science 338 , 232–234 (2012). 
+
+> 17
+
+J. Lisenfeld, A. Bilmes, A. Megrant, R. Barends, J. Kelly, P. Klimov, G. Weiss, J. M. Martinis, and A. V. Ustinov, “Electric field spectroscopy of material defects in transmon qubits,” npj Quantum Information 5, 105 (2019). 
+
+> 18
+
+A. Bilmes, A. Megrant, P. Klimov, G. Weiss, J. M. Martinis, A. V. Ustinov, and J. Lisenfeld, “Resolving the positions of defects in superconducting quantum bits,” Scientific reports 10 , 3090 (2020). 
+
+> 19
+
+Y. Kim, L. C. Govia, A. Dane, E. v. d. Berg, D. M. Zajac, B. Mitchell, Y. Liu, K. Balakrishnan, G. Keefe, A. Stabile, et al. , “Error mitigation with stabilized noise in superconducting quantum processors,” (2024), 10.48550/arXiv.2407.02467. 
+
+> 20
+
+L. Chen, K.-H. Lee, C.-H. Liu, B. Marinelli, R. K. Naik, Z. Kang, N. Goss, H. Kim, D. I. Santiago, and I. Siddiqi, “Scalable and site-specific fre-quency tuning of two-level system defects in superconducting qubit arrays,” (2025), 10.48550/arXiv.2503.04702. 
+
+> 21
+
+A. Dane, K. Balakrishnan, B. Wacaser, L.-W. Hung, H. J. Mamin, D. Ru-gar, R. M. Shelby, C. Murray, K. Rodbell, and J. Sleight, “Perfor-mance stabilization of high-coherence superconducting qubits,” (2025), 10.48550/arXiv.2503.12514. 
+
+> 22
+
+F. Ye, A. Ellaboudy, and J. M. Nichol, “Stabilizing an individual charge fluctuator in a Si/Si-Ge quantum dot,” Physical Review Applied 23 , 044063 (2025). 
+
+> 23
+
+Z. Degnan, C.-C. Chiu, Y.-H. Chen, D. Sommers, L. Abdurakhi-mov, L. Zhu, A. Fedorov, and P. Jacobson, “Reducing TLS loss in tantalum CPW resonators using titanium sacrificial layers,” (2026), 10.48550/arXiv.2601.16369. 
+
+> 24
+
+T. Roy, X. You, D. van Zanten, F. Crisa, S. Garattoni, S. Zhu, A. Grassellino, and A. Romanenko, “Two-level system spectroscopy from correlated multilevel relaxation in superconducting qubits,” (2026), 10.48550/arXiv.2602.11127. 
+
+> 25
+
+V. Gebhart, R. Santagati, A. A. Gentile, E. M. Gauger, D. Craig, N. Ares, L. Banchi, F. Marquardt, L. Pezzè, and C. Bonato, “Learning quantum systems,” Nature Reviews Physics 5, 141–156 (2023). 
+
+> 26
+
+M. J. Arshad, C. Bekker, B. Haylock, K. Skrzypczak, D. White, B. Griffiths, J. Gore, G. W. Morley, P. Salter, J. Smith, I. Zohar, A. Finkler, Y. Altmann, E. M. Gauger, and C. Bonato, “Real-time adaptive estimation of decoher-ence timescales for a single qubit,” Physical Review Applied 21 , 024026 (2024). 
+
+> 27
+
+F. Berritta, T. Rasmussen, J. A. Krzywda, J. van der Heijden, F. Fedele, S. Fallahi, G. C. Gardner, M. J. Manfra, E. van Nieuwenburg, J. Danon, A. Chatterjee, and F. Kuemmeth, “Real-time two-axis control of a spin qubit,” Nature Communications 15 , 1676 (2024). 
+
+> 28
+
+N. Dumoulin Stuyck, A. E. Seedhouse, S. Serrano, T. Tanttu, W. Gilbert, J. Y. Huang, F. Hudson, K. M. Itoh, A. Laucht, W. H. Lim, C. H. Yang, A. Saraiva, and A. S. Dzurak, “Silicon spin qubit noise characterization using real-time feedback protocols and wavelet analysis,” Applied Physics Letters 124 , 114003 (2024). 
+
+> 29
+
+F. Berritta, J. Benestad, L. Pahl, M. Mathews, J. A. Krzywda, R. Assouly, Y. Sung, D. K. Kim, B. M. Niedzielski, K. Serniak, M. E. Schwartz, J. L. Yoder, A. Chatterjee, J. A. Grover, J. Danon, W. D. Oliver, and F. Kuem-meth, “Efficient qubit calibration by binary-search Hamiltonian tracking,” PRX Quantum 6, 030335 (2025). 
+
+> 30
+
+M. A. Marciniak, R. T. Birke, J. B. Severin, F. Berritta, D. Kjær, F. Nilsson, S. N. Themadath, S. Kallatt, J. L. Webb, K. Bentsen, T. Madsen, Z. Sun, S. Krøjer, C. W. Warren, J. Hastrup, and M. Kjaergaard, “Millisecond-scale calibration and benchmarking of superconducting qubits,” (2026), 10.48550/arXiv.2602.11912. 
+
+> 31
+
+P. J. J. O’Malley, J. Kelly, R. Barends, B. Campbell, Y. Chen, Z. Chen, B. Chiaro, A. Dunsworth, A. G. Fowler, I.-C. Hoi, E. Jeffrey, A. Megrant, J. Mutus, C. Neill, C. Quintana, et al. , “Qubit metrology of ultralow phase noise using randomized benchmarking,” Physical Review Applied 
+
+3, 044009 (2015). 
+
+> 32
+
+F. Berritta, J. Benestad, J. A. Krzywda, O. Krause, M. A. Marciniak, S. Krøjer, C. W. Warren, E. Hogedal, A. Nylander, I. Ahmad, A. Os-man, J. Biznárová, M. Rommel, A. F. Roudsari, J. Bylander, G. Tan-credi, J. Danon, J. Hastrup, F. Kuemmeth, and M. Kjaergaard, “Real-time adaptive tracking of fluctuating relaxation rates in superconducting qubits,” Physical Review X 16 , 011025 (2026). 
+
+> 33
+
+P. Krantz, M. Kjaergaard, F. Yan, T. P. Orlando, S. Gustavsson, and W. D. Oliver, “A quantum engineer’s guide to superconducting qubits,” Applied Physics Reviews 6, 021318 (2019). 
+
+> 34
+
+A. Blais, A. L. Grimsmo, S. M. Girvin, and A. Wallraff, “Circuit quantum electrodynamics,” Reviews of Modern Physics 93 , 025005 (2021). 
+
+> 35
+
+S. Schlör, J. Lisenfeld, C. Müller, A. Bilmes, A. Schneider, D. P. Pap-11 
+
+pas, A. V. Ustinov, and M. Weides, “Correlating decoherence in transmon qubits: Low frequency noise by single fluctuators,” Physical Review Letters 
+
+123 , 190502 (2019). 
+
+> 36
+
+J. M. Gertler, B. Baker, J. Li, S. Shirol, J. Koch, and C. Wang, “Protecting a bosonic qubit with autonomous quantum error correction,” Nature 590 ,243–248 (2021). 
+
+> 37
+
+H. Levine, A. Haim, J. S. Hung, N. Alidoust, M. Kalaee, L. DeLorenzo, E. A. Wollack, P. Arrangoiz-Arriola, A. Khalajhedayati, R. Sanil, et al. ,“Demonstrating a long-coherence dual-rail erasure qubit using tunable transmons,” Physical Review X 14 , 011051 (2024). 
+
+> 38
+
+Computed from Eq. (B1) of Appendix B 1 using P( fH) = P( fL) = 1/2. 
+
+> 39
+
+F. Luthi, T. Stavenga, O. Enzing, A. Bruno, C. Dickel, N. Langford, M. A. Rol, T. S. Jespersen, J. Nygård, P. Krogstrup, et al. , “Evolution of nanowire transmon qubits and their coherence in a magnetic field,” Physical review letters 120 , 100502 (2018). 
+
+> 40
+
+F. Berritta, J. A. Krzywda, J. Benestad, J. van der Heijden, F. Fedele, S. Fallahi, G. C. Gardner, M. J. Manfra, E. van Nieuwenburg, J. Danon, A. Chatterjee, and F. Kuemmeth, “Physics-informed tracking of qubit fluc-tuations,” Physical Review Applied 22 , 014033 (2024). 
+
+> 41
+
+B.-J. Liu, Y.-Y. Wang, T. Sheffer, and C. Wang, “Observation of discrete charge states of a coherent two-level system in a superconducting qubit,” Physical Review Letters 133 , 160602 (2024). 
+
+> 42
+
+H. Hutin, P. Bilous, C. Ye, S. Abdollahi, L. Cros, T. Dvir, T. Shah, Y. Co-hen, A. Bienfait, F. Marquardt, et al. , “Preparing Schrödinger cat states in a microwave cavity using a neural network,” PRX Quantum 6, 010321 (2025). 
+
+> 43
+
+D. C. McKay, C. J. Wood, S. Sheldon, J. M. Chow, and J. M. Gambetta, “Efficient Z gates for quantum computing,” Physical Review A 96 , 022330 (2017). 
+
+> 44
+
+For the virtual detunings, we choose ∆ f = 2 MHz for Ramsey cycles with-out mode estimation and ∆ f = 2.33 MHz for Ramsey cycles with mode estimation. 
+
+> 45
+
+J. Park, H. Jang, H. Sohn, J. Yun, Y. Song, B. Kang, L. E. A. Stehouwer, D. D. Esposti, G. Scappucci, and D. Kim, “Passive and active suppression of transduced noise in silicon spin qubits,” Nature Communications 16 , 78 (2025). 
+
+> 46
+
+E. Knill, D. Leibfried, R. Reichle, J. Britton, R. B. Blakestad, J. D. Jost, C. Langer, R. Ozeri, S. Seidelin, and D. J. Wineland, “Randomized bench-marking of quantum gates,” Physical Review A 77 , 012307 (2008). 
+
+> 47
+
+One data point in the no-feedback trace (laboratory time 575 s) was ex-cluded from Fig. 3(b), as the corresponding randomized-benchmarking fit failed. 
+
+> 48
+
+Y. Shalibo, Y. Rofe, D. Shwa, F. Zeides, M. Neeley, J. M. Martinis, and N. Katz, “Lifetime and coherence of two-level defects in a Josephson junc-tion,” Physical Review Letters 105 , 177001 (2010). 
+
+> 49
+
+D. Colao Zanuz, Q. Ficheux, L. Michaud, A. Orekhov, K. Hanke, A. Flasby, M. Bahrami Panah, G. J. Norris, M. Kerschbaum, A. Remm, F. Swiadek, C. Hellings, S. Laz˘ ar, C. Scarato, N. Lacroix, et al. , “Mitigating losses of superconducting qubits strongly coupled to defect modes,” Physical Review Applied 23 , 044054 (2025). 
+
+> 50
+
+P. W. Anderson, “A mathematical model for the narrowing of spectral lines by exchange or motion,” Journal of the Physical Society of Japan 9, 316– 339 (1954). 
+
+> 51
+
+R. Kubo, “Note on the stochastic theory of resonance absorption,” Journal of the Physical Society of Japan 9, 935–944 (1954).

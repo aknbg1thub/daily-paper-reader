@@ -1,0 +1,66 @@
+{
+  "version": 5,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.14586v1/fig-001.webp",
+      "caption": "FIG. 1. (a) Circuit realizing a qutrit composed by the fol- lowing elements connected in parallel and with the fluxes threading the loops as shown: two nominally equal modu- lar elements, each composed by an inductance in series with a Josephson junction and realizing a ‘kite’ design with effec- tive Josephson energy-phase relation EJ cos(2φ); a Josephson junction with energy-phase relation (π2EL/4) cos(φ); an in- ductance with energy EL and a capacitance of energy EC. The phase φ is taken as a reference to drop across the single- harmonic Josephson junction and the fluxes threading the loops are as specified. (b) Total generalized fluxonium po- tential realizing a qutrit and few eigenstates of the Hamilto- nian Eq. (1) with the Josephson potential Eq. (5) for the case EC/EJ = 0.15 and EL/EJ = 0.04.",
+      "page": 2,
+      "index": 1,
+      "item_type": "figure",
+      "width": 867,
+      "height": 712,
+      "figure_number": "1"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.14586v1/fig-002.webp",
+      "caption": "FIG. 2. (a) Three instances of potential U(φ) featuring d degenerate minima, for the cases d = 3, 4, 5 and given by Eqs. (5), (6), (7), respectively. (b) Scheme for obtaining high-harmonic elements with leading term (−)n cos(nφ) ob- tained by connecting in parallel the modular element com- posed by a Josephson junction and an inductance, shown on the top of (b). The cases realizing a kite design, describing a cos(2φ) energy-phase relation, and the general (−)n cos(nφ) are shown.",
+      "page": 4,
+      "index": 2,
+      "item_type": "figure",
+      "width": 492,
+      "height": 445,
+      "figure_number": "2"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.14586v1/fig-003.webp",
+      "caption": "FIG. 3. (a) Schematics of the circuit realizing the Hamiltonian by Eq. (11) and describing a d = 4 qudit (ququart). It is composed by a capacitance C, an inductance L, a Josephson junction with energy ELπ 2/(4 √ 2) and four, nominally equal, modular elements–each composed by a Josephson junction and an inductance connected in series. All the branches are connected in parallel, with a flux π/2 between the four equal modular elements. The latter effectively yield a π/2-periodic Josephson junction with energy EJ . (b) Spectrum (left panel) and potential and few eigenfunctions (right panel) of the Hamiltonian Eq. (11) as a function of φx. (c) Schematics of the circuit realizing the Hamiltonian by Eq. (12) and describing a d = 5 qudit (ququint). The system features a Josephson junction with energy ELπ 2/8, a π-periodic Josephson junction (symbolized by a crossed-hatched square) with energy ELπ 2/32, and a π/2-periodic Josephson junction with energy EJ , all connected in parallel. The π/2-periodic element can be either obtain as in (a) or via two π-periodic elements connected in parallel and with a flux π/2 between the two. (d) Spectrum (left panel) and potential and few eigenfunctions (right panel) of the Hamiltonian Eq. (12) as a function of φx. In (b) and (d) the parameters chosen are EC/EJ = 0.01 and EL/EJ = 0.04.",
+      "page": 5,
+      "index": 3,
+      "item_type": "figure",
+      "width": 1053,
+      "height": 595,
+      "figure_number": "3"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.14586v1/fig-004.webp",
+      "caption": "FIG. 4. (a) Circuit realizing a qutrit. (b) Left panel: Spec- trum of the Hamiltonian Eq. (15) for the choice EC/EJ = 0.08, EL/EJ = 0.03 as a function of φx. Right panel: Joseph- son potential and seventeen eigenfunctions as a function of φ (the color code matches the levels in the left panel).",
+      "page": 6,
+      "index": 4,
+      "item_type": "figure",
+      "width": 506,
+      "height": 476,
+      "figure_number": "4"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.14586v1/fig-005.webp",
+      "caption": "FIG. 7. (a) Phase (φαβ ≡⟨α| ˆφ|β⟩) and (b) charge (nαβ ≡ ⟨α|ˆn|β⟩) dipole matrix elements between the qutrit states |0⟩, |1⟩, |2⟩and the fifth excited state |5⟩as a function of the flux φx. (c) Energy differences ωαβ ≡|Eα −Eβ| between the ground state and the first five excited states, in units of ωp = 2√8EJEC and as a function of the external flux. The calculation assumed the system parameters EC/EJ = 0.08, EL/EJ = 0.03.",
+      "page": 8,
+      "index": 5,
+      "item_type": "figure",
+      "width": 1062,
+      "height": 523,
+      "figure_number": "7"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.14586v1/fig-006.webp",
+      "caption": "FIG. 9. Comparison of the potential realizing a qutrit, its quadratic expansion around φ = 0, and the effective cosine potential ĒJ [1− cos(Lφ)].",
+      "page": 11,
+      "index": 6,
+      "item_type": "figure",
+      "width": 461,
+      "height": 344,
+      "figure_number": "9"
+    }
+  ]
+}

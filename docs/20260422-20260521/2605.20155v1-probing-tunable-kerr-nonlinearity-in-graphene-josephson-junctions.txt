@@ -1,0 +1,500 @@
+Title: Probing tunable Kerr nonlinearity in graphene Josephson junctions
+
+URL Source: https://arxiv.org/pdf/2605.20155v1
+
+Published Time: Wed, 20 May 2026 01:38:40 GMT
+
+Number of Pages: 12
+
+Markdown Content:
+# Probing tunable Kerr nonlinearity in graphene Josephson junctions 
+
+Priyanka Samanta, 1, ∗ Joydip Sarkar, 1 Ashish Abhraham Samuel, 1, 2 Madhavi Chand, 1 Kenji Watanabe, 3 Takashi Taniguchi, 4 and Mandar M. Deshmukh 1, †
+
+> 1
+
+Department of Condensed Matter Physics and Materials Science, Tata Institute of Fundamental Research, Mumbai 400005, India 
+
+> 2
+
+Centre for Advanced Studies in Electronic Science and Technology, University of Hyderabad, Hyderabad 500046, India 
+
+> 3
+
+Research Center for Functional Materials, National Institute for Materials Science, Tsukuba 305-0044, Japan 
+
+> 4
+
+International Center for Materials Nanoarchitectonics, National Institute for Materials Science, Tsukuba 305-0044, Japan 
+
+Josephson junction (JJ) is a key nonlinear element in superconducting devices such as qubits, amplifiers, and bolometers. Recently, gate-tunable JJs based on graphene and semiconductors have gained interest due to their rich Andreev physics and wide applications in circuit quantum electrodynamics devices. In addition to gate tunability, it offers many advantages over conventional JJs, such as exceptional thermal properties for bolometric sensors, magnetic-field compatibility, and operability at elevated temperatures above 1 K. Like conventional Al-AlO x-Al JJs, graphene JJs also act as nonlinear inductors, and at their heart lies the Kerr nonlinearity. Additionally, in graphene JJs, the nonlinearity is tunable via external knobs in a single device. However, a detailed exploration of the tunable Kerr nonlinearity in graphene JJs has never been performed. In this work, we study the dependence of the Kerr nonlinearity on gate voltage, temperature, and DC bias – an interesting knob that has been less explored. Using these parameters, we show that the magnitude of the Kerr coefficient can be tuned over a wide range, from ∼ 300 kHz to 1 .2 MHz. Our work will be a valuable resource for further understanding of the nonlinearity in graphene JJs and for the design of next-generation amplifiers and sensors, with enhanced performance. 
+
+Josephson junctions (JJs) constitute the fundamental nonlinear elements of superconducting circuits and form the basis of many modern quantum technologies [1, 2]. A JJ supports a dissipationless supercurrent described by the current-phase relation (CPR) Is = Ic sin ϕ, where 
+
+Ic is the critical current and ϕ is the superconduct-ing phase difference across the junction for conventional superconductor-insulator-superconductor (SIS) JJs [3–6]. From the Josephson relations it can be shown that the JJs have an effective inductance LJ(ϕ) = Φ0
+
+> 2π
+
+ ∂I s
+
+> ∂ϕ
+
+−1
+
+=   
+
+> Φ0
+> 2πI ccos ϕ
+
+, known as the Josephson inductance where Φ 0 is the magnetic flux quanta [4, 5]. The phase dependence of this inductance makes JJs intrinsically nonlinear circuit elements, enabling the realization of tunable microwave resonators and nonlinear superconducting devices [7–10]. Such nonlinearities help realize a wide range of applica-tions, including superconducting qubits [1, 2, 11], para-metric amplifiers [9, 10, 12–14], and quantum-limited detectors [15, 16]. In particular, the ability to engi-neer strong yet nearly dissipation-less nonlinearities has made Josephson circuits a powerful platform for circuit quantum electrodynamics (cQED), enabling strong light-matter coupling and high-fidelity quantum control of microwave photons [7, 17, 18]. Recent experiments in hybrid and two-dimensional material platforms, includ-  
+
+> ∗samantapriyanka814@gmail.com
+> †deshmukh@tifr.res.in
+
+ing graphene and semiconductor-based JJs, have demon-strated strongly nonlinear behavior and the emergence of unconventional CPR with higher-harmonic contribu-tions, such as sin 2 ϕ, and even fractional 4 π periodic com-ponents [19–22], along with the added knob of electro-static gate tunability. These developments highlight the growing ability to engineer and probe nonlinear Joseph-son elements on emerging material platforms [23, 24]. For SIS JJs, the Kerr nonlinearity arises from the co-sine potential of the junction, with the potential energy given by U (ϕ) = −EJ cos ϕ in the absence of a DC bias, where EJ is the Josephson energy [3–6]. Expanding the potential about its minimum, the quadratic term de-scribes a harmonic oscillator, while the quartic term cap-tures the leading-order anharmonic correction [17, 18]. For graphene JJs, the potential takes a different form, given by a distinct CPR arising from the Andreev bound states, as we discuss in the following section. However, the nature of the nonlinearity and its general properties are similar to those of SIS JJs but with added knobs for tunability in a single device. Kerr nonlinearities in superconducting resonators and JJ arrays have been investigated both theoretically and experimentally, revealing photon-photon interac-tions, nonlinear microwave dynamics, and paramet-ric amplification processes [25, 26]. Recent efforts on superconductor-semiconductor JJs have enabled a variety of nonlinear cQED devices, including gate-mon qubits [27–31], quantum-limited parametric ampli-fiers [32–35], and bolometric sensors [36, 37]. 
+
+> arXiv:2605.20155v1 [cond-mat.mes-hall] 19 May 2026
+
+250 μm 
+
+# C1  C2 
+
+# DS
+
+# G
+
+# (a)  (b) 
+
+# (c) 
+
+FIG. 1. (a) The optical micrograph of the graphene Josephson junction device with a local graphite back gate. The marked parts correspond to the source (S), drain (D), and gate (G) electrodes, which were deposited using MoRe, a superconducting alloy. We also make two capacitors (C1 and C2) in series, which are in parallel to our Josephson junction. ( b) The scanning electron micrograph shows a zoomed-in view of the JJ. The distance between the 2 electrodes is measured to be ∼ 280 nm. ( c)The effective microwave circuit for our device can be modeled as a parallel LCR circuit directly coupled to a CPW transmission line for reflection measurements. 
+
+As discussed earlier, the nonlinear inductive response of a JJ arises from the anharmonicity of the junction potential. We now discuss the nature of nonlinearity in SNS JJs, e.g., graphene JJs, where the CPR is gov-erned by Andreev bound states. For a single transport channel with transmission probability τ , the ground-state energy of the Andreev bound state is given by 
+
+U (ϕ) = −∆0
+
+q
+
+1 − τ sin 2(ϕ/ 2) and the resultant CPR: 
+
+Is(ϕ) = π∆0 
+
+> 2eR n
+> sin ϕ
+
+√1−τ sin 2(ϕ/ 2) , where Is is the supercurrent, 
+
+ϕ is the phase drop across the JJ, ∆ 0 is the induced superconducting energy gap, e is the electronic charge, and Rn is the normal state resistance [38, 39]. The Kerr coefficient is obtained by expanding the potential around its minimum ( ϕmin = 0) and extracting the non-linear coefficients. Writing the Taylor series expansion 
+
+U (ϕ) ≈ − EJ( 12! c2ϕ2 + 13! c3ϕ3 + 14! c4ϕ4 + · · · ), where the dimensionless coefficients are defined as cn = 1
+
+> EJ
+> dnUdϕ n
+> ϕmin
+
+and EJ = d2Udϕ 2
+
+> ϕmin
+
+. Evaluating the expansion of U (ϕ) for SNS JJ yields, c2 = 1, c3 = 0, and c4 = −1 + 3τ 
+
+> 4
+
+. For a single JJ-based resonator, the Kerr coefficient is then primarily set by c4 and the inductive participation ratio 
+
+p = LJ/(LJ + Lstray ) representing the contribution of the JJ’s inductance LJ over other parasitic sources of induc-tance Lstray , such that K ∝ (c4 − 5c23 
+
+> 3c2
+
+) p3 = −(1 − 3τ 
+
+> 4
+
+) p3,see Supplementary Information section III for the deriva-tion of the Kerr coefficient expression from nonlinear Duffing oscillator’s equation of motion [35, 40]. It can be noted that the Kerr nonlinearity depends strongly on the transparency of the junction, and in SNS JJs with high-transparency ( τ ≈ 1), the nonlinearity is reduced to 25% to that of tunnel JJs ( τ ≈ 0). The magnitude of the Kerr coefficient depends strongly on the junction type and circuit parameters, like the Josephson energy EJ, charging energy EC, and partic-ipation ratio p [41, 42]. For instance, in transmon qubits based on SIS JJs, the Kerr coefficient is typically set by the charging energy K ≈ − EC/ℏ, where ℏ is the reduced Planck’s constant, yielding values on the order of 100–300 MHz [11, 43]. In contrast, weakly nonlinear microwave resonators incorporating JJ or SQUID arrays exhibit relatively smaller Kerr nonlinearity, typically in the range of 10 kHz to a few MHz, enabling their use in parametric amplification and quantum-limited detec-tion [9, 10, 12]. For JPAs, the Kerr coefficient K/2 π is desired to be in the range of ∼ 1 to 100 kHz, as devices with weak nonlinearity require high pump powers to op-erate, while very high nonlinearity lowers the compres-sion point in JPAs [44]. In practice, having control knobs to tune the Kerr coefficient in a single device is a very demanding feature and is less explored in conventional SIS JJ-based devices. Recent experiments in hybrid su-perconducting 2D material systems have demonstrated gate-tunable CPR [20, 45, 46], which governs the degree 3(a) (b) (d) (c) 0 2 4 6 8 10 (V)              
+
+> −2
+> −1012( A)
+> 50 100 150 200 d /d (  )
+> 01000 2000 3000 Photon number
+> 6.5
+> 6.6
+> 6.7
+> Kerr = -467.38 ± 2.21 kHz data fit
+> Probe frequency (GHz)  ()
+> 6.25 6.50 6.75 7.00 Probe frequency (GHz) 100
+> 90
+> 80
+> 70
+> Power at device (dBm)
+> 120
+> 100
+> 80
+> |S 11 | 2 (dB)
+> 0246810 (V) 4567Probe frequency (GHz)
+> −120
+> −110
+> −100
+> −90
+> −80
+> −70 |S 11 | 2 (dB)
+
+FIG. 2. (a) A DC pseudo-4-probe measurement showing the effect of gate voltage ( Vg) and DC bias ( IDC ) on the differential resistance (d V /d I) of the graphene JJ. ( b) A microwave measurement showing the dependence of the resonance frequency on the applied gate voltage ( Vg), where the color scale represents the magnitude of the reflection coefficient ( |S11 |2). ( c) At Vg = 10 V and T = 20 mK, the device’s power-dependent response is characterized. The resonant frequency corresponding to each applied microwave probe power is extracted by tracking the dip in the |S11 |2 signal. These extracted resonant frequencies are subsequently used to estimate the average photon number associated with each measurement condition. ( d) A linear regression of the resonant frequency as a function of the average photon number, corresponding to the data presented in panel (c), is performed to extract the Kerr coefficient. 
+
+of nonlinearity and is crucial for designing superconduct-ing quantum circuits, including protected qubits, para-metric amplifiers, and nonlinear single-photon sensors. In this work, we have studied the Kerr nonlinearity in graphene JJs. The Kerr coefficient depends on the junction transparency and can be tuned by the applied gate voltage in SNS JJs [47]. We have studied the de-pendence of Kerr coefficient on gate voltage, DC bias, and temperature. The DC bias serves as an important knob for effectively reshaping the junction’s potential. As we will discuss, our device geometry allows us to bias the JJ with DC and simultaneously probe its microwave response. The DC bias can be a powerful knob for en-gineering a Kerr-free cubic nonlinearity in the potential (c3̸ = 0, c4 ≈ 0), while still enabling nonlinear mixing to have amplification with enhanced dynamic range similar to asymmetric SQUID-based amplifiers [48, 49]. We now discuss our device geometry. The weak link in our JJ is realized using a few-layer graphene encapsu-lated with two hexagonal boron nitride (hBN) flakes. The superconducting electrodes were made by edge contacts by sputtering a type-II superconducting alloy, molyb-denum rhenium (MoRe). Thus, our superconductor-normal conductor-superconductor JJ is planar. Below our graphene JJ, we have a thick graphite flake that acts as a local electrostatic gate. Figure 1a shows the opti-cal micrograph of the JJ with the hBN-graphene-hBN-graphite stack. The gap between the two JJ fingers as seen in the zoomed SEM image in Figure 1b is ∼ 280 nm. Before making the JJ, the stack is initially dropped onto a coplanar waveguide (CPW) with a characteris-tic impedance of 50 Ω, patterned with standard e-beam lithography on a SiO 2/Si substrate. In this CPW, we also fabricate two MoRe-Al 2O3-Al parallel-plate capaci-tors in parallel with our graphene JJ, forming a parallel LC resonator. The full device schematic, including the CPW is shown in Supplementary figure 1. More details on the device fabrication are provided in the Supplemen-tary Information section I. Before microwave measurements, we perform DC char-acterization of our graphene JJ to verify its supercon-ductivity, determine its electrostatic doping tunability, and measure its switching current. The differential resis-tance (d V /d I) map in the pseudo-four-probe configura-tion is shown in Figure 2a. There, we measure d V /d I
+
+by sweeping the gate voltage applied and the DC bias at a temperature of 20 mK in a dilution refrigerator. The dark blue region corresponds to the superconduct-4(a) (b) (d) (c) −0.25                        
+
+> 0.00
+> 0.25 Coefficients  c2
+> c3
+> c4c4
+> 0.0 0.1 0.2 0.3 Bias current ( IDC /Ic)
+> −1.0
+> −0.5
+> 0.0
+> K/| K(I DC , m ax  )|
+> K=c4−5c23c23
+> 0.0 0.5 1.0 1.5
+> 1000
+> 800
+> 600
+> Kerr (kHz)
+> Vg=10 V Phase Energy
+
+IDC (μA)    
+
+> 6.25 6.50 6.75 7.00 Probe frequency (GHz) 100
+> 90
+> 80
+> 70
+> Power at device (dBm)
+> 120
+> 100
+> 80 IDC = 1.5 μA
+> |S 11 | 2 (dB)
+> |S 11 | 2 (dB)
+
+FIG. 3. (a) The S11 magnitude response at a gate voltage of 10 V and a temperature of 20 mK is measured as a function of the applied DC bias in the low-power linear regime of the probe signal. At higher bias currents, the resonance feature is suppressed and eventually vanishes, indicating a switching of the junction from the superconducting to the normal state. ( b) The power-dependent response of the device is measured at different DC bias (here 1 .5 μA) and a gate voltage of 10 V at 20 mK. The resonant frequency corresponding to each applied microwave probe power is extracted by tracking the dip in the magnitude of the reflection coefficient ( |S11 |2). ( c) The Kerr coefficient is extracted at each applied DC bias by fitting procedures performed at a fixed gate voltage of 10 V and a temperature of 20 mK. Inset, a schematic illustrating how an increase in the applied DC bias enhances the tilt of the washboard potential in the RCSJ model, thereby reshaping the effective potential experienced by the phase particle. The blue-to-red colors indicate an increase in DC bias strength. ( d) The analytically calculated bias-current dependence of the nonlinear coefficients is plotted. The coefficients in arbitrary units are calculated by expanding the potential around the minima for an SNS junction under DC bias, with an effective transparency of τ = 0 .9. 
+
+ing state with zero differential resistance, and the red boundaries of that region mark the superconducting-to-normal transition. With higher gate voltages, the critical current increases up to 2 μA at V g = 10 V. At V g = 0 V, we find the charge-neutrality point of graphene, and thus the critical current is zero. In the microwave mea-surement, we measure the reflected signal S11 from the device, as shown in Figure 1c. The input signal is at-tenuated at different temperature stages in the dilution refrigerator to reduce thermal noise before reaching the device. Whereas, the output signal is amplified at the 4 K stage to improve the signal-to-noise ratio. More de-tails on the measurement setup are provided in the Sup-plementary Information section II. In Figure 2b, the log magnitude of the S11 signal is plotted. The dispersive feature in the plot corresponds to the tunable resonance frequency controlled by the gate voltage. The mapping between the DC pseudo four-probe resistance map and the resonance frequency tunability can be understood as follows: the higher the gate voltage Vg, the higher the switching current Ic, and the lower the JJ inductance LJ,since they are inversely proportional. So, the resonance frequency increases with gating. We observe a circuit resonance at ∼ 6.1 GHz that remains unchanged with gating. In our device, at resonance, we see a 2 π change in S11 phase response, suggesting an over-coupled state of the device where the losses are dominated by the ex-ternal coupling due to a directly coupled architecture in our device, which sets the loaded quality factor around 10. The device’s nonlinear response is characterized by fix-ing the gate voltage and temperature ( Vg = 10 V, T = 20 mK) and increasing the applied microwave probe power while monitoring the resonance frequency. The resulting power-dependent frequency shift is shown in Figure 2c. Two distinct regimes are observed. At low drive powers, the resonance frequency remains essentially unchanged, indicating a linear regime. At higher drive powers, the resonance frequency shifts to a lower value, indicating the onset of the nonlinear regime. The observed nonlinearity can be quantitatively analyzed within the framework of quantum circuit theory, as we discuss next. 5(a) (b) 0 200 400 600 800 1000             
+
+> T(mK)
+> 450
+> 400
+> 350
+> 300
+> 250
+> Kerr (kHz)
+> Vg=10 V
+> 246810
+> 1200
+> 1000
+> 800
+> 600
+> Kerr (kHz)
+> T=200 mK
+> Vg(V)
+> FIG. 4. (a) The Kerr coefficient is extracted at different gate voltages, at a fixed temperature of 200 mK. ( b) The Kerr coefficient is extracted as a function of temperature at a fixed gate voltage of 10 V. In both cases, the measurements are performed without a DC bias ( IDC = 0 μA).
+
+The fundamental mode of the single JJ-based res-onator can be modeled as a weakly anharmonic oscil-lator described by a Duffing Hamiltonian. To quantify the Kerr nonlinearity, the resonance frequency at each drive power is extracted by tracking the dip in the S11 
+
+magnitude response. The corresponding average photon number in the resonator is then calculated using equa-tion n = 2 
+
+> ℏω2r
+> Q2L
+> QC
+
+Pin , where Pin is the input power, ωr is the resonance frequency, and QL and QC are the loaded and coupling quality factors of the resonator, respec-tively [50, 51]. The dependence of the resonance fre-quency on photon number is subsequently analyzed us-ing a linear relation ω(n) = ω0 + Kn , where ω0 is the low-power linear resonance frequency, n is the average photon number, and K/ 2π is the Kerr coefficient. A lin-ear regression of the measured resonance frequency as a function of photon number, shown in Figure 2d, yields the Kerr coefficient, with a small associated uncertainty. This analysis confirms the emergence of nonlinearity in the high-power regime and provides a quantitative mea-sure of the nonlinear Kerr coefficient. The direct galvanic coupling in our device enables DC biasing of the JJ and unique exploration of its nonlinear-ity, as we discuss next. The device response as a function of the applied DC bias is first characterized at a fixed gate voltage of 10 V and a temperature of 20 mK, as shown in Figure 3a. Here, the microwave probe power is set in the low-power linear regime. As the bias cur-rent increases, the resonance shifts to lower values and eventually disappears, consistent with the suppression of superconductivity and the switching of the junction into the normal state. The power-dependent response is fur-ther investigated at 20 mK and a gate voltage of 10 V for different bias currents. A representative dataset at a bias current of 1 .5 μA is shown in Figure 3b. For each bias current, the resonant frequency at a given signal power is extracted by tracking the dip in the magnitude of the reflection coefficient |S11 |2. These power-dependent fre-quency shifts are then used to determine the Kerr coef-ficient via fitting procedures performed at each bias cur-rent, as summarized in Figure 3c. An increase in the ex-tracted Kerr coefficient with DC bias is observed, indicat-ing enhanced nonlinearity of the junction. This behavior can be understood within the framework of the resistively and capacitively shunted junction (RCSJ) model, where an increased bias current leads to a greater tilt of the washboard potential, thereby modifying the curvature of the cosine potential wells and enhancing the nonlinearity experienced by the phase particle. A schematic represen-tation of this mechanism is provided in Figure 3c inset. We model the JJ potential in the presence of a DC bias using the RCSJ picture given in the Supplementary In-formation section IV, and the calculated nonlinear coef-ficients are plotted in Figure 3d. The DC bias introduces a non-zero c3 term, which is typically zero in single-JJ-based resonators without DC bias. With an increase in bias current, both the magnitudes of c3 and c4 increase, reflecting increased nonlinearity in the system and qual-itatively capturing our experimental trend. Additional data from another device showing similar trends is pro-vided in the Supplementary Information section V. Analogous to the analysis of Kerr nonlinearity as a function of DC bias, we extract the Kerr coefficient at different gate voltages by performing fits to the power-dependent frequency shift at each electrostatic configu-ration. The resulting dependence of the Kerr coefficient on gate voltage is presented in Figure 4a. As the gate voltage is increased, the magnitude of the Kerr coeffi-cient decreases, indicating a reduction in the effective nonlinearity. This trend can be attributed to increased junction transparency at higher gate voltages. As we discussed, for an SNS JJ with a high-transparency chan-nel, the magnitude of the c4 term decreases, translating to a decrease in nonlinearity. At higher gate voltages, the Kerr coefficient tends to saturate. Our observation of gate dependence of the Kerr nonlinearity is consistent with a previous report on a gate-tunable semiconductor JJ-based device [34]. For high-temperature operation of graphene-based JPAs and single-photon sensors, the stability of nonlin-6                                                       
+
+> Material platform K/ 2π(kHz) pω0/2π(GHz) K/ω 0
+> Al-AlO x-Al JJ based JPA [41, 42] −500 ∼0.64.95 −101 ×10 −6
+> Graphene JJ based JPA [33] −111 low 5.885 −18 .86 ×10 −6
+> Al-InAs-Al JJ based JPA [35] −3.30 ±1.00 0.29 7.52 −0.4388 ×10 −6
+> −0.13 ±0.04 0.11 6.63 −0.019 ×10 −6
+> Our graphene JJ devices −467 .38 ±2.21 large 6.75 −69 .24 ×10 −6
+> −356 .10 ±0.70 (∼0.9) 4.81 −74 .03 ×10 −6
+> TABLE I. Comparison of the Kerr coefficient across literature among different JJ systems, including Al-AlO x-Al, graphene, and semiconductor-based platforms. The ω0is the linear resonance frequency of the resonator, and pis the inductive participation ratio of the JJ.
+
+earity at elevated temperatures is important. Hence, we have also studied the temperature dependence of the Kerr coefficient, as shown in Figure 4b. In our devices, we ob-serve significant nonlinearity even at ∼ 1 K, which will be useful in designing amplifiers and sensors for elevated-temperature operations. A monotonic reduction in the magnitude of the Kerr coefficient is observed with in-creasing temperature. This behavior can be attributed to a decrease in the magnitude of c4, which weakens the nonlinearity. The analytically calculated temperature de-pendence of c4 is provided in the Supplementary Informa-tion section IV. In Table 1, we compare the Kerr nonlin-earity across various JJ-based devices. We observe large nonlinearity in our devices due to the high participation of the junction inductance, resulting from the lumped-element implementation of the LC resonator compared to transmission-line-based designs. In summary, we have performed a comprehensive study of the tunable Kerr nonlinearity in graphene JJs. The nonlinearity is tunable via external knobs such as DC bias and electrostatic gating. We studied the effect of DC bias on the Kerr coefficient in detail and demonstrated the emergence of c3 nonlinearity by making the poten-tial asymmetric with bias current. In the future, the DC-bias-driven JPA can be explored for parametric am-plification with nonzero c3 to implement a 3-wave mixing scheme, similar to asymmetric SQUID-based JPAs with improved saturation powers [48, 49]. Taken together, our work will be a useful resource for future studies, enabling the design of hybrid quantum devices, including qubits, amplifiers, and single-photon sensors. 
+
+> ACKNOWLEDGEMENTS
+
+We thank Shyam Shankar and R. Vijay for helpful dis-cussions. We thank Supriya Mandal, Surat Layek, and Gaurav Sharma for helpful feedback on the manuscript. We acknowledge support from the Air Force Office of Sci-entific Research under award number FA2386-25-1-4027, the Department of Atomic Energy of the Government of India 12-R&D-TFR-5.10-0100, and J.C. Bose Fellow-ship JCB/2022/000045 from the Department of Science and Technology of India. The preparation of hBN sin-gle crystals is supported by the Elemental Strategy Ini-tiative conducted by MEXT, Japan (Grant Number JP-MXP0112101001) and JSPS KAKENHI (Grant Numbers 19H05790 and JP20H00354). 
+
+> DATA AVAILABILITY
+
+The experimental data used in the main text figures are available from the corresponding authors upon rea-sonable request.                      
+
+> [1] J. Clarke and F. K. Wilhelm, Nature 453 , 1031–1042 (2008). [2] M. H. Devoret and R. J. Schoelkopf, Science 339 , 1169 (2013). [3] B. Josephson, Physics Letters 1, 251 (1962). [4] M. Tinkham, Introduction to Superconductivity
+> (McGraw-Hill, 1996). [5] K. K. Likharev, Review of Modern Physics 51 ,101 (1979). [6] A. A. Golubov, M. Y. Kupriyanov, and E. Il’ichev, Re-views of Modern Physics 76 , 411 (2004). [7] A. Wallraff, D. I. Schuster, A. Blais, L. Frunzio, R.-S. Huang, J. Majer, S. Kumar, S. M. Girvin, and R. J. Schoelkopf, Nature 431 , 162–167 (2004). [8] I. Siddiqi, R. Vijay, F. Pierre, C. M. Wilson, M. Metcalfe, C. Rigetti, L. Frunzio, and M. H. Devoret, Physical Re-view Letters 93 , 207002 (2004).
+
+7
+
+[9] T. Yamamoto, K. Inomata, M. Watanabe, K. Matsuba, T. Miyazaki, W. D. Oliver, Y. Nakamura, and J. S. Tsai, Applied Physics Letters 93 , 042510 (2008). [10] M. A. Castellanos-Beltran and K. W. Lehnert, Applied Physics Letters 91 , 083509 (2007). [11] J. Koch, T. M. Yu, J. Gambetta, A. A. Houck, D. I. Schuster, J. Majer, A. Blais, M. H. Devoret, S. M. Girvin, and R. J. Schoelkopf, Physical Reviews A 76 , 042319 (2007). [12] C. Macklin, K. O’Brien, D. Hover, M. E. Schwartz, V. Bolkhovsky, X. Zhang, W. D. Oliver, and I. Siddiqi, Science 350 , 307 (2015). [13] N. Bergeal, F. Schackert, M. Metcalfe, R. Vijay, V. E. Manucharyan, L. Frunzio, D. E. Prober, R. J. Schoelkopf, S. M. Girvin, and M. H. Devoret, Nature 465 , 64–68 (2010). [14] Z. Hao, J. Cochran, Y.-C. Chang, H. M. Cole, and S. Shankar, Applied Physics Letters 128 , 014004 (2026). [15] J. Zmuidzinas, Annual Review of Condensed Matter Physics 3, 169 (2012). [16] P. K. Day, H. G. LeDuc, B. A. Mazin, A. Vayonakis, and J. Zmuidzinas, Nature 425 , 817 (2003). [17] A. Blais, R.-S. Huang, A. Wallraff, S. M. Girvin, and R. J. Schoelkopf, Physical Reviews A 69 , 062320 (2004). [18] A. Blais, A. L. Grimsmo, S. M. Girvin, and A. Wallraff, Rev. Mod. Phys. 93 , 025005 (2021). [19] C. D. English, D. R. Hamilton, C. Chialvo, I. C. Moraru, N. Mason, and D. J. V. Harlingen, Physical Review B 
+
+94 , 115435 (2016). [20] S. Messelot, N. Aparicio, E. de Seze, E. Eyraud, J. Coraux, K. Watanabe, T. Taniguchi, and J. Renard, Physical Review Letters 133 , 106001 (2024). [21] A. Leblanc, C. Tangchingchai, Z. S. Momtaz, E. Kiyooka, J.-M. Hartmann, F. Gustavo, J.-L. Thomassin, B. Brun, V. Schmitt, S. Zihlmann, R. Maurand, ´E. Dumur, S. D. Franceschi, and F. Lefloch, Nature Communications 16 ,1010 (2025). [22] M. Endres, A. Kononov, H. S. Arachchige, J. Yan, D. Mandrus, K. Watanabe, T. Taniguchi, and C. Sch¨ onenberger, Nano Letters 23 , 4654 (2023). [23] J. Sarkar, A. Mukherjee, A. Basu, R. Kundu, A. Kundu, and M. M. Deshmukh, arXiv 2604.15276 (2026). [24] A. A. Generalov, K. L. Viisanen, J. Senior, B. R. Ferreira, J. Ma, M. M¨ ott¨ onen, M. Prunnila, and H. Bohuslavskyi, Applied Physics Letters 125 , 012602 (2024). [25] Y. Krupko, V. D. Nguyen, T. WeiBl, E. Dumur, J. Puer-tas, R. Dassonneville, C. Naud, F. W. J. Hekking, D. M. Basko, O. Buisson, N. Roch, and W. Hasch-Guichard, Physical Review B 98 , 094516 (2018). [26] T. C. White, J. Y. Mutus, I.-C. Hoi, R. Barends, B. Campbell, Y. Chen, Z. Chen, B. Chiaro, A. Dunsworth, E. Jeffrey, J. Kelly, A. Megrant, C. Neill, P. J. J. O’Malley, P. Roushan, D. Sank, A. Vainsencher, J. Wenner, S. Chaudhuri, J. Gao, and J. M. Martinis, Applied Physics Letters 106 , 242601 (2015). [27] T. W. Larsen, K. D. Petersson, F. Kuemmeth, T. S. Jes-persen, P. Krogstrup, J. Nyg˚ ard, and C. M. Marcus, Physical Review Letters 115 , 127001 (2015). [28] L. Casparis, M. R. Connolly, M. Kjaergaard, N. J. Pear-son, A. Kringhøj, T. W. Larsen, F. Kuemmeth, T. Wang, C. Thomas, S. Gronin, G. C. Gardner, M. J. Manfra, C. M. Marcus, and K. D. Petersson, Nature Nanotech-nology 13 , 915 (2018). [29] J. I.-J. Wang, D. Rodan-Legrain, L. Bretheau, D. L. Campbell, B. Kannan, D. Kim, M. Kjaergaard, P. Krantz, G. O. Samach, F. Yan, J. L. Yoder, K. Watan-abe, T. Taniguchi, T. P. Orlando, S. Gustavsson, P. Jarillo-Herrero, and W. D. Oliver, Nature Nanotech-nology 14 , 120 (2019). [30] T. W. Larsen, M. E. Gershenson, L. Casparis, A. Kringhøj, N. J. Pearson, R. P. G. McNeil, F. Kuem-meth, P. Krogstrup, K. D. Petersson, and C. M. Marcus, Physics Review Letters 125 , 056801 (2020). [31] J. Balgley, J. Park, X. Chu, J. Liu, M. Holbrook, K. Watanabe, T. Taniguchi, A. Kamal, L. Ranzani, M. V. Gustafsson, J. Hone, and K. C. Fong, arXiv 
+
+2512.08059 (2025). [32] J. Sarkar, K. V. Salunkhe, S. Mandal, S. Ghatak, A. H. Marchawala, I. Das, K. Watanabe, T. Taniguchi, R. Vi-jay, and M. M. Deshmukh, Nature Nanotechnology 17 ,1147 (2022). [33] G. Butseraen, A. Ranadive, N. Aparicio, K. Raf-sanjani Amin, A. Juyal, M. Esposito, K. Watanabe, T. Taniguchi, N. Roch, F. Lefloch, and J. Renard, Na-ture Nanotechnology 17 , 1153 (2022). [34] D. T. Phan, P. Falthansl-Scheinecker, U. Mishra, W. M. Strickland, D. Langone, J. Shabani, and A. P. Higgin-botham, Physical Review Applied 19 , 064032 (2023). [35] Z. Hao, T. Shaw, M. Hatefipour, W. M. Strickland, B. H. Elfeky, D. Langone, J. Shabani, and S. Shankar, Applied Physics Letters 124 , 254003 (2024). [36] G.-H. Lee, D. K. Efetov, W. Jung, L. Ranzani, E. D. Walsh, T. A. Ohki, T. Taniguchi, K. Watanabe, P. Kim, D. Englund, and K. C. Fong, Nature 586 , 42 (2020). [37] J. Sarkar, K. Maji, A. Sunamudi, H. Agarwal, P. Samanta, A. Bhattacharjee, R. Rajkhowa, M. P. Patankar, K. Watanabe, T. Taniguchi, and M. M. Desh-mukh, Nature Communications 16 , 7043 (2025). [38] M. Titov and C. W. J. Beenakker, Physical Review B 
+
+74 , 041401(R) (2006). [39] A. Kringhøj, L. Casparis, M. Hell, T. W. Larsen, F. Kuemmeth, M. Leijnse, K. Flensberg, P. Krogstrup, J. Nyg˚ ard, K. D. Petersson, and C. M. Marcus, Physical Review B 97 , 060508 (2018). [40] X. Zhou, V. Schmitt, P. Bertet, D. Vion, W. Wustmann, V. Shumeiko, and D. Esteve, Physical Review B 89 ,214517 (2014). [41] J. Bourassa, F. Beaudoin, J. M. Gambetta, and A. Blais, Physical Review A 86 , 013814 (2012). [42] S. Boutin, D. M. Toyli, A. V. Venkatramani, A. W. Ed-dins, I. Siddiqi, and A. Blais, Physical Review Applied 
+
+8, 054030 (2017). [43] J. A. Schreier, A. A. Houck, J. Koch, D. I. Schuster, B. R. Johnson, J. M. Chow, J. M. Gambetta, J. Majer, L. Frunzio, M. H. Devoret, S. M. Girvin, and R. J. Schoelkopf, Physical Review B 77 , 180502 (2008). [44] N. Zapata, I. Takmakov, S. G¨ unzler, S. Geisert, S. Ihssen, M. Field, A. Nambisan, D. Rieger, T. Reisinger, W. Wernsdorfer, and I. M. Pop, Physical Review Letters 
+
+133 , 260604 (2024). [45] R. Haller, G. F¨ ul¨ op, D. Indolese, J. Ridderbos, R. Kraft, L. Y. Cheung, J. H. Ungerer, K. Watan-abe, T. Taniguchi, D. Beckmann, R. Danneau, P. Vir-tanen, and C. Sch¨ onenberger, Physical Review Research 
+
+4, 013198 (2022). [46] Z. Huang, B. H. Elfeky, T. Taniguchi, K. Watanabe, J. Shabani, and D. Shahrjerdi, Applied Physics Letters 8
+
+122 , 262601 (2023). [47] W. Jung, E. G. Arnault, B. Huang, J. Park, S. Jang, K. Watanabe, T. Taniguchi, D. Englund, K. C. Fong, and G.-H. Lee, arXiv 2503.06850 (2025). [48] N. E. Frattini, U. Vool, S. Shankar, A. Narla, K. M. Sliwa, and M. H. Devoret, Applied Physics Letters 110 ,222603 (2017). [49] N. E. Frattini, V. V. Sivak, A. Lingenfelter, S. Shankar, and M. H. Devoret, Physical Review Applied 10 , 054020 (2018). [50] S. Ganjam, Y. Wang, Y. Lu, A. Banerjee, C. U. Lei, L. Krayzman, K. Kisslinger, C. Zhou, R. Li, Y. Jia, M. Liu, L. Frunzio, and R. J. Schoelkopf, Nature Com-munications 15 , 3687 (2024). [51] V. Gupta, P. Winkel, N. Thakur, P. van Vlaanderen, Y. Wang, S. Ganjam, L. Frunzio, and R. J. Schoelkopf, Physical Review Applied 23 , 054067 (2025) 9
+
+# Supplementary Information  
+
+> S1. DEVICE FABRICATION
+
+Josephson junctions (JJs) are used in circuit quan-tum electrodynamics (cQED) to realize nonlinear LC res-onators. For our device geometry, we employ a copla-nar waveguide (CPW)–based, directly coupled design, where the central conductor is terminated to the ground plane through a lumped-element LC resonator (see Sup-plementary Figure S1). The device’s nonlinear response and stability are primarily governed by the Josephson inductance participation ratio, p = LJ/L tot , where LJ
+
+is the inductance of the Josephson junction (also known as the Josephson inductance) and Ltot includes all in-ductive contributions, including the unwanted stray in-ductances that may appear due to practical constaints of the geometry. The lumped-element CPW design enables 
+
+p → 1, thereby maximizing the effective nonlinearity. In contrast, distributed resonator architectures exhibit re-duced participation due to the dominant contribution of transmission-line inductance, which weakens the nonlin-ear response. The whole device fabrication is performed in the following four major steps. 150 μm   
+
+> FIG. S1. Shows the schematic representation of the coplanar wave guide geometry-based resonator. The central conduc-tor and ground planes are designed to have a characteristic impedance of 50 Ohm.
+> A. CPW
+
+The device fabrication proceeds in four main stages. First, a coplanar waveguide (CPW) is defined on aSiO 2/Si substrate using standard electron-beam lithog-raphy, followed by deposition of MoRe via DC magnetron sputtering under high-vacuum conditions. The CPW is designed to achieve a characteristic impedance of 50 Ω.  
+
+> B. Parallel plate capacitors
+
+In the second step, two MoRe–Al 2O3–Al parallel-plate capacitors are fabricated. The dielectric and top metal layers are deposited using angled, rotational electron-beam evaporation to ensure uniform coverage. The Al 2O3 dielectric thickness is 50 nm, and it has a dielectric constant ϵr ∼ 9. There are two parallel-plate capacitors in series, of identical dimensions 60 ×60 μm2, fabricated together for ease of fabrication, so that the Al 2O3 and Al layers can be formed in the same step.  
+
+> C. hBN-graphene-hBN heterostructure
+
+Thin flakes of graphene and hexagonal boron ni-tride (hBN) are obtained via mechanical exfoliation of bulk crystals and subsequently stacked using a poly-mer (PC/PDMS)-based dry transfer technique. Few-layer graphene is selected and encapsulated between hBN flakes to make the hBN-graphene-hBN stack. Finally, a graphite flake is picked up, serving as a local back gate. The hBN–graphene–hBN-graphite stack is now dropped on the CPW substrate to make the JJ contacts and form the LC resonator.  
+
+> D. Graphene Josephson junction
+
+Among the remaining steps, first, electron-beam lithography is done using PMMA 495 A4 and 950 A4 bilayer resist. Secondly, reactive-ion etching (CHF 3/O 2)is done to define the edge-contact trenches. Then, MoRe sputtering is performed to contact the superconduct-ing electrodes with the graphene, forming the Joseph-son junction. Prior to MoRe deposition, an in situ Ar plasma cleaning step is performed to improve contact transparency. We deposit 40 nm of MoRe side contacts and perform lift-off. To further improve contact trans-parency, the device is vacuum-annealed at 350 °C for 2 hr in a 15 sccm forming gas (N 2+H 2) environment. The fabricated chip is finally mounted on a printed circuit board and wire-bonded for electrical measurement.  
+
+> S2. MEASUREMENT SETUP
+
+The microwave measurements employ standard reflec-tometry in an Oxford dilution refrigerator at 20 mK. Dur-ing measurements, we take precautions to filter any un-10   
+
+> FIG. S2. Wiring diagram and the microwave measurements setup. Shows the wiring diagram for the Kerr nonlinearity measurements.
+
+desired noise that may reach the device. The microwave setup, along with the wiring diagram, is shown in the Supplementary Figure S2. The microwave lines are made of stainless-steel rigid coaxial lines. The input lines are attenuated by 56 dB using fixed attenuators at different temperature stages. The output signal from the device passes through a directional coupler (Krytar 4 −20 GHz), a 10 GHz low-pass filter, and a dual isolator (LNF) at the 20 mK plate. The output signal is amplified by a 40 dB high-electron-mobility transistor (HEMT) amplifier at the 4 K plate. The signal from the VNA (R & S ZNB 20) is sent to the device from port-1. The output sig-nal is returned to the VNA at port-2. The gate voltage (Vg) is applied to the device using a DC voltage source (NI-DAQ). The DC line for the gate passes through a 10 Hz low-pass RC filter, followed by three-stage filtering using low-pass RC filters on different temperature plates of our dilution fridge (room temperature, 4 K plate, 20 mK plate), each with a cut-off frequency of 70 kHz. The DC-bias signal also passes through the aforementioned three-stage RC filters. The device is loaded into a copper PCB box with an aluminum puck for cryogenic electro-magnetic shielding.  
+
+> S3. DERIVATION OF KERR NONLINEARITY EXPRESSION FROM THE JJ POTENTIAL
+
+Now, we derive an analytic expression for the Kerr non-linearity. The Kerr coefficient can be extracted from the power-dependent frequency shift by analyzing the equa-tion of motion of a nonlinear Duffing oscillator. If we consider the phase difference across the JJ as ϕ and ex-pand the potential energy around a stable minima point 
+
+ϕ0. Writing δϕ = ϕ − ϕ0, the Josephson potential can be expanded as 
+
+U (ϕ) = U (ϕ0) + c1(δϕ ) + 12! c2(δϕ )2 + 13! c3(δϕ )3
+
++ 14! c4(δϕ )4 + O(( δϕ )5),
+
+(S1) where ci’s are the expansion coefficients. For a current-biased JJ, the RCSJ model gives the dynamic equation of motion of the phase particle, which is given by [1] 
+
+Ib = Is(ϕ) + ℏ
+
+2eR ˙ϕ + ℏC
+
+2e ¨ϕ, (S2) where Ib is the bias current, Is(ϕ) is the supercurrent flowing throgh the JJ, R is the shunt resistance, and C is the junction capacitance. Equivalently, this can be writ-ten in a mechanical form using the Josephson potential: 
+
+Is(ϕ) = 2e 
+
+> ℏ
+> ∂U ∂ϕ
+
+such that, 
+
+mϕ ¨ϕ + γϕ ˙ϕ + ∂U ∂ϕ = 0 , (S3) where U is the effective potential and the coefficients 
+
+mϕ =   ℏ
+
+> 2e
+
+2 C and γϕ =   ℏ
+
+> 2e
+
+2 1 
+
+> R
+
+. Now expanding around the minima point ϕ0, the equation of motion becomes 
+
+mϕ ¨δϕ + γϕ ˙δϕ + c2δϕ + 12 c3(δϕ )2 + 16 c4(δϕ )3 = 0 . (S4) Neglecting damping for the purpose of extracting the fre-quency shift, the equation reduces to ¨δϕ + ω20 δϕ + α(δϕ )2 + β(δϕ )3 = 0 , (S5) where ω0 = q c2 
+
+> mϕ
+
+is analogous to the natural oscil-lation frequency of the phase particle, α = c3 
+
+> 2mϕ
+
+, and 
+
+β = c4 
+
+> 6mϕ
+
+are the nonlinear coefficients of a Duffing os-cillator. Now using the Lindstedt-Poincar´ e method, the amplitude-dependent frequency is given by [2, 3] 
+
+ω(A) = ω0 +
+
+ 3β
+
+8ω0
+
+− 5α2
+
+12 ω30
+
+
+
+A2 + O(A4), (S6) where A is the oscillation amplitude of the phase vari-able δϕ and A2 represents drive power. This equation represents the drive-power-dependent frequency shift in a Duffing oscillator. Hence, substituting α = c3 
+
+> 2mϕ
+
+,
+
+β = c4 
+
+> 6mϕ
+
+and ω20 = c2/m ϕ we get 
+
+ω(A) = ω0 + A2
+
+16 mϕω0
+
+
+
+c4 − 5c23
+
+3c2
+
+
+
++ O(A4). (S7) 11 Thus, the Kerr or effective nonlinear coefficient is 
+
+K ∝ c4 − 5c23
+
+3c2
+
+. (S8) For a symmetric potential, the c3 term is zero, and the Kerr is set by the c4. However, with DC biasing, the potential can be tilted, making it asymmetric and leading to a non-zero c3 term. Another way to create a non-zero 
+
+c3 is to engineer the JJ potential, as done in asymmetric SQUID-based amplifiers [4].     
+
+> FIG. S3. Temperature dependence of the non-linear coeffi-cients is plotted. The coefficients are calculated by expanding the potential around the minima for an SNS junction with ef-fective transparency τ= 0 .9.
+> S4. KERR NONLINEARITY WITH DC BIAS AND TEMPERATURE
+
+In this section, we discuss the theoretical modeling of the Kerr nonlinearity under current bias within the RCSJ picture. The Josephson potential for a DC-biased SNS JJ is given by 
+
+U (ϕ, I DC ) = −EJ
+
+q 
+
+1 − τ sin 2(ϕ/ 2) + IDC 
+
+Ic
+
+ϕ
+
+
+
+, (S9) where ϕ is the superconducting phase difference across the junction, EJ is the Josephson energy, τ is the effec-tive transparency of the SNS channel, IDC is the applied DC bias, and Ic is the critical current of the JJ. The first term is the Josephson potential arising from the for-mation of Andreev bound states, while the second term arises from the tilt of the potential induced by the applied bias current. The analytically calculated coefficients c2,
+
+c3, and c4 are plotted in the main text Figure 3d. The DC bias tilts the potential, making it asymmetric and leading to a non-zero c3 coefficient that increases with increasing DC bias. Similarly, the junction potential as a function of temperature in a ballistic SNS JJ in the 
+
+T ≪ Tc limit can be written as 
+
+U (ϕ, T ) = −∆( T )
+
+q
+
+1 − τ sin 2(ϕ/ 2) , (S10) where ∆( T ) = ∆ 0 tanh 
+
+
+
+1.74 pTc/T − 1
+
+
+
+is the temper-ature dependence of the superconducting energy gap ac-cording to BCS theory, ∆ 0 is the superconducting energy gap in the zero temperature limit, Tc is the critical tem-perature of the superconducting leads, T is the absolute temperature [5, 6]. The temperature dependence of the non-linear coefficients is plotted in Supplementary Fig-ure S3. As the temperature increases, the magnitude of 
+
+c4 decreases, reducing the nonlinearity.  
+
+> S5. ADDITIONAL DATA FROM DEVICE D-1 AND D-2
+
+Here we show additional Kerr coefficient vs. DC bias data at different gate voltages for D-1 (see Supplementary Figure S4), as well as data from another device (D-2) (see Supplementary Figure S5). 0.00 0.25 0.50 0.75 1.00 1.25         
+
+> 800
+> 700
+> 600
+> Kerr (kHz)
+> Vg=8 V
+> 0.0 0.2 0.4 0.6 0.8
+> 1800
+> 1600
+> 1400
+> 1200
+> Kerr (kHz)
+> Vg=4 V
+
+(a) (b)      
+
+> FIG. S4. Additional data from the first device D-1: Fixing at particular gate voltages, Kerr nonlinearity extracted from the linear regression as discussed in the main text. (a) At
+> Vg= 4 V, the Kerr is extracted as a function of DC bias. (b)
+> At Vg= 8 V, the Kerr is extracted as a function of DC bias.
+
+12 (a) (b) (c) (d) 
+
+100 
+
+10 5 0 5 10 
+
+V g (V) 3.0 3.5 4.0 4.5 5.0 Probe frequency (GHz) 
+
+0100 
+
+> S11  phase (degrees)
+
+4.6 4.8 5.0 Probe frequency (GHz) 100 
+
+95 
+
+90 
+
+85 
+
+80 
+
+75 
+
+> Power at device (dBm)
+
+100 
+
+0100         
+
+> S11  phase (degrees)
+> 0.0 0.5 1.0
+> 1100
+> 1000
+> 900
+> 800
+> 700
+> 600
+> Kerr (kHz)
+> Vg=3 V
+> 246810
+> 600
+> 500
+> 400
+> Kerr (kHz)
+> T=100 mK
+
+FIG. S5. Additional data from the second device D-2: (a) Shows the variation of resonance frequency with gating. The S 11 
+
+phase is plotted as a function of probe frequency and gate voltage. (b) The measured nonlinear response of the device. The resonance frequency remains constant in the low-power linear regime. At high powers, the resonance frequency shifts downward due to the nonlinearity. The data is taken at Vg = 10 V. (c) At 20 mK, and V g = 3 V, the Kerr is extracted with increasing DC bias. (d) At 100 mK, zero DC bias, the Kerr is extracted as a function of gate voltage. [1] M. Tinkham, Introduction to Superconductivity , 2nd ed. (Dover Publications, New York, 1996). [2] L. D. Landau and E. M. Lifshitz, Mechanics , Course of Theoretical Physics, Vol. 1, 3rd ed. (Butterworth-Heinemann, 1976). [3] A. H. Nayfeh, Introduction to Perturbation Techniques 
+
+(John Wiley & Sons, 1981). [4] N. E. Frattini, U. Vool, S. Shankar, A. Narla, K. M. Sliwa, and M. H. Devoret, 3-wave mixing Josephson dipole element , Appl. Phys. Lett. 110 , 222603 (2017). [5] C. W. J. Beenakker, Universal limit of critical-current fluctuations in mesoscopic Josephson junctions , Phys. Rev. Lett. 67 , 3836 (1991). [6] A. Furusaki and M. Tsukada, Current-carrying states in Josephson junctions , Phys. Rev. B 43 , 10164 (1991).

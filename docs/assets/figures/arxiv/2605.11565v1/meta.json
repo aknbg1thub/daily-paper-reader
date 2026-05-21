@@ -1,0 +1,86 @@
+{
+  "version": 5,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.11565v1/fig-001.webp",
+      "caption": "FIG. 3: Effective potential V (red solid) and its supersymmetric partner potential Ṽ (blue dashed) as functions of the tortoise coordinate η∗ for KdV (βphys = 0.3) [left panel], mKdV+ (βphys = 0.3) [center panel], and mKdV− (βphys = −0.3) [right panel] models. We also plot the probe field velocity v.",
+      "page": 6,
+      "index": 1,
+      "item_type": "figure",
+      "width": 977,
+      "height": 408,
+      "figure_number": "3"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.11565v1/fig-002.webp",
+      "caption": "FIG. 4: Quasi-normal mode spectra for analogue black-white holes constructed by SNAIL-TWPA circuit system with various WKB orders; the first order [red +], the third order [green □], and the sixth order with the 3/3 Padé approximation [blue △]. For comparison, the quasi-normal mode spectra evaluated by the shooting method are shown in black ⃝.",
+      "page": 8,
+      "index": 2,
+      "item_type": "figure",
+      "width": 1048,
+      "height": 367,
+      "figure_number": "4"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.11565v1/fig-003.webp",
+      "caption": "FIG. 5: Second [red], third [green], fourth [cyan], fifth [blue], and sixth [magenta] order correction terms of the WKB approximation for KdV [left panel], mKdV+ [center panel], and mKdV− [right panel] models.",
+      "page": 10,
+      "index": 3,
+      "item_type": "figure",
+      "width": 1027,
+      "height": 302,
+      "figure_number": "5"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.11565v1/fig-004.webp",
+      "caption": "FIG. 6: The complex values of dδφ−/dη̃ (0; Ω̃) (even modes, Fig. 6(a)) and δφ−(0; Ω̃) (odd modes, Fig. 6(b)) on the complex Ω̃ plane for βphys = 0.3. The hue and the color density represent the argument and absolute value, respectively. The roots (QNM frequencies) are located at the points with the highest color density. The region Re Ω̃ < 0 is omitted because the root positions are symmetric with respect to the imaginary axis.",
+      "page": 12,
+      "index": 4,
+      "item_type": "figure",
+      "width": 868,
+      "height": 442,
+      "figure_number": "6"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.11565v1/fig-005.webp",
+      "caption": "FIG. 7: The close-up view of the root for the lowest even mode, at which d δφ−/dη̃ (0; Ω̃) = 0 on the complex Ω̃ plane, for βphys = 0.3 in the (a) KdV model.",
+      "page": 13,
+      "index": 5,
+      "item_type": "figure",
+      "width": 472,
+      "height": 333,
+      "figure_number": "7"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.11565v1/fig-006.webp",
+      "caption": "FIG. 8: The close-up view of the root for the lowest odd mode, at which δφ−(0; Ω̃) = 0 on the complex Ω̃ plane, for βphys = 0.3 in the (a) KdV model.",
+      "page": 13,
+      "index": 6,
+      "item_type": "figure",
+      "width": 476,
+      "height": 335,
+      "figure_number": "8"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.11565v1/fig-007.webp",
+      "caption": "FIG. 9: The complex value of dψ/dx (0;ω) on the complex ω plane, whose zeros correspond to the QNM frequencies of the even modes, for the Pöschl-Teller potential with V0 = α = 1.",
+      "page": 14,
+      "index": 7,
+      "item_type": "figure",
+      "width": 479,
+      "height": 447,
+      "figure_number": "9"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.11565v1/fig-008.webp",
+      "caption": "FIG. 10: The complex value of ψ(0;ω) on the complex ω plane corresponding to the odd modes for the Pöschl-Teller potential with V0 = α = 1.",
+      "page": 14,
+      "index": 8,
+      "item_type": "figure",
+      "width": 479,
+      "height": 448,
+      "figure_number": "10"
+    }
+  ]
+}

@@ -1,0 +1,779 @@
+Title: Data-Driven Hamiltonian Reduction for Superconducting Qubits via Meta-Learning
+
+URL Source: https://arxiv.org/pdf/2604.24912v1
+
+Published Time: Wed, 29 Apr 2026 00:07:11 GMT
+
+Number of Pages: 12
+
+Markdown Content:
+# Data-Driven Hamiltonian Reduction for Superconducting Qubits via Meta-Learning 
+
+Arielle Sanford †∗ , Andrew T. Kamen ‡∗ , Frederic T. Chong †, Andy J. Goldschmidt §†Department of Computer Science, University of Chicago, Chicago, IL 60637 
+
+> ‡
+
+Pritzker School of Molecular Engineering, University of Chicago, Chicago, IL 60637 
+
+> §
+
+Johns Hopkins Applied Physics Laboratory, Laurel, MD 20723 
+
+> ∗
+
+These authors contributed equally. Corresponding author: arielles@uchicago.edu 
+
+Abstract —We introduce HAML (Hamiltonian Adaptation via Meta-Learning), a framework for fast online adaptation of effective Hamiltonian models of superconducting quantum processors. HAML proceeds in two phases. A supervised training phase uses an ensemble of simulated devices to learn an offline map from control inputs and device parameters to effective Hamiltonian coefficients. An online adaptation phase then uses a small number of hardware-accessible measurements to identify the unknown parameters of a new device. By training directly against effective two-qubit coefficients extracted from full multi-mode simulations, HAML implicitly learns the reduction from full multi-mode Hamiltonians to effective qubit descriptions without invoking perturbation theory. We further show that a variance-maximizing greedy selection of measurement configurations boosts online adaptation efficiency. We demonstrate HAML on a transmon-coupler-transmon system, recovering effective two-qubit coefficients across a wide range of operating regimes, including parameter regions where Schrieffer-Wolff perturbation theory (SWPT) breaks down. This establishes a scalable, sample-efficient approach to Hamiltonian reduction and characterization for near-term quantum processors, with direct implications for calibration, control, and error mitigation. 
+
+Index Terms —Few-shot Learning, Hamiltonian Learning, Meta-Learning, Neural Networks, Reduced-order Modeling, Supercon-ducting Quantum Processors 
+
+I. I NTRODUCTION 
+
+Modern superconducting quantum processors are physically multi-mode devices: each computational qubit is coupled to auxiliary modes such as tunable couplers [1] and readout resonators that mediate interactions and measurement. The control and calibration stack that drives these processors, however, operates almost exclusively on an effective qubit-level Hamiltonian. Bridging the gap between the full multi-mode device dynamics and the reduced qubit subspace description is therefore essential for high-fidelity gate design, accurate calibration, and effective error mitigation. A standard analytical bridge is Schrieffer-Wolff perturbation theory (SWPT) [2], which constructs a unitary transformation 
+
+U = eS that, order by order in a small expansion parameter, approximately block-diagonalizes the Hamiltonian into a low-energy (qubit) subspace and a high-energy subspace that can be discarded. SWPT is widely used and physically transparent [3], but it carries two costs. First, its convergence requires the ratio of the qubit-coupler coupling to the qubit-coupler frequency difference to be much less than one, gqc /∆qc ≪ 1 with 
+
+∆qc = ωq − ωc. Two-qubit gate speeds are inversely related to this frequency difference, ∆qc ; fast gates straddle an intermediate-detuning regime where a qubit description endures even as the accuracy of SWPT starts to deteriorate. Second, the SWPT symbolic derivation can become unwieldy as the system size increases; moreover, numerical approaches can be expensive if recomputation is needed frequently, like in “inner loop” applications such as control optimization [4]. Third, in order to arrive at the SWPT Hamiltonian coefficients, the bare coefficients from the full Hamiltonian are required as inputs– including those of the coupler. However, in both academic and commercial superconducting devices, the coupler elements rarely have dedicated readout resonators [5]–[13]. Data-driven approaches to quantum characterization and control offer an alternative path. Recent work has demonstrated graybox modeling that fuses physics priors with machine learn-ing [14], [15], machine-learning-based optimal control on super-conducting qubits [16], and model-free reinforcement-learning policies trained directly on hardware measurements [17], [18]. These approaches focus on learning high-performance controllers of particular quantum devices or noise environments, but the learned models or policies are not explicitly designed for rapid transfer or adaptation. Meta-learning [19], [20] is a particularly good match for device characterization and control. The setting it was designed for—many related tasks with only a few examples each— matches two situations that arise naturally in superconducting hardware. First, quantum processors contain many qubits that are nominally similar but fabrication-distinct, each requiring its own characterization and calibration under tight measurement budgets [21]. This is particularly relevant for modular quantum processors, in which multiple qubits and couplers must be calibrated to operate across varying device configurations [8]. Second, device parameters drift over time due to noise, so the same chip recalibrated at different times effectively presents as a sequence of similar but non-identical devices [22]. Meta-learning has already been applied to learn generalizable dynamics across a family of related physical systems [23]. Meta-learning has also been applied directly for few-shot learning of closed and open quantum systems, demonstrating its promise for transferable modeling across diverse quantum dynamical regimes [24]. In our work, we extend this approach by uniting the characterization and control problem in one framework, meta-learning control models that rapidly adapt across entire 1
+
+> arXiv:2604.24912v1 [quant-ph] 27 Apr 2026
+
+families of quantum devices. In addition, to the best of our knowledge, we introduce the first example of a data-driven, control-aware reduction of full multi-mode dynamics to an effective qubit Hamiltonian using sim-to-real adaptation in place of analytic derivations. We call our framework HAML (Hamiltonian Adaptation via Meta-Learning), and emphasize the following contributions: (i) a meta-learning framework that learns the map from device parameters and control inputs to effective Hamiltonian coefficients, trained across an ensemble of devices offline and adapted to a new device online from only a handful of measurements; (ii) a data-driven model reduction that recovers the projected two-qubit Hamiltonian from full three-mode dynamics without perturbation theory, (iii) a greedy approach for selecting information-seeking (state, observable) measurement pairs and control pulses, which enable sample-efficient adaptation to new devices, and (iv) a demonstration that the learned reduction remains accurate in regimes where leading-order SWPT visibly breaks down. The manuscript contains the following sections: Sec. II intro-duces the relevant background on machine learning, quantum hardware, and perturbation theory: the meta-learning framework (Sec. II-A ), the transmon-coupler-transmon model Hamiltonian (Sec. II-B ), and the Schrieffer-Wolff transformation (Sec. II-C ). Sec. III presents HAML’s two stage framework (Sec. III-A ): (1) offline training (Sec III-B ) and (2) online adaptation (Sec. III-D ). To minimize the measurement budget during adaptation, information-seeking initial states, observables, and fluxes are chosen (Sec. III-E ). Sec. IV reports HAML’s accuracy against SWPT on 10 held-out test devices: per-coefficient prediction errors (Sec. IV-A ), the range of qubit-coupler hybridization spanned by the test ensemble (Sec. IV-B ), and projected-unitary fidelity comparisons across the operating range (Sec. IV-C). The conclusion (Sec V) follows. II. B ACKGROUND 
+
+A. Learning Across Device Ensembles 
+
+HAML trains a single neural network to represent the dynamics of a quantum device. The network can be understood as a physics-informed, neural ordinary differential equation [25] efficiently representing the Hamiltonian [16] (see Methods III). The training data are drawn from an ensemble of distinct instances of parameterized quantum devices. Each training point includes control inputs and parameter values. After training, the network is frozen and a small set of adaptation parameters, η, is optimized per device using a handful of hardware measurements. This structure is inspired by the meta-learning literature. Model-Agnostic Meta-Learning (MAML) [19] introduced the idea of training a network whose weights serve as a good initialization for fast gradient-based adaptation on a new task at test time. Fast Context Adaptation via Meta-Learning (CAVIA) [20] refined this by partitioning parameters into two sets: shared weights, which are meta-trained, and a small set of context parameters, which are adapted per task. CAVIA both reduces meta-overfitting and yields a low-dimensional Q1 Q2              
+
+> Fig. 1. (a) Circuit diagram of the transmon-coupler-transmon architecture: two frequency-tunable transmon qubits (red) capacitively coupled to a tunable coupler (blue). Each mode is characterized by its charging and Josephson energies EiC,EiJ, with capacitive coupling energies Ejk Csetting the inter-mode couplings. The qubit and coupler frequencies are tunable via the SQUID fluxes
+> Φq1,Φq2,Φc1. (b) Effective two-qubit description after coupler elimination: the qubits acquire an effective exchange coupling geff and a residual ZZ
+> interaction ζ.
+
+representation for efficient task adaptation. HAML adopts the parameter split of CAVIA but is simpler in one important respect: rather than learning the context inputs via a second, inner-loop optimization during training, η is supplied as a known input during the meta-training phase. This is possible because training is performed on simulation, where ground-truth η values are always available. In our formulation, the only gradient-based optimization of η occurs during online adaptation. Upon deployment, η is unknown, and its estimation becomes a system identification problem in the space of context parameters. We also use the learned model to select experiments that improve the adaptation efficiency. Because context is learned offline and inferred online, our approach can be viewed as a sim-to-real variant of CAVIA-style context adaptation. In quantum engineering, the Hamiltonian operator structure is usually well-specified by device physics, while uncertainty is concentrated within a few device-dependent parameters [3]. This makes simulation a reliable way to generate realistic instances of device contexts. That being said, identifying the parameters of a full Hamiltonian model can be challenging for a number of reasons like system size or missing experimental access (see Sec. II-C ); this motivates the need for effective descriptions that are limited to the accessible degrees of freedom. Indeed, while HAML is in principle general to any quantum device family, it is especially well matched to systems with auxiliary modes, such as couplers or Purcell filters, because these mediate interactions but cannot be measured directly (e.g., [1], [8]). In such systems, the network must infer the auxiliary-mode contribution from qubit-accessible measurements alone, a task at which meta-learned priors are particularly adept. 2B. The Transmon-Coupler System 
+
+In this work, we explore the utility of meta-learning for accurate characterization of a system consisting of two super-conducting qubits. Specifically, we consider an architecture (see Fig. 1) in which two transmon qubits have a shared coupler that mediates a virtual exchange interaction [1]. To model the dynamics, we use the following Hamiltonian, 
+
+Hfull 
+
+ℏ = X
+
+> i∈M
+
+∆i
+
+2 Zi + X
+
+> j,k ∈M
+
+gjk 
+
+2 (Xj Xk + Yj Yk) (1) in which we have already applied the rotating wave approx-imation. For simplicity, we have also restricted ourselves to a two-level approximation of the respective modes, M := 
+
+{q1, q 2, c 1}, corresponding to the two qubits and the coupler. 
+
+∆i = ωi − ωi 
+
+> 0
+
+is the detuning of mode i with respect to the rotating frame ωi
+
+> 0
+
+, and gjk is the coupling rate between mode 
+
+j and mode k. The mode frequencies and coupling rates are tunable via external magnetic flux. More concretely, 
+
+ωi/2π =
+
+q
+
+8EiJ EiC − EiC (2) 
+
+gjk /2π = Ejk C
+
+√2
+
+EjJ EkJ
+
+EjC EkC
+
+!1/4
+
+(3) where EJ = EJ0 |cos ( πΦext /Φ0)| = EJ0 |cos ( ϕext /2) |, as-suming symmetric SQUIDs, with Φ0 = h/ 2e denoting the flux quantum, and ϕext representing the reduced external flux. Here, 
+
+EiJ and EiC are the Josephson and charging energies of mode 
+
+i, and Ejk C is the capacitive coupling energy between modes j
+
+and k.As noted in Sec. I, couplers in superconducting devices typically lack dedicated readout resonators. This design choice reflects the fact that additional readout components introduce hardware overhead, increase control complexity, and contribute to decoherence [26], [27]. Absent dedicated readout for the coupler(s), Hamiltonian characterization of these devices is typically restricted to the qubit subspace(s). The effective qubit-subspace Hamiltonian takes the form, 
+
+Heff 
+
+ℏ = X 
+
+> i∈fM
+
+˜∆i
+
+2 Zi + geff 
+
+2 (Xq1Xq2 + Yq1Yq2) + ζZ q1Zq2
+
+(4) which approximates the dominant dynamics for the qubit-only subspace, fM := {q1, q 2}, across the dispersive and the intermediate-detuning regimes. ˜∆i = ˜ ωi − ωi 
+
+> 0
+
+is the difference between the effective qubit frequency and the rotating frame, 
+
+geff is the effective coupling between the qubits, and ζ is the parasitic ZZ interaction strength. The accuracy of any specific reduction to this form (e.g., Sec. II-C ) degrades as the qubit and coupler approach resonance, i.e., as the qubit-coupler detuning ∆qc approaches zero. In this near-resonance limit, strong hybridization renders any qubit-subspace description ill-defined. 
+
+C. The Schrieffer-Wolff Transformation 
+
+A common analytical approach to obtaining the effective Hamiltonian in Eq. (4) is to apply Schrieffer-Wolff perturbation theory (SWPT) [2], eliminating the qubit-coupler interaction perturbatively via the Schrieffer-Wolff transformation [1]. To start, we can group the terms in Eq. (1), 
+
+Hfull = Hq + Hc + Hqc (5) where Hq , Hc, Hqc correspond to the bare qubit dynamics, the bare coupler dynamics, and the qubit-coupler interaction, respectively. If |gqc /∆qc | ≪ 1, we can apply the unitary U =
+
+eS to block-diagonalize the Hamiltonian as follows, 
+
+eS He −S = ˜Hq + ˜Hc = Hq + Hc + 12 [S, H qc ] + O(ϵ3) (6) where S is an anti-Hermitian generator satisfying the condition, 
+
+Hqc + [ S, H q + Hc] = 0 (7) and ϵ := gqc /∆qc is the order parameter in this ap-proximation. For the system described in Eq. (1) , S =P 
+
+> j∈fM
+
+(gjc 1/∆jc 1)( σ+ 
+
+> j
+
+σ− 
+
+> c1
+
+− h.c. ) gives the second-order approximation for the qubit-subspace Hamiltonian, with an effective coupling, 
+
+geff ≈ gq1c1gq2c1
+
+∆ + gq1q2 (8) and effective qubit frequency, 
+
+˜ωj ≈ ωj + g2
+
+> jc 1
+
+/∆jc 1 (9) where ∆jc 1 = ωj − ωc1 and 1/∆ = (1 /∆q1c1 + 1 /∆q2c1)/2.For simplicity, we take the second-order expressions above as our analytical baseline and benchmark them against our data-driven reduction, which recovers the full effective qubit-subspace Hamiltonian—including ζ—without invoking per-turbation theory. A direct comparison against higher-order treatments that recover ζ analytically [7], [28] is left for future work, as it involves significantly more involved calculations. A few comments on this perturbative approach are in order. First, the convergence of the expansion requires |ϵ| =
+
+|gqc /∆qc | ≪ 1, so the approximation breaks down as the qubit-coupler detuning decreases. This is precisely the regime relevant to fast two-qubit gate operation, where the mediated effective coupling geff grows as ∆qc shrinks. Second, even for the single-coupler architecture treated above, a complete analytical characterization of ζ requires a significantly more involved derivation [7], [28], and extensions of SWPT to architectures with additional couplers or auxiliary modes require new per-architecture derivations whose complexity grows rapidly with the number of modes. Third, any perturbative reduction takes the bare mode frequencies and couplings as inputs, but these parameters are not directly accessible on hardware architectures where the coupler lacks dedicated readout. Back-calculating them requires indirect probes such as qubit-coupler spectroscopy (e.g. Lamb-shift measurements in Ref. [8]), adding a nontrivial calibration step that must precede any use of the perturbative reduction. 3Together, these considerations motivate a data-driven ap-proach that bypasses the perturbative expansion, generalizes across architectures, and operates directly on qubit-subspace observables. Such an approach has the potential to match or exceed second-order SWPT accuracy, particularly in the intermediate-detuning regime where the perturbative expansion breaks down. We develop this approach in the section that follows. III. M ETHODS 
+
+The full HAML pipeline, supervised training across an ensemble of simulated devices followed by online adaptation to a new device, is summarized in Fig. 2. 
+
+A. Problem Formulation 
+
+We address the problem of learning the coefficients of a Hamiltonian with a known Pauli structure as a function of control inputs and unknown device parameters. Let {Pk} be a Pauli basis spanning the operators that appear in the relevant subspace. We represent the device Hamiltonian as 
+
+H(ϕ, η ; θ) = X
+
+> k
+
+ck(ϕ, η ; θ) Pk, (10) where ϕ collects the control inputs, η collects unknown device-specific parameters, and θ are the parameters of a neural network that maps (ϕ, η ) to each coefficient ck. Once θ is fixed by training, characterizing a new device reduces to determining its η from a small number of measurements. We apply this framework for the transmon-coupler-transmon system of Sec. II-B. The control input is the external fluxes 
+
+ϕ = ( ϕq1
+
+> ext
+
+, ϕ q2
+
+> ext
+
+, ϕ c1
+
+> ext
+
+), (11) which set the mode frequencies and exchange couplings through the Josephson-energy dependence given in Sec. II-B . The qubit parameters are taken as known, and the unknown coupler-related parameters form the vector 
+
+η = {Ec1
+
+> J0
+
+, E c1 
+
+> C
+
+, E q1,c 1 
+
+> C
+
+, E q2,c 1 
+
+> C
+
+, E q1,q 2 
+
+> C
+
+}, (12) comprising the coupler’s bare Josephson and charging energies together with the three capacitive coupling energies between the modes. The Pauli basis {Pk} is taken to span the operators that appear in the effective two-qubit Hamiltonian of Sec. II-B ,so that the coefficients ck to be learned are ˜∆q1, ˜∆q2, geff ,and ζ. As discussed in Sec. II-A , η varies from one device to the next due to fabrication variations in a modular processor and to drift over time on any single device, motivating the ensemble-based approach of HAML. 
+
+B. Data Generation: Hamiltonian Simulation and Effective Coefficient Extraction 
+
+Training requires a dataset of (ϕ, η ) inputs paired with ground-truth Pauli coefficients ctrue for an ensemble of simu-lated devices, corresponding to the red and orange input stacks at the top-left of Fig. 2. Device parameter vectors {ηi}Ni=1 
+
+are sampled over physically reasonable ranges meant to span the variability expected across devices in a modular processor and across drift cycles of a single device. For each device, control vectors are drawn uniformly at random from a pulse library {ϕj }Jj=1 spanning the operating range of the coupler and deliberately including near-resonance regions. Specific sampling distributions and ranges are reported in Appendix C. For each (ϕj , η i) pair the full three-mode Hamiltonian H(i,j )
+
+> full
+
+of Sec. II-B is constructed and reduced to the effective two-qubit Hamiltonian H(i,j ) 
+
+> eff
+
+in two steps; this is the purple “Simulated” branch of Fig. 2. First, a dressed-state projection (next paragraph) yields a spectral Hamiltonian H(i,j ) 
+
+> dress
+
+whose Pauli coefficients 
+
+cdress  
+
+> k
+
+(ϕj , η i) = Tr  Pk H(i,j )
+
+> dress
+
+
+
+d (13) with d = 4 reproduce the qubit-like spectrum of H(i,j ) 
+
+> full
+
+. Second, these coefficients are refined to maximize process fidelity to the projected dynamics at the final time T , yielding the supervised target ctrue (ϕj , η i) and the corresponding effective Hamiltonian H(i,j ) 
+
+> eff
+
+= P 
+
+> k
+
+ctrue  
+
+> k
+
+(ϕj , η i) Pk, defined in Eq. 23 below. The same procedure produces ground-truth coefficients for evaluation on held-out devices. To arrive at the dressed-state Hamiltonian Hdress in the qubit-subspace, we utilize a dressed-state projection inspired by symmetric-orthogonalization techniques from quantum chemistry [29]. To start, we diagonalize the full Hamiltonian, 
+
+Hfull ∈ C8×8,
+
+Hfull |ψk⟩ = Ek |ψk⟩ , k ∈ { 1, ..., 8} (14) yielding the eigenenergies Ek and the corresponding eigenvec-tors |ψk⟩. Next, to project to the qubit subspace, we identify the eigenvectors with the greatest “qubit character,” which we define in terms of the weights 
+
+wk = X
+
+> ℓ∈Q
+
+| ⟨ ℓ|ψk⟩ | 2 (15) where Q := {| 0q10q20c1⟩ , |0q11q20c1⟩ , |1q10q20c1⟩ , |1q11q20c1⟩} 
+
+is the qubit subspace when the coupler is in the ground state. The four eigenstates with the largest weight wk are selected. We label these |ψα⟩ with α = 1 , . . . , 4, sorted by ascending energy. In the dispersive regime, each selected eigenstate is pre-dominantly a qubit-subspace state dressed by a small cou-pler admixture. This selection fails only when the coupler is near-resonant with a qubit, causing strong hybridization. However, this requirement—that the qubit-like and coupler-like eigenstates remain distinguishable by their subspace weight— is considerably weaker than the gqc /∆qc ≪ 1 convergence requirement of perturbative methods such as the second-order Schrieffer–Wolff transformation, allowing the dressed-state projection to remain accurate over a wider range of coupler flux bias points. After selecting the four “qubit-like” eigenstates, we define the qubit-subspace overlap matrix as follows, 
+
+Mℓ,α = ⟨ℓ|ψα⟩ , ℓ ∈ Q , α ∈ { 1, ..., 4}. (16) 4Training 
+
+Learn shared structure across simulated devices 
+
+{ηi}Ni=1 
+
+> Device parameters
+
+{ϕj }Jj=1 
+
+> Control pulses
+
+Learned Simulated 
+
+Neural Network θ
+
+cpred  
+
+> k
+
+(ηi, ϕ j ; θ)
+
+H(i,j )full 8×8
+
+H(i,j )eff 4×4
+
+> Project to qubit subspace
+
+ctrue  
+
+> k
+
+= Tr( Pk Heff )/d 
+
+L = ∑
+
+> i,j,k
+
+∣∣∣cpred  
+
+> k
+
+− ctrue 
+
+> k
+
+∣∣∣2   
+
+> Devices i, pulses j, coefficients k
+> MSE of Hamiltonian coefficients
+> Backprop through  θ
+
+Adaptation 
+
+Adapt to new device from few measurements 
+
+ηpred 
+
+> Unknown parameters
+
+{ϕj }Jj=1 
+
+> Control pulses
+
+Neural Network θ∗ Frozen from training 
+
+cpred  
+
+> k
+
+(ηpred , ϕ j ; θ∗)
+
+Hpred  
+
+> j
+
+= ∑ 
+
+> k
+
+cpred  
+
+> k
+
+Pk 4×4
+
+U pred  
+
+> j
+
+(t) = e−iH pred         
+
+> jt4×4
+> L=∑
+> j,ρ 0,m
+> ∣∣∣⟨Om⟩pred
+> j,ρ 0− ⟨ Om⟩meas
+> j,ρ 0
+> ∣∣∣2
+> Pulses j, initial states ρ0, observables m
+> MSE of observables w.r.t. hardware
+> L-BFGS optimization of  ηpred  only
+
+Fig. 2. HAML pipeline: schematic of the two-stage framework. Left: during training, a neural network with shared parameters θ learns to predict effective Hamiltonian coefficients from simulated device parameters and control pulses. Right: during adaptation, the trained network is frozen, and only the device parameter vector ηpred is optimized using hardware measurements. 
+
+Lastly, we apply a symmetric orthogonalization to the overlap matrix M . Specifically, we compute the Gram matrix, 
+
+S = M †M. (17) For which we have the eigendecomposition, 
+
+S =
+
+> 4
+
+X
+
+> j=1
+
+λj |vj ⟩ ⟨ vj | =⇒ S−1/2 =
+
+> 4
+
+X
+
+> j=1
+
+λ−1/2 
+
+> j
+
+|vj ⟩ ⟨ vj | .
+
+(18) Then, by symmetric orthogonalization, we have 
+
+˜M = M S −1/2, (19) and arrive at the dressed-state Hamiltonian, 
+
+Hdress = ˜M diag (E1, ..., E 4) ˜M † (20) 
+
+=
+
+> 4
+
+X
+
+> α=1
+
+Eα ˜ψα
+
+E D ˜ψα . (21) where ˜ψα
+
+E
+
+denotes the α-th column in ˜M .The dressed-state coefficients cdress from Eq. (13) reproduce the qubit-like spectrum of Hfull , but the unitary they generate need not coincide with the projected dynamics actually pro-duced by the full three-mode evolution. Define the projected sub-unitary 
+
+U (i,j ) 
+
+> proj
+
+(T ) = Π Q e−iH (i,j )  
+
+> full T
+
+ΠQ, (22) where ΠQ = P 
+
+> ℓ∈Q
+
+|ℓ⟩⟨ ℓ| is the projector onto the bare coupler-ground qubit subspace Q defined above; equivalently, Uproj (T )
+
+is the 4 × 4 block of the full 8 × 8 propagator with both indices restricted to Q. The propagator exp  −i P 
+
+> k
+
+cdress  
+
+> k
+
+Pk T 
+
+generated by the spectral coefficients does not in general equal U (i,j ) 
+
+> proj
+
+(T ), since the latter is not unitary (some amplitude leaks out of Q) and so is not reachable from any two-qubit Hamiltonian. We therefore refine the supervised target by maximizing process fidelity to Uproj at the final time: 
+
+ctrue (ϕj , η i) = arg max 
+
+> c∈Rn
+
+Tr  ei P    
+
+> kckPkT
+
+U (i,j ) 
+
+> proj
+
+(T ) 2
+
+d2 , (23) solved with L-BFGS initialized at cdress (ϕj , η i). The cor-responding effective two-qubit Hamiltonian is H(i,j ) 
+
+> eff
+
+=P 
+
+> k
+
+ctrue  
+
+> k
+
+(ϕj , η i) Pk. The seeding is essential: the fidelity objec-tive has π-spaced local maxima along the Z-like coordinates, and an unseeded initialization lands on different branches across 
+
+(ϕ, η ) samples, producing a multi-valued target the network cannot fit as a smooth function. Seeding at cdress pins every sample to the basin containing the spectral coefficients, yielding a continuous map (ϕ, η ) 7 → ctrue and therefore an effective Hamiltonian that is the best two-qubit representation of the projected dynamics at T .
+
+C. Training 
+
+Training proceeds as drawn in the left half of Fig. 2. The network fθ is a multilayer perceptron with SiLU activations that maps each (ϕ, η ) pair to predicted Pauli coefficients 
+
+cpred  
+
+> k
+
+(ϕ, η ; θ). These predictions are compared to the ground-5truth coefficients ctrue produced by the procedure of Sec. III-B via the per-coefficient mean-squared error 
+
+Ltrain (θ) = X
+
+> i,j,k
+
+cpred  
+
+> k
+
+(ϕj , η i; θ) − ctrue  
+
+> k
+
+(ϕj , η i) 2, (24) indexed over simulated devices i, control pulses j, and Pauli coefficients k. The weights, θ, are updated by standard backpropagation. The network is trained with Adam over a fixed number of epochs. The architecture and training hyperparameters are reported in Appendix C, and convergence behavior is shown in Appendix A. 
+
+D. Adaptation to New Devices 
+
+Adaptation proceeds along the right half of Fig. 2. The network weights θ∗ are frozen and the device parameter vector becomes the only optimization variable, denoted ηpred 
+
+to distinguish it from the ground-truth values of η supplied during training. A small set of measurements is performed on the new device in the form of (initial state, observable) pairs {(ρp, O p)}NM
+
+> p=1
+
+, evaluated at a fixed final evolution time 
+
+T across selected control points ϕ.For a candidate ηpred , the network output is mapped to a predicted Hamiltonian Hpred  
+
+> j
+
+= P 
+
+> k
+
+cpred  
+
+> k
+
+(ηpred , ϕ j ; θ∗) Pk and propagator U pred  
+
+> j
+
+(T ) = e−iH pred   
+
+> jT
+
+. Predicted expectation values 
+
+⟨Op⟩pred are then compared to the corresponding hardware measurements ⟨Op⟩meas via the sum of squared residuals 
+
+Ladapt (ηpred ) = X
+
+> j,p
+
+⟨Op⟩pred  
+
+> j
+
+(ηpred ) − ⟨ Op⟩meas 
+
+> j
+> 2
+
+. (25) We minimize Ladapt with L-BFGS over ηpred alone, with 5 random initializations to mitigate the risk of poor local minima. The recovered ηpred is not expected to exactly coincide with the device’s true parameters: the map η 7 → ck is not injective, so distinct η can produce identical observable physics. We therefore evaluate adaptation by the accuracy of the recovered effective coefficients rather than by recovery of ηpred itself. The choice of which (ρp, O p) pairs to use is the subject of the next subsection. 
+
+E. Minimal Measurement Set 
+
+To keep the per-device measurement budget small we select a compact set of (initial state, observable) pairs that is maximally informative about the device parameters. The candidate set is built from initial states that are tensor products of single-qubit states, which are natural to prepare on superconducting hardware, paired with observables drawn from the single- and two-qubit Pauli operators excluding the identity. For each candidate pair (ρp, O p) we sample N = 500 random draws of (η, ϕ ) from the training distribution, compute the predicted expectation value for each draw, and assemble these values into an N -dimensional signal vector sp. Pairs with high variance across sp are sensitive to the parameters we wish to learn; pairs whose signal is the same for every (η, ϕ ) provide no information regardless of the device. Figure 3 reports this raw informativeness as a heatmap over (initial state, observable).       
+
+> Fig. 3. Raw informativeness of every candidate (initial state, observable) pair, computed as the variance of the predicted expectation value across N= 500
+> random draws of (η, ϕ )from the training distribution. Rows: candidate initial states, restricted to tensor products of single-qubit states. Columns: single-and two-qubit Pauli observables (excluding the identity). Darker cells are uninformative; brighter cells are sensitive to the learned parameters.
+> Fig. 4. Greedy selection trajectory. Each row corresponds to one (initial state, observable) candidate, ordered by selection (top = first picked); rows below the selected set show the highest-informativeness candidates that were not selected. Gray bars: raw informativeness. Colored bars: marginal informativeness after orthogonalization against previously-selected pairs.
+
+Computational-basis initial states are largely uninformative while the most informative cells are superposition states paired with X- or Y -containing observables. We then build the measurement set greedily, using orthogo-nalization to avoid redundancy. The first selected pair is the one with the largest variance. At each subsequent step, we project every remaining sp onto the orthogonal complement of the subspace spanned by the previously selected signal vectors and select the pair with the largest residual variance, the marginal informativeness. This guarantees that each new measurement responds to a combination of device parameters not already covered by the existing set. Algorithmically this is QR factorization with column pivoting on the matrix of signal vectors, an approximate greedy maximizer of the submatrix 6volume | det  S⊤S| that has been used in fluid-flow and image-reconstruction settings to build sparse-sensor placements [30]. Figure 4 shows the resulting greedy trajectory: each row is a selected pair, with entries in descending order of selection. The gray bar is the pair’s raw informativeness and the colored bar is its marginal informativeness after orthogonalization. The first two picks are brand-new information (raw and marginal nearly coincide), while later picks have marginal contributions far below their raw values. Some high-raw candidates near the bottom of the chart are discarded entirely because their marginal contribution is essentially zero. The rapid decay of marginal informativeness motivates terminating selection after a small number of pairs. For the results of Sec. IV-A – IV-C we use NM = 7 measurement pairs. For adapt-time control pulses we sub-select Nϕ pulses from the random training library of Sec. III-B by farthest-point sampling (FPS) [31]: after rescaling each flux axis to unit standard deviation across the pool, we seed with the pulse nearest the pool centroid and at each subsequent step add the pulse whose minimum distance to the already-selected set is largest. This spreads the selected pulses evenly across the three-dimensional box of accessible flux configurations. For the results of Sec. IV-A –IV-C we use Nϕ = 20 , giving a per-device adaptation budget of NM × Nϕ = 140 expectation values. IV. R ESULTS 
+
+We evaluate HAML on the transmon-coupler-transmon system of Sec. II-B . The network is trained on 50 simulated devices with 100 randomly sampled control pulses per device, and adapted to 10 held-out devices using the variance-greedy measurement set of Sec. III-E together with 20 adapt-time control pulses selected from the same random training library by farthest-point sampling (Sec. III-E ), each measured at a single final evolution time T . The SWPT baseline is the second-order approximation evaluated on each held-out device’s true parameters. The effective coefficient ground truth is the fidelity-refined target of Sec. III-B. 
+
+A. Effective Coefficient Prediction on Held-Out Devices 
+
+Figure 5 shows HAML’s predicted effective Pauli coeffi-cients against the effective ground truth for the five terms 
+
+{ZI, IZ, XX, Y Y, ZZ }, evaluated at 300 random control points across each of the 10 held-out devices. The single-qubit detunings ZI and IZ track the y = x diagonal tightly across their full [0 , 60] MHz range. The exchange terms XX, Y Y 
+
+(range ±10 MHz) and the parasitic ZZ ([−1, 1.5] MHz) show slightly more spread, particularly in the strong-hybridization corner of each panel, consistent with the held-out set spanning a wide range of qubit-coupler coupling (quantified in Sec. IV-B ). Aggregate accuracy is summarized in Table I, alongside the SWPT baseline. Across all five terms, HAML attains a mean absolute error of 0.136 MHz ( 0.58% relative) versus 
+
+0.786 MHz ( 4.72% relative) for SWPT—an improvement of roughly 6× in absolute MAE and 8× in relative error. HAML outperforms SWPT on every term. The gap is largest on the                                      
+
+> Fig. 5. Predicted vs ground-truth projected Pauli coefficients on 10 held-out, adapted devices. Shown are 300 random control points per device. Color encodes device; dashed line is y=x.TABLE I PER -COEFFICIENT MEAN ABSOLUTE ERROR ON THE HELD -OUT DEVICES .Term HAML MAE HAML Rel. SWPT MAE SWPT Rel. (MHz) (%) (MHz) (%)
+> ZI 0.259 0.39 0.872 1.32
+> IZ 0.170 0.26 0.865 1.33
+> XX 0.108 0.57 0.916 4.82
+> Y Y 0.107 0.56 0.916 4.82
+> ZZ 0.036 1.13 0.362 11.32 All 0.136 0.58 0.786 4.72
+> Relative error normalizes each term’s MAE by its dynamic range across the held-out set. The All row weights all terms and devices equally.
+
+parasitic ZZ term, where HAML’s 1.13% relative error is an order of magnitude smaller than SWPT’s 11 .32% ; this gap is structural rather than numerical, since second-order Schrieffer-Wolff in the two-level transmon approximation predicts ZZ =0, so the SWPT MAE on ZZ reflects an entire term it omits by construction. On the exchange terms XX and Y Y , HAML reduces the absolute MAE by nearly an order of magnitude (0.11 MHz vs 0.92 MHz); on the single-qubit detunings ZI 
+
+and IZ , HAML is 3–5× more accurate. 
+
+B. The Hybridization Regime Across the Test Ensemble 
+
+Held-out devices, sampled uniformly from the η bounds of Table B.1, sweep through a wide range of qubit-coupler 7Fig. 6. Perturbative expansion ratio |gqic 1/∆qic 1| for i = 1 (left) and    
+
+> i= 2 (right), across the 10 held-out devices, at the fast-gate operating flux
+> Φc1= 1 .35 . Bars are sorted ascending; bar color identifies the device.
+
+hybridization across their operating range. At low coupler flux (Φc1 ≈ 0.1) every device sits in the deep-dispersive regime where SWPT converges well; at the fast-gate operating flux 
+
+Φc1 = 1 .35 they reach varying degrees of strong hybridization, from |g/ ∆| ≈ 0.1 (Sys 9) to |g/ ∆| ≈ 0.78 (Sys 3, qubit 2)—comfortably within the regime where the second-order expansion is no longer reliable. Figure 6 reports the perturbative expansion ratio |gqic 1/∆qic 1| for both qubits at this operating flux, sorted across the test set. The same ratio simultaneously controls three things: SWPT’s convergence, the leakage of the qubit-like eigenstates into coupler-excited components, and the magnitude of the correc-tions any 4D effective model cannot recover by construction. To quantify the third point, projecting the full multi-mode propagator Ufull (T ) onto the qubit-like subspace yields a sub-unitary operator, Uproj (T ) = Π Ufull (T )Π , whose deviation from unitarity is exactly the leakage out of that subspace during evolution. Comparing any 4D effective unitary Ueff =exp( −iH eff T ) against Uproj (T ) thus carries an irreducible residual that we refer to as the infidelity floor : it depends on the projection itself, not on the model. We denote the infidelity floor by Ifloor ≡ 1−Ffloor , where Ffloor is the standard process fidelity between Ueff and Uproj (T ). HAML and SWPT both inherit this floor at strong hybridization; SWPT additionally diverges from it as its expansion degrades, while HAML, trained against the exact dressed-state coefficients, stays near it. Sec. IV-C makes the asymmetric divergence quantitative. 
+
+C. HAML vs SWPT Across the Operating Range 
+
+For each held-out device we sweep the operating flux and compare the HAML and SWPT projected-unitary fidelities against the true Uproj (T ). Figure 7 plots the ratio of excess infidelities (ISWPT − Ifloor )/(IHAML − Ifloor ) as a function of effective coupling geff , on a logarithmic scale, where Ifloor 
+
+is the irreducible infidelity floor defined in Sec. IV-B and values above unity indicate HAML wins. After subtracting this floor, HAML reduces the model infidelity by 10 ×–1000 ×
+
+relative to SWPT in most systems. Aggregating across the 20 15 10 5 0 5 10 15          
+
+> geff (MHz)
+> 0
+> 10 3
+> 10 2
+> 10 1
+> 10 0
+> 10 1
+> 10 2
+> 10 3
+> (ISWPT  − Ifloor ) / (ILearned  − Ifloor )
+> Sys 1
+> Sys 2
+> Sys 3
+> Sys 4
+> Sys 5
+> Sys 6
+> Sys 7
+> Sys 8
+> Sys 9
+> Sys 10
+> Fig. 7. Infidelity gain of HAML over SWPT, (ISWPT −IFloor )/(ILearned −Ifloor ),with fidelity floor Ifloor , as a function of effective coupling geff , per held-out device.
+
+held-out set, HAML’s mean excess infidelity is 1.1 × 10 −5,compared with 4.3 × 10 −4 for SWPT—a factor of roughly 40 .Increasing Φc1 drives geff from small positive values at low flux (where SWPT performs best) toward strongly negative values at high flux (where SWPT’s perturbative expansion is least accurate). The narrow operating points where SWPT marginally outperforms HAML are not regions of genuine SWPT accuracy: they correspond to fluxes where SWPT’s drifting coefficient curves momentarily cross through the ground truth on their way past it, as visible in the term-by-term sweep in Fig. D.1 (Appendix D). SWPT’s accuracy is bounded analytically by the order parameter ϵ = gqc /∆qc and degrades once the neglected O(ϵ3)
+
+terms stop being small, and extending to higher order requires deriving a nontrivial generator for the block-diagonalization. HAML is not tied to any such expansion. Both stages operate on the full multi-mode dynamics projected onto the qubit subspace: training fits effective coefficients to the projected unitary (Sec. III-B ), and adaptation fits device parameters to qubit-subspace observables (Sec. III-D ). HAML therefore captures higher-order corrections across all terms—including the parasitic ZZ interaction that second-order SWPT omits entirely—and can be interpreted as a data-driven analog of a higher-order reduction, bypassing the nontrivial analytic derivation it would otherwise require. V. C ONCLUSION 
+
+From a simulated device ensemble, HAML learns the reduction from full multi-mode quantum dynamics to an effective qubit Hamiltonian, and adapts to a new device from a handful of measurements. On a transmon-coupler-transmon benchmark, the trained model reduces effective-coefficient MAE by ∼6× and projected-unitary excess infidelity by a factor of ∼40 × over second-order SWPT, with the gap concentrated in the near-resonance regime relevant to fast two-qubit gates. Once trained, adaptation to a new device takes seconds on a single CPU. HAML also carries practical advantages for device calibration. Because adaptation operates entirely on qubit-subspace observables, HAML can be deployed 8on architectures where the coupler lacks dedicated readout without first running the indirect spectroscopy needed to back out bare mode parameters for a perturbative reduction. Several extensions follow from our current iteration of HAML. First, retraining with three levels per mode rather than two would capture leakage into the second excited state and an additional contribution to the parasitic ZZ interaction strength. Second, extending to time-varying pulses would allow the same pipeline to predict effective coefficients along a trajectory, enabling characterization of time-dependent device characteristics such as pulse distortion [32]. Third, scaling to multi-coupler architectures is a natural next step, as SWPT becomes more analytically complex in this setting. Finding the perturbative ansatz becomes difficult, while HAML’s cost scales only with the number of device parameters η and remains analytically straightforward. Finally, characterizing performance under realistic measurement noise is necessary before hardware deployment, where measurement set opti-mizations that balance variance maximization against noise insensitivity will be especially valuable. Broadly, our results suggest that effective Hamiltonian reduction—traditionally a pen-and-paper exercise in symbolic manipulation—can instead be solved by training a network on simulated examples whenever a high-fidelity digital twin is available. As superconducting architectures grow in mode count and operating bandwidth, and as detailed device simulators become more common [33], data-driven reductions are poised to become increasingly attractive relative to the case-by-case derivations they replace. ACKNOWLEDGMENTS 
+
+FTC is the Chief Scientist for Quantum Software at Infleq-tion. This work is funded in part by the STAQ project under award NSF Phy-232580; in part by the US Department of Energy Office of Advanced Scientific Computing Research, Accelerated Research for Quantum Computing Program (Award Number DE-SC0025509); in part by the NSF Quantum Leap Challenge Institute for Hybrid Quantum Architectures and Networks (NSF Award 2016136); in part by the NSF National Virtual Quantum Laboratory program; in part based upon work supported by the U.S. Department of Energy, Office of Science, National Quantum Information Science Research Centers; in part by the Army Research Office under Grant Number W911NF-23-1-0077. The views and conclusions contained in this document are those of the authors and should not be interpreted as representing the official policies, either expressed or implied, of the U.S. Government. The U.S. Government is authorized to reproduce and distribute reprints for Government purposes notwithstanding any copyright notation herein. APPENDIX ACONVERGENCE 
+
+Figure A.1 shows the training loss across epochs and the L-BFGS adaptation loss for each of the 10 held-out devices. Training drives the projected-coefficient MSE down by roughly seven orders of magnitude, with the learning-rate scheduler taking over once the curve plateaus. Adaptation converges in fewer than 140 total L-BFGS iterations per device, summed over 5 random restarts; the visible spikes correspond to restart events at which ηpred is reseeded uniformly within the bounds of Table B.1.  
+
+> Fig. A.1. Training loss vs. epoch (left) and L-BFGS adaptation loss vs. iteration for each held-out device (right), both on a log scale.
+
+APPENDIX BSYSTEM PARAMETERS 
+
+The two transmons are held fixed across the device ensemble; only the coupler-related parameters η vary. Table B.1 lists the fixed qubit values, the sampling ranges for η used to generate the training and held-out devices, and the control flux ranges spanned by the pulse library. 9TABLE B.1 SYSTEM PARAMETERS .
+
+Fixed qubit parameters 
+
+E0 
+
+> J
+
+(q1, q2) 20.0 GHz 
+
+EC (q1, q2) 0.25 GHz 
+
+Variable device parameters η (uniform sampling) 
+
+E0,c 1 
+
+> J
+
+[23 .0, 28 .0] GHz 
+
+Ec1 
+
+> C
+
+[0 .28 , 0.32] GHz 
+
+Eq1,c 1 
+
+> C
+
+[0 .015 , 0.025] GHz 
+
+Eq2,c 1 
+
+> C
+
+[0 .015 , 0.025] GHz 
+
+Eq1,q 2 
+
+> C
+
+[0 .002 , 0.004] GHz 
+
+Control flux ranges (constant-pulse library) 
+
+ϕq1 
+
+> ext
+
+[0 .0, 0.5] rad 
+
+ϕq2 
+
+> ext
+
+[0 .0, 0.5] rad 
+
+ϕc1 
+
+> ext
+
+[0 .1, 1.35] rad 
+
+APPENDIX CTRAINING AND ADAPTATION HYPERPARAMETERS 
+
+Table C.1 reports the network architecture, optimizer settings, dataset sizes, and L-BFGS adaptation parameters used to produce the results of Sec. IV-A–IV-C. 
+
+TABLE C.1 NETWORK , TRAINING , AND ADAPTATION HYPERPARAMETERS .
+
+Network architecture 
+
+Hidden layers 3Hidden dimension 64 Activation SiLU 
+
+Training 
+
+Optimizer Adam Initial learning rate 2 × 10 −2
+
+Scheduler patience (epochs) 500 LR decay factor 0.5 Minimum learning rate 1 × 10 −7
+
+Early-stopping patience (epochs) 600 Batch size full ( 50 × 100 )Best epoch (this run) 398,626 
+
+Dataset 
+
+Training devices 50 Held-out devices 10 Training control pulses per device 100 Adapt control pulses per device 20 Final evolution time T 1 ns Time snapshots (training only) 10 
+
+Adaptation 
+
+Optimizer L-BFGS-B Bounds η ranges (Table B.1) Max iterations per restart 100 Random restarts 5Initialization uniform within η bounds Evaluation time T only (no intermediate times) 
+
+APPENDIX DPER -COEFFICIENT FLUX SWEEP 
+
+Figure D.1 compares HAML, SWPT, and the fidelity-refined ground truth across the full coupler-flux operating range for three representative held-out devices, with one panel per projected-Pauli term. HAML’s prediction (dashed) tracks the ground-truth curve (solid) closely across the full range for all five terms; small residual gaps appear for the most hybridized device (Sys 3) near the high-flux endpoint, most visibly on 
+
+ZZ . SWPT (dotted) tracks the truth in the low-flux dispersive regime but drifts progressively further as the coupler is tuned through resonance—visible on ZI /IZ and on XX /Y Y at large 
+
+Φc1 , and on ZZ across the entire sweep, since its second-order transmon truncation cannot reproduce the parasitic ZZ term at all. 
+
+Fig. D.1. Projected-Pauli coefficients vs. coupler flux Φc1 for three held-out devices. Dashed: HAML prediction; solid: fidelity-refined ground truth; dotted: SWPT. Qubit fluxes held at ϕq1 = ϕq2 = 0 .25 .
+
+APPENDIX ERUNTIME 
+
+Wall-clock costs for the run reported in Secs. IV-A – IV-C ,measured on a 2-core CPU node of the NERSC Perlmutter system (no GPU):  
+
+> •
+
+Training-data generation: 0.565 s per device (100 
+
+pulses), or ∼ 28 s for the full 50-device set, single-threaded.  
+
+> •
+
+Training: 972 min (one-time), to the best epoch reported in Table C.1.  
+
+> •
+
+Adaptation (per held-out device): 6.09 s for the full 5-restart L-BFGS loop, or ∼ 53 ms per iteration. The per-device adaptation cost is the operationally relevant number: once trained, HAML specializes to a new device in seconds without requiring a GPU. 10 REFERENCES [1] F. Yan, P. Krantz, Y. Sung, M. Kjaergaard, D. L. Campbell, T. P. Orlando, S. Gustavsson, and W. D. Oliver, “Tunable coupling scheme for implementing high-fidelity two-qubit gates,” Phys. Rev. Appl. , vol. 10, p. 054062, Nov 2018. [Online]. Available: https://link.aps.org/doi/10.1103/PhysRevApplied.10.054062 [2] S. Bravyi, D. P. DiVincenzo, and D. Loss, “Schrieffer–wolff transformation for quantum many-body systems,” Annals of Physics ,vol. 326, no. 10, pp. 2793–2826, 2011. [Online]. Available: https://www.sciencedirect.com/science/article/pii/S0003491611001059 [3] A. Blais, A. L. Grimsmo, S. Girvin, and A. Wallraff, “Circuit quantum electrodynamics,” Reviews of Modern Physics , vol. 93, no. 2, May 2021. [Online]. Available: http://dx.doi.org/10.1103/RevModPhys.93.025005 [4] V. Karle, “UnitaryTransformations.jl: Symbolic Unitary Transformations for Quantum Hamiltonians,” 2025. [Online]. Available: https://github. com/volkerkarle/UnitaryTransformations.jl [5] C. Zhang, T.-L. Wang, L.-L. Guo, X.-Y. Yang, X.-X. Yang, P. Duan, Z.-L. Jia, W.-C. Kong, and G.-P. Guo, “Characterization of tunable coupler without a dedicated readout resonator in superconducting circuits,” Applied Physics Letters , vol. 122, no. 2, 2023. [Online]. Available: https://pubs.aip.org/aip/apl/article/122/2/024001/ 2876150/Characterization-of-tunable-coupler-without-a [6] X. Li, T. Cai, H. Yan, Z. Wang, X. Pan, Y. Ma, W. Cai, J. Han, Z. Hua, X. Han, Y. Wu, H. Zhang, H. Wang, Y. Song, L. Duan, and L. Sun, “Tunable coupler for realizing a controlled-phase gate with dynamically decoupled regime in a superconducting circuit,” 
+
+Phys. Rev. Appl. , vol. 14, p. 024070, Aug 2020. [Online]. Available: https://link.aps.org/doi/10.1103/PhysRevApplied.14.024070 [7] P. Mundada, G. Zhang, T. Hazard, and A. Houck, “Suppression of qubit crosstalk in a tunable coupling superconducting circuit,” 
+
+Phys. Rev. Appl. , vol. 12, p. 054023, Nov 2019. [Online]. Available: https://link.aps.org/doi/10.1103/PhysRevApplied.12.054023 [8] X. Wu, H. Yan, G. Andersson, A. Anferov, M.-H. Chou, C. R. Conner, J. Grebel, Y. J. Joshi, S. Li, J. M. Miller, R. G. Povey, H. Qiao, and A. N. Cleland, “Modular quantum processor with an all-to-all reconfigurable router,” Phys. Rev. X , vol. 14, p. 041030, Nov 2024. [Online]. Available: https://link.aps.org/doi/10.1103/PhysRevX.14.041030 [9] X. Wu, Y. J. Joshi, H. Yan, G. Andersson, A. Anferov, C. R. Conner, B. Karimi, A. M. King, S. Li, H. L. Malc, J. M. Miller, H. Mishra, H. Qiao, M. Ryu, S. Xing, J. Shi, and A. N. Cleland, “Mitigating cosmic-ray-like correlated events with a modular quantum processor,” 
+
+Phys. Rev. Appl. , vol. 24, p. 044022, Oct 2025. [Online]. Available: https://link.aps.org/doi/10.1103/4ctq-r6w6 [10] D. C. McKay, S. Filipp, A. Mezzacapo, E. Magesan, J. M. Chow, and J. M. Gambetta, “Universal gate for fixed-frequency qubits via a tunable bus,” Phys. Rev. Appl. , vol. 6, p. 064007, Dec 2016. [Online]. Available: https://link.aps.org/doi/10.1103/PhysRevApplied.6.064007 [11] J. Stehlik, D. M. Zajac, D. L. Underwood, T. Phung, J. Blair, S. Carnevale, D. Klaus, G. A. Keefe, A. Carniol, M. Kumph, M. Steffen, and O. E. Dial, “Tunable coupling architecture for fixed-frequency transmon superconducting qubits,” Phys. Rev. Lett. , vol. 127, p. 080505, Aug 2021. [Online]. Available: https: //link.aps.org/doi/10.1103/PhysRevLett.127.080505 [12] F. Arute, K. Arya, R. Babbush, D. Bacon, J. C. Bardin, R. Barends, R. Biswas, S. Boixo, F. G. Brandao, D. A. Buell et al. ,“Quantum supremacy using a programmable superconducting processor,” 
+
+nature , vol. 574, no. 7779, pp. 505–510, 2019. [Online]. Available: https://doi.org/10.1038/s41586-019-1666-5 [13] “Quantum error correction below the surface code threshold,” 
+
+Nature , vol. 638, no. 8052, pp. 920–926, 2025. [Online]. Available: https://doi.org/10.1038/s41586-024-08449-y [14] A. Goldschmidt, E. Kaiser, J. L. Dubois, S. L. Brunton, and J. N. Kutz, “Bilinear dynamic mode decomposition for quantum control,” New Journal of Physics , vol. 23, no. 3, p. 033035, 2021. [Online]. Available: https://iopscience.iop.org/article/10.1088/1367-2630/abe972/meta [15] A. Youssry, Y. Yang, R. J. Chapman, B. Haylock, F. Lenzini, M. Lobino, and A. Peruzzo, “Experimental graybox quantum system identification and control,” npj Quantum Information , vol. 10, p. 9, 2024. [16] E. Genois, N. J. Stevenson, N. Goss, I. Siddiqi, and A. Blais, “Quantum optimal control of superconducting qubits based on machine-learning characterization,” Phys. Rev. Appl. , vol. 24, p. 034073, Sep 2025. [Online]. Available: https://link.aps.org/doi/10.1103/d9yg-d3qr [17] V. V. Sivak, A. Eickbusch, H. Liu, B. Royer, I. Tsioutsios, and M. H. Devoret, “Model-free quantum control with reinforcement learning,” Physical Review X , vol. 12, 03 2022. [Online]. Available: https://doi.org/10.1103/PhysRevX.12.011059 [18] X. Wu, H. Yan, G. Andersson, A. Anferov, C. R. Conner, Y. J. Joshi, B. Karimi, A. M. King, S. Li, H. L. Malc, J. M. Miller, H. Mishra, H. Qiao, M. Ryu, J. Shi, and A. N. Cleland, “Efficient n-qubit entangling operations via a superconducting quantum router,” 4 2026. [19] C. Finn, P. Abbeel, and S. Levine, “Model-agnostic meta-learning for fast adaptation of deep networks,” in Proceedings of the 34th International Conference on Machine Learning - Volume 70 , ser. ICML’17. JMLR.org, 2017, p. 1126–1135. [20] L. Zintgraf, K. Shiarlis, V. Kurin, K. Hofmann, and S. Whiteson, “Fast context adaptation via meta-learning,” in Proceedings of the 36th International Conference on Machine Learning (ICML) , ser. Proceedings of Machine Learning Research, vol. 97. PMLR, 2019, pp. 7693–7702. [21] J. Van Damme, S. Massar, R. Acharya, T. Ivanov, D. Perez Lozano, Y. Canvel, M. Demarets, D. Vangoidsenhoven, Y. Hermans, J. G. Lai, A. M. Vadiraj, M. Mongillo, D. Wan, J. De Boeck, A. Poto ˇcnik, and K. De Greve, “Advanced CMOS manufacturing of superconducting qubits on 300 mm wafers,” Nature , vol. 634, no. 8032, p. 74–79, sep 2024. [Online]. Available: http://dx.doi.org/10.1038/s41586-024-07941-9 [22] J. J. Burnett, A. Bengtsson, M. Scigliuzzo, D. Niepce, M. Kudra, P. Delsing, and J. Bylander, “Decoherence benchmarking of superconducting qubits,” npj Quantum Information , vol. 5, no. 1, jun 2019. [Online]. Available: http://dx.doi.org/10.1038/s41534-019-0168-5 [23] Q. Li, T. Wang, V. Roychowdhury, and M. K. Jawed, “Metalearning generalizable dynamics from trajectories,” Phys. Rev. Lett. , vol. 131, p. 067301, Aug 2023. [Online]. Available: https://link.aps.org/doi/10.1103/ PhysRevLett.131.067301 [24] L. Schorling, P. Vaidhyanathan, J. Schuff, M. J. Carballido, D. Zumb ¨uhl, G. Milburn, F. Marquardt, J. Foerster, M. A. Osborne, and N. Ares, “Meta-learning characteristics and dynamics of quantum systems,” 2025. [Online]. Available: https://arxiv.org/abs/2503.10492 [25] R. T. Q. Chen, Y. Rubanova, J. Bettencourt, and D. Duvenaud, “Neural ordinary differential equations,” in Proceedings of the 32nd International Conference on Neural Information Processing Systems , ser. NIPS’18. Red Hook, NY, USA: Curran Associates Inc., 2018, p. 6572–6583. [Online]. Available: https://dl.acm.org/doi/10.5555/3327757.3327764 [26] T.-M. Li, J.-C. Zhang, B.-J. Chen, K. Huang, H.-T. Liu, Y.-X. Xiao, C.-L. Deng, G.-H. Liang, C.-T. Chen, Y. Liu, H. Li, Z.-T. Bao, K. Zhao, Y. Xu, L. Li, Y. He, Z.-H. Liu, Y.-H. Yu, S.-Y. Zhou, Y.-J. Liu, X. Song, D. Zheng, Z. Xiang, Y.-H. Shi, K. Xu, and H. Fan, “High-precision pulse calibration of tunable couplers for high-fidelity two-qubit gates in superconducting quantum processors,” 
+
+Phys. Rev. Appl. , vol. 23, p. 024059, Feb 2025. [Online]. Available: https://link.aps.org/doi/10.1103/PhysRevApplied.23.024059 [27] X. Zhang, X. Zhang, C. Chen, K. Tang, K. Yi, K. Luo, Z. Xie, Y. Chen, and T. Yan, “Characterization and optimization of tunable couplers via adiabatic control in superconducting circuits,” Phys. Rev. Appl. , vol. 24, p. 034003, Sep 2025. [Online]. Available: https://link.aps.org/doi/10.1103/wgqf-8rcy [28] S. P. Fors, J. Fern ´andez-Pend ´as, and A. F. Kockum, “Comprehensive explanation of ZZ coupling in superconducting qubits,” arXiv preprint arXiv:2408.15402 , 2024. [29] P.-O. L ¨owdin, “On the non-orthogonality problem connected with the use of atomic wave functions in the theory of molecules and crystals,” 
+
+The Journal of Chemical Physics , vol. 18, no. 3, pp. 365–375, 1950. [Online]. Available: https://doi.org/10.1063/1.1747632 [30] K. Manohar, B. W. Brunton, J. N. Kutz, and S. L. Brunton, “Data-driven sparse sensor placement for reconstruction: Demonstrating the benefits of exploiting known patterns,” IEEE Control Systems Magazine , vol. 38, no. 3, pp. 63–86, 2018. [31] Y. Eldar, M. Lindenbaum, M. Porat, and Y. Y. Zeevi, “The farthest point strategy for progressive image sampling,” IEEE Transactions on Image Processing , vol. 6, no. 9, pp. 1305–1315, 1997. [32] E. Genois, J. A. Gross, A. Di Paolo, N. J. Stevenson, G. Koolstra, A. Hashim, I. Siddiqi, and A. Blais, “Quantum-tailored machine-learning characterization of a superconducting qubit,” PRX Quantum , vol. 2, p. 040355, Dec 2021. [Online]. Available: https://link.aps.org/doi/10.1103/ PRXQuantum.2.040355 [33] H. Bayraktar, A. Charara, D. Clark, S. Cohen, T. Costa, Y.-L. L. Fang, Y. Gao, J. Guan, J. Gunnels, A. Haidar, A. Hehn, M. Hohnerbach, M. Jones, T. Lubowe, D. Lyakh, S. Morino, P. Springer, S. Stanwyck, 
+
+11 I. Terentyev, S. Varadhan, J. Wong, and T. Yamaguchi, “cuquantum sdk: A high-performance library for accelerating quantum science,” in 2023 IEEE International Conference on Quantum Computing and Engineering (QCE) , vol. 01, 2023, pp. 1050–1061. 
+
+12

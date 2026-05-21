@@ -1,0 +1,36 @@
+{
+  "version": 5,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.03187v1/fig-001.webp",
+      "caption": "FIG. 1. Dephasing and control infidelity of a bistable qubit. (a) Illus- tration of a qubit switching sporadically between two modes, L and H, with frequencies fL and fH, respectively. (b) Probability to find a specific equal superposition state of |0⟩and |1⟩in the laboratory frame, after such a state has evolved for some time while the qubit remained in the L mode. (c) Same as (b), but for the qubit in the H mode. (d) Same as (b) and (c), but for a bistable qubit that, uncon- trollably, is either in the L- or H-mode with roughly equal likelihood: A characteristic beating emerges with 1/(2∆TLS) half period, indi- cating a primary dephasing process for the bistable qubit. (e) Time evolution of a superposition state, visualized on the equator of the Bloch sphere. In the laboratory frame (bottom left), state evolution in the H mode (blue curve) accumulates an additional phase in the XY plane relative to the L mode (red curve). In the rotating frame defined by the H mode, the state evolution appears stationary for the H mode (blue dot, aligned with Y ′), whereas an opposite phase shift is accumulated in the L mode (red curve). (f) The average control infidelity on a logarithmic scale (solid gray line, see main text), as a function of the qubit control frequency, is expected to be dominating over the intrinsic qubit infidelity (gray dashed line). In contrast, our 1-bit feedback protocol allows the correct choice of the prevailing control frequency [cf. Figures 2(a) and 3(b)], resulting in a suppres- sion of the average control infidelity (purple stars).",
+      "page": 2,
+      "index": 1,
+      "item_type": "figure",
+      "width": 503,
+      "height": 477,
+      "figure_number": "1"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.03187v1/fig-002.webp",
+      "caption": "FIG. 2. Mitigating dephasing of a bistable qubit by a feedbackcontrolled rotating frame. (a) In the two-level-system (TLS) syndrome cycle, the Bloch vector is initialized on the equator using an X ′ −π/2 pulse. After precessing for a time τopt, the L-mode state becomes antiparallel to the H-mode state (red and blue dot, respectively). A second X ′ −π/2 pulse is then applied, followed by a measurement m in the Z basis, from which the syndrome (i.e., the qubit mode) is inferred and the control frequency fc is updated accordingly. (b) In the Ramsey cycle, the superposition time τ is a stepped parameter, and the second −π 2 pulse is applied about an axis in the equatorial plane rotated by an angle 2π∆ f τ relative to the initial rotation axis. (c–d) One repetition of the mitigation protocol traverses the loop (black arrow) exactly M×N times, yielding one row of the two two-dimensional plots below. M = 50 sets the number of linearly spaced times τi. N = 10 sets the number of repetitions for each τi value, from which the fraction of m = 1 outcomes, P, is calculated. Interleaving Ramsey cycles without feedback ( fc set to the offline-calibrated value) with Ramsey cycles with feedback ( fc set according to a preceding TLS syndrome measurement) allows direct comparison to validate the effectiveness of the 1-bit feedback. (c) Each row plots P(τi) extracted from one repetition of the mitigation protocol, considering only the 50× 10 Ramsey cycles without feedback. (d) Each row plots P(τ j) extracted from one repetition of the mitigation protocol, considering only the 50×10 Ramsey cycles with feedback. In (c) and (d), repeating the mitigation protocol generates two-dimensional plots spanning nearly two minutes in laboratory time. Inspection of the laboratory-time averages of P(τi) (purple and gray dots) clearly shows that the TLS-induced beating in the Ramsey fringes is suppressed by the 1-bit feedback protocol.",
+      "page": 4,
+      "index": 2,
+      "item_type": "figure",
+      "width": 506,
+      "height": 742,
+      "figure_number": "2"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.03187v1/fig-003.webp",
+      "caption": "FIG. 3. Quantifying improvement of gate fidelities by randomized benchmarking (RB). (a) Modified RB protocol, interleaving random gate sequences of length Ls with and without estimating the qubit mode from the TLS syndrome. Repeating this protocol for increasing Ls, and fitting the averaged exponential decay with increasing Ls, yields native gate infidelities for the traditional gates (without feedback) and the stabilized gates (with feedback). (b) Fitted native gate infidelities, obtained by running the RB protocol over a period of 14 minutes, reveal two-level fluctuations of the infidelity for sequences without feedback (gray dots) and consistently low infidelities with feedback (purple dots). Dashed lines are the averaged gate infidelities. (c) Theoretical relative improvement of the state-preparation infidelity with and without estimation as a function of the normalized TLS splitting ∆TLS and switching rate γ (see main text). The dashed line marks the boundary where no improvement is obtained.",
+      "page": 5,
+      "index": 3,
+      "item_type": "figure",
+      "width": 488,
+      "height": 552,
+      "figure_number": "3"
+    }
+  ]
+}

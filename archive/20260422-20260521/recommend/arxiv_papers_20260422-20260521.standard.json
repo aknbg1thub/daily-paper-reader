@@ -1,0 +1,956 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-05-21T13:27:39.698919+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 12,
+    "deep_cap": 8,
+    "deep_selected": 8,
+    "quick_candidates": 14,
+    "quick_skim_target": 13,
+    "quick_selected": 13
+  },
+  "deep_dive": [
+    {
+      "id": "2604.24716v2",
+      "source": "arxiv",
+      "title": "Gate-dependent offset charge shifts and anharmonicity in gatemon qubits in the weak tunneling regime",
+      "abstract": "Gatemon qubits are based on a superconductor-quantum dot-superconductor (S-QD-S) junction which enables in situ electrostatic tuning via a gate electrode. For a single-channel QD this structure gives rise to two subgap Andreev bound states (ABSs), and generally leads to a richer quantum phase dynamics as compared to conventional transmons. In a recent work [Phys. Rev. B 111, 214503 (2025)] we derived the quantum phase dynamics from a many-body treatment which leads to an effective gate voltage-dependent Hamiltonian that self-consistently incorporates the phase quantization. It predicts (i) a renormalization of the junction's effective capacitance and (ii) the presence of gate voltage and occupation-dependent charge offsets in junctions with tunneling asymmetry. Here, we quantify the observable impact of these effects on the qubit's energy spectrum and anharmonicity, by studying the interplay of the two Andreev branches as a function of dot-gate voltages and junction transparencies. We show the relation of these predictions to simplified gatemon models and propose a protocol to experimentally detect the predicted charge offsets.",
+      "authors": [
+        "Utkan Güngördü",
+        "Rusko Ruskov",
+        "Silas Hoffman",
+        "Kyle Serniak",
+        "Andrew J. Kerman",
+        "Charles Tahan"
+      ],
+      "primary_category": "cond-mat.mes-hall",
+      "categories": [
+        "cond-mat.mes-hall",
+        "quant-ph"
+      ],
+      "published": "2026-04-27T17:24:20+00:00",
+      "link": "https://arxiv.org/pdf/2604.24716v2",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Derives effective Hamiltonian and anharmonicity for gatemon qubits with phase quantization",
+      "llm_evidence_cn": "推导门控量子比特有效哈密顿量与非谐性，含相位量子化",
+      "llm_evidence": "推导门控量子比特有效哈密顿量与非谐性，含相位量子化",
+      "canonical_evidence": "推导门控量子比特有效哈密顿量与非谐性，含相位量子化",
+      "llm_tldr_en": "Derives an effective Hamiltonian for gatemon qubits, capturing anharmonicity and gate-dependent charge shifts.",
+      "llm_tldr_cn": "推导门控量子比特有效哈密顿量，刻画非谐性与栅压依赖电荷偏移。",
+      "llm_tldr": "推导门控量子比特有效哈密顿量，刻画非谐性与栅压依赖电荷偏移。",
+      "llm_tags": [
+        "query:hamiltonian"
+      ],
+      "matched_query_tag": "query:hamiltonian",
+      "matched_query_text": "effective Hamiltonian models for transmon qubits, tunable couplers, resonators, Kerr terms, and dispersive interactions",
+      "matched_requirement_id": "req-24",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.24912v1",
+      "source": "arxiv",
+      "title": "Data-Driven Hamiltonian Reduction for Superconducting Qubits via Meta-Learning",
+      "abstract": "We introduce HAML (Hamiltonian Adaptation via Meta-Learning), a framework for fast online adaptation of effective Hamiltonian models of superconducting quantum processors. HAML proceeds in two phases. A supervised training phase uses an ensemble of simulated devices to learn an offline map from control inputs and device parameters to effective Hamiltonian coefficients. An online adaptation phase then uses a small number of hardware-accessible measurements to identify the unknown parameters of a new device. By training directly against effective two-qubit coefficients extracted from full multi-mode simulations, HAML implicitly learns the reduction from full multi-mode Hamiltonians to effective qubit descriptions without invoking perturbation theory. We further show that a variance-maximizing greedy selection of measurement configurations boosts online adaptation efficiency. We demonstrate HAML on a transmon-coupler-transmon system, recovering effective two-qubit coefficients across a wide range of operating regimes, including parameter regions where Schrieffer-Wolff perturbation theory (SWPT) breaks down. This establishes a scalable, sample-efficient approach to Hamiltonian reduction and characterization for near-term quantum processors, with direct implications for calibration, control, and error mitigation.",
+      "authors": [
+        "Arielle Sanford",
+        "Andrew T. Kamen",
+        "Frederic T. Chong",
+        "Andy J. Goldschmidt"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cs.LG"
+      ],
+      "published": "2026-04-27T18:48:13+00:00",
+      "link": "https://arxiv.org/pdf/2604.24912v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "meta-learning framework for effective Hamiltonian reduction of superconducting processors",
+      "llm_evidence_cn": "基于元学习的超导处理器有效哈密顿量降阶框架",
+      "llm_evidence": "基于元学习的超导处理器有效哈密顿量降阶框架",
+      "canonical_evidence": "基于元学习的超导处理器有效哈密顿量降阶框架",
+      "llm_tldr_en": "Uses meta-learning to rapidly adapt effective Hamiltonian models for superconducting qubits from device parameters.",
+      "llm_tldr_cn": "利用元学习从器件参数快速适配超导量子比特有效哈密顿量模型。",
+      "llm_tldr": "利用元学习从器件参数快速适配超导量子比特有效哈密顿量模型。",
+      "llm_tags": [
+        "query:hamiltonian"
+      ],
+      "matched_query_tag": "query:hamiltonian",
+      "matched_query_text": "recent methods for deriving, solving, and validating Hamiltonians of superconducting quantum circuits from circuit parameters",
+      "matched_requirement_id": "req-23",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.19590v1",
+      "source": "arxiv",
+      "title": "Photolithography-Only Fabrication of Transmons Using Double-Oblique Evaporation",
+      "abstract": "We investigate a photolithography-only fabrication process for transmon Josephson junctions using a modified double-oblique evaporation geometry. Using a bilayer resist process and Al shadow evaporation, we fabricate junction structures and confirm by optical and scanning electron microscopy that the resulting narrowed crossing region reaches a geometrical area on the order of $10^4~\\mathrm{nm}^2$, which lies in the size range relevant to qubit junction fabrication. Room-temperature resistance screening shows that the junction resistance falls within the target range for the present transmon design over a usable process window and exhibits a clear design dependence. We further implement fabricated junctions in transmon devices and evaluate them in a three-dimensional Al cavity at $20 \\, \\mathrm{mK}$, where we observe basic transmon qubit operation with $f_{01}$=4.865 GHz, $T_1 \\sim 9 \\, μ\\mathrm{s}$, and $T_2^* \\sim 0.4 \\, μ\\mathrm{s}$. These results demonstrate the feasibility of realizing functional transmon devices in a photolithography-only process using double-oblique evaporation.",
+      "authors": [
+        "K. Aoyanagi",
+        "S. Abe",
+        "S. Chen",
+        "T. Inada",
+        "C. Kawai",
+        "Y. Mino",
+        "K. Nakamura",
+        "K. Nakazono",
+        "T. Nitta",
+        "K. Watanabe"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "physics.app-ph"
+      ],
+      "published": "2026-05-19T09:31:29+00:00",
+      "link": "https://arxiv.org/pdf/2605.19590v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "photolithography-only transmon fabrication process",
+      "llm_evidence_cn": "仅用光刻的transmon制备工艺",
+      "llm_evidence": "仅用光刻的transmon制备工艺",
+      "canonical_evidence": "仅用光刻的transmon制备工艺",
+      "llm_tldr_en": "Demonstrates a photolithography-only fabrication method for transmon Josephson junctions, enabling scalable qubit manufacturing.",
+      "llm_tldr_cn": "提出仅用光刻制备transmon结的工艺，助力可扩展量子芯片制造。",
+      "llm_tldr": "提出仅用光刻制备transmon结的工艺，助力可扩展量子芯片制造。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.20155v1",
+      "source": "arxiv",
+      "title": "Probing tunable Kerr nonlinearity in graphene Josephson junctions",
+      "abstract": "Josephson junction (JJ) is a key nonlinear element in superconducting devices such as qubits, amplifiers, and bolometers. Recently, gate-tunable JJs based on graphene and semiconductors have gained interest due to their rich Andreev physics and wide applications in circuit quantum electrodynamics devices. In addition to gate tunability, it offers many advantages over conventional JJs, such as exceptional thermal properties for bolometric sensors, magnetic-field compatibility, and operability at elevated temperatures above 1 K. Like conventional Al-AlOx-Al JJs, graphene JJs also act as nonlinear inductors, and at their heart lies the Kerr nonlinearity. Additionally, in graphene JJs, the nonlinearity is tunable via external knobs in a single device. However, a detailed exploration of the tunable Kerr nonlinearity in graphene JJs has never been performed. In this work, we study the dependence of the Kerr nonlinearity on gate voltage, temperature, and DC bias - an interesting knob that has been less explored. Using these parameters, we show that the magnitude of the Kerr coefficient can be tuned over a wide range, from 300 kHz to 1.2 MHz. Our work will be a valuable resource for further understanding of the nonlinearity in graphene JJs and for the design of next-generation amplifiers and sensors, with enhanced performance.",
+      "authors": [
+        "Priyanka Samanta",
+        "Joydip Sarkar",
+        "Ashish Abhraham Samuel",
+        "Madhavi Chand",
+        "Kenji Watanabe",
+        "Takashi Taniguchi",
+        "Mandar M. Deshmukh"
+      ],
+      "primary_category": "cond-mat.mes-hall",
+      "categories": [
+        "cond-mat.mes-hall"
+      ],
+      "published": "2026-05-19T17:44:55+00:00",
+      "link": "https://arxiv.org/pdf/2605.20155v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "tunable Kerr nonlinearity in graphene Josephson junctions for circuit QED",
+      "llm_evidence_cn": "石墨烯约瑟夫森结中的可调Kerr非线性用于电路QED",
+      "llm_evidence": "石墨烯约瑟夫森结中的可调Kerr非线性用于电路QED",
+      "canonical_evidence": "石墨烯约瑟夫森结中的可调Kerr非线性用于电路QED",
+      "llm_tldr_en": "Investigates gate-tunable Kerr nonlinearity in graphene Josephson junctions for superconducting quantum devices.",
+      "llm_tldr_cn": "研究石墨烯约瑟夫森结中的栅极可调Kerr非线性及其在超导量子器件中的应用。",
+      "llm_tldr": "研究石墨烯约瑟夫森结中的栅极可调Kerr非线性及其在超导量子器件中的应用。",
+      "llm_tags": [
+        "query:hamiltonian"
+      ],
+      "matched_query_tag": "query:hamiltonian",
+      "matched_query_text": "Kerr nonlinearity and anharmonicity in superconducting quantum circuits",
+      "matched_requirement_id": "req-20",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2604.21565v1",
+      "source": "arxiv",
+      "title": "Pulse Shaping for Superconducting Qubits",
+      "abstract": "High-fidelity control of superconducting qubits requires carefully shaped microwave pulses that account for multiple error channels. In this work, we present a pedagogical introduction to pulse-shaping techniques for transmon qubits, aiming to provide a unified, accessible framework that integrates physical intuition for pulse design, analytical understanding of gate-level descriptions, and practical considerations of hardware. This article further aims to serve as a guide for students and early researchers entering superconducting quantum computing. We begin by examining simple pulse envelopes and their spectral properties, highlighting how finite bandwidth leads to leakage outside the computational subspace. These observations motivate the introduction of the derivative removal by adiabatic gate (DRAG) technique, which uses a quadrature component proportional to the pulse's time derivative to suppress off-resonant excitations. We analyze the single-qubit case using the Magnus expansion, which provides a clear understanding of the order-by-order introduction of error channels. We discuss the practical hardware realities of control pulse generation, focusing on arbitrary waveform generators (AWG), local oscillators (LO), and IQ mixing. Common imperfections are discussed in terms of their impact on the effective pulse shape and qubit Hamiltonian. Finally, we extend the discussion to two-qubit operations, focusing on the cross-resonance gate and the emergence of effective interactions.",
+      "authors": [
+        "Animesh Patra",
+        "Ankur Raina"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "eess.SP"
+      ],
+      "published": "2026-04-23T11:37:08+00:00",
+      "link": "https://arxiv.org/pdf/2604.21565v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "provides pulse-shaping framework for high-fidelity transmon control",
+      "llm_evidence_cn": "提供用于高保真transmon量子比特控制的脉冲整形框架",
+      "llm_evidence": "提供用于高保真transmon量子比特控制的脉冲整形框架",
+      "canonical_evidence": "提供用于高保真transmon量子比特控制的脉冲整形框架",
+      "llm_tldr_en": "Presents a unified framework for designing microwave pulses to achieve high-fidelity control of transmon qubits.",
+      "llm_tldr_cn": "提出用于实现transmon量子比特高保真控制的微波脉冲设计统一框架。",
+      "llm_tldr": "提出用于实现transmon量子比特高保真控制的微波脉冲设计统一框架。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.03187v1",
+      "source": "arxiv",
+      "title": "Operating a bistable qubit",
+      "abstract": "Parasitic two-level-system (TLS) defects limit the stability and performance of solid-state quantum processors. Their interaction with a qubit can cause discrete, stochastic shifts of the qubit frequency, making the qubit bistable. We experimentally demonstrate an adaptive protocol for operating a bistable qubit with high fidelity using a classical controller powered by a field-programmable gate array (FPGA). Our \"1-bit feedback\" protocol estimates the qubit's bistable frequency from only one single-shot measurement, reaching the information limit set by the qubit's intrinsic entropy. We validate the protocol in a superconducting qubit by suppressing TLS-induced Ramsey beating, and deploy it to stabilize gate fidelities over time with approximately 136 kHz estimation bandwidth and a 77% error reduction. Our approach provides a simple, yet fundamentally efficient strategy for mitigating dephasing errors induced by strongly coupled TLS defects, and may enable the operation of large future qubit arrays suffering from few remaining, discrete instabilities.",
+      "authors": [
+        "Fabrizio Berritta",
+        "Jan A. Krzywda",
+        "Tom Dvir",
+        "Paul Buttles",
+        "Stanislav Eilhart",
+        "Jeroen Danon",
+        "Ferdinand Kuemmeth"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cond-mat.mes-hall"
+      ],
+      "published": "2026-05-04T22:06:43+00:00",
+      "link": "https://arxiv.org/pdf/2605.03187v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Demonstrates real-time FPGA feedback control to stabilize superconducting qubit coherence against TLS defects",
+      "llm_evidence_cn": "演示利用FPGA实时反馈控制稳定超导量子比特相干性以抑制TLS缺陷",
+      "llm_evidence": "演示利用FPGA实时反馈控制稳定超导量子比特相干性以抑制TLS缺陷",
+      "canonical_evidence": "演示利用FPGA实时反馈控制稳定超导量子比特相干性以抑制TLS缺陷",
+      "llm_tldr_en": "Implements adaptive FPGA feedback to suppress TLS-induced frequency shifts and stabilize superconducting qubit gates.",
+      "llm_tldr_cn": "实现自适应FPGA反馈抑制TLS频移并稳定超导量子门。",
+      "llm_tldr": "实现自适应FPGA反馈抑制TLS频移并稳定超导量子门。",
+      "llm_tags": [
+        "query:sc-qubit-chip:composite"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip:composite",
+      "matched_query_text": "Papers central to 超导量子芯片设计、transmon、耦合器、串扰、封装和多比特处理器架构, especially work that connects or combines: superconducting quantum chip design and scalable processor architecture; transmon qubit design fabrication coherence and control; tunable coupler design for superconducting quantum processors; crosstalk mitigation and characterization in superconducting qubit chips; microwave packaging interconnects and signal integrity for superconducting quantum chips; flip-chip superconducting quantum processor architecture and integration; recent superconducting quantum chip design papers about scalable transmon processors, tunable couplers, packaging, layout, and crosstalk; hardware architecture and layout techniques for high-coherence multi-qubit superconducting quantum processors.",
+      "matched_requirement_id": "req-composite-sc-qubit-chip",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.02755v1",
+      "source": "arxiv",
+      "title": "Readout failures in superconducting qubits due to TLS-defects in tunnel junctions",
+      "abstract": "Material defects give rise to parasitic two-level systems (TLS) which present a major source of decoherence in superconducting qubits. Here, we study a strongly coupled TLS that resides in the tunnel barrier of transmon qubit. We use multi-photon spectroscopy and TLS strain tuning to explore the rich spectrum of the interacting three-partite system consisting of TLS, qubit, and its readout resonator. This reveals a strong effective resonant coupling between the TLS and the qubit's readout resonator which dresses the resonator states and results in a resonance frequency shift that spoils the readout signal. Our finding presents yet another way how material defects can interfere with qubit operation and hinder the realization of solid-state quantum processors.",
+      "authors": [
+        "J. Lisenfeld",
+        "A. K. Händel",
+        "A. Bilmes",
+        "A. V. Ustinov"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cond-mat.mes-hall",
+        "cond-mat.supr-con"
+      ],
+      "published": "2026-05-04T15:56:40+00:00",
+      "link": "https://arxiv.org/pdf/2605.02755v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "TLS defects in transmon junctions impacting coherence and readout resonator coupling",
+      "llm_evidence_cn": "transmon结中TLS缺陷影响相干性和读出谐振器耦合",
+      "llm_evidence": "transmon结中TLS缺陷影响相干性和读出谐振器耦合",
+      "canonical_evidence": "transmon结中TLS缺陷影响相干性和读出谐振器耦合",
+      "llm_tldr_en": "Analyzes TLS defects in transmon junctions causing readout failures and decoherence, impacting qubit control.",
+      "llm_tldr_cn": "研究transmon结中TLS缺陷导致的读出失败和退相干，直接影响量子比特控制。",
+      "llm_tldr": "研究transmon结中TLS缺陷导致的读出失败和退相干，直接影响量子比特控制。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.14586v1",
+      "source": "arxiv",
+      "title": "Fraxonium: Fractional fluxon states for qudit encoding",
+      "abstract": "We propose a superconducting circuit hosting $d$ low-lying states, well separated from the rest of the spectrum, that naturally realizes a qudit system protected from leakage errors. The system represents a generalization of the fluxonium and the low-energy states are constituted by fractional fluxon states, that we call {\\it fraxons}, localized in the minima of a suitably designed Josephson potential. The latter is tailored through a Fourier engineering approach, that employs multi-harmonic Josephson building block elements composed by a Josephson junction and an inductance connected in series. We present the spectrum of a $d=4$ and a $d=5$ qudit system and study in detail the qutrit case. We analyze the dipole matrix elements for coupling to radiation and propose a non-Abelian, stimulated Raman adiabatic passage (STIRAP) protocol for single-qutrit gates, that is particularly suited for the present system. The proposed platform opens novel perspectives in circuit engineering and quantum computing beyond the qubit paradigm.",
+      "authors": [
+        "Luca Chirolli",
+        "Valentina Brosco",
+        "Uri Vool",
+        "Gianluigi Catelani",
+        "Luigi Amico"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cond-mat.mes-hall"
+      ],
+      "published": "2026-05-14T08:58:07+00:00",
+      "link": "https://arxiv.org/pdf/2605.14586v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Proposes a novel superconducting fluxonium-based qudit circuit with engineered Josephson potential",
+      "llm_evidence_cn": "提出基于超导通量子的新型量子比特电路及约瑟夫森势工程",
+      "llm_evidence": "提出基于超导通量子的新型量子比特电路及约瑟夫森势工程",
+      "canonical_evidence": "提出基于超导通量子的新型量子比特电路及约瑟夫森势工程",
+      "llm_tldr_en": "Designs a superconducting qudit circuit using fractional fluxon states for leakage-protected encoding.",
+      "llm_tldr_cn": "设计基于分数磁通子态的超导量子电路以实现抗泄漏编码。",
+      "llm_tldr": "设计基于分数磁通子态的超导量子电路以实现抗泄漏编码。",
+      "llm_tags": [
+        "query:sc-qubit-chip:composite"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip:composite",
+      "matched_query_text": "Papers central to 超导量子芯片设计、transmon、耦合器、串扰、封装和多比特处理器架构, especially work that connects or combines: superconducting quantum chip design and scalable processor architecture; transmon qubit design fabrication coherence and control; tunable coupler design for superconducting quantum processors; crosstalk mitigation and characterization in superconducting qubit chips; microwave packaging interconnects and signal integrity for superconducting quantum chips; flip-chip superconducting quantum processor architecture and integration; recent superconducting quantum chip design papers about scalable transmon processors, tunable couplers, packaging, layout, and crosstalk; hardware architecture and layout techniques for high-coherence multi-qubit superconducting quantum processors.",
+      "matched_requirement_id": "req-composite-sc-qubit-chip",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2605.10578v2",
+      "source": "arxiv",
+      "title": "Ultra-Fast Quantum Control via Non-Adiabatic Resonance Windows: A 9x Speed-up on 127-Qubit IBM Processors",
+      "abstract": "Standard adiabatic protocols for superconducting qubits often face a trade-off between gate speed and decoherence. In this work, using IBM Quantum 127-qubit processors (ibm_fez and ibm_kingston), we report the discovery of a fundamental non-adiabatic resonance window at about 4.9. This window demonstrates the potential for a 9.2-fold reduction in gate duration relative to the conventional adiabatic limit, while maintaining state high fidelities within the identified resonance windows. Through synchronous cross-backend execution, we demonstrate a near-perfect correlation (R = 0.9998) in the resonance profile, confirming the universality of the non-adiabatic parameter across independent hardware architectures. However, our longitudinal analysis reveals that these high-Q windows are sensitive to sub-percent calibration drifts, which dynamically shift the system into a stochastic regime. These findings suggest that achieving next-tier quantum performance requires a transition from static gate protocols to dynamic resonance-tracking control tools. This study provides both the theoretical foundation and the experimental evidence for such ultra-fast, high-performance quantum architectures.",
+      "authors": [
+        "A. M. Tishin"
+      ],
+      "primary_category": "cond-mat.mes-hall",
+      "categories": [
+        "cond-mat.mes-hall"
+      ],
+      "published": "2026-05-11T13:50:36+00:00",
+      "link": "https://arxiv.org/pdf/2605.10578v2",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "fast gate control on 127-qubit superconducting processors",
+      "llm_evidence_cn": "127比特超导处理器上的快速量子门控制",
+      "llm_evidence": "127比特超导处理器上的快速量子门控制",
+      "canonical_evidence": "127比特超导处理器上的快速量子门控制",
+      "llm_tldr_en": "Demonstrates 9x faster gate control on IBM superconducting processors using non-adiabatic resonance windows.",
+      "llm_tldr_cn": "利用非绝热共振窗口在IBM超导处理器上实现9倍门控加速。",
+      "llm_tldr": "利用非绝热共振窗口在IBM超导处理器上实现9倍门控加速。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2604.20497v1",
+      "source": "arxiv",
+      "title": "Maximum Q-factor of planar inductors",
+      "abstract": "On-chip inductor design plays a critical role in the advancement of radio-frequency integrated circuits (RFICs). Inductors typically occupy a substantial portion of the chip area as their performance metrics, namely, inductance density and Quality factor ($Q$-factor), are fundamentally tied to the available footprint, thereby limiting miniaturization. To better understand and quantify these limitations, we employ rigorous electromagnetic analysis together with convex optimization techniques to derive a fundamental bound on the maximum achievable $Q$-factor of electrically-small planar inductors as a function of the available design area. The analysis yields analytical expressions for the bound and, via modal analysis techniques, identifies and interprets operational regimes and scaling trends with respect to design area and material conductivity. The analysis accounts for both ohmic and radiation losses, with the latter becoming significant as the inductor size increases. A broad set of state-of-the-art inductor designs from the literature is evaluated against the established $Q$-factor upper bound, identifying designs that approach the theoretical limit as well as those with potential for further improvement. The study is extended to include the effect of kinetic inductance, which offers a promising avenue toward next-generation inductors with higher inductance densities and $Q$-factors. By establishing this benchmark, this work aims to guide and inspire the design of more efficient and compact planar inductors for high-performance RF systems.",
+      "authors": [
+        "Mohamed Ismail Abdelrahman",
+        "Matteo Ciabattoni",
+        "Francesco Monticone"
+      ],
+      "primary_category": "physics.optics",
+      "categories": [
+        "physics.optics"
+      ],
+      "published": "2026-04-22T12:31:07+00:00",
+      "link": "https://arxiv.org/pdf/2604.20497v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "EM analysis and optimization of planar inductor Q-factor applicable to superconducting circuit design",
+      "llm_evidence_cn": "平面电感Q因子的电磁分析与优化，适用于超导电路设计",
+      "llm_evidence": "平面电感Q因子的电磁分析与优化，适用于超导电路设计",
+      "canonical_evidence": "平面电感Q因子的电磁分析与优化，适用于超导电路设计",
+      "llm_tldr_en": "Derives fundamental Q-factor bounds for planar inductors using EM analysis, aiding superconducting circuit design.",
+      "llm_tldr_cn": "利用电磁分析推导平面电感Q因子极限，助力超导电路设计。",
+      "llm_tldr": "利用电磁分析推导平面电感Q因子极限，助力超导电路设计。",
+      "llm_tags": [
+        "query:eq-circuit"
+      ],
+      "matched_query_tag": "query:eq-circuit",
+      "matched_query_text": "inductance matrix modeling and electromagnetic simulation of superconducting circuits",
+      "matched_requirement_id": "req-12",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2604.25871v1",
+      "source": "arxiv",
+      "title": "3D integration of a hybrid quantum dot circuit-QED device for fast gate dispersive charge readout and coherent spin-photon coupling",
+      "abstract": "Hybrid circuit quantum electrodynamics (cQED) aims at coupling various quantum degrees of freedom, among which are spin and charge degrees of freedom in gate defined quantum dots, phonons or magnons... with quantized electromagnetic fields in superconducting microwave cavities to investigate fundamental physics questions or for quantum computation and simulation. However, low microwave losses, key for many hybrid cQED experiments, are challenging to achieve given the often exotic and/or complex material stacks (e.g. semiconducting material, ferromagnets, or piezoelectric materials) required to host the various quantum degrees of freedom. In this work, we present a 3D-integration process to overcome this challenge for semi-industrial silicon MOS spin qubits. The process is based on dense indium bump interconnects at a pitch of 10 μm and superconducting thin films of Niobium Nitride (NbN). First, we report on DC and RF interconnect properties that demonstrate a high galvanic interconnection yield and internal quality factors above 105 in the single photon regime for NbN resonators interrupted by a single indium bump interconnect. Eventually, we fabricated a 3D-integrated hybrid circuit quantum electrodynamics (cQED) device based on a semi-industrial MOS hole double quantum dot and a high impedance NbN resonator. For this device, we report a cavity internal quality factor above 10000 and demonstrate record sensitivity for gate-based dispersive readout of the charge degree of freedom with an SNR of 100 in 300 ns. Finally, we demonstrate strong spin-photon coupling of gs/{2π} = 75 MHz, which highlights the viability of 3D-integration for quantum dot based hybrid spin circuit quantum electrodynamics and opens to high-fidelity spin readout and microwave photon-based remote spin qubit entanglement.",
+      "authors": [
+        "Sebastien Granel",
+        "Frederic Gustavo",
+        "Jean-Luc Thomassin",
+        "Heimanu Niebojewski",
+        "Benoit Bertrand",
+        "Frederic Berger",
+        "Alain Gueugnot",
+        "Chafik Mhamdi",
+        "Etienne Dumur",
+        "Romain Maurand",
+        "Simon Zihlmann"
+      ],
+      "primary_category": "cond-mat.mes-hall",
+      "categories": [
+        "cond-mat.mes-hall"
+      ],
+      "published": "2026-04-28T17:08:34+00:00",
+      "link": "https://arxiv.org/pdf/2604.25871v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "3D integration process for hybrid cQED devices addressing microwave losses and cavity coupling",
+      "llm_evidence_cn": "混合cQED器件的3D集成工艺，解决微波损耗与腔耦合问题",
+      "llm_evidence": "混合cQED器件的3D集成工艺，解决微波损耗与腔耦合问题",
+      "canonical_evidence": "混合cQED器件的3D集成工艺，解决微波损耗与腔耦合问题",
+      "llm_tldr_en": "Presents a 3D integration method for hybrid cQED devices to reduce microwave losses and enable coherent spin-photon coupling.",
+      "llm_tldr_cn": "提出混合cQED器件的3D集成方法以降低微波损耗并实现自旋光子相干耦合。",
+      "llm_tldr": "提出混合cQED器件的3D集成方法以降低微波损耗并实现自旋光子相干耦合。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "microwave packaging interconnects and signal integrity for superconducting quantum chips",
+      "matched_requirement_id": "req-5",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.12442v1",
+      "source": "arxiv",
+      "title": "Programmable Superradiance in an Interacting Qubit Array",
+      "abstract": "When multiple quantum emitters couple to a common electromagnetic environment, interference in their collective radiative dynamics gives rise to superradiance and subradiance. In regimes where coherent interactions and collective dissipation compete, the microscopic many-body dynamics and quantum correlations among the emitters that underlie superradiance and subradiance are theoretically challenging and remain experimentally elusive, even though collective emission has been observed in many physical systems. Here, we realize a superconducting qubit array coupled to a common microwave waveguide that mediates collective dissipation, with simultaneous access to coherent interactions and microscopic measurements of many-body dynamics. Engineered qubit-waveguide couplings with tunable amplitude and phase enable control of collective interference and the resulting super- and subradiant states. Leveraging site-resolved control and readout, we directly observe the microscopic decay dynamics of multi-qubit states across different excitation manifolds and track the evolution of populations and tunable quantum correlations. We reveal collective decay in regimes beyond the ideal Dicke model, where strong qubit-qubit interactions stabilize superradiance and subradiance against local dephasing and reshape decay pathways through spatially and spectrally structured many-body eigenstates. Our results establish a flexible platform for exploring collective phenomena in many-body quantum optics and driven-dissipative approaches to robust quantum information processing.",
+      "authors": [
+        "Botao Du",
+        "Qihao Guo",
+        "Ruichao Ma"
+      ],
+      "primary_category": "cond-mat.quant-gas",
+      "categories": [
+        "cond-mat.quant-gas",
+        "quant-ph"
+      ],
+      "published": "2026-05-12T17:36:45+00:00",
+      "link": "https://arxiv.org/pdf/2605.12442v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Superconducting qubit array coupled to microwave waveguide for collective dynamics",
+      "llm_evidence_cn": "耦合微波波导的超导量子比特阵列集体动力学",
+      "llm_evidence": "耦合微波波导的超导量子比特阵列集体动力学",
+      "canonical_evidence": "耦合微波波导的超导量子比特阵列集体动力学",
+      "llm_tldr_en": "Demonstrates programmable superradiance in a superconducting qubit array, advancing multi-qubit interaction control.",
+      "llm_tldr_cn": "展示超导量子比特阵列中的可编程超辐射，推进多比特相互作用控制。",
+      "llm_tldr": "展示超导量子比特阵列中的可编程超辐射，推进多比特相互作用控制。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "hardware architecture and layout techniques for high-coherence multi-qubit superconducting quantum processors",
+      "matched_requirement_id": "req-8",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2604.22112v1",
+      "source": "arxiv",
+      "title": "Enhanced Tantalum Superconducting Resonator Performance via All-Surface Organic Monolayer Passivation",
+      "abstract": "Tantalum is a promising platform for superconducting quantum circuits, yet coherence times remain limited by dielectric losses from interfacial two-level systems (TLS), exacerbated by native oxide regrowth. Here, we implement molecular surface passivation using self-assembled organic monolayers on freshly etched tantalum and silicon in coplanar waveguide resonators. Surface characterization by contact angle, XPS, FTIR and TEM confirm the formation of ordered, nanometer-thick films that suppress oxide formation. Microwave measurements in the ~5-9 GHz range reveal internal quality factors up to 1.8x10^6 in the single-photon regime at 100 mK, representing a ~140% improvement over untreated devices with native oxide. Power and temperature dependent measurements attribute this enhancement to reduced TLS-induced losses. These results demonstrate that molecular passivation effectively engineers low-loss interfaces and provides a scalable route toward high-coherence superconducting quantum devices.",
+      "authors": [
+        "Harsh Gupta",
+        "Moritz Singer",
+        "Benedikt Schoof",
+        "Anna Cattani-Scholz",
+        "Shreya Sharma",
+        "Luca Rommeis",
+        "Marc Tornow"
+      ],
+      "primary_category": "cond-mat.mtrl-sci",
+      "categories": [
+        "cond-mat.mtrl-sci",
+        "physics.app-ph",
+        "quant-ph"
+      ],
+      "published": "2026-04-23T23:11:23+00:00",
+      "link": "https://arxiv.org/pdf/2604.22112v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "superconducting resonator coherence improvement via surface passivation",
+      "llm_evidence_cn": "超导谐振器相干性表面钝化提升",
+      "llm_evidence": "超导谐振器相干性表面钝化提升",
+      "canonical_evidence": "超导谐振器相干性表面钝化提升",
+      "llm_tldr_en": "Improves tantalum superconducting resonator coherence by suppressing TLS losses with organic monolayer passivation.",
+      "llm_tldr_cn": "通过有机单分子层钝化抑制TLS损耗，提升钽超导谐振器相干性。",
+      "llm_tldr": "通过有机单分子层钝化抑制TLS损耗，提升钽超导谐振器相干性。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.10191v2",
+      "source": "arxiv",
+      "title": "Computing eigenpairs of quantum many-body systems with Polfed.jl",
+      "abstract": "We present Polfed$.$jl, an open-source Julia package implementing the Polynomially Filtered Exact Diagonalization (POLFED) algorithm for computing mid-spectrum eigenvalues and eigenvectors (shortly, eigenpairs) of quantum many-body Hamiltonians. Access to such eigenpairs is essential for studying non-equilibrium many-body physics, but is hindered by the exponential growth of Hilbert-space dimension. POLFED addresses this challenge through a polynomial spectral transformation evaluated on the fly within a Lanczos iteration, preserving Hamiltonian sparsity and substantially reducing memory costs compared to other diagonalization methods. The package supports flexible energy targeting, automatic optimization of the spectral mapping for structured Hamiltonians, and GPU acceleration, which is particularly effective since the dominant computational cost reduces to repeated sparse matrix-vector multiplications. Benchmarks on disordered spin-chain and fermionic models demonstrate access to larger system sizes than alternative approaches, and CPU--GPU comparisons confirm significant speedups. In particular, we also provide code for constructing the quantum sun model Hamiltonian, a toy model of a many-body ergodicity-breaking transition. While our focus is on many-body Hamiltonians, Polfed$.$jl may be applied to any large sparse matrix.",
+      "authors": [
+        "Rok Pintar",
+        "Konrad Pawlik",
+        "Rafał Świętek",
+        "Miroslav Hopjan",
+        "Jan Šuntajs",
+        "Jakub Zakrzewski",
+        "Piotr Sierant",
+        "Lev Vidmar"
+      ],
+      "primary_category": "cond-mat.stat-mech",
+      "categories": [
+        "cond-mat.stat-mech",
+        "cond-mat.dis-nn",
+        "cond-mat.str-el",
+        "quant-ph"
+      ],
+      "published": "2026-05-11T08:41:51+00:00",
+      "link": "https://arxiv.org/pdf/2605.10191v2",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Polynomially filtered exact diagonalization for quantum Hamiltonians",
+      "llm_evidence_cn": "量子哈密顿量的多项式滤波精确对角化方法",
+      "llm_evidence": "量子哈密顿量的多项式滤波精确对角化方法",
+      "canonical_evidence": "量子哈密顿量的多项式滤波精确对角化方法",
+      "llm_tldr_en": "Introduces Polfed.jl for efficient diagonalization of large quantum Hamiltonians, potentially applicable to circuit models.",
+      "llm_tldr_cn": "提出Polfed.jl包用于高效对角化大型量子哈密顿量，可应用于电路模型。",
+      "llm_tldr": "提出Polfed.jl包用于高效对角化大型量子哈密顿量，可应用于电路模型。",
+      "llm_tags": [
+        "query:hamiltonian"
+      ],
+      "matched_query_tag": "query:hamiltonian",
+      "matched_query_text": "Hamiltonian diagonalization methods for superconducting quantum circuits",
+      "matched_requirement_id": "req-18",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.12588v1",
+      "source": "arxiv",
+      "title": "Coherent control of spinmons",
+      "abstract": "The protection of superconducting qubits from certain noise sources often comes at the cost of increased sensitivity to other decoherence channels. Here, we explore a route to avoid this tradeoff by encoding quantum information in quantum states of a transmon entangled with the spin of a trapped Andreev quasiparticle. We term such devices spinmons. We lift the spinmon Kramers degeneracy by introducing a Zeeman field and develop two routes for full qubit control via electrostatic gates and an AC flux drive, providing multiple directions for experimental implementations. Finally, we compute coherence times and verify the qubit robustness against flux and charge noise sources.",
+      "authors": [
+        "Johanne Bratland Tjernshaugen",
+        "Florinda Viñas Boström",
+        "Jeroen Danon",
+        "Jacob Linder",
+        "Karsten Flensberg",
+        "Antonio L. R. Manesco"
+      ],
+      "primary_category": "cond-mat.mes-hall",
+      "categories": [
+        "cond-mat.mes-hall",
+        "cond-mat.supr-con",
+        "quant-ph"
+      ],
+      "published": "2026-05-12T18:00:00+00:00",
+      "link": "https://arxiv.org/pdf/2605.12588v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "transmon-based spinmon qubit control and coherence analysis",
+      "llm_evidence_cn": "基于transmon的自旋量子比特控制与相干性分析",
+      "llm_evidence": "基于transmon的自旋量子比特控制与相干性分析",
+      "canonical_evidence": "基于transmon的自旋量子比特控制与相干性分析",
+      "llm_tldr_en": "Proposes spinmon qubits combining transmons and Andreev spins, demonstrating coherent control and noise robustness.",
+      "llm_tldr_cn": "提出结合transmon与安德烈夫自旋的自旋量子比特，展示相干控制与抗噪能力。",
+      "llm_tldr": "提出结合transmon与安德烈夫自旋的自旋量子比特，展示相干控制与抗噪能力。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2604.24042v1",
+      "source": "arxiv",
+      "title": "Lobe Dynamics, Phase-Space Transport, and Non-Adiabatic Leakage Thresholds in the Nonautonomous Kerr-Cat Qubit",
+      "abstract": "The Kerr-nonlinear parametric oscillator (KPO) provides a foundational semiclassical model for cat-state quantum hardware. Standard analyses of the KPO typically rely on autonomous, frozen-time approximations to describe the stabilization of macroscopic coherent states. However, state preparation and gate manipulation are driven by explicitly time-dependent microwave pulses, so the operational dynamics are inherently nonautonomous. In this paper, we show that static algebraic equilibrium pictures are incomplete for describing both state formation and gate-induced transport in the Kerr-cat qubit. For nonautonomous state preparation, we analyze the ramped resonant model by combining a linear nonautonomous stability analysis with a local invariant-graph reduction near the vacuum trajectory. This yields a quintic reduced normal form in the critical direction and identifies two symmetric post-threshold moving branches that organize the local state-formation dynamics. The associated diagnostics separate the reduced branch dynamics from the full two-dimensional phase-twist relaxation observed in the hardware coordinates. For gate execution, we model a fast pulse as a weak aperiodic perturbation of the conservative resonant figure-eight separatrix and apply Melnikov's method to derive a leading-order transport criterion. In this framework, transient lobe dynamics emerge as a semiclassical mechanism for non-adiabatic leakage, and the resulting amplitude-width threshold curve provides a leading-order geometric indicator for the onset of gate-pulse-induced transport.",
+      "authors": [
+        "Stephen Wiggins"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "math.DS"
+      ],
+      "published": "2026-04-27T05:03:13+00:00",
+      "link": "https://arxiv.org/pdf/2604.24042v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Analysis of Kerr nonlinearity and nonautonomous dynamics in Kerr-cat qubits",
+      "llm_evidence_cn": "克尔猫量子比特中的克尔非线性与非自治动力学分析",
+      "llm_evidence": "克尔猫量子比特中的克尔非线性与非自治动力学分析",
+      "canonical_evidence": "克尔猫量子比特中的克尔非线性与非自治动力学分析",
+      "llm_tldr_en": "Analyzes nonautonomous dynamics and leakage in Kerr-cat qubits, relevant to Kerr nonlinear circuit modeling.",
+      "llm_tldr_cn": "分析克尔猫量子比特的非自治动力学与泄漏，对克尔非线性电路建模有参考价值。",
+      "llm_tldr": "分析克尔猫量子比特的非自治动力学与泄漏，对克尔非线性电路建模有参考价值。",
+      "llm_tags": [
+        "query:hamiltonian"
+      ],
+      "matched_query_tag": "query:hamiltonian",
+      "matched_query_text": "Kerr nonlinearity and anharmonicity in superconducting quantum circuits",
+      "matched_requirement_id": "req-20",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.19643v1",
+      "source": "arxiv",
+      "title": "Quantum effective action for dissipative semiclassical dynamics",
+      "abstract": "Using the quantum effective action in the Schwinger-Keldysh formalism, we derive quantum corrections to the semiclassical Langevin dynamics of a dissipative system governed by a macroscopic degree of freedom. We discuss the connection with the Ehrenfest theorem and show that, in the low-temperature and weak-damping regime, quantum corrections are determined by the zero-point energy of fluctuations evaluated at the classical underdamped frequency, closely paralleling the conservative case. We apply these general results to the resistively and capacitively shunted superconducting Josephson junction and to an elongated bosonic junction, where quantum corrections can reach the percent level under realistic conditions.",
+      "authors": [
+        "Cesare Vianello",
+        "Andrea Bardin",
+        "Luca Salasnich"
+      ],
+      "primary_category": "cond-mat.quant-gas",
+      "categories": [
+        "cond-mat.quant-gas",
+        "cond-mat.stat-mech",
+        "cond-mat.supr-con"
+      ],
+      "published": "2026-05-19T10:27:24+00:00",
+      "link": "https://arxiv.org/pdf/2605.19643v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Applies quantum effective action to model dissipative dynamics in superconducting Josephson junctions",
+      "llm_evidence_cn": "应用量子有效作用量建模超导约瑟夫森结的耗散动力学",
+      "llm_evidence": "应用量子有效作用量建模超导约瑟夫森结的耗散动力学",
+      "canonical_evidence": "应用量子有效作用量建模超导约瑟夫森结的耗散动力学",
+      "llm_tldr_en": "Derives quantum corrections for dissipative Josephson junction dynamics using Schwinger-Keldysh formalism.",
+      "llm_tldr_cn": "利用Schwinger-Keldysh形式推导耗散约瑟夫森结动力学的量子修正。",
+      "llm_tldr": "利用Schwinger-Keldysh形式推导耗散约瑟夫森结动力学的量子修正。",
+      "llm_tags": [
+        "query:hamiltonian:composite"
+      ],
+      "matched_query_tag": "query:hamiltonian:composite",
+      "matched_query_text": "Papers central to 超导量子电路哈密顿量建立、对角化、有效哈密顿量、Kerr/cross-Kerr 和 normal modes, especially work that connects or combines: circuit QED Hamiltonian modeling for superconducting qubits and resonators; Hamiltonian diagonalization methods for superconducting quantum circuits; effective Hamiltonian derivation for superconducting qubits couplers and resonators; Kerr nonlinearity and anharmonicity in superconducting quantum circuits; cross-Kerr coupling and dispersive interaction in superconducting qubit systems; normal mode analysis and quantization of superconducting circuits; recent methods for deriving, solving, and validating Hamiltonians of superconducting quantum circuits from circuit parameters; effective Hamiltonian models for transmon qubits, tunable couplers, resonators, Kerr terms, and dispersive interactions.",
+      "matched_requirement_id": "req-composite-hamiltonian",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.15554v1",
+      "source": "arxiv",
+      "title": "Interface Piezoelectric Loss in Superconducting Qubits",
+      "abstract": "Dissipation remains a central obstacle to improving superconducting quantum circuits, yet the microscopic origins of loss in widely used materials platforms are not fully understood. Here, we report the observation of interface piezoelectricity-induced dissipation in superconducting qubits fabricated on high-resistivity silicon. Our devices use a transmon qubit with a shunt capacitor that simultaneously serves as an interdigital transducer embedded in a surface acoustic wave resonator. By tuning the qubit transition into resonance with discrete mechanical modes, we observe up to a factor-of-two reduction in qubit lifetime, consistent with energy exchange between the qubit and mechanical modes mediated by piezoelectric coupling at the aluminum-silicon interface. Our findings provide direct evidence for interface piezoelectricity as a distinct loss channel in superconducting qubits. Combined with multiphysics simulations, these findings suggest that interface piezoelectric loss can dominate over loss from two-level systems at sufficiently high frequencies.",
+      "authors": [
+        "Haoxin Zhou",
+        "Kangdi Yu",
+        "Yashwanth Balaji",
+        "Sanjit Shirol",
+        "Leo Sementilli",
+        "Zi-Huai Zhang",
+        "Adam Schwartzberg",
+        "Alp Sipahigil"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cond-mat.mes-hall"
+      ],
+      "published": "2026-05-15T02:46:29+00:00",
+      "link": "https://arxiv.org/pdf/2605.15554v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "studies transmon coherence loss from interface piezoelectricity",
+      "llm_evidence_cn": "研究界面压电效应对transmon量子比特相干性的影响",
+      "llm_evidence": "研究界面压电效应对transmon量子比特相干性的影响",
+      "canonical_evidence": "研究界面压电效应对transmon量子比特相干性的影响",
+      "llm_tldr_en": "Identifies interface piezoelectricity as a key loss mechanism limiting transmon qubit coherence on silicon.",
+      "llm_tldr_cn": "揭示界面压电效应是限制硅基transmon量子比特相干性的关键损耗机制。",
+      "llm_tldr": "揭示界面压电效应是限制硅基transmon量子比特相干性的关键损耗机制。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.06146v1",
+      "source": "arxiv",
+      "title": "Sub-kelvin thermal conductivity of substrates and on-chip routing in quantum integrated systems",
+      "abstract": "The development of large-scale quantum systems increasingly relies on the close integration of heterogeneous components such as qubits, control electronics, and readout circuits, making thermal management at cryogenic temperatures a central challenge in such architectures. In this work, we present an experimental thermal study of two building blocks of such systems: the substrate and the on-chip routing. We first investigate the sub-kelvin thermal conductivity of four substrate materials: high-resistivity silicon, low-resistivity silicon, borosilicate, and sapphire. We report that high-resistivity silicon exhibits the highest thermal conductivity among the substrates studied ($5\\cdot10^{-2}$~W/m$\\cdot$K at 300~mK), while low-resistivity silicon, borosilicate, and sapphire show lower values ($8\\cdot10^{-4}$~W/m$\\cdot$K, 2$\\cdot10^{-3}$~W/m$\\cdot$K, and 2$\\cdot10^{-3}$~W/m$\\cdot$K at 300~mK, respectively). Ballistic conductance evaluation using a finite-element non-equilibrium Green's function approach further allows us to extract the phonon mean free path in each substrate and gives insights into the involved scattering mechanisms. Additionally, we employ a dedicated test vehicle to evaluate the impact of on-chip routing on the thermal conductance of the system. Our measurements with superconducting Nb routing lines reveal that the routing increases the in-plane thermal conductance of the system, but the substrate remains the dominant heat path. These results highlight the critical role of the substrate choice within quantum systems and underscore the importance of function partitioning through 3D integration approaches for more efficient thermal management in quantum architectures.",
+      "authors": [
+        "Charles Bon-Mardion",
+        "Arnaud Lorin",
+        "Edouard Deschaseaux",
+        "Céline Feautrier",
+        "Daniel Mermin",
+        "Jean Charbonnier",
+        "Jing Li",
+        "Jean-Luc Sauvageot",
+        "Candice Thomas"
+      ],
+      "primary_category": "cond-mat.mes-hall",
+      "categories": [
+        "cond-mat.mes-hall",
+        "cond-mat.mtrl-sci"
+      ],
+      "published": "2026-05-07T12:41:08+00:00",
+      "link": "https://arxiv.org/pdf/2605.06146v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Thermal conductivity study of substrates and on-chip routing for cryogenic quantum integrated systems",
+      "llm_evidence_cn": "低温量子集成系统基板与片上布线热导率研究",
+      "llm_evidence": "低温量子集成系统基板与片上布线热导率研究",
+      "canonical_evidence": "低温量子集成系统基板与片上布线热导率研究",
+      "llm_tldr_en": "Measures cryogenic thermal conductivity of substrates and routing to guide thermal management in scalable quantum chips.",
+      "llm_tldr_cn": "测量基板与布线亚开尔文热导率，指导可扩展量子芯片热管理。",
+      "llm_tldr": "测量基板与布线亚开尔文热导率，指导可扩展量子芯片热管理。",
+      "llm_tags": [
+        "query:sc-qubit-chip:composite"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip:composite",
+      "matched_query_text": "Papers central to 超导量子芯片设计、transmon、耦合器、串扰、封装和多比特处理器架构, especially work that connects or combines: superconducting quantum chip design and scalable processor architecture; transmon qubit design fabrication coherence and control; tunable coupler design for superconducting quantum processors; crosstalk mitigation and characterization in superconducting qubit chips; microwave packaging interconnects and signal integrity for superconducting quantum chips; flip-chip superconducting quantum processor architecture and integration; recent superconducting quantum chip design papers about scalable transmon processors, tunable couplers, packaging, layout, and crosstalk; hardware architecture and layout techniques for high-coherence multi-qubit superconducting quantum processors.",
+      "matched_requirement_id": "req-composite-sc-qubit-chip",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.11565v1",
+      "source": "arxiv",
+      "title": "Stability and quasi-normal ringing in analogue black-white holes in SNAIL-based traveling-wave parametric amplifiers",
+      "abstract": "The circuit dynamics constructed by traveling-wave parametric amplifiers (TWPA), using superconducting nonlinear asymmetric elements (SNAILs), are known to be approximately described by the Korteweg-de Vries (KdV) or modified KdV equations in the continuum limit and admit soliton solutions. The soliton spatially modulates the effective propagation velocity of the weak probe field, which leads to the effective realization of the causal structure of the analogue event horizons in the SNAIL-TWPA circuit system. In this paper, we derive the master equation for the weak probe field where the background soliton acts as an effective potential. We show the absence of normalizable negative modes in the SNAIL-TWPA circuit system by using the language of supersymmetric quantum mechanics. We also present the first study of quasi-normal modes (QNM) of the SNAIL-TWPA analogue black-white hole system by semi-analytic and numerical methods. Based on the resultant QNM frequency, we clarify the timescale at which nonlinear dispersion becomes effective in the SNAIL-TWPA circuit system and demonstrate how ringdown is excited.",
+      "authors": [
+        "Daisuke Yamauchi",
+        "Haruna Katayama",
+        "Norihiro Tanahashi"
+      ],
+      "primary_category": "gr-qc",
+      "categories": [
+        "gr-qc",
+        "quant-ph"
+      ],
+      "published": "2026-05-12T05:50:14+00:00",
+      "link": "https://arxiv.org/pdf/2605.11565v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "analyzes SNAIL-based superconducting TWPA circuit dynamics and derives effective Hamiltonian",
+      "llm_evidence_cn": "分析基于SNAIL的超导电路动力学并推导有效哈密顿量",
+      "llm_evidence": "分析基于SNAIL的超导电路动力学并推导有效哈密顿量",
+      "canonical_evidence": "分析基于SNAIL的超导电路动力学并推导有效哈密顿量",
+      "llm_tldr_en": "Derives effective Hamiltonian and master equation for SNAIL-based superconducting amplifiers to analyze stability.",
+      "llm_tldr_cn": "推导基于SNAIL的超导放大器有效哈密顿量与主方程以分析稳定性。",
+      "llm_tldr": "推导基于SNAIL的超导放大器有效哈密顿量与主方程以分析稳定性。",
+      "llm_tags": [
+        "query:hamiltonian"
+      ],
+      "matched_query_tag": "query:hamiltonian",
+      "matched_query_text": "effective Hamiltonian derivation for superconducting qubits couplers and resonators",
+      "matched_requirement_id": "req-19",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.18586v1",
+      "source": "arxiv",
+      "title": "Phase dynamics and dissipation in tunnel ferromagnetic Josephson junctions",
+      "abstract": "We investigate tunnel ferromagnetic Josephson junctions based on Superconductor-Insulator-thin superconductor-Ferromagnet-Superconductor multilayers. A comparative study of their electrodynamic properties is performed for junctions with niobium and aluminum (Al) electrodes, featuring different ferromagnetic interlayer materials and lateral dimensions ranging from the micrometric to the submicrometric scale. The parameters extracted from the fitting of the current-voltage characteristics using the tunnel junction microscopic model are found to be consistent with those independently estimated from switching current distribution measurements. Submicrometric Al-based devices exhibit electrodynamic properties comparable to those implemented in state-of-the-art transmon qubits and display clear signatures of quantum phase diffusion. The strong agreement between transport modelling and escape dynamics establishes a robust framework for describing hybrid ferromagnetic Josephson junctions consistent with their energy scales and supports their potential integration into superconducting quantum and classical digital circuits.",
+      "authors": [
+        "F. Calloni",
+        "R. Satariano",
+        "R. Ferraiuolo",
+        "H. G. Ahmad",
+        "D. Gatta",
+        "E. Raja",
+        "G. Santo",
+        "G. Serpico",
+        "R. Vydyasagar",
+        "D. Montemurro",
+        "N. Poccia",
+        "A. Vettoliere",
+        "G. Ausanio",
+        "C. Granata",
+        "L. Parlato",
+        "G. P. Pepe",
+        "A. Bruno",
+        "F. Tafuri",
+        "D. Massarotti"
+      ],
+      "primary_category": "cond-mat.supr-con",
+      "categories": [
+        "cond-mat.supr-con"
+      ],
+      "published": "2026-05-18T16:03:47+00:00",
+      "link": "https://arxiv.org/pdf/2605.18586v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Electrodynamic properties and phase dynamics of ferromagnetic Josephson junctions",
+      "llm_evidence_cn": "铁磁约瑟夫森结的电动力学特性与相位动力学",
+      "llm_evidence": "铁磁约瑟夫森结的电动力学特性与相位动力学",
+      "canonical_evidence": "铁磁约瑟夫森结的电动力学特性与相位动力学",
+      "llm_tldr_en": "Analyzes phase dynamics and dissipation in Josephson junctions, informing superconducting qubit coherence and modeling.",
+      "llm_tldr_cn": "分析约瑟夫森结相位动力学与耗散，为超导量子比特相干性与建模提供参考。",
+      "llm_tldr": "分析约瑟夫森结相位动力学与耗散，为超导量子比特相干性与建模提供参考。",
+      "llm_tags": [
+        "query:sc-qubit-chip"
+      ],
+      "matched_query_tag": "query:sc-qubit-chip",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

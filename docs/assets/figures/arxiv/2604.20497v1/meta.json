@@ -1,0 +1,46 @@
+{
+  "version": 5,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.20497v1/fig-001.webp",
+      "caption": "Fig. 2. (A) Upper bound Qm max (normalized to electrical size ka) for inductors confined to a square optimizable area of radius a, plotted as a function of electrical size and metal conductivity. The bound is computed using both convex optimization (SDR) and modal analysis (CMT) methods, as discussed in the Appendix B and C respectively, showing virtually perfect agreement. We have verified that the numerical solutions of Qm max converge with increasing mesh resolution. The rigorous numerical bounds are compared with the approximate analytical bound given by Eq. (4) (green dashed curve). (B) Geometry used to derive the analytical formula for Qm max, motivated by the observed similarity between the optimal current distribution for small design areas and a single-turn circular loop with uniform current. The formula provides a closed-form, slightly loose upper bound for Qm max, in good agreement with results of optimization algorithms for small sizes, demonstrating its reliability as a benchmark for miniaturized inductor design where radiation losses are negligible. (C) Optimal current distributions for different sizes of the optimizable design area, for σ0 = 2 × 108 S/m, illustrating the transition from a single wide-loop solution for small inductors to a two-turn solution for larger sizes. Configuration (iii), a single loop with reduced width, represents an intermediate stage where radiation losses begin to be significant. The onset of this transition strongly depends on the conductivity, as discussed in the main text. In all sub-panels of (c), brighter regions indicate a higher current density, while red arrows depict surface current magnitude and direction.",
+      "page": 4,
+      "index": 1,
+      "item_type": "figure",
+      "width": 919,
+      "height": 573,
+      "figure_number": "2"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.20497v1/fig-002.webp",
+      "caption": "Fig. 3. Upper bound Qm max (blue curve) numerically evaluated for rectangular design areas with a fixed width, W = λ/50, as a function of axial ratio. The results show that only modest growth is obtained as the length L is increased. The corresponding optimal current distributions at different axial ratios ζ = L/W are shown in the insets (not to scale for clarity). The optimal current solution maintains a wide elliptical profile at moderate axial ratios, splitting into multiple smaller loops as ζ increases. Ultimately, the optimal current distribution converges to that found at moderate axial ratios, but repeated across the structure, explaining the observed plateau in Qm max. The saturation of Qm max with increasing ζ implies that square or circular design areas are optimal for maximizing the Q-factor density of inductors. In all cases, we assumed conductivity σ0 = 2 × 108 S/m and a thickness much smaller than the skin depth. The approximate analytical formula for the bound, given by Eq. (5) for rectangular areas, is also plotted for comparison (red dashed line).",
+      "page": 5,
+      "index": 2,
+      "item_type": "figure",
+      "width": 550,
+      "height": 467,
+      "figure_number": "3"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.20497v1/fig-003.webp",
+      "caption": "Fig. 4. Numerical results for the generalized bound, Qm max, which also accounts for the contribution of kinetic inductance, plotted for a square design area with ka = 1/1000 considering a metal of conductivity σ0 = 2 × 108 S/m. The numerical bound (blue curve) exceeds the predictions of the analytical limit for conventional metals (4) (dashed black) in the regime where kinetic inductance becomes significant (ωτ > 1). In contrast, the modified analytical limit (9) (dashed red) is a valid upper bound for the Q-factor in both the magnetic inductance-dominated region (ωτ < 1) and the kinetic inductance-dominated region (ωτ > 1). The inset shows the numerical solution for the optimal current distribution, after including the kinetic inductance contribution (the normalized plot looks the same for any ωτ in the small ka regime) .",
+      "page": 6,
+      "index": 3,
+      "item_type": "figure",
+      "width": 528,
+      "height": 315,
+      "figure_number": "4"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.20497v1/fig-004.webp",
+      "caption": "TABLE I A COMPARISON OF THE Q-FACTOR UPPER BOUND FOR PLANAR INDUCTORS, EQ. (6), WITH THE REPORTED Q-FACTOR OF SEVERAL DESIGNS FROM THE LITERATURE ACROSS DIFFERENT FREQUENCY RANGES.",
+      "page": 5,
+      "index": 4,
+      "item_type": "table",
+      "width": 550,
+      "height": 467,
+      "figure_number": "I"
+    }
+  ]
+}

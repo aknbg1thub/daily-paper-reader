@@ -77,7 +77,7 @@ function testInferProviderType() {
       summarizedLLM: {
         apiKey: 'sk',
         baseUrl: 'https://api.bltcy.ai/v1',
-        model: 'gemini-3-flash-preview-thinking-1000',
+        model: 'qwen3.6-plus',
       },
     }),
     'plato',

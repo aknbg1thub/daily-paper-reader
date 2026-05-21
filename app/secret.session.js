@@ -203,7 +203,7 @@
       const defaults = Array.isArray(utils.DEFAULT_PLATO_CHAT_MODELS)
         ? utils.DEFAULT_PLATO_CHAT_MODELS
         : [
-            'deepseek-v4-pro',
+            'qwen3.6-plus',
           ];
     return sanitizeModelList(defaults, 99);
   };
@@ -899,8 +899,8 @@
       const defaultPlatoModels = getDefaultPlatoChatModels();
       const platoSummaryModels = [
         {
-          value: 'deepseek-v4-pro',
-          label: 'DeepSeek V4 Pro / Alibaba Bailian',
+          value: 'qwen3.6-plus',
+          label: 'Qwen 3.6 Plus / Alibaba Bailian',
         },
       ];
 
@@ -913,7 +913,7 @@
         currentChatEntry.baseUrl || '',
       );
       const initialPlatoModel =
-        normalizeText(currentSummaryLLM.model || '') || 'deepseek-v4-pro';
+        normalizeText(currentSummaryLLM.model || '') || 'qwen3.6-plus';
       const initialCustomModels = sanitizeModelList(
         currentProviderType === 'openai-compatible'
           ? (currentChatEntry.models || [])
@@ -1181,9 +1181,9 @@
       providerInputs.forEach((input) => {
         input.checked = input.value === currentProviderType;
       });
-      platoModelSelect.value = initialPlatoModel || 'deepseek-v4-pro';
+      platoModelSelect.value = initialPlatoModel || 'qwen3.6-plus';
       if (!platoModelSelect.value) {
-        platoModelSelect.value = 'deepseek-v4-pro';
+        platoModelSelect.value = 'qwen3.6-plus';
       }
 
       let githubOk = !!initialGithubToken;

@@ -1,0 +1,76 @@
+{
+  "version": 4,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.24042v1/fig-001.webp",
+      "caption": "Figure 1: Unperturbed conservative skeleton in the rotated coordinate frame (X,Y ). The red H = 0 contour is the bounded figure-eight separatrix of the resonant Hamiltonian system. The saddle at the origin is marked explicitly, and the surrounding Hamiltonian contours show the two lobe regions associated with the two macroscopic coherent-state wells. Because the H = 0 contour is bounded, the unstable branches emerging from the saddle are forced to return to the saddle and coincide with the stable branches, forming the two homoclinic loops used as the unperturbed skeleton for the Melnikov calculation. Representative parameters are K = 1.0 and p0 = 1.5.",
+      "page": 6,
+      "index": 1,
+      "item_type": "figure",
+      "width": 733,
+      "height": 722,
+      "figure_number": "1"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24042v1/fig-002.webp",
+      "caption": "Figure 2: Nonautonomous preparation dynamics separated into reduced and full-system diagnostics. (a) Reduced scalar model derived from the local invariant-graph reduction. The curves ±xredeq (t) are frozen-time algebraic roots of the reduced equation, ±ρ(t) are representative moving branches, and xred,±(t) are reduced trajectories showing attraction toward those branches after the post-threshold reference time T . The gray curve shows the pump envelope p(t), and the horizontal gray line marks pc = κ/2. (b) Full two-dimensional system: x-coordinates of the true trajectories initialized at (x0, y0) = (±10−3, 0), compared with the frozen-time full-system equilibrium coordinates. (c) Full two-dimensional system: transverse y-coordinates of the same trajectories, showing the Kerr-induced phase twist and dissipative relaxation toward the frozen full-system branches. Panel (a) displays the local reduced post-threshold mechanism, whereas panels (b) and (c) display two coordinate projections of the same full hardware-coordinate trajectories; the similar damped envelopes in panels (b) and (c) reflect the same Kerr-induced phase-twist relaxation, in which the transverse response is dissipatively slaved back into the x-dynamics. The reduced and full-system curves are not asserted to coincide quantitatively at large amplitude. Numerical parameters are listed in Appendix A.",
+      "page": 15,
+      "index": 2,
+      "item_type": "figure",
+      "width": 922,
+      "height": 978,
+      "figure_number": "2"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24042v1/fig-003.webp",
+      "caption": "Figure 3: Signed leading-order Melnikov splitting distance M(t0) for a Gaussian gate pulse with fixed width σ = 0.30 and amplitudes A = 2.0, 4.0, 6.0, computed from the analytic resonant homoclinic branch used in the canonical Melnikov calculation. The dashed horizontal line marks M(t0) = 0. For amplitudes large enough that M(t0) has simple zeros, the time-dependent stable and unstable curves intersect transversally, indicating the onset of transient lobe-mediated transport. The negative offset away from the pulse region is produced by dissipation.",
+      "page": 17,
+      "index": 3,
+      "item_type": "figure",
+      "width": 835,
+      "height": 586,
+      "figure_number": "3"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24042v1/fig-004.webp",
+      "caption": "Figure 4: Leading-order transport threshold for gate-induced leakage in the semiclassical model. The red curve is the canonical numerically evaluated level set Mmax(A, σ) = 0 in the gate amplitude-width plane, plotted with pulse width σ on the horizontal axis and gate amplitude A on the vertical axis. Below the curve, Mmax(A, σ) < 0, no Melnikov zeros are detected, and the first-order calculation predicts no transversal intersections of the timedependent stable and unstable curves. Above the curve, Mmax(A, σ) > 0, the aperiodic pulse produces transient transversal intersections, and transient lobe-mediated transport across the nominal dividing boundary becomes available. This is a leading-order geometric onset criterion, not a sharp quantum gate-fidelity boundary.",
+      "page": 19,
+      "index": 4,
+      "item_type": "figure",
+      "width": 835,
+      "height": 604,
+      "figure_number": "4"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24042v1/fig-005.webp",
+      "caption": "Table 1: Parameter values used for the numerical integrations and Melnikov evaluations.",
+      "page": 20,
+      "index": 5,
+      "item_type": "table",
+      "width": 683,
+      "height": 282,
+      "figure_number": "1"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24042v1/fig-006.webp",
+      "caption": "Figure B1: Supplementary preparation diagnostics. (Top) Dynamic lag between a true semiclassical trajectory and the instantaneous algebraic roots for several logistic ramp rates γ. Faster ramps pro- duce larger lags, illustrating why frozen-time equilibria are unreliable for rapid preparation. (Bottom) Convergence of representative post-threshold moving branches ρ(t) initialized from different finite val- ues w∗. The rapid convergence illustrates that the forward-tracking branch construction is insensitive to the particular post-threshold initialization, up to exponentially decaying transients.",
+      "page": 24,
+      "index": 6,
+      "item_type": "figure",
+      "width": 1096,
+      "height": 797,
+      "figure_number": "B1"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24042v1/fig-007.webp",
+      "caption": "Figure B2: Illustrative full-system simulation of lobe-mediated transport using the full dissipative nonautonomous system for a pulse exceeding the Melnikov threshold. (Left) Initial conditions at t = 0, color-coded by their final-state classification at t = 8. The initial states that eventually cross the dividing surface (red) form the turnstile lobe, with yellow stars marking the intersection locations inferred from the zeros of the Melnikov function. (Right) Final state at the conclusion of the gate pulse, showing that the red cluster has been transported across the x = 0 dividing surface into the opposite logical region.",
+      "page": 25,
+      "index": 7,
+      "item_type": "figure",
+      "width": 1096,
+      "height": 797,
+      "figure_number": "B2"
+    }
+  ]
+}

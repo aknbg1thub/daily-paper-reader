@@ -1,0 +1,953 @@
+Title: Direct On-Wafer Measurements of Noise Parameters in C- and X-bands at T=4 K
+
+URL Source: https://arxiv.org/pdf/2605.17073v1
+
+Published Time: Tue, 19 May 2026 00:54:49 GMT
+
+Number of Pages: 11
+
+Markdown Content:
+> 1
+
+# Direct On-Wafer Measurements of Noise Parameters in C- and X-bands at T = 4 K
+
+Daniil Frolov, Jean-Olivier Plouchart, Utku Soylu 
+
+Abstract —This paper describes the setup and the results of the direct on-wafer measurements of a FET noise parameters obtained with a source-pull method at temperatures down to T = 4 K and in the 5 – 12 GHz frequency range. The setup consists of a cryostat with wafer probes, two reflectometers, a programmable impedance generator, wideband isolators and bias tees and low noise pream-plifier, all cooled to cryogenic temperatures, allowing to perform a full vector error-corrected wafer-level measurements of the discrete transistors and amplifier dies. The setup and its calibration procedure are designed in a such way that allows simultaneous calibration, S-parameters, noise parameters and I-V curve measurements of several FETs all in one cooldown. Using the described setup we perform first measurements of 14nm FinFETs and also measure noise parameters of an LNA based on these FETs. Resulting noise temperature values are compared against those obtained using independent and alternative measurement techniques. 
+
+Index Terms —noise parameters, impedance generator, source-pull, calibration, vector network analyzer (VNA), field effect transistor (FET), low noise amplifier (LNA). 
+
+I. I NTRODUCTION 
+
+The modeling and characterization of transistors and LNAs for cryogenic applications present significant technical chal-lenges and have been addressed in a number of prior works [1], [2], [3], [4], [5]. Historically, these applications were predominantly associated with radio astronomy, space, and physics-oriented research technologies. As a result, cryogenic process design kit (PDK) development remained a niche activity, often focused on a limited set of specialized devices. Commercial superconducting quantum computing systems, such as IBM Starling and Blue Jay machines [6], which are currently under active development, are expected to operate with tens of thousands of physical qubits. This scale requires readout chains incorporating a variety of low-noise transistor-based and quantum-limited superconducting amplifiers operat-ing at the lower end of the X-band. This readout application, together with related applications such as cryogenic CMOS circuits for qubit control and state discrimination, is there-fore creating a growing demand for cryogenic PDKs. The development of such PDKs is impossible without wafer-level characterization tools that enable chip sorting, binning, and the generation of large datasets for yield analysis and statistical evaluation. Previously, we demonstrated two scalar noise measurement methodologies for on-wafer IC characterization that utilize       
+
+> Daniil Frolov (e-mail: drf@ibm.com), Jean-Olivier Plouchart (e-mail: plouchar@us.ibm.com), Utku Soylu (e-mail: utkusoylu@ibm.com) are with IBM Quantum, Thomas J. Watson Research Center, Yorktown Heights, New York, USA. This work has been submitted for possible publication. Copyright may be transferred without notice, after which this version may no longer be accessible.
+
+both one-step and two-step cooldown procedures [7]. In recent years, impedance generators capable of operating at temper-atures as low as 4 K have become available, largely due to the work of Leo Belostotski and his colleagues [8], [9]. These impedance generators are now commercially available from Maury Microwave [10]. However, to the best of the authors’ knowledge, cryogenic noise parameter measurements using these impedance generators have, until recently, been performed only on packaged LNAs, and not on wafer-level devices, or, more importantly, on individual discrete tran-sistors on wafer. Among several challenges that make these measurements particularly complex and labor-intensive is the requirement to perform multiple cryostat cooldowns to obtain all necessary calibration data. This process can take more than a day to complete for a single LNA. This paper describes a novel measurement system together with a corresponding calibration scheme that enables cryo-genic noise parameter measurements using source-pull and cold-source techniques. Compared to previously reported se-tups, the proposed approach offers several significant advan-tages: 1) Unlike earlier systems [1], [2], [3], the described setup enables direct on-wafer noise parameter measurements 
+
+and simultaneous S-parameter measurements of cryo-genic DUTs with full vector error correction, over a frequency range with an arbitrary frequency step defined by the operator; 2) The DUT may be either a high-gain amplifier or a low-gain single discrete transistor, without degradation of the signal-to-noise ratio imposed by the 300 K noise floor limit of a room-temperature noise analyzer; 3) In the proposed setup, S-parameter calibration, noise calibration, and DUT measurements are all performed within a single cryostat cooldown. This capability allows multiple devices on a single wafer to be characterized in one run, significantly reducing test time and enabling automated, mass-production-level testing. Section II of this paper provides a detailed technical descrip-tion of the cryogenic setup and configuration of the external room-temperature instrumentation. Section III discusses the calibration procedures of the setup and outlines the features and limitations of the measurements. Section IV describes the 14 nm FinFET transistors under study, followed by their noise parameter measurements. Section V presents the LNA based on these FinFETs, along with measurements of its S-parameters and noise parameters obtained using two indepen-dent methods: 1) using the source-pull and cold-source methods with 
+
+> arXiv:2605.17073v1 [physics.ins-det] 16 May 2026 2
+
+2
+
+1
+
+4
+
+6
+
+5
+
+3
+
+2
+
+1
+
+4
+
+6
+
+5
+
+3         
+
+> Fig. 1. Noise parameter measurement stand consists of microscope 1, cryostat 2, control computer 3, vector network analyzer (VNA) 4, temperature readout 5, source-measure units (SMU) 6 for DC-biasing.
+
+vector error correction in the described noise parameter measurement setup; 2) using the cold-attenuator method and thru scalar nor-malization, as described in [7]. Results are discussed in Section VI, followed by a Conclusion. Similar to [1], in this work we utilize the following noise parameter set for a given DUT: 
+
+Te = Tmin + 4 N T 0
+
+|Γs − Γopt |2
+
+(1 − | Γs|2)(1 − | Γopt |2) (1) where: Tmin is the minimum effective noise temper-ature of the device; N is Lange invariant parame-ter [11]; Γopt = ( Ropt + jX opt − Z0)/(Ropt + jX opt + Z0),with Ropt and Xopt corresponding to the optimal resistance and reactance of the source connected to the DUT which allows to achieve condition when Te = Tmin ; T0 = 290 K; 
+
+Z0 = 50 Ω .II. I NSTRUMENTATION 
+
+A. General Description 
+
+The measurement setup consists of commercially available instruments and hardware and is shown in Fig. 1. The electrical block diagram of the system is presented in Fig. 2. The setup comprises two major subsystems that enable simultaneous, direct on-wafer noise parameter and S-parameter measure-ments: a four-port vector network analyzer with a built-in noise receiver, and a cryogen-free 4 K refrigerator equipped with cryogenic microwave instrumentation, as illustrated in Fig. 3. The primary room-temperature instrument in the setup is the network analyzer. In this work, we used a Keysight PNA-X model N5242B; however, an equivalent ZNA26 model from Rohde & Schwarz or a similar instrument may be used with comparable results. The main requirements are that the R1                                 
+
+> A
+> R2
+> B
+> R3
+> C
+> D
+> N
+> RF
+> Source
+> Port 1 Port 3 Port 4 Port 2
+> -30 dB
+> to gate
+> bias
+> to drain
+> bias
+> bias -T
+> 1
+> 210 11 18
+> 3
+> 9
+> 14
+> 17
+> 6
+> 7
+> 8
+> 12
+> 13
+> 15
+> 16 20
+> 19
+> 4
+> 5
+> 21
+> 22
+> 23
+> 24
+> 25
+> 26 27
+> 28
+> 29
+> 30
+> 31
+> 32
+> P1
+> P2
+> P3
+> bias -T
+> III II II II
+> II
+> Cryostat
+> VNA
+> 300K
+> 4K
+> b1a1a2b2
+> III
+> I
+> R4
+> Fig. 2. Electrical block-diagram of the measurement instruments and hard-ware. Two major components are the VNA (Keysight 5242B) and the cryo wafer prober (Form Factor), in between there are minor room temperature components amplifier 22 (Mini-Circuits) and directional coupler 32. The VNA equivalent circuit includes: RF source 1; terminated switches 2,10,11,18; SPDT switch 20; heterodyne receivers R1...R4, A,B,C,D; noise receiver 21; and directional couplers 3,6,9,14,17,19. The RF hardware inside the cryo-stat includes: 4-12 GHz triple junction ferrite isolator 23, 3.4-12.3 GHz circulator 28, 0.3-14 GHz low noise amplifier (Low noise factory) 30, 30 dB directional coupler 24, 0.2-18 GHz bias-T 27 (Quantum Microwave), impedance tuner 25 with built in bias-T 26 (Maury Microwave), attenuator 31, wafer probes P1,P2,P3(GGB Industries) and sample holder 29.
+
+analyzer provides four ports, direct access to the internal receivers, and a built-in noise receiver. While the use of a simpler VNA is possible, it would require multiple external switches and a separate noise figure analyzer, significantly complicating the calibration procedure. The electrical diagram of the network analyzer shown in Fig. 2 is a generic equivalent and includes a reduced number of components, limited to those essential for understanding the measurement and calibration concepts. Noise parameter measurements are performed by imple-menting a combination of cold-source and source-pull methods [12] directly at cryogenic temperatures using a cryogenic impedance generator (referred to as a “tuner” in this work) 25. This tuner is based on the original work by M. Himmelfarb and L. Belostotski [8] and is currently commercially available from Maury Microwave [10]. The tuner operates in four discrete states, labeled 1–4. Only in state 1 does it function as a two-port device with relatively well-matched input and output ports and low insertion loss. In the remaining three states, the tuner effectively becomes a one-port network presenting three fixed output impedances over the frequency range of interest, as will be discussed later. To isolate the low-noise cryogenic instrumentation from room-temperature noise generated by the network analyzer, a 325, 26                   
+
+> 24 23
+> 27
+> 28
+> 30
+> P1P3
+> 29
+> 25, 26 24 23 27 28 30
+> 31
+> P2
+> Top View
+> Front View
+> 25, 26
+> 24 23
+> 27
+> 28
+> 30
+> P1P3
+> 29
+> 25, 26 24 23 27 28 30
+> 31
+> P2
+> Top View
+> Front View
+> Fig. 3. Cryogenic instrumentation mounted on the 4K plate of the refrigerator: front view and top view (as seen by the microscope), with the same numbering as in block diagram in fig.2. Probes P1,P2,P3are moved by Attocube piezo-based drives for cryogenic environments.
+
+ferrite isolator 23, a high-coupling-loss directional coupler 24, and an attenuator 31 are employed. Although the tuner itself is designed to operate over the 2–18 GHz frequency range, the effective measurement bandwidth of the setup is primarily limited by the ferrite isolator and the on-wafer TRL calibration to the 5–12 GHz range. Components 23, 24, 28, and 31 not only isolate the DUT from room-temperature noise, but also collectively function as directional elements that separate the forward waves a1, a2 from the reflected waves b1, b2 directly in the cryogenic environment. Together, they form an external cryogenic S-parameter test set that is connected to the network analyzer through the direct receiver access ports on the front panel. Another critical component enabling noise parameter mea-surements of individual transistors in this setup is the pream-plifier 30. For example, a 4 K noise power spectral density (PSD) of −193 dBm/Hz from a cold 50 Ω termination, amplified by a transistor with a typical gain of +10 dB and a low effective noise temperature Te, results in an output noise PSD of approximately −183 dBm/Hz. This level remains well below the room-temperature instrumentation noise floor of 
+
+−174 dBm/Hz, rendering accurate measurement impractical. The preamplifier 30 raises the output noise level significantly above the room-temperature noise floor, enabling measure-ments of transistors with very low gain. However, accurate and careful calibration of this preamplifier is essential for reliable noise parameter extraction. 
+
+B. Principles of Operation 
+
+The setup shown in Fig. 2 operates in two distinct modes: a) S-parameter measurement and b) noise parameter measure-ment. Both modes require calibration at both room temperature and cryogenic temperature, as discussed in the Calibration section. 
+
+1) S-parameter mode: In this mode, the S-parameters of any two-port DUT, or of two single-port DUTs connected to probes P2 and P3, can be measured. The DUT may be a passive device, such as an attenuator or an inductor, or an active device, such as a transistor. In the latter case, the required biasing can be supplied to the probes through bias-Ts 26 and 27. Alternatively, the DUT may be a fully featured multi-stage LNA with external DC probes used for power delivery. Measurements in this mode are performed using VNA ports 3 and 4. Switches 2 and 18 are fixed in position II for all S-parameter measurements. During the forward scan (S11 , S21 ), switches 10 and 11 are set to positions I and II, respectively, while for the reverse scan ( S22 , S12 ), the switch positions are reversed. During the forward scan, the incident wave a1 is generated by RF source 1 and routed through switch 10, coupler 9, and port 3 to the cryogenic directional coupler 24. Within this coupler, a1 is strongly attenuated by the coupling loss and directed toward probe P2 via tuner 25 and bias-T 26. The attenuation provided by coupler 24 is necessary to suppress the room-temperature instrumentation noise floor of −174 dB-m/Hz down to the cryogenic instrumentation noise floor of 
+
+−193 dBm/Hz. The wave b1 reflected from the DUT propagates back through probe P2, bias-T 26, and tuner 25 into directional coupler 24, where it is routed through the primary low-loss channel toward the network analyzer receiver “C” 8 via isolator 23 and amplifier 22. In this configuration, S11 is measured as S11 = b1/a 1 = C/R 3. The wave b2 trans-mitted through the DUT propagates forward through probe 
+
+P3, bias-T 27, circulator 28, and preamplifier 30, and is then directed to receiver “D” 13 through the secondary channel of directional coupler 32. Accordingly, S21 is measured as 
+
+S21 = b2/a 1 = D/R 3.It can be observed that the forward propagation path of wave a1 experiences high attenuation, whereas the return path of the reflected wave b1 exhibits minimal attenuation. This 4
+
+asymmetric behavior is achieved primarily through the use of directional coupler 24 and isolator 23. The unidirectional propagation characteristic of isolator 23 effectively isolates the DUT from room-temperature noise while preserving a low-loss path for the reflected wave b1 within the directional coupler 24. During the reverse scan, the incident wave a2 is generated by RF source 1 and routed through switch 11, coupler 14, and port 4 to the cryogenic attenuator 31. In this attenuator, a2
+
+is again significantly attenuated and directed toward probe P3
+
+via circulator 28 and bias-T 27. The wave b2 reflected from the DUT propagates back through probe P3 and bias-T 27 into circulator 28, where it is routed toward network analyzer receiver “D” 13 through preamplifier 30 and the secondary channel of directional coupler 32. In this case, S22 is measured as S22 = b2/a 2 = D/R 4.The wave b1 transmitted through the DUT in the reverse direction propagates through probe P2, bias-T 26, and tuner 25 into directional coupler 24, and from there to network analyzer receiver “C” 8 via isolator 23 and amplifier 22. Consequently, 
+
+S12 is measured as S12 = b1/a 2 = C/R 4.Amplifier 22 increases the sensitivity of receiver C in the VNA; however, its primary purpose is to enable the calibration protocol described later in this paper. 
+
+2) Noise parameter mode: In this mode, the noise param-eters of a two-port active DUT are measured. This procedure requires the measurement of four noise factors, F1, F2, F3,and F4, corresponding to four output impedance states, Z1,
+
+Z2, Z3, and Z4, of tuner 25. The noise factors are measured using the cold-source method [12] as follows. After the S-parameters of the DUT are measured, switch 20 of the VNA is set to position II, connecting the noise receiver “N” 21 to the output of the DUT through the primary channel of directional coupler 32, cryogenic preamplifier 30, circulator 28, and bias-T 27. This configuration enables the measurement of the noise factors Fi for each of the four tuner impedance states using the following equation: 
+
+Fi = 1 + 1
+
+T0
+
+"
+
+Ti
+
+|S21 |2Mi
+
+− Tamb 
+
+#
+
+(2) where S21 is the complex transmission coefficient of the DUT measured between probe tips P2 and P3; Tamb is the tuner and the DUT physical temperature which are in thermal equi-librium; Ti is the absolute available output noise temperature from the DUT for the specific tuner state measured directly at the probe tip P3, and Mi is the DUT mismatch term for each tuner state: 
+
+Mi = 1 − | Γi|2
+
+|1 − ΓiS11 |2
+
+
+
+1 − S22 + S21 S12 Γi
+
+> 1−S11 Γi
+> 2
+
+ (3) where Γi = ( Zi − Z0)/(Zi + Z0) complex reflection coeffi-cient of the tuner output as seen by the DUT at the P2 probe tip, S11 , is the complex reflection coefficient of the DUT at the P2 probe tip, and S22 at the probe tip P3, while S21 , S 12 
+
+are transmission coefficients between these probe tips. Noise parameters of the DUT can then be obtained from the following equations (see [9]): 
+
+Fmin = Re( A + p4BC − D2)
+
+Tmin = T0(Fmin − 1) 
+
+Yopt = 12B
+
+p 4BC − D2 − jD 
+
+
+
+N = Re( Yopt )B
+
+Γopt = ( Y −1 
+
+> opt
+
+− Z0)/(Y −1 
+
+> opt
+
++ Z0)
+
+(4) where coefficients A, B, C, D can be calculated from the measured noise factors F1, F2, F3, F4 and output impedances 
+
+Zi = Ri + jX i of the tuner: 
+
+
+
+ABCD
+
+ =
+
+
+
+1, R−11 + R21X−21 , R1, R1X−11
+
+1, R−12 + R22X−22 , R2, R2X−12
+
+1, R−13 + R23X−23 , R3, R3X−13
+
+1, R−14 + R24X−24 , R4, R4X−14
+
+ 
+
+> −1
+
+
+
+F1
+
+F2
+
+F3
+
+F4
+
+
+
+(5) It can be seen that the calculation of noise parameters using (2) and (5) requires the S-parameter calibration plane to be moved to the probe tips P2 and P3. In addition, the noise PSD calibration plane must be located at probe tip P3, and the tuner output impedances at probe tip P2 must be known for all four tuner states. All of these requirements can be satisfied using the calibration procedures described below. III. C ALIBRATION PRINCIPLES 
+
+Calibration is a key step in noise parameter measurements. In our setup, both calibration and measurement are performed within a single cooldown, which significantly reduces the overall characterization time. The equivalent signal flow graph of the setup, shown in Fig. 4, includes five calibration planes required to de-embed the associated error boxes down to the probe tips. The DUT is located between planes 2 and 3 (probe tips P2 and P3). Depending on the type of measurement (noise parameter or S-parameter), the corresponding set of error boxes must be de-embedded. In total, 24 error terms must be de-embedded in order to obtain calibrated DUT S-parameters and noise parameters within a single cooldown. 
+
+A. On-wafer S-parameter calibration 
+
+As described previously, the four S-parameters of the DUT, 
+
+S11 , S22 , S21 , and S12 , are measured using ports 3 and 4 of the VNA. Consequently, the DUT is bounded by two error boxes: “Port3+Tuner+Probe2” on the input side and 
+
+“Probe3+Preamp+Port4” on the output side, as defined by calibration planes 2 and 3 in Fig. 4. Note that, on the output side, the “Probe3+Preamp” and “Port4” error boxes are combined into a single equivalent error box. This simplifi-cation is sufficient for S-parameter measurements, although it is not adequate for noise parameter measurements, as will be discussed later. S-parameter calibration is therefore performed between planes 2 and 3 (probe tips P2 and P3) using the standard multiline TRL (thru–reflect–line) method with a CS-105 cali-bration substrate and with the tuner switched to its first state. 5S-parameter    
+
+> path
+> S21
+> S12
+> S22
+> S11
+> DUT
+> C
+> R3
+> eC
+> eRC
+> eCR
+> eR3 Sa 21
+> Sa 12
+> Sa 22
+> Sa 11
+> Probe 3 + Pre -amp
+> eR4
+> eDR
+> eRD
+> eD
+> R4
+> D
+> Port 3 + Tuner + Probe 2
+> eR2
+> eBR
+> eRB
+> eB
+> R2
+> B
+> Port 2, Noise receiver
+> 1
+> 1A
+> R1
+> eA
+> eRA
+> eAR
+> eR1
+> Port 1
+> Sp 21
+> Sp 12
+> Sp 22
+> Sp 11
+> Probe 1
+> Short,
+> Open,
+> Match
+> Cal. plane 1
+> Cal. plane 3 Cal. plane 2
+> Port 4
+> 1
+> 1
+> Noise
+> path
+> Cal. plane 4 Cal. plane 5
+> 1
+> 1
+> Fig. 4. Signal graph of the system representing DUT, error boxes and five calibration planes required for calibration of 24 error terms.
+
+B. Tuner characterization 
+
+The output impedances of the tuner, as seen by the DUT at probe tip P2 in each of the four tuner states, are required for (3) and (5). These impedances are measured as follows. After completion of the S-parameter calibration, probes P2 and P3
+
+remain landed on the thru standard of the calibration wafer, as shown in Fig. 5(a). This configuration directly connects calibration planes 2 and 3, such that the corrected reflection measured by port 4 of the VNA is S22 = 0 ± δ, where δ is the residual reflection uncertainty of the two-port calibration, typically δ ≪ 0.01 , corresponding to better than −40 dB. Because the tuner in state 1 is included in the S-parameter thru      
+
+> P1a)
+> P2
+> P3
+> b)
+> P2
+> P1
+> P3
+> thru
+> thru
+> P1a)
+> P2
+> P3
+> b)
+> P2
+> P1
+> P3
+> thru
+> Fig. 5. Characterization of the pre-amplifier. (a) preamp is connected to the tuner, (b) preamp is connected to the P1for S-parameter measurement
+
+calibration procedure, its output impedance mismatch is fully removed during the correction process. However, if, after 
+
+calibration, the error terms eCR = eC = 0 are enforced by disabling amplifier 22 and thereby forcing wave b1 = 0 ,port 4 of the VNA directly measures the reflection at probe tip P2 as seen by the DUT. This effectively yields a one-port network measurement, enabling characterization of the tuner output impedance Zi at probe tip P2 for all four tuner states. The results of this one-port measurement are shown in Fig. 6(a). As illustrated in Fig. 3, the tuner is connected to probe tip P2 through a long cryogenic cable required to accommodate the motion range of the piezo-positioner. This cable, together with the electrical length of the probe itself, introduces an additional delay of 1.923 ns in the tuner impedance in our setup. The four tuner impedances over the 5–12 GHz frequency range, with this delay de-embedded, are shown in Fig. 6(b). Since the impedances cluster into four distinct regions, as required by the technique described in [8], this result confirms that the tuner operates as expected. In 0.2 0.5 1.0 2.0 5.0               
+
+> 0.2j
+> 0.5j
+> 1.0j
+> 2.0j
+> 5.0j
+> -0.2j
+> -0.5j
+> -1.0j
+> -2.0j
+> -5.0j
+> 0.0
+> a) a)
+> 0.2 0.5 1.0 2.0 5.0
+> 0.2j
+> 0.5j
+> 1.0j
+> 2.0j
+> 5.0j
+> -0.2j
+> -0.5j
+> -1.0j
+> -2.0j
+> -5.0j
+> 0.0
+> b) b)
+> Fig. 6. Measured probe P2source impedance as seen by the DUT (a) and with 1.923 ns delay subtracted (b): tuner output impedances Z1red (center),
+> Z2green (right), Z3blue (top), Z4black (left).
+
+fact it is not needed to know exactly how much delay the wiring adds and we are showing fig.6 (b) only for illustrative purposes. For the noise parameter measurement only the actual impedance at the DUT input is important and it is directly measured in our setup, as seen in fig.6 (a). 6
+
+C. Pre-amplifier characterization 
+
+The final step of the calibration procedure involves a com-plete characterization of the preamplifier S-parameters and noise parameters between probe tip P3 and VNA port 2 (the noise receiver input). 
+
+1) S-parameters characterization: The S-parameters of the preamplifier are measured using an additional probe, P1. To characterize this probe itself, a room-temperature calibration is first performed by directly connecting calibration planes 4 and 5 using a standard electronic calibrator (e-cal). A conven-tional room-temperature two-port calibration is then carried out between ports 1 and 2 of the VNA. This calibration is performed using the same frequency range and frequency step as the multiline TRL calibration previously executed in the cryostat. The genders of the cable connectors between the VNA and the cryostat are selected such that no adapters are required when connecting calibration planes 4 and 5 either to the e-cal or to the cryostat. After completion of the port 1– port 2 calibration, the calibrated cables are reconnected to the cryostat. Subsequently, probe P1 is landed on the Open, Short, and Match (OSM) standards of the calibration substrate inside the cryostat, and the corresponding reflection coefficients, ΓO ,
+
+ΓS , and ΓM , are measured by port 1 of the VNA. Since the probe is a reciprocal device, Sp 21 =Sp 12 its S-parameters then can be obtained using the equations 6: 
+
+Sp 11 = EDF , Sp 22 = ESF , Sp 21 = Sp 12 = √ERF (6) where EDF, ESF and ERF are directivity, source match and reflection tracking error terms calculated from the measured values ΓO , ΓS , and ΓM using the OSM (also known as Short Open Load (SOL) one-port calibration matrix solution 1 from [13], and where square root ERF must be extracted properly using procedures [12]. Next, probes P1 and P3 are landed on the thru standard of the calibration wafer, as shown in Fig. 5(b), and the S-parameters Spa 11 , Spa 21 , Spa 12 , and Sa 22 between cali-bration planes 4 and 5 (corresponding to ports 1 and 2 of the VNA) are measured. Note that Sa 22 of the preamplifier network is measured directly, the rest of S-parameters Sa 11 ,
+
+Sa 21 , Sa 12 , between calibration planes 3 and 5 are obtained by de-embedding the probe 1 Sp -parameters using the following equations: 
+
+Sa 11 = Spa 11 − Sp 11 
+
+Spa 11 Sp 22 − Sp 11 Sp 22 + Sp 12 Sp 21 
+
+(7) 
+
+Sa 21 = Spa 21 
+
+Sp 21 
+
+(1 − Sp 22 Sa 11 ) (8)    
+
+> 1OSM/SOL calibration requires actual values of Short, Open and Match standards, which are not trivial at cryogenic temperatures especially for the Match. We characterized the actual values independently using probe P2,calibrated with the temperature independent TRL algorithm as described before. However, we found that at least for low frequencies <12 GHz the actual values of the Open, Short, and Match are close enough to ideal corresponding to 1, -1 and 0, so the latter can be used directly without noticeable difference in the final extracted DUT S-parameters of the probe. This obviously won’t be the case at higher frequencies as parasitics become significant.
+
+Sa 12 = Spa 12 
+
+Sp 12 
+
+(1 − Sp 22 Sa 11 ) (9) These Sa -parameters are shown in Fig. 7(b). Although we refer to this block as a “pre-amplifier” for simplicity, the measurement in fact includes the entire signal chain from probe tip P3 through bias-T 27, circulator 28, preamplifier 30, the primary channel of directional coupler 32, and the inter-connecting cables up to port 2 of the VNA. As such, the extracted Sa -parameters represent a com-prehensive characterization of both the cryogenic and room-temperature components of the noise receiver front end. For example, the Sa 11 response exhibits fewer oscillations due to the relatively short electrical path between preamplifier 30 and probe tip P3. In contrast, Sa 22 has a lower magnitude and shows significantly stronger oscillations, which result from the much longer and higher-loss electrical path between the output of the preamplifier 30 and port 2 of the VNA. 
+
+2) Noise parameters characterization: This is the final step of the calibration procedure. Probes P3 and P2 are landed on the thru standard, as shown in Fig. 5(a), and the noise power spectral density (PSD) Wi at port 2 of the VNA is measured for each of the four impedance states Zi of the tuner. As a result of the preceding calibration steps, the following parameters are obtained: the noise PSD Wi corresponding to each tuner state; the Sa -parameters of the preamplifier chain from probe tip P3 to VNA port 2; and the tuner impedances Zi.Using this dataset, four mismatch factors M a 1, M a 2, M a 3,and M a 4 are calculated with (3), and four corresponding noise factors F a 1, F a 2, F a 3, and F a 4 are obtained using (2), where 
+
+Ti = k−110 0.1Wi−3. The noise parameters of the preamplifier chain are then extracted using (4). These results 2 are shown in Fig. 8. The noise temperature of the preamplifier chain, which effectively defines the overall system noise temperature, can then be calculated using (1) for any value of DUT output impedance seen by the preamplifier. As an example, the minimum noise temperature Tmin and the noise temperature for a 50 Ω source, T50 , of the preamplifier chain are shown in Fig. 7(a). It can be observed that the resulting noise temperature is significantly higher than the specified noise temperature of the preamplifier alone, which is on the order of 3–4 K [14]. This increase is primarily due to additional loss between probe tip P3 and the preamplifier input, including contributions from the probe itself, the bias-T, the circulator, and the cryogenic interconnecting cables. At the same time, the difference between Tmin and T50 is negligible due to the high isolation provided by circulator 28, which is the main reason it is used instead of a directional coupler. In fact, this isolation is sufficient to allow the use of only T50 for subsequent DUT noise calculations, regardless of the DUT S22 , which is an important feature of the proposed setup. The impact of this isolation can also be observed in 
+
+> 2In all subsequent figures presenting noise parameters, the gray curves represent raw measurement data, while the colored curves show data processed with Savitzky–Golay smoothing using a filter window size of 200, applied to a total of 1001 frequency points. 7
+
+4 5 6 7 8 9 10 11 12 
+
+Frequency (GHz) 
+
+6
+
+8
+
+10 
+
+12 
+
+14 
+
+16 
+
+> Noise Temperature (K)
+
+a) 
+
+T50 
+
+Tmin 
+
+4 6 8 10 12 14 
+
+Frequency (GHz) 
+
+60 
+
+40 
+
+20 
+
+0
+
+20 
+
+40 
+
+> Magnitude (dB)
+
+b) 
+
+Sa 21 
+
+Sa 11 
+
+Sa 22 
+
+Sa 12         
+
+> Fig. 7. Measured S-parameters of the preamplifier including probe P3, bias-T 27 and circulator 28. Traces in (a): top: T50 , bottom: Tmin ; traces in (b) top to bottom: Sa 21 ,Sa 11 ,Sa 22 ,Sa 12 .
+
+4 6 8 10 12 14 
+
+Frequency (GHz) 
+
+0.00 
+
+0.02 
+
+0.04 
+
+0.06 
+
+0.08 
+
+0.10 
+
+> (Unitless)
+
+a) 
+
+4N 
+
+Fmin 1
+
+4 6 8 10 12 14 
+
+Frequency (GHz) 
+
+100 
+
+75 
+
+50 
+
+25 
+
+0
+
+25 
+
+50 
+
+75 
+
+100 
+
+> Impedance (Ohm)
+
+b) 
+
+Ropt 
+
+jX opt         
+
+> Fig. 8. Measured Noise parameters of the preamplifier chain. Traces in (a): top: 4N, bottom: Fmin −1. Traces in (b): top: Ropt , bottom: jX opt .
+
+the Ropt and jX opt curves shown in Fig. 8(b), where the imaginary part is close to zero and the real part is near 50 Ω.Finally, as noted in [9], Fig. 8(a) shows that the measured minimum noise factor and the Lange invariant satisfy the relationship Fmin − 1 < 4N , indicating the absence of fundamental errors in either the measurement setup or the data processing. We found this relationship to be a particularly useful diagnostic tool for debugging the measurement scripts, especially during matrix inversion for ABCD-parameter cal-culations, which can become computationally intensive when performed over a large number of frequency points. As a result of the DUT S-parameter calibration and the calibration of the preamplifier S-parameters and noise param-eters, once the probes are landed on the actual DUT—either a transistor or an amplifier—the DUT S-parameters S11 , S21 ,
+
+S12 , and S22 can be obtained directly from the VNA using ports 3 and 4. The output noise temperature Ti corresponding to each tuner impedance state Zi, which is required for noise parameter extraction using (2), (3), and (4), can be calculated using the following expression (10): 
+
+Ti = k−110 0.1Wi−3
+
+|Sa 21 |2M a i
+
+− T a i (10) where Wi is the available absolute noise PSD measured by the noise receiver ”N” 21 of the VNA for each tuner state in units of [dBm/Hz]; k is Boltzmann constant; and T a DU T 
+
+is the noise temperature of the preamplifier when loaded with the DUT output impedance calculated using (1) and mismatch 
+
+M a i between DUT output and the probe tip P3 is: 
+
+M a i = 1 − | Γai|2
+
+|1 − ΓaiSa 11 |2
+
+
+
+1 − Sa 22 + Sa 21 Sa 12 Γai
+
+> 1−Sa 11 Γai
+> 2
+
+ (11) where Γai is the source reflection coefficient seen by the preamplifier as cascaded tuner ouput reflection and DUT: 
+
+Γai = S22 + S21 S12 Γi
+
+1 − S11 Γi
+
+(12) In practice, because of good circulator isolation and match-ing, Sa 11 ≈ Sa 12 ≈ Sa 22 ≈ 0 and therefore M a i coefficient significantly simplifies: M a i ≈ 1 − | Γai|2
+
+IV. C HARACTERIZATION OF CRYOGENIC FET The FETs and the subsequent low-noise amplifiers were im-plemented using Samsung’s 14 nm FinFET technology, specif-ically employing super-low-threshold-voltage (SLVT) devices to maximize the unity-gain frequency ( fT ) and the maximum oscillation frequency ( fmax ). To ensure robust performance across validated thermal ranges, the gate length was optimized to minimize the noise temperature ( Te) at room temperature and at −40 ◦C. In parallel, the gate width was carefully selected to align the real part of the optimum noise impedance ( Zopt )with the 50 Ω impedance circle. This design approach enabled a simplified matching network that simultaneously satisfies noise and power matching requirements. At the time of the original design, cryogenic device data and dedicated noise-parameter characterization setups were not available. Consequently, the characterization framework described in this paper was later employed to investigate the noise parameters of these devices at T = 4 K for the first time. The FET S-parameters and noise temperature measurement results are shown in the fig.9, noise parameters are shown in fig.10. An important result that validates the calibration of the setup is shown in Fig. 11. As previously discussed in [16] 84 6 8 10 12 14 
+
+Frequency (GHz) 
+
+0
+
+10 
+
+20 
+
+30 
+
+40 
+
+50 
+
+60 
+
+70 
+
+80 
+
+> Noise Temperature (K)
+
+a) 
+
+T50 
+
+Tmin 
+
+4 6 8 10 12 14 
+
+Frequency (GHz) 
+
+20 
+
+10 
+
+0
+
+10 
+
+20 
+
+> Magnitude (dB)
+
+b) 
+
+S21 
+
+S11 
+
+S22 
+
+S12        
+
+> Fig. 9. FET noise temperatures (a): top: T50 , bottom: Tmin and S-parameters (b) top to bottom: Sa 21 ,Sa 11 ,Sa 22 ,Sa 12 .
+
+4 6 8 10 12 14 
+
+Frequency (GHz) 
+
+0.00 
+
+0.05 
+
+0.10 
+
+0.15 
+
+0.20 
+
+0.25 
+
+0.30 
+
+> (Unitless)
+
+a) 
+
+4N 
+
+Fmin 1
+
+4 6 8 10 12 14 
+
+Frequency (GHz) 
+
+0
+
+20 
+
+40 
+
+60 
+
+80 
+
+100 
+
+120 
+
+140 
+
+> Impedance (Ohm)
+
+b) 
+
+jX opt 
+
+Ropt     
+
+> Fig. 10. Noise parameters of the FET: (a) Noise Factor (bottom) and Lange invariant (top), showing proper inequality 4N > F min −1, see [15]; (b) optimal resistance (bottom) and reactance of the source (top).
+
+4 6 8 10 12 14 
+
+Frequency (GHz) 
+
+1.0 
+
+1.2 
+
+1.4 
+
+1.6 
+
+1.8 
+
+2.0         
+
+> (Unitless)
+> 4NT 0
+> Tmin
+> Fig. 11. The inequality 2>4N T 0/T min >1provides a useful check to validate the measured noise parameters. FET
+> LNA
+> DC
+> P2
+> P1
+> P3
+> P2
+> P1
+> P3
+> b) a)
+> FET
+> LNA
+> DC
+> P2
+> P1
+> P3
+> P2
+> P1
+> P3
+> b) a)
+> Fig. 12. Measurement of the FET (a) and LNA based on this FET (b)
+
+for both FETs and bipolar transistors, a necessary condition for a physically valid set of noise parameters is that the ratio 
+
+4N T 0/T min lies between 1 and 2. Fig. 12 shows microscope view of a wafer with individual FET (a) and LNA (b) being measured. It is important to note the following observation. As can be seen in Fig. 9, the average S21 of the FET is approx-imately 13 dB over the 5–12 GHz frequency range. For a DUT operating at T = 4 K, the thermal noise floor is −193 dBm/Hz. Even for a DUT with a low noise figure and a gain of S21 = 15 dB, the resulting output noise PSD is only −178 dBm/Hz, which remains below the room-temperature instrumentation noise floor of −174 dBm/Hz. Consequently, direct noise temperature measurements are not possible using conventional methods. In the proposed setup, however, this limitation on DUT gain is alleviated by the inclusion of a rigorously calibrated preamplification chain with well-characterized gain and noise temperature. As a result, reliable noise parameter characterization of individual FETs is possible even for devices with relatively low gain. V. C HARACTERIZATION OF CRYOGENIC LNA The schematic of the LNA is shown in Fig. 15. The amplifier consists of three cascaded common-source stages and is implemented in a 14 nm FinFET technology. The first stage is input-matched to 50 Ω by resonating the input capacitance of NFET M1 with inductors Lg1 and Ls1 at the 7 GHz center frequency. In parallel, the width of M1 is selected such that the real part of the input impedance is 50 Ω. This approach enables simultaneous matching of the input impedance and the optimum noise impedance to 50 Ω. The same design technique is applied to the second stage to further improve the overall noise performance of the LNA. One drawback of the common-source architecture is lim-ited stage-to-stage isolation, which can potentially lead to instability. However, this reduced isolation also enables the 95 6 7 8 9
+
+Frequency (GHz) 
+
+30 
+
+40 
+
+50 
+
+60 
+
+> Noise Temperature (K)
+
+a) 
+
+T50 
+
+Tmin 
+
+4 6 8 10 12 14 
+
+Frequency (GHz) 
+
+60 
+
+40 
+
+20 
+
+0
+
+20 
+
+40 
+
+> Magnitude (dB)
+
+b) 
+
+S21 
+
+S11 
+
+S22 
+
+S12         
+
+> Fig. 13. LNA noise temperatures (a): top: T50 , bottom: Tmin and S-parameters (b) top to bottom: Sa 21 ,Sa 11 ,Sa 22 ,Sa 12 .
+
+4 6 8 10 12 14 
+
+Frequency (GHz) 
+
+0.00 
+
+0.05 
+
+0.10 
+
+0.15 
+
+0.20 
+
+0.25 
+
+0.30 
+
+0.35 
+
+0.40 
+
+> (Unitless)
+
+a) 
+
+4N 
+
+Fmin 1
+
+4 6 8 10 12 14 
+
+Frequency (GHz) 
+
+100 
+
+50 
+
+0
+
+50 
+
+100 
+
+150 
+
+200 
+
+> Impedance (Ohm)
+
+b) 
+
+Ropt 
+
+jX opt            
+
+> Fig. 14. Noise parameters of the LNA: (a) Noise Factor (bottom) and Lange invariant (top); (b) optimal resistance (top) and reactance of the source (bottom). M1 M2 M3 Lg1
+> Ls1 Ls2
+> Ld1
+> Lg2
+> Rg3
+> Cg1 Cg2 Cg3
+> CD1
+> CD23
+> ESD3 ESD4
+> ESD2
+> VDD Vg1 Vg23
+> in
+> out
+> λ/4
+> ESD1
+> Rg1
+> Cbs1
+> Cbs2
+> Rg2
+> Cbs4
+> Cbs5 Ld3 Rd3
+> Cbs3
+> Cd3
+> Ld2 Rd2
+> Lg3
+> Fig. 15. 3-stage common-source LNA schematic, the ”in”, ”out”, ”Vg1”, ”VDD”, and ”Vg23” octagons correspond to the pads on the die for probe landing.
+
+introduction of resonances in subsequent stages, which can be exploited to achieve broadband input matching. The drains of transistors M1, M2, and M3 are loaded with inductors Ld1,
+
+Ld2, and Ld3, respectively. The quality factors of Ld2 and Ld3
+
+are intentionally reduced by incorporating resistors Rd2 and 
+
+Rd3 to enhance LNA stability. Interstage matching is realized using Ld1, Ld2, Lg2, Lg3, Cg2, Cg3, and Rd2. The LNA output is matched to 50 Ω using Ld3, Rd3, Cd3, and inductor ESD2 .All inductors are implemented by stacking the top two metal layers in order to minimize loss. The drain supply voltage applied at the VDD pad typically ranges from 0.3 to 0.7 V. The drain current of the first stage is controlled by injecting a current bias at the Vg1 pad into the catch diode CD1, which mirrors the current into the drain of M1. Similarly, CD23 mirrors the current injected at the Vg23 pad into the M2 and M3 stages. Independent current biasing of the first stage and stages 2 and 3 provides additional flexibility for trading off noise, power consumption, and gain. The LNA is protected against electrostatic discharge (ESD) through a combination of protection elements, including a quarter-wavelength transmission line ESD1 connected to ground, foundry-standard ESD diodes ESD3 and ESD4, and a custom RF inductor ESD2 connected to ground. These protection structures are implemented at the input, Vg1, VDD, Vg23, and output pads, respectively. Measurement results of the LNA based on the FETs de-scribed above, obtained at T = 4 K, are shown in Figs. 13 and 14. VI. D ISCUSSION OF RESULTS 
+
+Uncertainty analyses for tuner-based cryogenic noise mea-surements of connectorized DUTs have been investigated in detail in prior work [17]. It was shown in [18] that the un-certainty of the noise temperature measurement for each tuner state is primarily dominated by uncertainty in the physical temperature of the tuner and by uncertainty in the DUT gain. Our results are consistent with these earlier observations, as can be inferred from (2) and from the trace noise behavior of a well-matched preamplifier in Fig. 8(a), a poorly matched FET in Fig. 9(a), and a moderately matched LNA in Fig. 13(a). For example, Fig. 13 shows that the frequency region around 7.5 GHz exhibits the best input matching. Correspondingly, the noise temperature and noise factor curves in this region demonstrate minimal trace noise, on the order of 1 K. In contrast, in frequency regions where the input matching de-grades to worse than −10 dB, the trace noise increases and approaches approximately 5 K. In [18], a Monte Carlo analysis was used to estimate uncertainties in the extracted noise pa-rameters Tmin , N , and Γopt . In the context of the present setup 10 5 6 7 8
+
+Frequency (GHz) 
+
+20 
+
+30 
+
+40 
+
+50 
+
+60 
+
+> Noise Temperature (K)
+
+Reference 
+
+This work    
+
+> Fig. 16. LNA noise temperature measured by the setup in this paper (bottom trace) and by the scalar on-wafer method from [7] (top trace), the latter trace noise is in agreement with ±6K uncertainty demonstrated in [7] for input match of -10...-15 dB.
+
+and calibration scheme, applying a similar approach would require accurate knowledge of the uncertainties associated with cryogenic on-wafer TRL calibration, which remains an active area of research. Instead, we employed an alternative validation approach. To verify the noise temperature results, an independent measure-ment of the same LNA was performed using a purely scalar on-wafer method previously described in [7]. This reference technique enables the measurement of scalar gain and noise temperature at a source output impedance of approximately 
+
+Z ≈ 50 Ω . A comparison of the noise temperature results obtained using both methods is shown in Fig. 16, where the traces from the two measurement techniques are overlaid. The uncertainty of the scalar reference method depends on the input matching of the DUT, as discussed in [7]. For the LNA presented in this work, with S11 in the range of 
+
+−10 to −15 dB, the corresponding uncertainty is on the order of 5–6.5 K. As shown in Fig. 16, the results obtained using the reference scalar method are in close agreement with those derived from the proposed noise parameter measurement setup, thereby validating the presented approach. Unlike the LNA, the FET cannot be characterized using the method described in [7] due to its significantly lower gain. However, the quality of the cryogenic calibration for FET measurements can be demonstrated using the following example. Figure 17 shows the raw noise PSD of the FET as mea-sured by the VNA noise receiver for each of the four tuner impedance states. It can be observed that, in states Z2, Z3,and Z4, the PSD traces oscillate between approximately −142 
+
+and −136 dBm/Hz. These oscillations arise from impedance mismatch between the tuner and the FET, combined with the presence of a long cryogenic wire connecting the tuner to probe P2, which causes variation in the available gain of the FET as frequency changes. At the same time, the extracted Fmin curve shown in Fig. 10(a) exhibits a trace noise of only 0.05 units, corresponding to a noise figure of 
+
+NF = 10 log(1 .05) ≈ 0.2 dB. The fact that four raw PSD traces with a magnitude variation of approximately 6 dB are processed to yield a final de-embedded noise figure with a variation of only ±0.1 dB demonstrates the high precision of the proposed calibration procedure and its ability to effectively remove systematic measurement errors. 5.0 5.5 6.0 6.5 7.0 7.5 8.0 
+
+Frequency (GHz) 
+
+146 
+
+144 
+
+142 
+
+140 
+
+138 
+
+136 
+
+134 
+
+132 
+
+> Noise PSD (dBm/Hz)
+
+Z1
+
+Z2
+
+Z3
+
+Z4     
+
+> Fig. 17. Raw noise power spectral density produced by the FET and preamplifier in 4 impedance states of the tuner, as measured by the noise receiver. If counting traces from left to right, trace whose peak is the 1st corresponds to Z2, 2nd: Z3, 3rd: Z4, remaining trace in the center: Z1.
+
+It is likely that even better results and lower trace noise could be achieved in the future if the following improvements are implemented: 1) instead of using the commercial CS-105 TRL calibration substrate employed in this work, a custom TRL calibra-tion kit fabricated on the same wafer as the DUT could be designed, thereby eliminating potential impedance mismatches between the test wafer and the separate calibration substrate; 2) the tuner is moved closer to the DUT or even integrated directly into the probe assembly, thereby reducing the number of standing waves between the DUT input and the source. VII. C ONCLUSION 
+
+In summary, this paper presents a measurement approach for direct on-wafer characterization of noise parameters of DUTs at T = 4 K in the C- and X-bands. The mea-surements are performed using the cold-source method in combination with a source-pull technique implemented with a four-state cryogenic tuner. A calibration scheme is described that enables vector-corrected S-parameter and noise parame-ter measurements to be carried out within a single cryostat cooldown. The methodology is demonstrated through noise parameter measurements of a single on-wafer FET and an LNA realized using this device. The LNA noise temperature results are independently verified through comparison with a previously reported scalar on-wafer measurement technique, showing close agreement over the measured frequency range. The presented setup and calibration procedure illustrate a practical pathway toward simultaneous on-wafer S-parameter and noise parameter measurements of semiconductor devices at cryogenic temperatures. 11 
+
+ACKNOWLEDGMENT 
+
+The authors would like to thank Michael Himmelfarb and Leo Belostotski for the initial help with tuner operation, as well as Steve Dudkiewicz and Diogo Ribeiro of Maury Mi-crowave for providing MATLAB examples of connectorized amplifier measurements. We also want to thank Kevin Tien for the suggestion to use tuners for IBM cryo LNA project and Brian Gaucher for his support of this idea, John Timmerwilke and Ray Robertazzi for help with the cryogenic and vacuum systems. Finally, we thank Alberto Valdes Garcia for general project management support. Special thanks to Jalina Vyrva for help in the manuscript preparation. REFERENCES [1] D. Russell and S. Weinreb, “Cryogenic self-calibrating noise parameter measurement system,” IEEE Transactions on Microwave Theory and Techniques , vol. 60, no. 5, pp. 1456–1467, 2012. [2] J. E. Fernandez, “A noise-temperature measurement system using a cryo-genic attenuator,” in The Telecommunications and Mission Operations Progress Report, TMO PR 42-135 , pp. 1–9, July, 1998. [3] Heinz, Felix and Thome, Fabian and Leuther, Arnulf and Ambacher, Oliver, “A cryogenic on-chip noise measurement procedure with ±1.4-k measurement uncertainty,” in 2022 IEEE/MTT-S International Mi-crowave Symposium - IMS 2022 , pp. 233–236, 2022. [4] J. Kelly, J. Wang, A. Ofiare, N. Ridler, C. Li, “Evaluation of on-wafer noise parameter measurement techniques at cryogenic temperatures,” in 2025 104rd ARFTG Microwave Measurement Conference (ARFTG) ,2025. [5] Z. Zou, S. Raman, and J. C. Bardin, “A 1.6-mw cryogenic sige lna ic for quantum readout applications achieving 2.6-k average noise temperature from 3 to 6 ghz,” IEEE Microwave and Wireless Technology Letters ,vol. 34, no. 6, pp. 753–756, 2024. [6] IBM Corporation, “How IBM will build the world’s first large-scale, fault-tolerant quantum computer.” https://www.ibm.com/quantum/blog/ large-scale-ftqc, 2026. Accessed: March 4, 2026. [7] J.-O. Plouchart, D. Frolov, U. Soylu, and A. Valdes-Garcia, “On-wafer cryogenic rf noise measurement techniques,” in 2025 105th ARFTG Microwave Measurement Conference (ARFTG) , pp. 1–4, 2025. [8] Leo Belostotski, Michael Himmelfarb, “Method and system for extrac-tion of noise parameters of nonlinear devices,” in United States Patent US9929757B2 , 2017. [9] Ismail Majed, Marwa Safa, Karl Warnick, Christopher Groppi, Leonid Belostotski, “Cold-termination noise-parameter measurements at cryo-genic temperatures,” in 2024 103rd ARFTG Microwave Measurement Conference (ARFTG) , 2024. [10] Maury Microwave, “Cryogenic impedance tuner series.” https://maurymw.com/products/impedance-tuners/cryogenic-tuner/ cyrogenic-impedance-tuner-series/, 2026. Accessed: March 4, 2026. [11] J. Lange, “Noise characterization of linear twoports in terms of invariant parameters,” IEEE Journal of Solid-State Circuits , vol. SC-2, no. 2, pp. 37–40, 1967. [12] J. P. Dunsmore, Handbook of Microwave Measurements: with advanced VNA techniques . John Wiley & Sons, 2nd Edition., 2020. [13] D. Rytting, “Network analyzer error models and calibration methods, rf 8 microwave measurements for wireless applications,” in ARFTG/NIST Short Course Notes , 1996. [14] Low Noise Factory, LNF-LNC0.3 14B: 0.3-14 GHz Cryogenic Low Noise Amplifier Datasheet . Low Noise Factory AB, Gothenburg, Sweden, 2026. Accessed: March 27, 2026. [15] L. Boglione, “An original demonstration of the formula Tmin /T 0 <
+
+4N inequality for noisy two-port networks,” IEEE Microwave Wireless Components Letters , vol. 18, no. 5, pp. 326–328, 2008. [16] K. Yau, “On the metrology of nanoscale silicon transistors above 100 GHz,” 2011. Ph.D. dissertation, Dept. Elec. Eng. and Comp. Eng., University of Toronto, 2011. [17] L. Belostotski and J. W. Haslett, “Evaluation of tuner-based noise-parameter extraction methods for very low noise amplifiers,” IEEE Transactions on Microwave Theory and Techniques , vol. 58, no. 1, pp. 236 – 250, 2010. [18] Alexander Sheldon et al, “Automated noise-parameter measurements of cryogenic lnas,” in 2021 97th ARFTG Microwave Measurement Conference (ARFTG) , 2021.

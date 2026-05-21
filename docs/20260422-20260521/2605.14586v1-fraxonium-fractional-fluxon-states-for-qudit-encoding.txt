@@ -1,0 +1,1305 @@
+Title: Fraxonium: Fractional fluxon states for qudit encoding
+
+URL Source: https://arxiv.org/pdf/2605.14586v1
+
+Published Time: Fri, 15 May 2026 00:51:03 GMT
+
+Number of Pages: 17
+
+Markdown Content:
+# Fraxonium: Fractional fluxon states for qudit encoding 
+
+Luca Chirolli, 1 Valentina Brosco, 2, 3 Uri Vool, 4 Gianluigi Catelani, 5, 6 and Luigi Amico 5, 7, 8 
+
+> 1
+
+Department of Physics and Astronomy, University of Florence, Via Sansone 1, IT-50019 Sesto Fiorentino, Italy 
+
+> 2
+
+Istituto dei Sistemi Complessi, Consiglio Nazionale delle Ricerche, Via dei Taurini, 19 I-00185 Roma (IT) 
+
+> 3
+
+Physics Department, University of Rome, “La Sapienza”, P.le A. Moro, 2 I-00185 Roma (IT) 
+
+> 4
+
+Max Planck Institute for Chemical Physics of Solids, 01187 Dresden (DE) 
+
+> 5
+
+Quantum Research Center, Technology Innovation Institute, Abu Dhabi 9639, UAE 
+
+> 6
+
+Institute for Theoretical Nanoelectronics (PGI-2), Forschungszentrum J¨ ulich, 52428 J¨ ulich, Germany 
+
+> 7
+
+Dipartimento di Fisica e Astronomia ‘Ettore Majorana’, Via S. Sofia 64, 95123 Catania, Italy 
+
+> 8
+
+INFN-Sezione di Catania, Via S. Sofia 64, 95127 Catania, Italy 
+
+We propose a superconducting circuit hosting d low-lying states, well separated from the rest of the spectrum, that naturally realizes a qudit system protected from leakage errors. The system represents a generalization of the fluxonium and the low-energy states are constituted by fractional fluxon states, that we call fraxons , localized in the minima of a suitably designed Josephson poten-tial. The latter is tailored through a Fourier engineering approach, that employs multi-harmonic Josephson building block elements composed by a Josephson junction and an inductance connected in series. We present the spectrum of a d = 4 and a d = 5 qudit system and study in detail the qutrit case. We analyze the dipole matrix elements for coupling to radiation and propose a non-Abelian, stimulated Raman adiabatic passage (STIRAP) protocol for single-qutrit gates, that is particularly suited for the present system. The proposed platform opens novel perspectives in circuit engineering and quantum computing beyond the qubit paradigm. 
+
+I. INTRODUCTION 
+
+The pursuit of universal fault-tolerant quantum com-puting stands as one of the most ambitious goals of quan-tum technology. While the field has witnessed remark-able progress in important features such as gate fideli-ties and qubits coherence times, the transition to reli-able, large-scale processors remains challenging. In this context, quantum error correction provides an important framework protecting logical information [1–3]. Conven-tional quantum error correction protocols reach fault tol-erance by encoding a single logical qubit across a sub-stantial overhead of physical qubits. The embedding of qubits within topological constraints of complex networks has been extensively analyzed [4, 5], though this strategy would typically be characterized by significant hardware overhead [6–8]. An alternative paradigm to a more ef-ficient computation involves expanding the local Hilbert space of the computational unit, so as to benefit from certain advantages in terms of algorithmic complexity. Following the latter line of thought, here we will deal with quantum systems with a finite number d of levels ,or qudits [9]. Indeed, qudits offer a number of advan-tages in computational protocols, for example, through magic state distillation [10, 11], compact encoding and increased space for information processing [12], and re-duction in circuit complexity [13–15]. Quantum error correction schemes have been extended to qudits [16– 20], and qudits have been proposed for optimal quantum circuits [21], improvement in Shor’s algorithm for factor-ization [22], quantum neurons and Grover search [23], quantum Fourier transform [24]. In addition, they may offer an improvement in quantum cryptography [25–27], through increased coding density and a higher security margin [28], and quantum communication [29], through a larger mutually unbiased basis [30]. In this work, we focus on superconducting circuits (for realizations of qudits in other platforms, see [31– 41]). An important case in the context of expanding the local Hilbert space has been provided by the re-alization of error-corrected logical qudits [42] achieved through the Gottesman–Kitaev–Preskill (GKP) bosonic code [43]. This result extends previous achievements of qubit encoding via GKP states through superconducting cat states [44–47]. Noteworthy in this sense are the re-cent realization of a grid qubit [48] and the protocols em-ploying superconducting cat-qubits [49–53]. Apart from these instances, physical qutrits in superconducting cir-cuits are typically realized by employing the first three levels of the transmon [54–57], and single- [58–60] and two-qutrit gates [61–66] have been demonstrated. How-ever, the qutrit states are not well separated from the rest of the spectrum by a large energy gap, and the com-putation is therefore not protected against leakage errors outside the computational manifold. In our approach, to protect the qudits computational states we draw inspiration from the fluxonium architec-ture, specifically leveraging its inherent inductive shunt-ing and strong anharmonicity [67–76]; fast gates and long coherence times of fluxonium qubits have been demon-strated in Refs. [77–79]. Specifically, we propose a qudit design engineered to host d degenerate fractional fluxon states, that we call fraxons ; the latter are quantum states of the phase localized in the minima of the effective po-tential and corresponding to fractional flux quanta that can be trapped in the circuit. Accordingly, we refer to our 
+
+> arXiv:2605.14586v1 [quant-ph] 14 May 2026
+
+2Qutrit circuit       
+
+> °3º°2º°º0º2º3º
+
+'
+
+> °1.0
+> °0.5
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> E/E J
+> Qutrit potential and low energy eigenstates
+> (a)
+> (b)
+
+π
+
+2 π + φxπ EL EC               
+
+> φ
+> FIG. 1. (a) Circuit realizing a qutrit composed by the fol-lowing elements connected in parallel and with the fluxes threading the loops as shown: two nominally equal modu-lar elements, each composed by an inductance in series with a Josephson junction and realizing a ‘kite’ design with effec-tive Josephson energy-phase relation EJcos(2 φ); a Josephson junction with energy-phase relation ( π2EL/4) cos( φ); an in-ductance with energy ELand a capacitance of energy EC.The phase φis taken as a reference to drop across the single-harmonic Josephson junction and the fluxes threading the loops are as specified. (b) Total generalized fluxonium po-tential realizing a qutrit and few eigenstates of the Hamilto-nian Eq. (1) with the Josephson potential Eq. (5) for the case
+> EC/E J= 0 .15 and EL/E J= 0 .04.
+
+resulting device as fraxonium . In previous work [80], one of us showed that a flux qutrit can be realized employ-ing cos(2 φ) elements; more generally, it was argued that Josephson engineering can enhance the flatness of the de-vice spectrum and consequently its coherence properties. In the present work, we provide circuits displaying d-degenerate minima of the total potential U (φ); the latter is achieved by using higher harmonics of the Josephson terms to compensate the increase in energy due to the inductive term for the first d minima. Fig. 1 explains the logic of our approach: the potential has been engineered so to have d = 3 degenerate minima in a overall har-monic inductive envelope, thus generalizing the idea of the fluxonium and realizing a qutrit. We provide a gen-eral scheme of the circuit, valid for arbitrary d values, by Fourier engineering the Josephson potential, which was proposed as a systematic method of “sculpting” the potential energy of a superconducting circuit by control-ling the individual harmonics of its energy-phase relation 
+
+EJ,n cos( nφ ) [81]. We shall see how indeed high-harmonic elements can be realized by suitable parallel connections of modular elements composed of a series of a Joseph-son junction and an inductance, as proposed in what is known as kite design [82–86]. The simplest of the high-harmonic terms is provided by a π-periodic element. The latter has been first pro-posed to arise in a circuit composed by four Josephson junctions in a SQUID configuration [87, 88]. The main interest associated to π-periodic elements is the possibil-ity to encode a parity-protected qubit, as proposed in Refs. [89–94] and experimentally realized in networks of Josephson junctions [95–97], in the kite design compris-ing Josephson junctions and inductors [82–86], in hybrid semiconducting-superconducting devices [98–104], and in twisted d-wave junctions [105, 106]. More generally, cos(2 φ) elements open novel routes towards quantum computation with superconducting circuits, and they have been recently utilized in the implementation of a superconducting grid-state qubit [48]. The work is structured as follows. In Sec. II we de-scribe a general procedure for engineering arbitrary d
+
+qudits; in Sec. III we provide a recipe for generating high-harmonic terms from lump elements such as an in-ductance and a Josephson junction; in Sec. IV we discuss the low-energy Hamiltonian describing fluxon dynamics and detail the ququart ( d = 4) and ququint ( d = 5) cases; in Sec. V we focus on the qutrit case, which requires only a − cos(2 φ) element, and analyze its spectrum and effec-tive low-energy model; in Sec. VI we analyze the qutrit selection rules for coupling its levels to microwave radi-ation and propose a non-Abelian STIRAP protocol for single-qutrit gates.  
+
+> II. GENERAL QUDIT SCHEME
+
+We start by considering a scheme for realizing a gen-eralized superconducting circuit featuring d low-energy states, separated by a gap from higher-energy states. We consider a circuit featuring a capacitor C, an inductor L,and a Josephson element characterized by a 2 π-periodic potential energy Ud(φ), all connected in parallel, such that the Hamiltonian has the general form 
+
+H = −4EC ∂2 
+
+> φ
+
++ EL
+
+2 (φ − φx)2 + EJ Ud(φ), (1) where φx = 2 πΦx/Φ0 is a (normalized) flux threading the main inductance loop, with Φ 0 = h/ 2e the superconduct-ing flux quantum, EC = e2/2C and EL = (Φ 0/2π)2/L .For later use we also define the full potential U (φ, φ x) = 
+
+EL(φ − φx)2/2 + EJ Ud(φ). We assume EJ to be the largest energy scale in the problem, EJ ≫ EC , E L. The fluxonium case is obtained by employing a simple Joseph-son junction, such that the Josephson potential reads 3
+
+U2(φ) = − cos( φ). The minima of the Josephson poten-tial host fluxon states |l⟩, with integer l, that are quan-tum states localized around the minima of − cos( φ) and describing current-circulating states with l units of quan-tized flux Φ 0. Threading half a flux quantum through the loop makes the states | − l⟩ and |l + 1 ⟩ degenerate (or 
+
+| − l − 1⟩, |l⟩ for opposite sign of the inserted flux). In particular, the lowest energy states |l = 0 ⟩, |l = 1 ⟩ of the fluxonium are degenerate and the degeneracy is split by quantum phase slips, processes involving quantum tun-neling through the barriers of the Josephson potential that are exponentially suppressed as e−√8EJ /E C for tun-neling between adjacent minima, yielding a splitting of order ℏωpe−√8EJ /E C , with ωp = √8EC EJ /ℏ the plasma frequency [67]; a more accurate estimate for the split-ting can be obtained by taking into account renormal-izations of EC and EJ due to the inductive term [107]. Higher energy states correspond to either excitations within the wells of the Josephson potential, costing units of ℏωp, or to fluxon states with higher l, with energy cost 
+
+EL(2 πl − π)2/2. These two energy scales yield a gap in the energy spectrum that protects from leakage the two lowest states encoding a qubit. Our idea to implement qudits is to construct a gener-alization of the fluxonium potential in which the lowest-energy d minima are degenerate. We shall see that the states localized around these minima are characterized by fractional values of the flux quantum and therefore they define fractional fluxon states or fraxons [108, 109].  
+
+> A. Construction of the qudit potential
+
+We start by describing a general procedure for the con-struction of the potential Ud by superimposing arbitrary harmonic elements, such as cos( nφ ) of which we assume to have full control. We first consider the case of odd d.The potential can be written as 
+
+EJ Ud(φ) = −EJ cos( Ldφ) + X
+
+> pn<L d
+
+EJ,n cos( pnφ), (2) for certain integers Ld and pn, with pn < L d, and energies 
+
+EJ,n to be determined. Assuming that EC , E L, E J,n ≪
+
+EJ and that EJ,n ≃ EL, the minima of the potential will be located in close proximity of 2 πl/L d for integer 
+
+l. The mechanism we propose is to progressively add lower harmonics to compensate the increase of energy due to the inductive term EL(2 πl/L d)2/2. This requirement amounts to imposing the degeneracy condition for the first d minima of the full potential U (φ) ≡ U (φ, φ x = 0) at φx = 0, symmetrically located around φ = 0. Due to the inversion symmetry U (−φ) = U (φ) we are left with (d − 1) /2 Fourier components, necessitating as many co-efficients. By requiring all cos(2 πp nl/L d) to have differ-ent values, that is guaranteed by any choice for which 0 < p n/L d < 1/2, the most natural choice is Ld = d − 1and pn = n, so that the desired potential reads 
+
+U odd  
+
+> d
+
+= − cos [( d − 1) φ] + EL
+
+EJ
+
+> (d−1) /2
+
+X
+
+> n=1
+
+an cos( nφ ), (3) where for practical purposes we rescaled the energies of the Josephson components EJ,n by the inductive energy 
+
+EL, such that EJ,n = ELan and the small parameter 
+
+EL/E J ≪ 1 is manifest. The exact minima φl of the potential U (φ) will in general be slightly displaced from the minima of the leading term, φl = 2 πl/L d + δφ l. For 
+
+EL ≪ EJ we have δφ l ∼ EL/E J ≪ 1, and we can neglect the corrections δφ l. Likewise, the extremal condition will be satisfied up to corrections of order EL/E J .For the case of even d, the procedure is analogous, with the main difference that the leading term has the form cos( Ldφ); then the simplest choice is Ld = d, such that 
+
+U even  
+
+> d
+
+= cos( dφ ) + EL
+
+EJd/ 2−1
+
+X
+
+> n=1
+
+an cos( nφ ), (4) with the minima located in close proximity of φl = 2 π(l+1/2) /d . By imposing degeneracy of the first d minima we obtain the values of the coefficients an (see Appendix A). We now consider a few examples. For the qutrit case 
+
+d = 3, we only need two harmonic components. Equating the potential at φ = 0 with the potential at φ = π +
+
+δφ , with δφ ∝ O (EL/E J ), and expanding in powers of 
+
+EL/E J we obtain 
+
+U3(φ) = − cos(2 φ) + EL
+
+EJ
+
+
+
+1 − EL
+
+4EJ
+
+ π2
+
+4 cos( φ). (5) and δφ = −πE L/4EJ + O(( EL/E J )2); it can also be shown that the extremal condition is satisfied at order 
+
+EL/E J . The effective circuit and the full potential U3(φ)for the qutrit are shown in Fig. 1(a,b), respectively, where the first three minima appear to be degenerate to a very good approximation. Proceeding in an analogous way, for the cases d = 4 and d = 5 the potential reads 
+
+U4(φ) = cos(4 φ) + π2
+
+4√2
+
+EL
+
+EJ
+
+cos( φ), (6) 
+
+U5(φ) = − cos(4 φ) + π2EL
+
+4EJ
+
+
+
+− 14 cos(2 φ) + cos( φ)
+
+
+
+.(7) The potentials for the cases d = 3 , 4, 5 are shown in Fig. 2(a).  
+
+> III. HIGH-HARMONIC ENGINEERING
+
+Crucial to the construction of the qudit Hamiltonian is the availability of high-harmonic elements described by an effective cos( nφ ) energy-phase relation. To this end, we rely on the idea at the basis of the so called ‘kite’ cir-cuit [82–85]. Its building block [see Fig. 2(b) top] is com-posed by a Josephson junction and an inductance con-nected in series, and it is described an energy-phase rela-tion by EJ (φ, δφ ) = −EJ cos[( φ+δφ )/2]+ EL(φ−δφ )2/8, 4°1        
+
+> 0
+> 1
+> 2
+> U/E J
+> d= 3
+> °1
+> 0
+> 1
+> 2
+> U/E J
+> d= 4
+> °3º°2º°º0º2º3º
+> °1
+> 0
+> 1
+> 2
+> U/E J
+> d= 5
+
+cos (2φ)
+
+∼ ∑
+
+> n
+
+(−1)n | ϵn | cos (nφ) 
+
+> (a) (b)
+
+π
+
+2π/n
+
+2π/n ( − )ncos (nφ)
+
+> kite
+
+≡
+
+> modular element
+
+2π/n           
+
+> FIG. 2. (a) Three instances of potential U(φ) featuring d
+> degenerate minima, for the cases d= 3 ,4,5 and given by Eqs. (5), (6), (7), respectively. (b) Scheme for obtaining high-harmonic elements with leading term ( −)ncos( nφ ) ob-tained by connecting in parallel the modular element com-posed by a Josephson junction and an inductance, shown on the top of (b). The cases realizing a kite design, describing a cos(2 φ) energy-phase relation, and the general ( −)ncos( nφ )are shown.
+
+with φ the total phase drop across the element and δφ 
+
+the relative phase drop. Minimization with respect to 
+
+δφ yields an effective energy-phase relation EJ (φ) that contains all harmonics. This can be explicitly seen for the case EJ /E L ≪ 1 by inserting the extremal solution 
+
+δφ ∗ = φ − (2 EJ /E L) sin[( φ + δφ ∗)/2] in EJ (φ, δφ ∗) and expanding it in powers of EJ /E L. A similar approach, based on two junctions in series, was proposed in Ref. [81] and experimentally realized in Ref. [110], but the pres-ence of a floating island between the junctions makes the circuit sensitive to charge noise, a problem resolved by using an inductor instead. The kite design [82–86] em-ploys two junction-plus-inductor elements connected in parallel and threaded by a half flux quantum: by con-necting in parallel two equal modular elements described by a generic energy-phase relation EJ (φ), characterized by a high harmonic content, and inserting a half-flux quantum Φ 0/2 = h/ 4e in the loop produces a π-periodic energy-phase relation, EJπ (φ) = EJ (φ) + EJ (φ + π), since the 2 π-periodic contributions cancel out, as in the middle of Fig. 2(b). A parity-protected qubit that em-ploys the same rational with two gatemons has been re-alized [98]. It is straightforward to generalize this ap-proach: by connecting three modular elements in par-allel and inserting a reduced flux 2 π/ 3 in each loop, 
+
+EJ, 2π/ 3(φ) = EJ (φ) + EJ (φ + 2 π/ 3) + EJ (φ + 4 π/ 3), we obtain an object that is 2 π/ 3-periodic and whose dominant component is − cos(3 φ). It is clear that this scheme can be iterated to generate all the desired har-monics [Fig. 2(b) bottom]. To be specific, the general expansion in Fourier harmonics of the Josephson potential describing the modular element [Fig. 2(b) top] reads EJ (φ) =P∞
+
+> n=1
+
+(−1) n|ϵn| cos( nφ ) [see Appendix B]. It features alternating signs between the even and odd harmon-ics [111, 112], so that all even harmonics have a positive sign. The addition in parallel of n terms with a flux 2 π/n 
+
+between adjacent elements produces the energy-phase re-lation 
+
+> n−1
+
+X
+
+> j=0
+
+EJ (φ + 2 πj/n ) ∼ n(−1) n|ϵn| cos( nφ ), (8) as schematized in Fig. 2(b) bottom. Furthermore, the amplitude of the harmonics is suppressed by τ = EJ /E L,
+
+ϵn ∝ τ n, that behaves analogously to the transparency of the conduction channels through a Josephson junction [111, 112]. It follows that the higher the harmonic order, the smaller the amplitude of the effective term; therefore, minimizing the order of the harmonics is the simplest and best choice. In general we need to have the freedom to choose the sign of each harmonic. To this end, we notice that a way to obtain an overall minus sign in the effective element has been recently proposed [113]. It consists in placing two of the desired elements in series, so that the rela-tive phase drops adjusts as to have zero total phase drop across the element. Indeed, the series of two equal 2 π/n -periodic elements reads cos( n(φ + δφ )/2) + cos( n(φ −
+
+δφ )/2) = 2 cos( nφ/ 2) cos( nδφ/ 2) and minimization with respect to the relative phase δφ yields −2| cos( nφ/ 2) |,which is still 2 π/n -periodic and has the desired negative sign. Finally, we point out that the scheme for generat-ing higher harmonics is not unique and other choices of the fluxes piercing the loops could be employed.  
+
+> IV. FRACTIONAL FLUXON BASIS
+
+A low-energy Hamiltonian can be derived that de-scribes the lowest d energy states of the system and cor-responds to the dynamics between the fraxons induced by the charging term. Because of the latter term, adja-cent fraxons |l⟩ can be coupled by quantum phase slip processes (despite their fractional character, we still la-bel fraxons through an integer index l). The fraxon states can be approximately described with Gaussians of the form ⟨φ|l⟩ = e−(φ−φl)2/2ℓ2 
+
+> d
+
+(ℓd
+
+√π)−1/2, with spread 
+
+ℓd = (8 EC /L 2
+
+> d
+
+EJ )1/4, each well-localized around the minima φl = 2 πl/L d of the 2 π/L d-periodic part of the potential. These states have an exponentially small but finite overlap, that can be neglected to a good approxi-mation, ⟨l′|l⟩ ≃ δl,l ′ , and have energy 
+
+εl = EL
+
+2 (φl − φx)2 − EL
+
+2 φ2 
+
+> l
+
++ E0, (9) 5°0.5 0.0 0.5              
+
+> 'x/(2 º)
+> °1.0
+> °0.5
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> E/E J
+> °2º°º0º2º
+> '
+> °1.0
+> °0.5
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> E/E J
+> °1.0
+> °0.5
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> U/E J
+> d= 4 Qudit spectrum and low energy eigenstates
+> °0.50.00.5
+> 'x/(2 º)
+> °1.0
+> °0.5
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> E/E J
+> °2º°º0º2º
+> '
+> °1.0
+> °0.5
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> E/E J
+> °1.0
+> °0.5
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> U/E J
+> d= 5 Qudit spectrum and low energy eigenstates
+
+(a)      
+
+> π
+> 2π+φxELEC
+> φ
+> π
+> 2
+> π
+> 4
+
+(b) 
+
+(c) 
+
+(d)    
+
+> π+φxEC
+> φ
+> EL
+> π
+> 2
+> π
+> 2
+> π
+> 2
+
+FIG. 3. (a) Schematics of the circuit realizing the Hamiltonian by Eq. (11) and describing a d = 4 qudit (ququart). It is composed by a capacitance C, an inductance L, a Josephson junction with energy ELπ2/(4 √2) and four, nominally equal, modular elements–each composed by a Josephson junction and an inductance connected in series. All the branches are connected in parallel, with a flux π/ 2 between the four equal modular elements. The latter effectively yield a π/ 2-periodic Josephson junction with energy EJ . (b) Spectrum (left panel) and potential and few eigenfunctions (right panel) of the Hamiltonian Eq. (11) as a function of φx. (c) Schematics of the circuit realizing the Hamiltonian by Eq. (12) and describing a d = 5 qudit (ququint). The system features a Josephson junction with energy ELπ2/8, a π-periodic Josephson junction (symbolized by a crossed-hatched square) with energy ELπ2/32, and a π/ 2-periodic Josephson junction with energy EJ , all connected in parallel. The π/ 2-periodic element can be either obtain as in (a) or via two π-periodic elements connected in parallel and with a flux 
+
+π/ 2 between the two. (d) Spectrum (left panel) and potential and few eigenfunctions (right panel) of the Hamiltonian Eq. (12) as a function of φx. In (b) and (d) the parameters chosen are EC /E J = 0 .01 and EL/E J = 0 .04. 
+
+with E0 weakly dependent on l and φx [the details can be found in Appendix C]. We see that the εl’s correspond to parabolas as a function of φx, centered around φl,and shifted in energy with respect to the value at l = 0 by −ELφ2 
+
+> l
+
+/2. For EL ≪ ωp, being ωp = Ld
+
+√8EC EJ
+
+the plasma frequency in each well of ±EJ cos( Ldφ) [with the +( −) sign for for the even(odd)-d case], we can ne-glect higher energy excitations and retain only matrix el-ements tl,l ′ between fraxon states that account for quan-tum phase slips induced by the charging term. The ef-fective Hamiltonian reads 
+
+Hqudit =
+
+> ′
+
+X
+
+> l
+
+εl|l⟩⟨ l| − X
+
+> l,l ′
+
+tl,l ′ |l⟩⟨ l′| + H .c., (10) where the primed sum is restricted to the d quasi-degenerate fraxon states. Furthermore, due to the expo-nential localization of the fraxon states for EJ ≫ EC , we retain only the coupling between nearest-neighbor min-ima through the tunneling matrix element t. For the evaluation of t we can employ standard results obtained through a WKB approximation [107], and the details can be found in Appendix C 1. When including only the d
+
+degenerate fraxon states the Hamiltonian Eq. (10) well describes the low-energy sector of the system. In the following, we provide examples of the qudit spectrum for the cases of a ququart ( d = 4 qudit) and a ququint ( d = 5 qudit). 
+
+A. Ququart and Ququint 
+
+The full Hamiltonian of a ququart, that is a qudit with 
+
+d = 4, is given by 
+
+Hd=4 = −4EC ∂2 
+
+> φ
+
++ EL
+
+2 (φ − φx)2 + EJ cos(4 φ)+ π2
+
+4√2 EL cos( φ). (11) The circuit realizing the above Hamiltonian employs a cos(4 φ) element which, as explained in Sec. III, can be realized by four nominally equal modular elements con-nected in parallel, with a π/ 2 flux inserted between ad-jacent elements, as shown in Fig. 3(a). Furthermore, the 6positive sign of the π/ 2-periodic element naturally arises from the scheme of Sec. III. The spectrum can be ob-tained numerically by expanding the Hamiltonian in the basis of the harmonic oscillator given by the capacitive and purely inductive term, as explained in Appendix D, and it is shown as a function of the flux φx in Fig. 3(b). The first four low-energy states correspond to the frac-tional fluxon states localized around φl = 2 π(l + 1 /2) /4, for l = −2, −1, 0, 1, and their energies grow quadratically as a function of φx, in agreement with the expression for 
+
+εl provided in Eq. (9). Around φx = 0, they become approximately degenerate and weak quantum phase slip processes hybridize them. Concerning higher-energy levels, two types of excited states appear in the spectrum at φx = 0: i) pairs of fluxon states ( −l − 1, l ), which are shifted up in energy by approximately EL(φl)2/2 and hybridize very weakly across the barriers of the potential for φx = 0, in particu-lar the pairs l = ( −3, 2) and l = ( −4, 3) appear as excited states above the ququart manifold and display a very weak avoided crossing [hardly appreciable in Fig. 3(b)]; 
+
+ii) plasmon states, that corresponds to excited states in the four wells of cos(4 φ), higher in energy approximately by units of ωp = 4 √8EC EJ .We next consider the case of a ququint, that is a qudit with d = 5, and is described by the Hamiltonian 
+
+Hd=5 = −4EC ∂2 
+
+> φ
+
++ EL
+
+2 (φ − φx)2 − EJ cos(4 φ)+ π2EL
+
+8 (cos( φ) − 14 cos(2 φ)) . (12) The circuit realizing this Hamiltonian features two even harmonic terms with negative sign. For nominally equal elements, it can be realized by employing three kite el-ements connected in parallel, as in Fig. 3(c), with the fluxes inserted as depicted. The first five low-energy states correspond to fractional fluxon states localized around φl = πl/ 2 with l = 0 , ±1, ±2, and with energy 
+
+εl given by Eq. (9). These states become approximately degenerate around φx = 0, where quantum phase slip processes weakly hybridize them. As in the case of d = 4, higher energy states are comprised by fluxon states with 
+
+|l| > 2, costing additional energy on order of EL(φl)2/2, and plasmon states excited in the wells of the − cos(4 φ)potential, costing units of ωp = 4 √8EC EJ .
+
+V. QUTRIT 
+
+We now focus on the case of a qutrit, that is realized by the circuit depicted in Fig. 1(a), broken down into conventional elements in Fig. 4(a). For the general case of different modular elements, as shown in Fig. 4(a), the kite element is described by a potential of the form [see Appendix B] 
+
+Ukite = − ˜EJ cos( φ) + ˜EK cos(2 φ), (13) °0.5 0.0 0.5    
+
+> 'x/(2 º)
+> °1.0
+> °0.5
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> E/E J
+> °4º°2º02º4º
+> '
+> °1.0
+> °0.5
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> E/E J
+> °1.0
+> °0.5
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> U/E J
+> Qutrit spectrum and low energy eigenstates
+> EJ1
+> EJ0
+
+π
+
+2 π + φx
+
+π EL EC 
+
+> EJ2
+> φ
+> EL2EL1
+> (a)
+> (b)
+
+FIG. 4. (a) Circuit realizing a qutrit. (b) Left panel: Spec-trum of the Hamiltonian Eq. (15) for the choice EC /E J =0.08, EL/E J = 0 .03 as a function of φx. Right panel: Joseph-son potential and seventeen eigenfunctions as a function of φ
+
+(the color code matches the levels in the left panel). 
+
+where ˜EJ and ˜EK are functions of the input parame-ters EJ1, E J2, E L1, E L2 [83]. Biasing the kite with flux 
+
+π/ 2 to obtain a negative cos(2 φ) component, the circuit depicted in Fig. 4 gives rise to the Hamiltonian 
+
+H = −4EC ∂2 
+
+> φ
+
++ EL
+
+2 (φ − φx)2 + EJ0 cos( φ)
+
+− ˜EJ sin( φ) − ˜EK cos(2 φ). (14) We clearly see that asymmetries in the kite circuit in-troduce a perturbation ˜EJ sin( φ) that breaks the parity symmetry of the potential, and has therefore a strong im-pact on the Hamiltonian. In order to eliminate the spu-rious odd-parity term and obtain a π-periodic element with the negative sign, a possibility is to replace a sin-gle kite element by the series of two kite elements [113], whose weak asymmetries, leading to the presence of both first and second harmonic in the potential [cf. Eq. (13)], are not detrimental for the qutrit scheme. Assuming that an effective π-periodic element with the correct negative sign is realized, the Hamiltonian describ-ing a qutrit reads 
+
+H = −4EC ∂2 
+
+> φ
+
++ EL
+
+2 (φ−φx)2 + π2EL
+
+4 cos( φ)−EJ cos(2 φ),
+
+(15) where we denoted with EJ the energy of the π-periodic element. The spectrum can be obtained numerically with high accuracy by expanding the Hamiltonian on the basis 7−0.4 −0.2 0.0 0.2 0.4
+
+ϕx/2π               
+
+> −0.6
+> −0.4
+> −0.20.00.20.40.6
+> E/E J
+> FIG. 5. Comparison between the numerically computed qutrit spectrum (dashed line) and the low-energy one pro-vided by Eq. (16), as a function of the flux φxthrough the main loop. The parameters are EL/E J=0.06 and
+> EC/E J= 0 .08.
+
+of eigenstates of the harmonic oscillator constituted by the capacitance and the inductance connected in par-allel (see Appendix D). The result is shown in the left panel of Fig. 4(b), where a three-level subspace appears around φx = 0, well separated from higher-energy states. Few eigenfunctions are shown in Fig. 1(b) and in the right panel of Fig. 4(b), properly displaced at their en-ergy on the potential landscape. Clear fluxon states ap-pear strongly localized at the minima φl = πl of the 
+
+−EJ cos(2 φ) term and weakly hybridized among each other. The parity of the eigenstates is also manifest. The third and fourth excited states are weakly hybridized fluxon states at l = ±2. The latter are shifted up in energy with respect to the l = 0 , ±1 fluxon states by approximately EL(lπ )2/2, hybridizing both with one an-other and with the first excited states (plasmons) in the two wells to the side of the central one. We now compare the result of the numerical diago-nalization with the effective model described in Sec. IV and detailed in Appendix C. Considering only the three states localized around φl = πl , with l = 0 , ±1, the ef-fective Hamiltonian Eq.(10) reads 
+
+h =
+
+ ε−1 −t 0
+
+−t ε0 −t
+
+0 −t ε1
+
+ , (16) where we have εl and t given by Eq. (C19) and Eq. (C20), respectively, in Appendix C. In Fig. 5 we compare the numerical spectrum with the one resulting from the low-energy approximation. The main features are well captured and the approximation is valid in the regime 
+
+EL < E C ≪ EJ , although the tunneling matrix element 
+
+t appears to be slightly overestimated.  
+
+> VI. QUTRIT SELECTION RULES AND MANIPULATION
+
+The effective low-energy description developed in Secs. IV and V enables us to study the coupling of the system to external microwave radiation and to devise schemes for qutrit manipulation. The fluxonium char-acter of the device suggests the possibility to drive the qutrit transitions via charge and phase dipole interac-tions. At φx = 0, since the potential is even under 
+
+φ → − φ, the allowed dipole transition matrix elements can be inferred from the parity of the eigenstates, which alternates starting from the even-parity ground state. Additional constraints on allowed transitions arise from the confinement of the qutrit eigenstates as functions of 
+
+φ. In particular, as shown in Fig. 4(b-c), the lowest qutrit states are confined to −π ≲ φ ≲ π and have negligible overlap with the two higher fluxon states localized around 
+
+φ = ±2π; these two multiplets are therefore only weakly coupled by perturbations that are local in the phase, such as those coupled through the flux. We note that charge and phase operators generically couple the lowest energy qutrit eigenstates to higher energy plasmon states; the latter are indeed more delocalized (as function of φ).  
+
+> A. Dipole matrix elements
+
+In Fig. 6, we show the matrix elements of the flux and the charge operators between the eigenstates and the cor-responding energy level splitting. Denoting by |α⟩, with 
+
+α = 0 , 1, 2, . . . , the eigenstates with energies Eα of the Hamiltonian in Eq. (15), in Fig. 6 (a) and (b) we plot re-spectively the phase and charge dipole matrix elements, 
+
+⟨α| ˆφ|β⟩ and ⟨α|ˆn|β⟩, and the energy of the corresponding transitions Eα − Eβ . We notice that at φx = 0 the phase operator mediates only transitions within the qutrit sub-space, while the charge operator yields also transitions from the lower fluxon states, with α = 0 , 1, 2, to the higher ones having α = 3 , 4. The Hamiltonian describing the first five levels and their coupling via dipole matrix elements thus reads 
+
+H ≃ X
+
+> α
+
+Eα|α⟩⟨ α| +  λf01 |0⟩ + λf21 |2⟩ + λc41 |4⟩⟨1| + H .c.
+
++  λc03 |0⟩ + λc23 |2⟩ + λf43 |4⟩⟨3| + H .c., (17) where λf 
+
+> αβ
+
+and λc 
+
+> αβ
+
+are the flux and charge dipole matrix elements, 
+
+λf 
+
+> αβ
+
+= φxEL⟨α| ˆφ|β⟩, λc 
+
+> αβ
+
+= 8 EC ng ⟨α|ˆn|β⟩, (18) shown in Fig. 6. An analogous analysis can be done for the transitions between the qutrit eigenstates and the higher-energy plasmon states. To simplify the treatment, we only con-sider the first plasmon state, |5⟩. We extend the analysis to finite flux φx, since at φx = 0 only the states |0⟩ and 80 2 4 6
+
+|〈 α| ˆϕ|β〉|     
+
+> 0.00 0.05 0.10 0.15 0.20 0.25 0.30 0.35
+> ωαβ  /ω p
+> |0〉 → | 1〉|0〉 → | 2〉|0〉 → | 3〉|0〉 → | 4〉|1〉 → | 2〉|1〉 → | 3〉|1〉 → | 4〉|2〉 → | 4〉|2〉 → | 3〉|3〉 → | 4〉
+> |0〉 | 1〉 | 2〉 | 3〉 | 4〉〈0|〈1|〈2|〈3|〈4|0.02.55.0
+> 0.00 0.05 0.10
+
+|〈 α|ˆn|β〉|   
+
+> 0.00 0.05 0.10 0.15 0.20 0.25 0.30 0.35
+> ωαβ  /ω p
+> |0〉 → | 1〉|0〉 → | 2〉|0〉 → | 3〉|0〉 → | 4〉|1〉 → | 2〉|1〉 → | 3〉|1〉 → | 4〉|2〉 → | 3〉|2〉 → | 4〉|3〉 → | 4〉
+> |0〉 | 1〉 | 2〉 | 3〉 | 4〉〈0|〈1|〈2|〈3|〈4|0.00 0.05 0.10
+
+FIG. 6. Chart of the dipole matrix elements at zero flux 
+
+φx = 0 of the flux operator ˆ φ (left panel) and of the charge operator ˆ n (right panel) between the qutrit eigenstates |α⟩
+
+and |β⟩, for the first five levels, α, β = 0 , 1, . . . , 4. Along y axes, we display the corresponding energy difference ωαβ =
+
+|Eα − Eβ | of the transition in units of the plasma frequency 
+
+ωp = 2 √8EC EJ . The insets are matrix plots of the absolute value of the matrix elements. The calculation assumed the system parameters EC /E J = 0 .08, EL/E J = 0 .03. 
+
+|2⟩ couple to |5⟩ via dipole matrix elements. The cor-responding phase and charge dipole-matrix elements are shown in Fig. 7 (a) and (b), respectively, while Fig. 7 (c) shows the transition energies between the first five excited states and the ground state as a function of φx.We notice that the state |5⟩ has a plasmon character only in a range of flux around φx = 0 and φx = ±π, where sizable dipole matrix elements arise, accompanied by a weak dependence of the transition on φx. In the other regions, the state |5⟩ has a fluxon-like character. 
+
+B. Manipulation 
+
+Depending on the energy scales of the system’s pa-rameters, the qutrit level splittings can be either on the order of GHz or on the order of tens of MHz. In the first case, coherent dynamics within the qutrit subspace can be achieved as in the fluxonium case. In particular, working at the sweet spot φx = 0, transitions |0⟩ → | 1⟩
+
+and |1⟩ → | 2⟩ can be induced by driving the system through the external flux at frequencies ω01 = E1 − E0
+
+and ω12 = E2 − E1.When the qutrit frequencies fall in the MHz range, transitions within the qutrit subspace can instead be induced by exploiting a non-computational upper level, which we denote as |u⟩. There are mainly two possibili-ties for the state |u⟩: it can be one of the upper fluxon-like state, such as |3⟩, or it can coincide with the lowest plas-mon level |5⟩. In both cases, at the sweet spot φx = 0 the dipole transition |1⟩ → | u⟩ is forbidden by symmetry, since the states |1⟩, |3⟩ and |5⟩ are all odd. Furthermore, the quasi-degeneracy of the qutrit levels may prevent se-0.00.20.40.6  
+
+> |〈 α| ˆϕ|β〉|
+> (a) plasmon fluxon
+> |ϕ05 ||ϕ15 ||ϕ25 |
+
+0.00.51.0
+
+> |〈 α|ˆn|β〉|
+> (b)
+> |n05 ||n15 ||n25 |
+
+−π −π/ 2 0 π/ 2 π
+
+ϕx
+
+0.00.20.40.6
+
+> ωαβ  /ω p
+> (c)
+> ω05
+> ω04
+> ω03
+> ω02
+> ω01
+
+FIG. 7. (a) Phase ( φαβ ≡ ⟨ α| ˆφ|β⟩) and (b) charge ( nαβ ≡⟨α|ˆn|β⟩) dipole matrix elements between the qutrit states 
+
+|0⟩, |1⟩, |2⟩ and the fifth excited state |5⟩ as a function of the flux φx. (c) Energy differences ωαβ ≡ | Eα − Eβ | between the ground state and the first five excited states, in units of 
+
+ωp = 2 √8EJ EC and as a function of the external flux. The calculation assumed the system parameters EC /E J = 0 .08, 
+
+EL/E J = 0 .03. 
+
+lectively addressing the transitions. To overcome these limitations, several solutions can be employed: analogously to what is done for the fluxonium, we can break the parity-enforced selection rules through a third-order nonlinear element as proposed in Ref. [114]; or we can exploit two-photon processes [115]. Alterna-tively, in this work, we choose to detune the qutrit away from the flux sweet spot [67], so to distort the symme-try of level |5⟩ and induce a hybridization between |3⟩
+
+and |4⟩. The driving protocols traditionally employed for fluxonium qubits [67, 114–117] can be then extended to the qutrit. These include resonant sequential driving and Λ-type driving schemes. By doing so, the qutrit lev-els |0⟩, |1⟩, |2⟩ are each coupled to |u⟩, realizing a tripod level structure. Thanks to its extended character as a function of the phase, level |5⟩ grants a more robust cou-pling, we will thus focus on this level identifying |u⟩ with 
+
+|5⟩.
+
+1. Adiabatic tripod scheme 
+
+Within the Rotating Wave Approximation (RWA), the low-energy Hamiltonian in presence of driving has the 9Ω!                           
+
+> Ω"
+> Ω3Ω#=Ω
+> Ω3
+> |2⟩
+> |1⟩
+> |0⟩
+> |𝑢 ⟩
+> Ω!
+> Ω#
+> Ω"
+> (a)
+> (b)
+> ρuu ρ00
+> ρ11 ρ22
+> 0.0 0.2 0.4 0.6 0.8 1.0
+> 0.0
+> 0.2
+> 0.4
+> 0.6
+> 0.8
+> 1.0 (c)
+> 0.0 0.2 0.4 0.6 0.8 1.0
+> 0.0
+> 0.5
+> 1.0
+> 1.5
+> t/T
+> Ωi/Ω1 (d)
+> Ω0Ω2
+> FIG. 8. Possible manipulation scheme inspired by the non-Abelian STIRAP protocols. (a) Structure of the Rabi Hamil-tonian. (b) and (d) Possible adiabatic cycle implementing a
+> π/ 2 rotation between the states |0⟩and |2⟩.(c) Numerical evolution of the populations of the different levels within the rotating wave approximation for T= 500 /Ω1; Ω 1is kept con-stant during the whole cycle.
+
+following structure: 
+
+HRWA = X
+
+> α=0 ,1,2
+
+(Ω α(t)|u⟩⟨ α| + H .c.) , (19) where Ω α(t) indicate the Rabi amplitudes corresponding to the transitions |α⟩ → | u⟩. The resulting tripod level structure paves the way to stimulated Raman adiabatic passage (STIRAP) approaches [118], including the non-Abelian STIRAP proposed e.g. in Refs. [119–121]. As an illustration, Fig. 8 shows an example of a STIRAP protocol on the qutrit implementing a π/ 2 rotation from the ground state |0⟩ to the superposition 1√2 (|0⟩ + |2⟩). The protocol relies on the adiabatic modulation of two resonant driving amplitudes while keeping the amplitude of drive |1⟩ → | u⟩ constant, and it is geometrically pro-tected, robust against small variations of the driving pa-rameters and dynamical perturbations [121]. We notice that the peculiar level structure of the qutrit enables to fulfill simultaneously the adiabaticity condition and the RWA. The former requires the time scale of the modu-lation of the Rabi driving T to be much larger than the energy gap in the rotating frame ¯Ω = pΩ21 + Ω 22 + Ω 23
+
+i.e. ¯Ω T ≫ 1; while the RWA requires the Rabi ampli-tude to be much smaller than the driving frequencies, i.e. 
+
+Ωi ≪ | Eu − Ei|. Both these assumptions can be fulfilled for realistic values of the qutrit parameters. The STIRAP scheme illustrated above can be utilized to initialize and to a certain extent manipulate the qutrit state; its main advantage is the geometric nature, which makes it robust and at the same time easy to engineer, as change in the geometric structure allows to change the rotation angle. On the other hand, adiabaticity implies a low gate speed; this drawback could be overcome by optimizing the driv-ing pulse, as demonstrated in a number of works, see e.g. Refs. [122–125]. The adiabatic protocol described can be extended to the general case of a qudit [118] and to the manipulation of coupled qudits [120, 126].  
+
+> VII. CONCLUSIONS
+
+In this work, we have introduced a novel superconduct-ing circuit architecture for qudit encoding, conceptually extending the fluxonium design to d-dimensional Hilbert spaces. Motivated by the need for more efficient quantum error correction and the inherent limitations of transmon-based qutrits – specifically their susceptibility to leakage errors – our proposal leverages a potential energy land-scape with d degenerate minima. This structure ensures a large spectral gap that isolates the computational sub-space, providing a natural protection mechanism that is missing in current state-of-the-art implementations. A central feature of our design is the promotion of fractional fluxon states, or fraxons . By engineered com-pensation of the inductive energy, we generate a potential where the localized flux corresponds to fractional units of the superconducting flux quantum. We demonstrated that in the regime of high flux localization, the system is accurately described by a tight-binding model, where quantum phase-slip processes drive the hopping between minima and determine the level splitting. Although the high-harmonic terms required in the Josephson potential are not standard in conventional junctions, we present a scalable “recipe” to generate them through an iterative scheme. This procedure can be applied to different platforms: while we fo-cused on Josephson tunnel junctions, the general frame-work is readily applicable to emerging platforms such as semiconductor-superconductor hybrids [127], twisted d-wave superconductors [128], or any system offering high-degree control over harmonic content. Through a detailed analysis of the d = 3 , 4, 5 cases, we highlighted the versatility of the physical scheme for quantum gate implementation. For the specific case of a qutrit, we demonstrated that the well-isolated low-energy subspace is ideally suited for adiabatic manipu-lation. By employing a tripod coupling structure, we showed that single-qutrit gates can be performed via non-Abelian stimulated Raman adiabatic passage (STIRAP). The tripod structure offers a unique opportunity to implement holonomic quantum computing, where infor-mation is protected by the geometric nature of the gates [129–131]. In addition, d-level systems have been con-sidered also for the realization of spin coherent [132–135] and GHZ-like states [136]. Furthermore, the ability to engineer high-spin systems and simulate high-energy phe-nomena in a superconducting circuit marks a significant step forward in quantum engineering [9, 37, 61, 137–139]. Finally, the parallels between our circuit and atomtronic systems – specifically cold atoms in ring-shaped poten-10 tials – suggest that the principles of fractional fluxon en-gineering could find fruitful application in neutral super-fluid circuits [140–142]. 
+
+> ACKNOWLEDGMENTS
+
+L.C. acknowledges the Fondazione Cariplo under the grant 2023- 2594. U.V. was partially supported by the European Union (ERC-StG, cQEDscope, 101075962), V.B. acknowledges support from Project PNRR MUR PE 0000023-NQSTI and by the Deutsche Forschungsge-meinschaft (DFG 539383397). 
+
+> Appendix A: Fourier potential engineering
+
+Here, we provide details for generating the potential that gives rise to the generalized fluxonium featuring d
+
+degenerate minima. For the case of odd-d, the natural ansatz is a potential of the form 
+
+U (φ) = EL
+
+2 φ2 − EJ cos( Ldφ) + EL
+
+X
+
+> n<L d
+
+an cos( nφ ).
+
+(A1) Clearly, being Ld the largest frequency in the harmonic expansion, the sum over n is restricted to harmonics such that n < L d. A requirement to have a well defined sys-tem of equations for the coefficients an is that the ba-sis calculated at approximate minima φl = 2 πl/L d is composed by all different terms, that is to have all dif-ferent cos(2 πn/L d). This is accomplished by choosing 0 < n/L d < 1/2. To proceed further, we assume that η ≡ EL/E J ≪ 1and postulate a series expansion in η for the location of the minima φl and the value of the coefficients an, such that 
+
+φl = 2πl Ld
+
++ ηδφ (1)  
+
+> l
+
++ η2δφ (2)  
+
+> l
+
++ . . . (A2) 
+
+an = a(0)  
+
+> n
+
++ ηa (1)  
+
+> n
+
++ η2a(2)  
+
+> n
+
++ . . . . (A3) To have d-degenerate minima we then need to simulta-neously solve U (0) = U (φl) and U ′(φl) = 0. This way, we obtain a linear system of equations for δφ (j) 
+
+> l
+
+and a(j) 
+
+> n
+
+.By setting to zero the coefficients of the expansion of 
+
+U (0) = U (φl) proportional to η (the one at zeroth or-der is automatically satisfied), we find that the a(0)  
+
+> n
+
+must satisfy the linear system 
+
+> Ld/2
+
+X
+
+> n=1
+
+sin 2
+
+ πLd
+
+nl 
+
+
+
+a(0)  
+
+> n
+
+=
+
+ 2πLd
+
+2 l2
+
+4 , (A4) that is solved by inverting the matrix whose components are Mnl = sin 2  πLd nl 
+
+
+
+, for n, l = 1 , . . . , L d/2. Analo-gously, by setting to zero the coefficient proportional to 
+
+η of the expansion of U ′(φl) = 0 we obtain 
+
+δφ (1)  
+
+> l
+
+= − 1
+
+L2
+
+> d
+
+ 2πl Ld
+
+−
+
+> Ld/2
+
+X
+
+> n=1
+
+na (0)  
+
+> n
+
+sin 
+
+ 2πln Ld
+
+ . (A5) Proceeding analogously, by setting to zero the coefficient proportional to η2 of the expansion of U (0) = U (φl) we find that the a(1)  
+
+> n
+
+must satisfy the linear system 
+
+> Ld/2
+
+X
+
+> n=1
+
+a(1)  
+
+> n
+
+Mnl = − 14 L2
+
+> d
+
+
+
+δφ (1) 
+
+> l
+
+2
+
+. (A6) For simplicity, we only consider coefficients an at zeroth order in η [except in Eq. (5)]. A similar procedure can be employed for the case of even d.
+
+> Appendix B: Energy-phase relation of the modular element
+
+Here, we provide details of the energy-phase relation describing the modular element. We start by the poten-tial describing a series of an inductance with energy EL
+
+and a Josephson junction with energy EJ ,
+
+EJ (φ, δφ ) = −EJ cos[( φ+δφ )/2]+ EL(φ−δφ )2/8 (B1) Minimization of the potential for δφ yields the equation 
+
+δφ = φ − 2EJ
+
+EL
+
+sin[( φ + δφ )/2] . (B2) For τ ≡ EJ /E L ≪ 1, we can attempt an expansion of 
+
+δφ in powers of τ . We express δφ = φ − 2τ z , so that we need to solve z = sin( φ − τ z ). Assuming z = z0 + τ z 1 +
+
+τ 2z2 + . . . , we find 
+
+δφ = φ − 2τ sin( φ) + τ 2 sin(2 φ) + . . . (B3) and by plugging the result in the potential we find 
+
+EJ (φ)
+
+EL
+
+= −τ
+
+
+
+1 − τ 2
+
+8
+
+
+
+cos( φ)+ τ 2
+
+4 cos(2 φ) − τ 3
+
+8 cos(3 φ) + . . . ., (B4) The alternation in sign is analogous to the expansion of an Andreev state in terms of the transparency τ of the conduction channels [111, 112]. 
+
+> Appendix C: Qudit effective low-energy model
+
+Here, we give more details on the derivation of the low-energy model outlined in Sec. IV. First of all, after solving for the coefficients an of the potential at φx = 0 as explained in Appendix A, we expand the potential for φx̸ = 0 around the minima where fractional fluxon 11 states are confined. We focus on the odd-d case for which 
+
+Ld = d−1 and follow the procedure outlined in Ref. [107]. The full potential energy 
+
+U (φ, φ x) = EL
+
+2 (φ − φx)2 − EJ cos( Ldφ)+ ELLd/2
+
+X
+
+> n=1
+
+an cos( nφ ), (C1) is extremized by values of the phase φl satisfying 
+
+EL(φl −φx)+ LdEJ sin( Ldφl)−ELLd/2
+
+X
+
+> n=1
+
+na n sin( nφ l) = 0 .
+
+(C2) For η ≡ EL/E J ≪ 1, we can solve for φl at leading order in η and find [cf. Eq. (A5)] 
+
+φl = 2πl Ld
+
+− ηL2
+
+> d
+
+ 2πl Ld
+
+− φx
+
+
+
++ ηL2
+
+> d
+
+X
+
+> n
+
+na n sin 
+
+ 2πnl Ld
+
+
+
+.
+
+(C3) Around each minimum φl we expand the potential to second order as 
+
+Hl = −4EC ∂2 
+
+> φ
+
++ ¯EL,d 
+
+2 (φ − φl)2 + U (φl, φ x), (C4) with the effective inductance ¯EL,d = EL + L2
+
+> d
+
+EJ cos( Ldφl) − ELLd/2
+
+X
+
+> n=1
+
+ann2 cos( nφ l),
+
+(C5) that has a weak dependence on l, and obtain approximate eigenstates 
+
+ψl(φ) = 1
+
+pℓd
+
+√π e−(φ−φl)2/2ℓ2 
+
+> d
+
+, (C6) with energy 
+
+εl = U (φl, φ x) + 12
+
+q
+
+8EC ¯EL,d , (C7) = EL
+
+2 (φl − φx)2 − EL
+
+2 φ2 
+
+> l
+
++ E0, (C8) where ℓd = (8 EC / ¯EL,d )1/4 and E0 = 12
+
+p8EC ¯EL,d +
+
+U (φl, 0), that has a weak dependence on l.The states ψl are well-localized around the minima φl
+
+as long as ℓd ≪ 1 and we adopt a tight-binding method to estimate the splitting due to tunneling through the barriers. Despite the fact that the barriers between the minima φl have not equal height, as clear by inspection of Fig. 2(a), we approximate the potential in the region of the first d minima with − ¯EJ cos( Lφ ), where we choose an effective inverse period L, such that Lφ l|l=1 ,φ x=0 = 2 π,that is 
+
+L = Ld
+
+"
+
+1 − ηL2
+
+> d
+
++ η
+
+2πL d
+
+X
+
+> n
+
+ann sin 
+
+ 2πn Ld
+
+#−1
+
+. (C9) −2 −1 0 1 2
+
+ϕ/π  
+
+> −1.0
+> −0.50.00.51.01.52.0
+> U
+> U(ϕ)
+> Uho (ϕ)
+> Ucos (ϕ)
+
+FIG. 9. Comparison of the potential realizing a qutrit, its quadratic expansion around φ = 0, and the effective cosine potential ¯EJ [1 − cos( Lφ )]. 
+
+and we set ¯EJ = ¯EL,d 
+
+L2 , (C10) such that the approximate Hamiltonian describing the lowest d minima reads 
+
+Heff = −4EC ∂2 
+
+> φ
+
++ ¯EJ [1 − cos( Lφ )] + U0, (C11) whose expansion around the minima reproduces Eq. (C4), with U0 = U (φl, 0) for l = 0 and φx = 0. The effective cosine potential is shown in Fig. 9, together with the qutrit potential and its quadratic expansion around 
+
+φ = 0. Finally, upon defining θ = Lφ , we map the prob-lem to the transmon Hamiltonian 
+
+HTransmon = −4 ¯EC ∂2 
+
+> θ
+
++ ¯EJ [1 − cos( θ)] + U0, (C12) with ¯EC = L2EC .
+
+1. Tight-binding model 
+
+Following [107], we can model the dynamics between the fluxon states localized in the minima of the effective transmon potential through a tight-binding approach. The fluxon states are non-orthogonal, and a correct diag-onalization needs to take the overlap matrix into account, such that eigenvalues and eigenstates can be obtained by diagonalizing the matrix S−1/2Hqudit S−1/2, with S be-ing the matrix of overlap elements Sll ′ = ⟨l|l′⟩. Nev-ertheless, the overlaps between different fluxon states are strongly suppressed, so that we approximate Sl,l ′ =
+
+δl,l ′ + sδ l,l ′+1 + sδ l+1 ,l ′ and neglect corrections of order 
+
+s ≪ 1. Retaining only nearest neighbor tunneling, the tunneling matrix elements between adjacent minima can 12 be written as [107, 143] 
+
+t = 2 
+
+r 2
+
+π ℏωp
+
+ 8 ¯EJ
+
+¯EC
+
+1/4
+
+e−
+
+√8 ¯EJ / ¯EC . (C13) Notice that, as previously anticipated, we neglect a weak modulation of the potential that cannot be exactly can-celed, such that we approximate tl,l +1 = t. We can then construct an effective Hamiltonian, that for the d = 5 case reads 
+
+h =
+
+
+
+ε−2 −t 0 0 0
+
+−t ε−1 −t 0 00 −t ε0 −t 00 0 −t ε1 −t
+
+0 0 0 −t ε2
+
+ . (C14) As remarked above, the t’s are in principle not all equal, since the potential barriers are slightly different from each other, but we ignore this difference. We can obtain a better approximation than Eq. (C7) for εl by taking the expectation value of the full potential on the localized states [Eq. (C6)], 
+
+εl = 12
+
+q
+
+8EC ¯EL,d + ⟨ψl|U (φ, φ x) − ¯EL,d 
+
+2 (φ − φl)2|ψl⟩
+
+(C15) = 12
+
+q
+
+8EC ¯EL,d + EL
+
+4
+
+ℓ2 
+
+> d
+
++ 2( φl − φx)2 − ℓ2
+
+> d
+
+4 ¯EL,d 
+
+− EJ e−L2 
+
+> dℓ2
+> d/4
+
+cos( Ldφl) + X
+
+> n
+
+ane−n2ℓ2 
+
+> d/4
+
+cos( nφ l).
+
+(C16) For the qutrit case we have 
+
+φl = πl − (EL/E J ) ( πl − φx) /4, (C17) ¯EL = EL + 4 EJ cos(2 φl) − EL
+
+π2
+
+4 cos( φl), (C18) 
+
+εl = 12
+
+p8EC ¯EL + EL
+
+4 (ℓ2 + 2( φl − φx)2) − ℓ2
+
+4 ¯EL
+
+− EJ e−ℓ2
+
+cos(2 φl) + π2EL
+
+4 e−ℓ2/4 cos( φl). (C19) 
+
+t = 2 
+
+r 2
+
+π
+
+p8EC ¯EL
+
+ 8 ¯EL
+
+L4EC
+
+1/4
+
+e−
+
+√8 ¯EL/L 4EC
+
+(C20) with ℓ = (8 EC / ¯EL)1/4 and L = 2 /(1 − η/ 4). 
+
+Appendix D: Numerical spectrum 
+
+Here, we provide details concerning the numerical cal-culation of the spectrum of the system and a low-energy effective model describing the qutrit subspace. We define 
+
+Hho = −4EC ∂2 
+
+> φ
+
++ ELφ2/2 and introduce a basis of Fock states |n⟩ for which ⟨m|Hho |n⟩ = δnm 
+
+√8EC EL(n + 1 /2). The dependence on the external flux φx can be gauged to the Josephson potential, such that Ud(φ) → Ud(φ + φx). Introducing σ = (8 EC /E L)1/4 and 
+
+Dmn (z) = 
+
+q n! 
+
+> m!
+
+zm−ne−| z|2/2L(m−n) 
+
+> n
+
+(|z|2), m ≥ n, 
+
+q m! 
+
+> n!
+
+(−z∗)n−me−| z|2/2L(n−m) 
+
+> m
+
+(|z|2), m ≤ n, 
+
+that are the matrix elements of the displacement operator ˆD(z) = eza †−z∗a, Dmn (z) = ⟨m|eza †−z∗a|n⟩, with L(k)
+
+> n
+
+generalized Laguerre polynomials, we can calculate the matrix elements of the higher harmonics appearing in the general Hamiltonian Eq. (1) describing qudits, 
+
+⟨m|eip n(φ+φx)|n⟩ = eip nφx+i π 
+
+> 2(m−n)
+
+Dmn 
+
+ pnσ
+
+√2
+
+
+
+. (D1) Furthermore, the matrix elements of charge operator ˆ n =
+
+−i∂ φ and flux operator in the Fock basis |n⟩ read 
+
+⟨m| ˆφ|n⟩ = σ
+
+√2 (√nδ n−1,m + √n + 1 δn+1 ,m ), (D2) 
+
+⟨m|ˆn|n⟩ = −iσ√2 (√nδ n−1,m − √n + 1 δn+1 ,m ).(D3) The matrix elements of the full qutrit Hamiltonian Eq. (15) in this basis read 
+
+Hmn = δnm 
+
+p8EC EL(n + 1 /2) + π2EL
+
+4 Dmn (σ/ √2) cos[ φx − π(m − n)/2] 
+
+− EJ Dmn (√2σ) cos[2 φx − π(m − n)/2] , (D4) In the working regime EJ ≫ EC , E L, the level spacing provided by √8EC EL is small compared to EJ and a large number of Fock states is needed to describe well the qutrit low-energy spectrum. In Fig. 6 we employ about 100 Fock states. In Fig. 6 we plot the dipole matrix elements of the flux and the charge operators, calculated on the eigenstates at zero external flux. Whereas the flux operator has sizable matrix elements only between the higher energy states 
+
+|3⟩ and |4⟩, and a weak contribution between the pairs 
+
+{| 0⟩, |1⟩} and {| 1⟩, |2⟩} , the charge operator has a sizable matrix element for all transitions, except for the {| 3⟩, |4⟩} 
+
+one. 
+
+[1] P. W. Shor, Scheme for reducing decoherence in quan-tum computer memory, Phys. Rev. A 52 , R2493 (1995). [2] D. Gottesman, Stabilizer codes and quantum error cor-13 
+
+rection , Ph.D. thesis, California Institute of Technology (1997). [3] D. Gottesman, An Introduction to Quantum Er-ror Correction and Fault-Tolerant Quantum Com-putation, arXiv e-prints , arXiv:0904.2557 (2009), arXiv:0904.2557 [quant-ph]. [4] A. Kitaev, Fault-tolerant quantum computation by anyons, Annals of Physics 303 , 2 (2003). [5] A. Stern and N. H. Lindner, Topological quantum com-putation—from basic concepts to first experiments, Sci-ence 339 , 1179 (2013). [6] A. G. Fowler, M. Mariantoni, J. M. Martinis, and A. N. Cleland, Surface codes: Towards practical large-scale quantum computation, Phys. Rev. A 86 , 032324 (2012). [7] Google Quantum AI, Suppressing quantum errors by scaling a surface code logical qubit, Nature 614 , 676 (2023). [8] S. Bravyi, A. W. Cross, J. M. Gambetta, D. Maslov, P. Rall, and T. J. Yoder, High-threshold and low-overhead fault-tolerant quantum memory, Nature 627 ,778 (2024). [9] Y. Wang, Z. Hu, B. C. Sanders, and S. Kais, Qudits and high-dimensional quantum computing, Frontiers in Physics 8, 589504 (2020). [10] E. T. Campbell, H. Anwar, and D. E. Browne, Magic-state distillation in all prime dimensions using quantum Reed-Muller codes, Phys. Rev. X 2, 041021 (2012). [11] E. T. Campbell, Enhanced fault-tolerant quantum com-puting in d-level systems, Phys. Rev. Lett. 113 , 230501 (2014). [12] E. Kapit, Hardware-efficient and fully autonomous quantum error correction in superconducting circuits, Phys. Rev. Lett. 116 , 150501 (2016). [13] P. Gokhale, J. M. Baker, C. Duckering, N. C. Brown, K. R. Brown, and F. T. Chong, Asymptotic improve-ments to quantum circuits via qutrits, in Proceedings of the 46th International Symposium on Computer Archi-tecture , ISCA ’19 (Association for Computing Machin-ery, New York, NY, USA, 2019) p. 554–566. [14] A. Fedorov, L. Steffen, M. Baur, M. P. da Silva, and A. Wallraff, Implementation of a toffoli gate with su-perconducting circuits, Nature 481 , 170 (2012). [15] T. C. Ralph, K. J. Resch, and A. Gilchrist, Efficient tof-foli gates using qudits, Phys. Rev. A 75 , 022313 (2007). [16] D. Gottesman, Fault-tolerant quantum computation with higher-dimensional systems, in Quantum Comput-ing and Quantum Communications , edited by C. P. Williams (Springer Berlin Heidelberg, Berlin, Heidel-berg, 1999) pp. 302–313. [17] S. Muralidharan, C.-L. Zou, L. Li, J. Wen, and L. Jiang, Overcoming erasure errors with multilevel systems, New Journal of Physics 19 , 013026 (2017). [18] M. Grassl, L. Kong, Z. Wei, Z.-Q. Yin, and B. Zeng, Quantum error-correcting codes for qudit amplitude damping, IEEE Transactions on Information Theory 
+
+64 , 4674 (2018). [19] R. Majumdar, S. Basu, S. Ghosh, and S. Sur-Kolay, Quantum error-correcting code for ternary logic, Phys. Rev. A 97 , 052302 (2018). [20] D. J. Spencer, A. Tanggara, T. Haug, D. Khu, and K. Bharti, Qudit low-density parity-check codes, Quan-tum 10 , 2023 (2026). [21] S. S. Bullock, D. P. O’Leary, and G. K. Brennen, Asymptotically optimal quantum circuits for d-level sys-tems, Phys. Rev. Lett. 94 , 230502 (2005). [22] A. Bocharov, M. Roetteler, and K. M. Svore, Factor-ing with qutrits: Shor’s algorithm on ternary and meta-plectic quantum architectures, Phys. Rev. A 96 , 012306 (2017). [23] P. Gokhale, J. M. Baker, C. Duckering, N. C. Brown, K. R. Brown, and F. T. Chong, Asymptotic improve-ments to quantum circuits via qutrits, in Proceedings of the 46th International Symposium on Computer Archi-tecture , ISCA ’19 (Association for Computing Machin-ery, New York, NY, USA, 2019) p. 554–566. [24] A. Pavlidis and E. Floratos, Quantum-fourier-transform-based quantum arithmetic with qudits, Phys. Rev. A 103 , 032417 (2021). [25] H. Bechmann-Pasquinucci and A. Peres, Quantum cryp-tography with 3-state systems, Phys. Rev. Lett. 85 ,3313 (2000). [26] D. Bruß and C. Macchiavello, Optimal eavesdropping in cryptography with three-dimensional quantum states, Phys. Rev. Lett. 88 , 127901 (2002). [27] D. Kaszlikowski, D. K. L. Oi, M. Christandl, K. Chang, A. Ekert, L. C. Kwek, and C. H. Oh, Quantum cryp-tography based on qutrit bell inequalities, Phys. Rev. A 
+
+67 , 012310 (2003). [28] S. Gr¨ oblacher, T. Jennewein, A. Vaziri, G. Weihs, and A. Zeilinger, Experimental quantum cryptography with qutrits, New Journal of Physics 8, 75 (2006). [29] A. Vaziri, G. Weihs, and A. Zeilinger, Experimental two-photon, three-dimensional entanglement for quantum communication, Phys. Rev. Lett. 89 , 240401 (2002). [30] H. Hajji and M. El Baz, Mutually unbiased bases in 3 and 4 dimensions semi-quantum key distribution proto-col, Physics Letters A 426 , 127884 (2022). [31] L. Neves, G. Lima, J. G. Aguirre G´ omez, C. H. Monken, C. Saavedra, and S. P´ adua, Generation of entangled states of qudits using twin photons, Phys. Rev. Lett. 
+
+94 , 100501 (2005). [32] B. P. Lanyon, T. J. Weinhold, N. K. Langford, J. L. O’Brien, K. J. Resch, A. Gilchrist, and A. G. White, Manipulating biphotonic qutrits, Phys. Rev. Lett. 100 ,060504 (2008). [33] Y.-H. Luo, H.-S. Zhong, M. Erhard, X.-L. Wang, L.-C. Peng, M. Krenn, X. Jiang, L. Li, N.-L. Liu, C.-Y. Lu, A. Zeilinger, and J.-W. Pan, Quantum teleportation in high dimensions, Phys. Rev. Lett. 123 , 070505 (2019). [34] P. Imany, J. A. Jaramillo-Villegas, M. S. Alshaykh, J. M. Lukens, O. D. Odele, A. J. Moore, D. E. Leaird, M. Qi, and A. M. Weiner, High-dimensional optical quantum logic in large operational spaces, npj Quan-tum Information 5, 59 (2019). [35] X.-M. Hu, C. Zhang, B.-H. Liu, Y. Cai, X.-J. Ye, Y. Guo, W.-B. Xing, C.-X. Huang, Y.-F. Huang, C.-F. Li, and G.-C. Guo, Experimental high-dimensional quantum teleportation, Phys. Rev. Lett. 125 , 230501 (2020). [36] Y. Chi, J. Huang, Z. Zhang, J. Mao, Z. Zhou, X. Chen, C. Zhai, J. Bao, T. Dai, H. Yuan, M. Zhang, D. Dai, B. Tang, Y. Yang, Z. Li, Y. Ding, L. K. Oxenløwe, M. G. Thompson, J. L. O’Brien, Y. Li, Q. Gong, and J. Wang, A programmable qudit-based quantum processor, Na-ture Communications 13 , 1166 (2022). [37] C. Senko, P. Richerme, J. Smith, A. Lee, I. Cohen, A. Retzker, and C. Monroe, Realization of a quantum integer-spin chain with controllable interactions, Phys. 14 
+
+Rev. X 5, 021026 (2015). [38] M. Ringbauer, M. Meth, L. Postler, R. Stricker, R. Blatt, P. Schindler, and T. Monz, A universal qudit quantum processor with trapped ions, Nature Physics 
+
+18 , 1053 (2022). [39] P. Hrmo, B. Wilhelm, L. Gerster, M. W. van Mourik, M. Huber, R. Blatt, P. Schindler, T. Monz, and M. Ringbauer, Native qudit entanglement in a trapped ion quantum processor, Nature Communications 14 ,2242 (2023). [40] M. Iqbal, A. Lyons, C. F. B. Lo, N. Tantivasadakarn, J. Dreiling, C. Foltz, T. M. Gatterman, D. Gresh, N. Hewitt, C. A. Holliman, J. Johansen, B. Neyen-huis, Y. Matsuoka, M. Mills, S. A. Moses, P. Siegfried, A. Vishwanath, R. Verresen, and H. Dreyer, Qutrit toric code and parafermions in trapped ions, Nature Commu-nications 16 , 6301 (2025). [41] J. Lindon, A. Tashchilina, L. W. Cooke, and L. J. LeBlanc, Complete unitary qutrit control in ultracold atoms, Phys. Rev. Appl. 19 , 034089 (2023). [42] B. L. Brock, S. Singh, A. Eickbusch, V. V. Sivak, A. Z. Ding, L. Frunzio, S. M. Girvin, and M. H. Devoret, Quantum error correction of qudits beyond break-even, Nature 641 , 612 (2025). [43] D. Gottesman, A. Kitaev, and J. Preskill, Encoding a qubit in an oscillator, Phys. Rev. A 64 , 012310 (2001). [44] V. V. Sivak, A. Eickbusch, B. Royer, S. Singh, I. Tsiout-sios, S. Ganjam, A. Miano, B. L. Brock, A. Z. Ding, L. Frunzio, S. M. Girvin, R. J. Schoelkopf, and M. H. Devoret, Real-time quantum error correction beyond break-even, Nature 616 , 50 (2023). [45] P. Campagne-Ibarcq, A. Eickbusch, S. Touzard, E. Zalys-Geller, N. E. Frattini, V. V. Sivak, P. Rein-hold, S. Puri, S. Shankar, R. J. Schoelkopf, L. Frunzio, M. Mirrahimi, and M. H. Devoret, Quantum error cor-rection of a qubit encoded in grid states of an oscillator, Nature 584 , 368 (2020). [46] A. Grimm, N. E. Frattini, S. Puri, S. O. Mundhada, S. Touzard, M. Mirrahimi, S. M. Girvin, S. Shankar, and M. H. Devoret, Stabilization and operation of a kerr-cat qubit, Nature 584 , 205 (2020). [47] A. L. Grimsmo and S. Puri, Quantum error correction with the gottesman-kitaev-preskill code, PRX Quantum 
+
+2, 020101 (2021). [48] L. B. Nguyen, H. Kim, D. T. Le, T. Ersevim, S. P. Chitta, T. Chistolini, C. J¨ unger, W. Clarke Smith, T. M. Stace, J. Koch, D. I. Santiago, and I. Siddiqi, The superconducting grid-states qubit, arXiv e-prints , arXiv:2509.14656 (2025), arXiv:2509.14656 [quant-ph]. [49] M. Mirrahimi, Z. Leghtas, V. V. Albert, S. Touzard, R. J. Schoelkopf, L. Jiang, and M. H. Devoret, Dynam-ically protected cat-qubits: a new paradigm for univer-sal quantum computation, New Journal of Physics 16 ,045014 (2014). [50] R. Lescanne, M. Villiers, T. Peronnin, A. Sarlette, M. Delbecq, B. Huard, T. Kontos, M. Mirrahimi, and Z. Leghtas, Exponential suppression of bit-flips in a qubit encoded in an oscillator, Nature Physics 16 , 509 (2020). [51] J. Guillaud and M. Mirrahimi, Repetition cat qubits for fault-tolerant quantum computation, Physical Review X 
+
+9, 041053 (2019). [52] C. Chamberland, K. Noh, P. Arrangoiz-Arriola, E. T. Campbell, C. T. Hann, J. Iverson, H. Putterman, T. C. Bohdanowicz, S. T. Flammia, A. Keller, et al. , Building a fault-tolerant quantum computer using concatenated cat codes, PRX Quantum 3, 010329 (2022). [53] A. L. Grimsmo and A. Frisk Kockum, Quantum infor-mation processing with bosonic qubits in circuit QED, Quantum Sci. Technol. 6, 043001 (2021). [54] Y. Shalibo, R. Resh, O. Fogel, D. Shwa, R. Bialczak, J. M. Martinis, and N. Katz, Direct wigner tomography of a superconducting anharmonic oscillator, Phys. Rev. Lett. 110 , 100404 (2013). [55] M. J. Peterer, S. J. Bader, X. Jin, F. Yan, A. Ka-mal, T. J. Gudmundsen, P. J. Leek, T. P. Orlando, W. D. Oliver, and S. Gustavsson, Coherence and decay of higher energy levels of a superconducting transmon qubit, Phys. Rev. Lett. 114 , 010501 (2015). [56] R. K. Naik, N. Leung, S. Chakram, P. Groszkowski, Y. Lu, N. Earnest, D. C. McKay, J. Koch, and D. I. Schuster, Random access quantum information proces-sors using multimode circuit quantum electrodynamics, Nature Communications 8, 1904 (2017). [57] S. Cao, M. Bakr, G. Campanaro, S. D. Fasciati, J. Wills, D. Lall, B. Shteynas, V. Chidambaram, I. Rungger, and P. Leek, Emulating two qubits with a four-level trans-mon qudit for variational quantum algorithms, Quan-tum Science and Technology 9, 035003 (2024). [58] M. A. Yurtalan, J. Shi, M. Kononenko, A. Lupascu, and S. Ashhab, Implementation of a walsh-hadamard gate in a superconducting qutrit, Phys. Rev. Lett. 125 , 180504 (2020). [59] A. Morvan, V. V. Ramasesh, M. S. Blok, J. M. Kreike-baum, K. O’Brien, L. Chen, B. K. Mitchell, R. K. Naik, D. I. Santiago, and I. Siddiqi, Qutrit randomized bench-marking, Phys. Rev. Lett. 126 , 210504 (2021). [60] M. Kononenko, M. A. Yurtalan, S. Ren, J. Shi, S. Ash-hab, and A. Lupascu, Characterization of control in a superconducting qutrit using randomized benchmark-ing, Phys. Rev. Res. 3, L042007 (2021). [61] M. S. Blok, V. V. Ramasesh, T. Schuster, K. O’Brien, J. M. Kreikebaum, D. Dahlen, A. Morvan, B. Yoshida, N. Y. Yao, and I. Siddiqi, Quantum information scram-bling on a superconducting qutrit processor, Phys. Rev. X 11 , 021010 (2021). [62] N. Goss, A. Morvan, B. Marinelli, B. K. Mitchell, L. B. Nguyen, R. K. Naik, L. Chen, C. J¨ unger, J. M. Kreike-baum, D. I. Santiago, J. J. Wallman, and I. Siddiqi, High-fidelity qutrit entangling gates for superconduct-ing circuits, Nature Communications 13 , 7481 (2022). [63] T. Roy, Z. Li, E. Kapit, and D. Schuster, Two-qutrit quantum algorithms on a programmable superconduct-ing processor, Phys. Rev. Appl. 19 , 064024 (2023). [64] N. Goss, S. Ferracin, A. Hashim, A. Carignan-Dugas, J. M. Kreikebaum, R. K. Naik, D. I. Santiago, and I. Siddiqi, Extending the computational reach of a su-perconducting qutrit processor, npj Quantum Informa-tion 10 , 101 (2024). [65] K. Zhou, J.-W. Xu, Q.-P. Su, Y. Zhang, X.-M. Yu, Z. Ma, H.-Y. Zhang, H.-Y. Shi, W. Zheng, S. Pan, Y. Kang, Z. Huang, C.-P. Yang, S.-X. Li, and Y. Yu, Demonstration of discrete-time quantum walks and ob-servation of topological edge states in a superconducting qutrit chain, Phys. Rev. Lett. 135 , 250601 (2025). [66] V. Tripathi, N. Goss, A. Vezvaee, L. B. Nguyen, I. Sid-diqi, and D. A. Lidar, Qudit dynamical decoupling on a superconducting quantum processor, Phys. Rev. Lett. 15 
+
+134 , 050601 (2025). [67] V. E. Manucharyan, J. Koch, L. I. Glazman, and M. H. Devoret, Fluxonium: Single Cooper-pair circuit free of charge offsets, Science 326 , 113 (2009). [68] L. B. Nguyen, G. Koolstra, Y. Kim, A. Morvan, T. Chis-tolini, S. Singh, K. N. Nesterov, C. J¨ unger, L. Chen, Z. Pedramrazi, B. K. Mitchell, J. M. Kreikebaum, S. Puri, D. I. Santiago, and I. Siddiqi, Blueprint for a high-performance fluxonium quantum processor, PRX Quantum 3, 037001 (2022). [69] M. McEwen, D. Kafri, Z. Chen, J. Atalaya, K. J. Satzinger, C. Quintana, P. V. Klimov, D. Sank, C. Gid-ney, A. G. Fowler, F. Arute, K. Arya, B. Buck-ley, B. Burkett, N. Bushnell, B. Chiaro, R. Collins, S. Demura, A. Dunsworth, C. Erickson, B. Foxen, M. Giustina, T. Huang, S. Hong, E. Jeffrey, S. Kim, K. Kechedzhi, F. Kostritsa, P. Laptev, A. Megrant, X. Mi, J. Mutus, O. Naaman, M. Neeley, C. Neill, M. Niu, A. Paler, N. Redd, P. Roushan, T. C. White, J. Yao, P. Yeh, A. Zalcman, Y. Chen, V. N. Smelyan-skiy, J. M. Martinis, H. Neven, J. Kelly, A. N. Ko-rotkov, A. G. Petukhov, and R. Barends, Removing leakage-induced correlated errors in superconducting quantum error correction, Nature Communications 12 ,1761 (2021). [70] M. D. Reed, B. R. Johnson, A. A. Houck, L. Di-Carlo, J. M. Chow, D. I. Schuster, L. Frunzio, and R. J. Schoelkopf, Fast reset and suppressing sponta-neous emission of a superconducting qubit, Applied Physics Letters 96 , 203110 (2010). [71] K. Geerlings, Z. Leghtas, I. M. Pop, S. Shankar, L. Frun-zio, R. J. Schoelkopf, M. Mirrahimi, and M. H. Devoret, Demonstrating a driven reset protocol for a supercon-ducting qubit, Phys. Rev. Lett. 110 , 120501 (2013). [72] M. Suchara, A. W. Cross, and J. M. Gambetta, Leakage suppression in the toric code, Quantum Info. Comput. 
+
+15 , 997–1016 (2015). [73] P. Magnard, P. Kurpiers, B. Royer, T. Walter, J.-C. Besse, S. Gasparinetti, M. Pechal, J. Heinsoo, S. Storz, A. Blais, and A. Wallraff, Fast and unconditional all-microwave reset of a superconducting qubit, Phys. Rev. Lett. 121 , 060502 (2018). [74] C. C. Bultink, T. E. O’Brien, R. Vollmer, N. Muthusub-ramanian, M. W. Beekman, M. A. Rol, X. Fu, B. Tarasinski, V. Ostroukh, B. Varbanov, A. Bruno, and L. DiCarlo, Protecting quantum entanglement from leakage and qubit errors via repetitive parity measure-ments, Science Advances 6, eaay3050 (2020). [75] B. M. Varbanov, F. Battistel, B. M. Tarasinski, V. P. Ostroukh, T. E. O’Brien, L. DiCarlo, and B. M. Terhal, Leakage detection for a transmon-based surface code, npj Quantum Information 6, 102 (2020). [76] P. Duan, Z.-F. Chen, Q. Zhou, W.-C. Kong, H.-F. Zhang, and G.-P. Guo, Mitigating crosstalk-induced qubit readout error with shallow-neural-network dis-crimination, Phys. Rev. Appl. 16 , 024063 (2021). [77] Q. Ficheux, L. B. Nguyen, A. Somoroff, H. Xiong, K. N. Nesterov, M. G. Vavilov, and V. E. Manucharyan, Fast logic with slow qubits: Microwave-activated controlled-z gate on low-frequency fluxoniums, Phys. Rev. X 11 ,021026 (2021). [78] H. Xiong, Q. Ficheux, A. Somoroff, L. B. Nguyen, E. Dogan, D. Rosenstock, C. Wang, K. N. Nesterov, M. G. Vavilov, and V. E. Manucharyan, Arbitrary controlled-phase gate on fluxonium qubits using differ-ential ac stark shifts, Phys. Rev. Res. 4, 023040 (2022). [79] A. Somoroff, Q. Ficheux, R. A. Mencia, H. Xiong, R. Kuzmin, and V. E. Manucharyan, Millisecond co-herence in a superconducting qubit, Phys. Rev. Lett. 
+
+130 , 267001 (2023). [80] L. Chirolli and J. E. Moore, Enhanced coherence in su-perconducting circuits via band engineering, Phys. Rev. Lett. 126 , 187701 (2021). [81] A. M. Bozkurt, J. Brookman, V. Fatemi, and A. R. Akhmerov, Double-Fourier engineering of Josephson energy-phase relationships applied to diodes, SciPost Phys. 15 , 204 (2023). [82] P. Brooks, A. Kitaev, and J. Preskill, Protected gates for superconducting qubits, Phys. Rev. A 87 , 052306 (2013). [83] W. C. Smith, A. Kou, X. Xiao, U. Vool, and M. H. Devoret, Superconducting circuit protected by two-Cooper-pair tunneling, npj Quantum Information 6, 8 (2020). [84] W. C. Smith, M. Villiers, A. Marquet, J. Palomo, M. R. Delbecq, T. Kontos, P. Campagne-Ibarcq, B. Dou¸ cot, and Z. Leghtas, Magnifying quantum phase fluctua-tions with Cooper-pair pairing, Phys. Rev. X 12 , 021002 (2022). [85] W. C. Smith, A. Borgognoni, M. Villiers, E. Roverc’h, J. Palomo, M. R. Delbecq, T. Kontos, P. Campagne-Ibarcq, B. Dou¸ cot, and Z. Leghtas, Spectral signature of high-order photon processes enhanced by Cooper-pair pairing, Nature Communications 16 , 8359 (2025). [86] E. Roverc’h, A. Borgognoni, M. Villiers, K. Gerashchenko, W. Clarke Smith, C. Wilson, B. Dou¸ cot, A. Petrescu, P. Campagne-Ibarcq, and Z. Leghtas, Experimental realization of a cos(2 ϕ)transmon qubit, arXiv e-prints , arXiv:2603.13114 (2026), arXiv:2603.13114 [quant-ph]. [87] G. Blatter, V. B. Geshkenbein, and L. B. Ioffe, Design aspects of superconducting-phase quantum bits, Phys. Rev. B 63 , 174511 (2001). [88] B. Dou¸ cot and J. Vidal, Pairing of Cooper pairs in a fully frustrated Josephson-junction chain, Phys. Rev. Lett. 88 , 227005 (2002). [89] L. B. Ioffe, M. V. Feigel’man, A. Ioselevich, D. Ivanov, M. Troyer, and G. Blatter, Topologically protected quantum bits using Josephson junction arrays, Nature 
+
+415 , 503 (2002). [90] L. B. Ioffe and M. V. Feigel’man, Possible realization of an ideal quantum computer in Josephson junction array, Phys. Rev. B 66 , 224503 (2002). [91] B. Dou¸ cot, M. V. Feigel’man, and L. B. Ioffe, Topo-logical order in the insulating Josephson junction array, Phys. Rev. Lett. 90 , 107003 (2003). [92] B. Dou¸ cot, M. V. Feigel’man, L. B. Ioffe, and A. S. Ioselevich, Protected qubits and Chern-Simons theories in Josephson junction arrays, Phys. Rev. B 71 , 024505 (2005). [93] A. Kitaev, Protected qubit based on a superconduct-ing current mirror, arXiv e-prints , cond-mat/0609441 (2006), arXiv:cond-mat/0609441 [cond-mat.mes-hall]. [94] B. Dou¸ cot and L. B. Ioffe, Physical implementation of protected qubits, Reports on Progress in Physics 75 ,072001 (2012). [95] S. Gladchenko, D. Olaya, E. Dupont-Ferrier, B. Dou¸ cot, L. B. Ioffe, and M. E. Gershenson, Superconducting 16 
+
+nanocircuits for topologically protected qubits, Nature Physics 5, 48 (2009). [96] M. T. Bell, J. Paramanandam, L. B. Ioffe, and M. E. Gershenson, Protected Josephson rhombus chains, Phys. Rev. Lett. 112 , 167001 (2014). [97] J. D. Bondar, L. Banszerus, W. Marshall, T. Lin-demann, T. Zhang, M. J. Manfra, C. M. Marcus, and S. Vaitiek˙ enas, From two dimensions to wire net-works in a dice-lattice Josephson array, arXiv e-prints , arXiv:2510.07412 (2025), arXiv:2510.07412 [cond-mat.mes-hall]. [98] T. W. Larsen, M. E. Gershenson, L. Casparis, A. Kringhøj, N. J. Pearson, R. P. G. McNeil, F. Kuem-meth, P. Krogstrup, K. D. Petersson, and C. M. Marcus, Parity-protected superconductor-semiconductor qubit, Phys. Rev. Lett. 125 , 056801 (2020). [99] S. Messelot, N. Aparicio, E. de Seze, E. Eyraud, J. Coraux, K. Watanabe, T. Taniguchi, and J. Renard, Direct measurement of a sin(2 φ) current phase relation in a graphene superconducting quantum interference de-vice, Phys. Rev. Lett. 133 , 106001 (2024). [100] E. G. Arnault, J. Chiles, T. F. Q. Larson, C.-C. Chen, L. Zhao, K. Watanabe, T. Taniguchi, F. m. c. Amet, and G. Finkelstein, Multiplet supercurrents in a Josephson circuit, Phys. Rev. Lett. 134 , 067001 (2025). [101] A. Leblanc, C. Tangchingchai, Z. Sadre Momtaz, E. Kiyooka, J.-M. Hartmann, F. Gustavo, J.-L. Thomassin, B. Brun, V. Schmitt, S. Zihlmann, R. Mau-rand, ´E. Dumur, S. De Franceschi, and F. Lefloch, Gate- and flux-tunable sin(2 ϕ) Josephson element with planar-Ge junctions, Nature Communications 16 , 1010 (2025). [102] L. Banszerus, W. Marshall, C. W. Andersson, T. Linde-mann, M. J. Manfra, C. M. Marcus, and S. Vaitiek˙ enas, Voltage-controlled synthesis of higher harmonics in hy-brid Josephson junction circuits, Phys. Rev. Lett. 133 ,186303 (2024). [103] C. Ciaccia, R. Haller, A. C. C. Drachmann, T. Linde-mann, M. J. Manfra, C. Schrade, and C. Sch¨ onenberger, Charge-4e supercurrent in a two-dimensional InAs-Al superconductor-semiconductor heterostructure, Com-munications Physics 7, 41 (2024). [104] L. Banszerus, C. W. Andersson, W. Marshall, T. Linde-mann, M. J. Manfra, C. M. Marcus, and S. Vaitiek˙ enas, Hybrid Josephson rhombus: A superconducting element with tailored current-phase relation, Phys. Rev. X 15 ,011021 (2025). [105] V. Brosco, G. Serpico, V. Vinokur, N. Poccia, and U. Vool, Superconducting qubit based on twisted cuprate van der waals heterostructures, Phys. Rev. Lett. 
+
+132 , 017003 (2024). [106] A. Coppo, L. Chirolli, N. Poccia, U. Vool, and V. Brosco, Flux-tunable regimes and supersymmetry in twisted cuprate heterostructures, Applied Physics Let-ters 125 , 054001 (2024). [107] G. Catelani, R. J. Schoelkopf, M. H. Devoret, and L. I. Glazman, Relaxation and frequency shifts induced by quasiparticles in superconducting qubits, Phys. Rev. B 
+
+84 , 064517 (2011). [108] M. Chandran and R. V. Kulkarni, Fractionalization of a flux quantum in a one-dimensional parallel Josephson junction array with alternating π junctions, Phys. Rev. B 68 , 104505 (2003). [109] I. Tornes and D. Stroud, Vortex fractionalization in a Josephson ladder, Phys. Rev. B 72 , 224519 (2005). [110] K. Shagalov, D. Feldstein-Bofill, L. Uhre Jakobsen, Z. Sun, C. Wied, A. T. J. Paulsen, J. B. Severin, M. A. Marciniak, C. A. Potts, A. Kringhøj, J. Hastrup, K. Flensberg, S. Krøjer, and M. Kjaergaard, Higher Josephson harmonics in a tunable double-junction transmon qubit, arXiv e-prints , arXiv:2512.08470 (2025), arXiv:2512.08470 [quant-ph]. [111] D. Willsch, D. Rieger, P. Winkel, M. Willsch, C. Dickel, J. Krause, Y. Ando, R. Lescanne, Z. Leghtas, N. T. Bronn, P. Deb, O. Lanes, Z. K. Minev, B. Den-nig, S. Geisert, S. G¨ unzler, S. Ihssen, P. Paluch, T. Reisinger, R. Hanna, J. H. Bae, P. Sch¨ uffelgen, D. Gr¨ utzmacher, L. Buimaga-Iarinca, C. Morari, W. Wernsdorfer, D. P. DiVincenzo, K. Michielsen, G. Catelani, and I. M. Pop, Observation of Josephson harmonics in tunnel junctions, Nature Physics 20 , 815 (2024). [112] L. Chirolli, A. Greco, A. Crippa, E. Strambini, M. Cuoco, L. Amico, and F. Giazotto, Diode effect in the fraunhofer pattern of disordered planar Josephson junctions, Communications Physics 8, 483 (2025). [113] M. Hays, J. Kim, and W. D. Oliver, Nondegenerate noise-resilient superconducting qubit, PRX Quantum 6,040321 (2025). [114] U. Vool, A. Kou, W. C. Smith, N. E. Frattini, K. Ser-niak, P. Reinhold, I. M. Pop, S. Shankar, L. Frunzio, S. M. Girvin, and M. H. Devoret, Driving forbidden transitions in the fluxonium artificial atom, Phys. Rev. Appl. 9, 054046 (2018). [115] K. N. Nesterov, Q. Ficheux, V. E. Manucharyan, and M. G. Vavilov, Proposal for entangling gates on fluxo-nium qubits via a two-photon transition, PRX Quantum 
+
+2, 020345 (2021). [116] S. Novikov, T. Sweeney, J. E. Robinson, S. P. Pre-maratne, B. Suri, F. C. Wellstood, and B. S. Palmer, Raman coherence in a circuit quantum electrodynamics lambda system, Nature Physics 12 , 75 (2016). [117] N. Earnest, S. Chakram, Y. Lu, N. Irons, R. K. Naik, N. Leung, L. Ocola, D. A. Czaplewski, B. Baker, J. Lawrence, J. Koch, and D. I. Schuster, Realiza-tion of a Λ system with metastable states of a capaci-tively shunted fluxonium, Phys. Rev. Lett. 120 , 150504 (2018). [118] N. V. Vitanov, A. A. Rangelov, B. W. Shore, and K. Bergmann, Stimulated raman adiabatic passage in physics, chemistry, and beyond, Rev. Mod. Phys. 89 ,015006 (2017). [119] R. G. Unanyan, B. W. Shore, and K. Bergmann, Laser-driven population transfer in four-level atoms: Conse-quences of non-abelian geometrical adiabatic phase fac-tors, Phys. Rev. A 59 , 2910 (1999). [120] L. Faoro, J. Siewert, and R. Fazio, Non-abelian holonomies, charge pumping, and quantum computa-tion with josephson junctions, Phys. Rev. Lett. 90 ,028301 (2003). [121] V. Brosco, L. Pilozzi, R. Fazio, and C. Conti, Non-abelian thouless pumping in a photonic lattice, Phys. Rev. A 103 , 063518 (2021). [122] G. Florio, P. Facchi, R. Fazio, V. Giovannetti, and S. Pascazio, Robust gates for holonomic quantum com-putation, Phys. Rev. A 73 , 022327 (2006). [123] E. Sj¨ oqvist, D. M. Tong, L. Mauritz Andersson, B. Hes-smo, M. Johansson, and K. Singh, Non-adiabatic holo-17 
+
+nomic quantum computation, New Journal of Physics 
+
+14 , 103035 (2012). [124] L. Giannelli, S. Sgroi, J. Brown, G. S. Paraoanu, M. Pa-ternostro, E. Paladino, and G. Falci, A tutorial on op-timal control and reinforcement learning methods for quantum technologies, Physics Letters A 434 , 128054 (2022). [125] W. Zheng, Y. Zhang, Y. Dong, J. Xu, Z. Wang, X. Wang, Y. Li, D. Lan, J. Zhao, S. Li, X. Tan, and Y. Yu, Optimal control of stimulated raman adiabatic passage in a superconducting qudit, npj Quantum In-formation 8, 9 (2022). [126] C. Danieli, V. Brosco, C. Conti, and L. Pilozzi, Holo-nomic multicontrolled gates for single-photon states, Phys. Rev. A 113 , 052606 (2026). [127] D. Feldstein-Bofill, L. Uhre Jacobsen, K. Shagalov, Z. Sun, C. Wied, S. Singh, A. Kringhøj, J. Hastrup, A. Gyenis, K. Flensberg, S. Krøjer, and M. Kjaer-gaard, Controlled Parity of Cooper Pair Tunneling in a Hybrid Superconducting Qubit, arXiv e-prints , arXiv:2601.11303 (2026), arXiv:2601.11303 [quant-ph]. [128] T. Confalone, F. Lo Sardo, Y. Lee, S. Shokri, G. Ser-pico, A. Coppo, L. Chirolli, V. M. Vinokur, V. Brosco, U. Vool, D. Montemurro, F. Tafuri, K. Nielsch, G. Haider, and N. Poccia, Cuprate twistronics for quan-tum hardware, Advanced Quantum Technologies 8,2500203 (2025). [129] F. Wilczek and A. Zee, Appearance of gauge structure in simple dynamical systems, Phys. Rev. Lett. 52 , 2111 (1984). [130] P. Zanardi and M. Rasetti, Holonomic quantum com-putation, Physics Letters A 264 , 94 (1999). [131] L.-M. Duan, J. I. Cirac, and P. Zoller, Geometric ma-nipulation of trapped ions for quantum computation, Science 292 , 1695 (2001). [132] S. Dooley, F. McCrossan, D. Harland, M. J. Everitt, and T. P. Spiller, Collapse and revival and cat states with an n-spin system, Phys. Rev. A 87 , 052323 (2013). [133] J. Joo and E. Ginossar, Efficient scheme for hybrid teleportation via entangled coherent states in circuit quantum electrodynamics, Scientific Reports 6, 26338 (2016). [134] L. B. Nguyen, N. Goss, K. Siva, Y. Kim, E. Younis, B. Qing, A. Hashim, D. I. Santiago, and I. Siddiqi, Em-powering a qudit-based quantum processor by travers-ing the dual bosonic ladder, Nature Communications 
+
+15 , 7117 (2024). [135] J. Denis, C. Read, and J. Martin, Coherent generation and protection of anticoherent spin states, SciPost Phys. Core 9, 001 (2026). [136] Y. Shen, G. Marchegiani, G. Catelani, L. Amico, A. Q. Liu, W. Fan, and L.-C. Kwek, GHZ-like states in the qubit-qudit Rabi model, SciPost Phys. 11 , 099 (2021). [137] Y. Wang, K. Snizhko, A. Romito, Y. Gefen, and K. Murch, Dissipative preparation and stabilization of many-body quantum states in a superconducting qutrit array, Phys. Rev. A 108 , 013712 (2023). [138] E. Gustafson, Noise improvements in quantum sim-ulations of sQED using qutrits, arXiv e-prints ,arXiv:2201.04546 (2022). [139] L. Spagnoli, N. Goss, A. Roggero, E. Rrapaj, M. J. Cervia, A. V. Patwardhan, R. K. Naik, A. B. Bal-antekin, E. Younis, D. I. Santiago, I. Siddiqi, and S. Al-daihan, Collective neutrino oscillations in three flavors on qubit and qutrit processors, Phys. Rev. D 111 ,103054 (2025). [140] L. Amico, D. Aghamalyan, F. Auksztol, H. Crepaz, R. Dumke, and L. C. Kwek, Superfluid qubit systems with ring shaped optical lattices, Sci. Rep. 4, 4298 (2014). [141] D. Aghamalyan, N. Nguyen, F. Auksztol, K. Gan, M. M. Valado, P. Condylis, L.-C. Kwek, R. Dumke, and L. Am-ico, An atomtronic flux qubit: a ring lattice of Bose– Einstein condensates interrupted by three weak links, New J. Phys. 18 , 075013 (2016). [142] L. Amico, D. Anderson, M. Boshier, J.-P. Brantut, L.-C. Kwek, A. Minguzzi, and W. von Klitzing, Collo-quium: Atomtronic circuits: From many-body physics to quantum technologies, Reviews of Modern Physics 
+
+94 , 041001 (2022). [143] J. N. L. Connor, T. Uzer, R. A. Marcus, and A. D. Smith, Eigenvalues of the Schr¨ odinger equation for a pe-riodic potential with nonperiodic boundary conditions: A uniform semiclassical analysis, The Journal of Chem-ical Physics 80 , 5095 (1984).

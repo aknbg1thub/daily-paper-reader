@@ -1,0 +1,167 @@
+Title: Photolithography-Only Fabrication of Transmons Using Double-Oblique Evaporation
+
+URL Source: https://arxiv.org/pdf/2605.19590v1
+
+Published Time: Wed, 20 May 2026 01:09:54 GMT
+
+Number of Pages: 7
+
+Markdown Content:
+# Photolithography-Only Fabrication of Transmons Using Double-Oblique Evaporation 
+
+K. Aoyanagi, 1 S. Abe, 1 S. Chen, 1 T. Inada, 2 C. Kawai, 3, 4 Y. Mino, 2
+
+K. Nakamura, 1 K. Nakazono, 3, 4 T. Nitta, 4 and K. Watanabe 3, 4 
+
+> 1
+
+Department of Physics, Kyoto University, Kitashirakawa-Oiwakecho, Sakyo-ku, Kyoto 606-8502, Japan 
+
+> 2
+
+International Center for Elementary Particle Physics (ICEPP), The University of Tokyo, 7-3-1 Hongo, Bunkyo-ku, Tokyo 113-0033, Japan 
+
+> 3
+
+Department of Physics, The University of Tokyo, 7-3-1 Hongo, Bunkyo-ku, Tokyo 113-0033, Japan 
+
+> 4
+
+QUP (WPI), KEK, OHO 1-1, TSUKUBA, IBARAKI 305-0801, JAPAN 
+
+(Dated: May 20, 2026) We investigate a photolithography-only fabrication process for transmon Josephson junctions us-ing a modified double-oblique evaporation geometry. Using a bilayer resist process and Al shadow evaporation, we fabricate junction structures and confirm by optical and scanning electron mi-croscopy that the resulting narrowed crossing region reaches a geometrical area on the order of 10 4 nm 2, which lies in the size range relevant to qubit junction fabrication. Room-temperature resistance screening shows that the junction resistance falls within the target range for the present transmon design over a usable process window and exhibits a clear design dependence. We further implement fabricated junctions in transmon devices and evaluate them in a three-dimensional Al cavity at 20 mK, where we observe basic transmon qubit operation with f01 = 4 .865 GHz, T1 ∼ 9 μs, and T ∗ 
+
+> 2
+
+∼ 0.4 μs. These results demonstrate the feasibility of realizing functional transmon devices in a photolithography-only process using double-oblique evaporation. 
+
+INTRODUCTION 
+
+Superconducting qubits, and in particular transmons, are among the leading platforms for quantum informa-tion processing because of their relatively simple circuit architecture, compatibility with microwave control, and scalability toward multi-qubit systems [1]. Since the Josephson junction (JJ) provides the nonlinear induc-tance of the circuit and thereby determines key device parameters such as the qubit frequency and anharmonic-ity, establishing a stable and reproducible JJ fabrication process is a central issue in the development of supercon-ducting quantum circuits. In standard transmon fabri-cation, large circuit features such as capacitor pads and control wiring are typically defined by photolithography, whereas the JJ is commonly fabricated by electron-beam lithography (EBL) combined with shadow evaporation [2, 3]. This division of roles originates from the fact that conventional optical lithography has generally lacked the resolution required to directly define the O(100 nm)-scale structures typically used for qubit JJs. Although the EBL-based process has been highly suc-cessful and remains the dominant route for superconduct-ing qubit fabrication, it also introduces several practical limitations. In particular, EBL is comparatively slow, costly, and less favorable for wafer-scale throughput and simplified process integration [4]. These issues become increasingly important as superconducting quantum cir-cuits move toward larger-scale integration and more rou-tine device production. From this perspective, a fabri-cation route in which the JJ can also be realized using photolithography alone is attractive from the standpoint of cost, throughput, and process accessibility [5–7]. It is also compatible with the broader trend toward large-area fabrication [8]. Recent studies have begun to explore this direction. Monroe et al. demonstrated that transmon-compatible JJs can be fabricated using an all-optical direct-write process based on a Dolan-Niemeyer-bridge structure [5]. Their results showed that photolithography-only JJ fab-rication is feasible when oxidation and evaporation con-ditions are appropriately engineered. In that work, the lithographically defined junction area was relatively large compared with conventional EBL-defined qubit junc-tions, and the junction properties were controlled pri-marily through process optimization. These results es-tablished the feasibility of photolithography-based trans-mon JJ fabrication. At the same time, obtaining smaller effective junction dimensions within a photolithographic process remains an important challenge, motivating the exploration of additional geometrical strategies. A key challenge nevertheless remains for photolithography-only JJ fabrication. Since the minimum linewidth achievable by photolithography is generally much larger than that in standard EBL-based JJ processes, it is difficult to obtain a small junction area directly from the planar mask geometry alone. For this reason, control of the effective junction area through three-dimensional process design becomes es-sential. In oblique-angle evaporation schemes, including Manhattan-style and bridgeless shadow-evaporation processes [9, 10], the final overlap area is governed not only by the nominal mask dimensions but also by the evaporation angle, resist profile, and relative deposition geometry [11]. As a result, the effective junction area can be made substantially smaller than the apparent 
+
+> arXiv:2605.19590v1 [quant-ph] 19 May 2026
+
+2  
+
+> FIG. 1. Schematic illustration of the double-oblique evapora-tion concept. (a) Perspective view of the bilayer resist opening in the conventional oblique-angle evaporation geometry. (b) Corresponding top view of the resulting evaporated region. (c) Perspective view of the modified double-oblique evapora-tion geometry, in which the deposition direction is tilted not only with respect to the substrate normal but also with re-spect to the resist-pattern direction. (d) Corresponding top view of the resulting evaporated region.
+
+linewidth defined by photolithography, providing apossible route to overcoming the intrinsic resolution limit of optical lithography without resorting to EBL. In this work, we investigate a photolithography-only fabrication process for transmon Josephson junctions based on a Manhattan-style geometry. Beyond the stan-dard oblique-angle evaporation scheme, we introduce a modified double-oblique evaporation method in which the deposition direction is tilted not only with respect to the substrate normal but also with respect to the resist-pattern orientation. The primary objective of this study is to establish the feasibility of transmon-compatible JJ fabrication within a photolithography-only process. At the same time, the proposed double-oblique geometry may provide an additional geometrical parameter rele-vant to the effective junction dimensions through shad-owing. Using this process, we fabricate Josephson junc-tions, characterize them by room-temperature resistance measurements, and incorporate them into transmon de-vices measured in a three-dimensional setup. 
+
+> FABRICATION Double-Oblique Evaporation
+
+Here, we define double-oblique evaporation as an evap-oration geometry in which the deposition direction is oblique both to the substrate normal and to the resist-pattern orientation. We denote the deposition tilt angle from the substrate normal by θ and the in-plane angular offset between the deposition direction and the resist-pattern orientation by ϕ. In this geometry, the resulting narrowed linewidth is determined not only by the nomi-nal planar pattern, but also by the combined shadowing condition set by θ, ϕ, the linewidth of the resist opening, and the thickness of the upper resist layer. Figure 1 schematically illustrates the geometrical con-cept of this method. In the conventional oblique-angle evaporation geometry, the deposition direction is tilted by θ with respect to the substrate normal while remaining aligned with the principal direction of the resist opening, i.e., ϕ = 0, as shown in Fig. 1(a,b). Under this con-dition, the linewidth of the deposited feature is mainly determined by the photolithographically defined opening width together with the standard shadowing profile of the bilayer resist. In the present method, the sample is additionally ro-tated in-plane so that ϕ̸ = 0, as shown in Fig. 1(c,d). The deposition direction is therefore oblique not only to the substrate normal but also to the resist-pattern direc-tion. This double-oblique geometry modifies the shad-owing condition inside the opening and laterally shifts the shadow boundary, resulting in a narrower deposited line than in the conventional case. Consequently, the in-plane angular offset ϕ, together with θ, the upper-resist thickness, and the nominal resist linewidth, constitutes a geometrical parameter set that influences the effective junction linewidth below the apparent photolithographic linewidth. The dependence of the idealized narrowed linewidth on the geometrical parameters θ, ϕ, the upper-resist thick-ness, and the nominal opening width is summarized in Appendix A. 
+
+> Fabrication and structural characterization
+
+The devices were fabricated on Si substrates us-ing a photolithography-only process combined with the double-oblique evaporation scheme introduced above. Before resist coating, the substrates were cleaned in 1:8 diluted buffered hydrofluoric acid (BHF) for 1 min to remove the native oxide. A bilayer resist stack was then prepared using PMGI SF5 as the underlayer and THMR iP1800 as the top imaging resist, with target thicknesses of approximately 200 nm and 1.8 μm, re-spectively. The junction patterns were defined by direct-write photolithography using a Heidelberg Instruments MLA150 maskless aligner operated with a 375 nm opti-cal beam, and were developed in SD-1 developer, yield-ing the bilayer resist profile required for shadow evapo-ration. After development, a descum step was performed by oxygen plasma ashing using a Samco RIE-10NR-KF system operated for 30 s at 50 W with an O 2 flow rate 3 
+
+> FIG. 2. Optical and SEM images of the fabricated double-oblique structure. (a) Optical micrograph of the bilayer resist pattern before evaporation, with the deposition direction in-dicated by the red arrows. (b) Optical micrograph of the cor-responding structure after evaporation and lift-off. (c) Low-magnification SEM image of the fabricated junction region. (d) High-magnification SEM image of the narrowed line seg-ment.
+
+of 100 sccm. Al deposition was performed in a Plassys Bestek / MEB 550S2-HV evaporation system at a deposition rate of 0.2 nm/s. In all devices, the deposition tilt angle was fixed at θ = 60 ◦. For the structural characterization and room-temperature screening samples, the double-oblique geometry was realized with an in-plane angular offset of 
+
+ϕ = 15 ◦. In the present design, the evaporation direction was intentionally chosen to point toward the outer side of the corner forming the junction crossing, as illustrated in Fig. 2(a). This configuration modifies the shadowing condition at the corner and narrows the local linewidth at the junction region. For the qubit device used in the millikelvin measurements, the same deposition tilt angle 
+
+θ = 60 ◦ was used, while the in-plane angular offset was changed to ϕ = 25 ◦. The first and second Al evapo-rations had nominal thicknesses of 40 nm and 100 nm, respectively. The AlO x tunnel barrier was formed in situ 
+
+between the two depositions by static oxidation in O 2
+
+at 0.3 Torr for 300 s in the Plassys chamber. After the second evaporation, lift-off was performed in N-methyl-2-pyrrolidone (NMP). To confirm that the intended geometrical effect is re-alized in the actual process, we examined the fabricated structures by optical microscopy, as shown in Fig. 2. Fig-ure 2(a) shows an optical micrograph of the bilayer re-sist pattern before metal deposition, together with the deposition direction used in the experiment; the cor-responding in-plane angular offset for this structure is 
+
+ϕ = 15 ◦. After evaporation and lift-off, the correspond-                                 
+
+> TABLE I. Room-temperature screening results for junction test structures with different designed linewidths. For each design, 27 devices were measured. Devices with R≤300 Ω were classified as shorts, and those with R≥50 kΩ were classified as open circuits and excluded from the resistance statistics. The yield is given as the number of devices that were not excluded by these criteria. The resistance values listed in the table are corrected values obtained after subtrac-tion of the constant offset associated with the two-terminal measurement. Designed width [ μm] Yield Mean Rcorr [Ω] Std. dev. [Ω] 0.5 12/27 4066 1790 0.6 23/27 1285 188 0.7 26/27 764 112 0.8 27/27 395 46 0.9 25/27 314 64 1.0 24/27 197 22
+
+ing deposited structure is shown in Fig. 2(b). The de-posited feature follows the expected double-oblique ge-ometry and exhibits narrowed line segments at the in-tended junction location. Further structural confirmation is obtained from the SEM images in Fig. 2(c,d). The low-magnification SEM image in Fig. 2(c) shows the overall geometry of the fabricated junction region, while the magnified image in Fig. 2(d) resolves the narrowed crossing region in greater detail. From this image, the linewidths of the two nar-rowed electrode segments are measured to be approxi-mately 150 nm and 70 nm, respectively. Their inter-section therefore defines a geometrical junction area of approximately 10 4 nm 2, indicating that the present pro-cess can access the size range relevant to conventional qubit junction fabrication. The observed asymmetry be-tween the two linewidths is attributed to the fact that the Al deposited in the first evaporation remains on the top surface and sidewall of the resist, thereby modifying the effective shadowing geometry for the second evaporation. This asymmetry is therefore considered to originate from the present evaporation geometry and resist profile, and may be mitigated by further design optimization. These observations support the expected effect of the double-oblique geometry, namely that the local junction dimen-sions can be reduced well below the apparent linewidth defined by the photolithographic opening. 
+
+> MEASUREMENT RESULTS Room-Temperature Characterization
+
+Room-temperature resistance measurements were per-formed on the screening samples fabricated at θ = 60 ◦
+
+and ϕ = 15 ◦ in order to evaluate the design depen-dence and sample-to-sample variation of the junction re-sistance. For each design, 27 devices were measured. The 4              
+
+> FIG. 3. Room-temperature resistance as a function of de-signed linewidth. The plotted values were obtained after subtraction of the constant offset associated with the two-terminal measurement. Error bars indicate the standard de-viation of the corrected resistance for devices that were not classified as shorts ( R≤300 Ω) or open circuits ( R≥50 kΩ). The dashed line is a fit to R(w) = 84 +66
+> −29 /(w−0.35 +0 .08
+> −0.05 )2,where Ris in Ω and wis in μm.
+
+measured resistance values were used to examine whether the design-dependent central values are consistent with the effective junction area inferred from the optical and SEM observations, and to quantify the sample-to-sample variation as an indicator of process reliability. Since the room-temperature normal-state resistance is directly re-lated to the junction critical current, it provides a useful metric for process control and device screening [5, 6, 12]. Figure 3 shows the corrected room-temperature resis-tance as a function of the designed linewidth. The resis-tance decreases monotonically with increasing linewidth, consistent with the increase in the effective junction area. To compare the junction resistance more directly, a con-stant offset associated with the two-terminal measure-ment was subtracted from the measured mean resistance for each design, and the resulting corrected values are summarized in Table I together with the yield and the standard deviation. As shown in Table I, the 0.5–0.6 μm designs fall within the target resistance range for the present transmon de-sign, approximately 1 kΩ to 10 kΩ. This indicates that the present geometry can bring the effective junction di-mensions into the range relevant to transmon fabrica-tion even within a photolithographic linewidth window. Among the ϕ = 15 ◦ screening samples, the 0.6 μm geom-etry exhibits a substantially higher yield (23/27) than the 0.5 μm geometry (12/27), while maintaining a corrected mean resistance of approximately 1 .3 kΩ. The 0.5 μm de-sign gives a corrected mean resistance of approximately 4.1 kΩ, but with a significantly reduced yield. The re-duced yield at 0.5 μm may be related to the fact that this design approaches the practical linewidth limit of the present photolithography process. Taken together, these results indicate that the present double-oblique process can access the target junction resistance without requir-ing the smallest nominal photolithographic linewidth. 
+
+> Millikelvin Characterization
+
+To evaluate the low-temperature properties of the fab-ricated devices, we implemented the qubit in a three-dimensional architecture using an Al resonant cavity and performed microwave measurements in a dilution refrig-erator at a base temperature of approximately 20 mK [13]. The cavity resonance frequency was 7 .17 GHz, and the loaded quality factor was approximately Q ∼ 4 × 10 4.For the measurements presented below, we used a qubit fabricated with θ = 60 ◦ and ϕ = 25 ◦, based on the          
+
+> FIG. 4. Low-temperature characterization of the fabricated transmon qubit in a three-dimensional Al cavity at 20 mK. (a) Energy-relaxation measurement with a single-exponential fit, yielding T1= 9 .2(4) μs. (b) Ramsey measurement with a fit to a decaying oscillation, from which a dephasing time of approximately T∗
+> 2∼0.4μs is obtained.
+
+50.5 μm design and having a room-temperature resistance of approximately 10 kΩ. The transmon capacitor pads were defined simultaneously with the Josephson junction electrodes during the Al evaporation process. The low-temperature measurements presented below demonstrate that a device fabricated under the ϕ = 25 ◦ condition ex-hibits the basic properties of a transmon qubit. Figure 4(a) shows the energy-relaxation measurement of the fabricated qubit. Fitting the decay curve with a single exponential yields a relaxation time of T1 =9.2(4) μs. The qubit transition frequency was measured to be f01 = 4 .865 GHz. Figure 4(b) shows the Ramsey measurement, from which we estimate a dephasing time of approximately T ∗ 
+
+> 2
+
+∼ 0.4 μs by fitting the data to a decaying oscillation. Although the coherence times are limited, the observa-tion of a well-defined qubit transition together with finite 
+
+T1 and T ∗ 
+
+> 2
+
+demonstrates that the fabricated device oper-ates as a superconducting qubit. These results therefore establish the feasibility of realizing functional transmon devices using the present photolithography-only double-oblique evaporation process. 
+
+> DISCUSSION
+
+The present results should be interpreted primarily as a feasibility study of photolithography-only trans-mon Josephson junction fabrication using double-oblique evaporation. Room-temperature screening was per-formed for samples fabricated at ϕ = 15 ◦, whereas the low-temperature qubit characterization was carried out using a device fabricated at ϕ = 25 ◦. In the present work, the room-temperature data provide an evaluation of de-sign dependence and process reliability, while the low-temperature data establish that a device fabricated under a double-oblique condition can exhibit the basic proper-ties of a transmon qubit. Direct comparison between room-temperature screening and qubit performance un-der identical ϕ conditions will therefore be necessary in future work. Another limitation of the present study is that the low-temperature characterization is based on a single device rather than on a statistically meaningful set of qubits. The measured values, f01 = 4 .865 GHz, T1 ∼ 9 μs, and 
+
+T ∗ 
+
+> 2
+
+∼ 0.4 μs, are sufficient to establish qubit operation, but they do not define an optimized performance level for the present process. In sub-micron junction-based superconducting qubits, dielectric and capacitive losses associated with the junction electrodes and their sur-rounding interfaces can contribute significantly to energy relaxation [14]. The limited coherence observed here is therefore compatible with the simplified fabrication route adopted in the present study, although further optimiza-tion of the junction environment, materials processing, and device geometry will be required to identify the domi-nant loss mechanisms. Low-temperature characterization of multiple devices fabricated under the same screening condition will also be necessary to establish the range of qubit performance attainable with the present process. The room-temperature screening and low-temperature qubit measurements together suggest that double-oblique evaporation can be incorporated into a simplified shadow-evaporation-based process while remaining com-patible with basic transmon operation. At the same time, the present work should not be regarded as a demon-stration of a scalable or foundry-compatible qubit fab-rication process in the same sense as recent large-area optical-lithography-based approaches. Rather, the sig-nificance of the present method lies in providing a com-plementary route toward reduced dependence on conven-tional EBL-based Josephson-junction fabrication [4]. Asystematic comparison of the double-oblique parameters, in particular the dependence on ϕ, together with a con-trol experiment using conventional oblique-angle evapo-ration under otherwise similar conditions, will be nec-essary to clarify how the in-plane angular offset modifies the effective overlap geometry, how this is reflected in the room-temperature resistance distribution, and whether the same design strategy can be used to improve the balance among nominal linewidth, target junction resis-tance, and fabrication yield. 
+
+> CONCLUSION
+
+We investigated a photolithography-only process for transmon Josephson junction fabrication using double-oblique evaporation. Structural characterization showed that the fabricated junctions exhibit narrowed crossing regions with geometrical dimensions in the size range relevant to transmon fabrication, and room-temperature measurements showed that the target junction resistance for the present transmon design can be reached within a usable process window. We further implemented fabricated junctions in trans-mon devices and evaluated their performance in a three-dimensional Al cavity at 20 mK. For the low-temperature measurements, we used a device fabricated under a dif-ferent double-oblique condition, namely ϕ = 25 ◦. The measured qubit parameters, f01 = 4 .865 GHz, T1 ∼ 9 μs, and T ∗ 
+
+> 2
+
+∼ 0.4 μs, confirm basic qubit operation. These re-sults suggest that double-oblique evaporation provides a viable route toward simplified transmon Josephson junc-tion fabrication in a photolithography-only process. 
+
+> ACKNOWLEDGMENTS
+
+The authors acknowledge support from the Interna-tional Center for Quantum-field Measurement Systems for Studies of the Universe and Particles (QUP), a WPI 6
+
+FIG. A1. Top-view definition of the idealized narrowed linewidth in double-oblique evaporation. The nominal open-ing width is denoted by wopen , the resulting deposited linewidth by wnarrow , and the in-plane angular offset between the evaporation direction and the resist-pattern orientation by ϕ.
+
+Research Center Initiative at KEK, and the International Center for Elementary Particle Physics (ICEPP), The University of Tokyo. The cryogenic measurements were carried out using facilities at QUP and the joint-use fa-cilities of the Millikelvin Quantum Platform at the Cryo-genic Research Center, The University of Tokyo. This work was also supported by the External Use Program of the OIST Core Facilities, Okinawa Institute of Science and Technology Graduate University. This work was supported in part by JSPS KAKENHI Grant Numbers JP23H01182, JP23H04864, JP24H00689, JP25H00638, JP25KJ0847, and JP26KJ0842; JST PRESTO Grant Number JPMJPR23F7; JST SPRING Grant Number JPMJSP2108; and IBM–UTokyo Sponsored Research. 
+
+APPENDIX A: IDEALIZED GEOMETRICAL DEPENDENCE OF THE NARROWED LINEWIDTH 
+
+For reference, we summarize an idealized geometrical model for the linewidth reduction in the double-oblique evaporation scheme. The purpose of this appendix is to clarify how the narrowed linewidth depends on the geometrical parameters in the absence of non-ideal ef-fects such as metal accumulation on the resist top sur-face or sidewall, re-emission, or wraparound deposition. The model should therefore be regarded as an idealized 
+
+FIG. A2. Idealized projected side-view geometry for the double-oblique evaporation scheme. The opening length pro-jected along the evaporation direction is wopen / sin ϕ, and the projected narrowed deposited length is wnarrow / sin ϕ. The upper resist has thickness h, and the deposition tilt angle from the substrate normal is θ. In this idealized geometry, the shadowing by the upper resist shortens the available de-posited length by h/ tan θ.
+
+design guide rather than a quantitative description of the full fabricated structure. We consider a resist opening with nominal width wopen ,upper-resist thickness h, deposition tilt angle θ from the substrate normal, and in-plane angular offset ϕ between the evaporation direction and the resist-pattern orien-tation. Figure A1 shows the top-view definition of the narrowed linewidth wnarrow , and Fig. A2 shows the cor-responding projected side-view geometry. In the top view, the opening width projected along the evaporation direction is 
+
+Lopen = wopen 
+
+sin ϕ , (A1) and the corresponding projected length of the narrowed deposited region is 
+
+Lnarrow = wnarrow 
+
+sin ϕ . (A2) In the idealized projected side view, the shadow cast by the upper resist shortens the available deposited length on the substrate by ∆L = h
+
+tan θ . (A3) The projected narrowed length is therefore given by 
+
+Lnarrow = Lopen − ∆L. (A4) Substituting Eqs. (A1)–(A3) into Eq. (A4), we obtain 
+
+wnarrow 
+
+sin ϕ = wopen 
+
+sin ϕ − h
+
+tan θ , (A5) which yields 
+
+wnarrow = wopen − h sin ϕ
+
+tan θ . (A6) 7Equation (A6) shows that, within this idealized pic-ture, the narrowed linewidth is determined by the nom-inal opening width wopen , the upper-resist thickness h,the deposition tilt angle θ, and the in-plane angular off-set ϕ. In particular, increasing h or ϕ, or decreasing θ,enhances the geometrical narrowing. In the actual fabri-cated structures, however, the first evaporated metal can remain on the resist top surface and sidewall, thereby modifying the effective shadowing geometry for subse-quent deposition. Deviations from Eq. (A6) are therefore expected in the experiment, especially when non-ideal re-sist profiles and metal accumulation become significant. 
+
+[1] J. Koch, T. M. Yu, J. Gambetta, A. A. Houck, D. I. Schuster, J. Majer, A. Blais, M. H. Devoret, S. M. Girvin, and R. J. Schoelkopf, Charge-insensitive qubit design de-rived from the cooper pair box, Physical Review A 76 ,042319 (2007). [2] G. J. Dolan, Offset masks for lift-off photoprocessing, Ap-plied Physics Letters 31 , 337 (1977). [3] J. Niemeyer and V. Kose, Observation of large dc super-currents at nonzero voltages in josephson tunnel junc-tions, Applied Physics Letters 29 , 380 (1976). [4] A. Osman, J. Simon, A. Bengtsson, S. Kosen, P. Krantz, D. P. Lozano, M. Scigliuzzo, P. Delsing, J. Bylander, and A. Fadavi Roudsari, Simplified josephson-junction fabrication process for reproducibly high-performance superconducting qubits, Applied Physics Letters 118 ,10.1063/5.0037093 (2021). [5] J. T. Monroe, D. Kowsari, K. Zheng, C. Gaikwad, J. Brewster, D. S. Wisbey, and K. W. Murch, Op-tical direct write of dolan–niemeyer-bridge junctions for transmon qubits, Applied Physics Letters 119 ,10.1063/5.0060246 (2021). [6] N. Foroozani, C. Hobbs, C. C. Hung, S. Olson, D. Ash-worth, E. Holland, M. Malloy, P. Kearney, B. O’Brien, B. Bunday, D. DiPaola, W. Advocate, T. Murray, P. Hansen, S. Novak, S. Bennett, M. Rodgers, B. Baker-O’Neal, B. Sapp, E. Barth, J. Hedrick, R. Goldblatt, S. S. P. Rao, and K. D. Osborn, Development of transmon qubits solely from optical lithography on 300 mm wafers, Quantum Science and Technology 4, 025012 (2019). [7] M. Bal, J. Long, R. Zhao, H. Wang, S. Park, C. R. H. McRae, T. Zhao, R. E. Lake, V. Monarkha, S. Sim-bierowicz, D. Frolov, R. Pilipenko, S. Zorzetti, A. Ro-manenko, C.-H. Liu, R. McDermott, and D. P. Pap-pas, Overlap junctions for superconducting quantum electronics and amplifiers, Applied Physics Letters 118 ,10.1063/5.0048621 (2021). [8] J. Van Damme, S. Massar, R. Acharya, T. Ivanov, D. Perez Lozano, Y. Canvel, M. Demarets, D. Van-goidsenhoven, Y. Hermans, J. G. Lai, A. M. Vadiraj, M. Mongillo, D. Wan, J. De Boeck, A. Potoˇ cnik, and K. De Greve, Advanced cmos manufacturing of super-conducting qubits on 300 mm wafers, Nature 634 , 74–79 (2024). [9] A. Potts, P. Routley, G. Parker, J. Baumberg, and P. Groot, Novel fabrication methods for submicrometer josephson junction qubits, Journal of Materials Science Materials in Electronics 12 , 289 (2001). [10] F. Lecocq, I. M. Pop, Z. Peng, I. Matei, T. Crozes, T. Fournier, C. Naud, W. Guichard, and O. Buisson, Junction fabrication by shadow evaporation without a suspended bridge, Nanotechnology 22 , 315302 (2011). [11] N. Muthusubramanian, M. Finkel, P. Duivestein, C. Zachariadis, S. L. M. van der Meer, H. M. Veen, M. W. Beekman, T. Stavenga, A. Bruno, and L. Di-Carlo, Wafer-scale uniformity of dolan-bridge and bridge-less manhattan-style josephson junctions for supercon-ducting quantum processors, Quantum Science and Tech-nology 9, 025006 (2024). [12] V. Ambegaokar and A. Baratoff, Tunneling between su-perconductors, Phys. Rev. Lett. 10 , 486 (1963). [13] H. Paik, D. I. Schuster, L. S. Bishop, G. Kirchmair, G. Catelani, A. P. Sears, B. R. Johnson, M. J. Reagor, L. Frunzio, L. I. Glazman, S. M. Girvin, M. H. De-voret, and R. J. Schoelkopf, Observation of high coher-ence in josephson junction qubits measured in a three-dimensional circuit qed architecture, Phys. Rev. Lett. 
+
+107 , 240501 (2011). [14] A. Dunsworth, A. Megrant, C. Quintana, Z. Chen, R. Barends, B. Burkett, B. Foxen, Y. Chen, B. Chiaro, A. Fowler, R. Graff, E. Jeffrey, J. Kelly, E. Lucero, J. Y. Mutus, M. Neeley, C. Neill, P. Roushan, D. Sank, A. Vainsencher, J. Wenner, T. C. White, and J. M. Mar-tinis, Characterization and reduction of capacitive loss induced by sub-micron josephson junction fabrication in superconducting qubits, Applied Physics Letters 111 ,022601 (2017).

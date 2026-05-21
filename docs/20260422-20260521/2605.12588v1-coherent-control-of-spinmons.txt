@@ -1,0 +1,503 @@
+Title: Coherent control of spinmons
+
+URL Source: https://arxiv.org/pdf/2605.12588v1
+
+Published Time: Thu, 14 May 2026 00:07:53 GMT
+
+Number of Pages: 11
+
+Markdown Content:
+SciPost Physics Submission 
+
+# Coherent control of spinmons 
+
+Johanne Bratland Tjernshaugen 1⋆, Florinda Viñas Boström 2, Jeroen Danon 1,Jacob Linder 1, Karsten Flensberg 2 and Antonio L. R. Manesco 2†
+
+1 Center for Quantum Spintronics, Department of Physics, Norwegian University of Science and Technology, NO-7491 Trondheim, Norway 
+
+2 Center for Quantum Devices, Niels Bohr Institute, University of Copenhagen, DK-2100 Copenhagen, Denmark 
+
+⋆ johanne.b.tjernshaugen@ntnu.no , † spinmon@antoniomanesco.org 
+
+# Abstract 
+
+The protection of superconducting qubits from certain noise sources often comes at the cost of increased sensitivity to other decoherence channels. Here, we explore a route to avoid this tradeoff by encoding quantum information in quantum states of a trans-mon entangled with the spin of a trapped Andreev quasiparticle. We term such devices 
+
+spinmons . We lift the spinmon Kramers degeneracy by introducing a Zeeman field and develop two routes for full qubit control via electrostatic gates and an AC flux drive, providing multiple directions for experimental implementations. Finally, we compute coherence times and verify the qubit robustness against flux and charge noise sources. 
+
+# 1 Introduction 
+
+The search for superconducting qubits with longer lifetimes has inspired the exploration of different circuit designs. In particular, superconducting qubit Hamiltonians with more than one degree of freedom have received increasing attention [1, 2 ]. For qubits with a single degree of freedom, it is typically hard to achieve simultaneous protection against relaxation and dephasing [1]. For this reason, recent efforts have focused on developing multimode qubits, in which the logic-state wave functions reside in disjoint parts of the Hilbert space [1– 3]. Examples include the bifluxon [4], the 0 −π qubit [5,6 ], Josephson Rhombus chains [7,8 ],cos 2 ϕ qubits [9, 10 ], and cat qubits [11, 12 ].Another recent direction for qubit protection is combining microscopic and macroscopic quantum degrees of freedom. In the context of superconducting elements, a natural way to entangle these degrees of freedom is by using Andreev quantum circuits, both at even [13,14 ]
+
+and odd parity [15, 16 ]. Mesoscopic Josephson junctions with spin-orbit coupling can host an odd-parity state where the spin of the excited quasiparticle acts as a qubit [17–24 ], which is known as an Andreev spin qubit. The Andreev spin qubit is prone to relaxation, but by shunting the Josephson element with a capacitor, the spins live in disjoint parts of the superconducting phase space, which yields protection against this source of decoherence [15 ]. We term these capacitively shunted Andreev spin qubits spinmons .In the odd-parity state, spin-orbit coupling breaks spin-degeneracy, resulting in the spin-dependent energy-phase relation typical of an Andreev spin qubit [17, 18, 25 ]:
+
+UASQ (Vg , ϕ) = E0(Vg ) cos ϕ + ESO (Vg )⃗n SO (Vg ) ·⃗σ sin ϕ , (1) where E0 is the spin-independent part of the potential, ESO is the amplitude of the phase-dependent spin-splitting, ϕ is the phase drop across the Josephson junction, Vg is a gate volt-age, and ⃗σ = ( σ x , σy , σz ) are Pauli matrices acting in the spin degree of freedom. ⃗ n SO is 
+
+1
+
+> arXiv:2605.12588v1 [cond-mat.mes-hall] 12 May 2026
+
+SciPost Physics Submission 
+
+Figure 1: (a) Spinmon with flux and gate voltage control. The purpose of Vg2 is to tune the critical current of the corresponding semiconductor-based Josephson junc-tion, and thus modify EJ . The voltage Vg is used to induce spin rotations via electron dipole spin resonance, effectively by changing the direction of ⃗n SO . The ⃗ B-field splits the computational states. The AC drive line to the left in the figure is used to in-duce a magnetic flux Φ, which lifts the degeneracy of the potential energy wells in the spinmon. (b) Potential landscape of the spinmon in the spin-↑ (blue) and spin-↓
+
+(red) idle state, where the spin quantization axis is ⃗n SO at Φ = 0 and E0 = EJ (Vg2).The dashed line shows the harmonic approximations U H 
+
+> σ
+
+to the potentials, with cor-responding ground state wave functions |0σ〉 projected onto the phase space. the direction of the spin-orbit field. For a single-channel Josephson junction at odd parity, typically E0 > 0 [26, 27 ]. Shunting such a Josephson element with a capacitor results in two spin-dependent potential wells localized at π ± ϕ0, and in the heavy transmon limit, the spin states live at the minima of their respective wells [15, 16 ]. The separation of the wells by 2 ϕ0
+
+protects this device from spin-flipping caused by a nuclear spin bath, via the Franck-Condon blockade [15 ]. Since nuclear spins are a limiting factor for lifetimes of Andreev spin qubits in InAs platforms [28 ], capacitive shunting offers a route for improving T1 in these devices. In this work, we extend the theoretical proposal of Ref. [15 ] of a spinmon by describing practical routes for coherent manipulation while showing it remains robust against flux and charge noise. Our proposed setup, schematically shown in Fig. 1(a), consists of adding a mesoscopic Josephson junction at even parity in parallel to a capacitively shunted Andreev spin. The Josephson current of the even-parity junction is tunable via a gate voltage. This represents an advantage compared to the simpler spinmon in Ref. [15 ], since it allows for electrostatically tuning the Franck-Condon suppression of spin flips, including tuning to the point with maximal protection ϕ0 = π/ 2, without changing any properties of the odd-parity junction. The introduction of the loop also opens for controlled qubit rotations with flux. We also show that qubit rotations can be achieved electrically via a gate voltage on the odd-parity junction. 
+
+# 2 Model 
+
+We propose full control of a spinmon, schematically shown in Fig. 1(a), exploring both its electrostatic and flux tunability. The main concept behind our proposal is connecting the odd-parity Josephson junction in parallel to an even-parity gate-tunable Josephson junction. 
+
+2SciPost Physics Submission 
+
+Neglecting the self-inductance of the loop, the resulting Hamiltonian of the circuit is 
+
+H = −4Ec ∂ 2 
+
+> ϕ
+
++ UASQ (Vg , ϕ) − EJ (Vg2) cos ϕ −⃗ B ·⃗σ, (2) where Ec is the charging energy of the capacitor, EJ (Vg2) is the Josephson energy of the even-parity junction, tunable via the gate voltage Vg2, and ⃗ B is an external Zeeman field. Our qubit states |0q〉 , |1q〉 are taken as the ground-state and first excited state of H. We fix the quantization axis ⃗n SO = ˆz when the qubit is idle, and define the spin-dependent potential 
+
+Uσ(ϕ) = δE cos ϕ + ESO σ sin ϕ with δE = E0 − EJ (Vg2).To proceed analytically, we focus on the heavy spinmon limit, EC ≪ E0 ∼ ESO ∼ EJ , where we can approximate the spin-dependent potentials as harmonic potentials, U H 
+
+> σ
+
+,
+
+H = −4Ec ∂ 2 
+
+> ϕ
+
++ U H −⃗ B ·⃗σ, U H 
+
+> σ
+
+= − ˜EJ
+
+§
+
+1 − 12 [ϕ − (π − σϕ 0)] 2
+
+ª
+
+(3) with ˜EJ =
+
+q
+
+δE2 + E2SO , ϕ0 = arctan 
+
+ ESO 
+
+δE
+
+
+
+. (4) We show the spin-dependent harmonic potential U H 
+
+> σ
+
+at δE = 0 in Fig. 1(b) (dashed curves) together with the exact potential Uσ (solid curves). In the absence of B, the two lowest states of the spinmon are the Kramers pair illustrated in Fig. 1(b). We denote these states as |0τσ〉 ≡ | 0τ〉 ⊗ | σ〉, where |0τ〉 denotes the lowest eigenstate in the harmonic potential well centered at π + τϕ 0, τ = ±, and |σ〉 is its spin state. A Zeeman field ⃗ B ∥ ˆx mixes the two spin states and breaks the Kramers degeneracy. We assume that |⃗ B| ≪ ωp, with 
+
+ωp =
+
+Æ
+
+8Ec ˜EJ /ħh the Josephson plasma frequency, which allows us to project the Zeeman term on the low-energy subspace {| 0+ ↑〉 , |0− ↓〉} . This yields the symmetric and antisymmet-ric states |0〉 = ( |0+ ↑〉 − | 0− ↓〉 )/p2 and |1〉 = ( |0+ ↑〉 + |0− ↓〉 )/p2 as the lowest eigenstates, so that |0〉 ≃ | 0q〉 and |1〉 ≃ | 1q〉, with a splitting 
+
+ħhωq = 2Be −ξ0/2 , ξ0 =
+
+ ϕ0
+
+ϕc
+
+2
+
+, ϕc =
+
+vut 4EC
+
+ħhωp
+
+(5) where B = |⃗ B|. Spin-mixing terms ∼ σx, y projected onto the qubit basis are proportional to the Franck-Condon factor e −ξ0/2 = 〈0+|0−〉, reflecting the exponentially small overlap between the spin states in phase space in the heavy transmon limit. For the remainder of the manuscript, we set E0 = ESO = h × 500 MHz, comparable to previous experimental measurements [21, 22, 28 ]; Ec = h × 40 MHz, comparable to state-of-the-art experiments [29 ]; and set B = Ec . Since Vg2 controls δE = E0 − EJ (Vg2), it is possible to tune the distance between the spin-dependent wells while keeping E0 and ESO unchanged, as shown in Fig. 2(a). This results in an electrostatic control of the qubit splitting, as shown in Fig. 2(b). This control of the qubit splitting provides a path for initialization and readout via a readout resonator. Since the wave function overlap depends on δE, as shown in Fig. 2(b), we can maximize the qubit protection against spin flipping by setting δE = 0, which we define as the idle configuration of the spinmon. The discrepancy between the analytical and numerical results for the qubit splitting in Fig. 2(b) arises because the qubit splitting is proportional to the overlap integral 〈0+|0−〉, whose main contributions come from the parts of the phase space where the difference between the harmonic and full potentials is maximal. This explains why the discrepancy is greatest when the separation between the wells is maximized. 
+
+3SciPost Physics Submission 0 1 2
+
+/
+
+1
+
+0
+
+1
+
+> U H/ESO
+
+(a) 
+
+0.0 
+
+0.5 
+
+1.0 
+
+> E/ESO
+
+1 0 1
+
+E/ESO 
+
+0.2 
+
+0.4 
+
+> q/2 B
+
+(b) 
+
+0.0 0.2 
+
+B/ESO 
+
+0.10 
+
+0.05 
+
+0.00 
+
+0.05 
+
+0.10 
+
+0.15 
+
+0.20 
+
+0.25 
+
+> ij / E j
+> SO
+
+(c) 
+
+> xx
+> zz
+
+0 1 2
+
+/
+
+1
+
+0
+
+1
+
+> U H/ESO
+
+(d) 
+
+0.00 
+
+0.05 
+
+0.10 
+
+> / 0
+
+0.5 0.0 0.5 
+
+/ 0
+
+1
+
+0
+
+1
+
+> /ESO
+
+(e) 
+
+Figure 2: Coherent control of the spinmon. (a) The spin-dependent potentials as a function of ϕ for varying δE. The shade of blue(red) shows how the spin-up(down) potential evolves as a function of δE = E0 − EJ (Vg2), see the color bar. (b) The qubit frequency as a function of δE/ESO . The solid curve is calculated numerically by diagonalizing the full Hamiltonian in Eq. (2), and the dashed curve is calculated analytically in the harmonic oscillator approximation. (c) The combination of Zee-man splitting and a gate voltage permits an EDSR driving with strength Ωx x , and also renormalizes the qubit splitting via diagonal elements Ωzz in the qubit basis. All finite matrix elements are shown. (d) The spin-dependent potentials as a function of ϕ for varying external flux Φ. (e) A small flux gives a qubit-flipping term in the effective qubit Hamiltonian with strength ∆. The dashed line is linearized in flux. We have set E0 = ESO = h × 500 MHz and B = Ec = h × 40 MHz. In (a)-(c) the flux is fixed at Φ = 0 and in (c)-(e) we use δE = 0. 
+
+# 3 Coherent control 
+
+3.1 Electric dipole spin resonance 
+
+Previous experimental works used electric dipole spin resonance (EDSR) to flip Andreev spins via AC driving of a gate voltage [23 ]. We propose the same strategy for Rabi driving of the spinmon with Vg . We include the EDSR effects by considering the lowest-order corrections to the spin-dependent term in Eq. (1) due to an oscillating electric field resulting from an AC drive of the gate voltage Vg . To linear order in Vg , the Hamiltonian changes as 
+
+H(Vg + δVg ) − H(Vg ) = δVg
+
+ ∂ ESO 
+
+∂ Vg
+
+σz + ESO 
+
+∂⃗ n SO 
+
+∂ Vg
+
+·⃗σ
+
+
+
+sin ϕ =⃗ δESO ·⃗σ sin ϕ , (6) where we neglect the changes in δE because the qubit Hamiltonian is insensitive to leading-order contributions in this parameter, as seen from the solid line in Fig. 2(b). This spin-orbit modulation does not flip spins to lowest order, i.e. , 〈0|σj sin ϕ|1〉 = 0 for any j. However, by using the exact eigenstates of the Hamiltonian, including corrections from the Zeeman field, the matrix element becomes finite, as confirmed by numerical calculations. The effective 
+
+4SciPost Physics Submission 
+
+Hamiltonian is 
+
+Hq = 12ħhωqτz +
+
+X 
+
+> i,j
+
+Ωi j τi , Ωi j = 12 tr τi
+
+X
+
+> l,l′∈{ 0,1 }
+
+|lq〉 〈 lq| δE j
+
+> SO
+
+σj sin ϕ |l′
+
+> q
+
+〉 〈 l′
+
+> q
+
+|
+
+!
+
+, (7) where τi are the Pauli matrices in the qubit subspace. The B-dependence of the non-zero ma-trix elements Ωi j , as well as the renormalization of the qubit splitting induced by the presence of δVg , are shown in Fig. 2(c). We observe that both Ωx x and Ωzz are nonzero. An oscillating term ∼ Ωx x drives Rabi oscillations, therefore allowing full electrostatic control of the qubit. While, as we argued above, Rabi oscillations are generically achieved via EDSR, the exact dependence of the spin-orbit vector on gate voltages is sensitive to microscopic details of the electrostatic environment and the disorder landscape across the device [22, 30 ]. Therefore, predicting its gate dependence is challenging even with detailed microscopic modeling of the device. 
+
+3.2 Flux drive 
+
+An alternative for coherent control is the use of an AC flux line that can induce oscillations of the flux Φ, see Fig. 1(a). We take linear corrections to the applied flux, which changes the potential of the circuit Hamiltonian as: 
+
+Uσ(ϕ − φ) − Uσ(ϕ) = −EJ cos (ϕ − φ) ≈ − φEJ sin ϕ + O(φ2) , (8) where φ = 2πΦ/Φ0, Φ is the magnetic flux through the loop, and Φ0 is the superconduct-ing flux quantum. The time-reversal symmetry breaking caused by the flux lifts the Kramers degeneracy of the wells. As shown in Fig. 2(d), at small φ the two wells split linearly while the distance between the wells remains unchanged. Projecting H(φ) onto the qubit basis, we obtain 
+
+Hq(φ) = 12ħhωq(Vg2)τz + ∆(φ)τx , (9) where ∆(φ) is the qubit flipping matrix element resulting from projecting Eq. (8) onto the qubit basis. In the numerical calculations, we include the full potential dependence on φ, i.e. 
+
+beyond linear approximation. We note that the flux also gives rise to a small change in the qubit frequency when using the exact eigenstates and all orders of φ, which we estimated numerically to be negligible compared to ∆. The flux dependence of ∆ is shown in Fig. 2(e). Therefore, flux drive and gate-voltage control of the auxiliary Josephson junction allow full control of the qubit. 
+
+# 4 Decoherence 
+
+Introducing flux and gate voltage control of the spinmon opens additional channels for de-phasing and relaxation. First, as for all qubits with loops, the spinmon becomes sensitive to flux noise. Since ∆(Φ) ∝ Φ for small Φ, flux noise causes qubit flips, which we estimate from Fermi’s golden rule [31 ],
+
+Γ λ 
+
+> 1
+
+= 1
+
+ħh2 | 〈 0q| ∂λHq |1q〉 | 2Sλ(ωq), (10) where flux noise ( λ = Φ) typically has a 1 / f spectral density SΦ(ωq) = 2πA2
+
+> Φ
+
+/ω q and AΦ =
+
+10 −6Φ0 [32 ]. With the parameters used throughout the manuscript, we obtain a rate below 100 kHz, as shown in Fig. 3(a). Similarly, the relaxation rate from charge noise ( λ = ng ) is calculated by inserting the offset charge ng of the shunting capacitor by ∂ϕ → ∂ϕ + ing in Eq. 
+
+5SciPost Physics Submission 1 0 1        
+
+> E/ESO
+> 10 3
+> 10 1
+> 10 1
+> 1 [Hz]
+> (a)
+> ng
+> 101
+> E/ESO
+> 10 3
+> 10 1
+> 10 1
+> ex  [Hz]
+> (b)
+> ng
+> 101
+> E/ESO
+> 0
+> 10
+> 20
+> /kB [mK]
+> (c)
+> q
+> p
+
+Figure 3: Decoherence of the spinmon. The solid lines are calculated numerically by diagonalizing the full Hamiltonian in Eq. (2), and the dashed lines are calculated analytically in the harmonic oscillator approximation. (a) Flux and charge relaxation rates. (b) Excitation rate out of the computational subspace due to charge and flux noise. (c) Qubit frequency ωq and plasma frequency ωp in units of temperature. Numerically, ωp is the frequency difference between the first and second excited states. We have set E0 = ESO = h × 500 MHz and B = Ec = h × 40 MHz. (2). The charge relaxation rate from 1 / f noise at ng = 0 is ∼ 10 Hz, as shown in Fig. 3(a), and the rate from ohmic charge noise is even smaller (not shown). Here, we used that the spectral density for 1 / f charge noise is Sng (ω) = 2πA2 
+
+> ng
+
+/ω , with Ang = 10 −4e [33 ]. These calculations of the flux and charge relaxation rates confirm that the qubit is protected against relaxation in the idle state, as long as the Zeeman field sufficiently splits the qubit states. Moreover, the spinmon is protected against dephasing from gate voltage noise effects on E0 and EJ , since the qubit frequency rests at a stationary point as a function of δE [see Fig. 2(b) ]. The noise effects on ESO and ⃗n SO require estimates of δ⃗ ESO (see Eq. 6) from microscopic modeling or experimental data; thus, we leave this analysis to future works. Flux and charge noise also give rise to excitations out of the computational space. The excitation rate out of the computational subspace is given by 
+
+Γ λ 
+
+> ex
+
+= 1
+
+ħh2
+
+X
+
+> i=0,1
+
+X
+
+> m≥2
+
+| 〈 iq| ∂λH |mq〉 | 2Sλ(ωm − ωi ), (11) where ωi,m are the eigenfrequencies of |iq, mq〉. The excitation rates at T = 10 mK are shown in Fig. 3(b). They are all below 10 Hz, demonstrating that excitations out of the computational subspace are not a bottleneck for the spinmon. Since ħhωp/kB is on the order of tens of millikelvin and ħhωq/kB is even smaller, as shown in Fig. 3(c), thermal excitations become a bottleneck for the spinmon lifetimes and initialization. It is possible to achieve the strict temperature requirements using sideband cooling, previously used for heavy fluxonium with ωq = 1.8 MHz [34 ]. The energy scales of the spinmon are limited by the small magnitude of ESO , so electrostatic engineering of the confinement potential to increase ESO would be an interesting avenue for decreasing the spinmon’s sensitivity to thermal excitations. Finally, the Franck-Condon blockade still leaves sensitivity to nuclear spin noise along ⃗n SO , motivating exploration of alternative material platforms such as planar germanium [35–37 ], graphene [38 ], and carbon nanotubes [39 ].
+
+6SciPost Physics Submission 
+
+# 5 Outlook 
+
+We propose full control of a spinmon via a plunger gate, EDSR, and flux control, but a universal set of quantum gates still requires two-qubit coupling. This can be achieved via inductive coupling between two qubits of the type ∼ I1 I2 in the Hamiltonian, which in the presence of flux Φ results in a τ(1) 
+
+> x
+
+τ(2) 
+
+> x
+
+two-qubit coupling in the qubit basis. The flux-dependence is advantageous since it allows for a tunable coupler, similarly to long-range coupling of Andreev spin qubits [24 ]. We leave a systematic construction of two-qubit gates and estimation of gate fidelities for future work, since such an analysis would require an investigation of the dependence of the spin-orbit field ⃗n SO on microscopic details of the device. The introduction of a loop in the spinmon introduces flux noise as a new noise channel that reduces T1. Although this noise channel does not significantly decrease the qubit lifetime in the presence of the Zeeman field B = h × 40 MHz, the field-free realization of the spinmon is degenerate and its lifetimes are limited by 1 / f flux noise. A possible route for avoiding spin relaxation due to flux noise is to shunt the looped spinmon with an inductor. This strategy has been proposed to suppress flux noise used for fluxonium [40 ], bifluxon [4], and Andreev qubits [13 ]. Another strategy to mitigate flux noise is using gradiometric designs [41 ], as recently realized in flux qubits [42 ] and in a tunable transmon [43 ]. Alternatively, it is possi-ble to explore the gate dependence of the ratio E0/ESO , as previously probed in Ref. [22 ], to completely remove the loop. The possibility of loopless Andreev spin devices in two-terminal devices would simplify recent proposals of multiterminal realizations [16 ] and make it com-patible with nanowire setups. Because misalignments to the external Zeeman field introduce additional flux through the loop, one could also explore proximitizing the semiconductor to a magnetic insulator. This direction would also admit combining multiple Josephson junctions with various ori-entations. This direction makes our proposal compatible with superconductor-ferromagnet-semiconductor structures [44–47 ].
+
+# 6 Conclusion 
+
+We developed the theory for coherent control of a spinmon using three ingredients. The first one is a gate-tunable SQUID, where one of the Josephson junctions is in the even-parity state, and the second one is at odd-parity. The gate-tunability of the odd-parity junction allows Rabi oscillations via spin flipping resulting from electric dipole spin resonance (EDSR). This hap-pens when taking into account the second ingredient, which is a static Zeeman field. Combined with the gate tunability of the even-parity junction, this also provides electric control of the qubit splitting. The third ingredient is an AC flux line, which provides a tool for Rabi oscilla-tions. Thus, our investigation suggests three paths for coherent control, providing flexibility for experimental realizations. Finally, we demonstrated the qubit protection by computing typical rates for common decoherence processes, and highlighted future directions for the de-velopment of this qubit platform. 
+
+# Acknowledgments 
+
+We thank William Lawrie, Valla Fatemi, and Bernard van Heck for useful discussions. JBT is grateful for the hospitality of QDev and the Niels Bohr Institute while carrying out part of the work. 
+
+7SciPost Physics Submission Author contributions KF initiated the project with input from JD, JBT, ALRM, and FVB. JBT and FVB performed the analytical calculations, and JBT and ALRM performed the numerical simulations, with input from all authors. JBT, JL, and ALRM wrote the manuscript with input from all authors. ALRM, KF, and JL supervised the project. 
+
+Funding information FVB acknowledges funding from the European Union’s Horizon Eu-rope research and innovation programme under the Marie Skłodowska-Curie grant agreement No 101204715. ALRM acknowledges the funding from the European Research Council (Grant Agreement No. 856526). JBT and JL were supported by the Research Council of Norway through Grant No. 353894 and its Centres of Excellence funding scheme Grant No. 262633 “QuSpin.” 
+
+Code and data availability The code and data used to prepare this manuscript are available in Zenodo [48 ].
+
+# References 
+
+[1] A. Gyenis, A. Di Paolo, J. Koch, A. Blais, A. A. Houck and D. I. Schuster, Moving beyond the Transmon: Noise-Protected Superconducting Quantum Circuits , PRX Quantum 2, 030101 (2021), doi:10.1103 /PRXQuantum.2.030101. 
+
+[2] J. Danon, A. Chatterjee, A. Gyenis and F. Kuemmeth, Protected solid-state qubits , Applied Physics Letters 119 (26) (2021), doi:10.1063 /5.0073945. 
+
+[3] N. Chakraborty, R. Moessner and B. Doucot, Cross-platform protected qubits from entan-glement , Physical Review B 112 (15) (2025), doi:10.1103 /qjhp-8x6z. 
+
+[4] K. Kalashnikov, W. T. Hsieh, W. Zhang, W.-S. Lu, P . Kamenov, A. Di Paolo, A. Blais, M. E. Gershenson and M. Bell, Bifluxon: Fluxon-parity-protected superconducting qubit , PRX Quantum 1(1), 010307 (2020), doi:https: // doi.org /10.1103 /PRXQuantum.1.010307. 
+
+[5] P. Brooks, A. Kitaev and J. Preskill, Protected gates for superconducting qubits ,Physical Review A—Atomic, Molecular, and Optical Physics 87 (5), 052306 (2013), doi:https: // doi.org /10.1103 /PhysRevA.87.052306. 
+
+[6] P. Groszkowski, A. D. Paolo, A. Grimsmo, A. Blais, D. Schuster, A. A. Houck and J. Koch, 
+
+Coherence properties of the 0-π qubit , New Journal of Physics 20 (4), 043053 (2018), doi:https: // doi.org /10.1088 /1367-2630 /aab7cd. 
+
+[7] L. B. Ioffe and M. V. Feigel’man, Possible realization of an ideal quan-tum computer in josephson junction array , Physical Review B 66 (22) (2002), doi:10.1103 /physrevb.66.224503. 
+
+[8] M. T. Bell, J. Paramanandam, L. B. Ioffe and M. E. Gershenson, Protected Josephson rhombus chains , Physical review letters 112 (16), 167001 (2014), doi:https: // doi.org /10.1103 /PhysRevLett.112.167001. 
+
+[9] W. Smith, A. Kou, X. Xiao, U. Vool and M. Devoret, Superconducting circuit pro-tected by two-Cooper-pair tunneling , npj Quantum Information 6(1), 8 (2020), doi:https: // doi.org /10.1038 /s41534-019-0231-2. 
+
+8SciPost Physics Submission 
+
+[10 ] E. Roverc’h, A. Borgognoni, M. Villiers, K. Gerashchenko, W. C. Smith, C. Wilson, B. Douçot, A. Petrescu, P . Campagne-Ibarcq and Z. Leghtas, Experimental realization of a cos (2ϕ) transmon qubit (2026), 2603.13114. 
+
+[11 ] P. T. Cochrane, G. J. Milburn and W. J. Munro, Macroscopically distinct quantum-superposition states as a bosonic code for amplitude damping , Physical Review A 59 (4), 2631–2634 (1999), doi:10.1103 /physreva.59.2631. 
+
+[12 ] M. Mirrahimi, Z. Leghtas, V . V . Albert, S. Touzard, R. J. Schoelkopf, L. Jiang and M. H. Devoret, Dynamically protected cat-qubits: a new paradigm for universal quan-tum computation , New Journal of Physics 16 (4), 045014 (2014), doi:10.1088 /1367-2630 /16 /4/045014. 
+
+[13 ] J. J. Caceres, D. S. Marco, J. Ortuzar, E. Flurin, C. Urbina, H. Pothier, M. F. Goffman, F. J. Matute-Cañadas and A. L. Yeyati, FerBo: a noise resilient qubit hybridizing Andreev and fluxonium states (2026), 2604.01145. 
+
+[14 ] F. Matute-Cañadas, L. Tosi and A. L. Yeyati, Quantum Circuits with Multiterminal Josephson-Andreev Junctions , PRX Quantum 5(2) (2024), doi:10.1103 /prxquantum.5.020340. 
+
+[15 ] P. Kurilovich, T. Vakhtel, T. Connolly, C. Bøttcher and B. Van Heck, Andreev spin qubit protected by Franck-Condon blockade , Physical Review B 113 (11), 115429 (2026), doi:https: // doi.org /10.1103 /l478-yp15. 
+
+[16 ] A. Manesco, A. Akhmerov and V . Fatemi, Loopless multiterminal quantum circuits at odd parity (2026), 2601.13369. 
+
+[17 ] N. M. Chtchelkatchev and Y. V . Nazarov, Andreev quantum dots for spin manipulation ,Phys. Rev. Lett. 90 , 226806 (2003), doi:10.1103 /PhysRevLett.90.226806. 
+
+[18 ] C. Padurariu and Y. V . Nazarov, Theoretical proposal for superconducting spin qubits , Phys-ical Review B 81 (14) (2010), doi:10.1103 /physrevb.81.144519. 
+
+[19 ] S. Park and A. L. Yeyati, Andreev spin qubits in multichannel Rashba nanowires , Physical Review B 96 (12) (2017), doi:10.1103 /physrevb.96.125416. 
+
+[20 ] M. Hays, V . Fatemi, K. Serniak, D. Bouman, S. Diamond, G. de Lange, P . Krogstrup, J. Nygård, A. Geresdi and M. H. Devoret, Continuous monitoring of a trapped super-conducting spin , Nature Physics 16 (11), 1103–1107 (2020), doi:10.1038 /s41567-020-0952-3. 
+
+[21 ] M. Hays, V . Fatemi, D. Bouman, J. Cerrillo, S. Diamond, K. Serniak, T. Connolly, P. Krogstrup, J. Nygård, A. Levy Yeyati, A. Geresdi and M. H. Devoret, Coher-ent manipulation of an Andreev spin qubit , Science 373 (6553), 430–433 (2021), doi:10.1126 /science.abf0345. 
+
+[22 ] A. Bargerbos, M. Pita-Vidal, R. Žitko, L. J. Splitthoff, L. Grünhaupt, J. J. Wesdorp, Y. Liu, L. P . Kouwenhoven, R. Aguado, C. K. Andersen et al. , Spectroscopy of spin-split Andreev levels in a quantum dot with superconducting leads , Physical review letters 131 (9), 097001 (2023), doi:https: // doi.org /10.1103 /PhysRevLett.131.097001. 
+
+[23 ] M. Pita-Vidal, A. Bargerbos, R. Žitko, L. J. Splitthoff, L. Grünhaupt, J. J. Wesdorp, Y. Liu, L. P . Kouwenhoven, R. Aguado, B. van Heck et al. , Direct manipulation of a superconduct-ing spin qubit strongly coupled to a transmon qubit , Nature Physics 19 (8), 1110 (2023), doi:https: // doi.org /10.1038 /s41567-023-02071-x. 
+
+9SciPost Physics Submission 
+
+[24 ] M. Pita-Vidal, J. J. Wesdorp, L. J. Splitthoff, A. Bargerbos, Y. Liu, L. P . Kouwenhoven and C. K. Andersen, Strong tunable coupling between two distant superconducting spin qubits ,Nature Physics 20 (7), 1158–1163 (2024), doi:10.1038 /s41567-024-02497-x. 
+
+[25 ] L. Paveši´ c and R. Žitko, Generalized transmon Hamiltonian for Andreev spin qubits , Phys. Rev. B 109 , 155164 (2024), doi:10.1103 /PhysRevB.109.155164. 
+
+[26 ] L. Bulaevskii, V . Kuzii and A. Sobyanin, Superconducting system with weak coupling to the current in the ground state , JETP lett 25 (7), 290 (1977). 
+
+[27 ] J. A. Van Dam, Y. V . Nazarov, E. P . Bakkers, S. De Franceschi and L. P . Kouwen-hoven, Supercurrent reversal in quantum dots , Nature 442 (7103), 667 (2006), doi:https: // doi.org /10.1038 /nature05018. 
+
+[28 ] H. Lu, D. F. Bofill, Z. Sun, T. Kanne, J. Nygård, M. Kjaergaard and V . Fatemi, Andreev spin relaxation time in a shadow-evaporated inas weak link , Physical Review Applied 24 (2) (2025), doi:10.1103 /v3lq-t5z8. 
+
+[29 ] P. D. Kurilovich, T. Connolly, C. G. L. Bøttcher, D. K. Weiss, S. Hazra, V . R. Joshi, A. Z. Ding, H. Nho, S. Diamond, V . D. Kurilovich, W. Dai, V . Fatemi et al. , High-frequency readout free from transmon multi-excitation resonances (2025), 2501.09161. 
+
+[30 ] L. Han, M. Chan, D. De Jong, C. Prosko, G. Badawy, S. Gazibegovic, E. P.Bakkers, L. P . Kouwenhoven, F. K. Malinowski and W. Pfaff, Variable and orbital-dependent spin-orbit field orientations in an InSb double quantum dot character-ized via dispersive gate sensing , Physical Review Applied 19 (1), 014063 (2023), doi:https: // doi.org /10.1103 /PhysRevApplied.19.014063. 
+
+[31 ] P. Krantz, M. Kjaergaard, F. Yan, T. P . Orlando, S. Gustavsson and W. D. Oliver, A quan-tum engineer’s guide to superconducting qubits , Applied physics reviews 6(2) (2019), doi:https: // doi.org /10.1063 /1.5089550. 
+
+[32 ] M. Hutchings, J. B. Hertzberg, Y. Liu, N. T. Bronn, G. A. Keefe, M. Brink, J. M. Chow and B. Plourde, Tunable superconducting qubits with flux-independent coherence , Physical Review Applied 8(4), 044003 (2017), doi:https: // doi.org /10.1103 /PhysRevApplied.8.044003. 
+
+[33 ] A. Zorin, F.-J. Ahlers, J. Niemeyer, T. Weimann, H. Wolf, V . Krupenin and S. Lotkhov, 
+
+Background charge noise in metallic single-electron tunneling devices , Physical Review B 
+
+53 (20), 13682 (1996), doi:https: // doi.org /10.1103 /PhysRevB.53.13682. 
+
+[34 ] B.-L. Najera-Santos, R. Rousseau, K. Gerashchenko, H. Patange, A. Riva, M. Villiers, T. Briant, P .-F. Cohadon, A. Heidmann, J. Palomo, M. Rosticher, H. le Sueur et al. , High-Sensitivity ac-Charge Detection with a MHz-Frequency Fluxonium Qubit , Phys. Rev. X 14 ,011007 (2024), doi:10.1103 /PhysRevX.14.011007. 
+
+[35 ] L. Lakic, W. I. L. Lawrie, D. van Driel, L. E. A. Stehouwer, Y. Su, M. Veldhorst, G. Scap-pucci, F. Kuemmeth and A. Chatterjee, A quantum dot in germanium proximitized by a superconductor , Nature Materials 24 (4), 552–558 (2025), doi:10.1038 /s41563-024-02095-5. 
+
+[36 ] M. Hinderling, S. C. ten Kate, M. Coraiola, D. Haxell, M. Stiefel, M. Mergenthaler, S. Paredes, S. Bedell, D. Sabonis and F. Nichele, Direct Microwave Spectroscopy of An-dreev Bound States in Planar Ge Josephson Junctions , PRX Quantum 5, 030357 (2024), doi:10.1103 /PRXQuantum.5.030357. 
+
+10 SciPost Physics Submission 
+
+[37 ] G. Fabris, P . Falthansl-Scheinecker, D. Shah, D. M. Pino, M. Borovkov, A. Bubis, K. Roux, D. Sokolova, A. A. Juanes, T. Costanzo, I. Taha, A. Genç et al. , Granular aluminum induced superconductivity in germanium for hole spin-based hybrid devices (2026), 2602.21364. 
+
+[38 ] W. Jung, S. Jin, S. Park, S.-H. Shin, K. Watanabe, T. Taniguchi, G. Y. Cho and G.-H. Lee, Tunneling spectroscopy of Andreev bands in multiterminal graphene-based Josephson junctions , Science Advances 11 (21), eads0342 (2025), doi:https: // doi.org /10.1126 /sciadv.ads0342. 
+
+[39 ] H. Riechert, S. Annabi, A. Peugeot, H. Duprez, M. Hantute, K. Watanabe, T. Taniguchi, E. Arrighi, J. Griesmar, J.-D. Pillet and L. Bretheau, The carbon nanotube gatemon qubit ,Nature Communications 16 (1) (2025), doi:10.1038 /s41467-025-62283-y. 
+
+[40 ] F. Bao, H. Deng, D. Ding, R. Gao, X. Gao, C. Huang, X. Jiang, H.-S. Ku, Z. Li, X. Ma, X. Ni, J. Qin et al. , Fluxonium: An Alternative Qubit Platform for High-Fidelity Operations ,Physical Review Letters 129 (1) (2022), doi:10.1103 /physrevlett.129.010502. 
+
+[41 ] M. J. Schwarz, J. Goetz, Z. Jiang, T. Niemczyk, F. Deppe, A. Marx and R. Gross, Gra-diometric flux qubits with a tunable gap , New Journal of Physics 15 (4), 045001 (2013), doi:10.1088 /1367-2630 /15 /4/045001. 
+
+[42 ] S. Krøjer, A. E. Dahl, K. S. Christensen, M. Kjaergaard and K. Flensberg, Fast universal control of a flux qubit via exponentially tunable wave-function overlap , Phys. Rev. Res. 6,023064 (2024), doi:10.1103 /PhysRevResearch.6.023064. 
+
+[43 ] J. B. Fu, D.-W. Wang, B. Ren, Z. H. Yang, S. Hu, G. Y. Huang, S. H. Cao, D. D. Liu, X. F. Zhang, X. Fu, S. C. Xue, Y. G. Che et al. , Flux-noise-resilient transmon qubit via a doubly-connected gradiometric design (2026), 2601.02137. 
+
+[44 ] Y. Liu, S. Vaitiek˙ enas, S. Martí-Sánchez, C. Koch, S. Hart, Z. Cui, T. Kanne, S. A. Khan, R. Tanta, S. Upadhyay, M. E. Cachaza, C. M. Marcus et al. , Semiconductor–Ferromagnetic Insulator–Superconductor Nanowires: Stray Field and Exchange Field , Nano Letters 20 (1), 456–462 (2019), doi:10.1021 /acs.nanolett.9b04187. 
+
+[45 ] S. Vaitiek˙ enas, Y. Liu, P . Krogstrup and C. M. Marcus, Zero-bias peaks at zero mag-netic field in ferromagnetic hybrid nanowires , Nature Physics 17 (1), 43–47 (2020), doi:10.1038 /s41567-020-1017-3. 
+
+[46 ] S. Vaitiek˙ enas, R. S. Souto, Y. Liu, P. Krogstrup, K. Flensberg, M. Leijnse and C. M. Marcus, Evidence for spin-polarized bound states in semiconductor– superconductor–ferromagnetic-insulator islands , Phys. Rev. B 105 , L041304 (2022), doi:10.1103 /PhysRevB.105.L041304. 
+
+[47 ] L. Jiang, M. Gupta, C. Riggert, M. Pendharkar, C. Dempsey, S. Lee, S. D. Harrington, C. J. Palmstrøm, V . S. Pribiag and S. M. Frolov, Zero-bias conductance peaks at zero applied magnetic field due to stray fields from integrated micromagnets in hybrid nanowire quantum dots , SciPost Physics 19 (2) (2025), doi:10.21468 /scipostphys.19.2.030. 
+
+[48 ] J. B. Tjernshaugen, F. Viñas Boström, J. Danon, J. Linder, K. Flensberg and A. L. Rig-otti Manesco, Coherent control of spinmons , doi:10.5281 /zenodo.20082243 (2026). 
+
+11

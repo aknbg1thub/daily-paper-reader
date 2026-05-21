@@ -1,0 +1,166 @@
+{
+  "version": 4,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-001.webp",
+      "caption": "TABLE I. Substrate properties. The silicon and borosilicate samples are taken from 200 mm wafers, the sapphire sample comes from a 50 mm wafer. Sample thicknesses were measured using an absolute length gauge. All other material parameters were taken from manufacturer datasheets: LR silicon [29], HR silicon [30], borosilicate glass [31], and sapphire [32] wafers.",
+      "page": 3,
+      "index": 1,
+      "item_type": "table",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "I"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-002.webp",
+      "caption": "FIG. 1. (a) Experimental setup for the thermal conductivity study of various substrates. (b) Simplified equivalent thermal model of the setup.",
+      "page": 3,
+      "index": 2,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "1"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-003.webp",
+      "caption": "FIG. 2. Applied power Q versus the hot end temperature Th for the four substrates measured in this study.",
+      "page": 4,
+      "index": 3,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "2"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-004.webp",
+      "caption": "FIG. 3. Effective thermal conductivity for all the measured sub- strates. Dashed lines are guide for the eyes.",
+      "page": 4,
+      "index": 4,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "3"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-005.webp",
+      "caption": "TABLE II. Mass density ρ (kg/m3) and elastic constants (GPa) for Si, SiO2, and sapphire. For sapphire, the values in parentheses cor- respond to the constants along the principal axis.",
+      "page": 5,
+      "index": 5,
+      "item_type": "table",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "II"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-006.webp",
+      "caption": "FIG. 4. (a) Comparison of simulated ballistic conductance per area (continuous lines), G0/A, with experimental measured conductance per area, G/A. (b) By using Eq. 3, the mean free paths are extracted as function of temperature for various substrates. Horizontal dashed line is the Casimir boundary-limited mean free path obtained with Eq. 4. The dash-dotted black line is the mean free path of phonon limited by hole-phonon scattering for the LR silicon substrate. Dotted lines are guides for T−1 (red) and T−1.5 (black) behavior.",
+      "page": 6,
+      "index": 6,
+      "item_type": "figure",
+      "width": 1032,
+      "height": 412,
+      "figure_number": "4"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-007.webp",
+      "caption": "FIG. 5. (a) Experimental setup for the thermal conductance study of an on-chip routing test vehicle. (b) Simplified thermal equivalent model.",
+      "page": 7,
+      "index": 7,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 555,
+      "figure_number": "5"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-008.webp",
+      "caption": "FIG. 6. TL and TR thermometer temperatures as a function of the applied power Q for two cryostat base temperatures: (a) at T0 = 50 mK and (b) at T0 = 300 mK. For both measurement runs, a thermal gradient is established between TR and TL.",
+      "page": 8,
+      "index": 8,
+      "item_type": "figure",
+      "width": 1012,
+      "height": 475,
+      "figure_number": "6"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-009.webp",
+      "caption": "FIG. 7. (a) Obtained temperature difference between the right TR and left TL thermometer versus the applied heat power Q. (b) Calculated thermal conductance G = Q/∆T as a function of the mean temperature (TR +TL)/2 for the two measurement runs. The continuous line is the expected conduction from the LR silicon substrate only. The thickness used for the calculation was 250 µm, corresponding to the edge of the device, outside of the backside cavity. Dashed line is a T 2 guide for the eyes.",
+      "page": 9,
+      "index": 9,
+      "item_type": "figure",
+      "width": 1033,
+      "height": 469,
+      "figure_number": "7"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-010.webp",
+      "caption": "FIG. S1. (a) Experimental setup for the thermal conductivity study of various substrates. (b) Simplified equivalent thermal model of the setup.",
+      "page": 12,
+      "index": 10,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "S1"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-011.webp",
+      "caption": "FIG. S2. Applied heat power Q versus temperatures (Th and Tc) for the two measurement runs performed at (a) T0 = 50 mK and (b) T0 = 300 mK.",
+      "page": 13,
+      "index": 11,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 545,
+      "figure_number": "S2"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-012.webp",
+      "caption": "FIG. S3. Comparison between the two methods for the extraction of the thermal conductance, either the TCI (using only T0 and Th) or the linear approximation method (using T0, Tc and Th).",
+      "page": 13,
+      "index": 12,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "S3"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-013.webp",
+      "caption": "FIG. S4. Typical sample’s thermometer calibration dataset with interpolation. The uncertainty δTCMN is typically 5%, while δRcalib = 0.1% + standard variation during the temperature step measurement.",
+      "page": 14,
+      "index": 13,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 750,
+      "figure_number": "S4"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-014.webp",
+      "caption": "FIG. S5. Packaging workflow of the planar routing test vehicle. Beginning with the processed wafer (a), the substrate is thinned down and locally back-etched (b). Next, two screen printings are made: the first for the epoxy adhesive (c), the second for the solder paste (d). Finally, the wafer is diced (e), and the connector and SMD resistors are mounted (f).",
+      "page": 16,
+      "index": 14,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 750,
+      "figure_number": "S5"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-015.webp",
+      "caption": "FIG. S6. Schematic cross-section of the on-chip routing test vehicle after cleanroom fabrication and backside cavity etching (prior to the packaging steps described in Sec. SIII(c)–(f)). The SiO2 passivation layer encapsulating the Nb routing is represented here but omitted from the top views in Fig. S5 for clarity.",
+      "page": 17,
+      "index": 15,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "S6"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.06146v1/fig-016.webp",
+      "caption": "FIG. S7. (a) Completed planar routing test vehicle. Zoom on (b) the 8-pin electrical connector and (c) one resistor with the black epoxy rectangle. (d) Sample backside, stress-induced buckling is observed on the 50 µm silicon membrane.",
+      "page": 18,
+      "index": 16,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "S7"
+    }
+  ]
+}

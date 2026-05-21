@@ -1,0 +1,176 @@
+{
+  "version": 4,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-001.webp",
+      "caption": "Fig. 1. Noise parameter measurement stand consists of microscope 1, cryostat 2, control computer 3, vector network analyzer (VNA) 4, temperature readout 5, source-measure units (SMU) 6 for DC-biasing.",
+      "page": 2,
+      "index": 1,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 555,
+      "figure_number": "1"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-002.webp",
+      "caption": "Fig. 2. Electrical block-diagram of the measurement instruments and hard- ware. Two major components are the VNA (Keysight 5242B) and the cryo wafer prober (Form Factor), in between there are minor room temperature components amplifier 22 (Mini-Circuits) and directional coupler 32. The VNA equivalent circuit includes: RF source 1; terminated switches 2,10,11,18; SPDT switch 20; heterodyne receivers R1...R4, A,B,C,D; noise receiver 21; and directional couplers 3,6,9,14,17,19. The RF hardware inside the cryo- stat includes: 4-12 GHz triple junction ferrite isolator 23, 3.4-12.3 GHz circulator 28, 0.3-14 GHz low noise amplifier (Low noise factory) 30, 30 dB directional coupler 24, 0.2-18 GHz bias-T 27 (Quantum Microwave), impedance tuner 25 with built in bias-T 26 (Maury Microwave), attenuator 31, wafer probes P1, P2, P3 (GGB Industries) and sample holder 29.",
+      "page": 2,
+      "index": 2,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 612,
+      "figure_number": "2"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-003.webp",
+      "caption": "Fig. 3. Cryogenic instrumentation mounted on the 4K plate of the refrigerator: front view and top view (as seen by the microscope), with the same numbering as in block diagram in fig.2. Probes P1, P2, P3 are moved by Attocube piezo- based drives for cryogenic environments.",
+      "page": 3,
+      "index": 3,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "3"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-004.webp",
+      "caption": "Fig. 6. Measured probe P2 source impedance as seen by the DUT (a) and with 1.923 ns delay subtracted (b): tuner output impedances Z1 red (center), Z2 green (right), Z3 blue (top), Z4 black (left).",
+      "page": 5,
+      "index": 4,
+      "item_type": "figure",
+      "width": 514,
+      "height": 236,
+      "figure_number": "6"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-005.webp",
+      "caption": "Fig. 4. Signal graph of the system representing DUT, error boxes and five calibration planes required for calibration of 24 error terms.",
+      "page": 5,
+      "index": 5,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 604,
+      "figure_number": "4"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-006.webp",
+      "caption": "Fig. 5. Characterization of the pre-amplifier. (a) preamp is connected to the tuner, (b) preamp is connected to the P1 for S-parameter measurement",
+      "page": 5,
+      "index": 6,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "5"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-007.webp",
+      "caption": "Fig. 7. Measured S-parameters of the preamplifier including probe P3, bias- T 27 and circulator 28. Traces in (a): top: T50, bottom: Tmin; traces in (b) top to bottom: Sa21, Sa11, Sa22, Sa12.",
+      "page": 7,
+      "index": 7,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 604,
+      "figure_number": "7"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-008.webp",
+      "caption": "Fig. 8. Measured Noise parameters of the preamplifier chain. Traces in (a): top: 4N, bottom: Fmin −1. Traces in (b): top: Ropt, bottom: jXopt.",
+      "page": 7,
+      "index": 8,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 604,
+      "figure_number": "8"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-009.webp",
+      "caption": "Fig. 9. FET noise temperatures (a): top: T50, bottom: Tmin and S-parameters (b) top to bottom: Sa21, Sa11, Sa22, Sa12.",
+      "page": 8,
+      "index": 9,
+      "item_type": "figure",
+      "width": 520,
+      "height": 241,
+      "figure_number": "9"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-010.webp",
+      "caption": "Fig. 10. Noise parameters of the FET: (a) Noise Factor (bottom) and Lange invariant (top), showing proper inequality 4N > Fmin −1, see [15]; (b) optimal resistance (bottom) and reactance of the source (top).",
+      "page": 8,
+      "index": 10,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 628,
+      "figure_number": "10"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-011.webp",
+      "caption": "Fig. 11. The inequality 2 > 4NT0/Tmin > 1 provides a useful check to validate the measured noise parameters.",
+      "page": 8,
+      "index": 11,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 750,
+      "figure_number": "11"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-012.webp",
+      "caption": "Fig. 12. Measurement of the FET (a) and LNA based on this FET (b)",
+      "page": 8,
+      "index": 12,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 750,
+      "figure_number": "12"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-013.webp",
+      "caption": "Fig. 13. LNA noise temperatures (a): top: T50, bottom: Tmin and S- parameters (b) top to bottom: Sa21, Sa11, Sa22, Sa12.",
+      "page": 9,
+      "index": 13,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 628,
+      "figure_number": "13"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-014.webp",
+      "caption": "Fig. 14. Noise parameters of the LNA: (a) Noise Factor (bottom) and Lange invariant (top); (b) optimal resistance (top) and reactance of the source (bottom).",
+      "page": 9,
+      "index": 14,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 628,
+      "figure_number": "14"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-015.webp",
+      "caption": "Fig. 15. 3-stage common-source LNA schematic, the ”in”, ”out”, ”Vg1”, ”VDD”, and ”Vg23” octagons correspond to the pads on the die for probe landing.",
+      "page": 9,
+      "index": 15,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "15"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-016.webp",
+      "caption": "Fig. 16. LNA noise temperature measured by the setup in this paper (bottom trace) and by the scalar on-wafer method from [7] (top trace), the latter trace noise is in agreement with ±6 K uncertainty demonstrated in [7] for input match of -10...-15 dB.",
+      "page": 10,
+      "index": 16,
+      "item_type": "figure",
+      "width": 511,
+      "height": 281,
+      "figure_number": "16"
+    },
+    {
+      "url": "assets/figures/arxiv/2605.17073v1/fig-017.webp",
+      "caption": "Fig. 17. Raw noise power spectral density produced by the FET and preamplifier in 4 impedance states of the tuner, as measured by the noise receiver. If counting traces from left to right, trace whose peak is the 1st corresponds to Z2, 2nd: Z3, 3rd: Z4, remaining trace in the center: Z1.",
+      "page": 10,
+      "index": 17,
+      "item_type": "figure",
+      "width": 505,
+      "height": 280,
+      "figure_number": "17"
+    }
+  ]
+}

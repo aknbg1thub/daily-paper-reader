@@ -1,0 +1,86 @@
+{
+  "version": 4,
+  "extractor": "pdffigures2",
+  "figures": [
+    {
+      "url": "assets/figures/arxiv/2604.24716v2/fig-001.webp",
+      "caption": "FIG. 1. Effective Josephson energy EJ,eff(T), due to EA(ϕ) and Econt(ϕ), and the transparency T(ϵg) as given by Eq. (4) (inset), as a function of ϵg, for ΓL = ΓR with T|ϵg=0 = 1. For asymmetric tunneling rates , δΓ ̸= 0, T(ϵg) is reduced by the factor 1 −δΓ2",
+      "page": 3,
+      "index": 1,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "1"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24716v2/fig-002.webp",
+      "caption": "FIG. 2. Qubit energy oscillations, E01(ng), obtained by solv- ing the Schr¨odinger equation with the Hamiltonian Eq. (1) us- ing parameters ϵg = 0.6∆, ∆/h = 45 GHz, EC/h = 0.25 GHz. For symmetric tunneling reates (solid blue line), Γi/h = 3 GHz, i = L, R, the minima (maxima) of E01(ng) occurs at integer (half-integer) ng. For the asymmetric tunneling rates (solid orange line), ΓL/h = 3 GHz, ΓR/h = 1 GHz, the minima and maxima are shifted due to the presence of the additional charge offsets δng and nz from Eqs. (14) and (15), which is approximated by an effective charge offset, δneff.",
+      "page": 5,
+      "index": 2,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 749,
+      "figure_number": "2"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24716v2/fig-003.webp",
+      "caption": "Figs. 3(a) and 3(b) show the calculated charge disper- sion, δ01(ϵg, δΓ, Γ, ∆) for a range of available QD gate voltages, ϵg, and junction asymmetry, δΓ. Since the gap between Andreev branches closes as the transparency ap- proaches unity, it is interesting to study the effect of the upper Andreev branch in the region of ϵg, δΓ ≪Γ. For this purpose we have adapted a WKB theory, similar to that of Refs. [4, 16]. We obtain the corrections to the gatemon energy levels, E0 n = p",
+      "page": 6,
+      "index": 3,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 750,
+      "figure_number": "s.3"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24716v2/fig-004.webp",
+      "caption": "FIG. 3. Charge dispersion δ01(ϵg) in units of EC in (a,b), and probability amplitude w(ϵg) in (c), with Γ/EC = 10 and ∆/EC = 90. (a) For symmetric tunneling rates ΓL,R = 5EC , δ01 is calculated from the WKB theory(orange, dashed), Eq. (27), and from exact numerical solutions of the Schrödinger equation with Ĥeven (blue, solid). (b) For asymmetric tunneling rates, δΓ/EC = 0, 4, 8, δ01 is calculated from the exact numerical solutions with Ĥeven. Decreasing of transparency T (ϵg) either due to finite δΓ, or due to increasing of ϵg leads to growth of w and so is the charge dispersion. (c) Probability amplitude w of remaining in the lower Andreev branch for δΓ = 0 and for finite δΓ = 4, 8EC . In the latter case w only slightly deviates from unity in the range of moderate ϵg/EC ≳ 15− 20 meaning the system is “living” primarily on the lower Andreev branch in that range. When ϵg, δΓ ≪ Γ are both small w go to zero and charge dispersion is strongly suppressed.",
+      "page": 7,
+      "index": 4,
+      "item_type": "figure",
+      "width": 1058,
+      "height": 233,
+      "figure_number": "3"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24716v2/fig-005.webp",
+      "caption": "FIG. 4. The effective charge offset shift, δneff(ϵg), observed in the qubit energy oscillations, Fig. 2, and its interpretation. The exact numerics δneff(ϵg) (blue) is compared to the approximations δneff,0, Eq. (36) (orange) and a simplified expression δnapprox eff,0 , Eq. (37) (green) that assumes the system is “living on the lower Andreev branch”, expressed by the ansatz wavefunction, Eq. (34). In all three plots the WKB result δnWKB eff , Eq. (38), is given as the red curve: (a) For δΓ/h = 4 GHz, Γ/h = 6 GHz (moderate δΓ ≲Γ), the approximations practically coincide with the exact numerics for moderate ϵg ∈(0.1 ∆, 0.7 ∆). These approximations worsen for small ϵg ≪Γ, as the upper Andreev branch starts to play role, see Fig. 3(c). For ϵg →0, δneff →−1/4 (or −e/2 in 2e units) similar to the WKB curve (red), however the slope of the WKB curve is different, as δΓ is not small. (b) For δΓ/h = 1 GHz, Γ/h = 11 GHz (small δΓ ≪Γ) the exact numerics δneff(ϵg) is well described by the approximations for moderate ϵg. For small ϵg the gap between the Andreev branches closes as ϵg, δΓ ≪Γ (T ≈1). Since the upper branch takes significant weight, 1 −w(ϵg →0) →1, the δneff(0) strongly deviates from the simplified theory. Since WKB is applicable in this case, the exact numerics δneff(ϵg) is very close to the WKB result δnWKB eff (ϵg) for small ϵg ≲0.2 ∆, including both the limiting value δneff(0) = −1/4 and the slope. For higher values of ϵg the WKB result deviates from the exact numerics, as expected. (c) For δΓ/h = 5.9 GHz, Γ/h = 6.1 GHz (large δΓ ≈Γ), the gap between the Andreev branches is always large, and one is living on the lower branch always. Thus, the approximate theory for δneff,0 and δnapprox eff,0 , practically coincides with the exact numerics for the whole range of ϵg ∈(0, 0.7 ∆). In all three cases, δneff(ϵg →0) →−1/4 is a consequence of a low-energy theorem (for which the WKB result is only an illustration). For a heuristic argument see the text.",
+      "page": 8,
+      "index": 5,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 750,
+      "figure_number": "4"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24716v2/fig-006.webp",
+      "caption": "FIG. 5. (a),(b) Relative anharmonicity changes δαfluc(ϵg) and δαstat(ϵg) for symmetric tunnelings Γi/h = 3GHz at ng = 0 and ng = 0.5. The effect of δCΣ on anharmonicity can be comparable to that of Econt. (c),(d) Plots for δαfluc(δCΣ = 0) and δαfluc(δng = nz = 0) for asymmetric tunnelings ΓL/h = 3GHz, ΓR/h = 1GHz. The effects of charge offsets are found to be up to two orders of magnitude stronger.",
+      "page": 9,
+      "index": 6,
+      "item_type": "figure",
+      "width": 512,
+      "height": 354,
+      "figure_number": "5"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24716v2/fig-007.webp",
+      "caption": "FIG. 6. Anharmonicity α(ϵg)/EC for small ϵg, |ϵg| ≲ EC , in a non-transmon regime, EC ≲ EJ,eff ≈ 0.5Γ (with Γ/EC = 16, ∆/EC = 360, δΓ ≪ EC). Exact numerics (solid blue) is compared to the WKB theory, Eq. (40), (solid green), and to an extended WKB theory (dashed orange line), see Appendix A. The choices for ng = 0.1, 0.6, are to avoid trivial zeros of the WKB result. (a) α(ϵg)/EC for ng = 0.1, and symmetric tunnelings ΓL,R = 8EC (i.e., T ≈ 1). The overall decrease of |α(ϵg)| as ϵg → 0 as well as the slope of α(ϵg) are captured by the WKB result, as w(λ̄(ϵg)) → 0, see Fig. 3(c) and Eq. (40). The non-zero intercept α(ϵg = 0) is reproduced in an extended WKB approach. (b) α(ϵg)/EC for ng = 0.6, and symmetric tunneling rates ΓL,R = 8EC (i.e., T ≈ 1). The WKB result captures the overall decrease as ϵg → 0, as well as the slope of α(ϵg), as w(λ̄(ϵg)) → 0. The change of the slope while changing from ng = 0.1 to ng = 0.6 follows from the cos-factor in Eq. (40). The non-zero intercept α(ϵg = 0) is reproduced in an extended WKB approach. (c) α(ϵg)/EC for ng = 0.6, and asymmetric tunnelings: δΓ = 0.1EC (δΓ ≪ Γ), corresponding to T ≈ 1. The WKB result is similar to Fig. 6(b), however, with w(ϵg = 0) ̸= 0, see Fig. 3(c). The non-zero intercept α(ϵg = 0) is approximately reproduced in the extended WKB approach.",
+      "page": 10,
+      "index": 7,
+      "item_type": "figure",
+      "width": 1058,
+      "height": 249,
+      "figure_number": "6"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24716v2/fig-008.webp",
+      "caption": "FIG. 7. Exact numeric anharmonicity α(ϵg)/EC for ng = 0.6, |ϵg| ≲EC, and ten times smaller EC as compared to Fig. 6(c), such that ∆/EC = 3600, Γ/EC = 160, and δΓ = EC, corresponding to T ≈1 and a true transmon regime (solid blue line). In this case the WKB result of Eq. (40) is ex- ponentially suppressed (horizontal green line), Eq. (A15), and the result is independent of ng. An extended WKB approach (dashed orange line), Appendix A, practically coincides with the exact numerics, in which α(ϵg) < 0 and it never crosses zero line (scf. Eq. (10) of Ref. [8]). In particular, the in- tercept α(ϵg = 0)/EC approaches −1",
+      "page": 10,
+      "index": 8,
+      "item_type": "figure",
+      "width": 1128,
+      "height": 750,
+      "figure_number": "7"
+    }
+  ]
+}

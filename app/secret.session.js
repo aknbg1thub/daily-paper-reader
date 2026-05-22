@@ -203,7 +203,7 @@
       const defaults = Array.isArray(utils.DEFAULT_PLATO_CHAT_MODELS)
         ? utils.DEFAULT_PLATO_CHAT_MODELS
         : [
-            'qwen3.6-plus',
+            'qwen3.7-max',
           ];
     return sanitizeModelList(defaults, 99);
   };
@@ -899,8 +899,8 @@
       const defaultPlatoModels = getDefaultPlatoChatModels();
       const platoSummaryModels = [
         {
-          value: 'qwen3.6-plus',
-          label: 'Qwen 3.6 Plus / Alibaba Bailian',
+          value: 'qwen3.7-max',
+          label: 'Qwen 3.7 Max / Alibaba Bailian',
         },
       ];
 
@@ -912,8 +912,11 @@
       const initialCustomBaseUrl = normalizeBaseUrlForStorage(
         currentChatEntry.baseUrl || '',
       );
-      const initialPlatoModel =
-        normalizeText(currentSummaryLLM.model || '') || 'qwen3.6-plus';
+      let initialPlatoModel =
+        normalizeText(currentSummaryLLM.model || '') || 'qwen3.7-max';
+      if (initialPlatoModel === 'qwen3.6-plus') {
+        initialPlatoModel = 'qwen3.7-max';
+      }
       const initialCustomModels = sanitizeModelList(
         currentProviderType === 'openai-compatible'
           ? (currentChatEntry.models || [])
@@ -1181,9 +1184,9 @@
       providerInputs.forEach((input) => {
         input.checked = input.value === currentProviderType;
       });
-      platoModelSelect.value = initialPlatoModel || 'qwen3.6-plus';
+      platoModelSelect.value = initialPlatoModel || 'qwen3.7-max';
       if (!platoModelSelect.value) {
-        platoModelSelect.value = 'qwen3.6-plus';
+        platoModelSelect.value = 'qwen3.7-max';
       }
 
       let githubOk = !!initialGithubToken;

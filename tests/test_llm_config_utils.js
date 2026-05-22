@@ -77,7 +77,7 @@ function testInferProviderType() {
       summarizedLLM: {
         apiKey: 'sk',
         baseUrl: 'https://api.bltcy.ai/v1',
-        model: 'qwen3.6-plus',
+        model: 'qwen3.7-max',
       },
     }),
     'plato',

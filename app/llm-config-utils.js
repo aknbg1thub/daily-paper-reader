@@ -10,14 +10,14 @@
   const DEFAULT_BAILIAN_BASE_URL = 'https://dashscope.aliyuncs.com/compatible-mode/v1';
   const DEFAULT_PLATO_BASE_URL = DEFAULT_BAILIAN_BASE_URL;
   const DEFAULT_PLATO_CHAT_MODELS = [
-    'qwen3.6-plus',
+    'qwen3.7-max',
   ];
   const OPENAI_COMPATIBLE_PRESETS = Object.freeze({
     bailian: Object.freeze({
       key: 'bailian',
       label: 'Alibaba Bailian',
       baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
-      models: Object.freeze(['qwen3.6-plus']),
+      models: Object.freeze(['qwen3.7-max']),
     }),
     deepseek: Object.freeze({
       key: 'deepseek',

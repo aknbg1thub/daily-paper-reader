@@ -2036,6 +2036,9 @@ window.$docsify = {
 
         let paperContextMenu = null;
         const closePaperContextMenu = () => {
+          document
+            .querySelectorAll('.sidebar-paper-context-menu')
+            .forEach((menu) => menu.remove());
           if (paperContextMenu) {
             paperContextMenu.remove();
             paperContextMenu = null;
@@ -2101,11 +2104,23 @@ window.$docsify = {
 
         if (!document.body.dataset.dprPaperContextDismissBound) {
           document.body.dataset.dprPaperContextDismissBound = '1';
-          document.addEventListener('click', (event) => {
-            if (paperContextMenu && !paperContextMenu.contains(event.target)) {
+          document.addEventListener('pointerdown', (event) => {
+            const menu = event.target && event.target.closest
+              ? event.target.closest('.sidebar-paper-context-menu')
+              : null;
+            if (!menu) {
               closePaperContextMenu();
             }
-          });
+          }, true);
+          document.addEventListener('contextmenu', (event) => {
+            const menu = event.target && event.target.closest
+              ? event.target.closest('.sidebar-paper-context-menu')
+              : null;
+            const paperItem = event.target && event.target.closest
+              ? event.target.closest('li.sidebar-paper-item')
+              : null;
+            if (!menu && !paperItem) closePaperContextMenu();
+          }, true);
           document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') closePaperContextMenu();
           });

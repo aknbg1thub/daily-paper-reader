@@ -74,7 +74,7 @@ Fork 后 Actions 默认暂停，需要手动激活：
 - 充值：右上角头像 → 立即充值（建议先充 5 元体验）
 - 创建令牌：左侧 **令牌** → **新建令牌**（名称随意，默认即可）
 
-> 工作流默认会使用 `BLT_RERANK_MODEL=qwen3-reranker-4b`、`BLT_FILTER_MODEL=qwen3.6-plus` 等（见 `/.github/workflows/daily-paper-reader.yml`）。
+> 工作流默认会使用 `BLT_RERANK_MODEL=qwen3-reranker-4b`、`BLT_FILTER_MODEL=qwen3.7-max`、`SUMMARY_MODEL=qwen3.7-max` 等（见 `/.github/workflows/daily-paper-reader.yml`）。
 
 ---
 

@@ -6,6 +6,7 @@ import html
 import json
 import math
 import os
+import shutil
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import re
@@ -898,6 +899,135 @@ def prepare_day_report_paths(docs_dir: str, date_str: str) -> Tuple[str, str]:
         day_dir = os.path.join(docs_dir, ym, day)
     day_readme = os.path.join(day_dir, "README.md")
     return day_dir, day_readme
+
+
+def cleanup_older_arxiv_versions(docs_dir: str, papers: List[Dict[str, Any]]) -> None:
+    latest_by_key: Dict[str, int] = {}
+    current_ids: set[str] = set()
+    for paper in papers or []:
+        if not isinstance(paper, dict):
+            continue
+        pid = str(paper.get("id") or paper.get("paper_id") or "").strip()
+        if not pid:
+            continue
+        key = arxiv_latest_key(pid)
+        latest_by_key[key] = max(latest_by_key.get(key, -1), arxiv_version(pid))
+        current_ids.add(pid)
+    if not latest_by_key:
+        return
+
+    arxiv_file_re = re.compile(r"^(\d{4}\.\d{4,5})(?:v(\d+))?-", re.I)
+    arxiv_asset_re = re.compile(r"^(\d{4}\.\d{4,5})(?:v(\d+))?$", re.I)
+    old_ref_re = re.compile(r"(\d{4}\.\d{4,5})v(\d+)-", re.I)
+    removed = 0
+
+    for root, dirs, files in os.walk(docs_dir):
+        rel_root = os.path.relpath(root, docs_dir)
+        if rel_root.startswith(os.path.join("assets", "figures", "arxiv")):
+            continue
+        for name in files:
+            if not name.endswith((".md", ".txt")):
+                continue
+            match = arxiv_file_re.match(name)
+            if not match:
+                continue
+            key = match.group(1)
+            version = int(match.group(2) or 0)
+            latest = latest_by_key.get(key)
+            if latest is None or version >= latest:
+                continue
+            path = os.path.join(root, name)
+            try:
+                os.remove(path)
+                removed += 1
+            except Exception as exc:
+                log(f"[WARN] failed to remove old arXiv version file: {path} | {exc}")
+
+    asset_root = os.path.join(docs_dir, "assets", "figures", "arxiv")
+    if os.path.isdir(asset_root):
+        for name in os.listdir(asset_root):
+            match = arxiv_asset_re.match(name)
+            if not match:
+                continue
+            key = match.group(1)
+            version = int(match.group(2) or 0)
+            latest = latest_by_key.get(key)
+            if latest is None or version >= latest or name in current_ids:
+                continue
+            path = os.path.join(asset_root, name)
+            try:
+                shutil.rmtree(path)
+                removed += 1
+            except Exception as exc:
+                log(f"[WARN] failed to remove old arXiv figure assets: {path} | {exc}")
+
+    for root, _dirs, files in os.walk(docs_dir):
+        for name in files:
+            path = os.path.join(root, name)
+            if name in {"_sidebar.md", "README.md"} or name.endswith(".md"):
+                try:
+                    with open(path, "r", encoding="utf-8") as f:
+                        lines = f.readlines()
+                except Exception:
+                    continue
+                kept: List[str] = []
+                changed = False
+                for line in lines:
+                    remove_line = False
+                    for match in old_ref_re.finditer(line):
+                        key = match.group(1)
+                        version = int(match.group(2) or 0)
+                        latest = latest_by_key.get(key)
+                        if latest is not None and version < latest:
+                            remove_line = True
+                            break
+                    if remove_line:
+                        changed = True
+                        removed += 1
+                        continue
+                    kept.append(line)
+                if changed:
+                    try:
+                        with open(path, "w", encoding="utf-8") as f:
+                            f.writelines(kept)
+                    except Exception as exc:
+                        log(f"[WARN] failed to prune old arXiv links: {path} | {exc}")
+            elif name == "papers.meta.json":
+                try:
+                    with open(path, "r", encoding="utf-8") as f:
+                        payload = json.load(f)
+                except Exception:
+                    continue
+                papers_payload = payload.get("papers") if isinstance(payload, dict) else None
+                if not isinstance(papers_payload, list):
+                    continue
+                pruned = []
+                changed = False
+                for item in papers_payload:
+                    text = json.dumps(item, ensure_ascii=False) if isinstance(item, dict) else str(item)
+                    remove_item = False
+                    for match in old_ref_re.finditer(text):
+                        key = match.group(1)
+                        version = int(match.group(2) or 0)
+                        latest = latest_by_key.get(key)
+                        if latest is not None and version < latest:
+                            remove_item = True
+                            break
+                    if remove_item:
+                        changed = True
+                        removed += 1
+                        continue
+                    pruned.append(item)
+                if changed:
+                    payload["papers"] = pruned
+                    try:
+                        with open(path, "w", encoding="utf-8") as f:
+                            json.dump(payload, f, ensure_ascii=False, indent=2)
+                    except Exception as exc:
+                        log(f"[WARN] failed to prune old arXiv metadata: {path} | {exc}")
+
+    if removed:
+        log(f"[INFO] removed {removed} old arXiv version artifact(s)")
 
 
 def _read_module_markdown(path: str) -> str:
@@ -2663,6 +2793,7 @@ def main() -> None:
     # 侧边栏展示按分数降序（同分按 id 稳定排序），避免“高分被埋在下面”
     deep_list = sorted(deep_list, key=lambda p: (-_paper_score(p), _paper_id(p)))
     quick_list = sorted(quick_list, key=lambda p: (-_paper_score(p), _paper_id(p)))
+    cleanup_older_arxiv_versions(docs_dir, deep_list + quick_list)
 
     if args.fix_tags_only:
         changed_files = 0

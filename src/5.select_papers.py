@@ -394,6 +394,20 @@ def collect_seen_ids(
     return seen
 
 
+def collect_seen_latest_versions(
+    archive_root: str,
+    today_str: str,
+    active_tags: List[str] | None = None,
+) -> Dict[str, int]:
+    latest: Dict[str, int] = {}
+    for pid in collect_seen_ids(archive_root, today_str, active_tags):
+        key = arxiv_latest_key(pid)
+        if not key:
+            continue
+        latest[key] = max(latest.get(key, -1), arxiv_version(pid))
+    return latest
+
+
 def parse_score(value: Any) -> float:
     try:
         return float(value)
@@ -502,17 +516,31 @@ def build_candidates(
     scored_papers: List[Dict[str, Any]],
     carryover_items: List[Dict[str, Any]],
     seen_ids: set,
+    seen_latest_versions: Dict[str, int] | None = None,
 ) -> List[Dict[str, Any]]:
     merged: Dict[str, Dict[str, Any]] = {}
 
     seen_keys = {arxiv_latest_key(pid) for pid in seen_ids}
+    seen_latest_versions = seen_latest_versions or {
+        key: max((arxiv_version(pid) for pid in seen_ids if arxiv_latest_key(pid) == key), default=-1)
+        for key in seen_keys
+    }
+
+    def blocked_by_seen(pid: str) -> bool:
+        if pid in seen_ids:
+            return True
+        dedupe_key = arxiv_latest_key(pid)
+        seen_version = seen_latest_versions.get(dedupe_key)
+        if seen_version is None:
+            return False
+        return arxiv_version(pid) <= seen_version
 
     for item in carryover_items:
         pid = str(item.get("id") or item.get("paper_id") or "").strip()
         if float(item.get("llm_score", 0)) < CARRYOVER_MIN_SCORE:
             continue
         dedupe_key = arxiv_latest_key(pid)
-        if not pid or pid in seen_ids or dedupe_key in seen_keys:
+        if not pid or blocked_by_seen(pid):
             continue
         copied = dict(item)
         copied["id"] = pid
@@ -525,7 +553,7 @@ def build_candidates(
     for item in scored_papers:
         pid = str(item.get("id") or "").strip()
         dedupe_key = arxiv_latest_key(pid)
-        if not pid or pid in seen_ids or dedupe_key in seen_keys:
+        if not pid or blocked_by_seen(pid):
             continue
         copied = dict(item)
         copied["_source"] = "new"
@@ -1106,10 +1134,16 @@ def main() -> None:
     today_date = parse_date_str(TODAY_STR)
     if args.carryover_only or ignore_seen_ids:
         seen_ids = set()
+        seen_latest_versions: Dict[str, int] = {}
         if ignore_seen_ids:
             log("[INFO] skims/backfill 模式：已关闭历史 seen_ids 过滤（输出数量更完整）。")
     else:
         seen_ids = collect_seen_ids(archive_root, TODAY_STR, active_tags=active_carryover_tags)
+        seen_latest_versions = collect_seen_latest_versions(
+            archive_root,
+            TODAY_STR,
+            active_tags=active_carryover_tags,
+        )
     log_substep("5.3", "加载 carryover 并构建候选集", "START")
     try:
         carryover_items, _delta = load_recent_carryover(
@@ -1132,7 +1166,12 @@ def main() -> None:
                 copied["selection_source"] = SOURCE_CARRYOVER_CACHE
                 candidates.append(copied)
         else:
-            candidates = build_candidates(scored_papers, carryover_items, seen_ids)
+            candidates = build_candidates(
+                scored_papers,
+                carryover_items,
+                seen_ids,
+                seen_latest_versions,
+            )
     finally:
         log_substep("5.3", "加载 carryover 并构建候选集", "END")
 

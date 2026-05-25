@@ -22,7 +22,7 @@ except Exception:  # pragma: no cover
 SRC_DIR = os.path.dirname(__file__)
 ROOT_DIR = os.path.abspath(os.path.join(SRC_DIR, ".."))
 CONFIG_FILE = os.path.join(ROOT_DIR, "config.yaml")
-LONG_RANGE_DAYS_THRESHOLD = 10
+LONG_RANGE_DAYS_THRESHOLD = 2
 MAIN_DEFAULT_DAYS = 9
 SKIMS_FETCH_DAYS_THRESHOLD = 11
 BLT_PROVIDER_BASE_KEYWORDS = ("bltcy.ai", "gptbest.vip", "blt", "gptbest")

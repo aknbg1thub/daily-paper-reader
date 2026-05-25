@@ -1,11 +1,11 @@
 {
   "mode": "standard",
-  "generated_at": "2026-05-25T06:27:05.588455+00:00",
+  "generated_at": "2026-05-25T08:36:35.509931+00:00",
   "stats": {
     "mode": "standard",
     "tag_count": 1,
     "deep_divecandidates": 0,
-    "deep_cap": 6,
+    "deep_cap": null,
     "deep_selected": 0,
     "quick_candidates": 0,
     "quick_skim_target": 11,

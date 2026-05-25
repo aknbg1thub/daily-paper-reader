@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-25T12:03:28.422730+00:00",
+  "generated_at": "2026-05-25T12:05:14.204800+00:00",
   "updated_date": "20260523-20260523",
   "carryover_days": 9,
   "tag_states": {
@@ -14,7 +14,7 @@
       "items": []
     },
     "HAMILTONIAN": {
-      "updated_date": "20260522-20260522",
+      "updated_date": "20260523-20260523",
       "carryover_days": 9,
       "items": []
     }

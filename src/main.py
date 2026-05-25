@@ -89,9 +89,7 @@ def resolve_run_date_token(fetch_days: int | None) -> str:
     - 其它情况使用单日 token：YYYYMMDD
     """
     if fetch_days is not None:
-        if fetch_days >= LONG_RANGE_DAYS_THRESHOLD:
-            return build_run_date_token(fetch_days)
-        return datetime.now(timezone.utc).strftime("%Y%m%d")
+        return build_run_date_token(fetch_days)
 
     setting = load_arxiv_paper_setting()
     try:

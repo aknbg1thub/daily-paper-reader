@@ -30,16 +30,12 @@ jobs:
   run:
     name: run (${{ matrix.profile_tag }})
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'workflow_dispatch' || github.event.inputs.profile_tag == '' || github.event.inputs.profile_tag == matrix.profile_tag }}
     timeout-minutes: 120
     strategy:
       fail-fast: false
       max-parallel: 1
       matrix:
-        profile_tag:
-          - SC-QUBIT-CHIP
-          - EQ-CIRCUIT
-          - HAMILTONIAN
+        profile_tag: ${{ fromJson(github.event_name == 'workflow_dispatch' && github.event.inputs.profile_tag != '' && format('["{0}"]', github.event.inputs.profile_tag) || '["SC-QUBIT-CHIP","EQ-CIRCUIT","HAMILTONIAN"]') }}
     concurrency:
       group: daily-paper-reader-${{ github.ref }}-${{ matrix.profile_tag }}
       cancel-in-progress: false

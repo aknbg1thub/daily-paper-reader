@@ -26,6 +26,14 @@ on:
         description: "Optional explicit date window: YYYYMMDD or YYYYMMDD-YYYYMMDD"
         required: false
         default: ""
+      recall_top_k:
+        description: "Optional recall top-k per query for lighter backfill"
+        required: false
+        default: ""
+      rrf_top_n:
+        description: "Optional RRF top-n before LLM filtering"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -202,6 +210,8 @@ jobs:
           FETCH_MODE="${{ github.event.inputs.fetch_mode }}"
           PROFILE_TAG="${{ github.event.inputs.profile_tag }}"
           RUN_DATE_TOKEN="${{ github.event.inputs.run_date_token }}"
+          RECALL_TOP_K="${{ github.event.inputs.recall_top_k }}"
+          RRF_TOP_N="${{ github.event.inputs.rrf_top_n }}"
           if [ -z "$RUN_ENRICH" ]; then
             RUN_ENRICH="false"
           fi
@@ -214,7 +224,7 @@ jobs:
           if [ -z "$PROFILE_TAG" ]; then
             PROFILE_TAG="${{ matrix.profile_tag }}"
           fi
-          echo "Resolved inputs: run_enrich=${RUN_ENRICH}, fetch_days=${FETCH_DAYS}, fetch_mode=${FETCH_MODE}, profile_tag=${PROFILE_TAG}, run_date_token=${RUN_DATE_TOKEN}"
+          echo "Resolved inputs: run_enrich=${RUN_ENRICH}, fetch_days=${FETCH_DAYS}, fetch_mode=${FETCH_MODE}, profile_tag=${PROFILE_TAG}, run_date_token=${RUN_DATE_TOKEN}, recall_top_k=${RECALL_TOP_K}, rrf_top_n=${RRF_TOP_N}"
           ARGS=()
           if [ "$RUN_ENRICH" = "true" ]; then
             ARGS+=(--run-enrich)
@@ -231,6 +241,13 @@ jobs:
           if [ -n "$RUN_DATE_TOKEN" ]; then
             ARGS+=(--run-date-token "$RUN_DATE_TOKEN")
           fi
+          if [ -n "$RECALL_TOP_K" ]; then
+            ARGS+=(--recall-top-k "$RECALL_TOP_K")
+          fi
+          if [ -n "$RRF_TOP_N" ]; then
+            ARGS+=(--rrf-top-n "$RRF_TOP_N")
+          fi
+          ARGS+=(--llm-batch-size 6 --llm-filter-concurrency 2)
           python src/main.py "${ARGS[@]}" --embedding-device cpu --embedding-batch-size 8
 
           # Copy config for frontend read-only access without a GitHub token.

@@ -574,6 +574,30 @@ def main() -> None:
         help="Override DPR_RUN_DATE. Accepts YYYYMMDD or YYYYMMDD-YYYYMMDD; single dates are treated as one-day windows.",
     )
     parser.add_argument(
+        "--recall-top-k",
+        type=int,
+        default=None,
+        help="Optional Top K per query for BM25 and embedding recall.",
+    )
+    parser.add_argument(
+        "--rrf-top-n",
+        type=int,
+        default=None,
+        help="Optional Top N after RRF fusion before LLM filtering.",
+    )
+    parser.add_argument(
+        "--llm-batch-size",
+        type=int,
+        default=None,
+        help="Optional batch size for Step 4 LLM filtering.",
+    )
+    parser.add_argument(
+        "--llm-filter-concurrency",
+        type=int,
+        default=None,
+        help="Optional concurrency for Step 4 LLM filtering.",
+    )
+    parser.add_argument(
         "--profile-tag",
         default="",
         help="仅运行指定 tag 对应的词条；大小写不敏感，支持空格。",
@@ -685,7 +709,11 @@ def main() -> None:
         print_trace_retrieval("RAW", raw_path, trace_ids)
     run_step(
         "Step 2.1 - BM25",
-        [python, os.path.join(SRC_DIR, "2.1.retrieval_papers_bm25.py")],
+        [
+            python,
+            os.path.join(SRC_DIR, "2.1.retrieval_papers_bm25.py"),
+            *(["--top-k", str(args.recall_top_k)] if args.recall_top_k else []),
+        ],
     )
     if trace_ids:
         print_trace_retrieval("BM25", bm25_path, trace_ids)
@@ -698,13 +726,18 @@ def main() -> None:
             str(args.embedding_device),
             "--batch-size",
             str(args.embedding_batch_size),
+            *(["--top-k", str(args.recall_top_k)] if args.recall_top_k else []),
         ],
     )
     if trace_ids:
         print_trace_retrieval("EMBEDDING", embedding_path, trace_ids)
     run_step(
         "Step 2.3 - RRF",
-        [python, os.path.join(SRC_DIR, "2.3.retrieval_papers_rrf.py")],
+        [
+            python,
+            os.path.join(SRC_DIR, "2.3.retrieval_papers_rrf.py"),
+            *(["--top-n", str(args.rrf_top_n)] if args.rrf_top_n else []),
+        ],
     )
     if trace_ids:
         print_trace_retrieval("RRF", rrf_path, trace_ids)
@@ -725,7 +758,16 @@ def main() -> None:
         print_trace_retrieval("RERANK", rerank_path, trace_ids)
     run_step(
         "Step 4 - LLM refine",
-        [python, os.path.join(SRC_DIR, "4.llm_refine_papers.py")],
+        [
+            python,
+            os.path.join(SRC_DIR, "4.llm_refine_papers.py"),
+            *(["--batch-size", str(args.llm_batch_size)] if args.llm_batch_size else []),
+            *(
+                ["--filter-concurrency", str(args.llm_filter_concurrency)]
+                if args.llm_filter_concurrency
+                else []
+            ),
+        ],
     )
     if trace_ids:
         print_trace_llm("LLM", llm_path, trace_ids)

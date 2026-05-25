@@ -101,6 +101,17 @@ def resolve_run_date_token(fetch_days: int | None) -> str:
     return datetime.now(timezone.utc).strftime("%Y%m%d")
 
 
+def normalize_run_date_token(value: Any) -> str:
+    text = str(value or "").strip()
+    if not text:
+        return ""
+    if re.fullmatch(r"\d{8}", text):
+        return f"{text}-{text}"
+    if re.fullmatch(r"\d{8}-\d{8}", text):
+        return text
+    raise ValueError("--run-date-token must be YYYYMMDD or YYYYMMDD-YYYYMMDD")
+
+
 def resolve_sidebar_date_label(fetch_days: int | None) -> str | None:
     # 1) 显式传 --fetch-days 时，仅在大窗口模式下显示日期范围。
     if fetch_days is not None:
@@ -558,6 +569,11 @@ def main() -> None:
         help="Force fetch-run mode: auto(按阈值), standard(非skims), skims(强制skims).",
     )
     parser.add_argument(
+        "--run-date-token",
+        default="",
+        help="Override DPR_RUN_DATE. Accepts YYYYMMDD or YYYYMMDD-YYYYMMDD; single dates are treated as one-day windows.",
+    )
+    parser.add_argument(
         "--profile-tag",
         default="",
         help="仅运行指定 tag 对应的词条；大小写不敏感，支持空格。",
@@ -585,8 +601,9 @@ def main() -> None:
 
     python = sys.executable
 
-    sidebar_date_label = resolve_sidebar_date_label(args.fetch_days)
-    run_date_token = resolve_run_date_token(args.fetch_days)
+    explicit_run_date_token = normalize_run_date_token(args.run_date_token)
+    sidebar_date_label = None if explicit_run_date_token else resolve_sidebar_date_label(args.fetch_days)
+    run_date_token = explicit_run_date_token or resolve_run_date_token(args.fetch_days)
     os.environ["DPR_RUN_DATE"] = run_date_token
     print(f"[INFO] DPR_RUN_DATE={run_date_token}", flush=True)
     profile_tag = str(args.profile_tag or os.getenv("DPR_FILTER_PROFILE_TAG") or "").strip()

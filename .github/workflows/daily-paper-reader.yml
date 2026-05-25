@@ -22,6 +22,10 @@ on:
         description: "Run one profile tag; empty runs all matrix shards"
         required: false
         default: ""
+      run_date_token:
+        description: "Optional explicit date window: YYYYMMDD or YYYYMMDD-YYYYMMDD"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -197,6 +201,7 @@ jobs:
           FETCH_DAYS="${{ github.event.inputs.fetch_days }}"
           FETCH_MODE="${{ github.event.inputs.fetch_mode }}"
           PROFILE_TAG="${{ github.event.inputs.profile_tag }}"
+          RUN_DATE_TOKEN="${{ github.event.inputs.run_date_token }}"
           if [ -z "$RUN_ENRICH" ]; then
             RUN_ENRICH="false"
           fi
@@ -209,7 +214,7 @@ jobs:
           if [ -z "$PROFILE_TAG" ]; then
             PROFILE_TAG="${{ matrix.profile_tag }}"
           fi
-          echo "Resolved inputs: run_enrich=${RUN_ENRICH}, fetch_days=${FETCH_DAYS}, fetch_mode=${FETCH_MODE}, profile_tag=${PROFILE_TAG}"
+          echo "Resolved inputs: run_enrich=${RUN_ENRICH}, fetch_days=${FETCH_DAYS}, fetch_mode=${FETCH_MODE}, profile_tag=${PROFILE_TAG}, run_date_token=${RUN_DATE_TOKEN}"
           ARGS=()
           if [ "$RUN_ENRICH" = "true" ]; then
             ARGS+=(--run-enrich)
@@ -222,6 +227,9 @@ jobs:
           fi
           if [ -n "$PROFILE_TAG" ]; then
             ARGS+=(--profile-tag "$PROFILE_TAG")
+          fi
+          if [ -n "$RUN_DATE_TOKEN" ]; then
+            ARGS+=(--run-date-token "$RUN_DATE_TOKEN")
           fi
           python src/main.py "${ARGS[@]}" --embedding-device cpu --embedding-batch-size 8
 

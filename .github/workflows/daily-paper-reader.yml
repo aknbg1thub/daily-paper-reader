@@ -2,8 +2,8 @@ name: daily-paper-reader
 
 on:
   schedule:
-    # GitHub schedule uses UTC. This runs daily at 02:35 Beijing time.
-    - cron: "35 18 * * *"
+    # TEMP schedule verification. Restore to "35 18 * * *" after a schedule run is observed.
+    - cron: "52 09 * * *"
   workflow_dispatch:
     inputs:
       run_enrich:
@@ -228,6 +228,17 @@ jobs:
           fi
           if [ -z "$PROFILE_TAG" ]; then
             PROFILE_TAG="${{ matrix.profile_tag }}"
+          fi
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            if [ -z "$RECALL_TOP_K" ]; then
+              RECALL_TOP_K="30"
+            fi
+            if [ -z "$RRF_TOP_N" ]; then
+              RRF_TOP_N="60"
+            fi
+            if [ -z "$SKIP_LLM_REFINE" ]; then
+              SKIP_LLM_REFINE="true"
+            fi
           fi
           echo "Resolved inputs: run_enrich=${RUN_ENRICH}, fetch_days=${FETCH_DAYS}, fetch_mode=${FETCH_MODE}, profile_tag=${PROFILE_TAG}, run_date_token=${RUN_DATE_TOKEN}, recall_top_k=${RECALL_TOP_K}, rrf_top_n=${RRF_TOP_N}, skip_llm_refine=${SKIP_LLM_REFINE}"
           ARGS=()

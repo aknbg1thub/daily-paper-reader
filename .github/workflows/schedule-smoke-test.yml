@@ -1,0 +1,20 @@
+name: schedule-smoke-test
+
+on:
+  schedule:
+    # TEST: UTC 02:28 = Beijing 10:28 on 2026-05-25. Remove after verification.
+    - cron: "28 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Confirm scheduled dispatch
+        run: |
+          echo "event=${{ github.event_name }}"
+          echo "sha=${{ github.sha }}"
+          date -u

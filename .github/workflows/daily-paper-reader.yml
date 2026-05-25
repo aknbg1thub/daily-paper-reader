@@ -2,7 +2,8 @@ name: daily-paper-reader
 
 on:
   schedule:
-    - cron: "35 18 * * *"
+    # TEMP schedule verification. Restore to "35 18 * * *" after an event=schedule run is observed.
+    - cron: "57 13 * * *"
   workflow_dispatch:
     inputs:
       run_enrich:

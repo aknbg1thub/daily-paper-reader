@@ -2,39 +2,46 @@ name: daily-paper-reader
 
 on:
   schedule:
-    # GitHub schedule uses UTC. This runs daily at 02:35 Beijing time.
-    # Touch this cron line from the default branch to re-register schedule on forks.
-    - cron: "35 18 * * *"
+    # TEST: GitHub schedule uses UTC. Temporarily set near current time to verify schedule dispatch.
+    - cron: "20 1 * * *"
   workflow_dispatch:
     inputs:
       run_enrich:
-        description: "Run 0.enrich_config_queries.py（默认关闭，按需开启）"
+        description: "Run query enrichment before the pipeline"
         required: false
         default: "false"
       fetch_days:
-        description: "回溯抓取天数（例如 30）；留空则使用默认配置"
+        description: "Lookback days; empty uses scheduled default"
         required: false
         default: "10"
       fetch_mode:
-        description: "抓取模式：auto/standard/skims（auto 按 fetch-days 阈值决定，standard/ skims 强制）"
+        description: "Fetch mode: auto, standard, or skims"
         required: false
         default: "auto"
       profile_tag:
-        description: "仅运行指定词条 tag；留空表示全量运行"
+        description: "Run one profile tag; empty runs all matrix shards"
         required: false
         default: ""
 
 permissions:
   contents: write
 
-concurrency:
-  group: daily-paper-reader
-  cancel-in-progress: false
-
 jobs:
   run:
+    name: run (${{ matrix.profile_tag }})
     runs-on: ubuntu-latest
     timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        profile_tag:
+          - SC-QUBIT-CHIP
+          - EQ-CIRCUIT
+          - HAMILTONIAN
+    concurrency:
+      group: daily-paper-reader-${{ github.ref }}-${{ matrix.profile_tag }}
+      cancel-in-progress: false
     env:
       BLT_API_KEY: ${{ secrets.BLT_API_KEY }}
       BLT_REWRITE_MODEL: qwen3.6-plus
@@ -50,30 +57,38 @@ jobs:
       PYTHONUNBUFFERED: "1"
 
     steps:
-      - name: Random delay to spread scheduled runs
-        if: github.event_name == 'schedule'
+      - name: Decide profile shard
         run: |
-          DELAY=$(shuf -i 0-3599 -n 1)
-          echo "Sleeping ${DELAY}s (≈$((DELAY/60))min) to stagger fork runs over 1 hour …"
-          sleep $DELAY
-
+          REQUESTED_PROFILE="${{ github.event.inputs.profile_tag }}"
+          MATRIX_PROFILE="${{ matrix.profile_tag }}"
+          if [ -n "$REQUESTED_PROFILE" ] && [ "$REQUESTED_PROFILE" != "$MATRIX_PROFILE" ]; then
+            echo "SHOULD_RUN=false" >> "$GITHUB_ENV"
+            echo "Skipping profile shard ${MATRIX_PROFILE}; requested ${REQUESTED_PROFILE}."
+          else
+            echo "SHOULD_RUN=true" >> "$GITHUB_ENV"
+            echo "Running profile shard ${MATRIX_PROFILE}."
+          fi
       - name: Checkout
+        if: env.SHOULD_RUN == 'true'
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
       - name: Setup Python
+        if: env.SHOULD_RUN == 'true'
         uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
       - name: Setup Java
+        if: env.SHOULD_RUN == 'true'
         uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: "17"
 
       - name: Cache Python deps
+        if: env.SHOULD_RUN == 'true'
         uses: actions/cache@v5
         with:
           path: |
@@ -87,6 +102,7 @@ jobs:
           key: ${{ runner.os }}-dpr-embed-deps-v1-${{ hashFiles('requirements.txt') }}
 
       - name: Install deps (skip sqlite3)
+        if: env.SHOULD_RUN == 'true'
         run: |
           python - <<'PY'
           import re
@@ -99,6 +115,7 @@ jobs:
           uv pip install --system -r /tmp/req.txt
 
       - name: Prepare pdffigures2
+        if: env.SHOULD_RUN == 'true'
         run: |
           set -euo pipefail
 
@@ -120,6 +137,7 @@ jobs:
           echo "PDFFIGURES2_JAR=$JAR_PATH" >> "$GITHUB_ENV"
 
       - name: Run Retrieval and Embedding
+        if: env.SHOULD_RUN == 'true'
         env:
           HF_HOME: ${{ github.workspace }}/hf_cache
           HUGGINGFACE_HUB_CACHE: ${{ github.workspace }}/hf_cache
@@ -182,6 +200,19 @@ jobs:
           FETCH_DAYS="${{ github.event.inputs.fetch_days }}"
           FETCH_MODE="${{ github.event.inputs.fetch_mode }}"
           PROFILE_TAG="${{ github.event.inputs.profile_tag }}"
+          if [ -z "$RUN_ENRICH" ]; then
+            RUN_ENRICH="false"
+          fi
+          if [ -z "$FETCH_DAYS" ]; then
+            FETCH_DAYS="1"
+          fi
+          if [ -z "$FETCH_MODE" ]; then
+            FETCH_MODE="standard"
+          fi
+          if [ -z "$PROFILE_TAG" ]; then
+            PROFILE_TAG="${{ matrix.profile_tag }}"
+          fi
+          echo "Resolved inputs: run_enrich=${RUN_ENRICH}, fetch_days=${FETCH_DAYS}, fetch_mode=${FETCH_MODE}, profile_tag=${PROFILE_TAG}"
           ARGS=()
           if [ "$RUN_ENRICH" = "true" ]; then
             ARGS+=(--run-enrich)
@@ -197,17 +228,19 @@ jobs:
           fi
           python src/main.py "${ARGS[@]}" --embedding-device cpu --embedding-batch-size 8
 
-          # 让前端可以在不配置 GitHub Token 的情况下直接读取配置（只读快照）
+          # 鐠佲晛澧犵粩顖氬讲娴犮儱婀稉宥夊帳缂?GitHub Token 閻ㄥ嫭鍎忛崘鍏哥瑓閻╁瓨甯寸拠璇插絿闁板秶鐤嗛敍鍫濆涧鐠囪鎻╅悡褝绱?
           cp -f config.yaml docs/config.yaml
 
           echo "--- post-run cache symlink check ---"
           find "$HF_HOME" -xtype l | head -n 50 || true
 
       - name: Cleanup non-recommend archives
+        if: env.SHOULD_RUN == 'true'
         run: |
           find archive -mindepth 2 -maxdepth 2 -type d \( -name raw -o -name filtered -o -name rank \) -exec rm -rf {} +
 
       - name: Commit results
+        if: env.SHOULD_RUN == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

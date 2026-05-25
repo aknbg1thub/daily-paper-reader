@@ -3,7 +3,7 @@ name: daily-paper-reader
 on:
   schedule:
     # TEST: GitHub schedule uses UTC. Temporarily set near current time to verify schedule dispatch.
-    - cron: "20 1 * * *"
+    - cron: "32 1 * * *"
   workflow_dispatch:
     inputs:
       run_enrich:
@@ -228,7 +228,7 @@ jobs:
           fi
           python src/main.py "${ARGS[@]}" --embedding-device cpu --embedding-batch-size 8
 
-          # 鐠佲晛澧犵粩顖氬讲娴犮儱婀稉宥夊帳缂?GitHub Token 閻ㄥ嫭鍎忛崘鍏哥瑓閻╁瓨甯寸拠璇插絿闁板秶鐤嗛敍鍫濆涧鐠囪鎻╅悡褝绱?
+          # Copy config for frontend read-only access without a GitHub token.
           cp -f config.yaml docs/config.yaml
 
           echo "--- post-run cache symlink check ---"

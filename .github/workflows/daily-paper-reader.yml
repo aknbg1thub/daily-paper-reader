@@ -2,8 +2,8 @@ name: daily-paper-reader
 
 on:
   schedule:
-    # TEST: GitHub schedule uses UTC. Temporarily set near current time to verify schedule dispatch.
-    - cron: "*/5 * * * *"
+    # GitHub schedule uses UTC. This runs daily at 02:35 Beijing time.
+    - cron: "35 18 * * *"
   workflow_dispatch:
     inputs:
       run_enrich:

@@ -34,6 +34,10 @@ on:
         description: "Optional RRF top-n before LLM filtering"
         required: false
         default: ""
+      skip_llm_refine:
+        description: "Skip Step 4 model filtering and use retrieval fallback scores"
+        required: false
+        default: "false"
 
 permissions:
   contents: write
@@ -212,6 +216,7 @@ jobs:
           RUN_DATE_TOKEN="${{ github.event.inputs.run_date_token }}"
           RECALL_TOP_K="${{ github.event.inputs.recall_top_k }}"
           RRF_TOP_N="${{ github.event.inputs.rrf_top_n }}"
+          SKIP_LLM_REFINE="${{ github.event.inputs.skip_llm_refine }}"
           if [ -z "$RUN_ENRICH" ]; then
             RUN_ENRICH="false"
           fi
@@ -224,7 +229,7 @@ jobs:
           if [ -z "$PROFILE_TAG" ]; then
             PROFILE_TAG="${{ matrix.profile_tag }}"
           fi
-          echo "Resolved inputs: run_enrich=${RUN_ENRICH}, fetch_days=${FETCH_DAYS}, fetch_mode=${FETCH_MODE}, profile_tag=${PROFILE_TAG}, run_date_token=${RUN_DATE_TOKEN}, recall_top_k=${RECALL_TOP_K}, rrf_top_n=${RRF_TOP_N}"
+          echo "Resolved inputs: run_enrich=${RUN_ENRICH}, fetch_days=${FETCH_DAYS}, fetch_mode=${FETCH_MODE}, profile_tag=${PROFILE_TAG}, run_date_token=${RUN_DATE_TOKEN}, recall_top_k=${RECALL_TOP_K}, rrf_top_n=${RRF_TOP_N}, skip_llm_refine=${SKIP_LLM_REFINE}"
           ARGS=()
           if [ "$RUN_ENRICH" = "true" ]; then
             ARGS+=(--run-enrich)
@@ -246,6 +251,9 @@ jobs:
           fi
           if [ -n "$RRF_TOP_N" ]; then
             ARGS+=(--rrf-top-n "$RRF_TOP_N")
+          fi
+          if [ "$SKIP_LLM_REFINE" = "true" ]; then
+            ARGS+=(--skip-llm-refine)
           fi
           ARGS+=(--llm-batch-size 6 --llm-filter-concurrency 2)
           python src/main.py "${ARGS[@]}" --embedding-device cpu --embedding-batch-size 8

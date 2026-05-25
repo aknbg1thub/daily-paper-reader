@@ -308,6 +308,69 @@ def prepare_rerank_fallback(input_path: str, output_path: str) -> bool:
     return True
 
 
+def prepare_llm_refine_fallback(input_path: str, output_path: str) -> bool:
+    if not os.path.exists(input_path):
+        print(f"[WARN] Step 4 fallback input missing: {input_path}", flush=True)
+        return False
+
+    data = load_json_safe(input_path)
+    if not isinstance(data, dict):
+        print(f"[WARN] Step 4 fallback input is invalid: {input_path}", flush=True)
+        return False
+
+    by_id: dict[str, dict[str, Any]] = {}
+    queries = data.get("queries") or []
+    if isinstance(queries, list):
+        for q in queries:
+            if not isinstance(q, dict):
+                continue
+            tag = str(q.get("paper_tag") or q.get("tag") or "").strip()
+            query_text = str(q.get("query_text") or "").strip()
+            ranked = q.get("ranked")
+            if not isinstance(ranked, list) or not ranked:
+                ranked = build_ranked_from_sim_scores(q)
+            for item in ranked:
+                if not isinstance(item, dict):
+                    continue
+                pid = normalize_arxiv_id(item.get("paper_id") or item.get("id"))
+                if not pid:
+                    continue
+                try:
+                    normalized = float(item.get("score") or 0.0)
+                except Exception:
+                    normalized = 0.0
+                normalized = max(0.0, min(1.0, normalized))
+                try:
+                    star_score = (float(item.get("star_rating")) - 1.0) / 4.0
+                except Exception:
+                    star_score = normalized
+                combined = max(normalized, max(0.0, min(1.0, star_score)))
+                score = 6.0 + combined * 3.0
+                prev = by_id.get(pid)
+                if prev is not None and score <= float(prev.get("score") or 0.0):
+                    continue
+                by_id[pid] = {
+                    "id": pid,
+                    "paper_id": pid,
+                    "score": round(score, 3),
+                    "evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+                    "evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+                    "tldr_en": "Candidate selected by retrieval ranking.",
+                    "tldr_cn": "由检索排序选出的候选论文。",
+                    "tags": [tag] if tag else [],
+                    "matched_query_tag": tag,
+                    "matched_query_text": query_text,
+                    "matched_requirement_id": "",
+                }
+
+    data["llm_ranked"] = sorted(by_id.values(), key=lambda x: (-float(x.get("score") or 0.0), str(x.get("id") or "")))
+    data["llm_ranked_at"] = datetime.now(timezone.utc).isoformat()
+    data["llm_fallback"] = True
+    save_json(output_path, data)
+    print(f"[INFO] Step 4 fallback generated: {output_path} | items={len(data['llm_ranked'])}", flush=True)
+    return True
+
+
 def resolve_summary_step_env() -> dict[str, str]:
     env = os.environ.copy()
     summary_api_key = _read_env_text("SUMMARY_API_KEY", "BLT_SUMMARY_API_KEY")
@@ -598,6 +661,11 @@ def main() -> None:
         help="Optional concurrency for Step 4 LLM filtering.",
     )
     parser.add_argument(
+        "--skip-llm-refine",
+        action="store_true",
+        help="Skip Step 4 model filtering and create retrieval-ranked fallback scores.",
+    )
+    parser.add_argument(
         "--profile-tag",
         default="",
         help="仅运行指定 tag 对应的词条；大小写不敏感，支持空格。",
@@ -756,19 +824,23 @@ def main() -> None:
         )
     if trace_ids:
         print_trace_retrieval("RERANK", rerank_path, trace_ids)
-    run_step(
-        "Step 4 - LLM refine",
-        [
-            python,
-            os.path.join(SRC_DIR, "4.llm_refine_papers.py"),
-            *(["--batch-size", str(args.llm_batch_size)] if args.llm_batch_size else []),
-            *(
-                ["--filter-concurrency", str(args.llm_filter_concurrency)]
-                if args.llm_filter_concurrency
-                else []
-            ),
-        ],
-    )
+    if args.skip_llm_refine:
+        print("[INFO] Step 4 - LLM refine skipped; using retrieval fallback scores.", flush=True)
+        prepare_llm_refine_fallback(rerank_path, llm_path)
+    else:
+        run_step(
+            "Step 4 - LLM refine",
+            [
+                python,
+                os.path.join(SRC_DIR, "4.llm_refine_papers.py"),
+                *(["--batch-size", str(args.llm_batch_size)] if args.llm_batch_size else []),
+                *(
+                    ["--filter-concurrency", str(args.llm_filter_concurrency)]
+                    if args.llm_filter_concurrency
+                    else []
+                ),
+            ],
+        )
     if trace_ids:
         print_trace_llm("LLM", llm_path, trace_ids)
     run_step(

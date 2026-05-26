@@ -666,6 +666,11 @@ def main() -> None:
         help="Skip Step 4 model filtering and create retrieval-ranked fallback scores.",
     )
     parser.add_argument(
+        "--force-deep",
+        action="store_true",
+        help="Force all selected recommendations into deep_dive.",
+    )
+    parser.add_argument(
         "--profile-tag",
         default="",
         help="仅运行指定 tag 对应的词条；大小写不敏感，支持空格。",
@@ -849,6 +854,7 @@ def main() -> None:
             python,
             os.path.join(SRC_DIR, "5.select_papers.py"),
             *(["--modes", "skims"] if use_skims_mode else []),
+            *(["--all-deep"] if args.force_deep else []),
         ],
     )
     if trace_ids:

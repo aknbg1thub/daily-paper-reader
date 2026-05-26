@@ -31,6 +31,7 @@ window.DPRWorkflowRunner = (function () {
       key: 'daily-now',
       dispatchInputs: {
         run_enrich: 'false',
+        fetch_mode: 'standard',
         fetch_days: '10',
       },
     },

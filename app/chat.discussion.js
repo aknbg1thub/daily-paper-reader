@@ -224,6 +224,8 @@ window.PrivateDiscussionChat = (function () {
                   <div class="chat-quick-run-title">快速抓取</div>
                   <button id="chat-quick-run-close-btn" class="chat-quick-run-close-btn" type="button" aria-label="关闭">✕</button>
                 </div>
+                <button id="chat-quick-run-1d-deep-btn" class="chat-quick-run-item" type="button">立即搜寻一天内论文（精读）</button>
+                <button id="chat-quick-run-5d-deep-btn" class="chat-quick-run-item" type="button">立即搜寻五天内论文（精读）</button>
                 <button id="chat-quick-run-10d-btn" class="chat-quick-run-item" type="button">立即搜寻十天内论文</button>
                 <button id="chat-quick-run-30d-btn" class="chat-quick-run-item" type="button">立即搜寻三十天内论文</button>
                 <div class="chat-quick-run-divider" aria-hidden="true"></div>
@@ -296,7 +298,7 @@ window.PrivateDiscussionChat = (function () {
     return String(y);
   };
 
-  const runQuickFetch = (days, statusEl, showToast = () => {}) => {
+  const runQuickFetch = (days, statusEl, showToast = () => {}, options = {}) => {
     if (!window.DPRWorkflowRunner || typeof window.DPRWorkflowRunner.runQuickFetchByDays !== 'function') {
       if (statusEl) {
         statusEl.textContent = '工作流触发器未加载到当前页面。';
@@ -304,7 +306,7 @@ window.PrivateDiscussionChat = (function () {
       }
       return;
     }
-    window.DPRWorkflowRunner.runQuickFetchByDays(days);
+    window.DPRWorkflowRunner.runQuickFetchByDays(days, options);
     showToast();
   };
 
@@ -1397,6 +1399,8 @@ window.PrivateDiscussionChat = (function () {
     const chatSettingsBtn = document.getElementById('chat-settings-toggle-btn');
     const chatQuickRunBtn = document.getElementById('chat-quick-run-btn');
     const chatQuickRunCloseBtn = document.getElementById('chat-quick-run-close-btn');
+    const chatQuickRun1dDeepBtn = document.getElementById('chat-quick-run-1d-deep-btn');
+    const chatQuickRun5dDeepBtn = document.getElementById('chat-quick-run-5d-deep-btn');
     const chatQuickRun10dBtn = document.getElementById('chat-quick-run-10d-btn');
     const chatQuickRun30dBtn = document.getElementById('chat-quick-run-30d-btn');
     const chatQuickRunConferenceBtn = document.getElementById(
@@ -1640,6 +1644,32 @@ window.PrivateDiscussionChat = (function () {
       chatQuickRunCloseBtn.addEventListener('click', (e) => {
         e.preventDefault();
         closeQuickRunPopover();
+      });
+    }
+
+    if (chatQuickRun1dDeepBtn && !chatQuickRun1dDeepBtn._bound) {
+      chatQuickRun1dDeepBtn._bound = true;
+      chatQuickRun1dDeepBtn.addEventListener('click', () => {
+        runQuickFetch(1, statusEl, closeQuickRunPopover, {
+          fetchMode: 'standard',
+          dispatchInputs: {
+            fetch_mode: 'standard',
+            force_deep: 'true',
+          },
+        });
+      });
+    }
+
+    if (chatQuickRun5dDeepBtn && !chatQuickRun5dDeepBtn._bound) {
+      chatQuickRun5dDeepBtn._bound = true;
+      chatQuickRun5dDeepBtn.addEventListener('click', () => {
+        runQuickFetch(5, statusEl, closeQuickRunPopover, {
+          fetchMode: 'standard',
+          dispatchInputs: {
+            fetch_mode: 'standard',
+            force_deep: 'true',
+          },
+        });
       });
     }
 

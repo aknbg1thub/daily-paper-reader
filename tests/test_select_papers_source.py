@@ -279,6 +279,24 @@ class SelectPapersDeepPriorityModeTest(unittest.TestCase):
         deep_scores = [float(item.get("llm_score", 0)) for item in result.get("deep_dive", [])]
         self.assertEqual(deep_scores, sorted(deep_scores, reverse=True))
 
+    def test_force_all_into_deep_moves_quick_items_and_deduplicates(self):
+        result = {
+            "stats": {"deep_selected": 1, "quick_selected": 2},
+            "deep_dive": [{"id": "p-1", "llm_score": 9.0}],
+            "quick_skim": [
+                {"id": "p-2", "llm_score": 7.5},
+                {"id": "p-1", "llm_score": 9.0},
+            ],
+        }
+
+        forced = self.mod.force_all_into_deep(result)
+
+        self.assertEqual([item.get("id") for item in forced.get("deep_dive", [])], ["p-1", "p-2"])
+        self.assertEqual(forced.get("quick_skim"), [])
+        self.assertEqual(forced.get("stats", {}).get("deep_selected"), 2)
+        self.assertEqual(forced.get("stats", {}).get("quick_selected"), 0)
+        self.assertEqual(forced.get("stats", {}).get("forced_all_deep"), True)
+
 
 if __name__ == "__main__":
     unittest.main()

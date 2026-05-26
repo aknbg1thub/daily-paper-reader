@@ -37,20 +37,24 @@ on:
         description: "Skip Step 4 model filtering and use retrieval fallback scores"
         required: false
         default: "false"
+      force_deep:
+        description: "Force all selected recommendations into deep_dive"
+        required: false
+        default: "false"
 
 permissions:
   contents: write
 
 jobs:
   run:
-    name: run (${{ matrix.profile_tag }})
+    name: run (${{ matrix.profile_tag || 'ALL' }})
     runs-on: ubuntu-latest
     timeout-minutes: 120
     strategy:
       fail-fast: false
       max-parallel: 1
       matrix:
-        profile_tag: ${{ fromJson(github.event_name == 'workflow_dispatch' && github.event.inputs.profile_tag != '' && format('["{0}"]', github.event.inputs.profile_tag) || '["SC-QUBIT-CHIP","EQ-CIRCUIT","HAMILTONIAN"]') }}
+        profile_tag: ${{ fromJson(github.event_name == 'workflow_dispatch' && github.event.inputs.profile_tag != '' && format('["{0}"]', github.event.inputs.profile_tag) || '[""]') }}
     concurrency:
       group: daily-paper-reader-${{ github.ref }}-${{ matrix.profile_tag }}
       cancel-in-progress: false
@@ -216,6 +220,7 @@ jobs:
           RECALL_TOP_K="${{ github.event.inputs.recall_top_k }}"
           RRF_TOP_N="${{ github.event.inputs.rrf_top_n }}"
           SKIP_LLM_REFINE="${{ github.event.inputs.skip_llm_refine }}"
+          FORCE_DEEP="${{ github.event.inputs.force_deep }}"
           if [ -z "$RUN_ENRICH" ]; then
             RUN_ENRICH="false"
           fi
@@ -239,7 +244,10 @@ jobs:
               SKIP_LLM_REFINE="true"
             fi
           fi
-          echo "Resolved inputs: run_enrich=${RUN_ENRICH}, fetch_days=${FETCH_DAYS}, fetch_mode=${FETCH_MODE}, profile_tag=${PROFILE_TAG}, run_date_token=${RUN_DATE_TOKEN}, recall_top_k=${RECALL_TOP_K}, rrf_top_n=${RRF_TOP_N}, skip_llm_refine=${SKIP_LLM_REFINE}"
+          if [ -z "$FORCE_DEEP" ]; then
+            FORCE_DEEP="false"
+          fi
+          echo "Resolved inputs: run_enrich=${RUN_ENRICH}, fetch_days=${FETCH_DAYS}, fetch_mode=${FETCH_MODE}, profile_tag=${PROFILE_TAG}, run_date_token=${RUN_DATE_TOKEN}, recall_top_k=${RECALL_TOP_K}, rrf_top_n=${RRF_TOP_N}, skip_llm_refine=${SKIP_LLM_REFINE}, force_deep=${FORCE_DEEP}"
           ARGS=()
           if [ "$RUN_ENRICH" = "true" ]; then
             ARGS+=(--run-enrich)
@@ -264,6 +272,9 @@ jobs:
           fi
           if [ "$SKIP_LLM_REFINE" = "true" ]; then
             ARGS+=(--skip-llm-refine)
+          fi
+          if [ "$FORCE_DEEP" = "true" ]; then
+            ARGS+=(--force-deep)
           fi
           ARGS+=(--llm-batch-size 6 --llm-filter-concurrency 2)
           python src/main.py "${ARGS[@]}" --embedding-device cpu --embedding-batch-size 8

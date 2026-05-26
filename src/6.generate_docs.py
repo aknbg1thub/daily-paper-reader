@@ -98,6 +98,15 @@ def call_blt_structured_json(
     return parsed
 
 
+def docs_llm_disabled() -> bool:
+    return str(os.getenv("DPR_DOCS_NO_LLM") or "").strip().lower() in {
+        "1",
+        "true",
+        "yes",
+        "on",
+    }
+
+
 def log(message: str) -> None:
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
     print(f"[{ts}] {message}", flush=True)
@@ -322,7 +331,7 @@ def fetch_arxiv_paper_meta(arxiv_id: str) -> Dict[str, Any]:
 
 
 def translate_title_and_abstract_to_zh(title: str, abstract: str) -> Tuple[str, str]:
-    if LLM_CLIENT is None:
+    if LLM_CLIENT is None or docs_llm_disabled():
         return "", ""
     title = title.strip() if title else ""
     abstract = abstract.strip() if abstract else ""
@@ -589,7 +598,7 @@ def upsert_glance_block_in_text(md_text: str, glance: str) -> str:
 
 
 def generate_deep_summary(md_file_path: str, txt_file_path: str, max_retries: int = 3) -> str | None:
-    if LLM_CLIENT is None:
+    if LLM_CLIENT is None or docs_llm_disabled():
         log("[WARN] 未配置 BLT_API_KEY，跳过精读总结。")
         return None
     if not os.path.exists(md_file_path):
@@ -663,7 +672,7 @@ def generate_glance_overview(title: str, abstract: str, max_retries: int = 3) ->
     生成论文速览（包含 TLDR、Motivation、Method、Result、Conclusion）。
     使用 JSON 结构化输出，确保返回完整的五个字段。
     """
-    if LLM_CLIENT is None:
+    if LLM_CLIENT is None or docs_llm_disabled():
         log("[WARN] 未配置 LLM_CLIENT，跳过速览生成。")
         return None
 
@@ -1108,7 +1117,7 @@ def build_daily_brief_summary(
         + "\n- 这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。"
     )
 
-    if LLM_CLIENT is None:
+    if LLM_CLIENT is None or docs_llm_disabled():
         return fallback
 
     system_prompt = (
@@ -1671,6 +1680,7 @@ def process_paper(
     docs_dir: str,
     glance_only: bool = False,
     force_glance: bool = False,
+    metadata_only: bool = False,
 ) -> Tuple[str, str]:
     title = (paper.get("title") or "").strip()
     arxiv_id = str(paper.get("id") or paper.get("paper_id") or "").strip()
@@ -1679,6 +1689,17 @@ def process_paper(
     pdf_url = str(paper.get("link") or paper.get("pdf_url") or "").strip()
 
     glance = ""
+
+    if metadata_only:
+        if os.path.exists(md_path):
+            return paper_id, title
+        paper["_glance_overview"] = build_glance_fallback(paper)
+        tags_list = build_tags_list(section, paper.get("llm_tags") or [])
+        content = build_markdown_content(paper, section, "", "", tags_list)
+        os.makedirs(os.path.dirname(md_path), exist_ok=True)
+        with open(md_path, "w", encoding="utf-8") as f:
+            f.write(content)
+        return paper_id, title
 
     if os.path.exists(md_path):
         # 即使是 glance-only，也要确保生成/补齐 .txt（用于前端聊天上下文等）
@@ -2667,6 +2688,11 @@ def main() -> None:
         help="只更新 docs/_sidebar.md（不生成/不重写论文 Markdown，避免触发 LLM 调用）。",
     )
     parser.add_argument(
+        "--metadata-only",
+        action="store_true",
+        help="Generate lightweight paper pages from recommendation metadata only; skip LLM, PDF text, and figure extraction.",
+    )
+    parser.add_argument(
         "--fix-tags-only",
         action="store_true",
         help="仅修复已生成文章里的 `**Tags**`（移除“精读区/速读区”标签），不触发 LLM。",
@@ -2702,6 +2728,9 @@ def main() -> None:
         help="step6 每篇论文并发生成数量。",
     )
     args = parser.parse_args()
+
+    if args.metadata_only:
+        os.environ["DPR_DOCS_NO_LLM"] = "1"
 
     date_str = args.date or TODAY_STR
     mode = args.mode
@@ -2744,6 +2773,7 @@ def main() -> None:
                 docs_dir,
                 glance_only=args.glance_only,
                 force_glance=args.force_glance,
+                metadata_only=args.metadata_only,
             )
             log(f"[OK] 单篇论文已生成：{paper_title}（{paper_id}），date={single_date}，section={section}")
             log_substep("6.p", "单篇论文生成", "END")
@@ -2847,6 +2877,7 @@ def main() -> None:
                     docs_dir,
                     args.glance_only,
                     args.force_glance,
+                    args.metadata_only,
                 )
                 futures[future] = (index, paper)
 

@@ -688,6 +688,11 @@ def main() -> None:
         help="Force all selected recommendations into deep_dive.",
     )
     parser.add_argument(
+        "--metadata-only-docs",
+        action="store_true",
+        help="Generate lightweight docs from metadata only; skip Step 6 LLM/PDF/figure work.",
+    )
+    parser.add_argument(
         "--profile-tag",
         default="",
         help="仅运行指定 tag 对应的词条；大小写不敏感，支持空格。",
@@ -882,6 +887,7 @@ def main() -> None:
             python,
             os.path.join(SRC_DIR, "6.generate_docs.py"),
             *(["--mode", "skims"] if use_skims_mode else []),
+            *(["--metadata-only"] if args.metadata_only_docs else []),
             *(
                 ["--sidebar-date-label", sidebar_date_label]
                 if sidebar_date_label

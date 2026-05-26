@@ -247,7 +247,11 @@ jobs:
           if [ -z "$FORCE_DEEP" ]; then
             FORCE_DEEP="false"
           fi
-          echo "Resolved inputs: run_enrich=${RUN_ENRICH}, fetch_days=${FETCH_DAYS}, fetch_mode=${FETCH_MODE}, profile_tag=${PROFILE_TAG}, run_date_token=${RUN_DATE_TOKEN}, recall_top_k=${RECALL_TOP_K}, rrf_top_n=${RRF_TOP_N}, skip_llm_refine=${SKIP_LLM_REFINE}, force_deep=${FORCE_DEEP}"
+          METADATA_ONLY_DOCS="false"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "$RUN_DATE_TOKEN" ] && [ "$SKIP_LLM_REFINE" = "true" ] && [ "$FORCE_DEEP" = "true" ]; then
+            METADATA_ONLY_DOCS="true"
+          fi
+          echo "Resolved inputs: run_enrich=${RUN_ENRICH}, fetch_days=${FETCH_DAYS}, fetch_mode=${FETCH_MODE}, profile_tag=${PROFILE_TAG}, run_date_token=${RUN_DATE_TOKEN}, recall_top_k=${RECALL_TOP_K}, rrf_top_n=${RRF_TOP_N}, skip_llm_refine=${SKIP_LLM_REFINE}, force_deep=${FORCE_DEEP}, metadata_only_docs=${METADATA_ONLY_DOCS}"
           ARGS=()
           if [ "$RUN_ENRICH" = "true" ]; then
             ARGS+=(--run-enrich)
@@ -275,6 +279,9 @@ jobs:
           fi
           if [ "$FORCE_DEEP" = "true" ]; then
             ARGS+=(--force-deep)
+          fi
+          if [ "$METADATA_ONLY_DOCS" = "true" ]; then
+            ARGS+=(--metadata-only-docs)
           fi
           ARGS+=(--llm-batch-size 6 --llm-filter-concurrency 2)
           python src/main.py "${ARGS[@]}" --embedding-device cpu --embedding-batch-size 8

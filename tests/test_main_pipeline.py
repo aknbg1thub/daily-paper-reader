@@ -151,6 +151,37 @@ class MainPipelineTest(unittest.TestCase):
             labels = [item[0] for item in calls]
             self.assertIn("Step 3 - Rerank", labels)
 
+    def test_llm_refine_fallback_preserves_versioned_arxiv_ids(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            root = Path(tmpdir)
+            input_path = root / "rank.json"
+            output_path = root / "rank.llm.json"
+            payload = {
+                "papers": [
+                    {"id": "2605.12345v2", "title": "Versioned Paper"},
+                ],
+                "queries": [
+                    {
+                        "tag": "query:test",
+                        "query_text": "superconducting qubit Hamiltonian",
+                        "ranked": [
+                            {
+                                "paper_id": "2605.12345v2",
+                                "score": 0.9,
+                                "star_rating": 5,
+                            }
+                        ],
+                    }
+                ],
+            }
+            input_path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
+
+            ok = self.mod.prepare_llm_refine_fallback(str(input_path), str(output_path))
+
+            self.assertTrue(ok)
+            data = json.loads(output_path.read_text(encoding="utf-8"))
+            self.assertEqual(data["llm_ranked"][0]["paper_id"], "2605.12345v2")
+
 
 if __name__ == "__main__":
     unittest.main()

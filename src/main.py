@@ -286,6 +286,21 @@ def build_ranked_from_sim_scores(query_obj: dict[str, Any]) -> list[dict[str, An
     return ranked
 
 
+def build_paper_id_lookup(papers: Any) -> dict[str, str]:
+    lookup: dict[str, str] = {}
+    if not isinstance(papers, list):
+        return lookup
+    for paper in papers:
+        if not isinstance(paper, dict):
+            continue
+        raw_id = str(paper.get("id") or paper.get("paper_id") or "").strip()
+        if not raw_id:
+            continue
+        lookup.setdefault(raw_id, raw_id)
+        lookup.setdefault(normalize_arxiv_id(raw_id), raw_id)
+    return lookup
+
+
 def prepare_rerank_fallback(input_path: str, output_path: str) -> bool:
     if not os.path.exists(input_path):
         print(f"[WARN] Step 3 fallback 输入不存在，无法生成兜底 rerank 文件: {input_path}", flush=True)
@@ -319,6 +334,7 @@ def prepare_llm_refine_fallback(input_path: str, output_path: str) -> bool:
         return False
 
     by_id: dict[str, dict[str, Any]] = {}
+    paper_id_lookup = build_paper_id_lookup(data.get("papers"))
     queries = data.get("queries") or []
     if isinstance(queries, list):
         for q in queries:
@@ -332,7 +348,8 @@ def prepare_llm_refine_fallback(input_path: str, output_path: str) -> bool:
             for item in ranked:
                 if not isinstance(item, dict):
                     continue
-                pid = normalize_arxiv_id(item.get("paper_id") or item.get("id"))
+                raw_pid = str(item.get("paper_id") or item.get("id") or "").strip()
+                pid = paper_id_lookup.get(raw_pid) or paper_id_lookup.get(normalize_arxiv_id(raw_pid)) or raw_pid
                 if not pid:
                     continue
                 try:

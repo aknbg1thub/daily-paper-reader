@@ -122,6 +122,25 @@ PLACEHOLDER_FIELD_MARKERS = (
     "检索排序选出",
 )
 
+TOPIC_LABEL_CN = {
+    "qc-general": "量子计算综合",
+    "sc-qubit-chip": "超导量子芯片设计",
+    "topo-layout": "拓扑层：布局布线算法",
+    "eq-circuit": "等效电路层：电路构建与哈密顿量求解",
+    "hamiltonian": "等效电路层：哈密顿量求解",
+    "sim-accel": "仿真层：加速仿真方法",
+    "co-opt": "协同优化",
+    "ai-scqc-design": "AI赋能超导量子芯片设计",
+}
+
+
+def display_topic_label(label: str) -> str:
+    raw = str(label or "").strip()
+    if not raw:
+        return ""
+    key = raw.lower().replace("_", "-")
+    return TOPIC_LABEL_CN.get(key, raw)
+
 
 def is_placeholder_display_text(value: Any) -> bool:
     text = str(value or "").strip()
@@ -894,6 +913,7 @@ def build_tags_html(section: str, llm_tags: List[str]) -> str:
         if dedup_key in seen:
             continue
         seen.add(dedup_key)
+        display_label = display_topic_label(label) if kind == "query" else label
 
         # 前台主标签统一使用 query（蓝色），paper 为预留类型。
         css = {
@@ -901,7 +921,7 @@ def build_tags_html(section: str, llm_tags: List[str]) -> str:
             "paper": "tag-pink",
         }.get(kind, "tag-pink")
         tags_html.append(
-            f'<span class="tag-label {css}">{html.escape(label)}</span>'
+            f'<span class="tag-label {css}">{html.escape(display_label)}</span>'
         )
     return " ".join(tags_html)
 
@@ -1131,7 +1151,9 @@ def _format_entry_tags(tags: List[Tuple[str, str]]) -> str:
             continue
         if not v:
             continue
-        if k in ("keyword", "query", "paper"):
+        if k in ("keyword", "query"):
+            labels.append(display_topic_label(v))
+        elif k == "paper":
             labels.append(f"{k}:{v}")
         else:
             labels.append(v)
@@ -1283,7 +1305,7 @@ def build_latest_report_section(
         for idx, (paper_id, title, tags) in enumerate(deep_entries, start=1):
             safe_title = (title or "").strip() or paper_id
             evidence = (paper_evidence_by_id.get(str(paper_id).strip(), "") or "").strip()
-            lines.append(f"{idx}. [{safe_title}]({build_docsify_id_href(paper_id)})  ")
+            lines.append(f"{idx}. [{safe_title}]({build_docsify_id_href(paper_id)})")
             lines.append(f"   标签：{_format_entry_tags(tags)}")
             if evidence:
                 lines.append(f"   evidence：{evidence}")
@@ -1295,7 +1317,7 @@ def build_latest_report_section(
         for idx, (paper_id, title, tags) in enumerate(quick_entries, start=1):
             safe_title = (title or "").strip() or paper_id
             evidence = (paper_evidence_by_id.get(str(paper_id).strip(), "") or "").strip()
-            lines.append(f"{idx}. [{safe_title}]({build_docsify_id_href(paper_id)})  ")
+            lines.append(f"{idx}. [{safe_title}]({build_docsify_id_href(paper_id)})")
             lines.append(f"   标签：{_format_entry_tags(tags)}")
             if evidence:
                 lines.append(f"   evidence：{evidence}")
@@ -2131,6 +2153,37 @@ def update_sidebar(
     paper_evidence_by_id: Dict[str, str],
     date_label: str | None = None,
 ) -> None:
+    def normalize_sidebar_payload_line(line: str) -> str:
+        match = re.search(r'data-sidebar-item="([^"]*)"', line or "")
+        if not match:
+            return line
+        try:
+            payload = json.loads(html.unescape(match.group(1)))
+        except Exception:
+            return line
+        tags = payload.get("tags")
+        if isinstance(tags, list):
+            clean_tags: List[Dict[str, str]] = []
+            changed = False
+            for tag in tags:
+                if not isinstance(tag, dict):
+                    continue
+                kind = str(tag.get("kind") or "other").strip() or "other"
+                label = str(tag.get("label") or "").strip()
+                if not label:
+                    continue
+                if kind in ("keyword", "query"):
+                    new_label = display_topic_label(label)
+                    changed = changed or new_label != label or kind != "query"
+                    clean_tags.append({"kind": "query", "label": new_label})
+                else:
+                    clean_tags.append({"kind": kind, "label": label})
+            if changed:
+                payload["tags"] = clean_tags
+                encoded = html.escape(json.dumps(payload, ensure_ascii=False), quote=True)
+                return line[: match.start(1)] + encoded + line[match.end(1) :]
+        return line
+
     def build_sidebar_item_payload(
         paper_id: str,
         title: str,
@@ -2151,6 +2204,9 @@ def update_sidebar(
                 except Exception:
                     score_text = safe_label
                 continue
+            if safe_kind in ("keyword", "query"):
+                safe_kind = "query"
+                safe_label = display_topic_label(safe_label)
             clean_tags.append({"kind": safe_kind, "label": safe_label})
 
         arxiv_id = str(paper_id or "").strip().split("/")[-1]
@@ -2245,6 +2301,8 @@ def update_sidebar(
             del lines[i]
             continue
         i += 1
+
+    lines = [normalize_sidebar_payload_line(line) for line in lines]
 
     with open(sidebar_path, "w", encoding="utf-8") as f:
         f.writelines(lines)

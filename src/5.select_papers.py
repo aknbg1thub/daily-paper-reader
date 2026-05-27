@@ -96,7 +96,16 @@ def save_json(data: Dict[str, Any], path: str) -> None:
     log(f"[INFO] saved: {path}")
 
 
-SCQC_TOPIC_TAGS = {"SC-QUBIT-CHIP", "EQ-CIRCUIT", "HAMILTONIAN"}
+SCQC_TOPIC_TAGS = {
+    "QC-GENERAL",
+    "SC-QUBIT-CHIP",
+    "TOPO-LAYOUT",
+    "EQ-CIRCUIT",
+    "HAMILTONIAN",
+    "SIM-ACCEL",
+    "CO-OPT",
+    "AI-SCQC-DESIGN",
+}
 SCQC_STRONG_PATTERNS = [
     r"\bsuperconducting\s+(?:qubit|quantum\s+(?:comput|processor|chip)|circuit\s+qed|quantum\s+circuit)\b",
     r"\btransmon(?:s)?\b",

@@ -373,6 +373,88 @@ class PaperFiguresTest(unittest.TestCase):
             self.assertEqual(merged[0]["figure_number"], "1")
             self.assertTrue(Path(merged[0]["_source_path"]).exists())
 
+    def test_vlm_page_scan_adds_figure_without_text_caption(self):
+        with tempfile.TemporaryDirectory() as d:
+            tmp_dir = Path(d)
+            pdf_path = tmp_dir / "sample.pdf"
+            output_dir = tmp_dir / "out"
+            output_dir.mkdir()
+
+            doc = fitz.open()
+            page = doc.new_page(width=612, height=792)
+            page.draw_rect(fitz.Rect(80, 120, 520, 420), color=(0, 0, 1), fill=(0.88, 0.95, 1))
+            doc.save(pdf_path)
+            doc.close()
+
+            original_call_vlm = self.mod._call_vlm_for_page
+            try:
+                self.mod._call_vlm_for_page = lambda **kwargs: [
+                    {
+                        "type": "figure",
+                        "number": "2",
+                        "caption": "Fig. 2. VLM-only schematic.",
+                        "bbox": [160, 240, 1040, 840],
+                    }
+                ]
+                merged = self.mod._merge_missing_caption_crops(
+                    str(pdf_path),
+                    [],
+                    str(output_dir),
+                )
+            finally:
+                self.mod._call_vlm_for_page = original_call_vlm
+
+            self.assertEqual(len(merged), 1)
+            self.assertEqual(merged[0]["figure_number"], "2")
+            self.assertEqual(merged[0]["caption"], "Fig. 2. VLM-only schematic.")
+            self.assertTrue(Path(merged[0]["_source_path"]).exists())
+
+    def test_vlm_bbox_is_preferred_for_caption_crop(self):
+        with tempfile.TemporaryDirectory() as d:
+            tmp_dir = Path(d)
+            pdf_path = tmp_dir / "sample.pdf"
+            output_dir = tmp_dir / "out"
+            output_dir.mkdir()
+
+            doc = fitz.open()
+            page = doc.new_page(width=612, height=792)
+            page.draw_rect(fitz.Rect(80, 120, 520, 420), color=(0, 0, 1), fill=(0.88, 0.95, 1))
+            page.insert_textbox(fitz.Rect(72, 440, 540, 500), "Fig. 2. Missing vector-only schematic.", fontsize=12)
+            doc.save(pdf_path)
+            doc.close()
+
+            original_call_vlm = self.mod._call_vlm_for_page
+            original_visual_crop = self.mod._caption_visual_crop_rect
+            original_band_crop = self.mod._caption_band_crop_rect
+            try:
+                self.mod._call_vlm_for_page = lambda **kwargs: [
+                    {
+                        "type": "figure",
+                        "number": "2",
+                        "caption": "Fig. 2. Missing vector-only schematic.",
+                        "bbox": [160, 240, 1040, 840],
+                    }
+                ]
+                self.mod._caption_visual_crop_rect = lambda *args, **kwargs: (_ for _ in ()).throw(
+                    AssertionError("visual fallback should not be used when VLM returns a crop")
+                )
+                self.mod._caption_band_crop_rect = lambda *args, **kwargs: (_ for _ in ()).throw(
+                    AssertionError("band fallback should not be used when VLM returns a crop")
+                )
+                merged = self.mod._merge_missing_caption_crops(
+                    str(pdf_path),
+                    [],
+                    str(output_dir),
+                )
+            finally:
+                self.mod._call_vlm_for_page = original_call_vlm
+                self.mod._caption_visual_crop_rect = original_visual_crop
+                self.mod._caption_band_crop_rect = original_band_crop
+
+            self.assertEqual(len(merged), 1)
+            self.assertEqual(merged[0]["figure_number"], "2")
+            self.assertTrue(Path(merged[0]["_source_path"]).exists())
+
     def test_paper_order_precedes_label_order(self):
         figures = self.mod._finalize_figure_order(
             [

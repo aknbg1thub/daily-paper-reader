@@ -29,9 +29,9 @@ if SCRIPT_DIR not in sys.path:
     sys.path.insert(0, SCRIPT_DIR)
 
 try:
-    from paper_figures import ensure_paper_figures
+    from paper_figures import FIGURE_META_VERSION, _absolute_dir, ensure_paper_figures
 except Exception:  # pragma: no cover
-    from src.paper_figures import ensure_paper_figures
+    from src.paper_figures import FIGURE_META_VERSION, _absolute_dir, ensure_paper_figures
 
 CONFIG_FILE = os.path.join(ROOT_DIR, "config.yaml")
 TODAY_STR = str(os.getenv("DPR_RUN_DATE") or "").strip() or datetime.now(timezone.utc).strftime("%Y%m%d")
@@ -1755,6 +1755,27 @@ def maybe_generate_paper_figures(
         return []
 
 
+def paper_figure_cache_is_current(
+    paper: Dict[str, Any],
+    *,
+    docs_dir: str,
+    paper_id: str,
+) -> bool:
+    source_key = str(paper.get("source") or "").strip().lower()
+    if source_key not in {"arxiv", "biorxiv"}:
+        return True
+    asset_key = str(paper.get("id") or paper_id.replace("/", "-")).strip()
+    meta_path = os.path.join(_absolute_dir(docs_dir, source_key, asset_key), "meta.json")
+    if not os.path.exists(meta_path):
+        return False
+    try:
+        with open(meta_path, "r", encoding="utf-8") as f:
+            payload = json.load(f) or {}
+    except Exception:
+        return False
+    return int(payload.get("version") or 0) == int(FIGURE_META_VERSION)
+
+
 def upsert_front_matter_field(md_text: str, key: str, value: str) -> Tuple[str, bool]:
     text = str(md_text or "")
     if not text.startswith("---\n") and not text.startswith("---\r\n"):
@@ -2023,7 +2044,13 @@ def process_paper(
 
         existing_meta = _parse_front_matter(existing)
         has_figures_json = bool(str(existing_meta.get("figures_json") or "").strip()) if existing_meta else False
-        if has_figures_json and not force_figures:
+        figures_cache_current = paper_figure_cache_is_current(
+            paper,
+            docs_dir=docs_dir,
+            paper_id=paper_id,
+        )
+        should_refresh_figures = force_figures or (has_figures_json and not figures_cache_current)
+        if has_figures_json and not should_refresh_figures:
             figures = normalize_figure_assets(parse_figures_json_value(existing_meta.get("figures_json")))
             if figures:
                 updated, changed = upsert_front_matter_field(
@@ -2041,7 +2068,7 @@ def process_paper(
                 docs_dir=docs_dir,
                 paper_id=paper_id,
                 pdf_url=pdf_url,
-                force=force_figures,
+                force=should_refresh_figures,
             )
             if figures:
                 paper["_figure_assets"] = figures

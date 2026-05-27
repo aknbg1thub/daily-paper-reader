@@ -21,7 +21,7 @@ MIN_FIGURE_HEIGHT = 180
 MIN_FIGURE_AREA = 120_000
 MIN_CAPTION_CROP_AREA = 30_000
 WEBP_QUALITY = 82
-FIGURE_META_VERSION = 6
+FIGURE_META_VERSION = 7
 PDFFIGURES2_JAR_ENV = "PDFFIGURES2_JAR"
 PDFFIGURES2_DEFAULT_CACHE = os.path.expanduser("~/.cache/dpr-tools/pdffigures2/pdffigures2.jar")
 PDFFIGURES2_REPO_CACHE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "tools", "pdffigures2.jar"))
@@ -196,17 +196,26 @@ def _call_vlm_for_page(
                 ],
             }
         )
-    if not caption_brief:
-        return []
+    if caption_brief:
+        task = (
+            "For each real Figure/Table caption shown in the hints, return one item with a bounding box in IMAGE PIXELS. "
+            "Also include any other visible Figure/Table captions on this page that are missing from the hints. "
+            "Use captions only as anchors to find the nearby visual/table body."
+        )
+    else:
+        task = (
+            "Perform an OCR-style page scan. Detect every visible Figure/Table caption on this page and return one item "
+            "for each corresponding figure/table body."
+        )
 
     prompt = (
         "You are extracting figures and tables from a scientific paper page image. "
-        "Use the visible page image and the provided caption hints. Return strict JSON only.\n"
+        "Use the visible page image as the source of truth. Return strict JSON only.\n"
         f"Page image size is {page_width}x{page_height} pixels. Page number: {page_no}.\n"
-        "For each real Figure/Table caption shown in the hints, return one item with a bounding box in IMAGE PIXELS. "
-        "The bbox must include only the figure/table body, excluding the caption/title text and unrelated body text. "
-        "Use the caption only as an anchor to find the nearby visual/table body. "
-        "Do not invent figures. Preserve the label number exactly. "
+        f"{task} "
+        "The bbox must include only the figure/table body, excluding the caption/title text, page headers/footers, "
+        "and unrelated body text. Do not crop a paragraph as a figure. Do not invent figures. "
+        "Preserve the label number exactly as shown in the caption, for example 2, S2, A.1, B.1, or I. "
         "JSON schema: {\"items\":[{\"type\":\"figure|table\",\"number\":\"1\",\"bbox\":[x1,y1,x2,y2],\"caption\":\"...\"}]}.\n"
         "Caption hints:\n"
         + json.dumps(caption_brief, ensure_ascii=False)
@@ -464,6 +473,28 @@ def _is_probable_text_crop(path: str, item_type: str) -> bool:
     if str(item_type or "").lower() == "table":
         return False
     return _looks_like_text_block(path)
+
+
+def _disambiguate_repeated_label(
+    item_type: str,
+    figure_number: str,
+    page: int,
+    counts: Dict[tuple[str, str], int],
+) -> str:
+    item_type = str(item_type or "figure").strip().lower() or "figure"
+    figure_number = str(figure_number or "").strip()
+    if not figure_number:
+        return ""
+    label_key = (item_type, figure_number.lower())
+    counts[label_key] = counts.get(label_key, 0) + 1
+    if counts[label_key] <= 1:
+        return figure_number
+    page_label = f"p{int(page or 0)}"
+    if re.match(r"^[A-Za-z][.\d]", figure_number):
+        return f"{figure_number}-{page_label}"
+    if int(page or 0) >= 8:
+        return f"Appendix {figure_number}"
+    return f"{figure_number}-{page_label}"
 
 
 def _finalize_figure_order(figures: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
@@ -968,6 +999,22 @@ def _vlm_bbox_to_page_rect(
     return rect
 
 
+def _normalize_vlm_detection(detected: Dict[str, Any]) -> Dict[str, str]:
+    raw_type = str(detected.get("type") or "").strip().lower()
+    raw_number = str(detected.get("number") or "").strip()
+    caption = str(detected.get("caption") or "").strip()
+    label_info = _extract_item_label(f"{raw_type or 'figure'} {raw_number}")
+    if not label_info.get("label"):
+        label_info = _extract_item_label(caption)
+    item_type = label_info.get("type") or ("table" if raw_type.startswith(("tab", "table")) else "figure")
+    number = label_info.get("label") or _normalize_item_label(raw_number)
+    return {
+        "item_type": "table" if str(item_type).lower().startswith(("tab", "table")) else "figure",
+        "figure_number": number,
+        "caption": caption,
+    }
+
+
 def _caption_is_below_body(page: fitz.Page, caption_rect: fitz.Rect) -> bool:
     page_rect = page.rect
     above_space = caption_rect.y0 - page_rect.y0
@@ -1014,8 +1061,6 @@ def _merge_missing_caption_crops(
     output_dir: str,
 ) -> List[Dict[str, Any]]:
     caption_items = _collect_caption_regions(pdf_path)
-    if not caption_items:
-        return candidates
     seen_labels = {
         (
             str(item.get("item_type") or "figure").lower(),
@@ -1024,6 +1069,11 @@ def _merge_missing_caption_crops(
         for item in candidates
         if str(item.get("figure_number") or "").strip()
     }
+    label_counts: Dict[tuple[str, str], int] = {}
+    for item in candidates:
+        figure_number = str(item.get("figure_number") or "").strip()
+        if figure_number:
+            label_counts[(str(item.get("item_type") or "figure").lower(), figure_number.lower())] = 1
     missing = [
         item
         for item in caption_items
@@ -1033,7 +1083,7 @@ def _merge_missing_caption_crops(
         )
         not in seen_labels
     ]
-    if not missing:
+    if not missing and not os.getenv("DPR_FIGURE_VLM_SCAN_PAGES", "1").strip() != "0":
         return candidates
 
     try:
@@ -1046,10 +1096,25 @@ def _merge_missing_caption_crops(
             by_page.setdefault(int(item.get("page") or 0), []).append(item)
 
         vlm_rects: Dict[tuple[str, str], fitz.Rect] = {}
-        for page_no, page_items in by_page.items():
+        vlm_extra_items: List[Dict[str, Any]] = []
+        scan_pages = os.getenv("DPR_FIGURE_VLM_SCAN_PAGES", "1").strip() != "0"
+        max_scan_pages = max(int(os.getenv("DPR_FIGURE_VLM_MAX_PAGES", "40") or "40"), 0)
+        pages_to_scan: List[int] = sorted(page_no for page_no in by_page if page_no > 0)
+        if scan_pages and max_scan_pages:
+            for page_no in range(1, len(doc) + 1):
+                if page_no in by_page:
+                    continue
+                page = doc[page_no - 1]
+                if _collect_visual_rects(page):
+                    pages_to_scan.append(page_no)
+                if len(pages_to_scan) >= max_scan_pages:
+                    break
+
+        for page_no in pages_to_scan[:max_scan_pages or len(pages_to_scan)]:
             if page_no <= 0 or page_no > len(doc):
                 continue
             page = doc[page_no - 1]
+            page_items = by_page.get(page_no, [])
             try:
                 page_png, image_width, image_height = _render_page_png(page, scale=2.0)
                 vlm_items = _call_vlm_for_page(
@@ -1062,11 +1127,9 @@ def _merge_missing_caption_crops(
             except Exception:
                 vlm_items = []
             for detected in vlm_items:
-                label_info = _extract_item_label(
-                    f"{detected.get('type') or 'figure'} {detected.get('number') or ''}"
-                )
-                item_type = label_info.get("type") or str(detected.get("type") or "figure").lower()
-                number = label_info.get("label") or str(detected.get("number") or "").strip()
+                normalized = _normalize_vlm_detection(detected)
+                item_type = normalized["item_type"]
+                number = normalized["figure_number"]
                 rect = _vlm_bbox_to_page_rect(detected.get("bbox"), page, image_width, image_height)
                 if rect is None or not number:
                     continue
@@ -1095,6 +1158,66 @@ def _merge_missing_caption_crops(
                     if item_type == "table":
                         rect = _tighten_table_crop_rect(page, caption_rect, rect)
                 vlm_rects[(item_type, number.lower())] = rect
+                if not isinstance(caption_rect, fitz.Rect):
+                    vlm_extra_items.append(
+                        {
+                            "item_type": item_type,
+                            "figure_number": number,
+                            "caption": normalized["caption"],
+                            "page": page_no,
+                            "_crop_rect": rect,
+                            "_source_index": len(vlm_extra_items) + 1,
+                        }
+                    )
+
+        def append_crop_candidate(item: Dict[str, Any], crop_rect: fitz.Rect, crop_source: str) -> None:
+            page_no = int(item.get("page") or 0)
+            if page_no <= 0 or page_no > len(doc):
+                return
+            page = doc[page_no - 1]
+            if crop_rect is None or crop_rect.is_empty:
+                return
+            if str(item.get("item_type") or "figure").lower() == "table" and isinstance(item.get("caption_rect"), fitz.Rect):
+                crop_rect = _tighten_table_crop_rect(page, item["caption_rect"], crop_rect)
+            if crop_rect.width < MIN_FIGURE_WIDTH / 2 or crop_rect.height < MIN_FIGURE_HEIGHT / 2:
+                return
+            tmp_path = os.path.join(output_dir, f"caption-crop-{len(candidates) + 1:03d}.webp")
+            try:
+                width, height = _save_page_crop(page, crop_rect, tmp_path)
+            except Exception:
+                return
+            if width * height < MIN_CAPTION_CROP_AREA:
+                try:
+                    os.remove(tmp_path)
+                except OSError:
+                    pass
+                return
+            if crop_source == "band" and _is_probable_text_crop(tmp_path, str(item.get("item_type") or "figure")):
+                try:
+                    os.remove(tmp_path)
+                except OSError:
+                    pass
+                return
+            item = dict(item)
+            item["_source_path"] = tmp_path
+            item["width"] = width
+            item["height"] = height
+            item["_source_index"] = int(item.get("_source_index") or 0)
+            item["figure_number"] = _disambiguate_repeated_label(
+                str(item.get("item_type") or "figure"),
+                str(item.get("figure_number") or ""),
+                int(item.get("page") or 0),
+                label_counts,
+            )
+            item.pop("caption_rect", None)
+            item.pop("_crop_rect", None)
+            candidates.append(item)
+            seen_labels.add(
+                (
+                    str(item.get("item_type") or "figure").lower(),
+                    str(item.get("figure_number") or "").strip().lower(),
+                )
+            )
 
         for item in missing:
             page_no = int(item.get("page") or 0)
@@ -1125,40 +1248,16 @@ def _merge_missing_caption_crops(
                     crop_source = "band"
             if crop_rect is None:
                 continue
-            if label_key[0] == "table":
-                crop_rect = _tighten_table_crop_rect(page, item["caption_rect"], crop_rect)
-            if crop_rect.width < MIN_FIGURE_WIDTH / 2 or crop_rect.height < MIN_FIGURE_HEIGHT / 2:
-                continue
-            tmp_path = os.path.join(output_dir, f"caption-crop-{len(candidates) + 1:03d}.webp")
-            try:
-                width, height = _save_page_crop(page, crop_rect, tmp_path)
-            except Exception:
-                continue
-            if width * height < MIN_CAPTION_CROP_AREA:
-                try:
-                    os.remove(tmp_path)
-                except OSError:
-                    pass
-                continue
-            if crop_source == "band" and _is_probable_text_crop(tmp_path, str(item.get("item_type") or "figure")):
-                try:
-                    os.remove(tmp_path)
-                except OSError:
-                    pass
-                continue
-            item = dict(item)
-            item["_source_path"] = tmp_path
-            item["width"] = width
-            item["height"] = height
-            item["_source_index"] = int(item.get("_source_index") or 0)
-            item.pop("caption_rect", None)
-            candidates.append(item)
-            seen_labels.add(
-                (
-                    str(item.get("item_type") or "figure").lower(),
-                    str(item.get("figure_number") or "").strip().lower(),
-                )
+            append_crop_candidate(item, crop_rect, crop_source)
+
+        for item in vlm_extra_items:
+            label_key = (
+                str(item.get("item_type") or "figure").lower(),
+                str(item.get("figure_number") or "").strip().lower(),
             )
+            if label_key[1] and label_key in seen_labels:
+                continue
+            append_crop_candidate(item, item["_crop_rect"], "vlm")
     finally:
         doc.close()
     return candidates

@@ -1,15 +1,15 @@
 {
-  "version": 5,
-  "extractor": "pdffigures2",
+  "version": 7,
+  "extractor": "pymupdf-images",
   "figures": [
     {
       "url": "assets/figures/arxiv/2604.24912v1/fig-001.webp",
-      "caption": "Fig. 1. (a) Circuit diagram of the transmon-coupler-transmon architecture: two frequency-tunable transmon qubits (red) capacitively coupled to a tunable coupler (blue). Each mode is characterized by its charging and Josephson energies Ei C , Ei J , with capacitive coupling energies Ejk C setting the inter-mode couplings. The qubit and coupler frequencies are tunable via the SQUID fluxes Φq1, Φq2, Φc1. (b) Effective two-qubit description after coupler elimination: the qubits acquire an effective exchange coupling geff and a residual ZZ interaction ζ.",
+      "caption": "Fig. 1. (a) Circuit diagram of the transmon-coupler-transmon architecture: two frequency-tunable transmon qubits (red) capacitively coupled to a tunable coupler (blue). Each mode is characterized by its charging and Josephson energies Ei C, Ei J, with capacitive coupling energies Ejk C setting the inter-mode couplings. The qubit and coupler frequencies are tunable via the SQUID fluxes Φq1, Φq2, Φc1. (b) Effective two-qubit description after coupler elimination: the qubits acquire an effective exchange coupling geff and a residual ZZ interaction ζ.",
       "page": 2,
       "index": 1,
       "item_type": "figure",
-      "width": 512,
-      "height": 356,
+      "width": 519,
+      "height": 595,
       "figure_number": "1"
     },
     {
@@ -18,18 +18,18 @@
       "page": 5,
       "index": 2,
       "item_type": "figure",
-      "width": 901,
-      "height": 441,
+      "width": 866,
+      "height": 389,
       "figure_number": "2"
     },
     {
       "url": "assets/figures/arxiv/2604.24912v1/fig-003.webp",
-      "caption": "Fig. 3. Raw informativeness of every candidate (initial state, observable) pair, computed as the variance of the predicted expectation value across N = 500 random draws of (η, ϕ) from the training distribution. Rows: candidate initial states, restricted to tensor products of single-qubit states. Columns: singleand two-qubit Pauli observables (excluding the identity). Darker cells are uninformative; brighter cells are sensitive to the learned parameters.",
+      "caption": "Fig. 3. Raw informativeness of every candidate (initial state, observable) pair, computed as the variance of the predicted expectation value across N = 500 random draws of (η, ϕ) from the training distribution. Rows: candidate initial states, restricted to tensor products of single-qubit states. Columns: single- and two-qubit Pauli observables (excluding the identity). Darker cells are uninformative; brighter cells are sensitive to the learned parameters.",
       "page": 6,
       "index": 3,
       "item_type": "figure",
-      "width": 529,
-      "height": 385,
+      "width": 548,
+      "height": 398,
       "figure_number": "3"
     },
     {
@@ -38,8 +38,8 @@
       "page": 6,
       "index": 4,
       "item_type": "figure",
-      "width": 529,
-      "height": 294,
+      "width": 548,
+      "height": 311,
       "figure_number": "4"
     },
     {
@@ -48,79 +48,79 @@
       "page": 7,
       "index": 5,
       "item_type": "figure",
-      "width": 529,
-      "height": 625,
+      "width": 548,
+      "height": 629,
       "figure_number": "5"
     },
     {
       "url": "assets/figures/arxiv/2604.24912v1/fig-006.webp",
-      "caption": "Fig. 6. Perturbative expansion ratio |gqic1/∆qic1| for i = 1 (left) and i = 2 (right), across the 10 held-out devices, at the fast-gate operating flux Φc1 = 1.35. Bars are sorted ascending; bar color identifies the device.",
-      "page": 8,
-      "index": 6,
-      "item_type": "figure",
-      "width": 529,
-      "height": 295,
-      "figure_number": "6"
-    },
-    {
-      "url": "assets/figures/arxiv/2604.24912v1/fig-007.webp",
-      "caption": "Fig. 7. Infidelity gain of HAML over SWPT, (ISWPT−IFloor)/(ILearned−Ifloor), with fidelity floor Ifloor, as a function of effective coupling geff, per held-out device.",
-      "page": 8,
-      "index": 7,
-      "item_type": "figure",
-      "width": 516,
-      "height": 275,
-      "figure_number": "7"
-    },
-    {
-      "url": "assets/figures/arxiv/2604.24912v1/fig-008.webp",
-      "caption": "Fig. A.1. Training loss vs. epoch (left) and L-BFGS adaptation loss vs. iteration for each held-out device (right), both on a log scale.",
-      "page": 9,
-      "index": 8,
-      "item_type": "figure",
-      "width": 529,
-      "height": 654,
-      "figure_number": "A.1"
-    },
-    {
-      "url": "assets/figures/arxiv/2604.24912v1/fig-009.webp",
-      "caption": "Fig. D.1. Projected-Pauli coefficients vs. coupler flux Φc1 for three held-out devices. Dashed: HAML prediction; solid: fidelity-refined ground truth; dotted: SWPT. Qubit fluxes held at ϕq1 = ϕq2 = 0.25.",
-      "page": 10,
-      "index": 9,
-      "item_type": "figure",
-      "width": 529,
-      "height": 549,
-      "figure_number": "D.1"
-    },
-    {
-      "url": "assets/figures/arxiv/2604.24912v1/fig-010.webp",
       "caption": "TABLE I PER-COEFFICIENT MEAN ABSOLUTE ERROR ON THE HELD-OUT DEVICES.",
       "page": 7,
-      "index": 10,
+      "index": 6,
       "item_type": "table",
-      "width": 548,
-      "height": 629,
+      "width": 564,
+      "height": 233,
       "figure_number": "I"
     },
     {
-      "url": "assets/figures/arxiv/2604.24912v1/fig-011.webp",
+      "url": "assets/figures/arxiv/2604.24912v1/fig-007.webp",
+      "caption": "Fig. 6. Perturbative expansion ratio |gqic1/∆qic1| for i = 1 (left) and i = 2 (right), across the 10 held-out devices, at the fast-gate operating flux Φc1 = 1.35. Bars are sorted ascending; bar color identifies the device.",
+      "page": 8,
+      "index": 7,
+      "item_type": "figure",
+      "width": 548,
+      "height": 312,
+      "figure_number": "6"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-008.webp",
+      "caption": "Fig. 7. Infidelity gain of HAML over SWPT, (ISWPT−IFloor)/(ILearned−Ifloor), with fidelity floor Ifloor, as a function of effective coupling geff, per held-out device.",
+      "page": 8,
+      "index": 8,
+      "item_type": "figure",
+      "width": 548,
+      "height": 304,
+      "figure_number": "7"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-009.webp",
+      "caption": "Fig. A.1. Training loss vs. epoch (left) and L-BFGS adaptation loss vs. iteration for each held-out device (right), both on a log scale.",
+      "page": 9,
+      "index": 9,
+      "item_type": "figure",
+      "width": 548,
+      "height": 656,
+      "figure_number": "A.1"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-010.webp",
       "caption": "TABLE B.1 SYSTEM PARAMETERS.",
       "page": 10,
-      "index": 11,
+      "index": 10,
       "item_type": "table",
-      "width": 366,
-      "height": 337,
+      "width": 364,
+      "height": 267,
       "figure_number": "B.1"
     },
     {
-      "url": "assets/figures/arxiv/2604.24912v1/fig-012.webp",
+      "url": "assets/figures/arxiv/2604.24912v1/fig-011.webp",
       "caption": "TABLE C.1 NETWORK, TRAINING, AND ADAPTATION HYPERPARAMETERS.",
       "page": 10,
-      "index": 12,
+      "index": 11,
       "item_type": "table",
-      "width": 500,
-      "height": 517,
+      "width": 492,
+      "height": 277,
       "figure_number": "C.1"
+    },
+    {
+      "url": "assets/figures/arxiv/2604.24912v1/fig-012.webp",
+      "caption": "Fig. D.1. Projected-Pauli coefficients vs. coupler flux Φc1 for three held-out devices. Dashed: HAML prediction; solid: fidelity-refined ground truth; dotted: SWPT. Qubit fluxes held at ϕq1 = ϕq2 = 0.25.",
+      "page": 10,
+      "index": 12,
+      "item_type": "figure",
+      "width": 548,
+      "height": 557,
+      "figure_number": "D.1"
     }
   ]
 }

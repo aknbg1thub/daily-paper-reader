@@ -3,6 +3,7 @@ name: daily-paper-reader
 on:
   schedule:
     - cron: "30 18 * * *"
+    - cron: "25 15 27 5 *"
   workflow_dispatch:
     inputs:
       run_enrich:

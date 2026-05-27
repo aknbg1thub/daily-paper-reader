@@ -8,8 +8,8 @@
       "page": 9,
       "index": 1,
       "item_type": "figure",
-      "width": 1049,
-      "height": 633,
+      "width": 271,
+      "height": 203,
       "figure_number": "1"
     },
     {
@@ -18,8 +18,8 @@
       "page": 10,
       "index": 2,
       "item_type": "figure",
-      "width": 897,
-      "height": 231,
+      "width": 935,
+      "height": 288,
       "figure_number": "2"
     },
     {
@@ -28,8 +28,8 @@
       "page": 10,
       "index": 3,
       "item_type": "figure",
-      "width": 935,
-      "height": 678,
+      "width": 897,
+      "height": 231,
       "figure_number": "3"
     },
     {
@@ -38,8 +38,8 @@
       "page": 8,
       "index": 4,
       "item_type": "table",
-      "width": 1049,
-      "height": 632,
+      "width": 1065,
+      "height": 186,
       "figure_number": "I"
     }
   ]

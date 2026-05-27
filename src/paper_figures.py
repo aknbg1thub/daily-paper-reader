@@ -19,6 +19,7 @@ from PIL import Image
 MIN_FIGURE_WIDTH = 240
 MIN_FIGURE_HEIGHT = 180
 MIN_FIGURE_AREA = 120_000
+MIN_CAPTION_CROP_AREA = 30_000
 WEBP_QUALITY = 82
 FIGURE_META_VERSION = 6
 PDFFIGURES2_JAR_ENV = "PDFFIGURES2_JAR"
@@ -41,6 +42,21 @@ def _relative_prefix(source_key: str, asset_key: str) -> str:
 
 def _absolute_dir(docs_dir: str, source_key: str, asset_key: str) -> str:
     return os.path.join(docs_dir, "assets", "figures", source_key, _safe_asset_key(asset_key))
+
+
+def _clear_generated_figure_assets(asset_dir: str) -> None:
+    if not os.path.isdir(asset_dir):
+        return
+    for name in os.listdir(asset_dir):
+        lower = name.lower()
+        if lower == "meta.json" or (
+            lower.endswith(".webp")
+            and (lower.startswith("fig-") or lower.startswith("caption-crop-"))
+        ):
+            try:
+                os.remove(os.path.join(asset_dir, name))
+            except OSError:
+                pass
 
 
 def _load_cached_figures(meta_path: str) -> List[Dict[str, Any]]:
@@ -577,7 +593,11 @@ def _collect_visual_rects(page: fitz.Page) -> List[fitz.Rect]:
     return rects
 
 
-def _caption_visual_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.Rect | None:
+def _caption_visual_crop_rect(
+    page: fitz.Page,
+    caption_rect: fitz.Rect,
+    item_type: str = "figure",
+) -> fitz.Rect | None:
     page_rect = page.rect
     visual_rects = _collect_visual_rects(page)
     if not visual_rects:
@@ -586,37 +606,77 @@ def _caption_visual_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.
     horizontal_padding = max(10.0, page_rect.width * 0.018)
     vertical_padding = 8.0
     max_distance = page_rect.height * 0.58
-    if caption_rect.y0 > page_rect.height * 0.35:
-        selected = [
+    caption_center_x = (caption_rect.x0 + caption_rect.x1) / 2.0
+    caption_is_full_width = caption_rect.width >= page_rect.width * 0.55
+
+    def same_column(rect: fitz.Rect) -> bool:
+        if caption_is_full_width:
+            return True
+        rect_center_x = (rect.x0 + rect.x1) / 2.0
+        mid_x = page_rect.width / 2.0
+        if caption_center_x < mid_x <= rect_center_x:
+            return False
+        if caption_center_x >= mid_x > rect_center_x:
+            return False
+        return True
+
+    prefer_above = str(item_type or "figure").strip().lower() != "table"
+
+    def collect_above() -> List[fitz.Rect]:
+        return [
             rect
             for rect in visual_rects
             if rect.y1 <= caption_rect.y0 + 4.0
             and caption_rect.y0 - rect.y0 <= max_distance
             and rect.y1 >= caption_rect.y0 - max_distance
+            and same_column(rect)
         ]
-    else:
-        selected = [
+
+    def collect_below() -> List[fitz.Rect]:
+        return [
             rect
             for rect in visual_rects
             if rect.y0 >= caption_rect.y1 - 4.0
             and rect.y1 - caption_rect.y1 <= max_distance
             and rect.y0 <= caption_rect.y1 + max_distance
+            and same_column(rect)
         ]
+
+    if prefer_above:
+        selected = collect_above()
+        caption_below = True
+        if not selected:
+            selected = collect_below()
+            caption_below = False
+    else:
+        selected = collect_below()
+        caption_below = False
+        if not selected:
+            selected = collect_above()
+            caption_below = True
     if not selected:
         return None
 
     # Keep only the nearest vertical cluster to the caption. This avoids
     # joining unrelated figures from elsewhere on a dense two-column page.
-    if caption_rect.y0 > page_rect.height * 0.35:
+    if caption_below:
         selected.sort(key=lambda rect: max(0.0, caption_rect.y0 - rect.y1))
     else:
         selected.sort(key=lambda rect: max(0.0, rect.y0 - caption_rect.y1))
     seed = selected[0]
     cluster = [seed]
+    seed_center_x = (seed.x0 + seed.x1) / 2.0
     for rect in selected[1:]:
-        same_band = not (rect.y0 > seed.y1 + 90.0 or rect.y1 < seed.y0 - 90.0)
-        nearby = abs(rect.y0 - seed.y0) <= page_rect.height * 0.36 or abs(rect.y1 - seed.y1) <= page_rect.height * 0.36
-        if same_band or nearby:
+        rect_center_x = (rect.x0 + rect.x1) / 2.0
+        same_visual_column = caption_is_full_width or abs(rect_center_x - seed_center_x) <= page_rect.width * 0.32
+        overlaps_seed_band = not (rect.y0 > seed.y1 + 18.0 or rect.y1 < seed.y0 - 18.0)
+        seed_contains_rect = (
+            rect.x0 >= seed.x0 - 8.0
+            and rect.x1 <= seed.x1 + 8.0
+            and rect.y0 >= seed.y0 - 8.0
+            and rect.y1 <= seed.y1 + 8.0
+        )
+        if same_visual_column and (overlaps_seed_band or seed_contains_rect):
             cluster.append(rect)
 
     union = _union_rects(cluster)
@@ -626,7 +686,6 @@ def _caption_visual_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.
     if visual_area < 900.0:
         return None
     crop_source = union
-    caption_below = caption_rect.y0 > page_rect.height * 0.35
     crop = fitz.Rect(
         crop_source.x0 - horizontal_padding,
         crop_source.y0 - vertical_padding,
@@ -660,7 +719,11 @@ def _clip_rect_away_from_caption(
     return crop
 
 
-def _caption_band_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.Rect | None:
+def _caption_band_crop_rect(
+    page: fitz.Page,
+    caption_rect: fitz.Rect,
+    item_type: str = "figure",
+) -> fitz.Rect | None:
     page_rect = page.rect
     page_w = float(page_rect.width or 0)
     page_h = float(page_rect.height or 0)
@@ -674,18 +737,102 @@ def _caption_band_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.Re
     else:
         x0, x1 = page_w / 2.0 + 10.0, page_w - margin_x
 
-    above_space = caption_rect.y0 - page_rect.y0
-    below_space = page_rect.y1 - caption_rect.y1
-    if above_space >= below_space * 0.55:
-        y0 = max(page_rect.y0 + 22.0, caption_rect.y0 - page_h * 0.38)
-        y1 = caption_rect.y0 - 4.0
-        caption_below = True
-    else:
+    item_type = str(item_type or "figure").strip().lower()
+    if item_type == "table":
         y0 = caption_rect.y1 + 4.0
-        y1 = min(page_rect.y1 - 22.0, caption_rect.y1 + page_h * 0.38)
+        y1 = min(page_rect.y1 - 22.0, caption_rect.y1 + page_h * 0.18)
         caption_below = False
+    else:
+        above_space = caption_rect.y0 - page_rect.y0
+        below_space = page_rect.y1 - caption_rect.y1
+        if above_space >= below_space * 0.55:
+            y0 = max(page_rect.y0 + 22.0, caption_rect.y0 - page_h * 0.38)
+            y1 = caption_rect.y0 - 4.0
+            caption_below = True
+        else:
+            y0 = caption_rect.y1 + 4.0
+            y1 = min(page_rect.y1 - 22.0, caption_rect.y1 + page_h * 0.38)
+            caption_below = False
     crop = fitz.Rect(x0, y0, x1, y1) & page_rect
     return _clip_rect_away_from_caption(crop, caption_rect, caption_below=caption_below)
+
+
+def _tighten_table_crop_rect(
+    page: fitz.Page,
+    caption_rect: fitz.Rect,
+    crop_rect: fitz.Rect,
+) -> fitz.Rect:
+    page_rect = page.rect
+    crop = fitz.Rect(crop_rect) & page_rect
+    if crop.is_empty:
+        return crop
+
+    horizontal_rules: List[fitz.Rect] = []
+    try:
+        for drawing in page.get_drawings() or []:
+            rect = drawing.get("rect") if isinstance(drawing, dict) else None
+            if rect is None:
+                continue
+            rule = fitz.Rect(rect) & crop
+            if rule.is_empty:
+                continue
+            is_horizontal_rule = rule.width >= crop.width * 0.45 and rule.height <= 3.0
+            near_caption_body = rule.y0 >= caption_rect.y1 - 2.0 and rule.y0 <= caption_rect.y1 + page_rect.height * 0.24
+            if is_horizontal_rule and near_caption_body:
+                horizontal_rules.append(rule)
+    except Exception:
+        horizontal_rules = []
+
+    if horizontal_rules:
+        x0 = min(rule.x0 for rule in horizontal_rules)
+        x1 = max(rule.x1 for rule in horizontal_rules)
+        y0 = min(rule.y0 for rule in horizontal_rules)
+        y1 = max(rule.y1 for rule in horizontal_rules)
+        tightened = fitz.Rect(
+            max(page_rect.x0, x0 - 4.0),
+            max(caption_rect.y1 + 2.0, y0 - 4.0),
+            min(page_rect.x1, x1 + 4.0),
+            min(page_rect.y1, y1 + 6.0),
+        )
+        if tightened.width >= MIN_FIGURE_WIDTH / 2 and tightened.height >= MIN_FIGURE_HEIGHT / 4:
+            return tightened
+
+    body_blocks: List[fitz.Rect] = []
+    try:
+        for block in page.get_text("blocks") or []:
+            if len(block) < 5:
+                continue
+            rect = fitz.Rect(float(block[0]), float(block[1]), float(block[2]), float(block[3]))
+            if rect.y0 < caption_rect.y1 - 2.0:
+                continue
+            if rect.y0 > caption_rect.y1 + page_rect.height * 0.24:
+                continue
+            overlap_x = max(0.0, min(rect.x1, crop.x1) - max(rect.x0, crop.x0))
+            if overlap_x < min(rect.width, crop.width) * 0.45:
+                continue
+            body_blocks.append(rect)
+    except Exception:
+        body_blocks = []
+
+    if body_blocks:
+        body_blocks.sort(key=lambda rect: rect.y0)
+        selected = [body_blocks[0]]
+        for rect in body_blocks[1:]:
+            if rect.y0 - selected[-1].y1 > 18.0:
+                break
+            selected.append(rect)
+        union = _union_rects(selected)
+        if union is not None:
+            tightened = fitz.Rect(
+                max(page_rect.x0, min(crop.x0, union.x0) - 4.0),
+                max(caption_rect.y1 + 2.0, min(crop.y0, union.y0) - 4.0),
+                min(page_rect.x1, max(crop.x1, union.x1) + 4.0),
+                min(page_rect.y1, union.y1 + 6.0),
+            )
+            if tightened.width >= MIN_FIGURE_WIDTH / 2 and tightened.height >= MIN_FIGURE_HEIGHT / 4:
+                return tightened
+
+    return crop
 
 
 def _vlm_bbox_to_page_rect(
@@ -810,6 +957,8 @@ def _merge_missing_caption_crops(
                     )
                     if clipped is not None:
                         rect = clipped
+                    if item_type == "table":
+                        rect = _tighten_table_crop_rect(page, caption_rect, rect)
                 vlm_rects[(item_type, number.lower())] = rect
 
         for item in missing:
@@ -822,12 +971,27 @@ def _merge_missing_caption_crops(
                 str(item.get("figure_number") or "").strip().lower(),
             )
             crop_rect = vlm_rects.get(label_key)
+            crop_source = "vlm" if crop_rect is not None else ""
             if crop_rect is None:
-                crop_rect = _caption_visual_crop_rect(page, item["caption_rect"])
+                crop_rect = _caption_visual_crop_rect(
+                    page,
+                    item["caption_rect"],
+                    str(item.get("item_type") or "figure"),
+                )
+                if crop_rect is not None:
+                    crop_source = "visual"
             if crop_rect is None:
-                crop_rect = _caption_band_crop_rect(page, item["caption_rect"])
+                crop_rect = _caption_band_crop_rect(
+                    page,
+                    item["caption_rect"],
+                    str(item.get("item_type") or "figure"),
+                )
+                if crop_rect is not None:
+                    crop_source = "band"
             if crop_rect is None:
                 continue
+            if label_key[0] == "table":
+                crop_rect = _tighten_table_crop_rect(page, item["caption_rect"], crop_rect)
             if crop_rect.width < MIN_FIGURE_WIDTH / 2 or crop_rect.height < MIN_FIGURE_HEIGHT / 2:
                 continue
             tmp_path = os.path.join(output_dir, f"caption-crop-{len(candidates) + 1:03d}.webp")
@@ -835,7 +999,13 @@ def _merge_missing_caption_crops(
                 width, height = _save_page_crop(page, crop_rect, tmp_path)
             except Exception:
                 continue
-            if width * height < MIN_FIGURE_AREA:
+            if width * height < MIN_CAPTION_CROP_AREA:
+                try:
+                    os.remove(tmp_path)
+                except OSError:
+                    pass
+                continue
+            if crop_source == "band" and _is_probable_text_crop(tmp_path, str(item.get("item_type") or "figure")):
                 try:
                     os.remove(tmp_path)
                 except OSError:
@@ -1146,6 +1316,8 @@ def ensure_paper_figures(
             return cached
         if os.path.exists(meta_path):
             return []
+    else:
+        _clear_generated_figure_assets(asset_dir)
 
     pdf_bytes = _download_pdf_bytes(pdf_url)
     tmp_path = ""

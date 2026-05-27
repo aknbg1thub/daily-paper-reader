@@ -287,6 +287,35 @@ class PaperFiguresTest(unittest.TestCase):
         finally:
             doc.close()
 
+    def test_table_crop_tightening_stops_before_following_paragraph(self):
+        doc = fitz.open()
+        try:
+            page = doc.new_page(width=612, height=792)
+            caption_rect = fitz.Rect(72, 440, 540, 462)
+            page.insert_textbox(caption_rect, "Table I: Benchmark parameters.", fontsize=12)
+            for y in (468, 482, 560, 564):
+                page.draw_line(fitz.Point(72, y), fitz.Point(540, y), color=(0, 0, 0), width=0.6)
+            page.insert_textbox(
+                fitz.Rect(74, 488, 536, 556),
+                "Peak Leading monomial Number of source factors Broadband scaling\n"
+                "-dw p- 0 not suppressed\n+dw s+ 1 not suppressed\n",
+                fontsize=11,
+            )
+            page.insert_textbox(
+                fitz.Rect(72, 590, 540, 680),
+                "This following paragraph should not be included in the table crop.",
+                fontsize=12,
+            )
+
+            crop = self.mod._caption_band_crop_rect(page, caption_rect, "table")
+            tightened = self.mod._tighten_table_crop_rect(page, caption_rect, crop)
+
+            self.assertGreater(crop.y1, 590)
+            self.assertLess(tightened.y1, 575)
+            self.assertGreaterEqual(tightened.y0, caption_rect.y1)
+        finally:
+            doc.close()
+
     def test_caption_without_detected_visual_region_uses_caption_band_fallback(self):
         with tempfile.TemporaryDirectory() as d:
             tmp_dir = Path(d)

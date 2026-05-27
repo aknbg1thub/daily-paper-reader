@@ -1,116 +1,80 @@
 ## 每次日报
-- 最新运行日期：2026-05-25 ~ 2026-05-25
-- 运行时间：2026-05-27 01:28:00 UTC
+- 最新运行日期：2026-05-26 ~ 2026-05-26
+- 运行时间：2026-05-27 01:29:48 UTC
 - 运行状态：成功
-- 本次总论文数：33
-- 精读区：33
+- 本次总论文数：21
+- 精读区：21
 - 速读区：0
 
 ### 今日简报（AI）
-- 今日共生成 33 篇推荐（精读 33 篇，速读 0 篇）
-- 精读：《A DMFT approach to evaluate electronic frictional effects near solid surfaces of strongly correlated systems》（9.0/10）, 《Shape Derivatives for Maxwell's Equations with Nonlinear Boundary Conditions》（9.0/10）
+- 今日共生成 21 篇推荐（精读 21 篇，速读 0 篇）
+- 精读：《Additive and Subtractive Color Filters Based on Birefringent Dielectric Metasurfaces》（8.6/10）, 《Light-Induced Transient Polarization Reversal in Rhombohedrally Stacked Bilayer Transition-Metal Dichalcogenides via an Electronic Mechanism》（8.6/10）
 - 这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。
-- 详情：[/20260525-20260525/README](/20260525-20260525/README)
+- 详情：[/20260526-20260526/README](/20260526-20260526/README)
 
 ### 精读区论文标签
-1. [A DMFT approach to evaluate electronic frictional effects near solid surfaces of strongly correlated systems](/20260525-20260525/2605.25320v1-a-dmft-approach-to-evaluate-electronic-frictional-effects-near-solid-surfaces-of-strongly-correlated-systems)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-2. [Shape Derivatives for Maxwell's Equations with Nonlinear Boundary Conditions](/20260525-20260525/2605.25579v1-shape-derivatives-for-maxwells-equations-with-nonlinear-boundary-conditions)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-3. [Sensitivity to perturbations in the three-dimensional Anderson model](/20260525-20260525/2605.25594v1-sensitivity-to-perturbations-in-the-three-dimensional-anderson-model)  
-   标签：评分：9.0/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-4. [Nitrogen-doped W0.75Re0.25 Superconducting Nanowire Single Photon Detectors](/20260525-20260525/2605.25597v1-nitrogen-doped-w075re025-superconducting-nanowire-single-photon-detectors)  
-   标签：评分：9.0/10、query:SC-QUBIT-CHIP
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-5. [Code size reduction by advanced near addressing modes](/20260525-20260525/2605.25602v1-code-size-reduction-by-advanced-near-addressing-modes)  
-   标签：评分：9.0/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-6. [Analysis of Critical Points in a Permutation Model on Hierarchical Lattices by Real-Space Renormalization Group](/20260525-20260525/2605.25683v1-analysis-of-critical-points-in-a-permutation-model-on-hierarchical-lattices-by-real-space-renormalization-group)  
-   标签：评分：9.0/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-7. [Robust Quantum-MUSIC for DoA Estimation Using Rydberg Atomic Receiver Arrays](/20260525-20260525/2605.25688v1-robust-quantum-music-for-doa-estimation-using-rydberg-atomic-receiver-arrays)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-8. [Terahertz-induced local-field dynamics and transient birefringence in aqueous electrolytes](/20260525-20260525/2605.25702v1-terahertz-induced-local-field-dynamics-and-transient-birefringence-in-aqueous-electrolytes)  
-   标签：评分：9.0/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-9. [All-optical Edge Computing for Speckle Sensing Interrogation](/20260525-20260525/2605.25805v1-all-optical-edge-computing-for-speckle-sensing-interrogation)  
-   标签：评分：9.0/10、query:SC-QUBIT-CHIP
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-10. [Hardware-Efficient and Performance-Enhanced Joint Pulse Shaping and Dispersion Compensation for Coherent Data Center Interconnects](/20260525-20260525/2605.25818v1-hardware-efficient-and-performance-enhanced-joint-pulse-shaping-and-dispersion-compensation-for-coherent-data-center-interconnects)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-11. [Sideband fingerprints of antibunched light in cascaded quantum wave mixing](/20260525-20260525/2605.25828v1-sideband-fingerprints-of-antibunched-light-in-cascaded-quantum-wave-mixing)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-12. [Implementation of distillation protocols using a recirculating bricks mesh network](/20260525-20260525/2605.25911v1-implementation-of-distillation-protocols-using-a-recirculating-bricks-mesh-network)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-13. [Native topological readout on qubit hardware: a Fibonacci-chain benchmark of measurement-compilation trade-offs](/20260525-20260525/2605.25913v1-native-topological-readout-on-qubit-hardware-a-fibonacci-chain-benchmark-of-measurement-compilation-trade-offs)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-14. [Trimerized Spin-$1/2$ Chain: Emergent Low-Energy Hamiltonian, Higher-Energy Excitations, and Magnetic and Thermodynamic Responses](/20260525-20260525/2605.25960v1-trimerized-spin-12-chain-emergent-low-energy-hamiltonian-higher-energy-excitations-and-magnetic-and-thermodynamic-responses)  
-   标签：评分：9.0/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-15. [PauLIB: A High-Performance Library for Processing Pauli Strings](/20260525-20260525/2605.25974v1-paulib-a-high-performance-library-for-processing-pauli-strings)  
-   标签：评分：9.0/10、query:SC-QUBIT-CHIP
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-16. [Evaluating System-Level Fidelity with Peaked Random Circuits](/20260525-20260525/2605.25983v1-evaluating-system-level-fidelity-with-peaked-random-circuits)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-17. [Alt-CC-PINN: An Alternating Optimization Framework with Implicit Neural Representation for Microwave Inverse Scattering Imaging](/20260525-20260525/2605.26042v1-alt-cc-pinn-an-alternating-optimization-framework-with-implicit-neural-representation-for-microwave-inverse-scattering-imaging)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-18. [Theory of Electrically Detected Magnetic Resonance of Silicon Vacancy-Related Spin Pairs in Silicon Carbide](/20260525-20260525/2605.26071v1-theory-of-electrically-detected-magnetic-resonance-of-silicon-vacancy-related-spin-pairs-in-silicon-carbide)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-19. [Response of a dipolar BEC to Laguerre-Gaussian beam driven STIRAP](/20260525-20260525/2605.26094v1-response-of-a-dipolar-bec-to-laguerre-gaussian-beam-driven-stirap)  
-   标签：评分：9.0/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-20. [Rounding Almost Commuting Hamiltonians](/20260525-20260525/2605.26096v1-rounding-almost-commuting-hamiltonians)  
-   标签：评分：9.0/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-21. [Multithreaded Fine-Grained Asynchronous BSP for Integer Sorting with LCI and OpenMP](/20260525-20260525/2605.25340v1-multithreaded-fine-grained-asynchronous-bsp-for-integer-sorting-with-lci-and-openmp)  
+1. [Additive and Subtractive Color Filters Based on Birefringent Dielectric Metasurfaces](/20260526-20260526/2605.25881v1-additive-and-subtractive-color-filters-based-on-birefringent-dielectric-metasurfaces)  
    标签：评分：8.6/10、query:SC-QUBIT-CHIP
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-22. [Non-Hermitian Twisting Theory under the open boundary condition](/20260525-20260525/2605.25386v1-non-hermitian-twisting-theory-under-the-open-boundary-condition)  
+2. [Light-Induced Transient Polarization Reversal in Rhombohedrally Stacked Bilayer Transition-Metal Dichalcogenides via an Electronic Mechanism](/20260526-20260526/2605.25982v1-light-induced-transient-polarization-reversal-in-rhombohedrally-stacked-bilayer-transition-metal-dichalcogenides-via-an-electronic-mechanism)  
    标签：评分：8.6/10、query:HAMILTONIAN
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-23. [The Diagrammar of Quantum Magnusian](/20260525-20260525/2605.25473v1-the-diagrammar-of-quantum-magnusian)  
-   标签：评分：8.6/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-24. [The evolution of pairing correlation with $3d_{z^{2}}$ electron filling in a bilayer two-orbital model for La$_3$Ni$_2$O$_7$](/20260525-20260525/2605.25654v1-the-evolution-of-pairing-correlation-with-3dz2-electron-filling-in-a-bilayer-two-orbital-model-for-la3ni2o7)  
-   标签：评分：8.6/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-25. [Finite-Blocklength Analysis for Noisy Permutation Channels](/20260525-20260525/2605.25699v1-finite-blocklength-analysis-for-noisy-permutation-channels)  
+3. [Nuclear-Electron Hyperfine Coupling of the Shallow States Associated with Vacancies in Gallium Nitride](/20260526-20260526/2605.26053v1-nuclear-electron-hyperfine-coupling-of-the-shallow-states-associated-with-vacancies-in-gallium-nitride)  
    标签：评分：8.6/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-26. [Negative entropy in scrambling black holes](/20260525-20260525/2605.25315v1-negative-entropy-in-scrambling-black-holes)  
-   标签：评分：7.5/10、query:HAMILTONIAN
+4. [Optimal Quantum Differential Privacy via Fisher Information Spectral Analysis](/20260526-20260526/2605.24166v1-optimal-quantum-differential-privacy-via-fisher-information-spectral-analysis)  
+   标签：评分：8.5/10、query:SC-QUBIT-CHIP
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-27. [A Scalable Bundle Method for Exact Reformulation of SDP in Three-Phase Power Flow Feasibility](/20260525-20260525/2605.25319v1-a-scalable-bundle-method-for-exact-reformulation-of-sdp-in-three-phase-power-flow-feasibility)  
-   标签：评分：7.5/10、query:EQ-CIRCUIT
+5. [A helical Rashba--exchange gauge field drives a uniaxial pair density wave in EuRbFe$_4$As$_4$](/20260526-20260526/2605.24362v1-a-helical-rashba--exchange-gauge-field-drives-a-uniaxial-pair-density-wave-in-eurbfe4as4)  
+   标签：评分：8.5/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-28. [Slow Convergence of Ising and Spin Glass Models with Well-Separated Frustrated Vertices](/20260525-20260525/2605.25323v1-slow-convergence-of-ising-and-spin-glass-models-with-well-separated-frustrated-vertices)  
-   标签：评分：7.5/10、query:HAMILTONIAN
+6. [Quantum Printing: Laguerre-Gaussian Beam Induced Topological Magnetic Textures](/20260526-20260526/2605.24720v1-quantum-printing-laguerre-gaussian-beam-induced-topological-magnetic-textures)  
+   标签：评分：8.5/10、query:SC-QUBIT-CHIP
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-29. [Quantum field approach to relativistic turbulence](/20260525-20260525/2605.25329v1-quantum-field-approach-to-relativistic-turbulence)  
-   标签：评分：7.5/10、query:HAMILTONIAN
+7. [Power-Integrity Modeling of VR Faults in High-Performance Applications](/20260526-20260526/2605.24877v1-power-integrity-modeling-of-vr-faults-in-high-performance-applications)  
+   标签：评分：8.5/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-30. [UWM-JEPA: Predictive World Models That Imagine in Belief Space](/20260525-20260525/2605.25313v1-uwm-jepa-predictive-world-models-that-imagine-in-belief-space)  
-   标签：评分：6.8/10、query:EQ-CIRCUIT
+8. [Topological metal-insulator transitions in one-dimensional non-Hermitian quasicrystals: beyond PT-symmetry](/20260526-20260526/2605.25072v1-topological-metal-insulator-transitions-in-one-dimensional-non-hermitian-quasicrystals-beyond-pt-symmetry)  
+   标签：评分：8.5/10、query:HAMILTONIAN
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-31. [Soliton resolution conjecture for the Benjamin-Ono equation: Explicit $L^\infty$ asymptotic error formula](/20260525-20260525/2605.25327v1-soliton-resolution-conjecture-for-the-benjamin-ono-equation-explicit-linfty-asymptotic-error-formula)  
-   标签：评分：6.8/10、query:HAMILTONIAN
+9. [PennySynth: RAG-Driven Data Synthesis for Automated Quantum Code Generation](/20260526-20260526/2605.25572v1-pennysynth-rag-driven-data-synthesis-for-automated-quantum-code-generation)  
+   标签：评分：8.5/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-32. [Infrared Single-Pixel Hyperspectral Imaging via Spatial-Temporal Multiplexing](/20260525-20260525/2605.25331v1-infrared-single-pixel-hyperspectral-imaging-via-spatial-temporal-multiplexing)  
-   标签：评分：6.8/10、query:SC-QUBIT-CHIP
+10. [Endpoint formulation and Molien--Weyl structure for the \(N=2\), large--\(d\) BFSS/BMN models](/20260526-20260526/2605.25647v1-endpoint-formulation-and-molien--weyl-structure-for-the-n2-large--d-bfssbmn-models)  
+   标签：评分：8.5/10、query:HAMILTONIAN
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-33. [TIP: A Decentralized Intent-Based Protocol for Declarative IoT Interoperability and Sandboxed Schema Adaptation](/20260525-20260525/2605.25332v1-tip-a-decentralized-intent-based-protocol-for-declarative-iot-interoperability-and-sandboxed-schema-adaptation)  
-   标签：评分：6.8/10、query:SC-QUBIT-CHIP
+11. [Profiling-Driven Adaptive Distributed Transformer Inference on Embedded Edge Deployment](/20260526-20260526/2605.25682v1-profiling-driven-adaptive-distributed-transformer-inference-on-embedded-edge-deployment)  
+   标签：评分：8.5/10、query:SC-QUBIT-CHIP
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+12. [Alignment-free ultra-broadband parametric frequency conversion in lead-halide perovskites](/20260526-20260526/2605.25718v1-alignment-free-ultra-broadband-parametric-frequency-conversion-in-lead-halide-perovskites)  
+   标签：评分：8.5/10、query:SC-QUBIT-CHIP
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+13. [Resonant Microstructures as Dirac-type Actuators for Acoustic Wave Control](/20260526-20260526/2605.25978v1-resonant-microstructures-as-dirac-type-actuators-for-acoustic-wave-control)  
+   标签：评分：8.5/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+14. [QT-PUF: Quantum Tunneling Leakage Based PUF for Implantable IoMT Devices](/20260526-20260526/2605.22113v1-qt-puf-quantum-tunneling-leakage-based-puf-for-implantable-iomt-devices)  
+   标签：评分：8.5/10、query:SC-QUBIT-CHIP
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+15. [Competing incommensurability, electronic correlations, and superconductivity in a hybrid transition metal dichalcogenide](/20260526-20260526/2605.22522v1-competing-incommensurability-electronic-correlations-and-superconductivity-in-a-hybrid-transition-metal-dichalcogenide)  
+   标签：评分：8.5/10、query:SC-QUBIT-CHIP
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+16. [Upscaling DFT-trained machine-learning interatomic potential toward Quantum Monte Carlo accuracy: Sulfur-vacancy migration in monolayer MoS$_2$ as a testbed](/20260526-20260526/2605.22601v1-upscaling-dft-trained-machine-learning-interatomic-potential-toward-quantum-monte-carlo-accuracy-sulfur-vacancy-migration-in-monolayer-mos2-as-a-testbed)  
+   标签：评分：8.5/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+17. [Signatures of quantum chaos in phonon-polariton billiards](/20260526-20260526/2605.22753v1-signatures-of-quantum-chaos-in-phonon-polariton-billiards)  
+   标签：评分：8.5/10、query:HAMILTONIAN
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+18. [Fourier--Galerkin Methods for Subwavelength Resonances in 2D Acoustic Metamaterials](/20260526-20260526/2605.23251v1-fourier--galerkin-methods-for-subwavelength-resonances-in-2d-acoustic-metamaterials)  
+   标签：评分：8.5/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+19. [Non-Hermitian Landau Levels](/20260526-20260526/2605.23613v1-non-hermitian-landau-levels)  
+   标签：评分：8.5/10、query:HAMILTONIAN
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+20. [Interaction-Split Edge Spectral Flow and Neutral Triplet Boundary Modes in a C = 2 Hubbard Pump](/20260526-20260526/2605.23769v1-interaction-split-edge-spectral-flow-and-neutral-triplet-boundary-modes-in-a-c--2-hubbard-pump)  
+   标签：评分：8.5/10、query:HAMILTONIAN
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+21. [Shifted Matrix-Sign Reflectors for Prescribed-Index Eigenspace Reflection](/20260526-20260526/2605.24840v1-shifted-matrix-sign-reflectors-for-prescribed-index-eigenspace-reflection)  
+   标签：评分：8.5/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
 
 ### 速读区论文标签

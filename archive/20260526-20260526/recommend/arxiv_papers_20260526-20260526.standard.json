@@ -1,0 +1,922 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-05-27T01:29:46.972357+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 3,
+    "deep_divecandidates": 209,
+    "deep_cap": 8,
+    "deep_selected": 21,
+    "quick_candidates": 201,
+    "quick_skim_target": 13,
+    "quick_selected": 0,
+    "forced_all_deep": true
+  },
+  "deep_dive": [
+    {
+      "id": "2605.25982v1",
+      "source": "arxiv",
+      "title": "Light-Induced Transient Polarization Reversal in Rhombohedrally Stacked Bilayer Transition-Metal Dichalcogenides via an Electronic Mechanism",
+      "abstract": "Light-induced sliding ferroelectricity in two-dimensional van der Waals materials enables polarization control via relative layer motion. However, polarization switching occurs on the time scale of shear modes (tens of ps) and requires very large fluences, potentially damaging the samples. Here, using constrained density functional theory and many-body real-time simulations, we demonstrate an ultrafast electronic reversal of the total out-of-plane polarization sign in the photoexcited state, without requiring interlayer sliding, in rhombohedrally stacked transition-metal dichalcogenide bilayers. The polarization changes sign relative to its initial ground-state value at moderate fluences and within 200 fs, about 50 times faster than the typical shear-mode period. The ultrafast switching is driven by a rearrangement of localized dipoles around the tungsten sites. We establish a novel general mechanism for electronic control of low-dimensional ferroelectrics common to all polar multilayers having type II band alignment. Our work has direct implications for ultrahigh-speed volatile optical memory operating on sub-ps time scales.",
+      "authors": [
+        "Xiangzhou Zhu",
+        "Stefano Mocatti",
+        "Matteo Calandra"
+      ],
+      "primary_category": "cond-mat.mtrl-sci",
+      "categories": [
+        "cond-mat.mtrl-sci"
+      ],
+      "published": "2026-05-25T15:59:13+00:00",
+      "link": "https://arxiv.org/pdf/2605.25982v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.625,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:HAMILTONIAN"
+      ],
+      "matched_query_tag": "keyword:HAMILTONIAN",
+      "matched_query_text": "cross-Kerr coupling and dispersive interaction in superconducting qubit systems",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.25982v1"
+    },
+    {
+      "id": "2605.25881v1",
+      "source": "arxiv",
+      "title": "Additive and Subtractive Color Filters Based on Birefringent Dielectric Metasurfaces",
+      "abstract": "Dielectric metasurfaces offer a path to high-efficiency optical components at the sub-wavelength scale. In this work, we utilize the wavelength-dependent birefringence of TiO2 nanopillars to create transmissive color filters with switchable spectral responses. We demonstrate that the same physical nanostructure array can function as either an additive (band-pass) or a subtractive (band-stop) filter solely by rotating an external polarizer. The metasurface was fabricated via a modified damascene process, enabling high-aspect-ratio structures with spatial resolutions down to 250 nm. The filters achieve transmission efficiencies of 70% tailorable across the entire visible spectrum, avoiding the ohmic losses typical of plasmonic alternatives. This approach provides a tunable, high-efficiency platform offering a versatile and compact solution for next-generation high-resolution imaging systems.",
+      "authors": [
+        "Ondřej Červinka",
+        "Filip Ligmajer",
+        "Ondřej Brunn",
+        "Miroslav Horáček",
+        "Stanislav Krátký",
+        "Tomáš Šikola"
+      ],
+      "primary_category": "physics.optics",
+      "categories": [
+        "physics.optics"
+      ],
+      "published": "2026-05-25T14:07:26+00:00",
+      "link": "https://arxiv.org/pdf/2605.25881v1",
+      "tags": [
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.625,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:SC-QUBIT-CHIP"
+      ],
+      "matched_query_tag": "keyword:SC-QUBIT-CHIP",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.25881v1"
+    },
+    {
+      "id": "2605.26053v1",
+      "source": "arxiv",
+      "title": "Nuclear-Electron Hyperfine Coupling of the Shallow States Associated with Vacancies in Gallium Nitride",
+      "abstract": "We use multiband real space Green's functions computed using open-boundary conditions for clean GaN to exactly solve the potential-scattering Dyson equation to obtain the electronic structure of single nitrogen and gallium vacancies. From these vacancy solutions, we compute the local density of states as well as the Fermi contact and anisotropic contributions to the hyperfine field in the vicinity of the defect. These quantities directly affect electrically-detected magnetic resonance signals, which can be used to identify these defects when present in GaN devices.",
+      "authors": [
+        "Joseph Sink",
+        "Michael E. Flatté"
+      ],
+      "primary_category": "cond-mat.mtrl-sci",
+      "categories": [
+        "cond-mat.mtrl-sci"
+      ],
+      "published": "2026-05-25T17:14:09+00:00",
+      "link": "https://arxiv.org/pdf/2605.26053v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.625,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "query:EQ-CIRCUIT"
+      ],
+      "matched_query_tag": "query:EQ-CIRCUIT",
+      "matched_query_text": "papers on extracting equivalent circuit models, capacitance matrices, inductance matrices, and EPR parameters for superconducting quantum chips",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.26053v1"
+    },
+    {
+      "id": "2605.24877v1",
+      "source": "arxiv",
+      "title": "Power-Integrity Modeling of VR Faults in High-Performance Applications",
+      "abstract": "Distributed vertical power delivery has emerged as a promising approach to meet aggressive current-density, efficiency, and transient response requirements in high-performance computing systems. Tight integration of voltage regulators within stacked substrates, however, increases the vulnerability of the power delivery system to short-circuit and open-circuit faults arising from elevated thermal and mechanical stresses. Such faults can propagate through the shared power delivery network, leading to rapid degradation of system-wide efficiency at worst-case rates of up to 0.5% per microsecond. Advanced fault-tolerant power management strategies are therefore required to ensure efficient power delivery. A real-time fault-detection and isolation methodology are proposed in this paper for vertical power delivery systems. The methodology is developed based on an analytical inductor-current models that rely solely on signals available within the converter control circuitry, thereby eliminating additional sensing overhead. The proposed framework is designed and simulated in SPICE environment, demonstrating sub-microsecond fault detection and effective dual-fuse isolation, maintaining uninterrupted power delivery with a system-wide efficiency degradation of less than 2%.",
+      "authors": [
+        "Sriharini Krishnakumar",
+        "Inna Partin-Vaisband"
+      ],
+      "primary_category": "eess.SY",
+      "categories": [
+        "eess.SY"
+      ],
+      "published": "2026-05-24T05:39:31+00:00",
+      "link": "https://arxiv.org/pdf/2605.24877v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.538,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:EQ-CIRCUIT"
+      ],
+      "matched_query_tag": "keyword:EQ-CIRCUIT",
+      "matched_query_text": "inductance matrix modeling and electromagnetic simulation of superconducting circuits",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.24877v1"
+    },
+    {
+      "id": "2605.25072v1",
+      "source": "arxiv",
+      "title": "Topological metal-insulator transitions in one-dimensional non-Hermitian quasicrystals: beyond PT-symmetry",
+      "abstract": "One-dimensional non-Hermitian quasicrystals with parity and time-reversal (PT) symmetry can simultaneously exhibit localization-delocalization transition, topological phase transition, and PT-symmetry-breaking transition. This motivates this work to investigate how the absence of PT symmetry impacts topological metal-insulator transitions in non-Hermitian quasicrystals. We propose a non-Hermitian quasiperiodic model that generally does not preserve PT symmetry and demonstrate that, in most parameter regions, such a system supports triple phase transitions that encompass localization, topology, and degeneracy-breaking. The system may also exhibit a particular type of localization-delocalization transition analogous to the Hermitian case, namely, without activating topological phase transitions or degeneracy-breaking transitions. Our work extends the topological metal-insulator transitions previously studied in PT-symmetric systems to a more general class of non-Hermitian setting, and further reveals that non-Hermitian systems can host distinct types of localization behavior.",
+      "authors": [
+        "Guangjie Zhang",
+        "Bing Shao",
+        "Longwen Zhou",
+        "Jiangbin Gong",
+        "Weiwei Zhu"
+      ],
+      "primary_category": "cond-mat.dis-nn",
+      "categories": [
+        "cond-mat.dis-nn",
+        "cond-mat.mes-hall",
+        "quant-ph"
+      ],
+      "published": "2026-05-24T13:32:29+00:00",
+      "link": "https://arxiv.org/pdf/2605.25072v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.538,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "query:HAMILTONIAN"
+      ],
+      "matched_query_tag": "query:HAMILTONIAN",
+      "matched_query_text": "effective Hamiltonian models for transmon qubits, tunable couplers, resonators, Kerr terms, and dispersive interactions",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.25072v1"
+    },
+    {
+      "id": "2605.25718v1",
+      "source": "arxiv",
+      "title": "Alignment-free ultra-broadband parametric frequency conversion in lead-halide perovskites",
+      "abstract": "Lead-halide perovskites were demonstrated to exhibit some of the largest known optical nonlinearities, yet their potential for frequency conversion remains largely untapped. Here we demonstrate ultra-broadband four-wave mixing of near- and mid-infrared femtosecond pulses in thick single-crystal LHPs, generating bright, coherent, and highly collimated emission across an exceptionally wide continuous tuning range without phase-matching engineering, angular alignment, or dispersion optimization. Time resolved measurements reveal that the emission originates near the crystal surfaces, where phase-matching constraints are relaxed, while the unusually large intrinsic $χ^{(3)}$ response preserves efficient and directional frequency conversion despite the strongly localized interaction volume. These results position LHPs as a powerful bulk platform for ultra-broadband nonlinear photonics, opening a pathway toward compact, alignment-free architectures for ultrafast frequency conversion.",
+      "authors": [
+        "Abhishek Shiva Kumar",
+        "Dusan Lorenc",
+        "Ayan A. Zhumekenov",
+        "Osman M. Bakr",
+        "Zhanybek Alpichshev"
+      ],
+      "primary_category": "cond-mat.mtrl-sci",
+      "categories": [
+        "cond-mat.mtrl-sci",
+        "physics.app-ph",
+        "physics.optics"
+      ],
+      "published": "2026-05-25T11:19:09+00:00",
+      "link": "https://arxiv.org/pdf/2605.25718v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.538,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "query:SC-QUBIT-CHIP"
+      ],
+      "matched_query_tag": "query:SC-QUBIT-CHIP",
+      "matched_query_text": "recent superconducting quantum chip design papers about scalable transmon processors, tunable couplers, packaging, layout, and crosstalk",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.25718v1"
+    },
+    {
+      "id": "2605.25647v1",
+      "source": "arxiv",
+      "title": "Endpoint formulation and Molien--Weyl structure for the \\(N=2\\), large--\\(d\\) BFSS/BMN models",
+      "abstract": "We study the \\(N=2\\), large--\\(d\\) sector of BFSS/BMN-type matrix quantum mechanics on the lattice in the Gaussian regime. We develop a radial endpoint formulation in which the bulk, gauge, and longitudinal degrees of freedom are integrated out, leaving transverse endpoint variables governed by an effective holonomy potential. We show that this planar endpoint formulation is equivalent to the angular Molien--Weyl description of the gauge-projected partition function, up to a universal spectator factor. This relation allows the low-temperature expansion of the endpoint partition function to be obtained from the Molien--Weyl result, whose quadratic coefficient \\(d(d+1)/2\\) counts Gaussian singlet states above the vacuum.   We then analyze the continuum limit of the quadratic coefficient and show that it separates into a Gaussian contribution, a \\(D\\)-channel, and a \\(β\\)-channel. The naive Gaussian term becomes trivial, while the exact holonomy kernel generates finite continuum contributions through singular dependence on the endpoint Gaussian width and anisotropic coupling.   We then study the geometry of the holonomy potential and show that its relevant saddle is a constrained boundary saddle on the aligned branch, rather than an unconstrained critical point. The associated transverse expansion captures the local saddle geometry, but any finite polynomial truncation has a trivial continuum limit. Finally, we introduce a non-polynomial toy model based on \\(V_{\\rm toy}(B)=-\\log\\cosh B\\), which provides a completion of the transverse expansion and reproduces exactly the continuum \\(D\\)-channel contribution \\(-2d\\). This prepares the geometric interpretation of the \\(D\\)-channel as a Wishart--Stiefel entropy associated with an emergent four-dimensional geometry embedded \\(\\mathbb R^d\\) in the endpoint formulation.",
+      "authors": [
+        "Badis Ydri"
+      ],
+      "primary_category": "hep-th",
+      "categories": [
+        "hep-th",
+        "gr-qc",
+        "hep-lat",
+        "hep-ph",
+        "math-ph"
+      ],
+      "published": "2026-05-25T09:53:14+00:00",
+      "link": "https://arxiv.org/pdf/2605.25647v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.538,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:HAMILTONIAN"
+      ],
+      "matched_query_tag": "keyword:HAMILTONIAN",
+      "matched_query_text": "effective Hamiltonian derivation for superconducting qubits couplers and resonators",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.25647v1"
+    },
+    {
+      "id": "2605.24166v1",
+      "source": "arxiv",
+      "title": "Optimal Quantum Differential Privacy via Fisher Information Spectral Analysis",
+      "abstract": "The Quantum Fisher Information (QFI) metric governs a fundamental duality: it quantifies both how precisely a parameter can be estimated (metrology) and how distinguishable two quantum states are (privacy). We exploit this duality to establish a geometry-aware framework for quantum differential privacy (DP) that replaces isotropic depolarizing noise with direction-dependent noise aligned to the QFI eigenstructure of the quantum embedding. We prove six principal theorems: (1) the minimax-optimal mechanism concentrates the noise budget in the dominant QFI eigenmode, achieving $\\varepsilon = (Δ^2/2)λ_{\\max}(1-cγ)$ with $O(d/λ_{\\max})$ advantage; (2) mixed-state QFI decomposition reveals that dephasing in the adversary's basis $\\textit{increases}$ accessible information, while misaligned-basis dephasing provides constructive privacy amplification from hardware noise; (3) a tight privacy $-$ utility uncertainty relation $\\varepsilon \\cdot (1 - F) \\ge \\frac{Δ^2}{2}\\frac{\\operatorname{Tr}(F)}{d}$; (4) adaptive QFI estimation converging at $O(1/\\sqrt{n})$ yields $1.92\\times$ tighter bounds; (5) QFI-aligned composition saturates at $O(1)$ versus $O(k)$ for standard composition; and (6) hardware noise can be harnessed for privacy amplification. Adversarial vulnerabilities, Wasserstein guarantees, subspace projection, and a zero-knowledge audit protocol follow as corollaries. Results are validated on Qiskit Aer GPU simulations, IBM Quantum hardware (ibm_fez, 156 qubits), and against classical DP baselines, achieving equivalent utility at $\\varepsilon \\approx 0.001$ versus $\\varepsilon \\approx 4800$ for classical DP.",
+      "authors": [
+        "Justice Owusu Agyemang",
+        "Jerry John Kponyo",
+        "Elliot Amponsah",
+        "Godfred Manu Addo Boakye"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cs.CR"
+      ],
+      "published": "2026-05-22T19:36:42+00:00",
+      "link": "https://arxiv.org/pdf/2605.24166v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.538,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:SC-QUBIT-CHIP"
+      ],
+      "matched_query_tag": "keyword:SC-QUBIT-CHIP",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.24166v1"
+    },
+    {
+      "id": "2605.24362v1",
+      "source": "arxiv",
+      "title": "A helical Rashba--exchange gauge field drives a uniaxial pair density wave in EuRbFe$_4$As$_4$",
+      "abstract": "The recent discovery of an intrinsic pair density wave (PDW) in the iron-pnictide superconductor EuRbFe$_4$As$_4$ presents a fascinating puzzle. Structurally, the FeAs layers break local inversion symmetry, while the Eu$^{2+}$ spins exhibit a period-four helical magnetic order. Here, we demonstrate that the interplay of induced Rashba spin-orbit coupling and the helical exchange field generates a layer-rotating effective $U(1)$ gauge field for the Cooper pairs. Because this gauge field shares the symmetry of the Fe $3d_{xz}/3d_{yz}$ orbitals, it explicitly induces an intertwined, orbital-selective pairing state. Using a phenomenological Ginzburg-Landau theory, we show this mechanism naturally stabilizes a structurally modulated Bloch superconducting state. This state features a strictly uniaxial (unidirectional) PDW, naturally capturing the phenomenology of recent scanning tunneling microscopy experiments. Furthermore, we predict this PDW is accompanied by spontaneous loop currents between adjacent layers, offering a distinctive signature for future $μ$SR or scanning SQUID experiments.",
+      "authors": [
+        "Pengfei Li",
+        "Yi Zhou"
+      ],
+      "primary_category": "cond-mat.supr-con",
+      "categories": [
+        "cond-mat.supr-con"
+      ],
+      "published": "2026-05-23T02:55:57+00:00",
+      "link": "https://arxiv.org/pdf/2605.24362v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.538,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "query:EQ-CIRCUIT"
+      ],
+      "matched_query_tag": "query:EQ-CIRCUIT",
+      "matched_query_text": "papers on extracting equivalent circuit models, capacitance matrices, inductance matrices, and EPR parameters for superconducting quantum chips",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.24362v1",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.24720v1",
+      "source": "arxiv",
+      "title": "Quantum Printing: Laguerre-Gaussian Beam Induced Topological Magnetic Textures",
+      "abstract": "Structured light has become a practical tool for controlling matter by applying tailored, space- and time-dependent electromagnetic fields. We show that Laguerre-Gaussian pulses imprint non-collinear magnetic textures via the spatial structure of optical magnetic field. Our route offers a direct spatial selectivity determined by the optical features without relying on material anisotropic interactions. The proposed printing approach does not require interfacial anisotropy or bulk chirality, current-driven torques, or thermal quenching. We use micromagnetic simulations to demonstrate the potential to create topological charge density emerging during the pulse and reveal control through the optical topological properties and polarization. These results suggest structured-light quantum printing as a viable approach for magnonics and motivate studies toward reconfigurable topological textures enabled by ultrafast THz optics and non-thermal control.",
+      "authors": [
+        "Yuefei Liu",
+        "Tien-Tien Yeh",
+        "Alexander V. Balatsky"
+      ],
+      "primary_category": "cond-mat.mes-hall",
+      "categories": [
+        "cond-mat.mes-hall",
+        "physics.optics"
+      ],
+      "published": "2026-05-23T20:15:32+00:00",
+      "link": "https://arxiv.org/pdf/2605.24720v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.538,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:SC-QUBIT-CHIP"
+      ],
+      "matched_query_tag": "keyword:SC-QUBIT-CHIP",
+      "matched_query_text": "transmon qubit design fabrication coherence and control",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.24720v1",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.25572v1",
+      "source": "arxiv",
+      "title": "PennySynth: RAG-Driven Data Synthesis for Automated Quantum Code Generation",
+      "abstract": "The growing complexity of quantum programming frameworks has exposed a critical limitation in existing large language model (LLM)-based code assistants: general-purpose models hallucinate PennyLane-specific gate names, misplace device configurations, and produce structurally invalid circuits when faced with specialized quantum coding challenges. We present PennySynth, a retrieval-augmented generation framework that addresses this gap by conditioning LLM inference on a curated knowledge base of 13,389 PennyLane instruction-code pairs, built via a three-stage extraction, verification, and deduplication pipeline over official PennyLane repositories, community GitHub sources, and QHack competition archives. PennySynth introduces a code-aware embedding strategy using st-codesearch-distilroberta-base, trained for natural-language-to-code retrieval, increasing average retrieval cosine similarity from 0.45 to 0.726 compared to a general-purpose baseline. Evaluated across 74 challenges spanning three years of the QHack competition (2022, 2023, 2024), PennySynth achieves 64%, 68%, and 52% pass@5 on QHack 2022, 2023, and 2024, respectively, improving over Claude Sonnet 4.6 without retrieval by +28, +25, and +28 percentage points. We further introduce a quantum-adapted CodeBLEU metric that upweights qml.* token patterns and show that structural code similarity and functional correctness capture distinct aspects of quantum code quality. Controlled ablations reveal that code-aware embeddings are the primary driver of retrieval performance, while dataset expansion and source composition provide additional gains when retrieval quality is sufficiently precise.",
+      "authors": [
+        "Minghao Shao",
+        "Nouhaila Innan",
+        "Hariharan Janardhanan",
+        "Muhammad Kashif",
+        "Alberto Marchisio",
+        "Muhammad Shafique"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-05-25T08:26:43+00:00",
+      "link": "https://arxiv.org/pdf/2605.25572v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.538,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:EQ-CIRCUIT"
+      ],
+      "matched_query_tag": "keyword:EQ-CIRCUIT",
+      "matched_query_text": "Josephson circuit quantization from equivalent circuit models",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.25572v1",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.25682v1",
+      "source": "arxiv",
+      "title": "Profiling-Driven Adaptive Distributed Transformer Inference on Embedded Edge Deployment",
+      "abstract": "Distributing Transformer inference across embedded edge devices can alleviate individual memory and compute constraints, yet practical benefits on real hardware remain unclear: prior work relies largely on simulations that overlook hardware-specific communication overheads. We present a hardware prototype study on NVIDIA Jetson Orin Nano devices connected over WiFi. Our key finding is that the dominant bottleneck is not just network bandwidth but also the CPU-GPU staging during communication. Because Jetson's integrated GPU architecture lacks the PCIe/NVLink pathway that NCCL requires, all inter-device data communication should be routed through GLOO and staged in CPU memory; an overhead that scales with communication data volume and makes full-tensor exchange slower than single-device inference across the batch sizes for medium sized models such as ViT. We therefore evaluate Prism by combining Segment Means compression with lightweight offline profiling to adaptively select between local and distributed execution at runtime. Experiments show that this strategy reduces latency by 65%-77% and energy consumption by 34%-52% relative to full-tensor exchange in static distributed execution setup, demonstrating that profiling-driven adaptation is essential for practical distributed Transformer inference on embedded hardware.",
+      "authors": [
+        "Muhammad Azlan Qazi",
+        "Alexandros Iosifidis",
+        "Qi Zhang"
+      ],
+      "primary_category": "cs.DC",
+      "categories": [
+        "cs.DC",
+        "cs.AI"
+      ],
+      "published": "2026-05-25T10:39:28+00:00",
+      "link": "https://arxiv.org/pdf/2605.25682v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.538,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:SC-QUBIT-CHIP"
+      ],
+      "matched_query_tag": "keyword:SC-QUBIT-CHIP",
+      "matched_query_text": "crosstalk mitigation and characterization in superconducting qubit chips",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.25682v1",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.25978v1",
+      "source": "arxiv",
+      "title": "Resonant Microstructures as Dirac-type Actuators for Acoustic Wave Control",
+      "abstract": "We study interior control of the acoustic wave equation via effective point sources generated by a finite cluster of resonant perturbations (modeling acoustic subwavelength bubbles). At the abstract level, after localizing the whole-space dynamics to a large auxiliary observation domain, we consider a Dirichlet spectral formulation of the wave equation with finitely many point actuators located at prescribed interior points. Restricting to a finite spectral band of Dirichlet eigenfrequencies, we prove that, under a natural full-rank condition on the associated coupling matrix, arbitrary trajectories on the corresponding spectral subspace can be realized, with quantitative bounds on the control cost in terms of spectral-band geometry and actuator placement. We then show that these ideal actuators can be realized by clusters of small, high-contrast bubbles. Using a time-domain asymptotic expansion, the scattered field is represented as a superposition of retarded monopoles whose amplitudes satisfy a finite-dimensional delayed hyperbolic system. In the Laplace domain, this induces a transfer operator whose pole structure encodes the Minnaert resonance with a collective attenuation. We prove that the associated actuator map is ill-conditioned away from resonance, whereas, under a cluster-level transducer accessibility condition linking the incident fields to the dominant cluster channels, it admits a bounded right inverse on suitable Minnaert bands. Consequently, one obtains spectral tracking of the wave field with error $\\mathcal{O}(\\varepsilon^γ)$ as the bubble size $\\varepsilon \\to 0$.   Keywords. Wave equation, Dirac actuators, Trajectory tracking control, Resonant perturbations, Kato's analytic perturbation, Perron-Frobenius spectrum, Minnaert resonances, Actuation map, Toeplitz matrix.",
+      "authors": [
+        "Arpan Mukherjee",
+        "Mourad Sini"
+      ],
+      "primary_category": "math.AP",
+      "categories": [
+        "math.AP",
+        "math.OC"
+      ],
+      "published": "2026-05-25T15:53:35+00:00",
+      "link": "https://arxiv.org/pdf/2605.25978v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.538,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:EQ-CIRCUIT"
+      ],
+      "matched_query_tag": "keyword:EQ-CIRCUIT",
+      "matched_query_text": "inductance matrix modeling and electromagnetic simulation of superconducting circuits",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.25978v1",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.22113v1",
+      "source": "arxiv",
+      "title": "QT-PUF: Quantum Tunneling Leakage Based PUF for Implantable IoMT Devices",
+      "abstract": "The Internet of Medical Things (IoMT) marks a shift toward decentralized healthcare, enabling continuous monitoring and personalized care through connected wearable and implantable devices. However, ensuring the trust and integrity of these devices themselves remains a major challenge, as physical compromise or counterfeiting can directly endanger patient safety, privacy, and data integrity. This work presents QT-PUF, a gate-tunneling-leakage-based physical unclonable function (PUF) that leverages quantum-mechanical gate leakage resulting from process-induced variations in standard CMOS devices. A differential readout circuit with a pseudo-resistor I-to-V frontend is proposed to convert the picoampere-level leakage variations into digital responses. Unlike existing PUFs such as those based on memory, ring oscillators, or arbiters, which are less suitable for ultralow-power IoMT devices (due to additional circuitry, power overhead, or poor stability), QT-PUF requires no external excitation or stabilization and operates under static bias. Simulation-based measurements for a $\\mathbf{65}$~nm CMOS process demonstrate an entropy of $\\mathbf{0.9999998}$, an FHD of $\\mathbf{0.5001}$, and an average power (energy) consumption of $\\mathbf{96.04}$~nW/bit ($\\mathbf{19.21}$~fJ/bit, respectively) at $\\mathbf{1.2\\,V}$ and $\\mathbf{35\\,^{\\circ}C}$ for the proposed PUF. It operates reliably across $\\mathbf{0.9}\\text{--}\\mathbf{1.3}$~V and $\\mathbf{0}\\text{--}\\mathbf{100\\,^{\\circ}C}$ with an average BER below $\\mathbf{0.000163}$ across $\\mathbf{1.0}\\text{--}\\mathbf{1.3}$~V and $\\mathbf{10}\\text{--}\\mathbf{70\\,^{\\circ}C}$ within the operating conditions of typical implantable devices.",
+      "authors": [
+        "Yueqi Ma",
+        "Vivek Mohan",
+        "Chip-Hong Chang",
+        "Emmanuel M. Drakakis"
+      ],
+      "primary_category": "cs.CR",
+      "categories": [
+        "cs.CR"
+      ],
+      "published": "2026-05-21T07:46:02+00:00",
+      "link": "https://arxiv.org/pdf/2605.22113v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.454,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:SC-QUBIT-CHIP"
+      ],
+      "matched_query_tag": "keyword:SC-QUBIT-CHIP",
+      "matched_query_text": "microwave packaging interconnects and signal integrity for superconducting quantum chips",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.22113v1",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.22522v1",
+      "source": "arxiv",
+      "title": "Competing incommensurability, electronic correlations, and superconductivity in a hybrid transition metal dichalcogenide",
+      "abstract": "The engineering of superlattices in two-dimensional van der Waals materials has enabled the realization of rich phase diagrams hosting topological and strongly correlated phases. While incommensurability is widespread in three-dimensional systems, the role of moiré potentials in bulk materials remains largely unexplored. Here, using scanning tunneling microscopy, we demonstrate that a bulk transition-metal dichalcogenide polytype, 4Hb-TaS$_2$, hosts an emergent incommensurate potential between its alternating 1T and 1H layers. Interplay with a concomitant incommensurate charge-density wave suppresses the long-range order of this potential, leading to intricate coupling with electronic correlations in the doped 1T surface layer. Combining density functional theory with dynamical mean-field theory, we show that the lattice mismatch locally modulates the interlayer distance, thereby tuning both hybridization and charge transfer between the correlated 1T and metallic 1H layers. This redistribution of charge drives the system towards a doped Mott regime, in which the remaining local moments become self-screened, giving rise to a zero-bias resonance. We further find that bulk superconductivity competes with both the underlying landscape and the associated charge transfer. Our results establish incommensurate potentials as a previously overlooked ingredient in hybrid transition-metal dichalcogenides, highlighting their central role in the interplay between electronic correlations, charge-density-wave order, and unconventional superconductivity.",
+      "authors": [
+        "Jean C. Souza",
+        "Moshe Haim",
+        "Lorenzo Crippa",
+        "Hyeonhu Bae",
+        "Edanel Fishbein",
+        "Jonathan Ruhman",
+        "Binghai Yan",
+        "Amit Kanigel",
+        "Roser Valentí",
+        "Nurit Avraham",
+        "Haim Beidenkopf"
+      ],
+      "primary_category": "cond-mat.str-el",
+      "categories": [
+        "cond-mat.str-el",
+        "cond-mat.mtrl-sci",
+        "cond-mat.supr-con"
+      ],
+      "published": "2026-05-21T14:14:59+00:00",
+      "link": "https://arxiv.org/pdf/2605.22522v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.454,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "query:SC-QUBIT-CHIP"
+      ],
+      "matched_query_tag": "query:SC-QUBIT-CHIP",
+      "matched_query_text": "recent superconducting quantum chip design papers about scalable transmon processors, tunable couplers, packaging, layout, and crosstalk",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.22522v1",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.22601v1",
+      "source": "arxiv",
+      "title": "Upscaling DFT-trained machine-learning interatomic potential toward Quantum Monte Carlo accuracy: Sulfur-vacancy migration in monolayer MoS$_2$ as a testbed",
+      "abstract": "We designed a procedure to train a machine learning interatomic potential (MLIP) at benchmark-quality quantum Monte Carlo (QMC) accuracy. To avoid the complexities of high-quality atomic force determination with the stochastic QMC methods, we use a multi-fidelity approach wherein high-level QMC energies are used alongside suitably processed low-level DFT atomic forces to train a QMC fine-tuned MLIP which significantly improves both the energetics and atomic forces over the baseline DFT-based MLIP. Fine-tuning is only applied to the readout layers of an equivariant message-passing MACE MLIP. We used sulfur mono- and multiple vacancies in monolayer MoS$_2$ as a testbed and demonstrate a near QMC accuracy of the model in a number of in- and out-of-domain tests. We show that a fairly limited dataset of QMC energies suffice to significantly improve the baseline DFT MLIP. The accuracy of our approach is demonstrated on energy and free energy migration barriers of mono- and multiple S-vacancy defects. The results open the window to large-scale near QMC quality simulations with large numbers of atoms and/or molecular dynamics configurations which would not be possible by a direct brute-force application of QMC methods.",
+      "authors": [
+        "Adam Hložný",
+        "Ján Brndiar",
+        "Ye Luo",
+        "Ivan Štich"
+      ],
+      "primary_category": "cond-mat.mtrl-sci",
+      "categories": [
+        "cond-mat.mtrl-sci"
+      ],
+      "published": "2026-05-21T15:15:35+00:00",
+      "link": "https://arxiv.org/pdf/2605.22601v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.454,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:EQ-CIRCUIT"
+      ],
+      "matched_query_tag": "keyword:EQ-CIRCUIT",
+      "matched_query_text": "capacitance matrix extraction and modeling for Josephson circuits",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.22601v1",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.22753v1",
+      "source": "arxiv",
+      "title": "Signatures of quantum chaos in phonon-polariton billiards",
+      "abstract": "We use scanning near-field optical microscopy to image hyperbolic phonon polaritons in hexagonal boron nitride (hBN) billiards with integrable and chaotic geometries. In Sinai billiards, we observe irregular mode patterns consistent with quantum scarring, together with an unexpected sensitivity to weak probe perturbations. These random-wave features coexist with non-chaotic one-dimensional boundary modes arising from nontrivial polariton reflection at the billiard edge. As the billiard boundary becomes increasingly complex, the Fourier transforms of the measured signals evolve toward ring-like structures consistent with Berry's random-wave conjecture. We develop a numerical framework based on the Helmholtz equation with generalized boundary conditions that encode angle-dependent reflection phase shifts. The calculated level statistics exhibit a crossover from Poisson-like behavior in integrable billiards to Wigner-Dyson-like behavior in chaotic geometries, with small deviations from the canonical form arising from nonlinear boundary conditions that require self-consistent bulk-boundary analysis. Theoretical analysis based on dissipative Green's functions qualitatively reproduces the near-field data. These results establish mesoscopic van der Waals billiards as a rich platform for studying generalized chaotic dynamics of hybrid light-matter polaritons.",
+      "authors": [
+        "Yinan Dong",
+        "Felix Liu",
+        "Ekrem Demirboga",
+        "Andrey Grankin",
+        "Dihao Sun",
+        "Yuchen Lin",
+        "Lukas Wehmeier",
+        "Matthew Fu",
+        "Cory R. Dean",
+        "Song Liu",
+        "James H. Edgar",
+        "Michael M. Folger",
+        "Victor M. Galitski",
+        "Dmitri N. Basov"
+      ],
+      "primary_category": "cond-mat.mes-hall",
+      "categories": [
+        "cond-mat.mes-hall"
+      ],
+      "published": "2026-05-21T17:22:01+00:00",
+      "link": "https://arxiv.org/pdf/2605.22753v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.454,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:HAMILTONIAN"
+      ],
+      "matched_query_tag": "keyword:HAMILTONIAN",
+      "matched_query_text": "Kerr nonlinearity and anharmonicity in superconducting quantum circuits",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.22753v1",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.23251v1",
+      "source": "arxiv",
+      "title": "Fourier--Galerkin Methods for Subwavelength Resonances in 2D Acoustic Metamaterials",
+      "abstract": "We present a Fourier--Galerkin framework for the analysis and computation of subwavelength resonances in two-dimensional scattering problems in finite domains. Starting from the boundary integral formulation, we project the operator onto Fourier modes and derive an explicit finite-dimensional effective matrix whose singularity characterizes the resonant frequencies. In the subwavelength regime, we obtain asymptotic expansions of this matrix in terms of $ω$ and the material contrast, identifying the leading-order operators and their kernel structure.   This reduction transforms the resonance problem into a low-dimensional nonlinear eigenvalue problem, avoiding large-scale discretizations and global root-search procedures. The entries of the effective matrix are explicitly computable and admit fast evaluation using FFT-based quadrature. The resulting approach provides an efficient and robust computational framework for resonances in general smooth geometries.",
+      "authors": [
+        "Jinghao Cao"
+      ],
+      "primary_category": "math.NA",
+      "categories": [
+        "math.NA",
+        "math.AP"
+      ],
+      "published": "2026-05-22T05:50:11+00:00",
+      "link": "https://arxiv.org/pdf/2605.23251v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN"
+      ],
+      "llm_score": 8.454,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:EQ-CIRCUIT"
+      ],
+      "matched_query_tag": "keyword:EQ-CIRCUIT",
+      "matched_query_text": "inductance matrix modeling and electromagnetic simulation of superconducting circuits",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.23251v1",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.23613v1",
+      "source": "arxiv",
+      "title": "Non-Hermitian Landau Levels",
+      "abstract": "We formulate non-Hermitian Landau levels in two-dimensional systems under a complex perpendicular magnetic field. In the symmetric gauge, we derive their discretely spaced, highly degenerate complex spectra and biorthogonal eigenstates, and clarify the role of non-unitary gauge transformations. A non-Hermitian Harper-Hofstadter lattice model confirms the continuum theory and reveals Gaussian wave packet dynamics governed by semiclassical equations with a complex Lorentz force, pointing to possible experimental realizations of complex magnetic fields.",
+      "authors": [
+        "Anton Montag",
+        "Tomoki Ozawa"
+      ],
+      "primary_category": "quant-ph",
+      "categories": [
+        "quant-ph",
+        "cond-mat.mes-hall"
+      ],
+      "published": "2026-05-22T13:20:49+00:00",
+      "link": "https://arxiv.org/pdf/2605.23613v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN"
+      ],
+      "llm_score": 8.454,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:HAMILTONIAN"
+      ],
+      "matched_query_tag": "keyword:HAMILTONIAN",
+      "matched_query_text": "Kerr nonlinearity and anharmonicity in superconducting quantum circuits",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.23613v1",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.23769v1",
+      "source": "arxiv",
+      "title": "Interaction-Split Edge Spectral Flow and Neutral Triplet Boundary Modes in a C = 2 Hubbard Pump",
+      "abstract": "We show that a sliding spatial modulation of the on-site Hubbard interaction realizes a many-body Thouless pump whose boundary spectral flow is reconstructed by correlations. For a period-three Hubbard chain at filling $ρ=2/3$, density-matrix renormalization group (DMRG) calculations identify a correlated insulator with many-body Chern number $C=+2$, corresponding to two units of charge pumped per cycle. Its excitation spectrum separates the charge gap from the lowest neutral spin gap, revealing an interacting bulk response beyond a simple spin-degenerate band pump. Under open boundary conditions, this contrast becomes even more pronounced. A spin-degenerate Hartree/Aubry-André-Harper reference pump exhibits simultaneous edge flow in the two spin channels, whereas the full modulated Hubbard model suppresses the boundary doublon channel and splits the spectral flow into two distinct edge events. Between these events, the boundary charge is neutralized while a neutral, spinful triplet-like excitation is localized at the edge. The global $μ-U$ phase diagram reveals filling-dependent topology: the $ρ=2/3$ regime remains in the $C=+2$ sector, while $ρ=4/3$ regime undergoes a spin-gap-closing transition from a $C=-2$ pump to a distinct $C=+1$ topological Mott pump.",
+      "authors": [
+        "Yong-Feng Yang",
+        "Zhao-Rui Tian",
+        "Chen Cheng",
+        "Hong-Gang Luo"
+      ],
+      "primary_category": "cond-mat.str-el",
+      "categories": [
+        "cond-mat.str-el"
+      ],
+      "published": "2026-05-22T15:40:22+00:00",
+      "link": "https://arxiv.org/pdf/2605.23769v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.454,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:HAMILTONIAN"
+      ],
+      "matched_query_tag": "keyword:HAMILTONIAN",
+      "matched_query_text": "cross-Kerr coupling and dispersive interaction in superconducting qubit systems",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.23769v1",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.24840v1",
+      "source": "arxiv",
+      "title": "Shifted Matrix-Sign Reflectors for Prescribed-Index Eigenspace Reflection",
+      "abstract": "Spectral projectors and the reflectors derived from them are basic objects in numerical linear algebra. This paper studies the prescribed-index reflector I-2P_k, where P_k is the spectral projector associated with the first k eigenvectors of a symmetric matrix. If a shift s lies in the target spectral gap, then this reflector is exactly the shifted matrix sign sign(H-sI). The exact identity is elementary, but its algorithmic consequences are not: all admissible shifts give the same exact reflector, while finite-step sign filters can have very different errors. We analyze odd sign-preserving spectral filters, prove local inheritance and discrete stability for the induced reflector iterations, derive a gap-dependent Newton-Schulz operator bound, and give deterministic admissibility certificates for inexact and reused shifts. The analysis identifies the shifted spectral margin as the quantity controlling finite-step reflector accuracy and explains why the midpoint shift is the natural default. Numerical experiments separate the matrix-function issues from the outer saddle-search dynamics: controlled spectra verify the margin predictions, low-dimensional tests distinguish shifted signs from raw signs, target-index scans probe non-small k, and Allen-Cahn and dense timing tests identify the regimes in which full-matrix sign filters are useful and the stiff regimes in which stronger sign engines are needed.",
+      "authors": [
+        "Jin Zhao"
+      ],
+      "primary_category": "math.NA",
+      "categories": [
+        "math.NA"
+      ],
+      "published": "2026-05-24T03:12:09+00:00",
+      "link": "https://arxiv.org/pdf/2605.24840v1",
+      "tags": [
+        "keyword:EQ-CIRCUIT",
+        "keyword:HAMILTONIAN",
+        "keyword:SC-QUBIT-CHIP",
+        "query:EQ-CIRCUIT",
+        "query:HAMILTONIAN",
+        "query:SC-QUBIT-CHIP"
+      ],
+      "llm_score": 8.454,
+      "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+      "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+      "llm_tldr_en": "Candidate selected by retrieval ranking.",
+      "llm_tldr_cn": "由检索排序选出的候选论文。",
+      "llm_tldr": "由检索排序选出的候选论文。",
+      "llm_tags": [
+        "keyword:EQ-CIRCUIT"
+      ],
+      "matched_query_tag": "keyword:EQ-CIRCUIT",
+      "matched_query_text": "inductance matrix modeling and electromagnetic simulation of superconducting circuits",
+      "matched_requirement_id": "",
+      "selection_source": "carryover_cache",
+      "paper_id": "2605.24840v1",
+      "quick_tier": "8plus"
+    }
+  ],
+  "quick_skim": []
+}

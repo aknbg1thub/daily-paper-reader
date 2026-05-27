@@ -303,7 +303,26 @@ jobs:
             ARGS+=(--force-deep)
           fi
           ARGS+=(--llm-batch-size 6 --llm-filter-concurrency 2)
-          python src/main.py "${ARGS[@]}" --embedding-device cpu --embedding-batch-size 8
+          mkdir -p archive/workflow_diagnostics
+          set +e
+          python src/main.py "${ARGS[@]}" --embedding-device cpu --embedding-batch-size 8 2>&1 | tee archive/workflow_diagnostics/latest.log
+          status=${PIPESTATUS[0]}
+          set -e
+          if [ "$status" -ne 0 ]; then
+            {
+              echo "# Workflow failure diagnostics"
+              echo
+              echo "- event: ${{ github.event_name }}"
+              echo "- sha: ${GITHUB_SHA}"
+              echo "- date: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+              echo "- exit_status: ${status}"
+              echo
+              echo '```text'
+              tail -n 240 archive/workflow_diagnostics/latest.log
+              echo '```'
+            } > archive/workflow_diagnostics/latest_failure.md
+            exit "$status"
+          fi
 
           # Copy config for frontend read-only access without a GitHub token.
           cp -f config.yaml docs/config.yaml
@@ -315,6 +334,22 @@ jobs:
         if: env.SHOULD_RUN == 'true'
         run: |
           find archive -mindepth 2 -maxdepth 2 -type d \( -name raw -o -name filtered -o -name rank \) -exec rm -rf {} +
+
+      - name: Commit failure diagnostics
+        if: failure() && env.SHOULD_RUN == 'true'
+        run: |
+          if [ ! -f archive/workflow_diagnostics/latest_failure.md ]; then
+            echo "No failure diagnostics file found."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          branch="${GITHUB_REF_NAME:-main}"
+          git add archive/workflow_diagnostics/latest_failure.md
+          git commit -m "[debug] workflow failure diagnostics" || exit 0
+          git fetch origin "$branch"
+          git rebase -X theirs "origin/$branch"
+          git push origin HEAD:"$branch"
 
       - name: Commit results
         if: env.SHOULD_RUN == 'true'

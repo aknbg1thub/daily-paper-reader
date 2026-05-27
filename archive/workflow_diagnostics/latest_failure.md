@@ -1,104 +1,104 @@
 # Workflow failure diagnostics
 
 - event: schedule
-- sha: c4125cd8cd7f458b6507554c5ae9190025a829cf
-- date: 2026-05-27T22:20:12Z
+- sha: 15326bcc45897a092c388d2c2cf3a67275b35b02
+- date: 2026-05-27T22:31:22Z
 - exit_status: 1
 
 ```text
-[2026-05-27 22:19:44] [INFO] Supabase BM25 召回窗口：2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 (time_fields=published)
-[2026-05-27 22:19:44] [INFO] Supabase BM25 使用命令行指定的 Top K = 30，source=arxiv，输出文件：arxiv_papers_20260527-20260527.bm25.json
+[2026-05-27 22:30:52] [INFO] Supabase BM25 召回窗口：2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 (time_fields=published)
+[2026-05-27 22:30:52] [INFO] Supabase BM25 使用命令行指定的 Top K = 30，source=arxiv，输出文件：arxiv_papers_20260527-20260527.bm25.json
 ::group::Step 2.1 - supabase bm25 recall (arxiv:arxiv_papers_20260527-20260527.bm25.json)
-[2026-05-27 22:19:44] [Supabase BM25] batch=1 tag=QC-GENERAL type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:45] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:45] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=QC-GENERAL
-[2026-05-27 22:19:45] [Supabase BM25] batch=2 tag=QC-GENERAL type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:46] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:46] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=QC-GENERAL
-[2026-05-27 22:19:46] [Supabase BM25] batch=3 tag=QC-GENERAL type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:47] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:47] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=QC-GENERAL
-[2026-05-27 22:19:47] [Supabase BM25] batch=4 tag=QC-GENERAL type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:47] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:47] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=QC-GENERAL
-[2026-05-27 22:19:47] [Supabase BM25] batch=5 tag=SC-QUBIT-CHIP type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:48] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:48] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SC-QUBIT-CHIP
-[2026-05-27 22:19:48] [Supabase BM25] batch=6 tag=SC-QUBIT-CHIP type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:48] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:48] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SC-QUBIT-CHIP
-[2026-05-27 22:19:48] [Supabase BM25] batch=7 tag=SC-QUBIT-CHIP type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:49] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:49] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SC-QUBIT-CHIP
-[2026-05-27 22:19:49] [Supabase BM25] batch=8 tag=SC-QUBIT-CHIP type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:49] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:49] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SC-QUBIT-CHIP
-[2026-05-27 22:19:49] [Supabase BM25] batch=9 tag=TOPO-LAYOUT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:50] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:50] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=TOPO-LAYOUT
-[2026-05-27 22:19:50] [Supabase BM25] batch=10 tag=TOPO-LAYOUT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:50] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:50] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=TOPO-LAYOUT
-[2026-05-27 22:19:50] [Supabase BM25] batch=11 tag=TOPO-LAYOUT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:51] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:51] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=TOPO-LAYOUT
-[2026-05-27 22:19:51] [Supabase BM25] batch=12 tag=TOPO-LAYOUT type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:51] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:51] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=TOPO-LAYOUT
-[2026-05-27 22:19:51] [Supabase BM25] batch=13 tag=EQ-CIRCUIT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:52] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:52] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=EQ-CIRCUIT
-[2026-05-27 22:19:52] [Supabase BM25] batch=14 tag=EQ-CIRCUIT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:52] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:52] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=EQ-CIRCUIT
-[2026-05-27 22:19:52] [Supabase BM25] batch=15 tag=EQ-CIRCUIT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:52] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:52] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=EQ-CIRCUIT
-[2026-05-27 22:19:52] [Supabase BM25] batch=16 tag=EQ-CIRCUIT type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:53] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:53] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=EQ-CIRCUIT
-[2026-05-27 22:19:53] [Supabase BM25] batch=17 tag=SIM-ACCEL type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:53] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:53] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SIM-ACCEL
-[2026-05-27 22:19:53] [Supabase BM25] batch=18 tag=SIM-ACCEL type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:54] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:54] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SIM-ACCEL
-[2026-05-27 22:19:54] [Supabase BM25] batch=19 tag=SIM-ACCEL type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:54] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:54] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SIM-ACCEL
-[2026-05-27 22:19:54] [Supabase BM25] batch=20 tag=SIM-ACCEL type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:54] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:54] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SIM-ACCEL
-[2026-05-27 22:19:54] [Supabase BM25] batch=21 tag=CO-OPT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:55] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:55] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=CO-OPT
-[2026-05-27 22:19:55] [Supabase BM25] batch=22 tag=CO-OPT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:56] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:56] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=CO-OPT
-[2026-05-27 22:19:56] [Supabase BM25] batch=23 tag=CO-OPT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:56] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:56] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=CO-OPT
-[2026-05-27 22:19:56] [Supabase BM25] batch=24 tag=CO-OPT type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:57] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:57] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=CO-OPT
-[2026-05-27 22:19:57] [Supabase BM25] batch=25 tag=AI-SCQC-DESIGN type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:57] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:57] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=AI-SCQC-DESIGN
-[2026-05-27 22:19:57] [Supabase BM25] batch=26 tag=AI-SCQC-DESIGN type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:58] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:58] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=AI-SCQC-DESIGN
-[2026-05-27 22:19:58] [Supabase BM25] batch=27 tag=AI-SCQC-DESIGN type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:58] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:58] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=AI-SCQC-DESIGN
-[2026-05-27 22:19:58] [Supabase BM25] batch=28 tag=AI-SCQC-DESIGN type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
-[2026-05-27 22:19:59] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
-[2026-05-27 22:19:59] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=AI-SCQC-DESIGN
-[2026-05-27 22:19:59] [WARN] Supabase BM25 未命中（source=arxiv）。
+[2026-05-27 22:30:52] [Supabase BM25] batch=1 tag=QC-GENERAL type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:30:53] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:30:53] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=QC-GENERAL
+[2026-05-27 22:30:53] [Supabase BM25] batch=2 tag=QC-GENERAL type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:30:54] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:30:54] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=QC-GENERAL
+[2026-05-27 22:30:54] [Supabase BM25] batch=3 tag=QC-GENERAL type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:30:54] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:30:54] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=QC-GENERAL
+[2026-05-27 22:30:54] [Supabase BM25] batch=4 tag=QC-GENERAL type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:30:55] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:30:55] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=QC-GENERAL
+[2026-05-27 22:30:55] [Supabase BM25] batch=5 tag=SC-QUBIT-CHIP type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:30:56] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:30:56] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SC-QUBIT-CHIP
+[2026-05-27 22:30:56] [Supabase BM25] batch=6 tag=SC-QUBIT-CHIP type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:30:56] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:30:56] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SC-QUBIT-CHIP
+[2026-05-27 22:30:56] [Supabase BM25] batch=7 tag=SC-QUBIT-CHIP type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:30:57] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:30:57] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SC-QUBIT-CHIP
+[2026-05-27 22:30:57] [Supabase BM25] batch=8 tag=SC-QUBIT-CHIP type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:30:58] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:30:58] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SC-QUBIT-CHIP
+[2026-05-27 22:30:58] [Supabase BM25] batch=9 tag=TOPO-LAYOUT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:30:58] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:30:58] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=TOPO-LAYOUT
+[2026-05-27 22:30:58] [Supabase BM25] batch=10 tag=TOPO-LAYOUT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:30:58] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:30:58] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=TOPO-LAYOUT
+[2026-05-27 22:30:58] [Supabase BM25] batch=11 tag=TOPO-LAYOUT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:30:59] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:30:59] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=TOPO-LAYOUT
+[2026-05-27 22:30:59] [Supabase BM25] batch=12 tag=TOPO-LAYOUT type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:00] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:00] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=TOPO-LAYOUT
+[2026-05-27 22:31:00] [Supabase BM25] batch=13 tag=EQ-CIRCUIT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:00] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:00] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=EQ-CIRCUIT
+[2026-05-27 22:31:00] [Supabase BM25] batch=14 tag=EQ-CIRCUIT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:00] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:00] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=EQ-CIRCUIT
+[2026-05-27 22:31:00] [Supabase BM25] batch=15 tag=EQ-CIRCUIT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:01] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:01] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=EQ-CIRCUIT
+[2026-05-27 22:31:01] [Supabase BM25] batch=16 tag=EQ-CIRCUIT type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:01] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:01] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=EQ-CIRCUIT
+[2026-05-27 22:31:01] [Supabase BM25] batch=17 tag=SIM-ACCEL type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:02] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:02] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SIM-ACCEL
+[2026-05-27 22:31:02] [Supabase BM25] batch=18 tag=SIM-ACCEL type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:02] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:02] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SIM-ACCEL
+[2026-05-27 22:31:02] [Supabase BM25] batch=19 tag=SIM-ACCEL type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:02] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:02] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SIM-ACCEL
+[2026-05-27 22:31:02] [Supabase BM25] batch=20 tag=SIM-ACCEL type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:03] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:03] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=SIM-ACCEL
+[2026-05-27 22:31:03] [Supabase BM25] batch=21 tag=CO-OPT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:03] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:03] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=CO-OPT
+[2026-05-27 22:31:03] [Supabase BM25] batch=22 tag=CO-OPT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:04] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:04] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=CO-OPT
+[2026-05-27 22:31:04] [Supabase BM25] batch=23 tag=CO-OPT type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:04] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:04] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=CO-OPT
+[2026-05-27 22:31:04] [Supabase BM25] batch=24 tag=CO-OPT type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:05] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:05] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=CO-OPT
+[2026-05-27 22:31:05] [Supabase BM25] batch=25 tag=AI-SCQC-DESIGN type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:05] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:05] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=AI-SCQC-DESIGN
+[2026-05-27 22:31:05] [Supabase BM25] batch=26 tag=AI-SCQC-DESIGN type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:05] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:05] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=AI-SCQC-DESIGN
+[2026-05-27 22:31:05] [Supabase BM25] batch=27 tag=AI-SCQC-DESIGN type=keyword published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:06] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:06] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=AI-SCQC-DESIGN
+[2026-05-27 22:31:06] [Supabase BM25] batch=28 tag=AI-SCQC-DESIGN type=intent_query published_window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 updated_window=N/A time_fields=published
+[2026-05-27 22:31:06] [Supabase BM25] depth=0 window=2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 rpc 查询成功：0 条
+[2026-05-27 22:31:06] [Supabase BM25] rpc 分片查询成功：0 条（initial_shards=1 success_windows=1 failed_windows=0） | tag=AI-SCQC-DESIGN
+[2026-05-27 22:31:06] [WARN] Supabase BM25 未命中（source=arxiv）。
 ::endgroup::
-[2026-05-27 22:19:59] [INFO] 已将带 tag 的论文和每个查询的 top_k 结果写入：/home/runner/work/daily-paper-reader/daily-paper-reader/archive/20260527-20260527/filtered/arxiv_papers_20260527-20260527.bm25.json
-[2026-05-27 22:19:59] [INFO] 其中带 tag 的论文数：0
+[2026-05-27 22:31:06] [INFO] 已将带 tag 的论文和每个查询的 top_k 结果写入：/home/runner/work/daily-paper-reader/daily-paper-reader/archive/20260527-20260527/filtered/arxiv_papers_20260527-20260527.bm25.json
+[2026-05-27 22:31:06] [INFO] 其中带 tag 的论文数：0
 [INFO] Step 2.2 - Embedding: /opt/hostedtoolcache/Python/3.11.15/x64/bin/python /home/runner/work/daily-paper-reader/daily-paper-reader/src/2.2.retrieval_papers_embedding.py --device cpu --batch-size 8 --top-k 30
-[2026-05-27 22:19:59] [INFO] Supabase 向量召回窗口：2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 (time_fields=published)
+[2026-05-27 22:31:06] [INFO] Supabase 向量召回窗口：2026-05-27T00:00:00+00:00 ~ 2026-05-28T00:00:00+00:00 (time_fields=published)
 [INFO] 正在初始化远程向量服务：BAAI/bge-small-en-v1.5，device=remote
 [INFO] 使用远程 embedding 服务：model=BAAI/bge-small-en-v1.5 endpoint=https://embed.zwwen.online/embed timeout=60s device=remote
 [INFO] 远程 embedding：model=BAAI/bge-small-en-v1.5 endpoint=https://embed.zwwen.online/embed total=28 batch=8
@@ -106,24 +106,24 @@
 [WARN] 远程 embedding 不可用，回退本地模型：BAAI/bge-small-en-v1.5 (device=remote)
 [INFO] 尝试加载模型（第 1/3 轮）：BAAI/bge-small-en-v1.5（provider=huggingface，device=remote）
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4243.09it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3560.12it/s]
 [WARN] 模型加载失败（provider=huggingface，round=1/3）：Expected one of cpu, cuda, ipu, xpu, mkldnn, opengl, opencl, ideep, hip, ve, fpga, maia, xla, lazy, vulkan, mps, meta, hpu, mtia, privateuseone device type at start of device string: remote
 [INFO] 尝试加载模型（第 1/3 轮）：BAAI/bge-small-en-v1.5（provider=modelscope，device=remote）
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4142.24it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3427.62it/s]
 [WARN] 模型加载失败（provider=modelscope，round=1/3）：Expected one of cpu, cuda, ipu, xpu, mkldnn, opengl, opencl, ideep, hip, ve, fpga, maia, xla, lazy, vulkan, mps, meta, hpu, mtia, privateuseone device type at start of device string: remote
 [INFO] 重试间隔：1s
 [INFO] 尝试加载模型（第 2/3 轮）：BAAI/bge-small-en-v1.5（provider=huggingface，device=remote）
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4366.14it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3575.98it/s]
 [WARN] 模型加载失败（provider=huggingface，round=2/3）：Expected one of cpu, cuda, ipu, xpu, mkldnn, opengl, opencl, ideep, hip, ve, fpga, maia, xla, lazy, vulkan, mps, meta, hpu, mtia, privateuseone device type at start of device string: remote
 [INFO] 尝试加载模型（第 2/3 轮）：BAAI/bge-small-en-v1.5（provider=modelscope，device=remote）
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4275.28it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3547.29it/s]
 [WARN] 模型加载失败（provider=modelscope，round=2/3）：Expected one of cpu, cuda, ipu, xpu, mkldnn, opengl, opencl, ideep, hip, ve, fpga, maia, xla, lazy, vulkan, mps, meta, hpu, mtia, privateuseone device type at start of device string: remote
 [INFO] 重试间隔：1s
 [INFO] 尝试加载模型（第 3/3 轮）：BAAI/bge-small-en-v1.5（provider=huggingface，device=remote）
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4308.56it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3530.77it/s]
 [WARN] 模型加载失败（provider=huggingface，round=3/3）：Expected one of cpu, cuda, ipu, xpu, mkldnn, opengl, opencl, ideep, hip, ve, fpga, maia, xla, lazy, vulkan, mps, meta, hpu, mtia, privateuseone device type at start of device string: remote
 [INFO] 尝试加载模型（第 3/3 轮）：BAAI/bge-small-en-v1.5（provider=modelscope，device=remote）
-Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 4205.19it/s]
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3449.98it/s]
 [WARN] 模型加载失败（provider=modelscope，round=3/3）：Expected one of cpu, cuda, ipu, xpu, mkldnn, opengl, opencl, ideep, hip, ve, fpga, maia, xla, lazy, vulkan, mps, meta, hpu, mtia, privateuseone device type at start of device string: remote
 Traceback (most recent call last):
   File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request

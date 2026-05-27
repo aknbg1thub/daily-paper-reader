@@ -3178,6 +3178,7 @@ window.$docsify = {
           if (!payload || typeof payload !== 'object') return;
 
           const title = String(payload.title || a.textContent || '').trim();
+          const titleZh = String((payload && payload.title_zh) || '').trim();
           const link = String(payload.link || fallbackLink || href || '').trim();
           const score = String(payload.score || '').trim();
           const evidence = String((payload && payload.evidence) || '').trim();
@@ -3199,8 +3200,13 @@ window.$docsify = {
             .filter(Boolean)
             .join(' ');
 
+          const titleHtml = titleZh
+            ? `<div class="dpr-sidebar-title">${escapeHtml(titleZh)}</div>` +
+              `<div class="dpr-sidebar-title-en">${escapeHtml(title || routeId)}</div>`
+            : `<div class="dpr-sidebar-title">${escapeHtml(title || routeId)}</div>`;
+
           a.innerHTML =
-            `<div class="dpr-sidebar-title">${escapeHtml(title)}</div>` +
+            titleHtml +
             `<div class="dpr-sidebar-link-line">${escapeHtml(evidence || '-')}</div>` +
             `<div class="dpr-sidebar-meta-line">` +
             `${scoreHtml}` +

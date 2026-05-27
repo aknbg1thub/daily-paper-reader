@@ -132,6 +132,25 @@ class GenerateDocsMetaParseTest(unittest.TestCase):
         self.assertNotIn(("query", "sr:composite"), tags)
         self.assertEqual(tags.count(("query", "sr")), 1)
 
+    def test_update_sidebar_writes_chinese_title_payload(self):
+        with tempfile.TemporaryDirectory() as d:
+            sidebar_path = Path(d) / "_sidebar.md"
+            sidebar_path.write_text("* Daily Papers\n", encoding="utf-8")
+
+            self.mod.update_sidebar(
+                str(sidebar_path),
+                "20260525-20260525",
+                [("20260525-20260525/paper-id", "English Paper Title", [("score", "8.6")])],
+                [],
+                {"20260525-20260525/paper-id": "一句中文入选理由。"},
+                paper_title_zh_by_id={"20260525-20260525/paper-id": "中文论文标题"},
+            )
+
+            content = sidebar_path.read_text(encoding="utf-8")
+            self.assertIn("data-sidebar-item=", content)
+            self.assertIn("&quot;title_zh&quot;: &quot;中文论文标题&quot;", content)
+            self.assertIn("&quot;evidence&quot;: &quot;一句中文入选理由。&quot;", content)
+
     def test_build_markdown_content_writes_figures_json_front_matter(self):
         paper = {
             "title": "Figure Test",

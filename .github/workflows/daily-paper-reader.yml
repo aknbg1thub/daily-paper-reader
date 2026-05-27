@@ -3,6 +3,9 @@ name: daily-paper-reader
 on:
   schedule:
     - cron: "30 18 * * *"
+    # Temporary one-shot probe: 2026-05-27 20:55 UTC / 2026-05-28 04:55 Beijing.
+    # Remove after confirming GitHub schedule delivery.
+    - cron: "55 20 27 5 *"
   workflow_dispatch:
     inputs:
       run_enrich:

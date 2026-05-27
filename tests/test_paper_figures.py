@@ -455,6 +455,45 @@ class PaperFiguresTest(unittest.TestCase):
             self.assertEqual(merged[0]["figure_number"], "2")
             self.assertTrue(Path(merged[0]["_source_path"]).exists())
 
+    def test_vlm_text_block_crop_is_rejected(self):
+        with tempfile.TemporaryDirectory() as d:
+            tmp_dir = Path(d)
+            pdf_path = tmp_dir / "sample.pdf"
+            output_dir = tmp_dir / "out"
+            output_dir.mkdir()
+
+            doc = fitz.open()
+            page = doc.new_page(width=612, height=792)
+            for row in range(28):
+                page.insert_text(
+                    (80, 95 + row * 12),
+                    "This is a dense paragraph line with words and equations E = hf repeated.",
+                    fontsize=9,
+                )
+            page.insert_textbox(fitz.Rect(72, 440, 540, 500), "Fig. 2. Missing vector-only schematic.", fontsize=12)
+            doc.save(pdf_path)
+            doc.close()
+
+            original_call_vlm = self.mod._call_vlm_for_page
+            try:
+                self.mod._call_vlm_for_page = lambda **kwargs: [
+                    {
+                        "type": "figure",
+                        "number": "2",
+                        "caption": "Fig. 2. Missing vector-only schematic.",
+                        "bbox": [160, 180, 840, 760],
+                    }
+                ]
+                merged = self.mod._merge_missing_caption_crops(
+                    str(pdf_path),
+                    [],
+                    str(output_dir),
+                )
+            finally:
+                self.mod._call_vlm_for_page = original_call_vlm
+
+            self.assertEqual(merged, [])
+
     def test_paper_order_precedes_label_order(self):
         figures = self.mod._finalize_figure_order(
             [

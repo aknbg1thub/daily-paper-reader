@@ -21,7 +21,7 @@ MIN_FIGURE_HEIGHT = 180
 MIN_FIGURE_AREA = 120_000
 MIN_CAPTION_CROP_AREA = 30_000
 WEBP_QUALITY = 82
-FIGURE_META_VERSION = 7
+FIGURE_META_VERSION = 8
 PDFFIGURES2_JAR_ENV = "PDFFIGURES2_JAR"
 PDFFIGURES2_DEFAULT_CACHE = os.path.expanduser("~/.cache/dpr-tools/pdffigures2/pdffigures2.jar")
 PDFFIGURES2_REPO_CACHE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "tools", "pdffigures2.jar"))
@@ -215,6 +215,8 @@ def _call_vlm_for_page(
         f"{task} "
         "The bbox must include only the figure/table body, excluding the caption/title text, page headers/footers, "
         "and unrelated body text. Do not crop a paragraph as a figure. Do not invent figures. "
+        "If a page contains only a citation such as 'Figure 2 shows ...' but no visible figure/table body, omit it. "
+        "If the caption is visible, use it as an OCR anchor and locate the nearest real visual/table body. "
         "Preserve the label number exactly as shown in the caption, for example 2, S2, A.1, B.1, or I. "
         "JSON schema: {\"items\":[{\"type\":\"figure|table\",\"number\":\"1\",\"bbox\":[x1,y1,x2,y2],\"caption\":\"...\"}]}.\n"
         "Caption hints:\n"
@@ -703,6 +705,22 @@ def _collect_visual_rects(page: fitz.Page) -> List[fitz.Rect]:
     return rects
 
 
+def _page_has_figure_table_text_hint(page: fitz.Page) -> bool:
+    try:
+        text = page.get_text("text") or ""
+    except Exception:
+        return False
+    if not text:
+        return False
+    return bool(
+        re.search(
+            r"\b(?:fig(?:ure)?|table|tab)\.?\s+(?:[A-Za-z][.\d]*|[IVXLCDM]+|\d+)",
+            text,
+            flags=re.IGNORECASE,
+        )
+    )
+
+
 def _caption_visual_crop_rect(
     page: fitz.Page,
     caption_rect: fitz.Rect,
@@ -1105,7 +1123,7 @@ def _merge_missing_caption_crops(
                 if page_no in by_page:
                     continue
                 page = doc[page_no - 1]
-                if _collect_visual_rects(page):
+                if _collect_visual_rects(page) or _page_has_figure_table_text_hint(page):
                     pages_to_scan.append(page_no)
                 if len(pages_to_scan) >= max_scan_pages:
                     break
@@ -1192,7 +1210,7 @@ def _merge_missing_caption_crops(
                 except OSError:
                     pass
                 return
-            if crop_source == "band" and _is_probable_text_crop(tmp_path, str(item.get("item_type") or "figure")):
+            if crop_source in {"band", "vlm"} and _is_probable_text_crop(tmp_path, str(item.get("item_type") or "figure")):
                 try:
                     os.remove(tmp_path)
                 except OSError:

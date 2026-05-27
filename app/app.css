@@ -780,6 +780,17 @@ body.sidebar-resizing .sidebar::after {
   line-height: 1.25;
 }
 
+.sidebar-nav .dpr-sidebar-title-en {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #626262;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
 .sidebar-nav .dpr-sidebar-link-line {
   display: block;
   margin-top: 2px;

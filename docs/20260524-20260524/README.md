@@ -1,17 +1,51 @@
 # 日报 · 2026-05-24 ~ 2026-05-24
 
-- 生成时间：2026-05-25 12:09:50 UTC
-- 当次推荐总数：0
-- 精读区：0
+- 生成时间：2026-05-27 01:25:52 UTC
+- 当次推荐总数：35
+- 精读区：35
 - 速读区：0
 
 ## 今日简报（AI）
-> 今日无新推荐，系统未产出可展示论文。
-
-> 本次触发没有产出可推荐论文。
+- 今日共生成 35 篇推荐（精读 35 篇，速读 0 篇）
+- 精读：《High-fidelity EDSR in Si/SiGe Wiggle Wells》（9.0/10）, 《A Hybrid Discontinuous Galerkin Method with Isogeometric-Planewaves Coupling for Periodic Full-Potential Electronic Structure Calculations》（9.0/10）
+- 这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。
 
 ## 精读区
-- 本次无精读推荐。
+1. [High-fidelity EDSR in Si/SiGe Wiggle Wells](/20260524-20260524/2605.24790v1-high-fidelity-edsr-in-sisige-wiggle-wells) （9.0/10）
+2. [A Hybrid Discontinuous Galerkin Method with Isogeometric-Planewaves Coupling for Periodic Full-Potential Electronic Structure Calculations](/20260524-20260524/2605.24829v1-a-hybrid-discontinuous-galerkin-method-with-isogeometric-planewaves-coupling-for-periodic-full-potential-electronic-structure-calculations) （9.0/10）
+3. [Tuning quantum tunneling in WSe$_2$ via strain engineering](/20260524-20260524/2605.24851v1-tuning-quantum-tunneling-in-wse2-via-strain-engineering) （9.0/10）
+4. [Revisiting spin Hamiltonian parameters in a Kitaev material via Bayesian optimization of magnetization curves](/20260524-20260524/2605.24857v1-revisiting-spin-hamiltonian-parameters-in-a-kitaev-material-via-bayesian-optimization-of-magnetization-curves) （9.0/10）
+5. [Lattice Modulo Sampling](/20260524-20260524/2605.24974v1-lattice-modulo-sampling) （9.0/10）
+6. [Integrated photon-pair sources on periodically poled thin-film lithium tantalate](/20260524-20260524/2605.24988v1-integrated-photon-pair-sources-on-periodically-poled-thin-film-lithium-tantalate) （9.0/10）
+7. [3D Photonic integration leveraging hybrid-confinement circuits](/20260524-20260524/2605.24990v1-3d-photonic-integration-leveraging-hybrid-confinement-circuits) （9.0/10）
+8. [Programmable dipolar interaction geometry selects stripe-family order in a molecular lattice quantum simulator](/20260524-20260524/2605.25019v1-programmable-dipolar-interaction-geometry-selects-stripe-family-order-in-a-molecular-lattice-quantum-simulator) （9.0/10）
+9. [Lateral Shift as a Control Knob for Localization Transitions in a Quasiperiodic Ladder](/20260524-20260524/2605.25033v1-lateral-shift-as-a-control-knob-for-localization-transitions-in-a-quasiperiodic-ladder) （9.0/10）
+10. [Assessment of a GW-BSE approximation scheme on an asymmetric two-dimensional interacting electron system in a perpendicular magnetic field](/20260524-20260524/2605.25053v1-assessment-of-a-gw-bse-approximation-scheme-on-an-asymmetric-two-dimensional-interacting-electron-system-in-a-perpendicular-magnetic-field) （9.0/10）
+11. [QML-PipeGuard: Drift-Aware Behavioral Fingerprinting for Quantum Machine Learning Pipeline Integrity](/20260524-20260524/2605.25066v1-qml-pipeguard-drift-aware-behavioral-fingerprinting-for-quantum-machine-learning-pipeline-integrity) （9.0/10）
+12. [Dissipative preparation of injective tensor network states](/20260524-20260524/2605.25089v1-dissipative-preparation-of-injective-tensor-network-states) （9.0/10）
+13. [Extracting Universal Entanglement Scaling from Mixed Fermionic Gaussian States via Entanglement Projected Entropy](/20260524-20260524/2605.25102v1-extracting-universal-entanglement-scaling-from-mixed-fermionic-gaussian-states-via-entanglement-projected-entropy) （9.0/10）
+14. [Cascaded Four-Wave Mixing on Quantum Paraelectrics for On-chip Cryogenic Microcombs](/20260524-20260524/2605.25112v1-cascaded-four-wave-mixing-on-quantum-paraelectrics-for-on-chip-cryogenic-microcombs) （9.0/10）
+15. [A 100 GHz Wideband Reconfigurable Intelligent Surface Based on Orthogonal Polarization and Sub-Array Partitioning Concepts](/20260524-20260524/2605.25138v1-a-100-ghz-wideband-reconfigurable-intelligent-surface-based-on-orthogonal-polarization-and-sub-array-partitioning-concepts) （9.0/10）
+16. [Kernel Embedding for Operator-Valued Measures and Its Application to Quantum Tomography](/20260524-20260524/2605.25146v1-kernel-embedding-for-operator-valued-measures-and-its-application-to-quantum-tomography) （9.0/10）
+17. [A quasi-orthogonal method based on the inverse operator for Schr{ö}dinger eigenvalue problems](/20260524-20260524/2605.25149v1-a-quasi-orthogonal-method-based-on-the-inverse-operator-for-schrdinger-eigenvalue-problems) （9.0/10）
+18. [Light-Driven Intrinsic Perfect Superconducting Diode Effect](/20260524-20260524/2605.25197v1-light-driven-intrinsic-perfect-superconducting-diode-effect) （9.0/10）
+19. [Electromagnetic Signatures of Kinetic Alfvén Wave Turbulence at Ion Inertial Scales in Earth's High-$β$ Magnetosheath](/20260524-20260524/2605.25199v1-electromagnetic-signatures-of-kinetic-alfvn-wave-turbulence-at-ion-inertial-scales-in-earths-high--magnetosheath) （9.0/10）
+20. [Influence-Inspired Spectral Rotations for Extreme Low-Bit LLM Quantization](/20260524-20260524/2605.25203v1-influence-inspired-spectral-rotations-for-extreme-low-bit-llm-quantization) （9.0/10）
+21. [Dynamical susceptibility and quantum Fisher information in the Su-Schrieffer-Heeger model with Hatsugai-Kohmoto interactions](/20260524-20260524/2605.25231v1-dynamical-susceptibility-and-quantum-fisher-information-in-the-su-schrieffer-heeger-model-with-hatsugai-kohmoto-interactions) （9.0/10）
+22. [Quantum-Corrected Q-balls in the Friedberg-Lee-Sirlin Model](/20260524-20260524/2605.25243v1-quantum-corrected-q-balls-in-the-friedberg-lee-sirlin-model) （9.0/10）
+23. [A Constant-Time Implementation Methodology for Activation Functions on Microcontrollers](/20260524-20260524/2605.22441v1-a-constant-time-implementation-methodology-for-activation-functions-on-microcontrollers) （8.5/10）
+24. [Therm-FM: Foundation Model is ALL YOU NEED for 3D-ICs Thermal Simulation](/20260524-20260524/2605.22663v2-therm-fm-foundation-model-is-all-you-need-for-3d-ics-thermal-simulation) （8.5/10）
+25. [Graphene-based Photodetector with Engineered Hot Carrier Cooling Dynamics](/20260524-20260524/2605.23646v1-graphene-based-photodetector-with-engineered-hot-carrier-cooling-dynamics) （8.5/10）
+26. [A Manifold-Based Framework for Coupling-Aware Surrogate Optimization of Antenna Arrays Using Characteristic Modes](/20260524-20260524/2605.23851v1-a-manifold-based-framework-for-coupling-aware-surrogate-optimization-of-antenna-arrays-using-characteristic-modes) （8.5/10）
+27. [Coherent dynamics in chaotic spin chains via interference-protected subspaces](/20260524-20260524/2605.23873v1-coherent-dynamics-in-chaotic-spin-chains-via-interference-protected-subspaces) （8.5/10）
+28. [CONF-KV: Confidence-Aware KV Cache Eviction with Mixed-Precision Storage for Long-Horizon LLM](/20260524-20260524/2605.24786v1-conf-kv-confidence-aware-kv-cache-eviction-with-mixed-precision-storage-for-long-horizon-llm) （7.5/10）
+29. [Beyond the Target: From Imitation to Collaboration in Speculative Decoding](/20260524-20260524/2605.24793v1-beyond-the-target-from-imitation-to-collaboration-in-speculative-decoding) （7.5/10）
+30. [Chain--collider--fork Decompositions of Transitive Tournament](/20260524-20260524/2605.24801v1-chain--collider--fork-decompositions-of-transitive-tournament) （7.5/10）
+31. [Native defects and erbium impurities in CaWO4](/20260524-20260524/2605.24809v1-native-defects-and-erbium-impurities-in-cawo4) （7.5/10）
+32. [Photoluminescence Identification of Multiple Local Eu3+ Environments in BaTiO3 Ceramics](/20260524-20260524/2605.24800v1-photoluminescence-identification-of-multiple-local-eu3-environments-in-batio3-ceramics) （6.8/10）
+33. [Multiscale Real-Time Object Detection in the NMS-Free Era: A Comparative Performance Evaluation of YOLOv8 and YOLO26](/20260524-20260524/2605.24831v1-multiscale-real-time-object-detection-in-the-nms-free-era-a-comparative-performance-evaluation-of-yolov8-and-yolo26) （6.8/10）
+34. [QPEs from Warped Disk Collisions with EMRIs: Brightness-Recurrence Diagram and Gravitational-Wave Follow-up](/20260524-20260524/2605.24905v1-qpes-from-warped-disk-collisions-with-emris-brightness-recurrence-diagram-and-gravitational-wave-follow-up) （6.8/10）
+35. [Quaternion Self-Attention with Shared Scores](/20260524-20260524/2605.24920v1-quaternion-self-attention-with-shared-scores) （6.8/10）
 
 ## 速读区
 - 本次无速读推荐。

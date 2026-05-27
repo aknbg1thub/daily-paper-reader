@@ -1,124 +1,154 @@
 ## 每次日报
-- 最新运行日期：2026-05-21 ~ 2026-05-21
-- 运行时间：2026-05-27 01:19:48 UTC
+- 最新运行日期：2026-05-22 ~ 2026-05-22
+- 运行时间：2026-05-27 01:21:35 UTC
 - 运行状态：成功
-- 本次总论文数：36
-- 精读区：36
+- 本次总论文数：46
+- 精读区：46
 - 速读区：0
 
 ### 今日简报（AI）
-- 今日共生成 36 篇推荐（精读 36 篇，速读 0 篇）
-- 精读：《Emerging memory technologies at room/cryogenic temperature》（9.0/10）, 《Stochastic inflation as an open quantum system II: open effective field theory and stochastic matching》（9.0/10）
+- 今日共生成 46 篇推荐（精读 46 篇，速读 0 篇）
+- 精读：《Construction of EAQECCs with imperfect ebits》（9.0/10）, 《Classical State Preparation for Variational Quantum Algorithms via Reinforcement Learning》（9.0/10）
 - 这些结果覆盖了当下较热的方向，建议先看精读区论文的关键问题与方法。
-- 详情：[/20260521-20260521/README](/20260521-20260521/README)
+- 详情：[/20260522-20260522/README](/20260522-20260522/README)
 
 ### 精读区论文标签
-1. [Emerging memory technologies at room/cryogenic temperature](/20260521-20260521/2605.21912v1-emerging-memory-technologies-at-roomcryogenic-temperature)  
+1. [Construction of EAQECCs with imperfect ebits](/20260522-20260522/2605.23119v1-construction-of-eaqeccs-with-imperfect-ebits)  
+   标签：评分：9.0/10、query:HAMILTONIAN
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+2. [Classical State Preparation for Variational Quantum Algorithms via Reinforcement Learning](/20260522-20260522/2605.23138v1-classical-state-preparation-for-variational-quantum-algorithms-via-reinforcement-learning)  
+   标签：评分：9.0/10、query:HAMILTONIAN
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+3. [PoisonForge: Task-Level Targeted Poisoning Benchmark for Instruction-Tuned LLMs](/20260522-20260522/2605.23168v1-poisonforge-task-level-targeted-poisoning-benchmark-for-instruction-tuned-llms)  
+   标签：评分：9.0/10、query:HAMILTONIAN
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+4. [Transition-state lattice modes and the breakdown of adiabatic tunneling for hydrogen and deuterium in bcc Nb](/20260522-20260522/2605.23212v1-transition-state-lattice-modes-and-the-breakdown-of-adiabatic-tunneling-for-hydrogen-and-deuterium-in-bcc-nb)  
+   标签：评分：9.0/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+5. [Accelerating ground state search of spatial photonic Ising machines with genetic-simulated annealing hybrid algorithm](/20260522-20260522/2605.23295v1-accelerating-ground-state-search-of-spatial-photonic-ising-machines-with-genetic-simulated-annealing-hybrid-algorithm)  
    标签：评分：9.0/10、query:SC-QUBIT-CHIP
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-2. [Stochastic inflation as an open quantum system II: open effective field theory and stochastic matching](/20260521-20260521/2605.21929v1-stochastic-inflation-as-an-open-quantum-system-ii-open-effective-field-theory-and-stochastic-matching)  
-   标签：评分：9.0/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-3. [Fast ion effects on the threshold conditions of ion temperature gradient mode and electron temperature gradient mode](/20260521-20260521/2605.21953v1-fast-ion-effects-on-the-threshold-conditions-of-ion-temperature-gradient-mode-and-electron-temperature-gradient-mode)  
-   标签：评分：9.0/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-4. [dSABRE: A SABRE-Style Router for Multi-Core Distributed Quantum Computers](/20260521-20260521/2605.21960v1-dsabre-a-sabre-style-router-for-multi-core-distributed-quantum-computers)  
+6. [Nonconforming Finite Element Approximation and Energy Lower Bound Estimation for the Gross--Pitaevskii Energy Functional](/20260522-20260522/2605.23334v1-nonconforming-finite-element-approximation-and-energy-lower-bound-estimation-for-the-gross--pitaevskii-energy-functional)  
    标签：评分：9.0/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-5. [Nonlinear Photonic Tripartite Phase](/20260521-20260521/2605.21983v1-nonlinear-photonic-tripartite-phase)  
-   标签：评分：9.0/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-6. [Finite-Aperture Planar Fluid Antenna Array](/20260521-20260521/2605.22040v1-finite-aperture-planar-fluid-antenna-array)  
+7. [A Compilation Framework for Quantum Simulation of Non-unitary Dynamics](/20260522-20260522/2605.23358v1-a-compilation-framework-for-quantum-simulation-of-non-unitary-dynamics)  
    标签：评分：9.0/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-7. [Q-PhotoNAS: Hybrid Quantum Neural Architecture Search Framework on Photonic Devices](/20260521-20260521/2605.22097v1-q-photonas-hybrid-quantum-neural-architecture-search-framework-on-photonic-devices)  
+8. [Selective Fermi-Level Pinning: A Design Strategy for Giant Rectification in Molecular Junctions](/20260522-20260522/2605.23370v1-selective-fermi-level-pinning-a-design-strategy-for-giant-rectification-in-molecular-junctions)  
+   标签：评分：9.0/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+9. [Generalized Conductivity Modeling and Selective Harmonic Amplification in Time-Modulated Graphene Cavities](/20260522-20260522/2605.23374v1-generalized-conductivity-modeling-and-selective-harmonic-amplification-in-time-modulated-graphene-cavities)  
+   标签：评分：9.0/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+10. [Re-evaluation of bottleneck effect via a coupled monolayer WS_2/photonic crystal heterostructure](/20260522-20260522/2605.23392v1-re-evaluation-of-bottleneck-effect-via-a-coupled-monolayer-ws2photonic-crystal-heterostructure)  
+   标签：评分：9.0/10、query:HAMILTONIAN
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+11. [Development of a system for testing full-size CMS LGAD sensors](/20260522-20260522/2605.23401v1-development-of-a-system-for-testing-full-size-cms-lgad-sensors)  
+   标签：评分：9.0/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+12. [Enhancing broadband second harmonic generation in a thin film lithium niobate racetrack resonator with tunable-coupling](/20260522-20260522/2605.23439v1-enhancing-broadband-second-harmonic-generation-in-a-thin-film-lithium-niobate-racetrack-resonator-with-tunable-coupling)  
    标签：评分：9.0/10、query:SC-QUBIT-CHIP
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-8. [Superconductivity in doped spin multimer systems](/20260521-20260521/2605.22128v1-superconductivity-in-doped-spin-multimer-systems)  
+13. [Ancilla-Efficient QSAMPLE Preparation for Reversible Markov Chains](/20260522-20260522/2605.23442v1-ancilla-efficient-qsample-preparation-for-reversible-markov-chains)  
    标签：评分：9.0/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-9. [Quasinormal mode quantization of bound and propagating photons in complex lightguiding nanostructures for integrated devices](/20260521-20260521/2605.22153v1-quasinormal-mode-quantization-of-bound-and-propagating-photons-in-complex-lightguiding-nanostructures-for-integrated-devices)  
+14. [Momentum-Resolved Tunneling Modulation Induced Giant Multistate Resistance in Antiferroelectric Multiferroic Junction](/20260522-20260522/2605.23577v1-momentum-resolved-tunneling-modulation-induced-giant-multistate-resistance-in-antiferroelectric-multiferroic-junction)  
+   标签：评分：9.0/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+15. [Atom-Photon Bound States in Fractal Photonic Lattices: Localization Length and Anomalous Diffusion](/20260522-20260522/2605.23625v1-atom-photon-bound-states-in-fractal-photonic-lattices-localization-length-and-anomalous-diffusion)  
    标签：评分：9.0/10、query:HAMILTONIAN
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-10. [Periodic Homogenization of Hamilton-Jacobi Equations for Infinite Systems of Indistinguishable Particles](/20260521-20260521/2605.22198v1-periodic-homogenization-of-hamilton-jacobi-equations-for-infinite-systems-of-indistinguishable-particles)  
-   标签：评分：9.0/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-11. [DMFT analysis of Hopfield network with plasticity](/20260521-20260521/2605.22254v1-dmft-analysis-of-hopfield-network-with-plasticity)  
+16. [C-band 160 Gbs-1 Zero-bias Graphene Photodetectors: Breaking the Responsivity-Bandwidth Trade-off by Heterostructure Engineering](/20260522-20260522/2605.23627v1-c-band-160-gbs-1-zero-bias-graphene-photodetectors-breaking-the-responsivity-bandwidth-trade-off-by-heterostructure-engineering)  
    标签：评分：9.0/10、query:SC-QUBIT-CHIP
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-12. [Fabrication and transfer of ultra-thin YBa$2$Cu$3$O$_{7-x}$ film on SrTiO$_3$ nanomembrane](/20260521-20260521/2605.22303v1-fabrication-and-transfer-of-ultra-thin-yba2cu3o7-x-film-on-srtio3-nanomembrane)  
+17. [Adjoint inverse design of microresonator frequency combs](/20260522-20260522/2605.23688v1-adjoint-inverse-design-of-microresonator-frequency-combs)  
    标签：评分：9.0/10、query:SC-QUBIT-CHIP
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-13. [Factorization rule for multitime correlations in non-Markovian open quantum systems](/20260521-20260521/2605.22386v1-factorization-rule-for-multitime-correlations-in-non-markovian-open-quantum-systems)  
+18. [Stacked Intelligent Metasurfaces (SIM) in the Nonlinear Regime: A Multiport Network Model Approach](/20260522-20260522/2605.23713v1-stacked-intelligent-metasurfaces-sim-in-the-nonlinear-regime-a-multiport-network-model-approach)  
+   标签：评分：9.0/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+19. [Nonreciprocal conductance in uniformly dissipative devices](/20260522-20260522/2605.23725v1-nonreciprocal-conductance-in-uniformly-dissipative-devices)  
+   标签：评分：9.0/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+20. [The Floquet-Magnus expansion of unbounded operators](/20260522-20260522/2605.23734v1-the-floquet-magnus-expansion-of-unbounded-operators)  
    标签：评分：9.0/10、query:HAMILTONIAN
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-14. [Long-range nonstabilizerness of topologically encoded states from mutual information](/20260521-20260521/2605.22424v1-long-range-nonstabilizerness-of-topologically-encoded-states-from-mutual-information)  
+21. [SIM-Aided Near-Field Channel and Localization Estimation With Dimensionality Reduction: A Multiport Network Theory Approach](/20260522-20260522/2605.23779v1-sim-aided-near-field-channel-and-localization-estimation-with-dimensionality-reduction-a-multiport-network-theory-approach)  
+   标签：评分：9.0/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+22. [A Measurement-Based Parameterization of Physics Reflection Models for Terahertz Communication](/20260522-20260522/2605.23795v1-a-measurement-based-parameterization-of-physics-reflection-models-for-terahertz-communication)  
+   标签：评分：9.0/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+23. [Quantum critical collapse of a pinned vortex glass](/20260522-20260522/2605.23838v1-quantum-critical-collapse-of-a-pinned-vortex-glass)  
    标签：评分：9.0/10、query:HAMILTONIAN
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-15. [Transport Enhancement and In Situ Control of Electronic Correlation via Photoinduced Modulation Doping of van der Waals Heterostructures](/20260521-20260521/2605.22452v1-transport-enhancement-and-in-situ-control-of-electronic-correlation-via-photoinduced-modulation-doping-of-van-der-waals-heterostructures)  
+24. [Exact versus tight-binding models in longitudinally modulated $\mathcal{PT}$-symmetric coupled waveguides](/20260522-20260522/2605.23853v1-exact-versus-tight-binding-models-in-longitudinally-modulated-mathcalpt-symmetric-coupled-waveguides)  
+   标签：评分：9.0/10、query:HAMILTONIAN
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+25. [Dynamical self-dual criticality in Fibonacci-monitored quantum Ising chains](/20260522-20260522/2605.24086v1-dynamical-self-dual-criticality-in-fibonacci-monitored-quantum-ising-chains)  
+   标签：评分：9.0/10、query:HAMILTONIAN
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+26. [A generative pre-trained transformer with Kerr-soliton attention](/20260522-20260522/2605.24124v1-a-generative-pre-trained-transformer-with-kerr-soliton-attention)  
+   标签：评分：9.0/10、query:HAMILTONIAN
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+27. [A Tight Bound on Localization of Electrical Flows](/20260522-20260522/2605.24130v1-a-tight-bound-on-localization-of-electrical-flows)  
+   标签：评分：9.0/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+28. [Minimally Destructive Fast Imaging of Single Atoms in an Optical Tweezer Array with Coherent Excitation](/20260522-20260522/2605.24175v1-minimally-destructive-fast-imaging-of-single-atoms-in-an-optical-tweezer-array-with-coherent-excitation)  
    标签：评分：9.0/10、query:SC-QUBIT-CHIP
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-16. [Current-driven reduction of topological protection in multichannel superconductors](/20260521-20260521/2605.22460v1-current-driven-reduction-of-topological-protection-in-multichannel-superconductors)  
-   标签：评分：9.0/10、query:HAMILTONIAN
+29. [Towards Scalable Quaternary Message-Passing Decoding for Quantum Error Correction](/20260522-20260522/2605.24177v1-towards-scalable-quaternary-message-passing-decoding-for-quantum-error-correction)  
+   标签：评分：9.0/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-17. [A Non-Volatile Heterogeneous Quantum Dot III-V/Si DFB Laser with Optical Memristive Behavior](/20260521-20260521/2605.22577v1-a-non-volatile-heterogeneous-quantum-dot-iii-vsi-dfb-laser-with-optical-memristive-behavior)  
+30. [Quantum-Adaptive KS($\varphi$): A Parameterized Three-Qubit Gate Family Embedding Toffoli with Measurement-Free Phase Kickback and Intrinsic Error Non-Amplification](/20260522-20260522/2605.24182v1-quantum-adaptive-ksvarphi-a-parameterized-three-qubit-gate-family-embedding-toffoli-with-measurement-free-phase-kickback-and-intrinsic-error-non-amplification)  
+   标签：评分：9.0/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+31. [Wideband Balanced Photodetectors for Classical and Quantum Light Detection from Optical, EUV, to X-rays](/20260522-20260522/2605.24199v1-wideband-balanced-photodetectors-for-classical-and-quantum-light-detection-from-optical-euv-to-x-rays)  
    标签：评分：9.0/10、query:SC-QUBIT-CHIP
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-18. [Quantum Batteries in two-dimensional material-based Josephson Junctions](/20260521-20260521/2605.22582v1-quantum-batteries-in-two-dimensional-material-based-josephson-junctions)  
+32. [Dual-state control of lasing and absorption via conjugate exceptional points](/20260522-20260522/2605.24223v1-dual-state-control-of-lasing-and-absorption-via-conjugate-exceptional-points)  
+   标签：评分：9.0/10、query:HAMILTONIAN
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+33. [Characterization of Aluminum Microwave SQUID Multiplexers for CE$ν$NS Detection](/20260522-20260522/2605.24272v1-characterization-of-aluminum-microwave-squid-multiplexers-for-cens-detection)  
    标签：评分：9.0/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-19. [Quantum Fisher Information under decoherence with explicit wavefunctions](/20260521-20260521/2605.22917v1-quantum-fisher-information-under-decoherence-with-explicit-wavefunctions)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-20. [Automatic De-Quantization of Quantum Programs Using Constant Propagation](/20260521-20260521/2605.22980v1-automatic-de-quantization-of-quantum-programs-using-constant-propagation)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-21. [Full-Scattering-Matrix Deterministic Phonon Boltzmann Transport Simulation](/20260521-20260521/2605.23005v1-full-scattering-matrix-deterministic-phonon-boltzmann-transport-simulation)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-22. [Which Superconducting Qubit Model is Good Enough? From Effective Two-Level to Circuit-Based Hamiltonians for Pulse-Level Simulation](/20260521-20260521/2605.23034v1-which-superconducting-qubit-model-is-good-enough-from-effective-two-level-to-circuit-based-hamiltonians-for-pulse-level-simulation)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-23. [Towards Verifiable Transformers: Solver-Checkable Circuit Explanations](/20260521-20260521/2605.24033v1-towards-verifiable-transformers-solver-checkable-circuit-explanations)  
-   标签：评分：9.0/10、query:EQ-CIRCUIT
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-24. [Dissipation-Selected Resonant Fronts in a Driven-Dissipative Bose-Hubbard Lattice](/20260521-20260521/2605.21900v1-dissipation-selected-resonant-fronts-in-a-driven-dissipative-bose-hubbard-lattice)  
-   标签：评分：8.6/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-25. [Nonlinear frequency shift and bistability of magnon-polarons](/20260521-20260521/2605.22157v1-nonlinear-frequency-shift-and-bistability-of-magnon-polarons)  
-   标签：评分：8.6/10、query:HAMILTONIAN
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-26. [Dynamic electron correlation energy for multireference wavefunction methods from one- and two-electron reduced density matrices](/20260521-20260521/2605.22394v1-dynamic-electron-correlation-energy-for-multireference-wavefunction-methods-from-one--and-two-electron-reduced-density-matrices)  
+34. [Magnon-mediated microwave to optical time dynamics](/20260522-20260522/2605.22772v1-magnon-mediated-microwave-to-optical-time-dynamics)  
    标签：评分：8.6/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-27. [Entanglement Dynamics across a Monitored Quantum Point Contact](/20260521-20260521/2605.22555v1-entanglement-dynamics-across-a-monitored-quantum-point-contact)  
-   标签：评分：8.6/10、query:SC-QUBIT-CHIP
+35. [Non-reciprocal Coulomb drag in a ballistic quantum wire](/20260522-20260522/2605.22945v1-non-reciprocal-coulomb-drag-in-a-ballistic-quantum-wire)  
+   标签：评分：8.6/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-28. [A sharp interaction-degree threshold for simulating QAOA](/20260521-20260521/2605.22758v1-a-sharp-interaction-degree-threshold-for-simulating-qaoa)  
+36. [Chaos to Synchronization and Dissipative Quantum Scarring in Open Coupled top-Dicke model in a Lossy Cavity](/20260522-20260522/2605.22953v1-chaos-to-synchronization-and-dissipative-quantum-scarring-in-open-coupled-top-dicke-model-in-a-lossy-cavity)  
    标签：评分：8.6/10、query:HAMILTONIAN
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-29. [Rotatable Antenna-Enhanced Wireless Sensing with Uniform Sparse Array via Tensor Decomposition](/20260521-20260521/2605.21895v1-rotatable-antenna-enhanced-wireless-sensing-with-uniform-sparse-array-via-tensor-decomposition)  
+37. [Purification Strategy Optimization for Entanglement Routing in Quantum Networks](/20260522-20260522/2605.23331v1-purification-strategy-optimization-for-entanglement-routing-in-quantum-networks)  
+   标签：评分：8.6/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+38. [AMDS and quantum AMDS Constacyclic codes of length $4p^ς$ over $\mathbb{F}_{{p}^{m}}$](/20260522-20260522/2605.23447v1-amds-and-quantum-amds-constacyclic-codes-of-length-4p-over-mathbbfpm)  
+   标签：评分：8.6/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+39. [Inconsistency-aware Multimodal Schrödinger Bridge for Deepfake Localization](/20260522-20260522/2605.23113v1-inconsistency-aware-multimodal-schrdinger-bridge-for-deepfake-localization)  
    标签：评分：7.5/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-30. [Engineering Hybrid Physics-Informed Neural Networks for Next-Generation Electricity Systems: A State-of-the-Art Review](/20260521-20260521/2605.21903v1-engineering-hybrid-physics-informed-neural-networks-for-next-generation-electricity-systems-a-state-of-the-art-review)  
+40. [The Closure of LCD-to-GI Reductions via Generalized Inner Products](/20260522-20260522/2605.23120v1-the-closure-of-lcd-to-gi-reductions-via-generalized-inner-products)  
    标签：评分：7.5/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-31. [Robust Broadband Infrared Unidirectional Absorption Enabled by a Non-Hermitian Multilayer](/20260521-20260521/2605.21926v1-robust-broadband-infrared-unidirectional-absorption-enabled-by-a-non-hermitian-multilayer)  
+41. [Deep-Learning-Aided Successive Cancellation List Flip Decoding for Polar Codes](/20260522-20260522/2605.23124v1-deep-learning-aided-successive-cancellation-list-flip-decoding-for-polar-codes)  
    标签：评分：7.5/10、query:SC-QUBIT-CHIP
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-32. [Cathodoluminescence Wavefront Retrieval](/20260521-20260521/2605.21944v1-cathodoluminescence-wavefront-retrieval)  
-   标签：评分：7.5/10、query:SC-QUBIT-CHIP
+42. [Symmetry and classification of positive standing waves of nonlinear Hartree type equations](/20260522-20260522/2605.23127v1-symmetry-and-classification-of-positive-standing-waves-of-nonlinear-hartree-type-equations)  
+   标签：评分：7.5/10、query:HAMILTONIAN
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-33. [A Reciprocity-Based Signal Compensation Framework for Ultrasonic Backscatter Measurements in Heterogeneous Scattering Media](/20260521-20260521/2605.22024v1-a-reciprocity-based-signal-compensation-framework-for-ultrasonic-backscatter-measurements-in-heterogeneous-scattering-media)  
-   标签：评分：6.8/10、query:SC-QUBIT-CHIP
-   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-34. [Equilibrium-Free Contraction Stability Analysis for Grid-Forming Converter-Based Microgrids](/20260521-20260521/2605.22171v1-equilibrium-free-contraction-stability-analysis-for-grid-forming-converter-based-microgrids)  
+43. [Adaptive Mass-Segmented KV Compression for Long-Context Reasoning](/20260522-20260522/2605.23200v1-adaptive-mass-segmented-kv-compression-for-long-context-reasoning)  
    标签：评分：6.8/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-35. [Mid-infrared temporal ghost imaging via two-photon structured encoding](/20260521-20260521/2605.22298v1-mid-infrared-temporal-ghost-imaging-via-two-photon-structured-encoding)  
-   标签：评分：6.8/10、query:SC-QUBIT-CHIP
+44. [A Metadynamics-Based Framework for Free Energy Surface Mapping of Multiparticle Diffusion in Crystals](/20260522-20260522/2605.23360v1-a-metadynamics-based-framework-for-free-energy-surface-mapping-of-multiparticle-diffusion-in-crystals)  
+   标签：评分：6.8/10、query:EQ-CIRCUIT
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
-36. [Throughput and Delay Performance of Slotted Aloha in SmartBANs under Saturation Conditions](/20260521-20260521/2605.22317v1-throughput-and-delay-performance-of-slotted-aloha-in-smartbans-under-saturation-conditions)  
+45. [Lowest order Carleman linearization for steady state fluid flow simulations](/20260522-20260522/2605.23380v1-lowest-order-carleman-linearization-for-steady-state-fluid-flow-simulations)  
+   标签：评分：6.8/10、query:EQ-CIRCUIT
+   evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
+46. [AlignedServe: Orchestrating Prefix-aware Batching to Build a High-throughput and Computing-efficient LLM Serving System](/20260522-20260522/2605.23389v1-alignedserve-orchestrating-prefix-aware-batching-to-build-a-high-throughput-and-computing-efficient-llm-serving-system)  
    标签：评分：6.8/10、query:SC-QUBIT-CHIP
    evidence：轻量补跑中由 BM25/向量召回/RRF 排名选中。
 

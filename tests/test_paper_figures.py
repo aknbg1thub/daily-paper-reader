@@ -255,7 +255,7 @@ class PaperFiguresTest(unittest.TestCase):
             self.assertIn("2", labels)
             self.assertTrue((output_dir / "meta.json").exists())
 
-    def test_caption_without_visual_region_is_not_cropped(self):
+    def test_caption_without_detected_visual_region_uses_caption_band_fallback(self):
         with tempfile.TemporaryDirectory() as d:
             tmp_dir = Path(d)
             pdf_path = tmp_dir / "sample.pdf"
@@ -283,7 +283,9 @@ class PaperFiguresTest(unittest.TestCase):
                 str(output_dir),
             )
 
-            self.assertEqual(merged, [])
+            self.assertEqual(len(merged), 1)
+            self.assertEqual(merged[0]["figure_number"], "1")
+            self.assertTrue(Path(merged[0]["_source_path"]).exists())
 
     def test_label_order_precedes_same_page_source_order(self):
         figures = self.mod._finalize_figure_order(

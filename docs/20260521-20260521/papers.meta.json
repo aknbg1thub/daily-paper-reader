@@ -1,7 +1,7 @@
 {
   "label": "2026-05-21 ~ 2026-05-21",
   "date": "2026-05-21 ~ 2026-05-21",
-  "generated_at": "2026-05-27T11:56:54",
+  "generated_at": "2026-05-27T16:00:03",
   "count": 1,
   "papers": [
     {
@@ -13,7 +13,7 @@
       "pdf": "https://arxiv.org/pdf/2605.23034v1",
       "score": "9.0",
       "evidence": "Pulse-level simulators are the lowest-level, most widely used abstraction layer for studying how quantum hardware responds to control signals, but they can be built on Hamiltonian models with very different fidelity and cost.",
-      "tldr": "Pulse-level simulators are the lowest-level, most widely used abstraction layer for studying how quantum hardware responds to control signals, but they can be built on Hamiltonian models with very different fidelity and cost。",
+      "tldr": "本文研究了脉冲级量子仿真中哈密顿量模型的选择问题，针对固定总线耦合器的磁通可调谐双量子比特超导器件，比较了三种物理抽象级别的模型：有效二能级模型、三模杜芬模型和电荷基电路哈密顿模型。通过涵盖静态能谱、驱动动态和泄漏的基准测试，发现杜芬模型在精度和成本间取得了良好平衡，而电路模型是高保真参考的最佳选择。",
       "tags": "query:EQ-CIRCUIT",
       "abstract_en": "Pulse-level simulators are the lowest-level, most widely used abstraction layer for studying how quantum hardware responds to control signals, but they can be built on Hamiltonian models with very different fidelity and cost. This raises the question: which level of physical abstraction is sufficient for a given simulation objective? We study this question for a flux-tunable two-qubit superconducting device with a fixed bus coupler by comparing three Hamiltonian descriptions of the same hardware: an effective two-level model, a three-mode Duffing model, and a circuit-based transmon model in the charge basis. Using a realistic parameter set, we evaluate these models on a common benchmark suite spanning flux-dependent spectra, extracted two-qubit interaction terms, driven single-qubit dynamics, CZ gate dynamics, leakage outside the computational subspace, and runtime. Across the tested flux range, the Duffing model follows the circuit-based reference more closely than the effective model for static spectra and reduced two-qubit quantities, while in driven benchmarks, the multilevel models reveal effects absent in the effective description. Overall, the results support a layered use of abstraction in pulse-level simulation: effective models for reduced analyses, Duffing models as a practical multilevel default, and circuit-based models for high-fidelity reference simulation or detailed leakage analysis.",
       "source": "arxiv",

@@ -1,14 +1,14 @@
 # 日报 · 2026-05-21 ~ 2026-05-21
 
-- 生成时间：2026-05-27 03:56:34 UTC
+- 生成时间：2026-05-27 07:59:29 UTC
 - 当次推荐总数：1
 - 精读区：1
 - 速读区：0
 
 ## 今日简报（AI）
-精读了一篇高分论文，探讨从有效二能级到电路哈密顿量，哪种超导量子比特模型足以胜任脉冲级模拟。
-最值得关注的结论是：复杂电路模型虽更精确，但在脉冲模拟中，适当简化的有效二能级模型往往已足够，关键在于匹配你的控制精度需求。
-建议读者在选择模型时先明确实验的保真度目标，不必一味追求复杂，从简单模型入手验证再逐步增加细节。
+今日精读一篇关于超导量子比特脉冲模拟模型选择的顶会论文（9.0分），解答了“何种模型才算足够好”的开放问题。
+最有价值的结论是：电路级哈密顿量能准确捕获驱动诱导的泄露，而简单二能级模型在强驱动下精度不足。
+若从事量子脉冲优化，不妨对照论文中的模型层次和对比实验，检视当前所用近似是否满足实验精度需求。
 
 ## 精读区
 1. [Which Superconducting Qubit Model is Good Enough? From Effective Two-Level to Circuit-Based Hamiltonians for Pulse-Level Simulation](/20260521-20260521/2605.23034v1-which-superconducting-qubit-model-is-good-enough-from-effective-two-level-to-circuit-based-hamiltonians-for-pulse-level-simulation) （9.0/10）

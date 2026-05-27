@@ -8,6 +8,7 @@ import re
 import shutil
 import subprocess
 import tempfile
+import base64
 from typing import Any, Dict, List
 
 import fitz
@@ -91,6 +92,149 @@ def _save_figures_meta(meta_path: str, figures: List[Dict[str, Any]], *, extract
             ensure_ascii=False,
             indent=2,
         )
+
+
+def _chat_completions_url(base_url: str) -> str:
+    base = str(base_url or "").strip().rstrip("/")
+    if not base:
+        base = "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    if base.endswith("/chat/completions"):
+        return base
+    return f"{base}/chat/completions"
+
+
+def _extract_json_payload(text: str) -> Any:
+    raw = str(text or "").strip()
+    if not raw:
+        return None
+    raw = re.sub(r"^```(?:json)?\s*", "", raw)
+    raw = re.sub(r"\s*```$", "", raw)
+    try:
+        return json.loads(raw)
+    except Exception:
+        pass
+    start = raw.find("{")
+    end = raw.rfind("}")
+    if start != -1 and end != -1 and end > start:
+        try:
+            return json.loads(raw[start : end + 1])
+        except Exception:
+            return None
+    return None
+
+
+def _render_page_png(page: fitz.Page, scale: float = 2.0) -> tuple[bytes, int, int]:
+    pix = page.get_pixmap(matrix=fitz.Matrix(scale, scale), alpha=False)
+    return pix.tobytes("png"), int(pix.width), int(pix.height)
+
+
+def _call_vlm_for_page(
+    *,
+    page_png: bytes,
+    page_width: int,
+    page_height: int,
+    page_no: int,
+    captions: List[Dict[str, Any]],
+) -> List[Dict[str, Any]]:
+    if os.getenv("DPR_DISABLE_VLM_FIGURES") == "1":
+        return []
+    api_key = (
+        os.getenv("BLT_API_KEY")
+        or os.getenv("SUMMARY_API_KEY")
+        or os.getenv("LLM_API_KEY")
+        or ""
+    ).strip()
+    if not api_key:
+        return []
+    base_url = (
+        os.getenv("BLT_PRIMARY_BASE_URL")
+        or os.getenv("SUMMARY_BASE_URL")
+        or os.getenv("LLM_PRIMARY_BASE_URL")
+        or os.getenv("BLT_API_BASE")
+        or "https://dashscope.aliyuncs.com/compatible-mode/v1"
+    )
+    model = (
+        os.getenv("DPR_FIGURE_VLM_MODEL")
+        or os.getenv("SUMMARY_MODEL")
+        or os.getenv("BLT_SUMMARY_MODEL")
+        or "qwen3.7-max"
+    ).strip()
+    if not model:
+        model = "qwen3.7-max"
+
+    caption_brief = []
+    for item in captions:
+        rect = item.get("caption_rect")
+        if not isinstance(rect, fitz.Rect):
+            continue
+        caption_brief.append(
+            {
+                "type": str(item.get("item_type") or "figure"),
+                "number": str(item.get("figure_number") or ""),
+                "caption": str(item.get("caption") or "")[:500],
+                "caption_bbox_page_points": [
+                    round(rect.x0, 1),
+                    round(rect.y0, 1),
+                    round(rect.x1, 1),
+                    round(rect.y1, 1),
+                ],
+            }
+        )
+    if not caption_brief:
+        return []
+
+    prompt = (
+        "You are extracting figures and tables from a scientific paper page image. "
+        "Use the visible page image and the provided caption hints. Return strict JSON only.\n"
+        f"Page image size is {page_width}x{page_height} pixels. Page number: {page_no}.\n"
+        "For each real Figure/Table caption shown in the hints, return one item with a bounding box in IMAGE PIXELS. "
+        "The bbox must include the full visual content plus its caption, and must exclude unrelated body text as much as possible. "
+        "Do not invent figures. Preserve the label number exactly. "
+        "JSON schema: {\"items\":[{\"type\":\"figure|table\",\"number\":\"1\",\"bbox\":[x1,y1,x2,y2],\"caption\":\"...\"}]}.\n"
+        "Caption hints:\n"
+        + json.dumps(caption_brief, ensure_ascii=False)
+    )
+    image_b64 = base64.b64encode(page_png).decode("ascii")
+    payload = {
+        "model": model.replace("/think", ""),
+        "messages": [
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": prompt},
+                    {
+                        "type": "image_url",
+                        "image_url": {"url": f"data:image/png;base64,{image_b64}"},
+                    },
+                ],
+            }
+        ],
+        "temperature": 0.1,
+        "max_tokens": 1800,
+        "response_format": {"type": "json_object"},
+    }
+    if "qwen3" in model.lower():
+        payload["enable_thinking"] = False
+    try:
+        resp = requests.post(
+            _chat_completions_url(base_url),
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+            json=payload,
+            timeout=int(os.getenv("DPR_FIGURE_VLM_TIMEOUT", "20") or "20"),
+        )
+        resp.raise_for_status()
+        data = resp.json()
+        content = (((data.get("choices") or [{}])[0].get("message") or {}).get("content") or "")
+        if isinstance(content, list):
+            content = "\n".join(str(part.get("text") or part) for part in content)
+        parsed = _extract_json_payload(str(content))
+        items = parsed.get("items") if isinstance(parsed, dict) else None
+        return [item for item in items if isinstance(item, dict)] if isinstance(items, list) else []
+    except Exception:
+        return []
 
 
 def _download_pdf_bytes(pdf_url: str, timeout: int = 90) -> bytes:
@@ -471,15 +615,67 @@ def _caption_visual_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.
     visual_area = sum(rect.get_area() for rect in cluster)
     if visual_area < 900.0:
         return None
+    crop_source = union | caption_rect
     crop = fitz.Rect(
-        union.x0 - horizontal_padding,
-        union.y0 - vertical_padding,
-        union.x1 + horizontal_padding,
-        union.y1 + vertical_padding,
+        crop_source.x0 - horizontal_padding,
+        crop_source.y0 - vertical_padding,
+        crop_source.x1 + horizontal_padding,
+        crop_source.y1 + vertical_padding,
     ) & page_rect
     if crop.width < MIN_FIGURE_WIDTH / 2 or crop.height < MIN_FIGURE_HEIGHT / 2:
         return None
     return crop
+
+
+def _caption_band_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.Rect:
+    page_rect = page.rect
+    page_w = float(page_rect.width or 0)
+    page_h = float(page_rect.height or 0)
+    center_x = (caption_rect.x0 + caption_rect.x1) / 2.0
+    margin_x = max(24.0, page_w * 0.06)
+
+    if caption_rect.width >= page_w * 0.55 or abs(center_x - page_w / 2.0) <= page_w * 0.10:
+        x0, x1 = margin_x, page_w - margin_x
+    elif center_x < page_w / 2.0:
+        x0, x1 = margin_x, page_w / 2.0 - 10.0
+    else:
+        x0, x1 = page_w / 2.0 + 10.0, page_w - margin_x
+
+    above_space = caption_rect.y0 - page_rect.y0
+    below_space = page_rect.y1 - caption_rect.y1
+    if above_space >= below_space * 0.55:
+        y0 = max(page_rect.y0 + 22.0, caption_rect.y0 - page_h * 0.38)
+        y1 = min(page_rect.y1 - 18.0, caption_rect.y1 + max(12.0, caption_rect.height * 0.15))
+    else:
+        y0 = max(page_rect.y0 + 18.0, caption_rect.y0 - 8.0)
+        y1 = min(page_rect.y1 - 22.0, caption_rect.y1 + page_h * 0.38)
+    return fitz.Rect(x0, y0, x1, y1) & page_rect
+
+
+def _vlm_bbox_to_page_rect(
+    bbox: Any,
+    page: fitz.Page,
+    image_width: int,
+    image_height: int,
+) -> fitz.Rect | None:
+    if not isinstance(bbox, list) or len(bbox) != 4:
+        return None
+    try:
+        x1, y1, x2, y2 = [float(v) for v in bbox]
+    except Exception:
+        return None
+    if image_width <= 0 or image_height <= 0:
+        return None
+    page_rect = page.rect
+    rect = fitz.Rect(
+        min(x1, x2) / image_width * page_rect.width,
+        min(y1, y2) / image_height * page_rect.height,
+        max(x1, x2) / image_width * page_rect.width,
+        max(y1, y2) / image_height * page_rect.height,
+    ) & page_rect
+    if rect.is_empty or rect.width < MIN_FIGURE_WIDTH / 3 or rect.height < MIN_FIGURE_HEIGHT / 3:
+        return None
+    return rect
 
 
 def _save_page_crop(page: fitz.Page, rect: fitz.Rect, dst_path: str) -> tuple[int, int]:
@@ -525,12 +721,51 @@ def _merge_missing_caption_crops(
     except Exception:
         return candidates
     try:
+        by_page: Dict[int, List[Dict[str, Any]]] = {}
+        for item in missing:
+            by_page.setdefault(int(item.get("page") or 0), []).append(item)
+
+        vlm_rects: Dict[tuple[str, str], fitz.Rect] = {}
+        for page_no, page_items in by_page.items():
+            if page_no <= 0 or page_no > len(doc):
+                continue
+            page = doc[page_no - 1]
+            try:
+                page_png, image_width, image_height = _render_page_png(page, scale=2.0)
+                vlm_items = _call_vlm_for_page(
+                    page_png=page_png,
+                    page_width=image_width,
+                    page_height=image_height,
+                    page_no=page_no,
+                    captions=page_items,
+                )
+            except Exception:
+                vlm_items = []
+            for detected in vlm_items:
+                label_info = _extract_item_label(
+                    f"{detected.get('type') or 'figure'} {detected.get('number') or ''}"
+                )
+                item_type = label_info.get("type") or str(detected.get("type") or "figure").lower()
+                number = label_info.get("label") or str(detected.get("number") or "").strip()
+                rect = _vlm_bbox_to_page_rect(detected.get("bbox"), page, image_width, image_height)
+                if rect is None or not number:
+                    continue
+                vlm_rects[(item_type, number.lower())] = rect
+
         for item in missing:
             page_no = int(item.get("page") or 0)
             if page_no <= 0 or page_no > len(doc):
                 continue
             page = doc[page_no - 1]
-            crop_rect = _caption_visual_crop_rect(page, item["caption_rect"])
+            label_key = (
+                str(item.get("item_type") or "figure").lower(),
+                str(item.get("figure_number") or "").strip().lower(),
+            )
+            crop_rect = vlm_rects.get(label_key)
+            if crop_rect is None:
+                crop_rect = _caption_visual_crop_rect(page, item["caption_rect"])
+            if crop_rect is None:
+                crop_rect = _caption_band_crop_rect(page, item["caption_rect"])
             if crop_rect is None:
                 continue
             if crop_rect.width < MIN_FIGURE_WIDTH / 2 or crop_rect.height < MIN_FIGURE_HEIGHT / 2:

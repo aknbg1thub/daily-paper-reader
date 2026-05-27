@@ -638,6 +638,15 @@ def upsert_glance_block_in_text(md_text: str, glance: str) -> str:
     return (txt.rstrip() + f"\n\n## 速览\n{glance}\n").rstrip() + "\n"
 
 
+def remove_glance_block_from_text(md_text: str) -> Tuple[str, bool]:
+    txt = md_text or ""
+    pattern = re.compile(r"\n*## 速览\s*\n.*?(?=\n---\n|\n##\s|\Z)", re.S)
+    updated = pattern.sub("", txt, count=1)
+    updated = re.sub(r"(\n## 摘要\n[\s\S]*?)\n---\n\n(?=## Abstract)", r"\1\n\n", updated, count=1)
+    updated = re.sub(r"\n{4,}", "\n\n\n", updated)
+    return updated, updated != txt
+
+
 def generate_deep_summary(md_file_path: str, txt_file_path: str, max_retries: int = 3) -> str | None:
     if LLM_CLIENT is None or docs_llm_disabled():
         log("[WARN] 未配置 BLT_API_KEY，跳过精读总结。")
@@ -1278,6 +1287,47 @@ def build_latest_report_section(
     return "\n".join(lines)
 
 
+def parse_glance_fields(glance: str) -> Dict[str, str]:
+    fields = {
+        "tldr": "",
+        "motivation": "",
+        "method": "",
+        "result": "",
+        "conclusion": "",
+    }
+    key_map = {
+        "TLDR": "tldr",
+        "Motivation": "motivation",
+        "Method": "method",
+        "Result": "result",
+        "Conclusion": "conclusion",
+    }
+    for line in str(glance or "").splitlines():
+        text = line.strip().rstrip("\\").strip()
+        if not text.startswith("**"):
+            continue
+        match = re.match(r"^\*\*(TLDR|Motivation|Method|Result|Conclusion)\*\*\s*[：:]\s*(.*)$", text)
+        if not match:
+            continue
+        field = key_map.get(match.group(1))
+        if field:
+            fields[field] = match.group(2).strip()
+    return fields
+
+
+def upsert_glance_front_matter(md_text: str, glance: str) -> Tuple[str, bool]:
+    fields = parse_glance_fields(glance)
+    updated = md_text
+    changed_any = False
+    for key in ("tldr", "motivation", "method", "result", "conclusion"):
+        value = normalize_latex_escapes(fields.get(key) or "")
+        if not value:
+            continue
+        updated, changed = upsert_front_matter_field(updated, key, yaml_escape_value(value))
+        changed_any = changed_any or changed
+    return updated, changed_any
+
+
 def normalize_sidebar_tag(tag: str) -> str:
     text = (tag or "").strip()
     if not text:
@@ -1416,10 +1466,19 @@ def ensure_text_content(pdf_url: str, txt_path: str) -> str:
     if text_content is None and pdf_url:
         resp = requests.get(pdf_url, timeout=60)
         resp.raise_for_status()
-        with tempfile.NamedTemporaryFile(suffix=".pdf", delete=True) as tmp_pdf:
-            tmp_pdf.write(resp.content)
-            tmp_pdf.flush()
-            text_content = extract_pdf_text(tmp_pdf.name)
+        tmp_path = ""
+        try:
+            with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp_pdf:
+                tmp_pdf.write(resp.content)
+                tmp_pdf.flush()
+                tmp_path = tmp_pdf.name
+            text_content = extract_pdf_text(tmp_path)
+        finally:
+            if tmp_path:
+                try:
+                    os.remove(tmp_path)
+                except OSError:
+                    pass
     os.makedirs(os.path.dirname(txt_path), exist_ok=True)
     with open(txt_path, "w", encoding="utf-8") as f:
         f.write(text_content or "")
@@ -1576,6 +1635,7 @@ def maybe_generate_paper_figures(
     docs_dir: str,
     paper_id: str,
     pdf_url: str,
+    force: bool = False,
 ) -> List[Dict[str, Any]]:
     source_key = str(paper.get("source") or "").strip().lower()
     if source_key not in {"arxiv", "biorxiv"}:
@@ -1590,6 +1650,7 @@ def maybe_generate_paper_figures(
             docs_dir=docs_dir,
             source_key=source_key,
             asset_key=asset_key,
+            force=force,
         ))
     except Exception as e:
         log(f"[WARN] 论文插图提取失败：{asset_key}: {e}")
@@ -1768,6 +1829,7 @@ def process_paper(
     glance_only: bool = False,
     force_glance: bool = False,
     metadata_only: bool = False,
+    force_figures: bool = False,
 ) -> Tuple[str, str]:
     title = (paper.get("title") or "").strip()
     arxiv_id = str(paper.get("id") or paper.get("paper_id") or "").strip()
@@ -1818,7 +1880,7 @@ def process_paper(
 
         existing_meta = _parse_front_matter(existing)
         has_figures_json = bool(str(existing_meta.get("figures_json") or "").strip()) if existing_meta else False
-        if has_figures_json:
+        if has_figures_json and not force_figures:
             figures = normalize_figure_assets(parse_figures_json_value(existing_meta.get("figures_json")))
             if figures:
                 updated, changed = upsert_front_matter_field(
@@ -1836,6 +1898,7 @@ def process_paper(
                 docs_dir=docs_dir,
                 paper_id=paper_id,
                 pdf_url=pdf_url,
+                force=force_figures,
             )
             if figures:
                 paper["_figure_assets"] = figures
@@ -1912,12 +1975,26 @@ def process_paper(
                 # 补齐中文标题/摘要失败时不影响其它生成逻辑
                 pass
 
-        # 已存在速览则默认不重复生成（避免重复 LLM 调用），除非 force_glance=true
-        has_glance = "## 速览" in existing
-        if force_glance or not has_glance:
+        fixed, changed = remove_glance_block_from_text(existing)
+        if changed:
+            with open(md_path, "w", encoding="utf-8") as f:
+                f.write(fixed + ("\n" if not fixed.endswith("\n") else ""))
+            existing = fixed
+
+        existing_meta = _parse_front_matter(existing)
+        has_glance_meta = any(
+            str(existing_meta.get(key) or "").strip()
+            for key in ("motivation", "method", "result", "conclusion")
+        ) if existing_meta else False
+        if force_glance or not has_glance_meta:
             glance = generate_glance_overview(title, abstract_en) or build_glance_fallback(paper)
             if glance:
                 paper["_glance_overview"] = glance
+                updated, changed = upsert_glance_front_matter(existing, glance)
+                if changed:
+                    with open(md_path, "w", encoding="utf-8") as f:
+                        f.write(updated + ("\n" if not updated.endswith("\n") else ""))
+                    existing = updated
 
         # 修复历史格式：TLDR 行末尾不应带反斜杠
         fixed, changed = normalize_meta_tldr_line(existing)
@@ -1944,21 +2021,6 @@ def process_paper(
             if changed:
                 with open(md_path, "w", encoding="utf-8") as f:
                     f.write(updated + ("\n" if not updated.endswith("\n") else ""))
-                existing = updated
-
-        # 规范速览块格式：TLDR/Motivation/Method/Result 末尾应带 `\\`
-        updated, changed = normalize_glance_block_format(existing)
-        if changed:
-            with open(md_path, "w", encoding="utf-8") as f:
-                f.write(updated + ("\n" if not updated.endswith("\n") else ""))
-            existing = updated
-
-        # 插入/替换速览内容
-        if glance and (force_glance or "## 速览" not in existing):
-            updated = upsert_glance_block_in_text(existing, glance)
-            if updated != existing:
-                with open(md_path, "w", encoding="utf-8") as f:
-                    f.write(updated)
                 existing = updated
 
         if glance_only:
@@ -1995,6 +2057,7 @@ def process_paper(
             docs_dir=docs_dir,
             paper_id=paper_id,
             pdf_url=pdf_url,
+            force=force_figures,
         )
         if figures:
             paper["_figure_assets"] = figures
@@ -2016,6 +2079,7 @@ def process_paper(
         docs_dir=docs_dir,
         paper_id=paper_id,
         pdf_url=pdf_url,
+        force=force_figures,
     )
     if figures:
         paper["_figure_assets"] = figures
@@ -2820,7 +2884,12 @@ def main() -> None:
     parser.add_argument(
         "--force-glance",
         action="store_true",
-        help="强制重生成 `## 速览` 并覆盖写入（即使文件里已存在该块）。",
+        help="强制重生成 front matter 速览字段，并移除正文 `## 速览` 块。",
+    )
+    parser.add_argument(
+        "--force-figures",
+        action="store_true",
+        help="强制重新抽取论文图表，忽略已有 figures_json / 图表缓存。",
     )
     parser.add_argument(
         "--sidebar-only",
@@ -2914,6 +2983,7 @@ def main() -> None:
                 glance_only=args.glance_only,
                 force_glance=args.force_glance,
                 metadata_only=args.metadata_only,
+                force_figures=args.force_figures,
             )
             log(f"[OK] 单篇论文已生成：{paper_title}（{paper_id}），date={single_date}，section={section}")
             log_substep("6.p", "单篇论文生成", "END")
@@ -3018,6 +3088,7 @@ def main() -> None:
                     args.glance_only,
                     args.force_glance,
                     args.metadata_only,
+                    args.force_figures,
                 )
                 futures[future] = (index, paper)
 

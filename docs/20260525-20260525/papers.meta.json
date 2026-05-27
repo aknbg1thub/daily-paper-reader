@@ -1,7 +1,7 @@
 {
   "label": "2026-05-25 ~ 2026-05-25",
   "date": "2026-05-25 ~ 2026-05-25",
-  "generated_at": "2026-05-27T12:01:19",
+  "generated_at": "2026-05-27T16:02:34",
   "count": 1,
   "papers": [
     {
@@ -13,7 +13,7 @@
       "pdf": "https://arxiv.org/pdf/2605.25828v1",
       "score": "9.0",
       "evidence": "Quantum wave mixing on a single superconducting qubit produces a hierarchy of coherent side peaks associated with elastic multiphoton scattering pathways.",
-      "tldr": "Quantum wave mixing on a single superconducting qubit produces a hierarchy of coherent side peaks associated with elastic multiphoton scattering pathways。",
+      "tldr": "该论文研究级联量子波混频过程，提出了一种通过分析边带结构来探测反群聚微波光子统计特性的方案。作者发展了分析理论，揭示了在源与探测模式不同线宽极限下，边峰因光子反群聚效应而受到抑制，从而在频谱上形成独特“指纹”，并经数值模拟验证。",
       "tags": "query:EQ-CIRCUIT",
       "abstract_en": "Quantum wave mixing on a single superconducting qubit produces a hierarchy of coherent side peaks associated with elastic multiphoton scattering pathways. In a cascaded source--probe geometry these pathways become sensitive to the photon statistics of the radiation emitted by the source qubit. We develop an analytical theory of this effect starting from the cascaded master equation in the weak-driving regime. In the coherent-filtering limit $γ_{\\rm s}\\ggγ_{\\rm pr}$, the standard coherent--coherent wave-mixing hierarchy is recovered. In the opposite limit $γ_{\\rm pr}\\ggγ_{\\rm s}$, side peaks associated with multiphoton absorption from the antibunched source field are parametrically suppressed. Numerical solutions confirm the analytical scaling laws. The resulting sideband hierarchy provides a frequency-domain fingerprint of antibunched itinerant microwave light.",
       "source": "arxiv",

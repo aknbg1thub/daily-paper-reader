@@ -306,12 +306,32 @@ def build_paper_id_lookup(papers: Any) -> dict[str, str]:
 def prepare_rerank_fallback(input_path: str, output_path: str) -> bool:
     if not os.path.exists(input_path):
         print(f"[WARN] Step 3 fallback 输入不存在，无法生成兜底 rerank 文件: {input_path}", flush=True)
-        return False
+        save_json(
+            output_path,
+            {
+                "generated_at": datetime.now(timezone.utc).isoformat(),
+                "papers": [],
+                "queries": [],
+                "rerank_empty": True,
+                "rerank_empty_reason": "missing_input",
+            },
+        )
+        return True
 
     data = load_json_safe(input_path)
     if not isinstance(data, dict):
         print(f"[WARN] Step 3 fallback 输入格式非法，无法生成兜底 rerank 文件: {input_path}", flush=True)
-        return False
+        save_json(
+            output_path,
+            {
+                "generated_at": datetime.now(timezone.utc).isoformat(),
+                "papers": [],
+                "queries": [],
+                "rerank_empty": True,
+                "rerank_empty_reason": "invalid_input",
+            },
+        )
+        return True
 
     queries = data.get("queries")
     if isinstance(queries, list):
@@ -328,12 +348,34 @@ def prepare_rerank_fallback(input_path: str, output_path: str) -> bool:
 def prepare_llm_refine_fallback(input_path: str, output_path: str) -> bool:
     if not os.path.exists(input_path):
         print(f"[WARN] Step 4 fallback input missing: {input_path}", flush=True)
-        return False
+        save_json(
+            output_path,
+            {
+                "generated_at": datetime.now(timezone.utc).isoformat(),
+                "papers": [],
+                "queries": [],
+                "llm_ranked": [],
+                "llm_fallback": True,
+                "llm_empty_reason": "missing_input",
+            },
+        )
+        return True
 
     data = load_json_safe(input_path)
     if not isinstance(data, dict):
         print(f"[WARN] Step 4 fallback input is invalid: {input_path}", flush=True)
-        return False
+        save_json(
+            output_path,
+            {
+                "generated_at": datetime.now(timezone.utc).isoformat(),
+                "papers": [],
+                "queries": [],
+                "llm_ranked": [],
+                "llm_fallback": True,
+                "llm_empty_reason": "invalid_input",
+            },
+        )
+        return True
 
     by_id: dict[str, dict[str, Any]] = {}
     paper_id_lookup = build_paper_id_lookup(data.get("papers"))

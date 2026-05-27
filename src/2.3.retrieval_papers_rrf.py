@@ -45,6 +45,19 @@ def save_json(data: Dict[str, Any], path: str) -> None:
   log(f"[INFO] 已写入融合结果：{path}")
 
 
+def save_empty_rrf(path: str, reason: str) -> None:
+  save_json(
+    {
+      "generated_at": datetime.now(timezone.utc).isoformat(),
+      "papers": [],
+      "queries": [],
+      "rrf_empty": True,
+      "rrf_empty_reason": reason,
+    },
+    path,
+  )
+
+
 def make_query_key(q: Dict[str, Any]) -> Tuple[str, str, str]:
   """
   生成用于对齐 BM25 / Embedding 查询的稳定键。
@@ -190,14 +203,17 @@ def main() -> None:
   # 检查输入文件是否存在，如果不存在说明今天没有新论文，优雅退出
   if not os.path.exists(bm25_path) and not os.path.exists(emb_path):
     log("[INFO] BM25 和 Embedding 结果文件都不存在（今天没有新论文，将跳过 RRF 融合）")
+    save_empty_rrf(out_path, "missing_bm25_and_embedding")
     return
 
   if not os.path.exists(bm25_path):
     log(f"[INFO] BM25 结果文件不存在：{bm25_path}（将跳过 RRF 融合）")
+    save_empty_rrf(out_path, "missing_bm25")
     return
 
   if not os.path.exists(emb_path):
     log(f"[INFO] Embedding 结果文件不存在：{emb_path}（将跳过 RRF 融合）")
+    save_empty_rrf(out_path, "missing_embedding")
     return
 
   group_start("Step 2.3 - load inputs")
@@ -213,6 +229,9 @@ def main() -> None:
 
   all_keys = sorted({*bm25_map.keys(), *emb_map.keys()})
   log(f"[INFO] RRF keys={len(all_keys)} | bm25_queries={len(bm25_queries)} | emb_queries={len(emb_queries)}")
+  if not all_keys:
+    save_empty_rrf(out_path, "empty_queries")
+    return
 
   group_start("Step 2.3 - merge papers")
   id_to_paper = build_paper_map(bm25_data.get("papers") or [])

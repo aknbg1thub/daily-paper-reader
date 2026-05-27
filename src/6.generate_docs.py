@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from __future__ import annotations
+
 # Step 6：根据推荐结果生成 Docs（精读区 / 速读区），并更新侧边栏。
 
 import argparse
@@ -110,6 +112,45 @@ def docs_llm_disabled() -> bool:
 def log(message: str) -> None:
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S")
     print(f"[{ts}] {message}", flush=True)
+
+
+PLACEHOLDER_FIELD_MARKERS = (
+    "轻量补跑",
+    "BM25/向量召回/RRF",
+    "Candidate selected by retrieval ranking",
+    "Selected by BM25/embedding/RRF fallback",
+    "检索排序选出",
+)
+
+
+def is_placeholder_display_text(value: Any) -> bool:
+    text = str(value or "").strip()
+    return bool(text) and any(marker in text for marker in PLACEHOLDER_FIELD_MARKERS)
+
+
+def first_abstract_sentence(text: str) -> str:
+    s = (text or "").strip()
+    if not s:
+        return ""
+    parts = re.split(r"(?<=[。！？.!?])\s+", s)
+    return (parts[0] if parts else s).strip()
+
+
+def fallback_evidence_text(paper: Dict[str, Any]) -> str:
+    query = str(paper.get("matched_query_text") or "").strip()
+    tag = str(paper.get("matched_query_tag") or "").strip()
+    if query:
+        return f"匹配订阅检索式：{query}"
+    if tag:
+        return f"匹配订阅方向：{tag}"
+    return first_abstract_sentence(str(paper.get("abstract") or "").strip())
+
+
+def sanitize_display_text(value: Any, fallback: str = "") -> str:
+    text = str(value or "").strip()
+    if not text or is_placeholder_display_text(text):
+        return str(fallback or "").strip()
+    return text
 
 def log_substep(code: str, name: str, phase: str) -> None:
     """
@@ -762,16 +803,16 @@ def build_glance_fallback(paper: Dict[str, Any]) -> str:
     tldr = (
         str(paper.get("llm_tldr_cn") or paper.get("llm_tldr") or paper.get("llm_tldr_en") or "").strip()
     )
-    evidence = str(paper.get("canonical_evidence") or "").strip()
+    evidence = sanitize_display_text(paper.get("canonical_evidence"), fallback_evidence_text(paper))
 
     def first_sentence(text: str) -> str:
         s = (text or "").strip()
         if not s:
             return ""
-        parts = re.split(r"(?<=[。！？.!?])\\s+", s)
+        parts = re.split(r"(?<=[。！？.!?])\s+", s)
         return (parts[0] if parts else s).strip()
 
-    if not tldr:
+    if not tldr or is_placeholder_display_text(tldr):
         tldr = first_sentence(abstract)
     if not tldr and evidence:
         tldr = evidence
@@ -1556,7 +1597,7 @@ def build_markdown_content(
         published = published[:10]
     pdf_url = str(paper.get("link") or paper.get("pdf_url") or "").strip()
     score = paper.get("llm_score")
-    evidence = str(paper.get("canonical_evidence") or "").strip()
+    evidence = sanitize_display_text(paper.get("canonical_evidence"), fallback_evidence_text(paper))
     tldr = (
         paper.get("llm_tldr_cn")
         or paper.get("llm_tldr")
@@ -1566,6 +1607,10 @@ def build_markdown_content(
     abstract_en = (paper.get("abstract") or "").strip()
     if not abstract_en:
         abstract_en = "arXiv did not provide an abstract for this paper."
+    if not tldr or is_placeholder_display_text(tldr):
+        tldr = first_abstract_sentence(abstract_en)
+    evidence = normalize_latex_escapes(evidence)
+    tldr = normalize_latex_escapes(tldr)
     paper_source = str(paper.get("source") or "").strip()
     selection_source = str(paper.get("selection_source") or "").strip()
     figure_assets = paper.get("_figure_assets") if isinstance(paper.get("_figure_assets"), list) else []
@@ -1691,6 +1736,19 @@ def process_paper(
     glance = ""
 
     if metadata_only:
+        if os.path.exists(md_path):
+            try:
+                with open(md_path, "r", encoding="utf-8") as f:
+                    existing_content = f.read()
+            except Exception:
+                existing_content = ""
+            if not is_placeholder_display_text(existing_content):
+                return paper_id, title
+        if os.path.exists(md_path):
+            try:
+                os.remove(md_path)
+            except Exception:
+                pass
         if os.path.exists(md_path):
             return paper_id, title
         paper["_glance_overview"] = build_glance_fallback(paper)
@@ -2068,6 +2126,46 @@ def update_sidebar(
         f.writelines(lines)
 
 
+def remove_sidebar_date(sidebar_path: str, date_str: str) -> None:
+    if not os.path.exists(sidebar_path):
+        return
+    with open(sidebar_path, "r", encoding="utf-8") as f:
+        lines = f.readlines()
+
+    marker = f"<!--dpr-date:{date_str}-->"
+    legacy_day_heading = f"  * {format_date_str(date_str)}\n"
+    daily_idx = -1
+    for i, line in enumerate(lines):
+        if line.strip().startswith("* Daily Papers"):
+            daily_idx = i
+            break
+    if daily_idx == -1:
+        return
+
+    day_idx = -1
+    for i in range(daily_idx + 1, len(lines)):
+        line = lines[i]
+        if line.startswith("* "):
+            break
+        if marker in line or line == legacy_day_heading:
+            day_idx = i
+            break
+    if day_idx == -1:
+        return
+
+    end = day_idx + 1
+    while end < len(lines):
+        if lines[end].startswith("  * ") and not lines[end].startswith("    * "):
+            break
+        if lines[end].startswith("* "):
+            break
+        end += 1
+    del lines[day_idx:end]
+
+    with open(sidebar_path, "w", encoding="utf-8") as f:
+        f.writelines(lines)
+
+
 def build_day_report_markdown(
     date_str: str,
     date_label: str | None,
@@ -2246,7 +2344,7 @@ def sync_home_readme_from_day_report(
 
 
 def get_paper_sidebar_evidence(paper: Dict[str, Any]) -> str:
-    return str(paper.get("canonical_evidence") or "").strip()
+    return sanitize_display_text(paper.get("canonical_evidence"), fallback_evidence_text(paper))
 
 
 def write_run_daily_log(
@@ -2947,6 +3045,8 @@ def main() -> None:
     log_substep("6.4", "生成当日日报并同步首页 README", "END")
 
     sidebar_path = os.path.join(docs_dir, "_sidebar.md")
+    if not (deep_entries or quick_entries):
+        remove_sidebar_date(sidebar_path, date_str)
     if deep_entries or quick_entries:
         log_substep("6.5", "更新侧边栏", "START")
         update_sidebar(

@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from __future__ import annotations
+
 # Step 5：基于 LLM 评分结果，生成“精读区 + 速览区”的三种模式输出。
 
 import argparse
@@ -92,6 +94,70 @@ def save_json(data: Dict[str, Any], path: str) -> None:
     with open(path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
     log(f"[INFO] saved: {path}")
+
+
+SCQC_TOPIC_TAGS = {"SC-QUBIT-CHIP", "EQ-CIRCUIT", "HAMILTONIAN"}
+SCQC_STRONG_PATTERNS = [
+    r"\bsuperconducting\s+(?:qubit|quantum\s+(?:comput|processor|chip)|circuit\s+qed|quantum\s+circuit)\b",
+    r"\btransmon(?:s)?\b",
+    r"\bfluxonium(?:s)?\b",
+    r"\bjosephson\b(?=.{0,120}\b(?:qubit|quantum\s+comput|circuit\s+qed|hamiltonian|black[-\s]?box|quantization)\b)",
+    r"\btunable\s+coupler(?:s)?\b",
+    r"\bcircuit\s+qed\b",
+    r"\bblack[-\s]?box\s+quantization\b",
+    r"\benergy\s+participation\s+ratio\b",
+    r"\bcapacitance\s+matrix\b(?=.{0,120}\b(?:qubit|josephson|transmon|fluxonium|superconducting)\b)",
+    r"\binductance\s+matrix\b(?=.{0,120}\b(?:qubit|josephson|transmon|fluxonium|superconducting)\b)",
+    r"\bquantum\s+chip(?:s)?\b(?=.{0,120}\b(?:superconducting|qubit|processor|coupler)\b)",
+    r"\bhamiltonian\b(?=.{0,120}\b(?:superconducting\s+qubit|transmon|fluxonium|josephson|circuit\s+qed)\b)",
+    r"\b(?:superconducting\s+qubit|transmon|fluxonium|josephson|circuit\s+qed)\b(?=.{0,120}\bhamiltonian\b)",
+]
+SCQC_COMPUTING_ANCHOR_PATTERNS = [
+    r"\bsuperconducting\s+qubit",
+    r"\bsuperconducting\s+quantum\s+(?:comput|processor|chip|circuit)",
+    r"\btransmon(?:s)?\b",
+    r"\bfluxonium(?:s)?\b",
+    r"\bcircuit\s+qed\b",
+    r"\btunable\s+coupler(?:s)?\b",
+    r"\bqubit(?:s)?\b(?=.{0,120}\b(?:superconducting|transmon|fluxonium|josephson|circuit\s+qed)\b)",
+    r"\b(?:superconducting|transmon|fluxonium|josephson|circuit\s+qed)\b(?=.{0,120}\bqubit(?:s)?\b)",
+]
+SCQC_DOMAIN_ANCHOR_PATTERNS = [
+    r"\bsuperconducting\b",
+    r"\btransmon(?:s)?\b",
+    r"\bfluxonium(?:s)?\b",
+    r"\bjosephson\b",
+    r"\bcircuit\s+qed\b",
+]
+
+
+def targets_scqc_topics(tags: List[str]) -> bool:
+    return any(str(tag).strip() in SCQC_TOPIC_TAGS for tag in tags)
+
+
+def passes_scqc_topic_gate(item: Dict[str, Any]) -> bool:
+    title_text = str(item.get("title") or "")
+    abstract_text = str(item.get("abstract") or item.get("summary") or "")
+    text = f"{title_text} {abstract_text}".lower()
+    lead_text = f"{title_text} {abstract_text[:900]}".lower()
+    if not text.strip():
+        return False
+    has_strong_match = any(re.search(pattern, text, re.I | re.S) for pattern in SCQC_STRONG_PATTERNS)
+    has_computing_anchor = any(
+        re.search(pattern, lead_text, re.I | re.S) for pattern in SCQC_COMPUTING_ANCHOR_PATTERNS
+    )
+    has_domain_anchor = any(
+        re.search(pattern, lead_text, re.I | re.S) for pattern in SCQC_DOMAIN_ANCHOR_PATTERNS
+    )
+    return has_strong_match and has_computing_anchor and has_domain_anchor
+
+
+def filter_scqc_topic_candidates(items: List[Dict[str, Any]], reason: str) -> List[Dict[str, Any]]:
+    kept = [item for item in items if passes_scqc_topic_gate(item)]
+    dropped = len(items) - len(kept)
+    if dropped:
+        log(f"[INFO] SCQC topic gate ({reason}): kept={len(kept)} dropped={dropped}")
+    return kept
 
 
 def parse_date_str(date_str: str) -> date:
@@ -1157,6 +1223,11 @@ def main() -> None:
     log_substep("5.2", "构建评分论文列表", "START")
     try:
         scored_papers = build_scored_papers(papers, llm_ranked)
+        is_llm_fallback = False
+        if not args.carryover_only and "data" in locals() and isinstance(data, dict):
+            is_llm_fallback = bool(data.get("llm_fallback"))
+        if is_llm_fallback and targets_scqc_topics(active_carryover_tags):
+            scored_papers = filter_scqc_topic_candidates(scored_papers, "llm_fallback")
         log(f"[INFO] scored_papers={len(scored_papers)}")
     finally:
         log_substep("5.2", "构建评分论文列表", "END")

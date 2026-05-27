@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+from __future__ import annotations
+
 import argparse
 import json
 import os
@@ -370,10 +372,10 @@ def prepare_llm_refine_fallback(input_path: str, output_path: str) -> bool:
                     "id": pid,
                     "paper_id": pid,
                     "score": round(score, 3),
-                    "evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
-                    "evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
-                    "tldr_en": "Candidate selected by retrieval ranking.",
-                    "tldr_cn": "由检索排序选出的候选论文。",
+                    "evidence_en": query_text or tag,
+                    "evidence_cn": query_text or tag,
+                    "tldr_en": "",
+                    "tldr_cn": "",
                     "tags": [tag] if tag else [],
                     "matched_query_tag": tag,
                     "matched_query_text": query_text,

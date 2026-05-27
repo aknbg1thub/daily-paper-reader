@@ -9,7 +9,8 @@
     "deep_selected": 0,
     "quick_candidates": 0,
     "quick_skim_target": 13,
-    "quick_selected": 0
+    "quick_selected": 0,
+    "post_topic_gate_total": 0
   },
   "deep_dive": [],
   "quick_skim": []

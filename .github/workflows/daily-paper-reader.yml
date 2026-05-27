@@ -241,7 +241,7 @@ jobs:
               RRF_TOP_N="60"
             fi
             if [ -z "$SKIP_LLM_REFINE" ]; then
-              SKIP_LLM_REFINE="true"
+              SKIP_LLM_REFINE="false"
             fi
           fi
           if [ -z "$FORCE_DEEP" ]; then

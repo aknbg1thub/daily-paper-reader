@@ -1,0 +1,19 @@
+# Paper metadata fallback
+
+Title: Which Superconducting Qubit Model is Good Enough? From Effective Two-Level to Circuit-Based Hamiltonians for Pulse-Level Simulation
+
+Abstract:
+Pulse-level simulators are the lowest-level, most widely used abstraction layer for studying how quantum hardware responds to control signals, but they can be built on Hamiltonian models with very different fidelity and cost. This raises the question: which level of physical abstraction is sufficient for a given simulation objective? We study this question for a flux-tunable two-qubit superconducting device with a fixed bus coupler by comparing three Hamiltonian descriptions of the same hardware: an effective two-level model, a three-mode Duffing model, and a circuit-based transmon model in the charge basis. Using a realistic parameter set, we evaluate these models on a common benchmark suite spanning flux-dependent spectra, extracted two-qubit interaction terms, driven single-qubit dynamics, CZ gate dynamics, leakage outside the computational subspace, and runtime. Across the tested flux range, the Duffing model follows the circuit-based reference more closely than the effective model for static spectra and reduced two-qubit quantities, while in driven benchmarks, the multilevel models reveal effects absent in the effective description. Overall, the results support a layered use of abstraction in pulse-level simulation: effective models for reduced analyses, Duffing models as a practical multilevel default, and circuit-based models for high-fidelity reference simulation or detailed leakage analysis.
+
+Selection evidence:
+Pulse-level simulators are the lowest-level, most widely used abstraction layer for studying how quantum hardware responds to control signals, but they can be built on Hamiltonian models with very different fidelity and cost.
+
+TLDR:
+Pulse-level simulators are the lowest-level, most widely used abstraction layer for studying how quantum hardware responds to control signals, but they can be built on Hamiltonian models with very different fidelity and cost.
+
+Generated glance:
+**TLDR**：本文针对脉冲级量子模拟中物理模型选择的问题，以固定总线耦合器的磁通可调双量子比特超导器件为对象，对比了有效二能级模型、三模杜芬模型和基于电路的 transmon 模型。通过基准测试评估了它们在静态频谱、驱动动力学、CZ 门操作和泄漏等指标上的保真度与成本。结果表明，不同模型适用于不同场景，支持在脉冲模拟中分层使用抽象。 \
+**Motivation**：确定在特定仿真目标下，哪个层级的物理模型能在保真度与计算成本之间取得最佳平衡。 \
+**Method**：对同一超导量子比特硬件，采用有效二能级、三模杜芬和基于电荷基的电路 transmon 三种哈密顿量模型，并在统一的基准测试套件下进行比较。 \
+**Result**：杜芬模型在静态频谱和简化两量子比特参数上比有效模型更接近电路参考，而在驱动基准测试中，多能级模型揭示了有效模型无法捕捉的动力学现象。 \
+**Conclusion**：建议在脉冲级模拟中采用分层抽象策略：有效模型用于简化分析，杜芬模型作为实用的多能级默认选择，电路模型用于高保真参考或详细泄漏分析。

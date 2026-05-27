@@ -1654,6 +1654,7 @@ window.PrivateDiscussionChat = (function () {
           fetchMode: 'standard',
           dispatchInputs: {
             fetch_mode: 'standard',
+            skip_llm_refine: 'false',
             force_deep: 'true',
           },
         });
@@ -1667,6 +1668,7 @@ window.PrivateDiscussionChat = (function () {
           fetchMode: 'standard',
           dispatchInputs: {
             fetch_mode: 'standard',
+            skip_llm_refine: 'false',
             force_deep: 'true',
           },
         });

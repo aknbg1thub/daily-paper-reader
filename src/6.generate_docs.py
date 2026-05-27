@@ -1426,6 +1426,48 @@ def ensure_text_content(pdf_url: str, txt_path: str) -> str:
     return text_content or ""
 
 
+def build_metadata_text_content(paper: Dict[str, Any]) -> str:
+    title = str(paper.get("title") or "").strip()
+    abstract = str(paper.get("abstract") or "").strip()
+    evidence = sanitize_display_text(paper.get("canonical_evidence"), fallback_evidence_text(paper))
+    tldr = (
+        paper.get("llm_tldr_cn")
+        or paper.get("llm_tldr")
+        or paper.get("llm_tldr_en")
+        or ""
+    )
+    glance = str(paper.get("_glance_overview") or "").strip()
+    parts = [
+        "# Paper metadata fallback",
+        "",
+        f"Title: {title}" if title else "",
+        "",
+        "Abstract:",
+        abstract or "No abstract was available.",
+    ]
+    if evidence:
+        parts.extend(["", "Selection evidence:", str(evidence)])
+    if tldr:
+        parts.extend(["", "TLDR:", str(tldr).strip()])
+    if glance:
+        parts.extend(["", "Generated glance:", glance])
+    return "\n".join(p for p in parts if p is not None).strip() + "\n"
+
+
+def ensure_text_content_or_metadata(pdf_url: str, txt_path: str, paper: Dict[str, Any]) -> str:
+    try:
+        text = ensure_text_content(pdf_url, txt_path)
+        if str(text or "").strip():
+            return text
+    except Exception as e:
+        log(f"[WARN] PDF/Jina text extraction failed; using metadata fallback: {e}")
+    fallback = build_metadata_text_content(paper)
+    os.makedirs(os.path.dirname(txt_path), exist_ok=True)
+    with open(txt_path, "w", encoding="utf-8") as f:
+        f.write(fallback)
+    return fallback
+
+
 def yaml_escape_value(s: str) -> str:
     if not s:
         return '""'
@@ -1931,7 +1973,7 @@ def process_paper(
 
             # 生成详细总结
             pdf_url = str(paper.get("link") or paper.get("pdf_url") or "").strip()
-            ensure_text_content(pdf_url, txt_path)
+            ensure_text_content_or_metadata(pdf_url, txt_path, paper)
             summary = generate_deep_summary(md_path, txt_path)
             if summary:
                 upsert_auto_block(md_path, "论文详细总结（自动生成）", summary)
@@ -1968,7 +2010,7 @@ def process_paper(
 
     # 新文件：生成完整内容
     pdf_url = str(paper.get("link") or paper.get("pdf_url") or "").strip()
-    ensure_text_content(pdf_url, txt_path)
+    ensure_text_content_or_metadata(pdf_url, txt_path, paper)
     figures = maybe_generate_paper_figures(
         paper,
         docs_dir=docs_dir,

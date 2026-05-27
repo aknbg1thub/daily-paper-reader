@@ -1,0 +1,19 @@
+# Paper metadata fallback
+
+Title: Sideband fingerprints of antibunched light in cascaded quantum wave mixing
+
+Abstract:
+Quantum wave mixing on a single superconducting qubit produces a hierarchy of coherent side peaks associated with elastic multiphoton scattering pathways. In a cascaded source--probe geometry these pathways become sensitive to the photon statistics of the radiation emitted by the source qubit. We develop an analytical theory of this effect starting from the cascaded master equation in the weak-driving regime. In the coherent-filtering limit $γ_{\rm s}\ggγ_{\rm pr}$, the standard coherent--coherent wave-mixing hierarchy is recovered. In the opposite limit $γ_{\rm pr}\ggγ_{\rm s}$, side peaks associated with multiphoton absorption from the antibunched source field are parametrically suppressed. Numerical solutions confirm the analytical scaling laws. The resulting sideband hierarchy provides a frequency-domain fingerprint of antibunched itinerant microwave light.
+
+Selection evidence:
+Quantum wave mixing on a single superconducting qubit produces a hierarchy of coherent side peaks associated with elastic multiphoton scattering pathways.
+
+TLDR:
+Quantum wave mixing on a single superconducting qubit produces a hierarchy of coherent side peaks associated with elastic multiphoton scattering pathways.
+
+Generated glance:
+**TLDR**：本文研究了超导量子比特上级联量子波混频过程，发现输出光的反聚束统计特性会导致多光子吸收路径相关的边带被参数化抑制。作者基于弱驱动级联主方程建立了解析理论，并得到数值计算验证。这项研究表明，边带层级结构可以作为频域内直接表征飞行微波光子反聚束特性的指纹。 \
+**Motivation**：探索如何从频域直接识别和表征级联量子系统中产生的反聚束非经典光场。 \
+**Method**：基于弱驱动下的级联主方程建立解析理论，并结合数值计算验证边带信号与光子统计的定量关系。 \
+**Result**：在源比特强过滤极限下恢复经典波混频层级，而在探测比特强过滤极限下，与反聚束光多光子吸收相关的边带被显著抑制。 \
+**Conclusion**：级联量子波混频产生的边带层级可作为飞行微波光子反聚束特性的频域指纹，为识别非经典光提供新手段。

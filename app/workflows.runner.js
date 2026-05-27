@@ -27,6 +27,26 @@ window.DPRWorkflowRunner = (function () {
   ];
 
   const QUICK_FETCH_PRESETS = {
+    '1-standard': {
+      key: 'daily-now',
+      dispatchInputs: {
+        run_enrich: 'false',
+        fetch_days: '1',
+        fetch_mode: 'standard',
+        skip_llm_refine: 'false',
+        force_deep: 'true',
+      },
+    },
+    '5-standard': {
+      key: 'daily-now',
+      dispatchInputs: {
+        run_enrich: 'false',
+        fetch_days: '5',
+        fetch_mode: 'standard',
+        skip_llm_refine: 'false',
+        force_deep: 'true',
+      },
+    },
     '10': {
       key: 'daily-now',
       dispatchInputs: {

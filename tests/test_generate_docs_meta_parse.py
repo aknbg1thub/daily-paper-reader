@@ -158,7 +158,7 @@ class GenerateDocsMetaParseTest(unittest.TestCase):
         self.assertEqual(len(figures), 1)
         self.assertEqual(figures[0]["url"], "assets/figures/arxiv/1234.5678/fig-001.webp")
 
-    def test_normalize_figure_assets_orders_by_label_before_page(self):
+    def test_normalize_figure_assets_orders_by_paper_position(self):
         figures = self.mod.normalize_figure_assets(
             [
                 {"figure_number": "4", "item_type": "figure", "page": 6, "index": 1},
@@ -170,7 +170,7 @@ class GenerateDocsMetaParseTest(unittest.TestCase):
 
         self.assertEqual(
             [(item["item_type"], item["figure_number"]) for item in figures],
-            [("figure", "3"), ("figure", "4"), ("figure", "5"), ("table", "I")],
+            [("figure", "4"), ("figure", "3"), ("figure", "5"), ("table", "I")],
         )
 
     def test_normalize_latex_escapes_repairs_double_backslashes_in_math(self):

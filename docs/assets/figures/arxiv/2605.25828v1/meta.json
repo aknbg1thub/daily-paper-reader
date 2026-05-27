@@ -3,10 +3,20 @@
   "extractor": "pymupdf-images",
   "figures": [
     {
+      "url": "assets/figures/arxiv/2605.25828v1/fig-001.webp",
+      "caption": "Table I: Leading weak-drive monomials generating the first QWM side peaks of the probe. The last column shows the small-𝛾s/𝛾pr scaling of the normalized peak amplitude at fixed drive voltages.",
+      "page": 8,
+      "index": 1,
+      "item_type": "table",
+      "width": 1065,
+      "height": 186,
+      "figure_number": "I"
+    },
+    {
       "url": "assets/figures/arxiv/2605.25828v1/fig-002.webp",
       "caption": "Figure 1: Schematic representation of a multiphoton process generating the −3𝛿𝜔side peak. Blue arrows indicate absorption of photons at the probe drive frequency 𝜔pr. Green arrows correspond to the source frequency 𝜔s. The red arrow denotes emission at the mixed frequency 2𝜔pr −𝜔s, which corresponds to the −3𝛿𝜔component in the rotating frame.",
       "page": 9,
-      "index": 1,
+      "index": 2,
       "item_type": "figure",
       "width": 271,
       "height": 203,
@@ -16,7 +26,7 @@
       "url": "assets/figures/arxiv/2605.25828v1/fig-003.webp",
       "caption": "Figure 2: (a) QWM spectrum in the antibunching regime. The analytical result (red solid line) is compared with the numerical solution of the stationary cascaded equations (blue dashed line). (b) The same comparison in the coherent-filtering regime. (c) Analytical comparison of the antibunching spectrum (blue solid line) and the coherent-filtering spectrum (green dash-dotted line). In both cases 𝛾pr = 5, 𝜀pr = 0.2, and 𝜀s = 0.1. In the coherent-filtering case 𝛾s = 25, whereas in the antibunching case 𝛾s = 1.",
       "page": 10,
-      "index": 2,
+      "index": 3,
       "item_type": "figure",
       "width": 935,
       "height": 288,
@@ -26,21 +36,11 @@
       "url": "assets/figures/arxiv/2605.25828v1/fig-004.webp",
       "caption": "Figure 3: Dependence of the normalized side-peak amplitudes on the source linewidth: (a) +3𝛿𝜔, (b) −5𝛿𝜔, and (c) +5𝛿𝜔. Red solid lines show numerical results obtained from the stationary cascaded equations. Blue dashed lines show the antibunching asymptotes, and green dashed lines show the coherent-filtering limit. The normalized amplitude is 𝑆𝑛𝛿𝜔 pr = ⟨𝜎pr −⟩𝑛𝛿𝜔/ ⟨𝜎pr −⟩coh 𝑛𝛿𝜔is the 𝛾s →∞value.",
       "page": 10,
-      "index": 3,
+      "index": 4,
       "item_type": "figure",
       "width": 897,
       "height": 231,
       "figure_number": "3"
-    },
-    {
-      "url": "assets/figures/arxiv/2605.25828v1/fig-001.webp",
-      "caption": "Table I: Leading weak-drive monomials generating the first QWM side peaks of the probe. The last column shows the small-𝛾s/𝛾pr scaling of the normalized peak amplitude at fixed drive voltages.",
-      "page": 8,
-      "index": 4,
-      "item_type": "table",
-      "width": 1065,
-      "height": 186,
-      "figure_number": "I"
     }
   ]
 }

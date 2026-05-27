@@ -13,10 +13,20 @@
       "figure_number": "1"
     },
     {
+      "url": "assets/figures/arxiv/2605.23034v1/fig-002.webp",
+      "caption": "Table 1: System parameters used in the benchmarks.",
+      "page": 4,
+      "index": 2,
+      "item_type": "table",
+      "width": 356,
+      "height": 154,
+      "figure_number": "1"
+    },
+    {
       "url": "assets/figures/arxiv/2605.23034v1/fig-003.webp",
       "caption": "Figure 2: Truncation convergence of the circuit-based model (left) and Duffing model (right). The panels show the ex- tracted quantities 𝐽and 𝜁, and the RMSE of the computa- tional energy spectrum. Top: dependence on the charge-basis dimension 𝑁𝑄used for each transmon (extraction of initial guess of 𝜔𝑗, 𝛼𝑗in the Duffing). Middle: dependence on the retained qubit energy-basis dimension 𝑁𝐸,𝑞. Bottom: depen- dence on the retained coupler dimension 𝑁𝐸,𝑐. Errors are reported for the spectral RMSE and the extracted quantities 𝐽and 𝜁relative to a highly resolved reference calculation.",
       "page": 6,
-      "index": 2,
+      "index": 3,
       "item_type": "figure",
       "width": 526,
       "height": 494,
@@ -26,7 +36,7 @@
       "url": "assets/figures/arxiv/2605.23034v1/fig-004.webp",
       "caption": "Figure 3: Static comparison across flux on qubit𝑞1. The panels show dressed computational energies relative to the ground state, per-flux spectral RMSE with respect to the circuit-based model, the extracted exchange-like coupling 𝐽(𝜙), and the residual interaction 𝜁(𝜙).",
       "page": 6,
-      "index": 3,
+      "index": 4,
       "item_type": "figure",
       "width": 526,
       "height": 448,
@@ -36,7 +46,7 @@
       "url": "assets/figures/arxiv/2605.23034v1/fig-005.webp",
       "caption": "Figure 4: 𝑅𝑋benchmark on 𝑞0 with spectator qubit 𝑞1 ini- tialized in |0⟩(top) and |1⟩(bottom). The curves show the population transfer within the computational subspace pre- dicted by the three models under the same drive pulse.",
       "page": 6,
-      "index": 4,
+      "index": 5,
       "item_type": "figure",
       "width": 526,
       "height": 390,
@@ -46,7 +56,7 @@
       "url": "assets/figures/arxiv/2605.23034v1/fig-006.webp",
       "caption": "Figure 5: Diagnostics for the driven 𝑅𝑋benchmark. Top and middle: leakage for the two spectator initializations. Bottom: spectator-state mismatch, defined as the absolute difference between the population transfer curves for |00⟩→|01⟩and |10⟩→|11⟩.",
       "page": 7,
-      "index": 5,
+      "index": 6,
       "item_type": "figure",
       "width": 526,
       "height": 520,
@@ -56,17 +66,17 @@
       "url": "assets/figures/arxiv/2605.23034v1/fig-007.webp",
       "caption": "Figure 6: CZ gate dynamics under a flux pulse applied to 𝑞1. The purple curve shows the reduced flux bias, and the colored curves show the accumulated conditional phase 𝜙11 + 𝜙00 − 𝜙01−𝜙10 for an initial state |++⟩in the effective computational basis.",
       "page": 7,
-      "index": 6,
+      "index": 7,
       "item_type": "figure",
-      "width": 519,
-      "height": 595,
+      "width": 502,
+      "height": 275,
       "figure_number": "6"
     },
     {
       "url": "assets/figures/arxiv/2605.23034v1/fig-008.webp",
       "caption": "Figure 7: Leakage pathways during the CZ pulse for an initial state |1, 0, 1⟩, corresponding to the computational state |11⟩. Top row: state populations with phase encoded by color hue. Bottom row: signed population currents between the domi- nant states. States are ordered first by total excitation number and then lexicographically. The effective model is omitted be- cause it does not contain explicit non-computational states.",
       "page": 8,
-      "index": 7,
+      "index": 8,
       "item_type": "figure",
       "width": 526,
       "height": 537,
@@ -76,21 +86,11 @@
       "url": "assets/figures/arxiv/2605.23034v1/fig-009.webp",
       "caption": "Figure 8: Runtime of the CZ simulation as a function of qubit truncation for the Duffing and circuit-based models. Left: Hamiltonian build time for the flux-point stack. Right: state-propagation time using the resulting Hamiltonians.",
       "page": 8,
-      "index": 8,
+      "index": 9,
       "item_type": "figure",
       "width": 526,
       "height": 249,
       "figure_number": "8"
-    },
-    {
-      "url": "assets/figures/arxiv/2605.23034v1/fig-002.webp",
-      "caption": "Table 1: System parameters used in the benchmarks.",
-      "page": 4,
-      "index": 9,
-      "item_type": "table",
-      "width": 519,
-      "height": 595,
-      "figure_number": "1"
     }
   ]
 }

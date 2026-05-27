@@ -368,26 +368,26 @@ def _caption_sort_value(label: str) -> tuple[int, int, str]:
     return (8, 0, text.lower())
 
 
-def _figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, str, int, int]:
+def _figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, int, str]:
     item_type = str(item.get("item_type") or "figure").lower()
     label = str(item.get("figure_number") or "").strip()
+    page = int(item.get("page") or 0)
+    source_index = int(item.get("_source_index") or item.get("index") or 0)
     if label:
         label_group, label_number, label_suffix = _caption_sort_value(label)
         return (
-            0 if item_type == "figure" else 1,
+            page,
+            source_index,
             label_group,
             label_number,
             label_suffix,
-            int(item.get("page") or 0),
-            int(item.get("_source_index") or item.get("index") or 0),
         )
     return (
-        2,
-        int(item.get("page") or 0),
-        int(item.get("_source_index") or item.get("index") or 0),
+        page,
+        source_index,
+        9 if item_type == "figure" else 10,
+        0,
         "",
-        0,
-        0,
     )
 
 
@@ -472,6 +472,85 @@ def _finalize_figure_order(figures: List[Dict[str, Any]]) -> List[Dict[str, Any]
         figure.pop("_source_index", None)
         figure["index"] = index
     return ordered
+
+
+def _label_key(item: Dict[str, Any]) -> tuple[str, str]:
+    return (
+        str(item.get("item_type") or "figure").lower(),
+        str(item.get("figure_number") or "").strip().lower(),
+    )
+
+
+def _looks_like_full_page_crop(width: int, height: int, page: fitz.Page | None) -> bool:
+    if page is None:
+        return False
+    scale_w = float(width or 0) / float(page.rect.width or 1)
+    scale_h = float(height or 0) / float(page.rect.height or 1)
+    return 1.75 <= scale_w <= 2.25 and 1.75 <= scale_h <= 2.25
+
+
+def _make_caption_guided_crops(
+    pdf_path: str,
+    output_dir: str,
+    *,
+    existing: List[Dict[str, Any]] | None = None,
+) -> List[Dict[str, Any]]:
+    return _merge_missing_caption_crops(pdf_path, list(existing or []), output_dir)
+
+
+def _merge_candidates_by_caption(
+    caption_candidates: List[Dict[str, Any]],
+    fallback_candidates: List[Dict[str, Any]],
+    pdf_path: str,
+) -> List[Dict[str, Any]]:
+    if not fallback_candidates:
+        return caption_candidates
+
+    pages: Dict[int, fitz.Page] = {}
+    doc: fitz.Document | None = None
+    try:
+        doc = fitz.open(pdf_path)
+        pages = {index + 1: doc[index] for index in range(len(doc))}
+        merged: List[Dict[str, Any]] = list(caption_candidates)
+        seen_labels = {_label_key(item) for item in merged if _label_key(item)[1]}
+        seen_hash: set[str] = set()
+        for item in merged:
+            src_path = str(item.get("_source_path") or "")
+            if not src_path or not os.path.exists(src_path):
+                continue
+            try:
+                with open(src_path, "rb") as f:
+                    seen_hash.add(hashlib.sha256(f.read()).hexdigest())
+            except Exception:
+                pass
+
+        for item in fallback_candidates:
+            label_key = _label_key(item)
+            if label_key[1] and label_key in seen_labels:
+                continue
+            if str(item.get("item_type") or "figure").lower() == "table":
+                page = pages.get(int(item.get("page") or 0))
+                if _looks_like_full_page_crop(int(item.get("width") or 0), int(item.get("height") or 0), page):
+                    continue
+            src_path = str(item.get("_source_path") or "")
+            if src_path and os.path.exists(src_path):
+                try:
+                    with open(src_path, "rb") as f:
+                        sha = hashlib.sha256(f.read()).hexdigest()
+                    if sha in seen_hash:
+                        continue
+                    seen_hash.add(sha)
+                except Exception:
+                    pass
+            merged.append(item)
+            if label_key[1]:
+                seen_labels.add(label_key)
+        return merged
+    except Exception:
+        return caption_candidates or fallback_candidates
+    finally:
+        if doc is not None:
+            doc.close()
 
 
 def _rect_from_region(page: fitz.Page, region: Any) -> fitz.Rect | None:
@@ -739,9 +818,14 @@ def _caption_band_crop_rect(
 
     item_type = str(item_type or "figure").strip().lower()
     if item_type == "table":
-        y0 = caption_rect.y1 + 4.0
-        y1 = min(page_rect.y1 - 22.0, caption_rect.y1 + page_h * 0.18)
-        caption_below = False
+        if _caption_below_table_body(page, caption_rect):
+            y0 = max(page_rect.y0 + 22.0, caption_rect.y0 - page_h * 0.26)
+            y1 = caption_rect.y0 - 4.0
+            caption_below = True
+        else:
+            y0 = caption_rect.y1 + 4.0
+            y1 = min(page_rect.y1 - 22.0, caption_rect.y1 + page_h * 0.18)
+            caption_below = False
     else:
         above_space = caption_rect.y0 - page_rect.y0
         below_space = page_rect.y1 - caption_rect.y1
@@ -766,6 +850,7 @@ def _tighten_table_crop_rect(
     crop = fitz.Rect(crop_rect) & page_rect
     if crop.is_empty:
         return crop
+    caption_below = _caption_below_table_body(page, caption_rect)
 
     horizontal_rules: List[fitz.Rect] = []
     try:
@@ -773,11 +858,14 @@ def _tighten_table_crop_rect(
             rect = drawing.get("rect") if isinstance(drawing, dict) else None
             if rect is None:
                 continue
-            rule = fitz.Rect(rect) & crop
-            if rule.is_empty:
+            rule = fitz.Rect(rect)
+            if rule.x1 < crop.x0 or rule.x0 > crop.x1 or rule.y1 < crop.y0 - 4.0 or rule.y0 > crop.y1 + 4.0:
                 continue
-            is_horizontal_rule = rule.width >= crop.width * 0.45 and rule.height <= 3.0
-            near_caption_body = rule.y0 >= caption_rect.y1 - 2.0 and rule.y0 <= caption_rect.y1 + page_rect.height * 0.24
+            is_horizontal_rule = rule.width >= min(crop.width * 0.45, page_rect.width * 0.18) and rule.height <= 3.0
+            if caption_below:
+                near_caption_body = rule.y0 >= caption_rect.y0 - page_rect.height * 0.26 and rule.y0 <= caption_rect.y0 + 2.0
+            else:
+                near_caption_body = rule.y0 >= caption_rect.y1 - 2.0 and rule.y0 <= caption_rect.y1 + page_rect.height * 0.24
             if is_horizontal_rule and near_caption_body:
                 horizontal_rules.append(rule)
     except Exception:
@@ -788,11 +876,17 @@ def _tighten_table_crop_rect(
         x1 = max(rule.x1 for rule in horizontal_rules)
         y0 = min(rule.y0 for rule in horizontal_rules)
         y1 = max(rule.y1 for rule in horizontal_rules)
+        body_y0 = max(page_rect.y0, y0 - 4.0)
+        body_y1 = min(page_rect.y1, y1 + 6.0)
+        if caption_below:
+            body_y1 = min(body_y1, caption_rect.y0 - 2.0)
+        else:
+            body_y0 = max(body_y0, caption_rect.y1 + 2.0)
         tightened = fitz.Rect(
             max(page_rect.x0, x0 - 4.0),
-            max(caption_rect.y1 + 2.0, y0 - 4.0),
+            body_y0,
             min(page_rect.x1, x1 + 4.0),
-            min(page_rect.y1, y1 + 6.0),
+            body_y1,
         )
         if tightened.width >= MIN_FIGURE_WIDTH / 2 and tightened.height >= MIN_FIGURE_HEIGHT / 4:
             return tightened
@@ -803,10 +897,16 @@ def _tighten_table_crop_rect(
             if len(block) < 5:
                 continue
             rect = fitz.Rect(float(block[0]), float(block[1]), float(block[2]), float(block[3]))
-            if rect.y0 < caption_rect.y1 - 2.0:
-                continue
-            if rect.y0 > caption_rect.y1 + page_rect.height * 0.24:
-                continue
+            if caption_below:
+                if rect.y1 > caption_rect.y0 + 2.0:
+                    continue
+                if rect.y0 < caption_rect.y0 - page_rect.height * 0.26:
+                    continue
+            else:
+                if rect.y0 < caption_rect.y1 - 2.0:
+                    continue
+                if rect.y0 > caption_rect.y1 + page_rect.height * 0.24:
+                    continue
             overlap_x = max(0.0, min(rect.x1, crop.x1) - max(rect.x0, crop.x0))
             if overlap_x < min(rect.width, crop.width) * 0.45:
                 continue
@@ -823,11 +923,18 @@ def _tighten_table_crop_rect(
             selected.append(rect)
         union = _union_rects(selected)
         if union is not None:
+            body_y0 = max(page_rect.y0, min(crop.y0, union.y0) - 4.0)
+            body_y1 = min(page_rect.y1, union.y1 + 6.0)
+            if caption_below:
+                body_y0 = max(page_rect.y0, union.y0 - 4.0)
+                body_y1 = min(body_y1, caption_rect.y0 - 2.0)
+            else:
+                body_y0 = max(body_y0, caption_rect.y1 + 2.0)
             tightened = fitz.Rect(
                 max(page_rect.x0, min(crop.x0, union.x0) - 4.0),
-                max(caption_rect.y1 + 2.0, min(crop.y0, union.y0) - 4.0),
+                body_y0,
                 min(page_rect.x1, max(crop.x1, union.x1) + 4.0),
-                min(page_rect.y1, union.y1 + 6.0),
+                body_y1,
             )
             if tightened.width >= MIN_FIGURE_WIDTH / 2 and tightened.height >= MIN_FIGURE_HEIGHT / 4:
                 return tightened
@@ -866,6 +973,29 @@ def _caption_is_below_body(page: fitz.Page, caption_rect: fitz.Rect) -> bool:
     above_space = caption_rect.y0 - page_rect.y0
     below_space = page_rect.y1 - caption_rect.y1
     return caption_rect.y0 > page_rect.height * 0.35 or above_space >= below_space * 0.55
+
+
+def _caption_below_table_body(page: fitz.Page, caption_rect: fitz.Rect) -> bool:
+    page_rect = page.rect
+    above_rules = 0
+    below_rules = 0
+    try:
+        for drawing in page.get_drawings() or []:
+            rect = drawing.get("rect") if isinstance(drawing, dict) else None
+            if rect is None:
+                continue
+            rule = fitz.Rect(rect)
+            if rule.width < page_rect.width * 0.18 or abs(rule.height) > 3.0:
+                continue
+            if caption_rect.y0 - page_rect.height * 0.26 <= rule.y0 <= caption_rect.y0 + 2.0:
+                above_rules += 1
+            if caption_rect.y1 - 2.0 <= rule.y0 <= caption_rect.y1 + page_rect.height * 0.26:
+                below_rules += 1
+    except Exception:
+        pass
+    if above_rules or below_rules:
+        return above_rules >= below_rules
+    return _caption_is_below_body(page, caption_rect)
 
 
 def _save_page_crop(page: fitz.Page, rect: fitz.Rect, dst_path: str) -> tuple[int, int]:
@@ -950,10 +1080,15 @@ def _merge_missing_caption_crops(
                         caption_rect = hint.get("caption_rect")
                         break
                 if isinstance(caption_rect, fitz.Rect):
+                    caption_below = (
+                        _caption_below_table_body(page, caption_rect)
+                        if item_type == "table"
+                        else _caption_is_below_body(page, caption_rect)
+                    )
                     clipped = _clip_rect_away_from_caption(
                         rect,
                         caption_rect,
-                        caption_below=_caption_is_below_body(page, caption_rect),
+                        caption_below=caption_below,
                     )
                     if clipped is not None:
                         rect = clipped
@@ -1015,7 +1150,7 @@ def _merge_missing_caption_crops(
             item["_source_path"] = tmp_path
             item["width"] = width
             item["height"] = height
-            item["_source_index"] = 10_000 + int(item.get("_source_index") or 0)
+            item["_source_index"] = int(item.get("_source_index") or 0)
             item.pop("caption_rect", None)
             candidates.append(item)
             seen_labels.add(
@@ -1149,7 +1284,8 @@ def _extract_figures_with_pdffigures2(
                 }
             )
 
-        candidates = _merge_missing_caption_crops(pdf_path, candidates, output_dir)
+        caption_candidates = _make_caption_guided_crops(pdf_path, output_dir)
+        candidates = _merge_candidates_by_caption(caption_candidates, candidates, pdf_path)
 
         figures: List[Dict[str, Any]] = []
         for fig_index, item in enumerate(_finalize_figure_order(candidates), start=1):
@@ -1249,7 +1385,7 @@ def extract_figures_from_pdf(
                 )
                 fig_index += 1
 
-    caption_candidates = _merge_missing_caption_crops(pdf_path, [], output_dir)
+    caption_candidates = _make_caption_guided_crops(pdf_path, output_dir)
     if caption_candidates:
         # Caption-guided crops are closer to the paper's own Figure/Table list.
         # Prefer them over raw embedded-image extraction, which cannot know

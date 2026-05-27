@@ -316,6 +316,31 @@ class PaperFiguresTest(unittest.TestCase):
         finally:
             doc.close()
 
+    def test_table_caption_below_body_crops_table_above_caption(self):
+        doc = fitz.open()
+        try:
+            page = doc.new_page(width=612, height=792)
+            caption_rect = fitz.Rect(72, 411, 330, 425)
+            page.draw_line(fitz.Point(90, 337), fitz.Point(260, 337), color=(0, 0, 0), width=0.6)
+            page.draw_line(fitz.Point(90, 352), fitz.Point(260, 352), color=(0, 0, 0), width=0.6)
+            page.draw_line(fitz.Point(90, 409), fitz.Point(260, 409), color=(0, 0, 0), width=0.6)
+            page.insert_textbox(fitz.Rect(92, 340, 258, 407), "Category Parameter q1 q0\nQubit EJ 28 42\nCoupler Eosc 6.9", fontsize=10)
+            page.insert_textbox(caption_rect, "Table 1: System parameters used in the benchmarks.", fontsize=10)
+            page.insert_textbox(
+                fitz.Rect(72, 448, 330, 620),
+                "In all benchmarks, this paragraph follows the table and must not be included.",
+                fontsize=12,
+            )
+
+            crop = self.mod._caption_band_crop_rect(page, caption_rect, "table")
+            tightened = self.mod._tighten_table_crop_rect(page, caption_rect, crop)
+
+            self.assertLessEqual(tightened.y1, caption_rect.y0)
+            self.assertLess(tightened.y1, 430)
+            self.assertGreaterEqual(tightened.y0, 330)
+        finally:
+            doc.close()
+
     def test_caption_without_detected_visual_region_uses_caption_band_fallback(self):
         with tempfile.TemporaryDirectory() as d:
             tmp_dir = Path(d)
@@ -348,16 +373,20 @@ class PaperFiguresTest(unittest.TestCase):
             self.assertEqual(merged[0]["figure_number"], "1")
             self.assertTrue(Path(merged[0]["_source_path"]).exists())
 
-    def test_label_order_precedes_same_page_source_order(self):
+    def test_paper_order_precedes_label_order(self):
         figures = self.mod._finalize_figure_order(
             [
                 {"figure_number": "4", "item_type": "figure", "page": 6, "_source_index": 1},
                 {"figure_number": "3", "item_type": "figure", "page": 7, "_source_index": 2},
                 {"figure_number": "5", "item_type": "figure", "page": 7, "_source_index": 3},
+                {"figure_number": "1", "item_type": "table", "page": 5, "_source_index": 4},
             ]
         )
 
-        self.assertEqual([item["figure_number"] for item in figures], ["3", "4", "5"])
+        self.assertEqual(
+            [(item["item_type"], item["figure_number"]) for item in figures],
+            [("table", "1"), ("figure", "4"), ("figure", "3"), ("figure", "5")],
+        )
 
     def test_duplicate_figure_label_is_disambiguated(self):
         with tempfile.TemporaryDirectory() as d:

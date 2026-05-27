@@ -189,6 +189,37 @@ def shorten_cn_sidebar_text(text: Any, limit: int = 42) -> str:
         first = first[:limit].rstrip("，,；;：: ")
     return first
 
+
+def short_cn_evidence_from_text(text: Any, limit: int = 34) -> str:
+    raw = re.sub(r"\s+", " ", str(text or "").strip())
+    if not raw or not contains_cjk(raw):
+        return ""
+    first = re.split(r"[。！？!?；;]", raw, maxsplit=1)[0].strip()
+    first = first.replace("本文研究了", "研究").replace("本文针对", "针对")
+    first = first.replace("本文提出", "提出").replace("该研究", "研究")
+    first = first.strip("，。；; ")
+    return shorten_cn_sidebar_text(first or raw, limit=limit)
+
+
+def choose_short_evidence(paper: Dict[str, Any], glance: str = "") -> str:
+    fields = parse_glance_fields(glance) if glance else {}
+    candidates = [
+        paper.get("llm_evidence_cn"),
+        fields.get("motivation"),
+        fields.get("tldr"),
+        paper.get("llm_tldr_cn"),
+        paper.get("llm_tldr"),
+        paper.get("canonical_evidence"),
+        fallback_evidence_text(paper),
+    ]
+    for candidate in candidates:
+        short = short_cn_evidence_from_text(candidate)
+        if short and not is_placeholder_display_text(short):
+            return normalize_latex_escapes(short)
+    fallback = sanitize_display_text(paper.get("canonical_evidence"), fallback_evidence_text(paper))
+    return normalize_latex_escapes(first_abstract_sentence(fallback))
+
+
 def log_substep(code: str, name: str, phase: str) -> None:
     """
     用于前端解析的子步骤标记。
@@ -1368,6 +1399,33 @@ def upsert_glance_front_matter(md_text: str, glance: str) -> Tuple[str, bool]:
     return updated, changed_any
 
 
+def upsert_display_front_matter(
+    md_text: str,
+    paper: Dict[str, Any],
+    title: str,
+    abstract_en: str,
+    glance: str,
+) -> Tuple[str, bool]:
+    meta = _parse_front_matter(md_text)
+    updated = md_text
+    changed_any = False
+
+    existing_evidence = str(meta.get("evidence") or "").strip()
+    evidence = existing_evidence if contains_cjk(existing_evidence) else choose_short_evidence(paper, glance)
+    if evidence and str(meta.get("evidence") or "").strip() != evidence:
+        updated, changed = upsert_front_matter_field(updated, "evidence", yaml_escape_value(evidence))
+        changed_any = changed_any or changed
+        meta["evidence"] = evidence
+
+    if not str(meta.get("title_zh") or "").strip():
+        zh_title, _ = translate_title_and_abstract_to_zh(title, abstract_en)
+        if zh_title:
+            updated, changed = upsert_front_matter_field(updated, "title_zh", yaml_escape_value(zh_title))
+            changed_any = changed_any or changed
+
+    return updated, changed_any
+
+
 def normalize_sidebar_tag(tag: str) -> str:
     text = (tag or "").strip()
     if not text:
@@ -1613,26 +1671,26 @@ def extract_figure_number(caption: str) -> str:
     return match.group(1).strip() if match else ""
 
 
-def figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, str, int, int]:
+def figure_sort_key(item: Dict[str, Any]) -> tuple[int, int, int, int, str]:
     item_type = str(item.get("item_type") or "figure").lower()
     label = str(item.get("figure_number") or "").strip()
+    page = int(item.get("page") or 0)
+    source_index = int(item.get("index") or item.get("_source_index") or 0)
     if label:
         label_group, label_number, label_suffix = caption_sort_value(label)
         return (
-            0 if item_type == "figure" else 1,
+            page,
+            source_index,
             label_group,
             label_number,
             label_suffix,
-            int(item.get("page") or 0),
-            int(item.get("index") or 0),
         )
     return (
-        2,
-        int(item.get("page") or 0),
-        int(item.get("index") or 0),
+        page,
+        source_index,
+        9 if item_type == "figure" else 10,
+        0,
         "",
-        0,
-        0,
     )
 
 
@@ -1717,7 +1775,25 @@ def upsert_front_matter_field(md_text: str, key: str, value: str) -> Tuple[str, 
         else:
             updated_lines.append(line)
     if not replaced:
-        updated_lines.append(f"{key}: {value}")
+        new_line = f"{key}: {value}"
+        if key == "title_zh":
+            insert_at = 1 if updated_lines else 0
+            for idx, line in enumerate(updated_lines):
+                if line.startswith("title:"):
+                    insert_at = idx + 1
+                    break
+            updated_lines.insert(insert_at, new_line)
+        else:
+            updated_lines.append(new_line)
+    elif key == "title_zh":
+        title_zh_lines = [line for line in updated_lines if line.startswith("title_zh:")]
+        updated_lines = [line for line in updated_lines if not line.startswith("title_zh:")]
+        insert_at = 1 if updated_lines else 0
+        for idx, line in enumerate(updated_lines):
+            if line.startswith("title:"):
+                insert_at = idx + 1
+                break
+        updated_lines[insert_at:insert_at] = title_zh_lines[:1]
     updated = "---\n" + "\n".join(updated_lines).rstrip() + "\n---" + normalized[end_idx + 4 :]
     return updated, updated != normalized
 
@@ -1740,7 +1816,6 @@ def build_markdown_content(
         published = published[:10]
     pdf_url = str(paper.get("link") or paper.get("pdf_url") or "").strip()
     score = paper.get("llm_score")
-    evidence = sanitize_display_text(paper.get("canonical_evidence"), fallback_evidence_text(paper))
     tldr = (
         paper.get("llm_tldr_cn")
         or paper.get("llm_tldr")
@@ -1752,7 +1827,6 @@ def build_markdown_content(
         abstract_en = "arXiv did not provide an abstract for this paper."
     if not tldr or is_placeholder_display_text(tldr):
         tldr = first_abstract_sentence(abstract_en)
-    evidence = normalize_latex_escapes(evidence)
     tldr = normalize_latex_escapes(tldr)
     paper_source = str(paper.get("source") or "").strip()
     selection_source = str(paper.get("selection_source") or "").strip()
@@ -1782,6 +1856,7 @@ def build_markdown_content(
 
     # 优先使用速览生成的 TLDR（100字左右），否则使用原来的 TLDR
     display_tldr = glance_tldr if glance_tldr else tldr
+    evidence = normalize_latex_escapes(choose_short_evidence(paper, glance))
 
     # 辅助函数：转义 YAML 字符串中的特殊字符
     # 构建 YAML front matter
@@ -1918,6 +1993,34 @@ def process_paper(
         except Exception:
             existing = ""
 
+        if existing:
+            fixed, changed = remove_glance_block_from_text(existing)
+            if changed:
+                with open(md_path, "w", encoding="utf-8") as f:
+                    f.write(fixed + ("\n" if not fixed.endswith("\n") else ""))
+                existing = fixed
+
+            existing_meta = _parse_front_matter(existing)
+            has_glance_meta = any(
+                str(existing_meta.get(key) or "").strip()
+                for key in ("motivation", "method", "result", "conclusion")
+            ) if existing_meta else False
+            if force_glance or not has_glance_meta:
+                glance = generate_glance_overview(title, abstract_en) or build_glance_fallback(paper)
+                if glance:
+                    paper["_glance_overview"] = glance
+                    updated, changed = upsert_glance_front_matter(existing, glance)
+                    if changed:
+                        with open(md_path, "w", encoding="utf-8") as f:
+                            f.write(updated + ("\n" if not updated.endswith("\n") else ""))
+                        existing = updated
+
+            fixed, changed = upsert_display_front_matter(existing, paper, title, abstract_en, glance)
+            if changed:
+                with open(md_path, "w", encoding="utf-8") as f:
+                    f.write(fixed + ("\n" if not fixed.endswith("\n") else ""))
+                existing = fixed
+
         existing_meta = _parse_front_matter(existing)
         has_figures_json = bool(str(existing_meta.get("figures_json") or "").strip()) if existing_meta else False
         if has_figures_json and not force_figures:
@@ -1952,24 +2055,11 @@ def process_paper(
                         f.write(updated + ("\n" if not updated.endswith("\n") else ""))
                     existing = updated
 
-        # 修复模式：若自动总结/速览存在“被截断”的迹象，则仅重生成该段落，不改动前面正文
-        # 若已存在 Markdown，但缺少中文标题/中文摘要，则在“重新跑 Step6”时自动补齐
-        # （历史上 --glance-only 或部分修复流程不会写入中文标题/摘要）
+        # 若已存在 Markdown，但缺少中文标题/中文摘要，则在“重新跑 Step6”时自动补齐。
         if not glance_only and existing:
             try:
-                lines = existing.splitlines()
-                # 判断顶部是否已有两行 H1（英文+中文）
-                h1_count = 0
-                for line in lines[:6]:
-                    if line.startswith("# "):
-                        h1_count += 1
-                    elif line.strip() == "":
-                        # 允许空行，但一旦遇到非 H1 非空行就停止
-                        continue
-                    else:
-                        break
-
-                has_zh_title = h1_count >= 2
+                existing_meta = _parse_front_matter(existing)
+                has_zh_title = bool(str(existing_meta.get("title_zh") or "").strip())
                 has_zh_abstract = "## 摘要" in existing
                 need_zh = (not has_zh_title) or (not has_zh_abstract)
 
@@ -1980,16 +2070,11 @@ def process_paper(
                     updated = existing
 
                     if (not has_zh_title) and zh_title:
-                        # 插入到第一行英文标题之后
-                        out_lines: List[str] = []
-                        inserted = False
-                        for i, line in enumerate(lines):
-                            out_lines.append(line)
-                            if i == 0 and line.startswith("# "):
-                                out_lines.append(f"# {zh_title}")
-                                inserted = True
-                        if inserted:
-                            updated = "\n".join(out_lines)
+                        updated, _ = upsert_front_matter_field(
+                            updated,
+                            "title_zh",
+                            yaml_escape_value(zh_title),
+                        )
 
                     if (not has_zh_abstract) and zh_abstract:
                         # 插入到 `## Abstract` 之前（若不存在则追加在末尾）
@@ -2015,18 +2100,12 @@ def process_paper(
                 # 补齐中文标题/摘要失败时不影响其它生成逻辑
                 pass
 
-        fixed, changed = remove_glance_block_from_text(existing)
-        if changed:
-            with open(md_path, "w", encoding="utf-8") as f:
-                f.write(fixed + ("\n" if not fixed.endswith("\n") else ""))
-            existing = fixed
-
         existing_meta = _parse_front_matter(existing)
         has_glance_meta = any(
             str(existing_meta.get(key) or "").strip()
             for key in ("motivation", "method", "result", "conclusion")
         ) if existing_meta else False
-        if force_glance or not has_glance_meta:
+        if (not glance) and (force_glance or not has_glance_meta):
             glance = generate_glance_overview(title, abstract_en) or build_glance_fallback(paper)
             if glance:
                 paper["_glance_overview"] = glance
@@ -2035,6 +2114,12 @@ def process_paper(
                     with open(md_path, "w", encoding="utf-8") as f:
                         f.write(updated + ("\n" if not updated.endswith("\n") else ""))
                     existing = updated
+
+        fixed, changed = upsert_display_front_matter(existing, paper, title, abstract_en, glance)
+        if changed:
+            with open(md_path, "w", encoding="utf-8") as f:
+                f.write(fixed + ("\n" if not fixed.endswith("\n") else ""))
+            existing = fixed
 
         # 修复历史格式：TLDR 行末尾不应带反斜杠
         fixed, changed = normalize_meta_tldr_line(existing)
@@ -2555,7 +2640,7 @@ def get_sidebar_evidence_for_generated_paper(
         if os.path.exists(md_path):
             with open(md_path, "r", encoding="utf-8") as f:
                 meta = _parse_front_matter(f.read())
-            for key in ("tldr", "motivation", "method", "result", "conclusion", "evidence"):
+            for key in ("evidence", "tldr", "motivation", "method", "result", "conclusion"):
                 value = meta.get(key) if isinstance(meta, dict) else ""
                 if contains_cjk(value):
                     text = shorten_cn_sidebar_text(value)
@@ -2811,6 +2896,7 @@ def _parse_generated_md_to_meta(
             title_en = h1s[0]
     if not title_en:
         title_en = legacy_meta.get("title", "")
+    title_zh = (str(fm_meta.get("title_zh") or "").strip() if fm_meta else "")
 
     # tags：优先 front matter tags，次选旧式 HTML
     tags_typed: List[Dict[str, str]] = []
@@ -2904,6 +2990,7 @@ def _parse_generated_md_to_meta(
         "paper_id": paper_id,
         "section": section,
         "title_en": title_en,
+        "title_zh": title_zh,
         "authors": authors_line,
         "date": str(date_value or "").strip(),
         "pdf": str(pdf_value or "").strip(),

@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-05-27T01:25:51.074708+00:00",
-  "updated_date": "20260524-20260524",
+  "generated_at": "2026-05-27T01:27:59.438148+00:00",
+  "updated_date": "20260525-20260525",
   "carryover_days": 9,
   "tag_states": {
     "SC-QUBIT-CHIP": {
-      "updated_date": "20260524-20260524",
+      "updated_date": "20260525-20260525",
       "carryover_days": 9,
       "items": [
         {
@@ -47,7 +47,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22113v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22522v1",
@@ -99,7 +99,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22522v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22246v1",
@@ -147,7 +147,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22246v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.23051v1",
@@ -193,7 +193,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23051v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.21989v1",
@@ -241,7 +241,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.21989v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22152v1",
@@ -285,7 +285,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22152v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22196v1",
@@ -330,7 +330,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22196v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22220v1",
@@ -371,7 +371,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22220v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22463v1",
@@ -418,7 +418,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22463v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22470v1",
@@ -465,7 +465,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22470v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22518v1",
@@ -513,7 +513,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22518v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22646v1",
@@ -557,7 +557,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22646v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22704v1",
@@ -599,7 +599,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22704v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22932v1",
@@ -654,7 +654,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22932v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.23057v1",
@@ -696,7 +696,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23057v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.24166v1",
@@ -740,7 +740,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24166v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23236v1",
@@ -780,7 +780,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23236v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23361v1",
@@ -829,7 +829,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23361v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23294v1",
@@ -876,7 +876,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23294v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23418v1",
@@ -927,7 +927,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23418v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23528v1",
@@ -973,7 +973,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23528v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23730v2",
@@ -1019,7 +1019,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23730v2",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.24120v1",
@@ -1058,7 +1058,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24120v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.24277v1",
@@ -1101,7 +1101,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24277v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.24720v1",
@@ -1144,7 +1144,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24720v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24726v1",
@@ -1186,7 +1186,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24726v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24378v1",
@@ -1233,7 +1233,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24378v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24461v1",
@@ -1293,7 +1293,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24461v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24662v1",
@@ -1336,7 +1336,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24662v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24665v1",
@@ -1380,7 +1380,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24665v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24736v1",
@@ -1428,7 +1428,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24736v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24768v1",
@@ -1471,7 +1471,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24768v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.25106v1",
@@ -1521,7 +1521,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25106v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24832v1",
@@ -1569,7 +1569,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24832v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25000v1",
@@ -1613,7 +1613,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25000v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25018v1",
@@ -1654,7 +1654,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25018v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25047v1",
@@ -1699,7 +1699,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25047v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25298v1",
@@ -1739,12 +1739,545 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25298v1",
+          "carry_days": 2
+        },
+        {
+          "id": "2605.25881v1",
+          "source": "arxiv",
+          "title": "Additive and Subtractive Color Filters Based on Birefringent Dielectric Metasurfaces",
+          "abstract": "Dielectric metasurfaces offer a path to high-efficiency optical components at the sub-wavelength scale. In this work, we utilize the wavelength-dependent birefringence of TiO2 nanopillars to create transmissive color filters with switchable spectral responses. We demonstrate that the same physical nanostructure array can function as either an additive (band-pass) or a subtractive (band-stop) filter solely by rotating an external polarizer. The metasurface was fabricated via a modified damascene process, enabling high-aspect-ratio structures with spatial resolutions down to 250 nm. The filters achieve transmission efficiencies of 70% tailorable across the entire visible spectrum, avoiding the ohmic losses typical of plasmonic alternatives. This approach provides a tunable, high-efficiency platform offering a versatile and compact solution for next-generation high-resolution imaging systems.",
+          "authors": [
+            "Ondřej Červinka",
+            "Filip Ligmajer",
+            "Ondřej Brunn",
+            "Miroslav Horáček",
+            "Stanislav Krátký",
+            "Tomáš Šikola"
+          ],
+          "primary_category": "physics.optics",
+          "categories": [
+            "physics.optics"
+          ],
+          "published": "2026-05-25T14:07:26+00:00",
+          "link": "https://arxiv.org/pdf/2605.25881v1",
+          "tags": [
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.625,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:SC-QUBIT-CHIP"
+          ],
+          "matched_query_tag": "keyword:SC-QUBIT-CHIP",
+          "matched_query_text": "transmon qubit design fabrication coherence and control",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25881v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25682v1",
+          "source": "arxiv",
+          "title": "Profiling-Driven Adaptive Distributed Transformer Inference on Embedded Edge Deployment",
+          "abstract": "Distributing Transformer inference across embedded edge devices can alleviate individual memory and compute constraints, yet practical benefits on real hardware remain unclear: prior work relies largely on simulations that overlook hardware-specific communication overheads. We present a hardware prototype study on NVIDIA Jetson Orin Nano devices connected over WiFi. Our key finding is that the dominant bottleneck is not just network bandwidth but also the CPU-GPU staging during communication. Because Jetson's integrated GPU architecture lacks the PCIe/NVLink pathway that NCCL requires, all inter-device data communication should be routed through GLOO and staged in CPU memory; an overhead that scales with communication data volume and makes full-tensor exchange slower than single-device inference across the batch sizes for medium sized models such as ViT. We therefore evaluate Prism by combining Segment Means compression with lightweight offline profiling to adaptively select between local and distributed execution at runtime. Experiments show that this strategy reduces latency by 65%-77% and energy consumption by 34%-52% relative to full-tensor exchange in static distributed execution setup, demonstrating that profiling-driven adaptation is essential for practical distributed Transformer inference on embedded hardware.",
+          "authors": [
+            "Muhammad Azlan Qazi",
+            "Alexandros Iosifidis",
+            "Qi Zhang"
+          ],
+          "primary_category": "cs.DC",
+          "categories": [
+            "cs.DC",
+            "cs.AI"
+          ],
+          "published": "2026-05-25T10:39:28+00:00",
+          "link": "https://arxiv.org/pdf/2605.25682v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.538,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:SC-QUBIT-CHIP"
+          ],
+          "matched_query_tag": "keyword:SC-QUBIT-CHIP",
+          "matched_query_text": "crosstalk mitigation and characterization in superconducting qubit chips",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25682v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25718v1",
+          "source": "arxiv",
+          "title": "Alignment-free ultra-broadband parametric frequency conversion in lead-halide perovskites",
+          "abstract": "Lead-halide perovskites were demonstrated to exhibit some of the largest known optical nonlinearities, yet their potential for frequency conversion remains largely untapped. Here we demonstrate ultra-broadband four-wave mixing of near- and mid-infrared femtosecond pulses in thick single-crystal LHPs, generating bright, coherent, and highly collimated emission across an exceptionally wide continuous tuning range without phase-matching engineering, angular alignment, or dispersion optimization. Time resolved measurements reveal that the emission originates near the crystal surfaces, where phase-matching constraints are relaxed, while the unusually large intrinsic $χ^{(3)}$ response preserves efficient and directional frequency conversion despite the strongly localized interaction volume. These results position LHPs as a powerful bulk platform for ultra-broadband nonlinear photonics, opening a pathway toward compact, alignment-free architectures for ultrafast frequency conversion.",
+          "authors": [
+            "Abhishek Shiva Kumar",
+            "Dusan Lorenc",
+            "Ayan A. Zhumekenov",
+            "Osman M. Bakr",
+            "Zhanybek Alpichshev"
+          ],
+          "primary_category": "cond-mat.mtrl-sci",
+          "categories": [
+            "cond-mat.mtrl-sci",
+            "physics.app-ph",
+            "physics.optics"
+          ],
+          "published": "2026-05-25T11:19:09+00:00",
+          "link": "https://arxiv.org/pdf/2605.25718v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.538,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:SC-QUBIT-CHIP"
+          ],
+          "matched_query_tag": "query:SC-QUBIT-CHIP",
+          "matched_query_text": "recent superconducting quantum chip design papers about scalable transmon processors, tunable couplers, packaging, layout, and crosstalk",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25718v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25387v1",
+          "source": "arxiv",
+          "title": "Microfluidic Actuation by Einstein-de Haas Spin Torque",
+          "abstract": "We propose spin-current microfluidic actuation of a sealed liquid metal. Spin angular momentum injected from Pt contacts enters the liquid as an Einstein-de Haas torque and is converted through micropolar angular-momentum balance into viscous flow without pressure drive, moving walls, magnetic fields, Lorentz forces, or charge flow through the liquid. The dc velocity obeys universal spin-diffusion scaling, and the finite-frequency spin-mechanical admittance resolves viscous momentum diffusion, spin transport, microrotation relaxation, and interface transparency of the liquid-metal channel.",
+          "authors": [
+            "Xin Hu",
+            "Mamoru Matsuo"
+          ],
+          "primary_category": "cond-mat.mes-hall",
+          "categories": [
+            "cond-mat.mes-hall",
+            "physics.flu-dyn"
+          ],
+          "published": "2026-05-25T03:30:32+00:00",
+          "link": "https://arxiv.org/pdf/2605.25387v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.454,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:SC-QUBIT-CHIP"
+          ],
+          "matched_query_tag": "keyword:SC-QUBIT-CHIP",
+          "matched_query_text": "flip-chip superconducting quantum processor architecture and integration",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25387v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25367v1",
+          "source": "arxiv",
+          "title": "Architectural Limits of Cloud TPUs in Finite-Field Cryptography",
+          "abstract": "We empirically characterise the cost-efficiency deficit between cloud Tensor Processing Units and GPUs for finite-field cryptography. Against A100 GPU baselines (cuZK), we measure a $[5{,}558\\times, 6{,}908\\times]$ deficit across v5p and v4 architectures under an FP32-mantissa staging discipline, and a $\\sim$$4{,}693\\times$ deficit using v5p's native \\texttt{int32} accumulator. We analytically project this deficit into a fundamental arithmetic penalty (lacking wide-integer ALUs) and a spatial penalty. We demonstrate that evaluating concurrent multi-tenant deployments, where strict separation forces eager Montgomery reduction, yields a projected $5.19\\times$ spatial collapse; relaxing this constraint theoretically recovers these spatial cycles, yet the underlying arithmetic penalty remains. To facilitate this characterisation, we deploy \\codename as a measurement vehicle. By mapping low-degree polynomials onto matrix-form Number Theoretic Transforms, the scheduler stacks heterogeneous polynomials into dense 2D matrices, achieving $\\sim$$100\\%$ K-dimension column occupancy on uniform workloads ($>$$92\\%$ on mixed-degree traces). However, despite optimal K-dimension packing, severe M-dimension under-utilisation (e.g., $6.25\\%$ on v4) combined with overwhelming VPU-bound Montgomery reduction stalls mathematically starve the systolic arrays. A post-hoc HLO validator ensures these measurements remain structurally isolated against the XLA fusion engine. Our findings empirically demonstrate the structural inadequacy of AI-optimised systolic arrays for exact, high-throughput field arithmetic.",
+          "authors": [
+            "Hung Dang",
+            "Xuan Phu Dang",
+            "Tue Nguyen"
+          ],
+          "primary_category": "cs.AR",
+          "categories": [
+            "cs.AR"
+          ],
+          "published": "2026-05-25T02:46:02+00:00",
+          "link": "https://arxiv.org/pdf/2605.25367v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.372,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:SC-QUBIT-CHIP"
+          ],
+          "matched_query_tag": "query:SC-QUBIT-CHIP",
+          "matched_query_text": "hardware architecture and layout techniques for high-coherence multi-qubit superconducting quantum processors",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25367v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25898v1",
+          "source": "arxiv",
+          "title": "Superconductivity and electronic structure evolution in the enforced semimetal Fe-doped ZrTe$_2$",
+          "abstract": "ZrTe$_2$ is an outstanding layered semimetal due to the topologically nontrivial electronic structure. In this work, we present an investigation of the electronic evolution of ZrTe$_2$ in the presence of Fe intercalation, namely Fe$_{x}$ZrTe$_2$ ($x= 0 - 0.25$), scrutinized by both experimental measurements and \\textit{ab} initio calculations. While the first reveals a superconducting state with a maximum critical temperature $T_c = 2.74$ K ($x=$ 0.03), the latter indicates that the topological features of the pristine ZrTe$_2$ is sensitive to the distance between Te atoms and Zr layers. Also, the intercalation of Fe does not modify the non-trivial electronic band structure unlike the band crossings are now shifted slightly below $E_{F}$. In particular, a van Hove singularity near the Fermi level for a Fe content of $x=0.125$ is observed in the density of states, indicating that the superconducting order may be associated with features of the unfolded band structure and the concomitant enhancement of the density of states at $E_F$. Finally, our results reveal that the new compound with inclusion of Fe intercalation preserves the enforced semimetal classification.",
+          "authors": [
+            "L. M. Ishikura",
+            "C. F. Schuch",
+            "A. Faé Rabello",
+            "F. F. Nogueira",
+            "L. E. Corrêa",
+            "L. R. de Faria",
+            "J. Larrea Jiménez",
+            "L. T. F. Eleno",
+            "A. J. S. Machado"
+          ],
+          "primary_category": "cond-mat.supr-con",
+          "categories": [
+            "cond-mat.supr-con",
+            "cond-mat.mtrl-sci"
+          ],
+          "published": "2026-05-25T14:25:58+00:00",
+          "link": "https://arxiv.org/pdf/2605.25898v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.372,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:SC-QUBIT-CHIP"
+          ],
+          "matched_query_tag": "query:SC-QUBIT-CHIP",
+          "matched_query_text": "recent superconducting quantum chip design papers about scalable transmon processors, tunable couplers, packaging, layout, and crosstalk",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25898v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25351v1",
+          "source": "arxiv",
+          "title": "Anomalous Subsurface Vacancy Stabilization Dictated by Geometry-Electronic Decoupling on Metal Surfaces",
+          "abstract": "Vacancy formation energetics fundamentally govern the structural integrity and catalytic behavior of metal surfaces. Contrary to conventional coordination-dependent broken-bond models, we identify an anomalous thermodynamic inversion on close-packed surfaces across Ir, Pt, Au with face-centered cubic (FCC) lattice and Be, Zn, Cd with hexagonal close-packed (HCP) lattice, where subsurface vacancies are intrinsically more stable than surface ones. Using high-throughput DFT calculations and machine learning force fields, we demonstrate that the physical origins of this anomaly are fundamentally decoupled between the two crystal systems. For the FCC trio, pronounced surface relaxation and a profound real-space electronic localization induce directional, covalent-like intralayer bonding, materializing a \"geometry-electronic decoupling\" mechanism. Crucially, this unconventional thermodynamic hierarchy enables a dynamic \"self-healing\" mechanism on Pt(111) that preserves an intact topmost layer and prevents catalytic degradation during hydrogen evolution and oxygen reduction reactions. It also successfully decoding the critical defect threshold (~8%) for lifting the Au(100) surface reconstruction. Our work challenges classical scalar defect models and provides a fresh paradigm for engineering catalyst surface integrity.",
+          "authors": [
+            "Yiming Tan",
+            "Pai Li"
+          ],
+          "primary_category": "cond-mat.mtrl-sci",
+          "categories": [
+            "cond-mat.mtrl-sci"
+          ],
+          "published": "2026-05-25T02:10:36+00:00",
+          "link": "https://arxiv.org/pdf/2605.25351v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:SC-QUBIT-CHIP"
+          ],
+          "matched_query_tag": "keyword:SC-QUBIT-CHIP",
+          "matched_query_text": "microwave packaging interconnects and signal integrity for superconducting quantum chips",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25351v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25521v1",
+          "source": "arxiv",
+          "title": "CS-PQ: Cache-Friendly SIMD Product Quantization for Large-Scale ANNS Index Construction",
+          "abstract": "Product Quantization (PQ) construction is deeply integrated into vector index construction for Approximate Nearest Neighbor Search (ANNS). The rapid growth in vector dimensionality and volume has significantly increased the computational cost of PQ. Existing GPU-based PQ accelerations are ill-suited for PQ construction due to its \"one-to-one\" execution pattern (one compute, one data load, i.e., data transfer overhead dominates). Although CPU-based solutions are prevalent, they are essentially general-purpose designs that fail to capture the intrinsic characteristics of PQ construction.In this paper, we propose CS-PQ, a Cache-friendly, SIMD-optimized PQ framework based on modern CPUs. CS-PQ introduces a vector-oriented SIMD paradigm that decouples quantization granularity from SIMD width by vectorizing across PQ centroids rather than subvector dimensions. It further restructures the execution pipeline to improve cache locality and reformulates PQ computation to eliminate redundant operations while preserving correctness. Experiments on large-scale datasets show that CS-PQ achieves up to 10.7 times speedup over state-of-the-art CPU-based PQ implementations without sacrificing ANNS accuracy.",
+          "authors": [
+            "Y. T. Ma",
+            "K. C. Huang",
+            "X. K. Jiang",
+            "M. L. Wang",
+            "X. Yao",
+            "R. H. Chen",
+            "G. Zhang",
+            "Z. L. Shao"
+          ],
+          "primary_category": "cs.DB",
+          "categories": [
+            "cs.DB"
+          ],
+          "published": "2026-05-25T07:21:54+00:00",
+          "link": "https://arxiv.org/pdf/2605.25521v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:SC-QUBIT-CHIP"
+          ],
+          "matched_query_tag": "query:SC-QUBIT-CHIP",
+          "matched_query_text": "hardware architecture and layout techniques for high-coherence multi-qubit superconducting quantum processors",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25521v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25528v1",
+          "source": "arxiv",
+          "title": "Engineering Practical Succinct Bit Vectors: A Space-Time Pareto Analysis on Apple Silicon ARM64 Cores",
+          "abstract": "Succinct data structures use space close to the information-theoretic minimum while answering queries directly on the compressed representation. In this paper, we present a practical engineering study of rank and select queries on bit vectors. We evaluate a classic two-level block baseline (BlockBitVec), an asymmetric superblock implementation (FastBitVec), and an entropy-compressed representation (RRRBitVec) based on the Raman, Raman, and Rao (RRR) coding scheme. On Apple Silicon (M-series ARM architecture), we demonstrate a 1.4x speedup in rank queries through asymmetric 4096/256-bit block boundaries, with a rank index overhead of 7.8%. We investigate the empirical behavior of RRRBitVec and observe a symmetric density-dependent bell-curve for rank latency -- where queries at extreme densities (1% and 99%) run up to 39% faster due to offset elimination at boundary classes. We further show that RRRBitVec achieves a 4.9x speedup over classic binary-search select baselines, running in 33.7 ns at uniform density by using a superblock-level sampling index that restricts sequential scans to L1-cache lookups. All implementations are validated against a correctness fuzzer executing over 78 million assertions with no failures. Source code and test harnesses are publicly available.",
+          "authors": [
+            "Ishant Garg"
+          ],
+          "primary_category": "cs.DS",
+          "categories": [
+            "cs.DS"
+          ],
+          "published": "2026-05-25T07:34:24+00:00",
+          "link": "https://arxiv.org/pdf/2605.25528v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:SC-QUBIT-CHIP"
+          ],
+          "matched_query_tag": "query:SC-QUBIT-CHIP",
+          "matched_query_text": "hardware architecture and layout techniques for high-coherence multi-qubit superconducting quantum processors",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25528v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25655v1",
+          "source": "arxiv",
+          "title": "Bandwidth-Aware LLM Inference on Heterogeneous Many-Core Supercomputers",
+          "abstract": "Large language model (LLM) inference is limited by high computational cost and memory bandwidth demands, making deployment on heterogeneous many-core processors challenging. Taking the MT-3000 processor used in the Tianhe supercomputer as an example, its limited main-memory bandwidth and distributed memory hierarchy exemplify these bottlenecks, making it difficult to directly migrate existing GPU-based inference frameworks. To address this problem, we propose THInfer, a hardware-aware inference framework that maximizes data locality under bandwidth-constrained conditions through hardware-software co-design and parallel strategy optimization. THInfer incorporates three key techniques: (1) a high-performance operator library for the VLIW SIMD architecture, providing hand-optimized FP16 kernels that achieve up to 70 percent of the peak performance per cluster; (2) a density-driven computation graph fusion and unified kernel scheduling mechanism, combined with a staged pipelined attention fusion method; and (3) a Prefill-Buffer-Decode (P-B-D) pipeline and bounded buffer management strategy, which supports hybrid parallelism and enables efficient multi-cluster collaboration through two-level communication based on MPI and hthreads. Experiments on the Llama model series show that THInfer improves throughput on the 7B model by 62 percent to 73 percent over DeepSpeed on two V100S GPUs and by 67 percent to 84 percent over the A800 GPU. The 13B and 30B models also demonstrate comparable or better performance. Moreover, THInfer maintains stable performance on the 70B model, whereas typical GPU-based frameworks fail to run under the same setting. Overall, THInfer significantly enhances throughput, reduces latency, and improves scalability, providing a feasible system solution for efficient and scalable LLM inference on heterogeneous many-core architectures.",
+          "authors": [
+            "Yao Lu",
+            "Zhongzhi Luan",
+            "Gen Li",
+            "Jiaxing Qi",
+            "Shiqing Ma",
+            "Bin Han",
+            "Shizhe Shang",
+            "Hailong Yang",
+            "Depei Qian"
+          ],
+          "primary_category": "cs.DC",
+          "categories": [
+            "cs.DC"
+          ],
+          "published": "2026-05-25T10:03:25+00:00",
+          "link": "https://arxiv.org/pdf/2605.25655v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:SC-QUBIT-CHIP"
+          ],
+          "matched_query_tag": "query:SC-QUBIT-CHIP",
+          "matched_query_text": "hardware architecture and layout techniques for high-coherence multi-qubit superconducting quantum processors",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25655v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25712v1",
+          "source": "arxiv",
+          "title": "Photonic Synapses with Hybrid Plasticity for Hardware-Level Neural Reuse",
+          "abstract": "A hallmark of biological intelligence is neural reuse,the ability to preserve past learning and repurpose it for new tasks and changing environments. Photonic neural hardware offers high-bandwidth, low-latency computation, but current implementations remain constrained by fixed architectures and static weights, lacking the coexistence of transient dynamics and persistent weight storage. Here, we introduce integrated photonic synapses that realize what we term hybrid plasticity: the coexistence of weight retention and reversible updating within a single synaptic device made of thin-film lead zirconate titanate (PZT), thereby enabling hardware-level neural reuse. We use this hybrid plasticity to implement synaptic-weight encoding at picosecond timescales and experimentally grounded transfer-learning simulations. The resulting neural-reuse framework achieves more than 20-fold faster convergence and approximately 30-fold smaller weight updates than random initialization. These results advance photonic hardware toward efficient, memory-retaining on-chip learning.",
+          "authors": [
+            "Chenlei Li",
+            "Tao Shu",
+            "Cunyu Shi",
+            "Wei Wang",
+            "Shengjie Tang",
+            "Yueyang Zhang",
+            "Wei Chen",
+            "Jungan Wang",
+            "Bin Li",
+            "Yu Han",
+            "Gong Zhang",
+            "Huan Li Yaocheng Shi",
+            "Jianwei Wang",
+            "Feng Qiu",
+            "Daoxin Dai"
+          ],
+          "primary_category": "physics.optics",
+          "categories": [
+            "physics.optics"
+          ],
+          "published": "2026-05-25T11:13:51+00:00",
+          "link": "https://arxiv.org/pdf/2605.25712v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:SC-QUBIT-CHIP"
+          ],
+          "matched_query_tag": "keyword:SC-QUBIT-CHIP",
+          "matched_query_text": "crosstalk mitigation and characterization in superconducting qubit chips",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25712v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.26098v1",
+          "source": "arxiv",
+          "title": "Self-calibrated multiparameter measurement of three-dimensional microwave fields",
+          "abstract": "Rydberg atoms are promising for microwave (MW) sensing and control, but full local MW characterization remains difficult. Existing methods generally do not provide self-calibrated reconstruction of the three-dimensional vector field, which is valuable for both atom-based sensing and in-situ field characterization in complex electromagnetic environments. We propose and implement multi-level, Zeeman-resolved Rydberg electromagnetically induced transparency (EIT) spectroscopy in a laser-cooled atomic ensemble. We extract the three polarization amplitudes from a single spectrum and show that the MW polarization components give rise to closed interferometric loops within the atoms' internal Hilbert space, enabling extraction of their relative phases. Moreover, it is self-calibrated and requires no external reference MW fields, with MW parameters largely separable from one another and from other experimental parameters. These features make it broadly applicable to dedicated sensing platforms as well as quantum optics and quantum information experiments.",
+          "authors": [
+            "Yupeng Wang",
+            "Xinghan Wang",
+            "Aishik Panja",
+            "Md. Ehsanuzzaman",
+            "Chuan-Hsun Li",
+            "Qi-Yu Liang"
+          ],
+          "primary_category": "physics.atom-ph",
+          "categories": [
+            "physics.atom-ph"
+          ],
+          "published": "2026-05-25T17:54:51+00:00",
+          "link": "https://arxiv.org/pdf/2605.26098v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:SC-QUBIT-CHIP"
+          ],
+          "matched_query_tag": "keyword:SC-QUBIT-CHIP",
+          "matched_query_text": "microwave packaging interconnects and signal integrity for superconducting quantum chips",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.26098v1",
           "carry_days": 1
         }
       ]
     },
     "EQ-CIRCUIT": {
-      "updated_date": "20260524-20260524",
+      "updated_date": "20260525-20260525",
       "carryover_days": 9,
       "items": [
         {
@@ -1788,7 +2321,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22601v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22609v1",
@@ -1824,7 +2357,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22609v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22922v2",
@@ -1884,7 +2417,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22922v2",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22784v1",
@@ -1921,7 +2454,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22784v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22977v1",
@@ -1965,7 +2498,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22977v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.21916v1",
@@ -2010,7 +2543,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.21916v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.21979v1",
@@ -2048,7 +2581,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.21979v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22032v1",
@@ -2094,7 +2627,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22032v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22039v1",
@@ -2133,7 +2666,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22039v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22067v1",
@@ -2173,7 +2706,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22067v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22117v1",
@@ -2211,7 +2744,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22117v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22223v1",
@@ -2249,7 +2782,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22223v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22319v1",
@@ -2296,7 +2829,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22319v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22439v1",
@@ -2338,7 +2871,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22439v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22527v1",
@@ -2380,7 +2913,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22527v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22625v1",
@@ -2423,7 +2956,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22625v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22701v1",
@@ -2465,7 +2998,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22701v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22961v1",
@@ -2506,7 +3039,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22961v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.23251v1",
@@ -2546,7 +3079,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23251v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23421v1",
@@ -2586,7 +3119,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23421v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23501v1",
@@ -2624,7 +3157,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23501v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23755v1",
@@ -2671,7 +3204,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23755v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23226v1",
@@ -2713,7 +3246,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23226v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23267v1",
@@ -2756,7 +3289,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23267v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23403v1",
@@ -2803,7 +3336,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23403v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23460v1",
@@ -2845,7 +3378,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23460v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23567v1",
@@ -2893,7 +3426,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23567v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23573v1",
@@ -2931,7 +3464,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23573v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23584v1",
@@ -2973,7 +3506,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23584v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23649v1",
@@ -3014,7 +3547,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23649v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23805v1",
@@ -3053,7 +3586,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23805v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23871v1",
@@ -3097,7 +3630,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23871v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23881v1",
@@ -3139,7 +3672,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23881v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23894v1",
@@ -3181,7 +3714,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23894v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.24080v1",
@@ -3223,7 +3756,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24080v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.24289v1",
@@ -3260,7 +3793,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24289v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.24362v1",
@@ -3301,7 +3834,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24362v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24502v1",
@@ -3347,7 +3880,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24502v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24355v1",
@@ -3387,7 +3920,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24355v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24365v1",
@@ -3427,7 +3960,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24365v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24376v1",
@@ -3471,7 +4004,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24376v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24387v1",
@@ -3512,7 +4045,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24387v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24390v1",
@@ -3552,7 +4085,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24390v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24408v1",
@@ -3598,7 +4131,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24408v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24409v1",
@@ -3640,7 +4173,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24409v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24415v1",
@@ -3719,7 +4252,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24415v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24425v1",
@@ -3762,7 +4295,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24425v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24455v1",
@@ -3805,7 +4338,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24455v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24479v1",
@@ -3848,7 +4381,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24479v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24510v1",
@@ -3891,7 +4424,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24510v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24611v1",
@@ -3934,7 +4467,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24611v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24628v1",
@@ -3975,7 +4508,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24628v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24649v1",
@@ -4021,7 +4554,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24649v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24651v1",
@@ -4061,7 +4594,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24651v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24692v1",
@@ -4098,7 +4631,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24692v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24738v1",
@@ -4139,7 +4672,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24738v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24770v1",
@@ -4183,7 +4716,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24770v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24877v1",
@@ -4223,7 +4756,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24877v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24840v1",
@@ -4263,7 +4796,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24840v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24798v1",
@@ -4306,7 +4839,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24798v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24788v1",
@@ -4349,7 +4882,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24788v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24791v1",
@@ -4393,7 +4926,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24791v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24795v1",
@@ -4438,7 +4971,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24795v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24814v1",
@@ -4479,7 +5012,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24814v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24874v1",
@@ -4519,7 +5052,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24874v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24876v1",
@@ -4558,7 +5091,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24876v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24882v1",
@@ -4597,7 +5130,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24882v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24923v1",
@@ -4638,7 +5171,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24923v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25048v1",
@@ -4687,7 +5220,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25048v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25054v1",
@@ -4731,7 +5264,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25054v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25090v1",
@@ -4766,7 +5299,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25090v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25098v1",
@@ -4808,7 +5341,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25098v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25099v1",
@@ -4850,7 +5383,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25099v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25140v1",
@@ -4893,7 +5426,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25140v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25153v1",
@@ -4935,7 +5468,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25153v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25225v1",
@@ -4974,7 +5507,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25225v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25268v1",
@@ -5015,12 +5548,951 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25268v1",
+          "carry_days": 2
+        },
+        {
+          "id": "2605.26053v1",
+          "source": "arxiv",
+          "title": "Nuclear-Electron Hyperfine Coupling of the Shallow States Associated with Vacancies in Gallium Nitride",
+          "abstract": "We use multiband real space Green's functions computed using open-boundary conditions for clean GaN to exactly solve the potential-scattering Dyson equation to obtain the electronic structure of single nitrogen and gallium vacancies. From these vacancy solutions, we compute the local density of states as well as the Fermi contact and anisotropic contributions to the hyperfine field in the vicinity of the defect. These quantities directly affect electrically-detected magnetic resonance signals, which can be used to identify these defects when present in GaN devices.",
+          "authors": [
+            "Joseph Sink",
+            "Michael E. Flatté"
+          ],
+          "primary_category": "cond-mat.mtrl-sci",
+          "categories": [
+            "cond-mat.mtrl-sci"
+          ],
+          "published": "2026-05-25T17:14:09+00:00",
+          "link": "https://arxiv.org/pdf/2605.26053v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.625,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "query:EQ-CIRCUIT",
+          "matched_query_text": "papers on extracting equivalent circuit models, capacitance matrices, inductance matrices, and EPR parameters for superconducting quantum chips",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.26053v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25572v1",
+          "source": "arxiv",
+          "title": "PennySynth: RAG-Driven Data Synthesis for Automated Quantum Code Generation",
+          "abstract": "The growing complexity of quantum programming frameworks has exposed a critical limitation in existing large language model (LLM)-based code assistants: general-purpose models hallucinate PennyLane-specific gate names, misplace device configurations, and produce structurally invalid circuits when faced with specialized quantum coding challenges. We present PennySynth, a retrieval-augmented generation framework that addresses this gap by conditioning LLM inference on a curated knowledge base of 13,389 PennyLane instruction-code pairs, built via a three-stage extraction, verification, and deduplication pipeline over official PennyLane repositories, community GitHub sources, and QHack competition archives. PennySynth introduces a code-aware embedding strategy using st-codesearch-distilroberta-base, trained for natural-language-to-code retrieval, increasing average retrieval cosine similarity from 0.45 to 0.726 compared to a general-purpose baseline. Evaluated across 74 challenges spanning three years of the QHack competition (2022, 2023, 2024), PennySynth achieves 64%, 68%, and 52% pass@5 on QHack 2022, 2023, and 2024, respectively, improving over Claude Sonnet 4.6 without retrieval by +28, +25, and +28 percentage points. We further introduce a quantum-adapted CodeBLEU metric that upweights qml.* token patterns and show that structural code similarity and functional correctness capture distinct aspects of quantum code quality. Controlled ablations reveal that code-aware embeddings are the primary driver of retrieval performance, while dataset expansion and source composition provide additional gains when retrieval quality is sufficiently precise.",
+          "authors": [
+            "Minghao Shao",
+            "Nouhaila Innan",
+            "Hariharan Janardhanan",
+            "Muhammad Kashif",
+            "Alberto Marchisio",
+            "Muhammad Shafique"
+          ],
+          "primary_category": "cs.CL",
+          "categories": [
+            "cs.CL",
+            "cs.AI"
+          ],
+          "published": "2026-05-25T08:26:43+00:00",
+          "link": "https://arxiv.org/pdf/2605.25572v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.538,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "Josephson circuit quantization from equivalent circuit models",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25572v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25978v1",
+          "source": "arxiv",
+          "title": "Resonant Microstructures as Dirac-type Actuators for Acoustic Wave Control",
+          "abstract": "We study interior control of the acoustic wave equation via effective point sources generated by a finite cluster of resonant perturbations (modeling acoustic subwavelength bubbles). At the abstract level, after localizing the whole-space dynamics to a large auxiliary observation domain, we consider a Dirichlet spectral formulation of the wave equation with finitely many point actuators located at prescribed interior points. Restricting to a finite spectral band of Dirichlet eigenfrequencies, we prove that, under a natural full-rank condition on the associated coupling matrix, arbitrary trajectories on the corresponding spectral subspace can be realized, with quantitative bounds on the control cost in terms of spectral-band geometry and actuator placement. We then show that these ideal actuators can be realized by clusters of small, high-contrast bubbles. Using a time-domain asymptotic expansion, the scattered field is represented as a superposition of retarded monopoles whose amplitudes satisfy a finite-dimensional delayed hyperbolic system. In the Laplace domain, this induces a transfer operator whose pole structure encodes the Minnaert resonance with a collective attenuation. We prove that the associated actuator map is ill-conditioned away from resonance, whereas, under a cluster-level transducer accessibility condition linking the incident fields to the dominant cluster channels, it admits a bounded right inverse on suitable Minnaert bands. Consequently, one obtains spectral tracking of the wave field with error $\\mathcal{O}(\\varepsilon^γ)$ as the bubble size $\\varepsilon \\to 0$.   Keywords. Wave equation, Dirac actuators, Trajectory tracking control, Resonant perturbations, Kato's analytic perturbation, Perron-Frobenius spectrum, Minnaert resonances, Actuation map, Toeplitz matrix.",
+          "authors": [
+            "Arpan Mukherjee",
+            "Mourad Sini"
+          ],
+          "primary_category": "math.AP",
+          "categories": [
+            "math.AP",
+            "math.OC"
+          ],
+          "published": "2026-05-25T15:53:35+00:00",
+          "link": "https://arxiv.org/pdf/2605.25978v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.538,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "inductance matrix modeling and electromagnetic simulation of superconducting circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25978v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25350v1",
+          "source": "arxiv",
+          "title": "An Empirical Evaluation of Quantum-Inspired QUBO Methods for Heterogeneous HPC Workflow Mapping and Scheduling",
+          "abstract": "Heterogeneous HPC workflow scheduling under multiple hard constraints poses a challenging combinatorial optimization problem. Classical exact solvers guarantee optimality but face scalability limits, motivating interest in quantum-inspired Quadratic Unconstrained Binary Optimization (QUBO) as an alternative optimization paradigm. This work presents a systematic empirical evaluation of QUBO-based scheduling methods against classical baselines including MILP, CP-SAT, GA, and HEFT. We evaluate three QUBO variants, single-run simulated annealing, multi-attempt annealing, and a layered QAOA-inspired schedule, with hybrid enhancement strategies on validation workflows (3-4 tasks) and synthetic scaling instances (5-20 tasks). All solvers are assessed through a unified pipeline tracking feasibility, makespan, and resource utilization under progressive constraint activation and controlled penalty sweeps. All approaches recover the expected optimal makespan on validation instances, confirming formulation correctness. However, feasibility degradation emerges for specific QUBO variants as constraint interactions intensify, particularly when communication costs are introduced. Penalty analysis reveals a sharp feasibility threshold for QUBO-SA, where insufficient penalties consistently fail and moderate-to-strong penalties restore feasibility. Scaling experiments show that classical solvers remain robust across all tested sizes, while QUBO-SA loses feasibility beyond 15 tasks and the QAOA-inspired variant beyond 10 tasks. The study provides a clear empirical characterization of the reliability boundaries of quantum-inspired QUBO formulations for HPC scheduling and identifies regimes where classical approaches remain preferable under current solver capabilities.",
+          "authors": [
+            "Aasish Kumar Sharma",
+            "Christian Boehme",
+            "Julian Kunkel"
+          ],
+          "primary_category": "cs.DC",
+          "categories": [
+            "cs.DC"
+          ],
+          "published": "2026-05-25T02:09:49+00:00",
+          "link": "https://arxiv.org/pdf/2605.25350v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.454,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "query:EQ-CIRCUIT",
+          "matched_query_text": "black-box quantization and electromagnetic simulation workflows for Josephson circuits and superconducting qubit devices",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25350v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25469v1",
+          "source": "arxiv",
+          "title": "JacQuant: STE-Free Quantization-Aware Training via Learned Jacobian Surrogates",
+          "abstract": "Quantization-aware training (QAT) is widely deployed but typically relies on the Straight-Through Estimator (STE), which passes gradients through non-differentiable quantizers by fiat. This often makes training brittle near bin boundaries and weakly aligned with the actual behavior of the low-precision model. We introduce JacQuant, a QAT framework that learns a lightweight surrogate of the model's local sensitivity to parameter changes and uses it to stabilize and accelerate training within standard variance-reduced optimizers. The surrogate is inexpensive (diagonal or block-diagonal), data-driven, and compatible with common weight and activation quantizers. On code-preserving training phases, we prove convergence for non-convex objectives and obtain linear rates under a PL condition, and we relate the learned sensitivity to end-to-end output fidelity via a simple calibration argument. Across LLM benchmarks at $\\leq 2$ bits, JacQuant consistently reaches higher accuracy than STE-based QAT, and the runtime analyses on various models show that the added cost remains negligible under practical group sizes. The method is drop-in and requires no changes to the forward quantizers; our empirical claims are scoped to ultra-low-bit LLM QAT.",
+          "authors": [
+            "Kai Yi",
+            "Vignesh Vivekraja",
+            "Harshit Khaitan",
+            "Steven Li"
+          ],
+          "primary_category": "cs.LG",
+          "categories": [
+            "cs.LG"
+          ],
+          "published": "2026-05-25T06:19:49+00:00",
+          "link": "https://arxiv.org/pdf/2605.25469v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.454,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "Josephson circuit quantization from equivalent circuit models",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25469v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25839v1",
+          "source": "arxiv",
+          "title": "Hybridization of Ferromagnetic and Cyclotron Resonances in a Two-Dimensional Electron System on a Ferromagnetic Film",
+          "abstract": "The microwave response of a two-dimensional (2D) electron system located on a dielectric ferromagnetic film, which in turn lies on a conducting metal (gate), has been theoretically studied. The entire system has been placed in the perpendicular static magnetic field. It has been found that the ferromagnetic resonance of the film and the cyclotron resonance of the electrons of the 2D system interact in the magnetic field, leading to their repulsion ('anticrossing'). It has been revealed that the anticrossing region is characterized not only by the modification of resonance frequencies compared to the cyclotron resonance in the 2D system without the ferromagnetic substrate and the ferromagnetic resonance in the film without the 2D system, but also by a strong change in the resonance linewidths.",
+          "authors": [
+            "A. A. Zabolotnykh",
+            "I. V. Zagorodnev",
+            "A. A. Matveev",
+            "D. A. Rodionov",
+            "O. Yu. Arkhipova",
+            "D. V. Kalyabin",
+            "A. R. Safin",
+            "S. A. Nikitov"
+          ],
+          "primary_category": "cond-mat.mes-hall",
+          "categories": [
+            "cond-mat.mes-hall"
+          ],
+          "published": "2026-05-25T13:35:17+00:00",
+          "link": "https://arxiv.org/pdf/2605.25839v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.454,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "inductance matrix modeling and electromagnetic simulation of superconducting circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25839v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.26092v1",
+          "source": "arxiv",
+          "title": "OrpQuant: Geometric Orthogonal Residual Projection for Multiplier-Free Power-of-Two Transformer Quantization",
+          "abstract": "The deployment of Large Language Models (LLMs) and Vision Transformers (ViTs) on edge devices is significantly constrained by memory limitations and the critical timing bottlenecks introduced by dense Multiply-Accumulate (MAC) arrays. In the ultra-low bit regime, logarithmic Power-of-Two (PoT) quantization provides a hardware-efficient alternative by replacing MAC operations with bit-shifts. However, the non-uniform exponential lattice is inherently limited by a \\textbf{Low Angular Resolution Regime}, a structural flaw that becomes particularly pronounced at sub-4-bit thresholds, leading to a notable degradation of high-dimensional feature manifolds.   To address this geometric limitation, we propose Orthogonal Residual Projection (ORP), an algorithm-hardware co-design framework. By formulating quantization as a dual-basis geometric projection, ORP adaptively synthesizes a higher-resolution residual lattice using strictly shift-and-add operations. Furthermore, ORP's analytical solver offers a practical alternative to computationally intensive gradient-based optimization, reducing the full-model calibration time for LLaMA-2-7B to approximately \\textbf{15 minutes}.   Extensive evaluations demonstrate ORP's applicability across modalities and its hardware efficiency. Under the 3-bit (W3/A16) constraint, ORP achieves a perplexity of 6.10 on LLaMA-2-7B, comparing favorably to conventional MAC-intensive baselines like AWQ without relying on asymmetric scaling, while maintaining competitive accuracy in 4-bit scenarios. At the silicon level, standard-cell RTL synthesis at a 28nm node indicates that ORP effectively mitigates the timing bottlenecks associated with dense multiplier trees.",
+          "authors": [
+            "Maoyang Xiang",
+            "Bo Wang",
+            "Tao Luo"
+          ],
+          "primary_category": "cs.LG",
+          "categories": [
+            "cs.LG",
+            "cs.AI"
+          ],
+          "published": "2026-05-25T17:52:46+00:00",
+          "link": "https://arxiv.org/pdf/2605.26092v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.454,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "black-box quantization of superconducting circuits and microwave structures",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.26092v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25361v1",
+          "source": "arxiv",
+          "title": "An Efficient On-the-Fly Nonadiabatic Coupling Framework",
+          "abstract": "Nonadiabatic molecular dynamics (NAMD) is widely used to describe hot electron relaxation and nonradiative recombination processes, but high computational costs limit its application to large supercells. Here, we implement a nonadiabatic coupling (NAC) module directly into CP2K, enabling on-the-fly NAC calculation during ab-initio molecular dynamics. Unlike conventional approaches relying on interfaces between external NAMD programs and electronic structure codes, this integration streamlines the workflow. Combined with CP2K's inherent Gaussian and Plane Waves (GPW) method, it achieves efficient NAC calculations for large-scale systems. To ensure numerical stability, a phase correction scheme is introduced to remove inconsistencies of wavefunction phases. Benchmark calculations of hot electron relaxation in crystalline pentacene agree with previous studies, while the results of simulations with and without phase correction show significant difference, confirming the necessity of the phase correction. Simulations on larger pentacene supercells further demonstrate the capability of this implementation for large-scale NAMD simulations.",
+          "authors": [
+            "Xiaoke He",
+            "Hsiao-Yi Tsai",
+            "Ziwei Chai",
+            "Junwen Yin",
+            "Zhongfei Xu",
+            "Li-Min Liu"
+          ],
+          "primary_category": "physics.chem-ph",
+          "categories": [
+            "physics.chem-ph"
+          ],
+          "published": "2026-05-25T02:29:26+00:00",
+          "link": "https://arxiv.org/pdf/2605.25361v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.372,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "energy participation ratio method for superconducting quantum circuit modes",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25361v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25485v1",
+          "source": "arxiv",
+          "title": "Transition from Homogeneous to Domain-Wall-Mediated Polarization Switching in BaTiO3: A Machine-Learning Molecular Dynamics Study",
+          "abstract": "Polarization switching in ferroelectric BaTiO3 can proceed through fundamentally different mechanisms - yet the conditions that determine which pathway is realized remain poorly understood. Using machine-learning potential-based molecular dynamics with the MACEField model, we systematically vary supercell size to reveal a clear transition from homogeneous polarization switching to domain-wall-mediated switching, accompanied by a coercive field increase of over 50%. Shannon entropy analysis demonstrates that this transition is driven by size-dependent polarization fluctuations that promote 180 degree domain-wall nucleation - establishing a direct, quantitative link between local configurational disorder and macroscopic switching behavior. Furthermore, the switching pathway and hysteresis response are shown to depend critically on supercell geometry and the relative orientation of applied stress and electric field. These findings reveal that homogeneous and domain-wall-mediated switching are distinct physical regimes in BaTiO3, and that atomistic simulations must account for system size to correctly capture the operative switching mechanism.",
+          "authors": [
+            "Po-Yen Chen",
+            "Teruyasu Mizoguchi"
+          ],
+          "primary_category": "cond-mat.mtrl-sci",
+          "categories": [
+            "cond-mat.mtrl-sci"
+          ],
+          "published": "2026-05-25T06:40:13+00:00",
+          "link": "https://arxiv.org/pdf/2605.25485v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.372,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "capacitance matrix extraction and modeling for Josephson circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25485v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25369v1",
+          "source": "arxiv",
+          "title": "Effects of Band Symmetry on Spin-Dependent Transport in Noncollinear Antiferromagnetic Tunnel Junctions",
+          "abstract": "Antiferromagnetic tunnel junctions (AFMTJs) can exhibit large tunneling magnetoresistance (TMR), making them promising candidates for ultrafast and field-robust spintronic devices. Here, we elucidate the role of band symmetry in governing spin-dependent transport in AFMTJs. Using first-principles density-functional theory combined with quantum-transport calculations, we investigate Mn3NiN/LaAlO3/Mn3NiN (001) junctions based on the noncollinear $Γ_{4g}$ antiferromagnetic phase of Mn3NiN. Although Mn3NiN exhibits a large momentum-dependent spin polarization due to broken $PT$ symmetry, we show that the tunneling conductance is critically controlled by band symmetry of the electrode Bloch states and their symmetry-selective coupling to evanescent states in the LaAlO3 barrier. Orbital-symmetry selection rules suppress interband transmission in the parallel configuration, whereas the antiparallel configuration enables symmetry-compatible interband tunneling along the diagonal directions of the two-dimensional Brillouin zone. These additional transmission channels enhance the antiparallel conductance and reduce the TMR relative to predictions based solely on spin polarization. Nevertheless, the TMR remains exceptionally large, exceeding 2000%, while band symmetry controls the attainable magnitude of TMR in AFMTJs. Our results establish band-symmetry filtering as an essential ingredient of spin-dependent tunneling in AFMTJs.",
+          "authors": [
+            "Mohamed Elekhtiar",
+            "Ding-Fu Shao",
+            "Evgeny Y. Tsymbal"
+          ],
+          "primary_category": "cond-mat.mtrl-sci",
+          "categories": [
+            "cond-mat.mtrl-sci"
+          ],
+          "published": "2026-05-25T02:49:17+00:00",
+          "link": "https://arxiv.org/pdf/2605.25369v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.293,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "energy participation ratio method for superconducting quantum circuit modes",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25369v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25640v1",
+          "source": "arxiv",
+          "title": "3D Magnetic Field Reconstruction and Mapping with Physics-Informed Neural Networks",
+          "abstract": "Accurate reconstruction of magnetic fields in inaccessible regions is vital for many high-precision experiments in physics. Traditional methods, such as spherical harmonic expansion, often suffer from truncation errors that limit their precision. This study proposes an advanced Physics-Informed Neural Network (PINN) framework for high-precision 3D magnetic field mapping. Unlike conventional data-driven models, the proposed PINN integrates Maxwell's equations directly into the loss function, enforcing divergence-free and curl-free conditions across the entire domain. A key innovation is the inclusion of explicit physics-residual losses at measurement locations, ensuring rigorous physical consistency beyond random collocation sampling. Validation using simulated data achieves a reconstruction accuracy of $10^{-4}$, a tenfold improvement over existing PINN benchmarks. Furthermore, experimental validation using a custom coil assembly demonstrates robust reconstruction with sub-percent relative accuracy, reaching the $10^{-3}$ level under ambient conditions. This AI-driven methodology provides a robust, high-precision solution for field monitoring and measurement in complex experimental environments where direct sensor placement is restricted.",
+          "authors": [
+            "Haohan Yu",
+            "Zhanxu Hao",
+            "Bingzhi Li",
+            "Zejia Lu",
+            "Xiang Chen",
+            "Liang Li"
+          ],
+          "primary_category": "physics.ins-det",
+          "categories": [
+            "physics.ins-det",
+            "cs.LG",
+            "hep-ex",
+            "nucl-ex"
+          ],
+          "published": "2026-05-25T09:42:27+00:00",
+          "link": "https://arxiv.org/pdf/2605.25640v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "query:EQ-CIRCUIT"
+          ],
+          "llm_score": 8.293,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "inductance matrix modeling and electromagnetic simulation of superconducting circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25640v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25777v1",
+          "source": "arxiv",
+          "title": "Best-First Ordered Statistics Decoding of Quantum LDPC Codes",
+          "abstract": "Belief Propagation (BP) followed by Ordered Statistics Decoding (OSD) has emerged as the gold standard for decoding quantum low-density parity-check (QLDPC) codes. Recent advancements in this field have proposed new methods and algorithms to lower the complexity of this standard pipeline. Because of code degeneracy, and more in general because multiple distinct error patterns can produce the same syndrome, OSD is inherently a list-decoding technique; that is, it enumerates a set of syndrome-consistent candidates and returns the most probable one. In this work, we propose a variant of OSD, which we call Best-First OSD (BF-OSD), that explores the error-candidate space more efficiently by traversing it in order of decreasing likelihood, rather than by brute-force enumeration of a pre-selected subset. In addition, we depart from the conventional BP+OSD cascade: instead of conditioning the OSD invocation on BP convergence, we invoke OSD after a fixed, small number of BP iterations. This design choice is motivated by the full circuit-level noise regime, in which BP is particularly unreliable. Monte Carlo simulations of a family of Bivariate Bicycle (BB) codes under full circuit-level noise show that BF-OSD matches the performance of the BP+OSD baseline while exploring the solution space with 1/100th of the query budget.",
+          "authors": [
+            "Michele Banfi",
+            "Marco Ferrari",
+            "Antonino Favano",
+            "Alberto Tarable",
+            "Luca Barletta"
+          ],
+          "primary_category": "cs.IT",
+          "categories": [
+            "cs.IT"
+          ],
+          "published": "2026-05-25T12:26:50+00:00",
+          "link": "https://arxiv.org/pdf/2605.25777v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.293,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "equivalent circuit extraction for superconducting quantum circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25777v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25906v1",
+          "source": "arxiv",
+          "title": "Substitution modulated transition from semimetal to superconductor in ZrTe$_{2-x}$Se$_x$ with coexistence of nontrivial electronic topology",
+          "abstract": "This study explores the emergence of superconductivity in high-quality ZrTe$_{2-x}$Se$_x$ crystals, grown via the isothermal chemical vapor transport (ICVT) technique. Resistive, structural, and thermal measurements reveal that substituting Te with Se in the ZrTe$_2$ matrix induces a superconducting state at low temperatures. The critical temperature ($T_c$) exhibits a clear dependence on the selenium concentration, peaking at $x=0.15$ with a $T_c$ of $4.8$ K. Calorimetric data indicates that even a low Se substitution range is capable of modifying both the electronic contribution and the vibrational modes of the crystal lattice. Combined with ab initio calculations and Wannier Hamiltonian interpolation between ZrTe$_2$/ZrSe$_2$, we established an extensive phase diagram mapping the transition from charge density wave (CDW) to the state with coexistence between the Dirac semimetal and superconductivity (SC), up to the semiconductor phase. This coexistence suggests that ZrTe$_{1.85}$Se$_{0.15}$ could be a candidate platform for topological superconductivity, as it hosts a nontrivial $\\mathbb Z_2$ invariant, with nonvanishing surface states in its $(001)$ planes.",
+          "authors": [
+            "V. M. Fim",
+            "C. F. Schuch",
+            "L. R. de Faria",
+            "F. A. Santos",
+            "M. S. da Luz",
+            "S. S. Tsirkin",
+            "L. T. F. Eleno",
+            "A. J. S. Machado"
+          ],
+          "primary_category": "cond-mat.supr-con",
+          "categories": [
+            "cond-mat.supr-con",
+            "cond-mat.mtrl-sci"
+          ],
+          "published": "2026-05-25T14:42:36+00:00",
+          "link": "https://arxiv.org/pdf/2605.25906v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.293,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "query:EQ-CIRCUIT",
+          "matched_query_text": "papers on extracting equivalent circuit models, capacitance matrices, inductance matrices, and EPR parameters for superconducting quantum chips",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25906v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25593v1",
+          "source": "arxiv",
+          "title": "Time-Varying Parametric Channel Estimation With CP Decomposition Tensor Processing",
+          "abstract": "Integrated sensing and communications (ISAC) is a key use case for sixth-generation (6G) wireless systems, where parametric channel estimation (PCE) plays a central role in enabling sensing, localization, and channel equalization in high-mobility scenarios. However, PCE is typically more computationally demanding than conventional channel estimation, which motivates the development of lower-complexity solutions. In this letter, we propose a fast PCE algorithm for time-varying and frequency-selective (TVFS) channels based on canonical polyadic (CP) decomposition and tensor processing, combined with ESPRIT-based initialization, component refinement, and exact line-search alternating coordinate descent. Two variants are presented: one for fully digital and another for hybrid receiver architectures. Numerical results show that the proposed method clearly outperforms a related CP-based baseline while achieving estimation performance close to a multiple-start SAGE benchmark at a substantially lower computational cost, with about one order of magnitude shorter execution time.",
+          "authors": [
+            "Enrique T. R. Pinto",
+            "André L. F. de Almeida",
+            "Markku Juntti"
+          ],
+          "primary_category": "eess.SP",
+          "categories": [
+            "eess.SP"
+          ],
+          "published": "2026-05-25T08:44:37+00:00",
+          "link": "https://arxiv.org/pdf/2605.25593v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "black-box quantization of superconducting circuits and microwave structures",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25593v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25613v1",
+          "source": "arxiv",
+          "title": "A Jacobi-Type Eigensolver for Diagonally Dominant Symmetric Matrices",
+          "abstract": "This paper presents a Jacobi-type iteration for computing a given specified eigenpair of a symmetric matrix. For a certain class of diagonally dominant matrices, the procedure is shown to converge at a linear rate depending on how the matrix is significantly dominated. The cost per iteration is generally quadratic. Therefore, the proposed procedure can compute an approximation of the desired eigenpair in quadratic time.",
+          "authors": [
+            "Luca Gemignani"
+          ],
+          "primary_category": "math.NA",
+          "categories": [
+            "math.NA"
+          ],
+          "published": "2026-05-25T09:11:34+00:00",
+          "link": "https://arxiv.org/pdf/2605.25613v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "query:EQ-CIRCUIT"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "capacitance matrix extraction and modeling for Josephson circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25613v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25619v1",
+          "source": "arxiv",
+          "title": "Analogies between Transformer Layers and Power Method",
+          "abstract": "In the paper we show that there is an analogy between the operations occurring in a layer of a transformer (projections and layer normalizations, disregarding the feedforward neural network) and a step in the power method. Coherently with this analogy, we show that passing through a layer the tokens tend to be tilted towards the principal eigenvector of a matrix which is the product of the output and value weight matrices of that layer. In the special case of a transformer with shared weights (i.e., in which all layers have identical weights) then the alignment with this principal eigenvector is particularly evident empirically, and can also be shown analytically. The analogy also suggests a method to steer the output of the transformer towards an arbitrary desired direction in token space.",
+          "authors": [
+            "Chenglong Li",
+            "Claudio Altafini"
+          ],
+          "primary_category": "cs.LG",
+          "categories": [
+            "cs.LG"
+          ],
+          "published": "2026-05-25T09:20:41+00:00",
+          "link": "https://arxiv.org/pdf/2605.25619v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "inductance matrix modeling and electromagnetic simulation of superconducting circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25619v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25774v1",
+          "source": "arxiv",
+          "title": "Topological fragility and bilinear magnetoelectric resistance in gapless edge states",
+          "abstract": "In time-reversal symmetric systems such as topological and higher-order topological insulators, 1D spin-momentum locked edge and hinge states are theoretically ``perfectly conducting'', being immune to backscattering by non-magnetic disorder. Here, we reveal a fundamental ``topological fragility'': these states exhibit a bilinear magnetoelectric resistance significantly larger than in 2D systems. This effect requires two ingredients: (i) spin-momentum locking, which maximizes time-reversal symmetry breaking in the non-linear regime, and (ii) random spin-orbit interaction -- the same mechanism behind Elliott - Yafet spin relaxation in heavy elements. Together, these generate a robust backscattering channel when a modest external magnetic field is applied. Our theory requires no gap opening or complex many-body effects, offering a simple and general mechanism that quantitatively explains recent observations in Bismuth hinge states.",
+          "authors": [
+            "Cosimo Gorini",
+            "Matthieu Bard",
+            "Sophie Gueron",
+            "Hélène Bouchiat",
+            "Giovanni Vignale"
+          ],
+          "primary_category": "cond-mat.mes-hall",
+          "categories": [
+            "cond-mat.mes-hall"
+          ],
+          "published": "2026-05-25T12:23:36+00:00",
+          "link": "https://arxiv.org/pdf/2605.25774v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "query:EQ-CIRCUIT",
+          "matched_query_text": "papers on extracting equivalent circuit models, capacitance matrices, inductance matrices, and EPR parameters for superconducting quantum chips",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25774v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25863v1",
+          "source": "arxiv",
+          "title": "Linac: linear algebra with CUDA over finite fields",
+          "abstract": "Solving linear systems of polynomial equations is a ubiquitous problem in both mathematics and physics. The standard approach, Gaussian elimination, scales cubically with system size and often constitutes a computational bottleneck. The algorithm's inherent parallelism makes it well-suited for modern computing architectures, namely graphics processing units (GPUs), which offer significantly higher throughput than CPUs. Additionally, the use of finite fields -- integers modulo a prime -- in place of floating-point arithmetic offers a scalable solution to the issue of numerical precision loss, which becomes increasingly problematic at large system sizes. With Linac, we present a high-performance, open-source, parallel implementation of Gaussian elimination over finite fields and floating-point arithmetic. This tool has been developed for applications to analytic reconstruction of scattering amplitudes in quantum field theory.",
+          "authors": [
+            "Giuseppe De Laurentis",
+            "Jack Franklin"
+          ],
+          "primary_category": "physics.comp-ph",
+          "categories": [
+            "physics.comp-ph",
+            "hep-ph",
+            "hep-th"
+          ],
+          "published": "2026-05-25T13:54:00+00:00",
+          "link": "https://arxiv.org/pdf/2605.25863v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "query:EQ-CIRCUIT",
+          "matched_query_text": "black-box quantization and electromagnetic simulation workflows for Josephson circuits and superconducting qubit devices",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25863v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25904v1",
+          "source": "arxiv",
+          "title": "Benchmarking Transparent Conductors",
+          "abstract": "Transparent conducting oxides (TCOs) are central to optoelectronic technologies, yet their design is often guided by popular figures of merit that are disconnected from the electrical requirement of actual devices. As a result, widely used metrics guide material design under conditions that can be impractical for devices. Here, we introduce a benchmarking framework to guide TCO development, in which transparent conductors are evaluated at fixed, application-relevant sheet resistance $(R_S)$. The resulting metric, $T_{app}(R_S)$, anchors comparison to device requirements, asking instead: What optical transparency can be obtained at the sheet resistance required by a given application? This approach provides a directly interpretable measure of performance, enabling materials to be benchmarked in terms of absolute transparency gains at a specified $R_S$. Applied to representative conventional and emerging TCOs, the framework defines the sheet-resistance landscape relevant to each application and maps how different materials perform within it. In doing so, it provides an application-rooted guide to material development and selection. More broadly, this approach establishes a general strategy for evaluating materials under fixed operational constraints, bridging the gap between materials design and device integration.",
+          "authors": [
+            "Amit Cohen",
+            "Lior Kornblum"
+          ],
+          "primary_category": "cond-mat.mtrl-sci",
+          "categories": [
+            "cond-mat.mtrl-sci"
+          ],
+          "published": "2026-05-25T14:37:53+00:00",
+          "link": "https://arxiv.org/pdf/2605.25904v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "query:EQ-CIRCUIT",
+          "matched_query_text": "papers on extracting equivalent circuit models, capacitance matrices, inductance matrices, and EPR parameters for superconducting quantum chips",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25904v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25946v1",
+          "source": "arxiv",
+          "title": "Generalized field mixing for endpoint criticality with marginal flow: resolving the four-state Potts endpoint in the square-lattice $J_1$--$J_2$ Ising model",
+          "abstract": "Identifying the asymptotic criticality of a critical endpoint is challenging, as pseudo-first-order signatures persist over accessible system sizes and mask its underlying critical nature. This ambiguity is amplified at endpoints controlled by a marginally irrelevant scaling field, where logarithmic flow delays the onset of asymptotic scaling. Here we develop a generalized field-mixing framework for endpoint criticality governed by one relevant scaling field together with a marginally irrelevant one, a setting that lies outside the conventional two-relevant-field formulation. By constructing a finite-size pseudocritical manifold, the framework removes the normal relevant detuning and exposes the residual marginal drift, enabling controlled histogram- and Binder-based finite-size analyses. We apply this approach to the frustrated square-lattice $J_1$--$J_2$ Ising model, where the location and even the nature of the stripe-ordering endpoint have remained controversial for decades. The endpoint is isolated directly as a distinct singular point, rather than inferred from where the phase boundary appears most Potts-like, and its asymptotic criticality is shown to follow four-state Potts universality with logarithmic corrections. This identification is independently supported by direct comparison with the Potts point of the Ashkin--Teller model and by consistent Binder scaling in both the magnetic and nematic sectors. Our results resolve a longstanding numerical ambiguity in a paradigmatic frustrated Ising system and establish a general framework for extracting asymptotic endpoint criticality in the presence of marginal flow.",
+          "authors": [
+            "Yihua Sun",
+            "Yuchen Fan"
+          ],
+          "primary_category": "cond-mat.stat-mech",
+          "categories": [
+            "cond-mat.stat-mech",
+            "cond-mat.str-el"
+          ],
+          "published": "2026-05-25T15:23:52+00:00",
+          "link": "https://arxiv.org/pdf/2605.25946v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "query:EQ-CIRCUIT",
+          "matched_query_text": "black-box quantization and electromagnetic simulation workflows for Josephson circuits and superconducting qubit devices",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25946v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25953v1",
+          "source": "arxiv",
+          "title": "Anomalous Hall Effect in Silicon-Compatible Altermagnetic alpha-MnTe Thin Films",
+          "abstract": "Integrating spin-dependent functionality with mainstream semiconductor technology is a central goal of modern spintronics, yet most candidate materials remain incompatible with silicon-based platforms. Here, we report the direct epitaxial integration of alpha-MnTe thin films on Si(111) via molecular beam epitaxy and demonstrate a robust anomalous Hall effect (AHE) in this silicon-compatible altermagnetic system. Despite the absence of net magnetization, the films exhibit a pronounced hysteretic Hall response, providing clear evidence of finite Berry curvature generated by symmetry breaking in the thin-film geometry. High resolution structural and spectroscopic characterization confirms phase-pure, epitaxial growth with hexagonal NiAs-type symmetry, while magnetotransport measurements reveal correlated hysteresis in both transverse and longitudinal channels with systematic temperature evolution. First-principles calculations reveal substantial uncompensated Berry curvature arising from the spin-split band structure consistent with altermagnetic symmetry and the origin of the observed Hall response. These results establish MnTe/Si(111) as a silicon-compatible altermagnetic platform and chart a concrete pathway for embedding Berry-phase-driven functionalities into scalable semiconductor device architectures.",
+          "authors": [
+            "Rajib Sarkar",
+            "Subhransu Kumar Negi",
+            "Arindom Das",
+            "Arijit Mandal",
+            "Pankaj Bhardwaj",
+            "Sohini Guin",
+            "Aryaman Das",
+            "Naresh Shyaga",
+            "Laxmipriya Nanda",
+            "B. R. K. Nanda",
+            "Dhavala Suri"
+          ],
+          "primary_category": "cond-mat.mtrl-sci",
+          "categories": [
+            "cond-mat.mtrl-sci"
+          ],
+          "published": "2026-05-25T15:29:31+00:00",
+          "link": "https://arxiv.org/pdf/2605.25953v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "query:EQ-CIRCUIT",
+          "matched_query_text": "papers on extracting equivalent circuit models, capacitance matrices, inductance matrices, and EPR parameters for superconducting quantum chips",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25953v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.26025v1",
+          "source": "arxiv",
+          "title": "A Dynamic Subspace Approach for Low-rank Approximation of Large-scale Nonlinear Systems",
+          "abstract": "We present a dynamic subspace approach for efficiently approximating large-scale systems by learning time-continuous trajectories on the Grassmannian manifold. By parameterizing a low-dimensional basis as a geodesic path, the method allows for adaptive tracking of evolving physics. Our approach decouples the geometric drift of the subspace from the intrinsic state evolution. This avoids the typical rank inflation required by static low-dimensional approximation methods to maintain accuracy, effectively breaking the Kolmogorov barrier in transport-dominated phenomena. To ensure scalability for high-dimensional data, the optimization is performed in a reduced feature space, rendering the computational cost independent of the large original state dimension. Numerical results for a 1D transport equation and a large-scale turbulent airfoil wake demonstrate that this dynamic subspace approach achieves higher accuracy than static linear approximations at equivalent ranks, positioning it as a robust and scalable method for the low-rank modeling of complex, non-stationary dynamical systems.",
+          "authors": [
+            "Jack DeChant",
+            "Rudy Geelen",
+            "Shane A. McQuarrie",
+            "Johann Guilleminot"
+          ],
+          "primary_category": "math.NA",
+          "categories": [
+            "math.NA"
+          ],
+          "published": "2026-05-25T16:49:20+00:00",
+          "link": "https://arxiv.org/pdf/2605.26025v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "query:EQ-CIRCUIT"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:EQ-CIRCUIT"
+          ],
+          "matched_query_tag": "keyword:EQ-CIRCUIT",
+          "matched_query_text": "inductance matrix modeling and electromagnetic simulation of superconducting circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.26025v1",
           "carry_days": 1
         }
       ]
     },
     "HAMILTONIAN": {
-      "updated_date": "20260524-20260524",
+      "updated_date": "20260525-20260525",
       "carryover_days": 9,
       "items": [
         {
@@ -5074,7 +6546,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22753v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22517v1",
@@ -5120,7 +6592,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22517v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22796v2",
@@ -5161,7 +6633,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22796v2",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22459v1",
@@ -5203,7 +6675,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22459v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22810v1",
@@ -5245,7 +6717,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22810v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22947v1",
@@ -5290,7 +6762,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22947v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.21888v1",
@@ -5330,7 +6802,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.21888v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.21936v1",
@@ -5373,7 +6845,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.21936v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22070v1",
@@ -5419,7 +6891,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22070v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22130v1",
@@ -5456,7 +6928,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22130v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22227v1",
@@ -5499,7 +6971,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22227v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22375v1",
@@ -5538,7 +7010,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22375v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22449v1",
@@ -5586,7 +7058,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22449v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22691v1",
@@ -5622,7 +7094,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22691v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22780v1",
@@ -5667,7 +7139,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22780v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.22919v1",
@@ -5714,7 +7186,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.22919v1",
-          "carry_days": 4
+          "carry_days": 5
         },
         {
           "id": "2605.23613v1",
@@ -5754,7 +7226,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23613v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23769v1",
@@ -5797,7 +7269,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23769v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23607v1",
@@ -5837,7 +7309,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23607v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23431v1",
@@ -5884,7 +7356,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23431v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23492v2",
@@ -5929,7 +7401,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23492v2",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23197v1",
@@ -5970,7 +7442,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23197v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23228v1",
@@ -6009,7 +7481,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23228v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23232v1",
@@ -6053,7 +7525,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23232v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23375v1",
@@ -6089,7 +7561,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23375v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23534v1",
@@ -6132,7 +7604,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23534v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23600v1",
@@ -6174,7 +7646,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23600v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.23874v1",
@@ -6213,7 +7685,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.23874v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.24185v1",
@@ -6252,7 +7724,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24185v1",
-          "carry_days": 3
+          "carry_days": 4
         },
         {
           "id": "2605.24694v1",
@@ -6292,7 +7764,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24694v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24320v1",
@@ -6343,7 +7815,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24320v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24333v1",
@@ -6387,7 +7859,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24333v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24361v1",
@@ -6427,7 +7899,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24361v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24373v1",
@@ -6470,7 +7942,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24373v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24382v1",
@@ -6514,7 +7986,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24382v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24527v1",
@@ -6562,7 +8034,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24527v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.24536v1",
@@ -6615,7 +8087,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24536v1",
-          "carry_days": 2
+          "carry_days": 3
         },
         {
           "id": "2605.25072v1",
@@ -6661,7 +8133,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25072v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24826v1",
@@ -6702,7 +8174,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24826v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24927v1",
@@ -6744,7 +8216,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24927v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.24978v1",
@@ -6787,7 +8259,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.24978v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25121v1",
@@ -6831,7 +8303,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25121v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25128v1",
@@ -6876,7 +8348,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25128v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25202v1",
@@ -6920,7 +8392,7 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25202v1",
-          "carry_days": 1
+          "carry_days": 2
         },
         {
           "id": "2605.25303v1",
@@ -6964,6 +8436,648 @@
           "matched_requirement_id": "",
           "selection_source": "carryover_cache",
           "paper_id": "2605.25303v1",
+          "carry_days": 2
+        },
+        {
+          "id": "2605.25982v1",
+          "source": "arxiv",
+          "title": "Light-Induced Transient Polarization Reversal in Rhombohedrally Stacked Bilayer Transition-Metal Dichalcogenides via an Electronic Mechanism",
+          "abstract": "Light-induced sliding ferroelectricity in two-dimensional van der Waals materials enables polarization control via relative layer motion. However, polarization switching occurs on the time scale of shear modes (tens of ps) and requires very large fluences, potentially damaging the samples. Here, using constrained density functional theory and many-body real-time simulations, we demonstrate an ultrafast electronic reversal of the total out-of-plane polarization sign in the photoexcited state, without requiring interlayer sliding, in rhombohedrally stacked transition-metal dichalcogenide bilayers. The polarization changes sign relative to its initial ground-state value at moderate fluences and within 200 fs, about 50 times faster than the typical shear-mode period. The ultrafast switching is driven by a rearrangement of localized dipoles around the tungsten sites. We establish a novel general mechanism for electronic control of low-dimensional ferroelectrics common to all polar multilayers having type II band alignment. Our work has direct implications for ultrahigh-speed volatile optical memory operating on sub-ps time scales.",
+          "authors": [
+            "Xiangzhou Zhu",
+            "Stefano Mocatti",
+            "Matteo Calandra"
+          ],
+          "primary_category": "cond-mat.mtrl-sci",
+          "categories": [
+            "cond-mat.mtrl-sci"
+          ],
+          "published": "2026-05-25T15:59:13+00:00",
+          "link": "https://arxiv.org/pdf/2605.25982v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.625,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:HAMILTONIAN"
+          ],
+          "matched_query_tag": "keyword:HAMILTONIAN",
+          "matched_query_text": "cross-Kerr coupling and dispersive interaction in superconducting qubit systems",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25982v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25647v1",
+          "source": "arxiv",
+          "title": "Endpoint formulation and Molien--Weyl structure for the \\(N=2\\), large--\\(d\\) BFSS/BMN models",
+          "abstract": "We study the \\(N=2\\), large--\\(d\\) sector of BFSS/BMN-type matrix quantum mechanics on the lattice in the Gaussian regime. We develop a radial endpoint formulation in which the bulk, gauge, and longitudinal degrees of freedom are integrated out, leaving transverse endpoint variables governed by an effective holonomy potential. We show that this planar endpoint formulation is equivalent to the angular Molien--Weyl description of the gauge-projected partition function, up to a universal spectator factor. This relation allows the low-temperature expansion of the endpoint partition function to be obtained from the Molien--Weyl result, whose quadratic coefficient \\(d(d+1)/2\\) counts Gaussian singlet states above the vacuum.   We then analyze the continuum limit of the quadratic coefficient and show that it separates into a Gaussian contribution, a \\(D\\)-channel, and a \\(β\\)-channel. The naive Gaussian term becomes trivial, while the exact holonomy kernel generates finite continuum contributions through singular dependence on the endpoint Gaussian width and anisotropic coupling.   We then study the geometry of the holonomy potential and show that its relevant saddle is a constrained boundary saddle on the aligned branch, rather than an unconstrained critical point. The associated transverse expansion captures the local saddle geometry, but any finite polynomial truncation has a trivial continuum limit. Finally, we introduce a non-polynomial toy model based on \\(V_{\\rm toy}(B)=-\\log\\cosh B\\), which provides a completion of the transverse expansion and reproduces exactly the continuum \\(D\\)-channel contribution \\(-2d\\). This prepares the geometric interpretation of the \\(D\\)-channel as a Wishart--Stiefel entropy associated with an emergent four-dimensional geometry embedded \\(\\mathbb R^d\\) in the endpoint formulation.",
+          "authors": [
+            "Badis Ydri"
+          ],
+          "primary_category": "hep-th",
+          "categories": [
+            "hep-th",
+            "gr-qc",
+            "hep-lat",
+            "hep-ph",
+            "math-ph"
+          ],
+          "published": "2026-05-25T09:53:14+00:00",
+          "link": "https://arxiv.org/pdf/2605.25647v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.538,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:HAMILTONIAN"
+          ],
+          "matched_query_tag": "keyword:HAMILTONIAN",
+          "matched_query_text": "effective Hamiltonian derivation for superconducting qubits couplers and resonators",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25647v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25880v1",
+          "source": "arxiv",
+          "title": "The Quantization Benefits of Residual-Free Transformers",
+          "abstract": "Large-scale transformer training and deployment are increasingly constrained by the transfer of activations, gradients, and optimizer states across accelerators. Low-bit quantization offers a natural remedy, but transformer activations are often heavy-tailed and outlier-dominated, making simple quantization highly lossy. We show that this difficulty is not only a property of the quantizer, but also of the architecture. Specifically, residual connections can drive transformer activations away from Gaussianity during training. Using controlled comparisons between residual and residual-free transformers, we demonstrate that this effect leads to substantially higher quantization error and accuracy degradation at low precision in residual models. We explain the phenomenon through an excess kurtosis analysis, showing that residual mixing can amplify non-Gaussianity, whereas dense mixing in residual-free contracts non-Gaussianity. We then show that residual-free transformers can be made trainable using orthogonal initialization, spectral or second-order optimization, and depth-aware scaling of attention temperature. In language tasks, while there is a small drop in full precision performance, these models retain near-Gaussian activations and exhibit significantly improved robustness to low-bit quantization. Our results identify an accuracy--compressibility trade-off in transformer design and motivate architecture-level approaches to quantization-friendly foundation models.",
+          "authors": [
+            "Yiping Ji",
+            "Mahalakshmi Sabanayagam",
+            "Peyman Moghadam",
+            "Hemanth Saratchandran",
+            "Simon Lucey"
+          ],
+          "primary_category": "cs.LG",
+          "categories": [
+            "cs.LG"
+          ],
+          "published": "2026-05-25T14:06:02+00:00",
+          "link": "https://arxiv.org/pdf/2605.25880v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.372,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:HAMILTONIAN"
+          ],
+          "matched_query_tag": "keyword:HAMILTONIAN",
+          "matched_query_text": "normal mode analysis and quantization of superconducting circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25880v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.26090v1",
+          "source": "arxiv",
+          "title": "Quantum Domain Decomposition for Preconditioning the Finite Element Method",
+          "abstract": "Even in cases where quantum linear solvers provide significant speedup compared to their classical counterparts, their performance depends on some of the same parameters. In particular, the condition number of the matrix which is to be inverted is a decisive parameter. A well known classical, and now quantum, remedy is to precondition the linear system $A x = b$ by premultiplying it by a matrix $H$ in such a way that the condition number of $HA$ is significantly smaller than the condition number of $A$.   In this work, we focus on a family of preconditioners called domain decomposition. First, we prove that it is feasible to apply quantum domain decomposition. We provide upper bounds for the block-encoding parameters of the Poisson problem discretized by the finite element method and preconditioned by the two-level Additive Schwarz preconditioner (one of the most fundamental domain decomposition techniques). From these bounds, we deduce the complexity of the quantum linear system solver. Second, we focus on a particular choice of local solver within the domain decomposition preconditioner by applying recent work by [Deiml and Peterseim, \\textit{Math. Comput.}, 2025] on the Bramble--Pasciak--Xu (BPX) preconditioner. Finally, we provide details on how the operators are implemented.",
+          "authors": [
+            "Elise Fressart",
+            "Michel Nowak",
+            "Nicole Spillane"
+          ],
+          "primary_category": "math.NA",
+          "categories": [
+            "math.NA",
+            "quant-ph"
+          ],
+          "published": "2026-05-25T17:52:13+00:00",
+          "link": "https://arxiv.org/pdf/2605.26090v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN"
+          ],
+          "llm_score": 8.372,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:HAMILTONIAN"
+          ],
+          "matched_query_tag": "keyword:HAMILTONIAN",
+          "matched_query_text": "Hamiltonian diagonalization methods for superconducting quantum circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.26090v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25434v1",
+          "source": "arxiv",
+          "title": "Freely infinitely divisible $R$-diagonal elements and Brown measure",
+          "abstract": "We study freely infinitely divisible $R$-diagonal elements in the unbounded setting and Brown measures for free additive perturbations by such elements. This class includes circular elements, circular Cauchy elements, and other previously studied $R$-diagonal models. We construct examples and prove stability under several algebraic operations, including homogeneous noncommutative polynomials in bounded, freely independent elements from this class. Using results for general $R$-diagonal perturbations, together with several analytic estimates specific to freely infinitely divisible $R$-diagonal elements, we prove that, in the bounded case, the support of the Brown measure coincides with the spectrum, and we obtain a criterion for property (H) in this non-normal setting. Finally, we study the free convolution semigroup associated with the symmetrized law of the modulus and derive a Hamilton--Jacobi equation for the regularized logarithmic potential.",
+          "authors": [
+            "Yu Kitagawa",
+            "Mihai Popa",
+            "Ping Zhong"
+          ],
+          "primary_category": "math.OA",
+          "categories": [
+            "math.OA",
+            "math.PR"
+          ],
+          "published": "2026-05-25T05:17:10+00:00",
+          "link": "https://arxiv.org/pdf/2605.25434v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "query:HAMILTONIAN"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:HAMILTONIAN"
+          ],
+          "matched_query_tag": "keyword:HAMILTONIAN",
+          "matched_query_text": "Hamiltonian diagonalization methods for superconducting quantum circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25434v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25471v1",
+          "source": "arxiv",
+          "title": "FPGA-based disturbance-observer servo for broadband noise suppression in laser frequency stabilization",
+          "abstract": "We have demonstrated broadband frequency-noise suppression in a laser stabilization system by augmenting a conventional proportional-integral-derivative (PID) controller with a digital disturbance observer (DOB) implemented on a field-programmable gate array (FPGA). The DOB employs a first-order exponential moving average filter as its Q-filter, replacing multi-parameter frequency-domain plant identification with a single one-dimensional gain sweep. Using modulation transfer spectroscopy on the 87Rb D2 line at 780.24 nm, we have measured the frequency-noise power spectral density and the Allan deviation of the beat note between two independently stabilized lasers. The integrated rms frequency noise below 40 kHz decreased by 16.9 dB compared with PID alone, corresponding to a reduction from approximately 140 kHz to 20 kHz. The short-term fractional frequency instability improved from sigma_y(1 ms) = $7.9 \\times 10^{-12}$ to $4.6 \\times 10^{-12}$, while the long-term stability at tau > 1 s remained within statistical uncertainty. This DOB-augmented architecture offers a simple and effective route to enhanced noise rejection in FPGA-based servo systems for atomic physics experiments.",
+          "authors": [
+            "Meung Ho Seo",
+            "Jae Hoon Lee",
+            "Young-Ho Park",
+            "Hyun-Gue Hong",
+            "Seji Kang",
+            "Myoung-Sun Heo",
+            "Sang-Bum Lee",
+            "Taeg Yong Kwon",
+            "Sangwon Seo",
+            "Sang Eon Park"
+          ],
+          "primary_category": "physics.atom-ph",
+          "categories": [
+            "physics.atom-ph",
+            "physics.app-ph",
+            "physics.ins-det"
+          ],
+          "published": "2026-05-25T06:20:36+00:00",
+          "link": "https://arxiv.org/pdf/2605.25471v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:HAMILTONIAN"
+          ],
+          "matched_query_tag": "keyword:HAMILTONIAN",
+          "matched_query_text": "normal mode analysis and quantization of superconducting circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25471v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25611v1",
+          "source": "arxiv",
+          "title": "On the Relation Between String Order Parameters, Entanglement, and Dynamical Quantum Phase Transitions in Topological Dynamics",
+          "abstract": "Topological order is defined by topological invariants, rather than symmetries and local order parameters. Nonetheless some topological phases can be characterized by string order parameters and entanglement. In this article we study how string order parameters and entanglement spectra behave out-of-equilibrium following quenches in one dimensional topological models with $\\mathbb{Z}$ invariants. Previously it has been suggested that string order parameters could serve as an experimental probe of dynamical quantum phase transitions. Despite the existence of clear zeroes in the order parameters at critical times, we show that in general there is no exact quantitative or qualitative connection with the critical times of dynamical quantum phase transitions. Another possible connection is of dynamical string order parameter zeroes and dynamical crossings at the center of entanglement spectra. Here we see that there can sometimes be a connection, but it is not typical. Again there is no general quantitative or qualitative connection. Each dynamical form of criticality behaves independently, though we do see that critical times tend to be of the same order of magnitude and give an argument for why this is the case. We also find that a string order parameter which labels one topological phase can undergo non-trivial dynamics even following a quench between \\emph{other} topological phases. We elucidate where connections can be made, and where they result from a consideration of insufficiently general models. These results cast doubt on the idea of genuine dynamical phases following quenches in such models.",
+          "authors": [
+            "Sirshendu Bhattacharyya",
+            "Szczepan Głodzik",
+            "Nicholas Sedlmayr"
+          ],
+          "primary_category": "cond-mat.str-el",
+          "categories": [
+            "cond-mat.str-el",
+            "cond-mat.stat-mech"
+          ],
+          "published": "2026-05-25T09:10:19+00:00",
+          "link": "https://arxiv.org/pdf/2605.25611v1",
+          "tags": [
+            "keyword:HAMILTONIAN",
+            "query:HAMILTONIAN"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:HAMILTONIAN"
+          ],
+          "matched_query_tag": "keyword:HAMILTONIAN",
+          "matched_query_text": "Kerr nonlinearity and anharmonicity in superconducting quantum circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25611v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25755v1",
+          "source": "arxiv",
+          "title": "Derivation of the focusing $Φ^6_1$ measure in the optimal mass regime from many-body quantum Gibbs states",
+          "abstract": "We derive the focusing $Φ^6_1$ measure on the torus $\\mathbb{T}$ as the high-temperature/mean-field limit of many-body quantum Gibbs states with an attractive three-body interaction. The main difficulty in the focusing setting is to relate the classical mass cutoff to the quantum particle-number cutoff. Our result reaches the optimal mass threshold for the classical field identified by Oh, Sosoe, and Tolomeo (2022), and thereby extends the earlier work of Rout and Sohinger (2025). At the critical threshold, the short-range interaction is allowed to shrink to a Dirac delta function on a logarithmic scale in the temperature parameter. Strictly below the threshold, the same convergence holds with a polynomial dependence on the temperature. Moreover, we establish a quantum-level phase transition at the same mass threshold. The proof develops the variational framework of Lewin, Nam, and Rougerie (2015) in the focusing setting and relies on two new ingredients: a non-factorized trial state construction and a delicate tail estimate for the interacting lower symbol. These allow us to control the localization and relative entropy errors caused by the particle-number cutoff, as well as the contribution of the focusing exponential weight.",
+          "authors": [
+            "Lin Lü",
+            "Phan Thành Nam",
+            "Rongchan Zhu"
+          ],
+          "primary_category": "math-ph",
+          "categories": [
+            "math-ph",
+            "math.AP",
+            "math.PR"
+          ],
+          "published": "2026-05-25T12:07:10+00:00",
+          "link": "https://arxiv.org/pdf/2605.25755v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:HAMILTONIAN"
+          ],
+          "matched_query_tag": "query:HAMILTONIAN",
+          "matched_query_text": "effective Hamiltonian models for transmon qubits, tunable couplers, resonators, Kerr terms, and dispersive interactions",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25755v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25793v1",
+          "source": "arxiv",
+          "title": "Mutual information and mutual correlation: their spin-free formulations and comparison",
+          "abstract": "Orbital entropies, pair entropies, and mutual information have become popular tools for analysis of strongly correlated wave functions. They can quantitatively measure how strongly an orbital participates in the electron correlation and reveal the correlation pattern between different orbitals. However, this pattern can become rather complicated and sometimes difficult to interpret for large active spaces and is not invariant with respect to the spin projection ($M_s$) component of the spin multiplet state. We introduce a modified spin-free orbital entropy, pair entropy, and mutual information, which simplify the correlation analysis and are invariant with respect to $M_s$. By comparison of these quantities with their \"original\" spin-including counterparts one can distinguish static correlation due to spin couplings from the \"genuine\" strong correlation due to a multiconfigurational character of the wave function. Recently, Evangelista introduced mutual correlation computed from the two-body cumulant as an alternative correlation measure, which is easier to compute for some methods. We present here a spin-free analogue of this quantity, which is $M_s$ invariant, and perform a comparison of the entropy-based and cumulant-based correlation measures in both spin-free and original variants. We illustrate the approaches on iron-sulfur bound complexes with one and two iron atoms.",
+          "authors": [
+            "Jiri Pittner"
+          ],
+          "primary_category": "physics.chem-ph",
+          "categories": [
+            "physics.chem-ph"
+          ],
+          "published": "2026-05-25T12:41:03+00:00",
+          "link": "https://arxiv.org/pdf/2605.25793v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:HAMILTONIAN"
+          ],
+          "matched_query_tag": "query:HAMILTONIAN",
+          "matched_query_text": "effective Hamiltonian models for transmon qubits, tunable couplers, resonators, Kerr terms, and dispersive interactions",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25793v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25899v1",
+          "source": "arxiv",
+          "title": "Chern numbers in quantum graphs",
+          "abstract": "Quantum graphs provide an analytically tractable setting for the study of Chern numbers and band degeneracies in periodic systems. We study the Chern numbers of energy bands in a two-dimensional square lattice quantum graph. We approach the problem by mapping the lattice to a single-vertex quantum graph with two loops of equal lengths pierced by magnetic fluxes. By establishing the degeneracy condition for its energy levels, we show that the model possesses two topological phases: a trivial phase, where the Chern numbers of all energy bands are $0$, and the nontrivial one, where the Chern numbers of successive energy bands alternate between $\\pm1$. By applying the degeneracy condition, we calculate Chern-number phase diagrams analytically as a function of the node scattering matrix parameters and compare the results with numerical calculations.",
+          "authors": [
+            "Or Swartzberg",
+            "Omri Gat",
+            "Boris Gutkin"
+          ],
+          "primary_category": "math-ph",
+          "categories": [
+            "math-ph"
+          ],
+          "published": "2026-05-25T14:26:09+00:00",
+          "link": "https://arxiv.org/pdf/2605.25899v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "query:HAMILTONIAN"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:HAMILTONIAN"
+          ],
+          "matched_query_tag": "query:HAMILTONIAN",
+          "matched_query_text": "effective Hamiltonian models for transmon qubits, tunable couplers, resonators, Kerr terms, and dispersive interactions",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25899v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25936v1",
+          "source": "arxiv",
+          "title": "Generalising gravitationally induced decoherence beyond linear environmental interactions in a microscopic quantum mechanical toy model",
+          "abstract": "We generalise the quantum mechanical toy model for gravitationally induced decoherence presented in Xu, Blencowe (2022) and Domi et al. (2024). In contrast to earlier formulations, in which the Hamiltonian of the system of interest is linearly coupled to the position operators of the oscillators in the environment, we consider an interaction formulated in terms of Weyl elements of the environment's position operators. This extension is motivated by polymer quantum mechanics, in which Weyl elements are fundamental operators, as well as by the possibility of generating non-linear interactions through suitable truncations of the exponential Weyl elements. Here we focus on a sinus-like coupling that is still quantised using the Schrödinger representation and, in the limit of a small Weyl parameter, reproduces the conventional linear interaction. To derive the corresponding master equation, we developed two complementary methods for the analytical calculation of the environmental correlation functions. The first utilises Wick's theorem for thermal expectation values in conjunction with annihilation and creation operators, while the second is based on the short-time Fourier transform and completely avoids the use of annihilation and creation operators, making it more readily transferable and generalisable to a polymer quantisation. Both approaches yield identical results. We further generalise the spectral density required for the exponential coupling structure. A numerical analysis shows that the environmental correlation functions decay rapidly with time, which supports the validity of the Markov approximation. Using a Taylor expansion in the Weyl parameter, we show that the first-order term reproduces the decoherence model of Xu, Blencowe (2022) and Domi et al. (2024). Finally, we derive the solution to the renormalised master equation.",
+          "authors": [
+            "Max Joseph Fahn",
+            "Renata Ferrero",
+            "Kristina Giesel",
+            "Roman Kemper"
+          ],
+          "primary_category": "gr-qc",
+          "categories": [
+            "gr-qc",
+            "quant-ph"
+          ],
+          "published": "2026-05-25T15:17:00+00:00",
+          "link": "https://arxiv.org/pdf/2605.25936v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:HAMILTONIAN"
+          ],
+          "matched_query_tag": "query:HAMILTONIAN",
+          "matched_query_text": "effective Hamiltonian models for transmon qubits, tunable couplers, resonators, Kerr terms, and dispersive interactions",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25936v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.25938v1",
+          "source": "arxiv",
+          "title": "Exact Single-Scale Outer Solution of the Abrikosov Vortex in the Extreme Type-II Limit",
+          "abstract": "We determine the exact outer structure of the Abrikosov vortex in the extreme type-II limit, which occurs when the Ginzburg-Landau parameter $κ$ diverges. In this limit, Ginzburg-Landau theory simplifies, outside a shrinking core, to a closed nonlinear theory for the superfluid velocity subject to an algebraic density constraint. The resulting solution is asymptotically exact everywhere outside the vanishing vortex core, demonstrating that both magnetic field and superconducting density vary on the length scale of the London penetration depth. This establishes that the conventional two-length-scale picture of the vortex does not hold in the $κ\\gg 1$ limit.",
+          "authors": [
+            "Eugene B. Kolomeisky"
+          ],
+          "primary_category": "cond-mat.supr-con",
+          "categories": [
+            "cond-mat.supr-con",
+            "nlin.SI"
+          ],
+          "published": "2026-05-25T15:17:33+00:00",
+          "link": "https://arxiv.org/pdf/2605.25938v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:HAMILTONIAN"
+          ],
+          "matched_query_tag": "keyword:HAMILTONIAN",
+          "matched_query_text": "Kerr nonlinearity and anharmonicity in superconducting quantum circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.25938v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.26008v1",
+          "source": "arxiv",
+          "title": "From Bogoliubov-de Gennes to Ginzburg-Landau: Critical Points Near $T_{\\rm c}$ in the Non-Magnetic Case",
+          "abstract": "We study the relation between the Bogoliubov-de Gennes equation and the Ginzburg-Landau equation for a BCS model without external fields. While previous rigorous derivations of Ginzburg-Landau theory from BCS theory have focused on energies and minimizers, here we consider arbitrary critical points in the relevant energy regime. For temperatures close to the critical temperature, we prove that every sufficiently small solution of the BdG equation admits an asymptotic factorization into a microscopic Cooper-pair profile and a macroscopic order parameter. The latter satisfies the Ginzburg-Landau equation up to an error that vanishes in the scaling limit. Our analysis relies on a Birman-Schwinger reformulation of the BdG equation, a Lyapunov-Schmidt type reduction, and semiclassical estimates at low regularity.",
+          "authors": [
+            "Rupert L. Frank",
+            "Christian Hainzl",
+            "Dong Hao Ou Yang"
+          ],
+          "primary_category": "math.AP",
+          "categories": [
+            "math.AP",
+            "math-ph"
+          ],
+          "published": "2026-05-25T16:27:25+00:00",
+          "link": "https://arxiv.org/pdf/2605.26008v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:HAMILTONIAN"
+          ],
+          "matched_query_tag": "keyword:HAMILTONIAN",
+          "matched_query_text": "Kerr nonlinearity and anharmonicity in superconducting quantum circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.26008v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.26058v1",
+          "source": "arxiv",
+          "title": "Absolute measurement of the intrinsic helicity in nanophotonics",
+          "abstract": "Helicity is a universal quantity describing the internal rotation of an object or a field. Whether it characterizes fundamental properties such as the spin of elementary particles or leads to practical consequences such as the toxicity or harmlessness of chiral molecules, defining and measuring it is essential. However, this remains ambiguous in the case of chiral photonic systems such as plasmonic nanoparticles or photonic metasurfaces, where contrary to common knowledge, the observation of circularly polarized dependent optical properties is not a relevant measure for the helicity. We demonstrate experimentally and theoretically that the helicity can be rigorously defined and measured in a nanophotonic system emitting circularly polarized light after excitation in the near-field by a focused electron beam. In the case of a model system composed of two plasmonic dipoles (Born-Kuhn systems), we show that the helicity of photonic modes takes on a very intuitive form and can be simply measured by symmetrizing the geometry of excitation and detection. The method could be extended to a variety of chiral photonic systems, whose locally enhanced properties make them promising for the engineering of local chirality.",
+          "authors": [
+            "Malo Bézard",
+            "Simon Garrigou",
+            "Jérémie Béal",
+            "Andreas Horrer",
+            "Yves Auad",
+            "Hugo Lourenço-Martins",
+            "Davy Gérard",
+            "Mathieu Kociak"
+          ],
+          "primary_category": "physics.optics",
+          "categories": [
+            "physics.optics",
+            "cond-mat.mes-hall"
+          ],
+          "published": "2026-05-25T17:18:12+00:00",
+          "link": "https://arxiv.org/pdf/2605.26058v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "keyword:HAMILTONIAN"
+          ],
+          "matched_query_tag": "keyword:HAMILTONIAN",
+          "matched_query_text": "Kerr nonlinearity and anharmonicity in superconducting quantum circuits",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.26058v1",
+          "carry_days": 1
+        },
+        {
+          "id": "2605.26073v1",
+          "source": "arxiv",
+          "title": "Magneto-optic phonon resonances in magnetic topological EuCd2As2 via helical Raman spectroscopy",
+          "abstract": "EuCd2As2 materials have two magnetic ordering states: antiferromagnetic (AFM) and ferromagnetic (FM) when their chemical tunability is utilized. While AFM-EuCd2As2 has a nonzero magnetoelectric response due to its symmetry breaking with spin configuration, FM-EuCd2As2 is an ideal candidate for studies of Weyl physics because of its minimum number of Weyl points with opposite chirality. In this article, we examine cryogenic low-frequency Raman spectroscopy of phonon modes in FM-EuCd2As2 crystals using circular polarization configurations, with support from density functional theory calculations, and investigate in-plane magneto-anisotropy by linear polarization configuration below the Curie temperature (Tc = 26 K). We attribute the anomalous enhancements in Raman intensities below the Curie temperature are due to spin-phonon coupling. Furthermore, we see that A-mode peaks can be distinguished by magneto-helical Raman spectroscopy through the magneto-optic effect and that the degree of circular polarization (DCP) of 12.5 meV peak reaches 60% at 4.2 K and becomes saturated. We also examine AFM-EuCd2As2 below Néel temperature (TN = 9 K) to compare with FM-EuCd2As2, but we hardly observe spin-phonon coupling and find negligible DCP values due to almost zero net magnetization. Our results contribute to the understanding of the phonon dynamics and the interplay between topology and magnetism in FM-EuCd2As2, through helical light and external magnetic fields. This lays the foundation for utilizing state-of-the-art Weyl systems for applications in thermoelectrics, phononic devices, and topological quantum computing.",
+          "authors": [
+            "Jin Ho Kang",
+            "Liangbo Liang",
+            "Ioannis Petrides",
+            "Kai-Chi Chang",
+            "Subhajit Roychowdhury",
+            "Chandra Shekhar",
+            "Claudia Felser",
+            "Prineha Narang",
+            "Chee Wei Wong"
+          ],
+          "primary_category": "cond-mat.mtrl-sci",
+          "categories": [
+            "cond-mat.mtrl-sci"
+          ],
+          "published": "2026-05-25T17:38:14+00:00",
+          "link": "https://arxiv.org/pdf/2605.26073v1",
+          "tags": [
+            "keyword:EQ-CIRCUIT",
+            "keyword:HAMILTONIAN",
+            "keyword:SC-QUBIT-CHIP",
+            "query:EQ-CIRCUIT",
+            "query:HAMILTONIAN",
+            "query:SC-QUBIT-CHIP"
+          ],
+          "llm_score": 8.25,
+          "llm_evidence_en": "Selected by BM25/embedding/RRF fallback during lightweight backfill.",
+          "llm_evidence_cn": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "canonical_evidence": "轻量补跑中由 BM25/向量召回/RRF 排名选中。",
+          "llm_tldr_en": "Candidate selected by retrieval ranking.",
+          "llm_tldr_cn": "由检索排序选出的候选论文。",
+          "llm_tldr": "由检索排序选出的候选论文。",
+          "llm_tags": [
+            "query:HAMILTONIAN"
+          ],
+          "matched_query_tag": "query:HAMILTONIAN",
+          "matched_query_text": "effective Hamiltonian models for transmon qubits, tunable couplers, resonators, Kerr terms, and dispersive interactions",
+          "matched_requirement_id": "",
+          "selection_source": "carryover_cache",
+          "paper_id": "2605.26073v1",
           "carry_days": 1
         }
       ]

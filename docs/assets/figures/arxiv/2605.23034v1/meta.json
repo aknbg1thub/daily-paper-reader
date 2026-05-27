@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "extractor": "pymupdf-images",
   "figures": [
     {
@@ -9,7 +9,7 @@
       "index": 1,
       "item_type": "figure",
       "width": 519,
-      "height": 750,
+      "height": 595,
       "figure_number": "1"
     },
     {
@@ -18,8 +18,8 @@
       "page": 6,
       "index": 2,
       "item_type": "figure",
-      "width": 519,
-      "height": 850,
+      "width": 1054,
+      "height": 494,
       "figure_number": "2"
     },
     {
@@ -28,8 +28,8 @@
       "page": 6,
       "index": 3,
       "item_type": "figure",
-      "width": 519,
-      "height": 697,
+      "width": 1002,
+      "height": 448,
       "figure_number": "3"
     },
     {
@@ -38,8 +38,8 @@
       "page": 6,
       "index": 4,
       "item_type": "figure",
-      "width": 519,
-      "height": 715,
+      "width": 1002,
+      "height": 902,
       "figure_number": "4"
     },
     {
@@ -48,8 +48,8 @@
       "page": 7,
       "index": 5,
       "item_type": "figure",
-      "width": 519,
-      "height": 737,
+      "width": 1042,
+      "height": 520,
       "figure_number": "5"
     },
     {
@@ -59,7 +59,7 @@
       "index": 6,
       "item_type": "figure",
       "width": 519,
-      "height": 729,
+      "height": 595,
       "figure_number": "6"
     },
     {
@@ -68,8 +68,8 @@
       "page": 8,
       "index": 7,
       "item_type": "figure",
-      "width": 519,
-      "height": 776,
+      "width": 526,
+      "height": 537,
       "figure_number": "7"
     },
     {
@@ -78,8 +78,8 @@
       "page": 8,
       "index": 8,
       "item_type": "figure",
-      "width": 519,
-      "height": 711,
+      "width": 526,
+      "height": 692,
       "figure_number": "8"
     },
     {
@@ -89,7 +89,7 @@
       "index": 9,
       "item_type": "table",
       "width": 519,
-      "height": 645,
+      "height": 595,
       "figure_number": "1"
     }
   ]

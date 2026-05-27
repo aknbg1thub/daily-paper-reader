@@ -152,6 +152,24 @@ def sanitize_display_text(value: Any, fallback: str = "") -> str:
         return str(fallback or "").strip()
     return text
 
+
+def contains_cjk(text: Any) -> bool:
+    return bool(re.search(r"[\u4e00-\u9fff]", str(text or "")))
+
+
+def shorten_cn_sidebar_text(text: Any, limit: int = 42) -> str:
+    raw = re.sub(r"\s+", " ", str(text or "").strip())
+    raw = re.sub(r"^\*\*[^*]+\*\*[：:]\s*", "", raw)
+    raw = raw.strip(" -:：;；。")
+    if not raw:
+        return ""
+    parts = re.split(r"(?<=[。！？!?])\s*", raw)
+    first = (parts[0] if parts else raw).strip()
+    first = first.rstrip("。！？!?")
+    if len(first) > limit:
+        first = first[:limit].rstrip("，,；;：: ")
+    return first
+
 def log_substep(code: str, name: str, phase: str) -> None:
     """
     用于前端解析的子步骤标记。
@@ -2450,7 +2468,44 @@ def sync_home_readme_from_day_report(
 
 
 def get_paper_sidebar_evidence(paper: Dict[str, Any]) -> str:
+    candidates = [
+        paper.get("llm_tldr_cn"),
+        paper.get("_glance_overview"),
+        paper.get("llm_tldr"),
+        paper.get("canonical_evidence"),
+        fallback_evidence_text(paper),
+    ]
+    for candidate in candidates:
+        if not contains_cjk(candidate):
+            continue
+        text = shorten_cn_sidebar_text(candidate)
+        if text and not is_placeholder_display_text(text):
+            return text
     return sanitize_display_text(paper.get("canonical_evidence"), fallback_evidence_text(paper))
+
+
+def get_sidebar_evidence_for_generated_paper(
+    paper: Dict[str, Any],
+    docs_dir: str,
+    date_str: str,
+    paper_id: str,
+) -> str:
+    title = (paper.get("title") or "").strip()
+    arxiv_id = str(paper.get("id") or paper.get("paper_id") or "").strip()
+    try:
+        md_path, _, _ = prepare_paper_paths(docs_dir, date_str, title, arxiv_id)
+        if os.path.exists(md_path):
+            with open(md_path, "r", encoding="utf-8") as f:
+                meta = _parse_front_matter(f.read())
+            for key in ("tldr", "motivation", "method", "result", "conclusion", "evidence"):
+                value = meta.get(key) if isinstance(meta, dict) else ""
+                if contains_cjk(value):
+                    text = shorten_cn_sidebar_text(value)
+                    if text:
+                        return text
+    except Exception:
+        pass
+    return get_paper_sidebar_evidence(paper)
 
 
 def write_run_daily_log(
@@ -3099,7 +3154,12 @@ def main() -> None:
                 except Exception as e:
                     log(f"[WARN] 生成{section}论文失败：{e}")
                     continue
-                paper_evidence_by_id[str((pid or "").strip())] = get_paper_sidebar_evidence(paper)
+                paper_evidence_by_id[str((pid or "").strip())] = get_sidebar_evidence_for_generated_paper(
+                    paper,
+                    docs_dir,
+                    date_str,
+                    pid,
+                )
                 section_tags = extract_sidebar_tags(paper)
                 results.append((index, (pid, title, section_tags)))
 
@@ -3114,14 +3174,24 @@ def main() -> None:
             title = (paper.get("title") or "").strip()
             arxiv_id = str(paper.get("id") or paper.get("paper_id") or "").strip()
             _, _, pid = prepare_paper_paths(docs_dir, date_str, title, arxiv_id)
-            sidebar_evidence_by_id[str(pid).strip()] = get_paper_sidebar_evidence(paper)
+            sidebar_evidence_by_id[str(pid).strip()] = get_sidebar_evidence_for_generated_paper(
+                paper,
+                docs_dir,
+                date_str,
+                pid,
+            )
             deep_entries.append((pid, title, extract_sidebar_tags(paper)))
 
         for paper in quick_list:
             title = (paper.get("title") or "").strip()
             arxiv_id = str(paper.get("id") or paper.get("paper_id") or "").strip()
             _, _, pid = prepare_paper_paths(docs_dir, date_str, title, arxiv_id)
-            sidebar_evidence_by_id[str(pid).strip()] = get_paper_sidebar_evidence(paper)
+            sidebar_evidence_by_id[str(pid).strip()] = get_sidebar_evidence_for_generated_paper(
+                paper,
+                docs_dir,
+                date_str,
+                pid,
+            )
             quick_entries.append((pid, title, extract_sidebar_tags(paper)))
         log_substep("6.3", "跳过生成文章（仅更新侧边栏）", "SKIP")
     else:

@@ -255,6 +255,38 @@ class PaperFiguresTest(unittest.TestCase):
             self.assertIn("2", labels)
             self.assertTrue((output_dir / "meta.json").exists())
 
+    def test_caption_visual_crop_excludes_caption_below_body(self):
+        doc = fitz.open()
+        try:
+            page = doc.new_page(width=612, height=792)
+            body_rect = fitz.Rect(80, 120, 520, 420)
+            caption_rect = fitz.Rect(72, 440, 540, 500)
+            page.draw_rect(body_rect, color=(0, 0, 1), fill=(0.88, 0.95, 1))
+            page.insert_textbox(caption_rect, "Fig. 2. Missing vector-only schematic.", fontsize=12)
+
+            crop = self.mod._caption_visual_crop_rect(page, caption_rect)
+
+            self.assertIsNotNone(crop)
+            self.assertLessEqual(crop.y1, caption_rect.y0)
+        finally:
+            doc.close()
+
+    def test_caption_visual_crop_excludes_caption_above_table(self):
+        doc = fitz.open()
+        try:
+            page = doc.new_page(width=612, height=792)
+            caption_rect = fitz.Rect(72, 80, 540, 130)
+            body_rect = fitz.Rect(80, 160, 520, 420)
+            page.insert_textbox(caption_rect, "Table I: Benchmark parameters.", fontsize=12)
+            page.draw_rect(body_rect, color=(0, 0, 0), fill=(0.95, 0.95, 0.95))
+
+            crop = self.mod._caption_visual_crop_rect(page, caption_rect)
+
+            self.assertIsNotNone(crop)
+            self.assertGreaterEqual(crop.y0, caption_rect.y1)
+        finally:
+            doc.close()
+
     def test_caption_without_detected_visual_region_uses_caption_band_fallback(self):
         with tempfile.TemporaryDirectory() as d:
             tmp_dir = Path(d)

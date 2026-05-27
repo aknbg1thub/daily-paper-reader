@@ -70,6 +70,9 @@ jobs:
       SUMMARY_API_KEY: ${{ secrets.SUMMARY_API_KEY }}
       SUMMARY_BASE_URL: ${{ secrets.SUMMARY_BASE_URL }}
       SUMMARY_MODEL: qwen3.7-max
+      BLT_SUMMARY_MODEL: qwen3.7-max
+      DPR_FIGURE_VLM_MODEL: qwen3.7-max
+      DPR_FIGURE_VLM_TIMEOUT: "35"
       PYTHONUNBUFFERED: "1"
 
     steps:

@@ -20,7 +20,7 @@ MIN_FIGURE_WIDTH = 240
 MIN_FIGURE_HEIGHT = 180
 MIN_FIGURE_AREA = 120_000
 WEBP_QUALITY = 82
-FIGURE_META_VERSION = 5
+FIGURE_META_VERSION = 6
 PDFFIGURES2_JAR_ENV = "PDFFIGURES2_JAR"
 PDFFIGURES2_DEFAULT_CACHE = os.path.expanduser("~/.cache/dpr-tools/pdffigures2/pdffigures2.jar")
 PDFFIGURES2_REPO_CACHE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "tools", "pdffigures2.jar"))
@@ -188,7 +188,8 @@ def _call_vlm_for_page(
         "Use the visible page image and the provided caption hints. Return strict JSON only.\n"
         f"Page image size is {page_width}x{page_height} pixels. Page number: {page_no}.\n"
         "For each real Figure/Table caption shown in the hints, return one item with a bounding box in IMAGE PIXELS. "
-        "The bbox must include the full visual content plus its caption, and must exclude unrelated body text as much as possible. "
+        "The bbox must include only the figure/table body, excluding the caption/title text and unrelated body text. "
+        "Use the caption only as an anchor to find the nearby visual/table body. "
         "Do not invent figures. Preserve the label number exactly. "
         "JSON schema: {\"items\":[{\"type\":\"figure|table\",\"number\":\"1\",\"bbox\":[x1,y1,x2,y2],\"caption\":\"...\"}]}.\n"
         "Caption hints:\n"
@@ -521,6 +522,12 @@ def _union_rects(rects: List[fitz.Rect]) -> fitz.Rect | None:
     return out
 
 
+def _rect_area(rect: fitz.Rect) -> float:
+    if hasattr(rect, "get_area"):
+        return float(rect.get_area())
+    return max(float(rect.width), 0.0) * max(float(rect.height), 0.0)
+
+
 def _collect_visual_rects(page: fitz.Page) -> List[fitz.Rect]:
     page_rect = page.rect
     rects: List[fitz.Rect] = []
@@ -532,7 +539,7 @@ def _collect_visual_rects(page: fitz.Page) -> List[fitz.Rect]:
         clipped = fitz.Rect(rect) & page_rect
         if clipped.is_empty or clipped.width < 4 or clipped.height < 4:
             return
-        if clipped.get_area() < min_area:
+        if _rect_area(clipped) < min_area:
             return
         if clipped.width > page_rect.width * 0.98 and clipped.height > page_rect.height * 0.98:
             return
@@ -561,6 +568,9 @@ def _collect_visual_rects(page: fitz.Page) -> List[fitz.Rect]:
             rect = drawing.get("rect") if isinstance(drawing, dict) else None
             if rect is not None:
                 add_rect(fitz.Rect(rect), min_area=18.0)
+            for item in drawing.get("items") or []:
+                if isinstance(item, (list, tuple)) and len(item) >= 2 and item[0] == "re":
+                    add_rect(fitz.Rect(item[1]), min_area=18.0)
     except Exception:
         pass
 
@@ -612,22 +622,45 @@ def _caption_visual_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.
     union = _union_rects(cluster)
     if union is None:
         return None
-    visual_area = sum(rect.get_area() for rect in cluster)
+    visual_area = sum(_rect_area(rect) for rect in cluster)
     if visual_area < 900.0:
         return None
-    crop_source = union | caption_rect
+    crop_source = union
+    caption_below = caption_rect.y0 > page_rect.height * 0.35
     crop = fitz.Rect(
         crop_source.x0 - horizontal_padding,
         crop_source.y0 - vertical_padding,
         crop_source.x1 + horizontal_padding,
         crop_source.y1 + vertical_padding,
     ) & page_rect
+    crop = _clip_rect_away_from_caption(crop, caption_rect, caption_below=caption_below)
+    if crop is None:
+        return None
     if crop.width < MIN_FIGURE_WIDTH / 2 or crop.height < MIN_FIGURE_HEIGHT / 2:
         return None
     return crop
 
 
-def _caption_band_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.Rect:
+def _clip_rect_away_from_caption(
+    rect: fitz.Rect | None,
+    caption_rect: fitz.Rect,
+    *,
+    caption_below: bool,
+) -> fitz.Rect | None:
+    if rect is None or rect.is_empty:
+        return None
+    gap = 4.0
+    crop = fitz.Rect(rect)
+    if caption_below:
+        crop.y1 = min(crop.y1, caption_rect.y0 - gap)
+    else:
+        crop.y0 = max(crop.y0, caption_rect.y1 + gap)
+    if crop.is_empty or crop.width < MIN_FIGURE_WIDTH / 3 or crop.height < MIN_FIGURE_HEIGHT / 3:
+        return None
+    return crop
+
+
+def _caption_band_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.Rect | None:
     page_rect = page.rect
     page_w = float(page_rect.width or 0)
     page_h = float(page_rect.height or 0)
@@ -645,11 +678,14 @@ def _caption_band_crop_rect(page: fitz.Page, caption_rect: fitz.Rect) -> fitz.Re
     below_space = page_rect.y1 - caption_rect.y1
     if above_space >= below_space * 0.55:
         y0 = max(page_rect.y0 + 22.0, caption_rect.y0 - page_h * 0.38)
-        y1 = min(page_rect.y1 - 18.0, caption_rect.y1 + max(12.0, caption_rect.height * 0.15))
+        y1 = caption_rect.y0 - 4.0
+        caption_below = True
     else:
-        y0 = max(page_rect.y0 + 18.0, caption_rect.y0 - 8.0)
+        y0 = caption_rect.y1 + 4.0
         y1 = min(page_rect.y1 - 22.0, caption_rect.y1 + page_h * 0.38)
-    return fitz.Rect(x0, y0, x1, y1) & page_rect
+        caption_below = False
+    crop = fitz.Rect(x0, y0, x1, y1) & page_rect
+    return _clip_rect_away_from_caption(crop, caption_rect, caption_below=caption_below)
 
 
 def _vlm_bbox_to_page_rect(
@@ -676,6 +712,13 @@ def _vlm_bbox_to_page_rect(
     if rect.is_empty or rect.width < MIN_FIGURE_WIDTH / 3 or rect.height < MIN_FIGURE_HEIGHT / 3:
         return None
     return rect
+
+
+def _caption_is_below_body(page: fitz.Page, caption_rect: fitz.Rect) -> bool:
+    page_rect = page.rect
+    above_space = caption_rect.y0 - page_rect.y0
+    below_space = page_rect.y1 - caption_rect.y1
+    return caption_rect.y0 > page_rect.height * 0.35 or above_space >= below_space * 0.55
 
 
 def _save_page_crop(page: fitz.Page, rect: fitz.Rect, dst_path: str) -> tuple[int, int]:
@@ -750,6 +793,23 @@ def _merge_missing_caption_crops(
                 rect = _vlm_bbox_to_page_rect(detected.get("bbox"), page, image_width, image_height)
                 if rect is None or not number:
                     continue
+                caption_rect = None
+                for hint in page_items:
+                    hint_key = (
+                        str(hint.get("item_type") or "figure").lower(),
+                        str(hint.get("figure_number") or "").strip().lower(),
+                    )
+                    if hint_key == (item_type, number.lower()):
+                        caption_rect = hint.get("caption_rect")
+                        break
+                if isinstance(caption_rect, fitz.Rect):
+                    clipped = _clip_rect_away_from_caption(
+                        rect,
+                        caption_rect,
+                        caption_below=_caption_is_below_body(page, caption_rect),
+                    )
+                    if clipped is not None:
+                        rect = clipped
                 vlm_rects[(item_type, number.lower())] = rect
 
         for item in missing:
@@ -925,7 +985,13 @@ def _extract_figures_with_pdffigures2(
         for fig_index, item in enumerate(_finalize_figure_order(candidates), start=1):
             file_name = f"fig-{fig_index:03d}.webp"
             abs_path = os.path.join(output_dir, file_name)
-            width, height = _save_webp_from_path(str(item.pop("_source_path")), abs_path)
+            src_path = str(item.pop("_source_path"))
+            width, height = _save_webp_from_path(src_path, abs_path)
+            if os.path.basename(src_path).startswith("caption-crop-"):
+                try:
+                    os.remove(src_path)
+                except OSError:
+                    pass
             figure = {
                 "url": "/".join([relative_prefix.strip("/"), file_name]),
                 "caption": str(item.get("caption") or "").strip(),
@@ -1035,6 +1101,11 @@ def extract_figures_from_pdf(
                 width, height = _save_webp_from_path(src_path, abs_path)
             except Exception:
                 continue
+            if os.path.basename(src_path).startswith("caption-crop-"):
+                try:
+                    os.remove(src_path)
+                except OSError:
+                    pass
             figures.append(
                 {
                     "url": "/".join([relative_prefix.strip("/"), file_name]),

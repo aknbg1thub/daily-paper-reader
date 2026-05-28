@@ -177,6 +177,51 @@ class GenerateDocsMetaParseTest(unittest.TestCase):
         self.assertEqual(len(figures), 1)
         self.assertEqual(figures[0]["url"], "assets/figures/arxiv/1234.5678/fig-001.webp")
 
+    def test_glance_only_new_page_writes_chinese_title(self):
+        with tempfile.TemporaryDirectory() as d:
+            original_translate = self.mod.translate_title_and_abstract_to_zh
+            original_glance = self.mod.generate_glance_overview
+            original_figures = self.mod.maybe_generate_paper_figures
+            original_text = self.mod.ensure_text_content
+            try:
+                self.mod.translate_title_and_abstract_to_zh = lambda title, abstract: ("中文标题", "中文摘要")
+                self.mod.generate_glance_overview = lambda title, abstract: (
+                    "**TLDR**: 这是一句简短总结。\n"
+                    "**Motivation**: 这是一句简短动机。\n"
+                    "**Method**: 这是一句简短方法。\n"
+                    "**Result**: 这是一句简短结果。\n"
+                    "**Conclusion**: 这是一句简短结论。"
+                )
+                self.mod.maybe_generate_paper_figures = lambda *args, **kwargs: []
+                self.mod.ensure_text_content = lambda *args, **kwargs: "text"
+
+                paper_id, _ = self.mod.process_paper(
+                    {
+                        "id": "2605.99999v1",
+                        "title": "English Title",
+                        "authors": ["Ada Lovelace"],
+                        "published": "2026-05-25T00:00:00+00:00",
+                        "link": "https://arxiv.org/pdf/2605.99999v1",
+                        "abstract": "This paper studies superconducting qubits.",
+                        "source": "arxiv",
+                    },
+                    "quick",
+                    "20260525-20260525",
+                    d,
+                    glance_only=True,
+                )
+            finally:
+                self.mod.translate_title_and_abstract_to_zh = original_translate
+                self.mod.generate_glance_overview = original_glance
+                self.mod.maybe_generate_paper_figures = original_figures
+                self.mod.ensure_text_content = original_text
+
+            md_path = Path(d) / paper_id.split("/", 1)[0] / (paper_id.split("/", 1)[1] + ".md")
+            meta = self.mod._parse_front_matter(md_path.read_text(encoding="utf-8"))
+            self.assertEqual(meta["title_zh"], "中文标题")
+            self.assertLessEqual(len(meta["evidence"]), 42)
+            self.assertIn("## 摘要", md_path.read_text(encoding="utf-8"))
+
     def test_normalize_figure_assets_orders_by_paper_position(self):
         figures = self.mod.normalize_figure_assets(
             [

@@ -28,6 +28,13 @@ def _log_default(message: str) -> None:
   print(message, flush=True)
 
 
+def _normalize_local_device(device: str | None) -> str:
+  text = str(device or "").strip()
+  if not text or text.lower() == "remote":
+    return "cpu"
+  return text
+
+
 def is_remote_embedding_enabled() -> bool:
   return bool(str(_DEFAULT_REMOTE_EMBED_ENDPOINT or "").strip())
 
@@ -58,7 +65,7 @@ class RemoteSentenceTransformer:
     self.timeout = max(int(timeout or _DEFAULT_REMOTE_TIMEOUT_SECONDS), 1)
     self.default_batch_size = max(int(default_batch_size or 1), 1)
     self.max_seq_length = None
-    self.local_device = str(local_device or "cpu")
+    self.local_device = _normalize_local_device(local_device)
     self.local_retries = local_retries
     self.local_providers = local_providers
     self._local_model = None

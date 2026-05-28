@@ -1312,6 +1312,8 @@ body.close .chat-footer {
 }
 
 .chat-quick-run-modal select,
+.chat-quick-run-modal input,
+.chat-quick-run-custom-row input,
 .chat-quick-run-run-btn {
   width: 100%;
   box-sizing: border-box;
@@ -1320,6 +1322,26 @@ body.close .chat-footer {
   padding: 6px 8px;
   font-size: 12px;
   background: #fff;
+}
+
+.chat-quick-run-custom-row {
+  display: grid;
+  grid-template-columns: auto minmax(54px, 74px) auto minmax(64px, 86px);
+  align-items: center;
+  gap: 6px;
+  margin: 2px 0 8px;
+  font-size: 12px;
+  color: #48556f;
+}
+
+.chat-quick-run-custom-row label,
+.chat-quick-run-custom-row span {
+  white-space: nowrap;
+}
+
+.chat-quick-run-custom-row .chat-quick-run-run-btn {
+  margin-top: 0;
+  padding: 6px 8px;
 }
 
 .chat-quick-run-run-btn {

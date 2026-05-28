@@ -81,6 +81,27 @@ class RemoteSentenceTransformerTest(unittest.TestCase):
 
     @patch("src.model_loader._load_local_sentence_transformer")
     @patch("src.model_loader.requests.post")
+    def test_remote_device_is_normalized_for_local_fallback(self, mock_post, mock_load_local):
+        mock_post.side_effect = requests.exceptions.SSLError("tls alert")
+        local_model = MagicMock()
+        local_model.encode.return_value = np.asarray([[0.1, 0.2]], dtype=np.float32)
+        mock_load_local.return_value = local_model
+
+        model = RemoteSentenceTransformer(
+            model_name="BAAI/bge-small-en-v1.5",
+            endpoint="https://embed.zwwen.online",
+            api_key="test-key",
+            timeout=30,
+            default_batch_size=2,
+            local_device="remote",
+        )
+        model.encode(["a"], convert_to_numpy=True, normalize_embeddings=True, batch_size=2)
+
+        self.assertEqual(model.local_device, "cpu")
+        self.assertEqual(mock_load_local.call_args.kwargs["device"], "cpu")
+
+    @patch("src.model_loader._load_local_sentence_transformer")
+    @patch("src.model_loader.requests.post")
     def test_remote_failure_disables_remote_for_later_calls(self, mock_post, mock_load_local):
         mock_post.side_effect = requests.exceptions.Timeout("remote timeout")
         local_model = MagicMock()

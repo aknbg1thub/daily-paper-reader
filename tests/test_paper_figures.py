@@ -207,6 +207,63 @@ class PaperFiguresTest(unittest.TestCase):
             self.assertEqual(figures[0]["item_type"], "table")
             self.assertEqual(figures[0]["figure_number"], "I")
 
+    def test_extract_small_tables_with_pdffigures2_payload(self):
+        with tempfile.TemporaryDirectory() as d:
+            tmp_dir = Path(d)
+            pdf_path = tmp_dir / "sample.pdf"
+            pdf_path.write_bytes(b"%PDF-1.4\n")
+            output_dir = tmp_dir / "out"
+            table_img = self._make_png_bytes((177, 76), (245, 245, 245))
+
+            original_resolve = self.mod._resolve_pdffigures2_jar
+            original_which = self.mod.shutil.which
+            original_run = self.mod.subprocess.run
+
+            class DummyResult:
+                returncode = 0
+                stdout = ""
+                stderr = ""
+
+            def fake_run(cmd, stdout=None, stderr=None, text=None, check=None):
+                input_dir = Path(cmd[4])
+                data_dir = Path(cmd[6])
+                image_dir = Path(cmd[8])
+                base_name = next(input_dir.glob("*.pdf")).stem
+                image_dir.mkdir(parents=True, exist_ok=True)
+                data_dir.mkdir(parents=True, exist_ok=True)
+                image_path = image_dir / f"{base_name}-Table1-1.png"
+                image_path.write_bytes(table_img)
+                payload = {
+                    "figures": [],
+                    "tables": [
+                        {
+                            "renderURL": str(image_path),
+                            "caption": "Table 1: System parameters.",
+                            "page": 3,
+                        }
+                    ],
+                }
+                (data_dir / f"{base_name}.json").write_text(json.dumps(payload), encoding="utf-8")
+                return DummyResult()
+
+            self.mod._resolve_pdffigures2_jar = lambda: "/tmp/pdffigures2.jar"
+            self.mod.shutil.which = lambda name: "/usr/bin/java" if name == "java" else original_which(name)
+            self.mod.subprocess.run = fake_run
+            try:
+                figures = self.mod._extract_figures_with_pdffigures2(
+                    str(pdf_path),
+                    str(output_dir),
+                    "assets/figures/arxiv/sample",
+                )
+            finally:
+                self.mod._resolve_pdffigures2_jar = original_resolve
+                self.mod.shutil.which = original_which
+                self.mod.subprocess.run = original_run
+
+            self.assertEqual(len(figures), 1)
+            self.assertEqual(figures[0]["item_type"], "table")
+            self.assertEqual(figures[0]["figure_number"], "1")
+
     def test_missing_caption_crop_is_added(self):
         with tempfile.TemporaryDirectory() as d:
             tmp_dir = Path(d)
@@ -268,6 +325,27 @@ class PaperFiguresTest(unittest.TestCase):
 
             self.assertIsNotNone(crop)
             self.assertLessEqual(crop.y1, caption_rect.y0)
+        finally:
+            doc.close()
+
+    def test_caption_visual_crop_groups_vector_diagram_parts(self):
+        doc = fitz.open()
+        try:
+            page = doc.new_page(width=612, height=792)
+            caption_rect = fitz.Rect(310, 252, 564, 323)
+            for x in (330, 414, 498):
+                page.draw_rect(fitz.Rect(x, 102, x + 46, 148), color=(0, 0, 0))
+                page.draw_rect(fitz.Rect(x + 32, 112, x + 58, 138), color=(0, 0, 0))
+            page.draw_rect(fitz.Rect(352, 74, 519, 102), color=(0, 0, 0))
+            page.insert_textbox(caption_rect, "Fig. 1. Circuit diagram.", fontsize=12)
+
+            crop = self.mod._caption_visual_crop_rect(page, caption_rect)
+
+            self.assertIsNotNone(crop)
+            self.assertLess(crop.y0, 90)
+            self.assertLess(crop.y1, caption_rect.y0)
+            self.assertGreater(crop.width, 220)
+            self.assertGreater(crop.height, 80)
         finally:
             doc.close()
 
@@ -454,6 +532,77 @@ class PaperFiguresTest(unittest.TestCase):
             self.assertEqual(len(merged), 1)
             self.assertEqual(merged[0]["figure_number"], "2")
             self.assertTrue(Path(merged[0]["_source_path"]).exists())
+
+    def test_vlm_pdf_point_bbox_is_not_scaled_twice(self):
+        doc = fitz.open()
+        try:
+            page = doc.new_page(width=612, height=792)
+            rect = self.mod._vlm_bbox_to_page_rect([80, 120, 520, 420], page, 1224, 1584)
+
+            self.assertIsNotNone(rect)
+            self.assertAlmostEqual(rect.x0, 80, delta=1)
+            self.assertAlmostEqual(rect.y0, 120, delta=1)
+            self.assertAlmostEqual(rect.x1, 520, delta=1)
+            self.assertAlmostEqual(rect.y1, 420, delta=1)
+        finally:
+            doc.close()
+
+    def test_duplicate_vlm_labels_match_nearest_caption(self):
+        with tempfile.TemporaryDirectory() as d:
+            tmp_dir = Path(d)
+            pdf_path = tmp_dir / "sample.pdf"
+            output_dir = tmp_dir / "out"
+            output_dir.mkdir()
+
+            doc = fitz.open()
+            page = doc.new_page(width=612, height=792)
+            page.draw_rect(fitz.Rect(80, 90, 520, 250), color=(0, 0, 1), fill=(0.88, 0.95, 1))
+            page.insert_textbox(fitz.Rect(72, 262, 540, 310), "Fig. 7. Main result.", fontsize=12)
+            page.draw_rect(fitz.Rect(80, 390, 520, 550), color=(1, 0, 0), fill=(1, 0.9, 0.9))
+            page.insert_textbox(fitz.Rect(72, 562, 540, 610), "Fig. 7. Appendix result.", fontsize=12)
+            doc.save(pdf_path)
+            doc.close()
+
+            original_call_vlm = self.mod._call_vlm_for_page
+            old_key = os.environ.get("BLT_API_KEY")
+            old_prefer = os.environ.get("DPR_FIGURE_VLM_PREFER")
+            try:
+                os.environ["BLT_API_KEY"] = "test-key"
+                os.environ["DPR_FIGURE_VLM_PREFER"] = "1"
+                self.mod._call_vlm_for_page = lambda **kwargs: [
+                    {
+                        "type": "figure",
+                        "number": "7",
+                        "caption": "Fig. 7. Main result.",
+                        "bbox": [80, 90, 520, 250],
+                    },
+                    {
+                        "type": "figure",
+                        "number": "7",
+                        "caption": "Fig. 7. Appendix result.",
+                        "bbox": [80, 390, 520, 550],
+                    },
+                ]
+                merged = self.mod._merge_missing_caption_crops(
+                    str(pdf_path),
+                    [],
+                    str(output_dir),
+                )
+            finally:
+                self.mod._call_vlm_for_page = original_call_vlm
+                if old_key is None:
+                    os.environ.pop("BLT_API_KEY", None)
+                else:
+                    os.environ["BLT_API_KEY"] = old_key
+                if old_prefer is None:
+                    os.environ.pop("DPR_FIGURE_VLM_PREFER", None)
+                else:
+                    os.environ["DPR_FIGURE_VLM_PREFER"] = old_prefer
+
+            self.assertEqual(len(merged), 2)
+            self.assertEqual([item["figure_number"] for item in merged], ["7", "Appendix 7"])
+            sizes = [Image.open(item["_source_path"]).size for item in merged]
+            self.assertTrue(all(width > 600 for width, _ in sizes))
 
     def test_vlm_text_block_crop_is_rejected(self):
         with tempfile.TemporaryDirectory() as d:

@@ -1,8 +1,6 @@
 name: maintain-medrxiv
 
 on:
-  schedule:
-    - cron: "15 1 * * *" # 北京时间 09:15
   workflow_dispatch:
     inputs:
       fetch_days:

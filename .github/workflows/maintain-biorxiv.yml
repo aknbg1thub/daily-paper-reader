@@ -1,10 +1,6 @@
 name: maintain-biorxiv
 
 on:
-  schedule:
-    - cron: "45 0 * * *" # 北京时间 08:45（UTC 00:45）
-    - cron: "45 8 * * *" # 北京时间 16:45（UTC 08:45）
-    - cron: "45 16 * * *" # 北京时间 00:45（UTC 16:45）
   workflow_dispatch:
     inputs:
       fetch_days:

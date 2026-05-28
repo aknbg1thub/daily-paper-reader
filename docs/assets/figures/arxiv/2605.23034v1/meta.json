@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 9,
   "extractor": "pymupdf-images",
   "figures": [
     {
@@ -8,8 +8,8 @@
       "page": 2,
       "index": 1,
       "item_type": "figure",
-      "width": 519,
-      "height": 595,
+      "width": 476,
+      "height": 206,
       "figure_number": "1"
     },
     {

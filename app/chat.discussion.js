@@ -228,6 +228,20 @@ window.PrivateDiscussionChat = (function () {
                 <button id="chat-quick-run-5d-deep-btn" class="chat-quick-run-item" type="button">立即搜寻五天内论文（精读）</button>
                 <button id="chat-quick-run-10d-btn" class="chat-quick-run-item" type="button">立即搜寻十天内论文</button>
                 <button id="chat-quick-run-30d-btn" class="chat-quick-run-item" type="button">立即搜寻三十天内论文</button>
+                <div class="chat-quick-run-custom-row">
+                  <label for="chat-quick-run-custom-days">立即搜寻</label>
+                  <input
+                    id="chat-quick-run-custom-days"
+                    type="number"
+                    min="1"
+                    max="365"
+                    step="1"
+                    value="5"
+                    inputmode="numeric"
+                  />
+                  <span>天内论文</span>
+                  <button id="chat-quick-run-custom-deep-btn" class="chat-quick-run-run-btn" type="button">精读</button>
+                </div>
                 <div class="chat-quick-run-divider" aria-hidden="true"></div>
                 <div class="chat-quick-run-title">会议论文（暂未接入）</div>
                 <div class="chat-quick-run-row">
@@ -299,6 +313,8 @@ window.PrivateDiscussionChat = (function () {
   };
 
   const runQuickFetch = (days, statusEl, showToast = () => {}, options = {}) => {
+    const parsedDays = parseInt(days, 10);
+    const normalizedDays = Number.isFinite(parsedDays) && parsedDays > 0 ? Math.min(parsedDays, 365) : 10;
     if (!window.DPRWorkflowRunner || typeof window.DPRWorkflowRunner.runQuickFetchByDays !== 'function') {
       if (statusEl) {
         statusEl.textContent = '工作流触发器未加载到当前页面。';
@@ -306,7 +322,7 @@ window.PrivateDiscussionChat = (function () {
       }
       return;
     }
-    window.DPRWorkflowRunner.runQuickFetchByDays(days, options);
+    window.DPRWorkflowRunner.runQuickFetchByDays(normalizedDays, options);
     showToast();
   };
 
@@ -1403,6 +1419,8 @@ window.PrivateDiscussionChat = (function () {
     const chatQuickRun5dDeepBtn = document.getElementById('chat-quick-run-5d-deep-btn');
     const chatQuickRun10dBtn = document.getElementById('chat-quick-run-10d-btn');
     const chatQuickRun30dBtn = document.getElementById('chat-quick-run-30d-btn');
+    const chatQuickRunCustomDaysInput = document.getElementById('chat-quick-run-custom-days');
+    const chatQuickRunCustomDeepBtn = document.getElementById('chat-quick-run-custom-deep-btn');
     const chatQuickRunConferenceBtn = document.getElementById(
       'chat-quick-run-conference-run-btn',
     );
@@ -1686,6 +1704,32 @@ window.PrivateDiscussionChat = (function () {
       chatQuickRun30dBtn._bound = true;
       chatQuickRun30dBtn.addEventListener('click', () => {
         runQuickFetch(30, statusEl, closeQuickRunPopover);
+      });
+    }
+
+    if (chatQuickRunCustomDeepBtn && !chatQuickRunCustomDeepBtn._bound) {
+      chatQuickRunCustomDeepBtn._bound = true;
+      chatQuickRunCustomDeepBtn.addEventListener('click', () => {
+        const parsed = parseInt(chatQuickRunCustomDaysInput ? chatQuickRunCustomDaysInput.value : '', 10);
+        if (!Number.isFinite(parsed) || parsed <= 0) {
+          if (chatQuickRunConferenceMsg) {
+            chatQuickRunConferenceMsg.textContent = '请输入有效的天数。';
+            chatQuickRunConferenceMsg.style.color = '#c00';
+          }
+          return;
+        }
+        const days = Math.min(parsed, 365);
+        if (chatQuickRunCustomDaysInput) {
+          chatQuickRunCustomDaysInput.value = String(days);
+        }
+        runQuickFetch(days, statusEl, closeQuickRunPopover, {
+          fetchMode: 'standard',
+          dispatchInputs: {
+            fetch_mode: 'standard',
+            skip_llm_refine: 'false',
+            force_deep: 'true',
+          },
+        });
       });
     }
 

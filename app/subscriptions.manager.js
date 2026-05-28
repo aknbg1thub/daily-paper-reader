@@ -17,6 +17,8 @@ window.SubscriptionsManager = (function () {
   let quickRun10dBtn = null;
   let quickRun30dBtn = null;
   let quickRun30dStandardBtn = null;
+  let quickRunCustomDaysInput = null;
+  let quickRunCustomDeepBtn = null;
   let quickRunOpenWorkflowPanelBtn = null;
   let quickRunConferenceBtn = null;
   let quickRunYearSelect = null;
@@ -392,7 +394,7 @@ window.SubscriptionsManager = (function () {
 
   const refreshQuickRunButtons = () => {
     const blocked = hasUnsavedChanges;
-    [quickRun1dDeepBtn, quickRun5dDeepBtn, quickRun10dBtn, quickRun30dBtn, quickRun30dStandardBtn].forEach((btn) => {
+    [quickRun1dDeepBtn, quickRun5dDeepBtn, quickRun10dBtn, quickRun30dBtn, quickRun30dStandardBtn, quickRunCustomDeepBtn].forEach((btn) => {
       if (!btn) return;
       btn.disabled = blocked;
       btn.classList.toggle('chat-quick-run-item--disabled', blocked);
@@ -400,6 +402,9 @@ window.SubscriptionsManager = (function () {
         ? '请先点击“保存”后再发起快速抓取。'
         : (btn.getAttribute('data-default-title') || btn.textContent || '');
     });
+    if (quickRunCustomDaysInput) {
+      quickRunCustomDaysInput.disabled = blocked;
+    }
     if (blocked && quickRunMsgEl) {
       quickRunMsgEl.textContent = '检测到未保存修改，请先保存后再发起快速抓取。';
       quickRunMsgEl.style.color = '#c00';
@@ -418,6 +423,8 @@ window.SubscriptionsManager = (function () {
   };
 
   const runQuickFetch = (days, msgEl, tipText, runOptions) => {
+    const parsedDays = parseInt(days, 10);
+    const normalizedDays = Number.isFinite(parsedDays) && parsedDays > 0 ? Math.min(parsedDays, 365) : 10;
     if (hasUnsavedChanges) {
       const text = '检测到未保存修改，请先点击“保存”后再发起快速抓取。';
       if (msgEl) {
@@ -437,8 +444,8 @@ window.SubscriptionsManager = (function () {
       return false;
     }
     const options = runOptions && typeof runOptions === 'object' ? runOptions : {};
-    window.DPRWorkflowRunner.runQuickFetchByDays(days, options);
-    const finalTip = (typeof tipText === 'string' ? tipText : null) || `已发起 ${days} 天内抓取任务。`;
+    window.DPRWorkflowRunner.runQuickFetchByDays(normalizedDays, options);
+    const finalTip = (typeof tipText === 'string' ? tipText : null) || `已发起 ${normalizedDays} 天内抓取任务。`;
     if (msgEl) {
       msgEl.textContent = finalTip;
       msgEl.style.color = '#080';
@@ -728,6 +735,20 @@ window.SubscriptionsManager = (function () {
             <button id="arxiv-admin-quick-run-10d-btn" class="chat-quick-run-item" type="button">立即搜寻十天内论文</button>
             <button id="arxiv-admin-quick-run-30d-btn" class="chat-quick-run-item" type="button">立即搜寻三十天内论文（全速览，约 0.76）</button>
             <button id="arxiv-admin-quick-run-30d-standard-btn" class="chat-quick-run-item" type="button">立即搜寻三十天内论文（全标准 / 精读，约 1.22）</button>
+            <div class="chat-quick-run-custom-row">
+              <label for="arxiv-admin-quick-run-custom-days">立即搜寻</label>
+              <input
+                id="arxiv-admin-quick-run-custom-days"
+                type="number"
+                min="1"
+                max="365"
+                step="1"
+                value="5"
+                inputmode="numeric"
+              />
+              <span>天内论文</span>
+              <button id="arxiv-admin-quick-run-custom-deep-btn" class="chat-quick-run-run-btn" type="button">精读</button>
+            </div>
             <div class="chat-quick-run-divider" aria-hidden="true"></div>
             <div class="chat-quick-run-title">会议论文（暂未接入）</div>
             <div class="chat-quick-run-row">
@@ -949,6 +970,8 @@ window.SubscriptionsManager = (function () {
     quickRun10dBtn = document.getElementById('arxiv-admin-quick-run-10d-btn');
     quickRun30dBtn = document.getElementById('arxiv-admin-quick-run-30d-btn');
     quickRun30dStandardBtn = document.getElementById('arxiv-admin-quick-run-30d-standard-btn');
+    quickRunCustomDaysInput = document.getElementById('arxiv-admin-quick-run-custom-days');
+    quickRunCustomDeepBtn = document.getElementById('arxiv-admin-quick-run-custom-deep-btn');
     quickRunOpenWorkflowPanelBtn = document.getElementById('arxiv-admin-open-workflow-panel-btn');
     quickRunConferenceBtn = document.getElementById(
       'arxiv-admin-quick-run-conference-run-btn',
@@ -972,7 +995,7 @@ window.SubscriptionsManager = (function () {
       quickRunConferenceBtn.title = '会议论文抓取功能暂未接入';
     }
     fillQuickRunOptions(quickRunYearSelect, quickRunConferenceSelect);
-    [quickRun1dDeepBtn, quickRun5dDeepBtn, quickRun10dBtn, quickRun30dBtn, quickRun30dStandardBtn].forEach((btn) => {
+    [quickRun1dDeepBtn, quickRun5dDeepBtn, quickRun10dBtn, quickRun30dBtn, quickRun30dStandardBtn, quickRunCustomDeepBtn].forEach((btn) => {
       if (!btn) return;
       if (!btn.dataset.defaultTitle) {
         btn.setAttribute('data-default-title', btn.textContent || '');
@@ -1045,6 +1068,34 @@ window.SubscriptionsManager = (function () {
           quickRunMsgEl,
           '已发起 30 天全标准抓取任务（精读，成本约 1.22）。',
           { fetchMode: 'standard' },
+        );
+      });
+    }
+
+    if (quickRunCustomDeepBtn && !quickRunCustomDeepBtn._bound) {
+      quickRunCustomDeepBtn._bound = true;
+      quickRunCustomDeepBtn.addEventListener('click', () => {
+        const parsed = parseInt(quickRunCustomDaysInput ? quickRunCustomDaysInput.value : '', 10);
+        if (!Number.isFinite(parsed) || parsed <= 0) {
+          setQuickRunMessage('请输入有效的天数。', '#c00');
+          return;
+        }
+        const days = Math.min(parsed, 365);
+        if (quickRunCustomDaysInput) {
+          quickRunCustomDaysInput.value = String(days);
+        }
+        runQuickFetch(
+          days,
+          quickRunMsgEl,
+          `已发起 ${days} 天内标准精读抓取任务。`,
+          {
+            fetchMode: 'standard',
+            dispatchInputs: {
+              fetch_mode: 'standard',
+              skip_llm_refine: 'false',
+              force_deep: 'true',
+            },
+          },
         );
       });
     }

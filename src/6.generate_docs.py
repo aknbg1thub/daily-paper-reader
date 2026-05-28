@@ -2217,7 +2217,8 @@ def process_paper(
         if glance:
             paper["_glance_overview"] = glance
         tags_list = build_tags_list(section, paper.get("llm_tags") or [])
-        content = build_markdown_content(paper, section, "", "", tags_list)
+        zh_title, zh_abstract = translate_title_and_abstract_to_zh(title, abstract_en)
+        content = build_markdown_content(paper, section, zh_title, zh_abstract, tags_list)
         os.makedirs(os.path.dirname(md_path), exist_ok=True)
         with open(md_path, "w", encoding="utf-8") as f:
             f.write(content)

@@ -1,16 +1,6 @@
 name: daily-paper-reader
 
 on:
-  schedule:
-    # Primary daily run: 2026-05-28 02:30 Beijing = 2026-05-27 18:30 UTC.
-    - cron: "30 18 * * *"
-    # Retry windows in case GitHub drops or delays one scheduled event.
-    # Duplicate scheduled runs skip automatically once the UTC-day report exists.
-    - cron: "30 20 * * *"
-    - cron: "30 22 * * *"
-    # Temporary one-shot probe: 2026-05-27 20:55 UTC / 2026-05-28 04:55 Beijing.
-    # Remove after confirming GitHub schedule delivery.
-    - cron: "55 20 27 5 *"
   workflow_dispatch:
     inputs:
       run_enrich:

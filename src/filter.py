@@ -213,7 +213,7 @@ class EmbeddingCoarseFilter:
     remote_mode = is_remote_embedding_enabled()
     if device is None:
       if remote_mode:
-        self.device = "remote"
+        self.device = "cpu"
       else:
         try:
           import torch
@@ -221,10 +221,10 @@ class EmbeddingCoarseFilter:
         except Exception:
           self.device = "cpu"
     else:
-      self.device = device if not remote_mode else "remote"
+      self.device = device
 
     if remote_mode:
-      print(f"[INFO] 正在初始化远程向量服务：{self.model_name}，device={self.device}")
+      print(f"[INFO] 正在初始化远程向量服务：{self.model_name}，fallback_device={self.device}")
     else:
       print(f"[INFO] 正在加载本地向量模型：{self.model_name}，device={self.device}")
       debug_hf_runtime("before SentenceTransformer()")

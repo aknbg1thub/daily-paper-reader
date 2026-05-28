@@ -1,10 +1,6 @@
 name: maintain-supabase
 
 on:
-  schedule:
-    - cron: "30 0 * * *" # 北京时间次日 08:30（UTC 00:30）
-    - cron: "30 8 * * *" # 北京时间次日 16:30（UTC 08:30）
-    - cron: "30 16 * * *" # 北京时间次日 00:30（UTC 16:30）
   workflow_dispatch:
     inputs:
       fetch_days:

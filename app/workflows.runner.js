@@ -836,9 +836,67 @@ window.DPRWorkflowRunner = (function () {
     return runWorkflowByKey(preset.key, mergedInputs);
   };
 
+  const normalizeDateForToken = (value) => {
+    const text = String(value || '').trim();
+    const match = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return '';
+    const date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+    if (
+      date.getFullYear() !== Number(match[1])
+      || date.getMonth() !== Number(match[2]) - 1
+      || date.getDate() !== Number(match[3])
+    ) {
+      return '';
+    }
+    return `${match[1]}${match[2]}${match[3]}`;
+  };
+
+  const inclusiveDateDays = (startDate, endDate) => {
+    const start = new Date(`${startDate}T00:00:00Z`);
+    const end = new Date(`${endDate}T00:00:00Z`);
+    if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime())) return 0;
+    return Math.floor((end.getTime() - start.getTime()) / 86400000) + 1;
+  };
+
+  const buildQuickFetchDateRangeInputs = (startDate, endDate, mode, extraInputs) => {
+    const startToken = normalizeDateForToken(startDate);
+    const endToken = normalizeDateForToken(endDate);
+    const days = inclusiveDateDays(startDate, endDate);
+    if (!startToken || !endToken || days <= 0) {
+      throw new Error('日期范围无效，请确认开始日期不晚于结束日期。');
+    }
+    const normalizedMode = String(mode || '').trim().toLowerCase() === 'skims' ? 'skims' : 'standard';
+    const baseInputs = {
+      run_enrich: 'false',
+      fetch_days: String(days),
+      fetch_mode: normalizedMode,
+      run_date_token: `${startToken}-${endToken}`,
+      skip_llm_refine: 'false',
+      force_deep: normalizedMode === 'standard' ? 'true' : 'false',
+    };
+    return combineInputs(baseInputs, extraInputs);
+  };
+
+  const runQuickFetchByDateRange = async (startDate, endDate, mode, extra) => {
+    const options = extra && typeof extra === 'object' ? extra : {};
+    const mergedInputs = buildQuickFetchDateRangeInputs(
+      startDate,
+      endDate,
+      mode,
+      options.dispatchInputs,
+    );
+    return runWorkflowByKey('daily-now', mergedInputs);
+  };
+
   return {
     open,
     runWorkflowByKey,
     runQuickFetchByDays,
+    runQuickFetchByDateRange,
+    __test: {
+      normalizeDateForToken,
+      inclusiveDateDays,
+      buildQuickFetchDateRangeInputs,
+    },
   };
 })();

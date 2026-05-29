@@ -228,19 +228,25 @@ window.PrivateDiscussionChat = (function () {
                 <button id="chat-quick-run-5d-deep-btn" class="chat-quick-run-item" type="button">立即搜寻五天内论文（精读）</button>
                 <button id="chat-quick-run-10d-btn" class="chat-quick-run-item" type="button">立即搜寻十天内论文</button>
                 <button id="chat-quick-run-30d-btn" class="chat-quick-run-item" type="button">立即搜寻三十天内论文</button>
-                <div class="chat-quick-run-custom-row">
-                  <label for="chat-quick-run-custom-days">立即搜寻</label>
-                  <input
-                    id="chat-quick-run-custom-days"
-                    type="number"
-                    min="1"
-                    max="365"
-                    step="1"
-                    value="5"
-                    inputmode="numeric"
-                  />
-                  <span>天内论文</span>
-                  <button id="chat-quick-run-custom-deep-btn" class="chat-quick-run-run-btn" type="button">精读</button>
+                <div class="chat-quick-run-date-range">
+                  <div class="chat-quick-run-date-fields">
+                    <label>
+                      <span>开始</span>
+                      <input id="chat-quick-run-start-date" type="date" />
+                    </label>
+                    <label>
+                      <span>结束</span>
+                      <input id="chat-quick-run-end-date" type="date" />
+                    </label>
+                    <label>
+                      <span>模式</span>
+                      <select id="chat-quick-run-mode-select">
+                        <option value="standard">精读</option>
+                        <option value="skims">速读</option>
+                      </select>
+                    </label>
+                  </div>
+                  <button id="chat-quick-run-range-btn" class="chat-quick-run-item" type="button">立即搜寻所选日期论文（精读）</button>
                 </div>
                 <div class="chat-quick-run-divider" aria-hidden="true"></div>
                 <div class="chat-quick-run-title">会议论文（暂未接入）</div>
@@ -323,6 +329,100 @@ window.PrivateDiscussionChat = (function () {
       return;
     }
     window.DPRWorkflowRunner.runQuickFetchByDays(normalizedDays, options);
+    showToast();
+  };
+
+  const pad2 = (value) => String(value).padStart(2, '0');
+  const formatDateInputValue = (date) => {
+    if (!(date instanceof Date) || Number.isNaN(date.getTime())) return '';
+    return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`;
+  };
+  const formatDateZh = (value) => {
+    const text = String(value || '').trim();
+    const match = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return '____年__月__日';
+    return `${match[1]}年${match[2]}月${match[3]}日`;
+  };
+  const setDefaultCustomDateRange = (startInput, endInput) => {
+    if (!startInput || !endInput) return;
+    const today = new Date();
+    const start = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 4);
+    if (!endInput.value) {
+      endInput.value = formatDateInputValue(today);
+    }
+    if (!startInput.value) {
+      startInput.value = formatDateInputValue(start);
+    }
+  };
+  const updateCustomRangeButtonText = (startInput, endInput, modeSelect, runBtn) => {
+    if (!runBtn) return;
+    const mode = modeSelect && modeSelect.value === 'skims' ? '速读' : '精读';
+    const startText = formatDateZh(startInput ? startInput.value : '');
+    const endText = formatDateZh(endInput ? endInput.value : '');
+    runBtn.textContent = `立即搜寻${startText}到${endText}论文（${mode}）`;
+  };
+  const parseCustomDateRange = (startInput, endInput, modeSelect) => {
+    const startDate = String((startInput && startInput.value) || '').trim();
+    const endDate = String((endInput && endInput.value) || '').trim();
+    const startMatch = startDate.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    const endMatch = endDate.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!startMatch || !endMatch) {
+      return { error: '请先选择开始日期和结束日期。' };
+    }
+    const start = new Date(Number(startMatch[1]), Number(startMatch[2]) - 1, Number(startMatch[3]));
+    const end = new Date(Number(endMatch[1]), Number(endMatch[2]) - 1, Number(endMatch[3]));
+    const startOk = start.getFullYear() === Number(startMatch[1])
+      && start.getMonth() === Number(startMatch[2]) - 1
+      && start.getDate() === Number(startMatch[3]);
+    const endOk = end.getFullYear() === Number(endMatch[1])
+      && end.getMonth() === Number(endMatch[2]) - 1
+      && end.getDate() === Number(endMatch[3]);
+    if (!startOk || !endOk) {
+      return { error: '日期格式无效，请重新选择。' };
+    }
+    if (start.getTime() > end.getTime()) {
+      return { error: '开始日期不能晚于结束日期。' };
+    }
+    return {
+      startDate,
+      endDate,
+      mode: modeSelect && modeSelect.value === 'skims' ? 'skims' : 'standard',
+    };
+  };
+
+  const runQuickFetchByDateRange = (
+    startInput,
+    endInput,
+    modeSelect,
+    msgEl,
+    statusEl,
+    showToast = () => {},
+  ) => {
+    if (!window.DPRWorkflowRunner || typeof window.DPRWorkflowRunner.runQuickFetchByDateRange !== 'function') {
+      const text = '工作流触发器未加载到当前页面。';
+      if (msgEl) {
+        msgEl.textContent = text;
+        msgEl.style.color = '#c00';
+      }
+      if (statusEl) {
+        statusEl.textContent = text;
+        statusEl.style.color = '#c00';
+      }
+      return;
+    }
+    const parsed = parseCustomDateRange(startInput, endInput, modeSelect);
+    if (parsed.error) {
+      if (msgEl) {
+        msgEl.textContent = parsed.error;
+        msgEl.style.color = '#c00';
+      }
+      if (statusEl) {
+        statusEl.textContent = parsed.error;
+        statusEl.style.color = '#c00';
+      }
+      return;
+    }
+    window.DPRWorkflowRunner.runQuickFetchByDateRange(parsed.startDate, parsed.endDate, parsed.mode);
     showToast();
   };
 
@@ -1419,8 +1519,10 @@ window.PrivateDiscussionChat = (function () {
     const chatQuickRun5dDeepBtn = document.getElementById('chat-quick-run-5d-deep-btn');
     const chatQuickRun10dBtn = document.getElementById('chat-quick-run-10d-btn');
     const chatQuickRun30dBtn = document.getElementById('chat-quick-run-30d-btn');
-    const chatQuickRunCustomDaysInput = document.getElementById('chat-quick-run-custom-days');
-    const chatQuickRunCustomDeepBtn = document.getElementById('chat-quick-run-custom-deep-btn');
+    const chatQuickRunCustomStartInput = document.getElementById('chat-quick-run-start-date');
+    const chatQuickRunCustomEndInput = document.getElementById('chat-quick-run-end-date');
+    const chatQuickRunCustomModeSelect = document.getElementById('chat-quick-run-mode-select');
+    const chatQuickRunCustomRangeBtn = document.getElementById('chat-quick-run-range-btn');
     const chatQuickRunConferenceBtn = document.getElementById(
       'chat-quick-run-conference-run-btn',
     );
@@ -1436,6 +1538,29 @@ window.PrivateDiscussionChat = (function () {
       document.body.appendChild(modal);
     }
     fillQuickRunOptions(chatQuickRunYearSelect, chatQuickRunConferenceSelect);
+    setDefaultCustomDateRange(chatQuickRunCustomStartInput, chatQuickRunCustomEndInput);
+    updateCustomRangeButtonText(
+      chatQuickRunCustomStartInput,
+      chatQuickRunCustomEndInput,
+      chatQuickRunCustomModeSelect,
+      chatQuickRunCustomRangeBtn,
+    );
+    [chatQuickRunCustomStartInput, chatQuickRunCustomEndInput, chatQuickRunCustomModeSelect].forEach((el) => {
+      if (!el || el._boundRangeText) return;
+      el._boundRangeText = true;
+      el.addEventListener('change', () => updateCustomRangeButtonText(
+        chatQuickRunCustomStartInput,
+        chatQuickRunCustomEndInput,
+        chatQuickRunCustomModeSelect,
+        chatQuickRunCustomRangeBtn,
+      ));
+      el.addEventListener('input', () => updateCustomRangeButtonText(
+        chatQuickRunCustomStartInput,
+        chatQuickRunCustomEndInput,
+        chatQuickRunCustomModeSelect,
+        chatQuickRunCustomRangeBtn,
+      ));
+    });
 
     const inGuestMode =
       window.DPR_ACCESS_MODE === 'guest' || window.DPR_ACCESS_MODE === 'locked';
@@ -1707,29 +1832,17 @@ window.PrivateDiscussionChat = (function () {
       });
     }
 
-    if (chatQuickRunCustomDeepBtn && !chatQuickRunCustomDeepBtn._bound) {
-      chatQuickRunCustomDeepBtn._bound = true;
-      chatQuickRunCustomDeepBtn.addEventListener('click', () => {
-        const parsed = parseInt(chatQuickRunCustomDaysInput ? chatQuickRunCustomDaysInput.value : '', 10);
-        if (!Number.isFinite(parsed) || parsed <= 0) {
-          if (chatQuickRunConferenceMsg) {
-            chatQuickRunConferenceMsg.textContent = '请输入有效的天数。';
-            chatQuickRunConferenceMsg.style.color = '#c00';
-          }
-          return;
-        }
-        const days = Math.min(parsed, 365);
-        if (chatQuickRunCustomDaysInput) {
-          chatQuickRunCustomDaysInput.value = String(days);
-        }
-        runQuickFetch(days, statusEl, closeQuickRunPopover, {
-          fetchMode: 'standard',
-          dispatchInputs: {
-            fetch_mode: 'standard',
-            skip_llm_refine: 'false',
-            force_deep: 'true',
-          },
-        });
+    if (chatQuickRunCustomRangeBtn && !chatQuickRunCustomRangeBtn._bound) {
+      chatQuickRunCustomRangeBtn._bound = true;
+      chatQuickRunCustomRangeBtn.addEventListener('click', () => {
+        runQuickFetchByDateRange(
+          chatQuickRunCustomStartInput,
+          chatQuickRunCustomEndInput,
+          chatQuickRunCustomModeSelect,
+          chatQuickRunConferenceMsg,
+          statusEl,
+          closeQuickRunPopover,
+        );
       });
     }
 

@@ -17,8 +17,10 @@ window.SubscriptionsManager = (function () {
   let quickRun10dBtn = null;
   let quickRun30dBtn = null;
   let quickRun30dStandardBtn = null;
-  let quickRunCustomDaysInput = null;
-  let quickRunCustomDeepBtn = null;
+  let quickRunCustomStartInput = null;
+  let quickRunCustomEndInput = null;
+  let quickRunCustomModeSelect = null;
+  let quickRunCustomRangeBtn = null;
   let quickRunOpenWorkflowPanelBtn = null;
   let quickRunConferenceBtn = null;
   let quickRunYearSelect = null;
@@ -394,7 +396,7 @@ window.SubscriptionsManager = (function () {
 
   const refreshQuickRunButtons = () => {
     const blocked = hasUnsavedChanges;
-    [quickRun1dDeepBtn, quickRun5dDeepBtn, quickRun10dBtn, quickRun30dBtn, quickRun30dStandardBtn, quickRunCustomDeepBtn].forEach((btn) => {
+    [quickRun1dDeepBtn, quickRun5dDeepBtn, quickRun10dBtn, quickRun30dBtn, quickRun30dStandardBtn, quickRunCustomRangeBtn].forEach((btn) => {
       if (!btn) return;
       btn.disabled = blocked;
       btn.classList.toggle('chat-quick-run-item--disabled', blocked);
@@ -402,9 +404,9 @@ window.SubscriptionsManager = (function () {
         ? '请先点击“保存”后再发起快速抓取。'
         : (btn.getAttribute('data-default-title') || btn.textContent || '');
     });
-    if (quickRunCustomDaysInput) {
-      quickRunCustomDaysInput.disabled = blocked;
-    }
+    [quickRunCustomStartInput, quickRunCustomEndInput, quickRunCustomModeSelect].forEach((el) => {
+      if (el) el.disabled = blocked;
+    });
     if (blocked && quickRunMsgEl) {
       quickRunMsgEl.textContent = '检测到未保存修改，请先保存后再发起快速抓取。';
       quickRunMsgEl.style.color = '#c00';
@@ -420,6 +422,65 @@ window.SubscriptionsManager = (function () {
       msgEl.textContent = text || '';
       msgEl.style.color = color || '#666';
     }
+  };
+
+  const pad2 = (value) => String(value).padStart(2, '0');
+  const formatDateInputValue = (date) => {
+    if (!(date instanceof Date) || Number.isNaN(date.getTime())) return '';
+    return `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`;
+  };
+  const formatDateZh = (value) => {
+    const text = String(value || '').trim();
+    const match = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return '____年__月__日';
+    return `${match[1]}年${match[2]}月${match[3]}日`;
+  };
+  const setDefaultCustomDateRange = (startInput, endInput) => {
+    if (!startInput || !endInput) return;
+    const today = new Date();
+    const start = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 4);
+    if (!endInput.value) {
+      endInput.value = formatDateInputValue(today);
+    }
+    if (!startInput.value) {
+      startInput.value = formatDateInputValue(start);
+    }
+  };
+  const updateCustomRangeButtonText = () => {
+    if (!quickRunCustomRangeBtn) return;
+    const mode = quickRunCustomModeSelect && quickRunCustomModeSelect.value === 'skims' ? '速读' : '精读';
+    const startText = formatDateZh(quickRunCustomStartInput ? quickRunCustomStartInput.value : '');
+    const endText = formatDateZh(quickRunCustomEndInput ? quickRunCustomEndInput.value : '');
+    quickRunCustomRangeBtn.textContent = `立即搜寻${startText}到${endText}论文（${mode}）`;
+    quickRunCustomRangeBtn.setAttribute('data-default-title', quickRunCustomRangeBtn.textContent || '');
+  };
+  const parseCustomDateRange = (startInput, endInput, modeSelect) => {
+    const startDate = String((startInput && startInput.value) || '').trim();
+    const endDate = String((endInput && endInput.value) || '').trim();
+    const startMatch = startDate.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    const endMatch = endDate.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!startMatch || !endMatch) {
+      return { error: '请先选择开始日期和结束日期。' };
+    }
+    const start = new Date(Number(startMatch[1]), Number(startMatch[2]) - 1, Number(startMatch[3]));
+    const end = new Date(Number(endMatch[1]), Number(endMatch[2]) - 1, Number(endMatch[3]));
+    const startOk = start.getFullYear() === Number(startMatch[1])
+      && start.getMonth() === Number(startMatch[2]) - 1
+      && start.getDate() === Number(startMatch[3]);
+    const endOk = end.getFullYear() === Number(endMatch[1])
+      && end.getMonth() === Number(endMatch[2]) - 1
+      && end.getDate() === Number(endMatch[3]);
+    if (!startOk || !endOk) {
+      return { error: '日期格式无效，请重新选择。' };
+    }
+    if (start.getTime() > end.getTime()) {
+      return { error: '开始日期不能晚于结束日期。' };
+    }
+    return {
+      startDate,
+      endDate,
+      mode: modeSelect && modeSelect.value === 'skims' ? 'skims' : 'standard',
+    };
   };
 
   const runQuickFetch = (days, msgEl, tipText, runOptions) => {
@@ -451,6 +512,45 @@ window.SubscriptionsManager = (function () {
       msgEl.style.color = '#080';
     }
     setQuickRunMessage(finalTip, '#080');
+    return true;
+  };
+
+  const runQuickFetchByDateRange = (startInput, endInput, modeSelect, msgEl) => {
+    if (hasUnsavedChanges) {
+      const text = '检测到未保存修改，请先点击“保存”后再发起快速抓取。';
+      setQuickRunMessage(text, '#c00');
+      if (msgEl) {
+        msgEl.textContent = text;
+        msgEl.style.color = '#c00';
+      }
+      return false;
+    }
+    if (!window.DPRWorkflowRunner || typeof window.DPRWorkflowRunner.runQuickFetchByDateRange !== 'function') {
+      const text = '工作流触发器未加载到当前页面。';
+      setQuickRunMessage(text, '#c00');
+      if (msgEl) {
+        msgEl.textContent = text;
+        msgEl.style.color = '#c00';
+      }
+      return false;
+    }
+    const parsed = parseCustomDateRange(startInput, endInput, modeSelect);
+    if (parsed.error) {
+      setQuickRunMessage(parsed.error, '#c00');
+      if (msgEl) {
+        msgEl.textContent = parsed.error;
+        msgEl.style.color = '#c00';
+      }
+      return false;
+    }
+    const modeText = parsed.mode === 'skims' ? '速读' : '精读';
+    window.DPRWorkflowRunner.runQuickFetchByDateRange(parsed.startDate, parsed.endDate, parsed.mode);
+    const tip = `已发起 ${formatDateZh(parsed.startDate)} 到 ${formatDateZh(parsed.endDate)} 的${modeText}抓取任务。`;
+    setQuickRunMessage(tip, '#080');
+    if (msgEl) {
+      msgEl.textContent = tip;
+      msgEl.style.color = '#080';
+    }
     return true;
   };
 
@@ -735,19 +835,25 @@ window.SubscriptionsManager = (function () {
             <button id="arxiv-admin-quick-run-10d-btn" class="chat-quick-run-item" type="button">立即搜寻十天内论文</button>
             <button id="arxiv-admin-quick-run-30d-btn" class="chat-quick-run-item" type="button">立即搜寻三十天内论文（全速览，约 0.76）</button>
             <button id="arxiv-admin-quick-run-30d-standard-btn" class="chat-quick-run-item" type="button">立即搜寻三十天内论文（全标准 / 精读，约 1.22）</button>
-            <div class="chat-quick-run-custom-row">
-              <label for="arxiv-admin-quick-run-custom-days">立即搜寻</label>
-              <input
-                id="arxiv-admin-quick-run-custom-days"
-                type="number"
-                min="1"
-                max="365"
-                step="1"
-                value="5"
-                inputmode="numeric"
-              />
-              <span>天内论文</span>
-              <button id="arxiv-admin-quick-run-custom-deep-btn" class="chat-quick-run-run-btn" type="button">精读</button>
+            <div class="chat-quick-run-date-range">
+              <div class="chat-quick-run-date-fields">
+                <label>
+                  <span>开始</span>
+                  <input id="arxiv-admin-quick-run-start-date" type="date" />
+                </label>
+                <label>
+                  <span>结束</span>
+                  <input id="arxiv-admin-quick-run-end-date" type="date" />
+                </label>
+                <label>
+                  <span>模式</span>
+                  <select id="arxiv-admin-quick-run-mode-select">
+                    <option value="standard">精读</option>
+                    <option value="skims">速读</option>
+                  </select>
+                </label>
+              </div>
+              <button id="arxiv-admin-quick-run-range-btn" class="chat-quick-run-item" type="button">立即搜寻所选日期论文（精读）</button>
             </div>
             <div class="chat-quick-run-divider" aria-hidden="true"></div>
             <div class="chat-quick-run-title">会议论文（暂未接入）</div>
@@ -970,8 +1076,10 @@ window.SubscriptionsManager = (function () {
     quickRun10dBtn = document.getElementById('arxiv-admin-quick-run-10d-btn');
     quickRun30dBtn = document.getElementById('arxiv-admin-quick-run-30d-btn');
     quickRun30dStandardBtn = document.getElementById('arxiv-admin-quick-run-30d-standard-btn');
-    quickRunCustomDaysInput = document.getElementById('arxiv-admin-quick-run-custom-days');
-    quickRunCustomDeepBtn = document.getElementById('arxiv-admin-quick-run-custom-deep-btn');
+    quickRunCustomStartInput = document.getElementById('arxiv-admin-quick-run-start-date');
+    quickRunCustomEndInput = document.getElementById('arxiv-admin-quick-run-end-date');
+    quickRunCustomModeSelect = document.getElementById('arxiv-admin-quick-run-mode-select');
+    quickRunCustomRangeBtn = document.getElementById('arxiv-admin-quick-run-range-btn');
     quickRunOpenWorkflowPanelBtn = document.getElementById('arxiv-admin-open-workflow-panel-btn');
     quickRunConferenceBtn = document.getElementById(
       'arxiv-admin-quick-run-conference-run-btn',
@@ -994,8 +1102,16 @@ window.SubscriptionsManager = (function () {
       quickRunConferenceBtn.classList.add('chat-quick-run-item--disabled');
       quickRunConferenceBtn.title = '会议论文抓取功能暂未接入';
     }
+    setDefaultCustomDateRange(quickRunCustomStartInput, quickRunCustomEndInput);
+    updateCustomRangeButtonText();
+    [quickRunCustomStartInput, quickRunCustomEndInput, quickRunCustomModeSelect].forEach((el) => {
+      if (!el || el._boundRangeText) return;
+      el._boundRangeText = true;
+      el.addEventListener('change', updateCustomRangeButtonText);
+      el.addEventListener('input', updateCustomRangeButtonText);
+    });
     fillQuickRunOptions(quickRunYearSelect, quickRunConferenceSelect);
-    [quickRun1dDeepBtn, quickRun5dDeepBtn, quickRun10dBtn, quickRun30dBtn, quickRun30dStandardBtn, quickRunCustomDeepBtn].forEach((btn) => {
+    [quickRun1dDeepBtn, quickRun5dDeepBtn, quickRun10dBtn, quickRun30dBtn, quickRun30dStandardBtn, quickRunCustomRangeBtn].forEach((btn) => {
       if (!btn) return;
       if (!btn.dataset.defaultTitle) {
         btn.setAttribute('data-default-title', btn.textContent || '');
@@ -1072,30 +1188,14 @@ window.SubscriptionsManager = (function () {
       });
     }
 
-    if (quickRunCustomDeepBtn && !quickRunCustomDeepBtn._bound) {
-      quickRunCustomDeepBtn._bound = true;
-      quickRunCustomDeepBtn.addEventListener('click', () => {
-        const parsed = parseInt(quickRunCustomDaysInput ? quickRunCustomDaysInput.value : '', 10);
-        if (!Number.isFinite(parsed) || parsed <= 0) {
-          setQuickRunMessage('请输入有效的天数。', '#c00');
-          return;
-        }
-        const days = Math.min(parsed, 365);
-        if (quickRunCustomDaysInput) {
-          quickRunCustomDaysInput.value = String(days);
-        }
-        runQuickFetch(
-          days,
+    if (quickRunCustomRangeBtn && !quickRunCustomRangeBtn._bound) {
+      quickRunCustomRangeBtn._bound = true;
+      quickRunCustomRangeBtn.addEventListener('click', () => {
+        runQuickFetchByDateRange(
+          quickRunCustomStartInput,
+          quickRunCustomEndInput,
+          quickRunCustomModeSelect,
           quickRunMsgEl,
-          `已发起 ${days} 天内标准精读抓取任务。`,
-          {
-            fetchMode: 'standard',
-            dispatchInputs: {
-              fetch_mode: 'standard',
-              skip_llm_refine: 'false',
-              force_deep: 'true',
-            },
-          },
         );
       });
     }

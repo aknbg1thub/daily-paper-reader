@@ -1314,6 +1314,8 @@ body.close .chat-footer {
 .chat-quick-run-modal select,
 .chat-quick-run-modal input,
 .chat-quick-run-custom-row input,
+.chat-quick-run-date-fields input,
+.chat-quick-run-date-fields select,
 .chat-quick-run-run-btn {
   width: 100%;
   box-sizing: border-box;
@@ -1342,6 +1344,34 @@ body.close .chat-footer {
 .chat-quick-run-custom-row .chat-quick-run-run-btn {
   margin-top: 0;
   padding: 6px 8px;
+}
+
+.chat-quick-run-date-range {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 2px 0 8px;
+}
+
+.chat-quick-run-date-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(72px, 88px);
+  gap: 6px;
+  align-items: end;
+}
+
+.chat-quick-run-date-fields label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  font-size: 11px;
+  color: #666;
+}
+
+.chat-quick-run-date-fields input,
+.chat-quick-run-date-fields select {
+  min-width: 0;
 }
 
 .chat-quick-run-run-btn {
